@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1" title="TITOL 1" subtitol="Subtitol"></vf-title>
+
+        <vf-title level="2" title="TITOL 2"></vf-title>
+
+        <vf-title level="3" title="TITOL 3"></vf-title>
+
+        <vf-content>
+            <vf-title level="4" title="TITOL 4"></vf-title>
+
+            <vf-code>
+                let a = 1;
+                let b = 2;
+                if(a == 1) {
+                a = 3;
+                }
+                console.log(a + b);
+            </vf-code>
+
+            <vf-text
+                text="Este texto tiene texto en negrita *hola* y un enlace [Programa Ergo Sum](https://www.programoergosum.es/)"></vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text
+                        text="Este texto tiene texto en negrita *hola* y un enlace [Programa Ergo Sum](https://www.programoergosum.es/)"></vf-text>
+
+                </vf-col>
+                <vf-col>
+                    <vf-text
+                        text="Este texto tiene texto en negrita *hola* y un enlace [Programa Ergo Sum](https://www.programoergosum.es/)"></vf-text>
+
+                </vf-col>
+            </vf-row>
+
+            <vf-list ordered="false" styles="color:red">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </vf-list>
+
+            <vf-frame link="https://learningapps.org/watch?app=30998038" styles="width: 100%;height: 80vh"></vf-frame>
+        </vf-content>
+
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
