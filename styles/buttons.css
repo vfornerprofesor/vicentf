@@ -1,0 +1,19 @@
+/* BUTTONS */
+
+.btn-primary {
+  margin: 2vh;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    width: 100%;
+  }
+  
+  .btn-primary-inverse {
+    background-color: #fff;
+    color: var(--main-color);
+    border: none;
+  }
+  
+  .btn-primary-inverse:hover {
+    background-color: var(--main-color-hover);
+    border: none;
+  }
