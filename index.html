@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1" title="Vicent Forner" subtitle="Professor d'Informàtica">
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text
+                        text="Aquesta pàgina conté recursos d’informàtica per a tots els nivells educatius de l’educació secundària
+                    obligatòria, batxillerat i cicles formatius que pot impartir un professor de secundària d’Informàtica."></vf-text>
+
+                    <vf-text
+                        text="Tots els recursos es poden utilitzar sempre i quan s’anomene aquesta font. També, des de la pàgina de
+                    contacte pots demanar els materials o rúbriques d’avaluació, així com indicar si es troba alguna errada."></vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img link="imgs/main.png" styles="max-height:300px"></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-content colored="true">
+            <vf-row>
+                <vf-col>
+                    <vf-title level="2" title="ESO" centered="true"></vf-title>
+                    <vf-btn text="1 ESO" inverse="true" link="cursos/eso/1eso"></vf-btn>
+                    <vf-btn text="2 ESO" inverse="true" link="cursos/eso/2eso"></vf-btn>
+                    <vf-btn text="3 ESO" inverse="true" link="cursos/eso/3eso"></vf-btn>
+                    <vf-btn text="4 ESO" inverse="true" link="cursos/eso/4eso"></vf-btn>
+                </vf-col>
+                <vf-col>
+                    <vf-title level="2" title="BATXILLERAT" centered="true"></vf-title>
+                    <vf-btn text="1 BAT" inverse="true" link="cursos/bat/1bat"></vf-btn>
+                    <vf-btn text="2 BAT" inverse="true" link="cursos/bat/2bat"></vf-btn>
+                </vf-col>
+                <vf-col>
+                    <vf-title level="2" title="SMX" centered="true"></vf-title>
+                    <vf-btn text="AWE" inverse="true" link="cursos/smx/awe"></vf-btn>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
