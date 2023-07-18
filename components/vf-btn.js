@@ -18,6 +18,8 @@ class VFBtn extends HTMLElement {
             a.classList.add('btn-primary-inverse');
         }
 
+        a = processClasses(a, this.getAttribute('classes'));
+        a = processStyles(a, this.getAttribute('styles'));
         a.textContent = this.getAttribute('text');
 
 

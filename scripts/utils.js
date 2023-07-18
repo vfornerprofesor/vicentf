@@ -37,3 +37,9 @@ function removeAllChildren(element) {
         element.removeChild(element.firstChild);
     }
 }
+
+function updateTextChangingLessThanAndGreaterThanSigns(text) {
+    text = text.replaceAll('<', '&lt;');
+    text = text.replaceAll('>', '&gt;');
+    return text;
+  }
