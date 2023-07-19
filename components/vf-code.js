@@ -36,6 +36,9 @@ class VFCode extends HTMLElement {
         pre.appendChild(code);
         this.innerHTML = '';
         this.appendChild(pre);
+
+        //PINTAR EL CÓDIGO
+        hljs.highlightAll();
     }
 
 

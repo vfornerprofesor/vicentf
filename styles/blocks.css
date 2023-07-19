@@ -1,3 +1,9 @@
+.row-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* BLOCKS */ 
 
 .block, .block_colored, .block_black {

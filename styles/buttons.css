@@ -1,10 +1,10 @@
 /* BUTTONS */
 
 .btn-primary {
-  margin: 2vh;
+    margin: 2vh;
     background-color: var(--main-color);
     border-color: var(--main-color);
-    width: 100%;
+    width: calc(100% - 4vh);
   }
   
   .btn-primary-inverse {
@@ -17,3 +17,5 @@
     background-color: var(--main-color-hover);
     border: none;
   }
+
+  

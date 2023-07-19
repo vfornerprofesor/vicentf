@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title title="Cursos" level="1" centered="true" styles="" classes=""></vf-title>
+
+        <vf-title title="ESO" level="3" centered="true" styles="" classes=""></vf-title>
+
+        <vf-content>
+
+            <vf-row centered="true">
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/1reso.png" link="cursos/1eso"></vf-img>
+                    </vf-content>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/2neso.png" link="cursos/2eso"></vf-img>
+                    </vf-content>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/3reso.png" link="cursos/3eso"></vf-img>
+                    </vf-content>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/4teso.png" link="cursos/4eso"></vf-img>
+                    </vf-content>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title title="Batxillerat" level="3" centered="true" styles="" classes=""></vf-title>
+        <vf-content>
+
+            <vf-row centered="true">
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/1rbat.png" link="cursos/1bat"></vf-img>
+                    </vf-content>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/2nbat.png" link="cursos/2eso"></vf-img>
+                    </vf-content>
+                </vf-col>
+             
+            </vf-row>
+        </vf-content>
+
+        <vf-title title="Sistemes microinformàtics i xarxes" level="3" centered="true" styles="" classes=""></vf-title>
+
+        <vf-content>
+
+            <vf-row centered="true">
+                <vf-col styles="width:20em">
+                    <vf-content colored="true">
+                        <vf-img src="imgs/cursos/awe.png" link="cursos/awe"></vf-img>
+                    </vf-content>
+                </vf-col>
+                
+             
+            </vf-row>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

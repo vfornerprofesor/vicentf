@@ -3,7 +3,14 @@ class VFCol extends HTMLElement {
     this.render();
   }
   render() {
-    this.classList.add('col');
+    let div = document.createElement('div');
+    div.classList.add('col');
+    div.innerHTML = this.innerHTML;
+    div = processClasses(div, this.getAttribute('classes'));
+    div = processStyles(div, this.getAttribute('styles'));
+    this.innerHTML = '';
+    this.appendChild(div);
+    //this.classList.add('col');
   }
 
 }
