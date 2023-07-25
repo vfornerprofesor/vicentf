@@ -24,9 +24,10 @@ class VFImage extends HTMLElement {
       img.src = this.getAttribute('src');
       img = processClasses(img, this.getAttribute('classes'));
       img = processStyles(img, this.getAttribute('styles'));
-      img.classList.add("img-fluid");
+      //img.classList.add("img-fluid");
       img.classList.add("my-3");
       img.classList.add("center");
+      img.classList.add("vf-img");
 
       if(a) {
         a.appendChild(img);
