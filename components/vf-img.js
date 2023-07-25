@@ -40,3 +40,5 @@ class VFImage extends HTMLElement {
 }
 
 customElements.define('vf-img', VFImage);
+
+//classes: img-scale-hover

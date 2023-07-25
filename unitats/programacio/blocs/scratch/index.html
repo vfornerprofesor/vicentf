@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1" title="Scratch">
+        </vf-title>
+
+        <vf-content>
+            <vf-text text="Contingut extret de [Programa Ergo Sum](https://www.programoergosum.es/)." styles=""
+                classes=""></vf-text>
+            <vf-row centered="false">
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px" src="imgs/unitats/programacio/blocs/scratch/laberint.png"
+                        link="unitats/programacio/blocs/scratch/laberint.html"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/laberint.html" text="Laberint"></vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px" src="imgs/unitats/programacio/blocs/scratch/flappy_bird.png"
+                        link="unitats/programacio/blocs/scratch/flappy-bird.html"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/flappy-bird.html"
+                        text="Flappy Bird"></vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px" src="imgs/unitats/programacio/blocs/scratch/space_invaders.png"
+                        link="unitats/programacio/blocs/scratch/space-invaders.html"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/space-invaders.html"
+                        text="Space Invaders"></vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px" src="imgs/unitats/programacio/blocs/scratch/pong.png"
+                        link="unitats/programacio/blocs/scratch/pong.html"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/pong.html" text="Pong"></vf-btn>
+                </vf-col>
+
+
+            </vf-row>
+        </vf-content>
+        <vf-title level="2" title="Projecte final">
+        </vf-title>
+
+        <vf-content>
+            <vf-text text="Després d'haver creat els anteriors videojocs, has de pensar en el teu videojoc propi. Pot combinar diferents jocs vists anteriorment o ser totalment nou. Consulta abans de començar per no passar-se d'ambiciós o quedar-se curt amb el projecte."></vf-text>
+            <vf-text  text="Recorda que es valorarà *la creativitat, el acabat final i la jugabilitat*"></vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

@@ -28,3 +28,11 @@
     margin-top: 2rem;
 
   }
+
+  .img-scale-hover {
+    transition: transform 0.4s;
+  }
+
+  .img-scale-hover:hover {
+    transform: scale(1.1);
+    }

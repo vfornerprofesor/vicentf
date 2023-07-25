@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1" title="Laberint">
+        </vf-title>
+
+        <vf-title level="2" title="Introducció">
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text
+                        text="Anem a crear un videojoc d'un laberint on un personatge haurà d'arribar al final d'ell. El personatge es mourà evitant els obstacles i tornarà al principi si els toca."
+                        styles="" classes=""></vf-text>
+                    <vf-text
+                        text="En primer lloc, abans de començar hauràs d'obrir [Scratch](https://scratch.mit.edu/) i crear un projecte nou. En fer-ho, carrega la plantilla que trobaràs en el següent [enllaç](https://drive.google.com/file/d/1PaEuF9tjuYbmXW3BkmtPkp60BfFyAAIN/view)"
+                        styles="" classes=""></vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="imgs/unitats/programacio/blocs/scratch/laberint.png" link="" styles=""
+                        classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+        <vf-title level="2" title="Moviment del personatge">
+        </vf-title>
+        <vf-content>
+            <vf-text
+                text="El primer que haurem de fer és fer que el personatge es quede a la posició inicial X i Y de l'escenari. Per fer-ho hem d'utilitzar un bloc *Al presionar bandera verda* (en esdeveniments) que seran les accions que s'executaran quan comencem el joc."
+                styles="" classes=""></vf-text>
+            <vf-text
+                text="A continuació afegirem el bloc d' *anar a x: __ y: __* i ahí serà on posarem la posició x i y del personatge. Per fer-ho, posa el personatge en la posició inicial i comprova la posició."
+                styles="" classes=""></vf-text>
+
+            <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-01.png" link="" styles=""
+                classes=""></vf-img>
+
+            <vf-text
+                text="Ara farem que es moga quan polsem les *fletxes cap amunt, avall, dreta i esquerra*. Per fer-ho has de buscar l'esdeveniment de *Al presionar una tecla* i de moment, anem a seleccionar cap a *l'esquerra*"
+                styles="" classes=""></vf-text>
+            <vf-text
+                text="Just després anem a posar 2 instruccions: la primera serà *Apuntar en direcció -90º* i després *Moure 10 passos*"
+                styles="" classes=""></vf-text>
+            <vf-text
+                text="Prova que al pressionar la tecla de la fletxa esquerra es mou cap a l'esquerra i després fes el mateix però per a les altres 3 fletxes que falten, pensant en els graus que has d'aplicar."
+                styles="" classes=""></vf-text>
+            <vf-row>
+                <vf-col><vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-02.png" link="" styles=""
+                        classes=""></vf-img></vf-col>
+                <vf-col><vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-03.png" link="" styles=""
+                        classes=""></vf-img></vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2" title="Sensors">
+        </vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text
+                        text="Anem a utilitzar els sensors per detectar les parets i que el personatge no les puga atravessar."
+                        styles="" classes=""></vf-text>
+                    <vf-text
+                        text="Per fer-ho necessitem posar un bucle *Per sempre* que estiga tota l'estona comprovant si es toca una paret o no."
+                        styles="" classes=""></vf-text>
+                    <vf-text
+                        text="Per tant, dins del bucle *Per sempre* afegeix un control *si __ llavors* on afegiràs la comprovació *si tocant color negre* que podràs trobar a la secció *sensors*"
+                        styles="" classes=""></vf-text>
+                    <vf-text
+                        text="En el moment en què estiga tocant el color negre, hauràs de fer que es *moga fins la posició inicial lliscant durant 2s*. Aquesta instrucció la trobaràs en la secció *moviment*"
+                        styles="" classes=""></vf-text>
+                </vf-col>
+                <vf-col><vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-04.png" link="" styles=""
+                        classes=""></vf-img></vf-col>
+                <vf-col><vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-05.gif" link="" styles=""
+                        classes=""></vf-img></vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2" title="Obstacles">
+        </vf-title>
+        <vf-content>
+            <vf-text
+                text="Els obstacles han d'acabar movent-se per l'escenari però abans anem a canviar-li la disfressa al 2 i al 3."
+                styles="" classes=""></vf-text>
+            <vf-text
+                text="Per fer-ho has de seleccionar l'Obstacle 2, després la pestanya *Vestits* i per últim el botó de *Tria un vestit*"
+                styles="" classes=""></vf-text>
+            <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-06.png" link="" styles=""
+                classes=""></vf-img>
+            <vf-text
+                text="Després buscarem *ball* i seleccionarem la blava. Veuràs que s'ha afegit una nova disfressa, així que canvia el tamany i centra-ho al mig."
+                styles="" classes=""></vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-07.png" link="" styles=""
+                        classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-08.gif" link="" styles=""
+                        classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text text="Fes el mateix amb *l'obstacle 3*" styles="" classes=""></vf-text>
+            <vf-text
+                text="Per últim anem a fer que es moguen. Selecciona l'obstacle número 1 i afegim l'esdeveniment *Quan la bandera verda es cliqui*. La primera acció serà moure-ho a la posició inicial."
+                styles="" classes=""></vf-text>
+            <vf-text
+                text="A continuació haurem de tindre un *per sempre* perquè repetisca tota la estona dos accions: lliscar cap a la posició final i lliscar cap a la posició inicial."
+                styles="" classes=""></vf-text>
+            <vf-text text="Ací tens el resultat amb el codi de l'obstacle 1. Fes el mateix amb el 2 i el 3." styles=""
+                classes=""></vf-text>
+            <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-09.png" link="" styles=""
+                classes=""></vf-img>
+            <vf-text text="El resultat de que els 3 obstacles es moguen." styles="" classes=""></vf-text>
+            <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-10.gif" link="" styles=""
+                classes=""></vf-img>
+        </vf-content>
+
+        <vf-title level="2" title="Xocar i acabar joc">
+        </vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text text="Ara necessitem que al tocar els obstacles, el personatge torne a la posició inicial lliscant." styles="" classes=""></vf-text>
+                    <vf-text text="Per tant, dins del personatge, en el bucle *per sempre* has d'afegir una condició de *si __ llavors* on hauràs d'incloure 3 condicions amb o: tocant obstacle 1 *o* tocant obstacle 2 *o* tocant obstacle 3. I en cas que ocòrrega, ha de lliscar a la posició inicial (com quan tocava una paret)." styles="" classes=""></vf-text>
+                    <vf-text text="Recorda que el o es troba a la secció *operadors*" styles="" classes=""></vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-11.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text text="Ara fes que quan toque el color roig de la meta el personatge *diga durant 2 segons que HA GUANYAT!!*" styles="" classes=""></vf-text>
+            <vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-12.gif" link="" styles="" classes=""></vf-img>
+        </vf-content>
+
+        <vf-title level="2" title="Millores a realitzar">
+        </vf-title>
+        <vf-content>
+            <vf-text text="Per tal d'acabar el joc has de fer les següents millores:" styles="" classes=""></vf-text>
+            <vf-list ordered="false" styles="" classes="">
+                <li><vf-text text="Que no torne a la posició inicial al tocar una paret" styles="" classes=""></vf-text></li>
+                <li><vf-text text="Que al tocar una paret torne enrere en lloc d'anar a la posició inicial" styles="" classes=""></vf-text></li>
+                <vf-list ordered="false" styles="" classes="">
+                    <li><vf-text text="Pista: ha de ser al pressionar les fletxes" styles="" classes=""></vf-text></li>
+                </vf-list>
+                <li><vf-text text="Afegeix un temporitzador que comence en 0 i que es pare quan toque la meta" styles="" classes=""></vf-text></li>
+            </vf-list>
+            <vf-row>
+                <vf-col><vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-13.gif" link="" styles="" classes=""></vf-img></vf-col>
+                <vf-col><vf-img src="imgs/unitats/programacio/blocs/scratch/scr-01-laberint-14.gif" link="" styles="" classes=""></vf-img></vf-col>
+            </vf-row>
+            <vf-frame link="https://learningapps.org/watch?app=30998038" styles="width: '100%';height: '80vh'" classes=""></vf-frame>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
