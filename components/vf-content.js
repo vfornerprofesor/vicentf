@@ -6,7 +6,7 @@ class VFContent extends HTMLElement {
       let div = document.createElement('div');
       div.classList.add('block');
 
-      if(this.getAttribute('colored') && this.getAttribute('colored') == 'true') {
+      if(this.hasAttribute('colored')) {
         div.classList.add('block_color');
       }
       

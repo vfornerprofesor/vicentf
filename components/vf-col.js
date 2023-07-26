@@ -23,7 +23,10 @@ class VFCol extends HTMLElement {
     debugger;
     //this.classList.add('col');
     */
-   this.classList.add('col');
+    this.classList.add('col');
+    let a = this;
+    a = processClasses(a, this.getAttribute('classes'));
+    a = processStyles(a, this.getAttribute('styles'));
   }
 
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1" title="Conceptes bàsics IA">
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/inteligencia_artificial.jpeg" link="" styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-btn link="unitats/programacio/inteligencia-artificial/inteligencia-artificial/que-es-la-ia.html"  styles="" classes="">
+                        Què és la IA?
+                    </vf-btn>
+                    <vf-btn link="unitats/programacio/inteligencia-artificial/inteligencia-artificial/un-poc-historia.html"   text="Un poc d'història" styles="" classes=""></vf-btn>
+                    <vf-btn link="unitats/programacio/inteligencia-artificial/inteligencia-artificial/tipus-algoritmes.html"   text="Tipus d'algoritmes" styles="" classes=""></vf-btn>
+                    <vf-btn link="unitats/programacio/inteligencia-artificial/inteligencia-artificial/jocs-ia.html"   text="Jocs a la IA" styles="" classes=""></vf-btn>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

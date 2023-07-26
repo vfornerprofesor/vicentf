@@ -12,7 +12,7 @@ class VFList extends HTMLElement {
     }
 
     render() {
-        if (this.getAttribute('ordered') && this.getAttribute('ordered') == true) {
+        if (this.hasAttribute('ordered')) {
             this.ordered = true;
         }
 

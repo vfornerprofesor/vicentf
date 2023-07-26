@@ -14,14 +14,14 @@ class VFBtn extends HTMLElement {
         a.classList.add('btn');
         a.classList.add('btn-primary');
 
-        if(this.getAttribute('inverse') && this.getAttribute('inverse') == 'true') {
+        if(this.hasAttribute('inverse')) {
             a.classList.add('btn-primary-inverse');
         }
 
         a = processClasses(a, this.getAttribute('classes'));
         a = processStyles(a, this.getAttribute('styles'));
-        a.textContent = this.getAttribute('text');
-
+        a.textContent = this.textContent.trim();
+        this.innerHTML = '';
 
         this.appendChild(a);
     }

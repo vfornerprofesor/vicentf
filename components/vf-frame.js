@@ -23,3 +23,4 @@ class VFFrame extends HTMLElement {
 }
 
 customElements.define('vf-frame', VFFrame);
+//classes=vf-frame-full, vf-frame-half

@@ -40,3 +40,22 @@
     .vf-img {
       max-width: -webkit-fill-available;
     }
+
+    .vf-frame-full {
+      width: 100%;
+      height: 80vh;
+    }
+
+    .vf-frame-half {
+      width:50%;
+      height:70vh;
+      margin:0 auto;
+      display: block;
+    }
+
+    @media (width <= 1000px) {
+      .vf-frame-half {
+        width: 100%;
+        height: 50vh;
+      }
+    }

@@ -9,7 +9,7 @@ class VFText extends HTMLElement {
     }
 
     render() {
-        const text = this.getAttribute('text') || '- Sense text -';
+        const text = this.textContent.trim();
         const text_processed = processTextBoldAndLinks(text);
         let p = document.createElement('p');
         p = processStyles(p, this.getAttribute('styles'));

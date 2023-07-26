@@ -5,11 +5,11 @@ class VFTitle extends HTMLElement {
     render() {
         let level = this.getAttribute('level');
         if (level == null) level = 1;
-        let textTitle = this.getAttribute('title');
+        let textTitle = this.textContent.trim();
         let textSubtitle = this.getAttribute('subtitle');
 
         let centered = false;
-        if(this.getAttribute('centered') && this.getAttribute('centered') == 'true') {
+        if(this.hasAttribute('centered')) {
             centered = true;
         }
 
@@ -63,6 +63,7 @@ class VFTitle extends HTMLElement {
             }
             div_title.appendChild(subtitle);
         }
+        this.innerHTML = '';
         this.appendChild(div_title);
     }
 }
