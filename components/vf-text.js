@@ -5,11 +5,14 @@ class VFText extends HTMLElement {
     }
 
     connectedCallback() {
-        this.render();
+        setTimeout(() => {
+            this.render();
+        }, 0);
     }
 
     render() {
         const text = this.textContent.trim();
+
         const text_processed = processTextBoldAndLinks(text);
         let p = document.createElement('p');
         p = processStyles(p, this.getAttribute('styles'));
