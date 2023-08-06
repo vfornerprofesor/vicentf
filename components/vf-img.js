@@ -17,7 +17,7 @@ class VFImage extends HTMLElement {
         if(this.getAttribute('link') && this.getAttribute('link') != "") {
             a = document.createElement('a');
             a.href = this.getAttribute('link');
-            a.target = "_blank";
+            //a.target = "_blank";
         };
 
       let img = document.createElement('img');

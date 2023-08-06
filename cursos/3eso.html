@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title  level="1" centered styles="" classes="">
+            3 ESO
+        </vf-title>
+
+        <vf-title level="2" centered>
+            Situacions d'aprenentatge
+        </vf-title>
+
+        <vf-content>
+
+            <vf-row centered>
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px" link="unitats/programacio/basic/pensament-computacional"
+                        src="assets/pensament-computacional.jpg"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/basic/pensament-computacional">
+                        Pensament Computacional
+                    </vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px" link="unitats/programacio/blocs/scratch"
+                        src="assets/scratch.png"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch">
+                        Scratch
+                    </vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="height:200px"
+                        link="unitats/programacio/inteligencia-artificial/inteligencia-artificial"
+                        src="assets/inteligencia_artificial.jpeg"></vf-img>
+                    <vf-btn classes="btn-short"
+                        link="unitats/programacio/inteligencia-artificial/inteligencia-artificial"
+                        >
+                        Conceptes bàsics IA</vf-btn>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

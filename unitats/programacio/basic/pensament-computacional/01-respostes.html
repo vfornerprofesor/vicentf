@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Obtenim respostes
+        </vf-title>
+
+        <vf-title level="2">
+            Activitat
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Crea una presentació utilitzant una ferramenta digital que estiga fora de la suite de Microsoft i de Google, per exemple amb *Canva*. En aquesta presentació has de donar resposta a les següents preguntes:
+            </vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        *PREGUNTES*
+                    </vf-text>
+        
+                    <vf-list>
+                        <li><vf-text>Què és la programació?</vf-text></li>
+                        <li><vf-text>Què són els llenguatges de programació?</vf-text></li>
+                        <li><vf-text>Què és un algoritme?</vf-text></li>
+                        <li><vf-text>Què és el pensament computacional?</vf-text></li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>
+                        *FONTS QUE POTS CONSULTAR*
+                    </vf-text>
+                    <vf-list>
+                        <li><vf-text>[Font 1](https://concepto.de/programacion/)</vf-text></li>
+                        <li><vf-text>[Font 2](https://concepto.de/algoritmo-en-informatica/)</vf-text></li>
+                        <li><vf-text>[Font 3](https://programamos.es/que-es-el-pensamiento-computacional/)</vf-text></li>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+
+
+
+            <vf-text>
+                Recorda que és important ser original i que la redacció de la informació ha de ser clara i escrita per tu mateix. Treballs copiats seran rebutjats. A més, recorda *afegir d'on has extret la informació*.
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

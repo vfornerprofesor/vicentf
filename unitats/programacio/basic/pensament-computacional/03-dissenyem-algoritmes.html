@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Dissenyem algoritmes
+        </vf-title>
+
+        <vf-title level="2">
+            Activitat
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                En aquesta activitat, vas a dissenyar diferents algoritmes amb instruccions en el nostre llenguatge. Seran una sèrie de passos que l'ordinador o un robot hauria d'interpretar. Pots crear un document de Google Drive o escriure els programes a paper i després fer foto.
+            </vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        *Algoritme amb instruccions:*
+                    </vf-text>
+        
+                    <vf-list>
+                        <li><vf-text>Recepta de truita</vf-text></li>
+                        <li><vf-text>Rentar-se les dents</vf-text></li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>
+                        *Algoritme amb condicionals:*
+                    </vf-text>
+                    <vf-list>
+                        <li><vf-text>Recepta de truita amb pernil? (Si)</vf-text></li>
+                        <li><vf-text>Recepta de truita en pa o plat? (Si, sino)</vf-text></li>
+                        <li><vf-text>Nota aprovat o suspès?</vf-text></li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>
+                        *Algoritme amb bucles:*
+                    </vf-text>
+                    <vf-list>
+                        <li><vf-text>Recepta de truita amb sal</vf-text></li>
+                        <li><vf-text>Estudiar fins aprovar</vf-text></li>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+
+            <vf-title level="4">
+                Activitat final
+            </vf-title>
+
+            <vf-text>
+                Fes un algoritme per preparar una pizza. Has d'anar preguntant per quin tipus de pizza vol i posar els ingredients pertinents. Després, al posar-la al forn, has de repetir comprovar si la pizza està feta per deixar-la o per traure-la.
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
