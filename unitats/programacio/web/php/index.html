@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            PHP
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/php.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-btn link="unitats/programacio/web/php/01-php-basic.html" styles="" classes="">
+                        PHP Basic concepts
+                    </vf-btn>
+                    <vf-btn link="unitats/programacio/web/php/02-variables.html" styles="" classes="">Variables</vf-btn>
+                    <vf-btn link="unitats/programacio/web/php/03-operators.html" styles="" classes="">Operators</vf-btn>
+                    <vf-btn link="unitats/programacio/web/php/04-control-structures.html" styles="" classes="">Control
+                        structures</vf-btn>
+                    <vf-btn link="unitats/programacio/web/php/05-forms.html" styles="" classes="">Forms and redirection
+                        files</vf-btn>
+                    <vf-btn link="unitats/programacio/web/php/06-php-mysql.html" styles="" classes="">Work with a MySQL
+                        Database</vf-btn>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

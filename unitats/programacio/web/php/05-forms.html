@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Forms and redirections
+        </vf-title>
+
+        <vf-title level="2">
+            Forms and User Input
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will dive into the topic of Forms and User Input in PHP. Forms play a crucial role in web development, allowing users to interact with websites by submitting data. We will explore how to handle form submissions, retrieve and process user input, and implement form validation and security measures. By the end of this lesson, you'll have a solid understanding of working with forms in PHP and ensuring a secure user experience.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Handling form submission
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                 // Retrieve user input
+                 $name = $_POST["name"];
+                 $email = $_POST["email"];
+                 $message = $_POST["message"];
+                
+                 // Process user input
+                 // ... perform desired operations or save data to a database
+                
+                 // Form validation
+                 $errors = array();
+                
+                 // Validate name field
+                 if (empty($name)) {
+                 $errors[] = "Name is required.";
+                 }
+                
+                 // Validate email field
+                 if (empty($email)) {
+                 $errors[] = "Email is required.";
+                 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                 $errors[] = "Invalid email format.";
+                 }
+                
+                 // Validate message field
+                 if (empty($message)) {
+                 $errors[] = "Message is required.";
+                 }
+                
+                 // Display validation errors or success message
+                 if (!empty($errors)) {
+                 foreach ($errors as $error) {
+                 echo $error . "&lt;br&gt;";
+                 }
+                 } else {
+                 echo "Form submitted successfully!";
+                 // ... additional actions or redirect to a thank you page
+                 }
+                }
+                ?&gt;
+                
+                &lt;!-- HTML Form --&gt;
+                &lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?&gt;"&gt;
+                 &lt;label for="name"&gt;Name:&lt;/label&gt;
+                 &lt;input type="text" name="name" required&gt;&lt;br&gt;
+                
+                 &lt;label for="email"&gt;Email:&lt;/label&gt;
+                 &lt;input type="email" name="email" required&gt;&lt;br&gt;
+                
+                 &lt;label for="message"&gt;Message:&lt;/label&gt;
+                 &lt;textarea name="message" required&gt;&lt;/textarea&gt;&lt;br&gt;
+                
+                 &lt;input type="submit" value="Submit"&gt;
+                &lt;/form&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we demonstrate the process of handling form submissions, retrieving and processing user input, and implementing form validation and security measures.
+            </vf-text>
+            <vf-list ordered>
+                <li>
+                    <vf-text>
+                        Handling Form Submission:
+                    </vf-text>
+                </li>
+                <vf-list ordered>
+                    <li>
+                        <vf-text>
+                            We check if the HTTP request method is POST using $_SERVER["REQUEST_METHOD"].
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            If it is a POST request, we retrieve the user input from the $_POST superglobal array.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Processing User Input:
+                    </vf-text>
+                </li>
+                <vf-list ordered>
+                    <li>
+                        <vf-text>
+                            We can perform desired operations or save the submitted data to a database.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Form Validation:
+                    </vf-text>
+                </li>
+                <vf-list ordered>
+                    <li>
+                        <vf-text>
+                            We define an empty $errors array to collect validation errors.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            We validate each input field and add corresponding error messages to the $errors array if necessary.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Displaying Validation Errors or Success Message:
+                    </vf-text>
+                </li>
+                <vf-list ordered>
+                    <li>
+                        <vf-text>
+                            If the $errors array is not empty, we iterate through it and display each error message.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            If the $errors array is empty, we display a success message indicating that the form was submitted successfully.
+                        </vf-text>
+                    </li>
+                </vf-list>
+            </vf-list>
+            <vf-text>
+                The HTML form uses the POST method to submit data to the same PHP script ( $_SERVER["PHP_SELF"] for processing. Each input field includes the required attribute to enforce client-side validation. The htmlspecialchars() function is used to prevent cross-site scripting (XSS) attacks by sanitizing user input.
+            </vf-text>
+            <vf-text>
+                Feel free to modify the form fields, validation rules, and processing logic to fit your specific requirements. Remember to always validate and sanitize user input to ensure data integrity and enhance security.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Redirecting and Passing Parameters
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore the process of redirecting from one PHP file to another and sending parameters along with the redirection. Redirection is a common technique used to navigate users to different pages within a web application. We will learn how to trigger a redirect using a button click and pass parameters to the destination page.
+            </vf-text>
+            <vf-text>
+                Example Code redirect.php
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Handle button click
+                if (isset($_POST['submit'])) {
+                 $username = $_POST['username'];
+                 $email = $_POST['email'];
+                
+                 // Redirect with parameters
+                 header("Location: destination.php?username=$username&email=$email");
+                 exit();
+                }
+                ?&gt;
+                
+                &lt;!-- HTML Form --&gt;
+                &lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?&gt;"&gt;
+                 &lt;!-- Form fields --&gt;
+                 &lt;label for="username"&gt;Username:&lt;/label&gt;
+                 &lt;input type="text" name="username"&gt;&lt;br&gt;
+                
+                 &lt;label for="email"&gt;Email:&lt;/label&gt;
+                 &lt;input type="email" name="email"&gt;&lt;br&gt;
+                
+                 &lt;!-- Submit button --&gt;
+                 &lt;input type="submit" name="submit" value="Submit"&gt;
+                &lt;/form&gt;
+            </vf-code>
+            <vf-text>
+                Example Code destination.php
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Retrieve parameters from URL
+                if (isset($_GET['username']) && isset($_GET['email'])) {
+                 $username = $_GET['username'];
+                 $email = $_GET['email'];
+                
+                 // Display parameter values
+                 echo "Welcome, $username! Your email is $email.";
+                }
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we demonstrate how to redirect from one PHP file (redirect.php) to another (destination.php) upon clicking a submit button.
+            </vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>
+                        redirect.php:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            The form includes input fields for the username and email.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            Upon submitting the form, the $_POST superglobal array is used to retrieve the values entered by the user.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            The header() function is used to trigger the redirection to the destination.php file.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            We pass the username and email as parameters in the URL using the query string format (?username=$username&email=$email).
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        destination.php:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            In the destination.php file, we use the $_GET superglobal array to retrieve the parameters from the URL.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            We check if the username and email parameters are set and display a personalized message using the retrieved values.
+                        </vf-text>
+                    </li>
+                </vf-list>
+            </vf-list>
+            <vf-text>
+                By clicking the submit button on the redirect.php page, the form data is submitted, and the user is redirected to the destination.php page. The username and email parameters are passed in the URL, allowing us to retrieve and use them on the destination page.
+            </vf-text>
+            <vf-text>
+                Feel free to customize the form fields and the destination page logic according to your specific requirements. Redirecting and passing parameters are fundamental techniques for building dynamic web applications in PHP.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Sessions
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore the concept of sessions in PHP. Sessions allow you to store and retrieve user-specific data across multiple requests, enabling personalized and stateful interactions on your website. In this lesson, we will learn how to start a session, set and retrieve session variables, and destroy sessions when they are no longer needed.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Start a session
+                session_start();
+                
+                // Set session variables
+                $_SESSION['username'] = 'John';
+                $_SESSION['email'] = 'john@example.com';
+                
+                // Retrieve session variables
+                $username = $_SESSION['username'];
+                $email = $_SESSION['email'];
+                
+                // Display session data
+                echo "Welcome, $username! Your email is $email.";
+                
+                // Destroy the session
+                session_destroy();
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we demonstrate the usage of sessions in PHP to store and retrieve user-specific data.
+            </vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>
+                        Starting a Session:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            We begin by calling the session_start() function, which initializes a session or resumes an existing one.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Setting Session Variables:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            We assign values to session variables using the $_SESSION superglobal array. In this example, we set the username and email as session variables.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Retrieving Session Variables:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            We can access session variables by using the $_SESSION superglobal array. In this case, we retrieve the username and email and assign them to local variables.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Displaying Session Data:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            We use the retrieved session variables to display a personalized message to the user.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        Destroying the Session:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            After we have finished working with the session, we can destroy it using the session_destroy() function. This clears all session data and ends the session.
+                        </vf-text>
+                    </li>
+                </vf-list>
+            </vf-list>
+            <vf-text>
+                Sessions allow you to store and access data across multiple pages and requests, making it easier to maintain user-specific information and create personalized experiences. Remember to start the session at the beginning of each PHP file where you want to use session variables.            </vf-text>
+            <vf-text>
+                Feel free to utilize sessions for storing other user-related data or custom application-specific information. Sessions are a powerful tool for building dynamic and interactive PHP applications.
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

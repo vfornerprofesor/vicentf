@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Variables
+        </vf-title>
+
+        <vf-title level="2">
+            Introduction to PHP Variables
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore the fundamentals of PHP variables. Variables are essential elements in programming that allow us to store and manipulate data. In PHP, we have various types of variables, including strings, integers, floats, and booleans. We will cover how to declare variables, assign values to them, and perform basic operations using these variable types.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // String Variable
+                $name = "John Doe";
+                echo "Name: " . $name . "&lt;br&gt;";
+                
+                // Integer Variable
+                $age = 25;
+                echo "Age: " . $age . "&lt;br&gt;";
+                
+                // Float Variable
+                $price = 9.99;
+                echo "Price: $" . $price . "&lt;br&gt;";
+                
+                // Boolean Variable
+                $isLogged = true;
+                echo "Logged in: " . ($isLogged ? 'Yes' : 'No') . "&lt;br&gt;";
+                
+                // Basic Operations
+                $num1 = 10;
+                $num2 = 5;
+                
+                $sum = $num1 + $num2;
+                echo "Sum: " . $sum . "&lt;br&gt;";
+                
+                $diff = $num1 - $num2;
+                echo "Difference: " . $diff . "&lt;br&gt;";
+                
+                $product = $num1 * $num2;
+                echo "Product: " . $product . "&lt;br&gt;";
+                
+                $quotient = $num1 / $num2;
+                echo "Quotient: " . $quotient . "&lt;br&gt;";
+                
+                $remainder = $num1 % $num2;
+                echo "Remainder: " . $remainder . "&lt;br&gt;";
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we start by declaring and assigning values to variables of different types: string, integer, float, and boolean. We then demonstrate how to perform basic operations using these variables, such as addition, subtraction, multiplication, division, and finding the remainder. The results are displayed using the echo statement. Feel free to modify the values and experiment with different operations to deepen your understanding of PHP variables.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Manipulating String Variables in PHP
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore the world of string variables and learn how to manipulate them using various operations in PHP. Strings are a fundamental data type in programming that represent text and are used for storing and manipulating textual data. In PHP, we have a rich set of functions and operations to work with strings. We will cover how to declare string variables, concatenate them, find their length, extract substrings, convert cases, and more.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // String Variable
+                $greeting = "Hello,";
+                $name = "John";
+                
+                // Concatenation
+                $fullGreeting = $greeting . " " . $name;
+                echo $fullGreeting . "&lt;br&gt;";
+                
+                // Length of a String
+                $length = strlen($fullGreeting);
+                echo "Length: " . $length . "&lt;br&gt;";
+                
+                // Extracting Substrings
+                $substring = substr($fullGreeting, 7, 4);
+                echo "Substring: " . $substring . "&lt;br&gt;";
+                
+                // Converting Case
+                $lowercase = strtolower($fullGreeting);
+                echo "Lowercase: " . $lowercase . "&lt;br&gt;";
+                
+                $uppercase = strtoupper($fullGreeting);
+                echo "Uppercase: " . $uppercase . "&lt;br&gt;";
+                
+                // Replacing Text
+                $replaced = str_replace("John", "Jane", $fullGreeting);
+                echo "Replaced: " . $replaced . "&lt;br&gt;";
+                
+                // Finding Position
+                $position = strpos($fullGreeting, "John");
+                echo "Position: " . $position . "&lt;br&gt;";
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we begin by declaring two string variables, $greeting and $name , and then concatenate them to form the $fullGreeting . We demonstrate how to find the length of a string using the strlen() function and extract a substring using the substr() function. We also showcase converting the string to lowercase and uppercase using the strtolower() and strtoupper() functions respectively. Furthermore, we learn how to replace specific text within a string using the str_replace() function and find the position of a substring using the strpos() function. Modify the variables and explore other string functions to expand your understanding of string manipulation in PHP.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Working with Arrays in PHP
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore the concept of arrays and how to work with them in PHP. Arrays are powerful data structures that allow us to store and organize multiple values under a single variable. In PHP, arrays can hold elements of different types, such as strings, integers, floats, and even other arrays. We will cover how to declare arrays, access their elements, add and remove elements, iterate over them, and perform essential operations like sorting and searching.
+            </vf-text>
+            <vf-text>
+                Example code
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Numeric Array
+                $numbers = [1, 2, 3, 4, 5];
+                
+                // Accessing Array Elements
+                echo "First Element: " . $numbers[0] . "&lt;br&gt;";
+                echo "Second Element: " . $numbers[1] . "&lt;br&gt;";
+                
+                // Associative Array
+                $person = [
+                 "name" =&gt; "John Doe",
+                 "age" =&gt; 25,
+                 "email" =&gt; "johndoe@example.com"
+                ];
+                
+                // Accessing Associative Array Elements
+                echo "Name: " . $person["name"] . "&lt;br&gt;";
+                echo "Age: " . $person["age"] . "&lt;br&gt;";
+                
+                // Adding Elements to an Array
+                $fruits = ["apple", "banana"];
+                $fruits[] = "orange";
+                echo "Fruits: " . implode(", ", $fruits) . "&lt;br&gt;";
+                
+                // Removing Elements from an Array
+                unset($fruits[1]);
+                echo "Updated Fruits: " . implode(", ", $fruits) . "&lt;br&gt;";
+                
+                // Looping through an Array
+                foreach ($fruits as $fruit) {
+                 echo $fruit . "&lt;br&gt;";
+                }
+                
+                // Array Operations
+                $numbers = [4, 2, 1, 5, 3];
+                
+                // Sorting
+                sort($numbers);
+                echo "Sorted Numbers: " . implode(", ", $numbers) . "&lt;br&gt;";
+                
+                // Searching
+                $index = array_search(3, $numbers);
+                echo "Index of 3: " . $index . "&lt;br&gt;";
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we start by declaring a numeric array, $numbers , and an associative array, $person . We demonstrate how to access elements in both types of arrays using their indices or keys. Next, we explore adding elements to an array using the [] syntax and removing elements using the unset() function. We then showcase how to iterate over an array using the foreach loop. Furthermore, we perform common array operations, such as sorting the elements using the sort() function and searching for a specific value using the array_search() function. Modify the arrays and experiment with different array operations to enhance your understanding of array manipulation in PHP.
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

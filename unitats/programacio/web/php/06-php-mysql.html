@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Connect with MySQL Database
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                In this lesson, we will dive into various MySQL database operations using PHP. We will cover essential CRUD (Create, Read, Update, Delete) operations, including selecting data, selecting with the WHERE clause, inserting new records, updating existing records, and deleting records from a MySQL database. Understanding these operations is crucial for building dynamic and data-driven PHP applications.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Connection
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Establish a database connection
+                $servername = "localhost";
+                $username = "your_username";
+                $password = "your_password";
+                $dbname = "your_database";
+                
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                
+                // Check the connection
+                if ($conn-&gt;connect_error) {
+                 die("Connection failed: " . $conn-&gt;connect_error);
+                }
+                &gt;?
+            </vf-code>
+            <vf-text>
+                Remember to replace the placeholder values (your_username, your_password, and your_database) with your actual MySQL credentials. With this code we can stablish a connection between our PHP files and our database.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Get data (SELECT)
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // SELECT - Retrieve all records from a table
+                $sql = "SELECT * FROM users";
+                $result = $conn-&gt;query($sql);
+                
+                if ($result-&gt;num_rows &gt; 0) {
+                 while ($row = $result-&gt;fetch_assoc()) {
+                 echo "ID: " . $row["id"] . "&lt;br&gt;";
+                 echo "Name: " . $row["name"] . "&lt;br&gt;";
+                 echo "Email: " . $row["email"] . "&lt;br&gt;&lt;br&gt;";
+                 }
+                } else {
+                 echo "No results found.";
+                }
+                
+                // SELECT with WHERE - Retrieve specific records from a table
+                $sql = "SELECT * FROM users WHERE age &gt; 25";
+                $result = $conn-&gt;query($sql);
+                
+                if ($result-&gt;num_rows &gt; 0) {
+                 while ($row = $result-&gt;fetch_assoc()) {
+                 echo "ID: " . $row["id"] . "&lt;br&gt;";
+                 echo "Name: " . $row["name"] . "&lt;br&gt;";
+                 echo "Email: " . $row["email"] . "&lt;br&gt;";
+                 echo "Age: " . $row["age"] . "&lt;br&gt;&lt;br&gt;";
+                 }
+                } else {
+                 echo "No results found.";
+                }
+                
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                With these two examples we can get all information that are stored in a table and filtered data.
+            </vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>
+                        SELECT - Retrieving All Records:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            We execute a SELECT query to retrieve all records from the "users" table.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            If there are results, we loop through each row and display the data.
+                        </vf-text>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>
+                        SELECT with WHERE - Retrieving Specific Records:
+                    </vf-text>
+                </li>
+                <vf-list>
+                    <li>
+                        <vf-text>
+                            We execute a SELECT query with a WHERE clause to retrieve records where the age is greater than 25.
+                        </vf-text>
+                    </li>
+                    <li>
+                        <vf-text>
+                            If there are matching results, we display the corresponding data.
+                        </vf-text>
+                    </li>
+                </vf-list>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Insert data into table (INSERT)
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // INSERT - Insert a new record into a table
+                $sql = "INSERT INTO users (name, email, age) VALUES ('John Doe', 'john@example.com', 30)";
+                
+                if ($conn-&gt;query($sql) === TRUE) {
+                 echo "New record inserted successfully.";
+                } else {
+                 echo "Error: " . $sql . "&lt;br&gt;" . $conn-&gt;error;
+                }
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                We execute an INSERT query to add a new record to the "users" table. If the query is successful, we display a success message; otherwise, we display an error message.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Update data from table (UPDATE)
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // UPDATE - Update an existing record in a table
+                $sql = "UPDATE users SET age = 35 WHERE id = 1";
+                
+                if ($conn-&gt;query($sql) === TRUE) {
+                 echo "Record updated successfully.";
+                } else {
+                 echo "Error updating record: " . $conn-&gt;error;
+                }
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                We execute an UPDATE query to modify the age of a record with a specific ID in the "users" table. If the update is successful, we display a success message; otherwise, we display an error message.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Delete data from table (DELETE)
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // DELETE - Delete a record from a table
+                $sql = "DELETE FROM users WHERE id = 2";
+                
+                if ($conn-&gt;query($sql) === TRUE) {
+                 echo "Record deleted successfully.";
+                } else {
+                 echo "Error deleting record: " . $conn-&gt;error;
+                }
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                We execute a DELETE query to remove a record with a specific ID from the "users" table. If the deletion is successful, we display a success message; otherwise, we display an error message.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Close connection
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                When we finish to work with a database we must close connection between PHP and MySQL.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                // Close the database connection
+                $conn-&gt;close();
+                ?&gt;
+            </vf-code>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

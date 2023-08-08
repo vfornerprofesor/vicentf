@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <style>
     body {
@@ -7,31 +8,53 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     textarea {
       width: 100%;
     }
-    
+
     button {
       margin-top: 10px;
     }
   </style>
 </head>
+
 <body>
   <textarea id="textarea1" rows="10"></textarea>
+  <!--<button onclick="pegar()">BORRAR</button>
   <button onclick="modificarTexto()">MODIFICAR</button>
+  <button onclick="copiarSegundoTexto()">COPIAR</button>-->
+  <button onclick="procesar()">PROCESAR</button>
   <textarea id="textarea2" rows="10"></textarea>
 
   <script>
-    function modificarTexto() {
-      const textarea1 = document.getElementById('textarea1');
-      const textarea2 = document.getElementById('textarea2');
+    
 
-      const contenido = textarea1.value;
-      const contenidoModificado = contenido.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    function procesar() {
+      document.getElementById('textarea1').value = '';
+      document.getElementById('textarea2').value = '';
+      navigator.clipboard.readText()
+        .then(text => {
+          console.log('Texto del portapapeles:', text);
+          document.getElementById('textarea1').value = text;
 
-      textarea2.value = contenidoModificado;
+          const textarea1 = document.getElementById('textarea1');
+          const textarea2 = document.getElementById('textarea2');
+
+          const contenido = textarea1.value;
+          const contenidoModificado = contenido.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+          textarea2.value = contenidoModificado;
+
+          navigator.clipboard.writeText(document.getElementById('textarea2').value);
+
+        })
+        .catch(err => {
+          console.error('Error al leer del portapapeles:', err)
+        });
     }
+
   </script>
 </body>
+
 </html>

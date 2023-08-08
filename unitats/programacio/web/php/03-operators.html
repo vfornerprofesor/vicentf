@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Operators
+        </vf-title>
+
+        <vf-title level="2">
+            Arithmetic Operators
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore arithmetic operators in PHP. Arithmetic operators are fundamental tools for performing mathematical calculations in your PHP code. We will cover various arithmetic operators, including addition, subtraction, multiplication, division, and modulo. We will provide examples and explain the functionality of each operator.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                $num1 = 10;
+                $num2 = 5;
+                
+                // Addition
+                $sum = $num1 + $num2;
+                echo "Sum: " . $sum . "&lt;br&gt;";
+                
+                // Subtraction
+                $diff = $num1 - $num2;
+                echo "Difference: " . $diff . "&lt;br&gt;";
+                
+                // Multiplication
+                $product = $num1 * $num2;
+                echo "Product: " . $product . "&lt;br&gt;";
+                
+                // Division
+                $quotient = $num1 / $num2;
+                echo "Quotient: " . $quotient . "&lt;br&gt;";
+                
+                // Modulo
+                $remainder = $num1 % $num2;
+                echo "Remainder: " . $remainder . "&lt;br&gt;";
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we showcase the usage of arithmetic operators in PHP. We start with addition ( + ), where the $num1 and $num2 are added together to calculate the sum. Then, we demonstrate subtraction ( - ), multiplication ( * ), division ( / ), and modulo ( % ). The difference, product, quotient, and remainder are calculated and displayed using the echo statement.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Comparison Operators
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore comparison operators in PHP. Comparison operators allow us to compare values and evaluate conditions in our PHP code. We will cover various comparison operators, including greater than, less than, equal to, not equal to, greater than or equal to, and less than or equal to. We will provide examples and explain the functionality of each operator.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                $num1 = 10;
+                $num2 = 5;
+                
+                // Greater Than
+                $isGreater = ($num1 &gt; $num2);
+                echo "Is num1 greater than num2? " . ($isGreater ? 'Yes' : 'No') . "&lt;br&gt;";
+                
+                // Less Than
+                $isLess = ($num1 &lt; $num2);
+                echo "Is num1 less than num2? " . ($isLess ? 'Yes' : 'No') . "&lt;br&gt;";
+                
+                // Equal To
+                $isEqual = ($num1 == $num2);
+                echo "Are num1 and num2 equal? " . ($isEqual ? 'Yes' : 'No') . "&lt;br&gt;";
+                
+                // Not Equal To
+                $isNotEqual = ($num1 != $num2);
+                echo "Are num1 and num2 not equal? " . ($isNotEqual ? 'Yes' : 'No') . "&lt;br&gt;";
+                
+                // Greater Than or Equal To
+                $isGreaterOrEqual = ($num1 &gt;= $num2);
+                echo "Is num1 greater than or equal to num2? " . ($isGreaterOrEqual ? 'Yes' : 'No') . "&lt;br&gt;";
+                
+                // Less Than or Equal To
+                $isLessOrEqual = ($num1 &lt;= $num2);
+                echo "Is num1 less than or equal to num2? " . ($isLessOrEqual ? 'Yes' : 'No') . "&lt;br&gt;";
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we showcase the usage of comparison operators in PHP. We start with the greater than ( > ), less than ( < ), equal to ( == ), and not equal to ( != ) operators to compare the values of $num1 and $num2 . The results of the comparisons are stored in variables ( $isGreater, $isLess, $isEqual, $isNotEqual ) and displayed using the echo statement. Additionally, we demonstrate the greater than or equal to ( >= ) and less than or equal to ( <= ) operators to check if a value is greater than or equal to another value, and if a value is less than or equal to another value, respectively.
+            </vf-text>
+            <vf-text>
+                Feel free to modify the values of $num1 and $num2
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Logical Operators
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                In this lesson, we will explore logical operators in PHP. Logical operators allow us to combine and negate conditions in our PHP code. We will cover three main logical operators: logical AND, logical OR, and logical NOT. We will provide examples and explain the functionality of each operator.
+            </vf-text>
+            <vf-text>
+                Example code:
+            </vf-text>
+            <vf-code language="php">
+                &lt;?php
+                $isTrue = true;
+                $isFalse = false;
+                
+                // Logical AND
+                $logicalAnd = $isTrue && $isFalse;
+                echo "Logical AND: " . ($logicalAnd ? 'True' : 'False') . "&lt;br&gt;";
+                
+                // Logical OR
+                $logicalOr = $isTrue || $isFalse;
+                echo "Logical OR: " . ($logicalOr ? 'True' : 'False') . "&lt;br&gt;";
+                
+                // Logical NOT
+                $logicalNot = !$isTrue;
+                echo "Logical NOT: " . ($logicalNot ? 'True' : 'False') . "&lt;br&gt;";
+                ?&gt;
+            </vf-code>
+            <vf-text>
+                In this example, we showcase the usage of logical operators in PHP. We start with the logical AND ( && ) operator, which evaluates to true if both conditions on either side of the operator are true. We demonstrate the logical OR ( || ) operator, which evaluates to true if at least one of the conditions on either side of the operator is true. Finally, we explore the logical NOT ( ! ) operator, which negates a condition.
+            </vf-text>
+            <vf-text>
+                The results of the logical operations are stored in variables ( $logicalAnd, $logicalOr, $logicalNot ) and displayed using the echo statement.
+            </vf-text>
+            <vf-text>
+                Feel free to modify the values of $isTrue and $isFalse and experiment with different combinations of logical operators to deepen your understanding of logical operators in PHP. Logical operators are essential for combining conditions and making complex decisions in your PHP code.
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
