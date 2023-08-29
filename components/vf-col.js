@@ -24,6 +24,12 @@ class VFCol extends HTMLElement {
     //this.classList.add('col');
     */
     this.classList.add('col');
+
+    if (this.hasAttribute('link')) {
+      this.onclick = function () {
+        window.open(this.getAttribute('link'), "_blank");
+      };
+    }
     let a = this;
     a = processClasses(a, this.getAttribute('classes'));
     a = processStyles(a, this.getAttribute('styles'));

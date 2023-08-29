@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            HTML
+        </vf-title>
+
+        <vf-title level="2">
+            Què és HTML?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                HTML és el llenguatge de marques estàndar per la creació de pàgines web (HyperText Markup Language).
+            </vf-text>
+            <vf-text>
+                Les pàgines web d’HTML es formen agrupant diferents elements que s’anomenen etiquetes. Cada etiqueta és
+                interpretada pels navegadors i es mostra d’una manera diferent. En les pàgines web no es mostren les
+                etiquetes sinó el contingut d’elles.
+            </vf-text>
+            <vf-text>
+                Un exemple de codi HTML seria aquest:
+            </vf-text>
+            <vf-code language="html">
+                &lt;!DOCTYPE html&gt;
+
+                &lt;html&gt;
+                &lt;head&gt;
+                &lt;title&gt;Títol de la pàgina&lt;/title&gt;
+                &lt;meta charset="utf-8"&gt;
+                &lt;/head&gt;
+
+                &lt;body&gt;
+                &lt;h1&gt;Aquest és un títol&lt;/h1&gt;
+                &lt;p&gt;Aquest és un paràgraf.&lt;/p&gt;
+                &lt;p&gt;Aquest és un altre paràgraf.&lt;/p&gt;
+                &lt;/body&gt;
+
+                &lt;/html&gt;
+            </vf-code>
+            <vf-text>
+                Per provar-ho crea un fitxer amb l’extensió *html* per exemple *web.html*. Obri el fitxer amb un editor
+                de textos com *Sublime Text*. Dins d’aquest fitxer afegeix el contingut anterior.
+            </vf-text>
+            <vf-text>
+                Ara, anem a obrir el fitxer amb el navegador (botó dret al fitxer > obrir amb > navegador firefox o
+                chrome). Veure’m que s’obri una pestanya amb el següent contingut:
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/html/01html.png" link="" styles="" classes=""></vf-img>
+
+            <vf-text>
+                Anem a revisar el codi HTML que s’ha escrit per veure com es representa en la web. La primera linia de
+                totes és !DOCTYPE html que indica que el tipus de fitxer és HTML, ajuda al navegador a mostrar la web
+                correctament. Per tant, tots els documents han de començar amb aquesta linia.
+            </vf-text>
+            <vf-text>
+                La següent etiqueta és *html* i acaba en */html* que és l’acabament. Fixa’t que el nom de l’etiqueta
+                s’escriu entre els símbols < i> i que en el tancament s’afegeix la barra / per indicar-ho. Per tant, tot
+                    haurà d’estar dins d’aquest bloc html.
+            </vf-text>
+            <vf-text>
+                Després hi trobem dos parts dins del bloc html: *body* i *head*: fixa’t en l’obertura i el tancament de
+                les etiquetes. En el *head* s’afegeix informació de la web i en el *body* el contingut de la pàgina web.
+            </vf-text>
+            <vf-text>
+                Els elements més importants que van dins de l’etiqueta *head* i el tancament */head* són:
+            </vf-text>
+            <vf-list>
+                <li>
+                    title: indica el nom de la pàgina, fixa’t en la imatge anterior que posa en la pestanya i en el
+                    navegador “Títol de la pàgina”
+                    <vf-code>
+                        &lt;title&gt;Títol de la pàgina&lt;/title&gt;
+                    </vf-code>
+                </li>
+                <li>
+                    meta: indica el tipus de contingut de la pàgina que inclou el tipus d’alfabet que s’utilitzarà, en
+                    aquest cas utf-8 és la codificació que inclou els accents del nostre alfabet
+                    <vf-code>
+                        &lt;meta charset="utf-8"&gt;
+                    </vf-code>
+                </li>
+            </vf-list>
+
+            <vf-text>
+                Després, dins de l’etiqueta body i el tancament /body és on afegirem el contingut de la web.
+            </vf-text>
+            <vf-text>
+                En les següents seccions anem a veure elements bàsics de les webs.
+            </vf-text>
+
+        </vf-content>
+
+        <vf-title level="3">
+            Capçaleres i títols
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Per afegir títols utilitzem les etiquetes de la *h1* fins la *h6*. h1 és el títol més important
+                        de tots i l’h6 el menys. Prova a afegir els següents títols i visualitza en el navegador el
+                        resultat. Recorda que els hauràs d’afegir dins de l’etiqueta body i el tancament (esborra el que
+                        hi havia dins).
+                    </vf-text>
+                    <vf-code>
+                        &lt;h1&gt;Títol 1&lt;/h1&gt;
+
+                        &lt;h2&gt;Títol 2&lt;/h2&gt;
+
+                        &lt;h3&gt;Títol 3&lt;/h3&gt;
+                    </vf-code>
+                    <vf-text>
+                        Com pots observar el títol amb h2 és més menut perquè és menys important i el mateix passa amb
+                        el títol amb h3.
+                    </vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/02html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Paràgrafs
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Per afegir paràgrafs utilitzem l’etiqueta *p* i el seu tancament */p* i dins d’aquestes dos
+                        afegirem el contingut del paràgraf. Després de cada títol dels anteriors afegeix un paràgraf,
+                        per exemple:
+                    </vf-text>
+                    <vf-code>
+                        &lt;h1&gt;Títol 1&lt;/h1&gt;
+
+                        &lt;p&gt;Paràgraf després del títol 1&lt;/p&gt;
+
+                        &lt;h2&gt;Títol 2&lt;/h2&gt;
+
+                        &lt;p&gt;Paràgraf després del títol 2&lt;/p&gt;
+
+                        &lt;h3&gt;Títol 3&lt;/h3&gt;
+
+                        &lt;p&gt;Paràgraf després del títol 3&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/03html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Enllaços
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Els enllaços ens serveixen per anar a altres pàgines web ja creades o a altres fitxers html que tinga’m
+                en el nostre ordinador. Per afegir-ne s’utilitza l’etiqueta *a* amb el seu tancament */a*. Entre aquests
+                dos element s’afegeix el contingut de l’enllaç però per afegir la URL de la direcció on volem anar
+                s’utilitza l’atribut href. Tots els atributs es posen dins de l’etiqueta. Anem a crear un enllaç després
+                del primer paràgraf que vaja a una coneguda pàgina web de llenguatges de programació.
+            </vf-text>
+            <vf-code>
+                &lt;a href="https://www.w3schools.com" target="_blank"&gt;W3 Schools&lt;/a&gt;
+            </vf-code>
+
+            <vf-text>
+                Primer posem l'etiqueta:
+            </vf-text>
+            <vf-code>
+                &lt;a&gt;&lt;/a&gt;
+            </vf-code>
+
+            <vf-text>
+                Després entre les dos etiquetes posem el *text* que volem que es veja en pantalla:
+            </vf-text>
+            <vf-code>
+                &lt;a&gt;W3 Schools&lt;/a&gt;
+            </vf-code>
+
+            <vf-text>
+                A continuació afegim l'atribut *href* dins de l'obertura de l'etiqueta *a* i afegim l'enllaç on volem
+                accedir:
+            </vf-text>
+            <vf-code>
+                &lt;a href="https://www.w3schools.com" &gt;W3 Schools&lt;/a&gt;
+            </vf-code>
+
+            <vf-text>
+                Per últim si volem que l'enllaç no s'òbriga en la mateixa pestanya sinó que en una diferent afegim
+                l'atribut *target* i el valor *_blank*:
+            </vf-text>
+            <vf-code>
+                &lt;a href="https://www.w3schools.com" target="_blank"&gt;W3 Schools&lt;/a&gt;
+            </vf-code>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/04html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-text>
+                        Si fem clic ens porta a l'enllaç en una nova pestanya
+                    </vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/05html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Imatges
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Les imatges en HTML es defineixen amb l’etiqueta *img*. Aquesta etiqueta *no té tancament*, només
+                obertura però té 4 atributs que es poden posar:
+            </vf-text>
+            <vf-list>
+                <li>
+                    src: on es troba la foto
+                </li>
+                <li>
+                    alt: el que es mostrarà si la foto no es pot carregar
+                </li>
+                <li>
+                    width: amplada
+                </li>
+                <li>
+                    height: altura
+                </li>
+            </vf-list>
+            <vf-text>
+                Si li afegim amplada només, el navegador recalcula l’altura perquè la imatge es veja bé. De la mateixa
+                manera si s’indica només l’altura, el navegador calcularà l’amplada. En canvi, si afegim l’amplada i
+                l’altura i aquestes no concorden amb la proporció de la imatge, aquesta es veurà distorsionada.
+            </vf-text>
+            <vf-text>
+                En l’atribut src hem de posar la ruta de la imatge a partir des d’on està ubicat el fitxer html. Per
+                exemple, si tenim a una carpeta el fitxer html i la imatge està en eixa mateixa carpeta, aleshores en
+                src posarem el nom del fitxer i l’extensió:
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Afegim el codi al final de la resta d’elements dins de body.
+                    </vf-text>
+                    <vf-code>
+                        &lt;img src="html_css.png" alt="Foto d'HTML i CSS"&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/06html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Si en canvi, la imatge haguera estat dins d’una carpeta però on es troba el fitxer html, primer
+                        posariem el nom de la carpeta i després una barra /:
+                    </vf-text>
+                    <vf-code>
+                        &lt;img src="imatges/html_css.png" alt="Foto d'HTML i CSS"&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/07html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Si refresquem el navegador apareix la imatge però molt gran:
+                    </vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/08html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Per tant, és l’hora d’ajustar la grandaria amb width o height. Ara posem una altura de 100
+                        píxels:
+                    </vf-text>
+                    <vf-code>
+                        &lt;img src="imatges/html_css.png" alt="Foto d'HTML i CSS" height="100"&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/09html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Botons
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Els botons s’afegeixen amb l’etiqueta *button* i el tancament */button*. Afegim un botó després
+                        de la imatge:
+                    </vf-text>
+                    <vf-code>
+                        &lt;button&gt;Fes clic&lt;/button&gt;
+                    </vf-code>
+                    <vf-text>
+                        Com pots veure, apareix el botó però per més que fem clic no fa res, ja ho vore’m més endavant
+                        com fer que el botó faça alguna cosa.
+                    </vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/10html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Llistes
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Per afegir llistes a la pàgina web utilitzem dos etiquetes depenent si volem una llista ordenada o no
+                ordenada. Per la llista ordenada utilitzem *ol* i */ol* (ordered list) i per a la llista no ordenada
+                utilitzem *ul* i */ul* (unordered list).
+            </vf-text>
+            <vf-text>
+                Anem a afegir 2 llistes, una ordenada i una altra no ordenada:
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;p&gt;Guanyadors Moto GP&lt;/p&gt;
+
+                        &lt;ol&gt;
+
+                        &lt;li&gt;Marc Marquez&lt;/li&gt;
+
+                        &lt;li&gt;Andrea Dovizioso&lt;/li&gt;
+
+                        &lt;li&gt;Maverick Viñales&lt;/li&gt;
+
+                        &lt;/ol&gt;
+
+
+
+                        &lt;p&gt;Llista de la compra&lt;/p&gt;
+
+                        &lt;ul&gt;
+
+                        &lt;li&gt;Tomaques&lt;/li&gt;
+
+                        &lt;li&gt;Pa&lt;/li&gt;
+
+                        &lt;li&gt;Pernil&lt;/li&gt;
+
+                        &lt;/ul&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/11html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Comentaris
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Els comentaris són molt utils per posar-nos anotacions en el codi i saber el que estem fent per si en el
+                futur no ens enrecordem. Encara que no parega rellevant, quan portem molt de temps escrivint codi i
+                tenim 300 linies en un fitxer html, hi ha aspectes que es poden oblidar de perquè es va fer així o
+                simplement per donar-li llegibilitat al codi.
+            </vf-text>
+            <vf-text>
+                Per posar comentaris utilitzem els símbols com veuràs a l'exemple:
+            </vf-text>
+            <vf-code>
+                &lt;!-- Açò és un comentari --&gt;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="3">
+            DIV - Caixa
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                L’etiqueta *div* s’utilitza com a contenedor d’altres elements, és a dir, no és un element HTML com a
+                tal que es mostre en pantalla, sinó que és una agrupació d’altres etiquetes. Però, encara que només siga
+                per agrupar, també es poden posar estils que es propagaran a tots els elements que tinga a l’interior.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;!-- Llistes --&gt;
+
+                        &lt;div&gt;
+
+                        &lt;h3&gt;Guanyadors Moto GP&lt;/h3&gt;
+
+                        &lt;ol&gt;
+
+                        &lt;li&gt;Marc Marquez&lt;/li&gt;
+
+                        &lt;li&gt;Andrea Dovizioso&lt;/li&gt;
+
+                        &lt;li&gt;Maverick Viñales&lt;/li&gt;
+
+                        &lt;/ol&gt;
+
+
+
+                        &lt;h3&gt;Llista de la compra&lt;/h3&gt;
+
+                        &lt;ul&gt;
+
+                        &lt;li&gt;Tomaques&lt;/li&gt;
+
+                        &lt;li&gt;Pa&lt;/li&gt;
+
+                        &lt;li&gt;Pernil&lt;/li&gt;
+
+                        &lt;/ul&gt;
+
+                        &lt;/div&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/12html.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                Però ens facilita l’agrupació. Imagina que ara volem posar que tant els títols com les llistes anaren en
+                un color verd. Doncs tenim un problema perquè hauriem d’afegir el color verd a tots els elements.
+                Utilitzant el DIV li posem el color verd i aquesta propietat es propagarà a tots els elements que estan
+                a l’interior:
+            </vf-text>
+            <vf-code>
+                &lt;div style="color:#33cc33"&gt;
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/html/13html.png" link="" styles="" classes=""></vf-img>
+
+        </vf-content>
+
+        <vf-title level="3">
+            Span
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                L’etiqueta *span* s’utilitza normalment com a contenedora de part del text per donar-li un estil
+                diferent. Per exemple dins d’un paràgraf hi ha una paraula que es vol posar en un altre color:
+            </vf-text>
+            <vf-code>
+                &lt;p&gt;Aquest és un paràgraf en el que la paraula important la volem resaltar amb color roig&lt;/p&gt;
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/html/14html.png" link="" styles="" classes=""></vf-img>
+            <vf-text>
+                Si afegim l’etiqueta span abans i després de la paraula important li podrem posar un estil diferent.
+            </vf-text>
+            <vf-code>
+                &lt;p&gt;Aquest és un paràgraf en el que la paraula &lt;span style="color:red"&gt;important&lt;/span&gt;
+                la volem resaltar amb color roig&lt;/p&gt;
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/html/15html.png" link="" styles="" classes=""></vf-img>
+
+        </vf-content>
+
+        <vf-title level="3">
+            Taules
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Per construir les taules hi ha 3 etiquetes importants que hem de conèixer: table, tr i td. Hi ha altres
+                però per simplificar el funcionament de les taules utilitzarem només aquestes tres.
+            </vf-text>
+            <vf-text>
+                Anem a montar aquesta taula:
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/html/16html.png" link="" styles="" classes=""></vf-img>
+
+            <vf-text>
+                El primer pas és definir una taula:
+            </vf-text>
+            <vf-code>
+                &lt;table&gt;
+
+                &lt;/table&gt;
+            </vf-code>
+
+            <vf-text>
+                Dins d’ella anem a crear les files utilitzant l’etiqueta tr, tantes com files hi haurà. En el cas
+                anterior 5.
+            </vf-text>
+            <vf-code>
+                &lt;table&gt;
+
+                &lt;tr&gt;
+
+                &lt;/tr&gt;
+
+
+
+                &lt;tr&gt;
+
+                &lt;/tr&gt;
+
+
+
+                &lt;tr&gt;
+
+                &lt;/tr&gt;
+
+
+
+                &lt;tr&gt;
+
+                &lt;/tr&gt;
+
+
+
+                &lt;tr&gt;
+
+                &lt;/tr&gt;
+
+                &lt;/table&gt;
+            </vf-code>
+
+            <vf-text>
+                Ara, crearem tantes etiquetes com td tinga cada fila. En aquest cas, 3. Ací es mostra només el contingut
+                d’una fila:
+            </vf-text>
+            <vf-code>
+                &lt;tr&gt;
+
+                &lt;td&gt;
+
+                &lt;/td&gt;
+
+                &lt;td&gt;
+
+                &lt;/td&gt;
+
+                &lt;td&gt;
+
+                &lt;/td&gt;
+
+                &lt;/tr&gt;
+            </vf-code>
+
+            <vf-title level="4">
+                Colspan i rowspan
+            </vf-title>
+
+            <vf-text>
+                A les columnes li podem afegir 2 atributs: colspan i rowspan. Colspan és per expandir el contingut d’una cel·la horitzontalment i rowspan per a fer-ho verticalment. Evidentment si expandim una cel·la amb un colspan de 2, ens sobrarà una cel·la. Anem a veure-ho amb un exemple:
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/html/17html.png" link="" styles="" classes=""></vf-img>
+            <vf-text>
+                Volem fer que la columna 1 de la fila 1 ocupe 2 cel·les per tant a la primera fila tenim el següent:
+            </vf-text>
+            <vf-code>
+                &lt;tr&gt;
+
+	&lt;td&gt;
+
+		CODI
+
+	&lt;/td&gt;
+
+	&lt;td&gt;
+
+		Nom
+
+	&lt;/td&gt;
+
+	&lt;td&gt;
+
+		Alumnes
+
+	&lt;/td&gt;
+
+&lt;/tr&gt;
+            </vf-code>
+            <vf-text>
+                El que hem d’arreglar primer és el nombre de columnes que hi ha en la primera fila, ara passem de 3 a tindre’n només 2. Per tant, només hi haurà 2 TD. Després li hem de dir a la primera columna que s’expandisca 2 horitzontalment per tant, al TD li afegirem colspan="2".
+            </vf-text>
+            <vf-code>
+                &lt;tr&gt;
+
+                &lt;td colspan="2"&gt;
+            
+                    Assignatura
+            
+                &lt;/td&gt;
+            
+                &lt;td&gt;
+            
+                    Alumnes
+            
+                &lt;/td&gt;
+            
+            &lt;/tr&gt;
+                    </vf-code>
+            <vf-text>
+                D’aquesta manera obtindrem el resultat esperat.
+            </vf-text>
+            <vf-text>
+                Si per contra ara volguerem que les tres últimes assignatures tingueren el mateix nombre d’alumnes: 20, hauriem de fer el següent:
+            </vf-text>
+            <vf-list>
+                <li>
+                    A l’última columna de la antepenúltima fila li hauriem de dir que s’expandisca verticalment amb 3:  rowspan="3"
+                </li>
+                <li>
+                    Esborrar l’última columna de la penúltima fila
+                </li>
+                <li>
+                    Esborrar l’última columna de l’última fila
+                </li>
+            </vf-list>
+            <vf-text>
+                El resultat seria aquest:
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/html/18html.png" link="" styles="" classes=""></vf-img>
+
+        </vf-content>
+
+        <vf-title level="3">
+            Línia horitzontal
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Per posar una linia horitzontal s’utilitza l’etiqueta *hr* sense tancament ni res.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;h1&gt;Títol 1&lt;/h1&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Aquest és un paràgraf sense format&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/19html.png" link="" styles="" classes=""></vf-img>
+
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Text preformatejat
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Si volem escriure un paràgraf amb espais i que interprete salts de linia sense haver de posar l’etiqueta *br*, utilitzarem l’etiqueta pre. Aquesta etiqueta s’interpreta com un paràgraf però llegint els salts de linia, tabuladors, espais, etc.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;h1&gt;Títol 1&lt;/h1&gt;
+
+&lt;hr&gt;
+
+&lt;pre&gt;
+
+Aquest és un paràgraf preformatejat
+
+Açò és una nova linea
+
+    Ací hi ha 4 espais de més
+
+&lt;/pre&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/html/20html.png" link="" styles="" classes=""></vf-img>
+
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Atributs importants de totes les etiquetes
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="4">
+                Title
+            </vf-title>
+            <vf-text>
+                L’atribut title serveix per afegir informació adicional d’algún element, i es mostrarà quan passem el cursor damunt d’algún element. Recorda que com qualsevol altre atribut la sintaxis és atribut=”valor”.
+            </vf-text>
+            <vf-text>
+                Per exemple: 
+            </vf-text>
+            <vf-code>
+                &lt;p title="Aquest és un paràgraf d'exemple"&gt;Paràgraf després del títol 1&lt;/p&gt;
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/html/21html.png" link="" styles="" classes=""></vf-img>
+            <vf-title level="4">
+                Style
+            </vf-title>
+            <vf-text>
+                L’altre atribut important és style que serveix per aplicar estils en llenguatge *CSS*.
+            </vf-text>
+            <vf-text>
+                Aquest és un poc especial perquè en el valor posarem *propietat:valor* i podem afegir diferents valors separats pel símbol :.
+            </vf-text>
+            <vf-text>
+                Exemples:
+            </vf-text>
+            <vf-code>
+                &lt;!-- Aplicar 1 estil només, color del text blanc --&gt;
+
+&lt;h1 style="color:white"&gt;Títol 1&lt;/h1&gt;
+
+
+
+&lt;!-- Altra manera de seleccionar color amb hexadecimal --&gt;
+
+&lt;!-- https://www.w3schools.com/colors/colors_picker.asp --&gt;
+
+&lt;h1 style="color:#034f84"&gt;Títol 1&lt;/h1&gt;
+
+
+
+&lt;!-- Aplicar 1 estil només, color de fons --&gt;
+
+&lt;h1 style="background-color:#034f84"&gt;Títol 1&lt;/h1&gt;
+
+
+
+&lt;!-- Aplicar 2 estils separats sempre per ; --&gt;
+
+&lt;h1 style="color:white;background-color:#034f84"&gt;Títol 1&lt;/h1&gt;
+            </vf-code>
+            <vf-title level="4">
+                Ferramentes CSS
+            </vf-title>
+            <vf-text>
+                [Buscar l’hexadecimal d’un color](https://www.w3schools.com/colors/colors_picker.asp)
+            </vf-text>
+            <vf-text>
+                [Seleccionar paletes de colors1](https://www.w3schools.com/colors/colors_palettes.asp)
+            </vf-text>
+            <vf-text>
+                [Seleccionar paletes de colors2](https://coolors.co/palettes/trending)
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
