@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Representació de la informació
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Aquesta unitat es divideix en dues parts, la primera d'elles són els sistemes de conversió. Parla del sistema decimal que ja coneixem i d'altres sistemes com el binari (el que utilitzen els ordinadors), l'hexadecimal (que inclou lletres i s'utilitza per definir els colors) o l'octal i com es fan les conversions. A més, es veu com convertir un codi binari a números i text.
+            </vf-text>
+            <vf-text>
+                L'altra part consisteix en les unitats de mesura a l'ordinador on veurem a què es refereix quan parla de TB, GB, MB, KB, B o també TiB, GiB, MiB, etc. Entendrem les diferències que hi ha entre ells i també com calcular les descàrregues depenent de la velocitat de xarxa que tinga'm a casa.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-btn
+                    link="unitats/ordinadors/representacio-informacio/sistemes-conversio.html">Sistemes de conversió</vf-btn>
+                </vf-col>
+                <vf-col>
+                    <vf-btn
+                    link="unitats/ordinadors/representacio-informacio/unitats-mesura.html">Unitats de mesura</vf-btn>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>

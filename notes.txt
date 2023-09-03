@@ -1,0 +1,50 @@
+HTML i CSS
+    Página de Perfil Personal: Pide a los estudiantes que creen una página web que sea como una tarjeta de presentación en línea. Deben incluir su nombre, una breve descripción sobre ellos mismos, una foto y algunos enlaces a sus redes sociales si desean. Esto les permitirá aprender a estructurar una página básica y agregar imágenes.
+    Catálogo de Películas o Libros Favoritos: Los estudiantes pueden crear una página web que muestre sus películas o libros favoritos. Cada película o libro puede tener su imagen, título y una breve descripción. Esto les ayudará a aprender a crear listas y a trabajar con imágenes.
+    Menú de Restaurante Ficticio: Pide a los estudiantes que diseñen el menú de un restaurante ficticio. Deben incluir secciones para entradas, platos principales y postres, con imágenes y descripciones de cada artículo. Esto les permitirá practicar la estructura de tablas y listas.
+    Tarjeta de Cumpleaños Interactiva: Anima a los estudiantes a crear una tarjeta de cumpleaños en línea para un amigo o familiar. Pueden incluir una imagen de felicitación, un mensaje y algunos efectos CSS básicos como transiciones y cambios de color al pasar el mouse.
+    Portafolio de Proyectos: Si los estudiantes tienen algún proyecto escolar anterior, pueden crear una página web que funcione como un portafolio en línea. Pueden incluir descripciones de proyectos, imágenes y enlaces a documentos relacionados. Esto les ayudará a organizar la información de manera estructurada.
+    Mini Blog de Viajes: Pídeles que creen un mini blog de viajes en el que compartan sus experiencias imaginarias de viajes a lugares exóticos. Cada "entrada" puede incluir una imagen del lugar y una breve descripción. Esto les permitirá aprender a crear múltiples páginas en su sitio.
+    Tienda de Ropa Virtual: Los estudiantes pueden diseñar una página web para una tienda de ropa ficticia. Deben mostrar diferentes prendas con imágenes, descripciones y precios. Esto les ayudará a entender cómo estructurar una tienda en línea simple.
+    Creación de un Currículum Vitae: Pide a los estudiantes que diseñen un currículum vitae en línea. Deben incluir su información personal, educación, habilidades y experiencia (incluso si es limitada). Esto les ayudará a comprender cómo estructurar información importante.
+    Recreación de una Página Web Favorita: Anima a los estudiantes a elegir una página web que les guste y tratar de recrear su estructura básica utilizando HTML y CSS. Esto les ayudará a aprender observando y practicando.
+    Juego de Adivinanza de Colores: Desafía a los estudiantes a crear un juego simple en el que se muestre un cuadrado de color y el usuario debe adivinar el nombre del color. Pueden utilizar CSS para cambiar el color del cuadrado y HTML para mostrar preguntas y opciones de respuesta.
+
+HTML, CSS i JS
+    Juego de Adivinanza de Números:
+        Crea una página que genere un número aleatorio.
+        Pide al jugador que adivine el número.
+        Proporciona pistas si el número es mayor o menor.
+        Muestra un mensaje de victoria cuando el jugador adivina el número.
+    Juego de Memoria:
+        Crea una cuadrícula de tarjetas con imágenes o números.
+        El jugador debe hacer clic en dos tarjetas para encontrar parejas.
+        Si las tarjetas coinciden, se mantienen visibles; de lo contrario, se vuelven a ocultar.
+        Juego de Preguntas y Respuestas:
+    Presenta preguntas de opción múltiple.
+        El jugador selecciona una respuesta haciendo clic en un botón.
+        Muestra un mensaje de acierto o error y lleva un contador de puntuación.
+    Juego de Serpiente (Snake):
+        Crea un juego simple donde una serpiente se mueve alrededor de un tablero.
+        El jugador debe controlar la serpiente para comer comida y crecer.
+        La partida termina cuando la serpiente choca contra la pared o su propio cuerpo.
+    Juego de Pong:
+        Crea una versión básica del juego de Pong, donde dos jugadores mueven raquetas arriba y abajo para golpear una pelota.
+        Lleva un contador de puntos y muestra un mensaje cuando alguien gana.
+    Juego de Piedra, Papel o Tijeras:
+        El jugador selecciona su elección (piedra, papel o tijeras) haciendo clic en un botón.
+        La computadora también elige una opción al azar.
+        Determina el ganador y muestra un mensaje.
+    Juego de Laberinto:
+        Crea un laberinto simple en el que el jugador debe moverse desde el punto de inicio hasta el punto de llegada.
+        Añade obstáculos y permite al jugador controlar un personaje para navegar por el laberinto.
+    Juego de Colores Simon:
+        Muestra una secuencia de colores que el jugador debe repetir.
+        Cada vez que el jugador repite correctamente la secuencia, agrégale un color adicional.
+        Lleva un registro de cuántos colores ha repetido correctamente el jugador.
+    Juego de Carreras de Coches:
+        Crea una pista de carreras y un coche que el jugador puede mover hacia la izquierda y la derecha.
+        Haz que el coche avance automáticamente y marque el tiempo o la distancia recorrida.
+    Juego de Aterrizaje de Cohete:
+        Controla un cohete que desciende hacia la superficie.
+        Permite al jugador ajustar la velocidad y la dirección para lograr un aterrizaje seguro.
