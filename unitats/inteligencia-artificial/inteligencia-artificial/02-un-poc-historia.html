@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Un poc d'història
+        </vf-title>
+
+        <vf-content>
+            <vf-img src="assets/unitats/inteligencia-artificial/inteligencia-artificial/historia01.png"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Activitat
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Hauràs d'emplenar el formulari amb les 3 errades de la història de la IA que trobes en la linia del temps anterior.
+            </vf-text>
+            <vf-frame classes="vf-frame-half" link="https://docs.google.com/forms/d/e/1FAIpQLSdFtbp7COlaniCosJKpGzkf3un0HvwUBVekOKY5y2a1lEQuWQ/viewform?usp=sf_link"></vf-frame>
+        </vf-content>
+
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
