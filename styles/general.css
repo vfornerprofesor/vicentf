@@ -60,6 +60,19 @@
       }
     }
 
+    /* COLS */
+    vf-col.col-min-200px {
+      min-width: 200px;
+    }
+
+    vf-col.col-min-300px {
+      min-width: 300px;
+    }
+
+    vf-col.col-min-400px {
+      min-width: 400px;
+    }
+
     /* UNIT */
     .row-unit {
 
