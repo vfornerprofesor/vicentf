@@ -73,6 +73,10 @@
       min-width: 400px;
     }
 
+    iframe {
+      border: none;
+    }
+
     /* UNIT */
     .row-unit {
 
