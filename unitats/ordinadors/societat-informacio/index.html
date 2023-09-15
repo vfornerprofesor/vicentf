@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div id="content">
+        <vf-title level="1">
+            Societat de la informació
+        </vf-title>
+
+        <vf-title level="2">Activitat 1 - Timeline</vf-title>
+
+        <vf-content>
+            <vf-text>
+                Fes un timeline amb la ferramenta online [visme](https://www.visme.co/es/) o [canva](https://www.canva.com/) sobre els principals avanços tecnològics i afegeix l'enllaç a la pàgina del blog. Ha d'incloure com a mínim els següents punts incloent un títol + imatge + data + breu explicació
+            </vf-text>
+            <vf-list>
+                <li><vf-text>Internet</vf-text></li>
+                <li><vf-text>Primera màquina que realitzava càlculs</vf-text></li>
+                <li><vf-text>Primers ordinadors</vf-text></li>
+                <li><vf-text>Primers smartphones</vf-text></li>
+                <li><vf-text>Evolució dels ordinadors (2 o 3 canvis)</vf-text></li>
+                <li><vf-text>Evolució dels smartphones (2 o 3 canvis)</vf-text></li>
+                <li><vf-text>Altres dispositius: smartwatch, ulleres virtuals</vf-text></li>
+                <li><vf-text>Principals serveis a internet: Google, Facebook, Instagram, etc</vf-text></li>
+            </vf-list>
+            
+        </vf-content>
+
+        <vf-title level="2">Pel·lícula: Piratas de Silicon Valley</vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/ordinadors/societat-informacio/siliconvalley.png"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-btn link="https://drive.google.com/file/d/1_5-iixJeXc8nDP3nWGL4lFYTXMaGSAYw/view">Veure pel·lícula</vf-btn>
+                    <vf-btn link="https://docs.google.com/forms/d/e/1FAIpQLSf47Udsr4dANC4yqoL6-7MoIN3Jtdj1i2ASDZImG-WCI4ptzw/viewform">Emplena el qüestionari</vf-btn>
+                </vf-col>
+                
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Activitat 2 - Reflexió</vf-title>
+
+        <vf-content>
+            <vf-text>
+                Escriu una *reflexió* en un document de text amb els següents apartats:
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>Títol: Evolució informàtica i societat de la informació</vf-text></li>
+                <li><vf-text>Índex (amb els punts que s'indiquen després)</vf-text></li>
+                <vf-list>
+                    <li><vf-text>Utilitza els tipus de títols per als punts i subpunts</vf-text></li>
+                </vf-list>
+                <li><vf-text>Capçalera (el teu nom i el títol de la reflexió)</vf-text></li>
+                <li><vf-text>Peu de pàgina amb el número de pàgina i el total (Exemple: Pàg 1 de 3)</vf-text></li>
+            </vf-list>
+
+            <br>
+
+            <vf-text>
+                Els *punts* que han d'apareixer a l'índex i el contingut que ha d'haver en cadascú d'ells serà el següent:
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>L’evolució dels dispositius afegits al timeline anterior: breu resum</vf-text></li>
+                <li><vf-text>Contestar a les següents preguntes sobre la pel·lícula:</vf-text></li>
+                <vf-list>
+                    <li><vf-text>Què penses sobre com va obtindre èxit Microsoft? (quan va vendre a IBM el seu sistema operatiu)</vf-text></li>
+                    <li><vf-text>Què penses sobre com va obtindre èxit Apple? (quan va fabricar l'Apple II)</vf-text></li>
+                    <li><vf-text>Quin creus que és millor i perquè? Creus en el lema "todo vale en los negocios" per arribar a l'èxit empresarial?</vf-text></li>
+                    <li><vf-text>Què penses sobre que Apple després de  visitar als laboratoris de Xerox on van descobrir el ratolí, les finestres i l'escriptori, crearen el seu Macintosh?</vf-text></li>
+                    <li><vf-text>Què penses de com va aconseguir Microsoft crear el SO Windows?</vf-text></li>
+                </vf-list>
+                <li><vf-text>Societat de la informació</vf-text></li>
+                <vf-list>
+                    <li><vf-text>Impacte de la informàtica en la societat</vf-text></li>
+                    <li><vf-text>Avanços i riscos i la bretxa digital</vf-text></li>
+                    <li><vf-text>Influència de la informàtica en els comerços</vf-text></li>
+                    <li><vf-text>Sectors productius nous que han sorgit a causa de les TIC</vf-text></li>
+                    <li><vf-text>Com afecta la informàtica per als ciutadans tant per accions democràtiques com relacions humanes i d’oci</vf-text></li>
+                </vf-list>
+            </vf-list>
+        </vf-content>
+
+
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#header').load('header.html');
+            $('#menu').load('menu.html');
+            $('#footer').load('footer.html');
+        });
+
+    </script>
+</body>
+
+</html>
