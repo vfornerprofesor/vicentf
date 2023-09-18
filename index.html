@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <div id="menu"></div>
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
-    <div id="content">
+    <div id="content" style="display:none">
         <vf-title level="1" subtitle="Professor d'Informàtica">
             Vicent Forner
         </vf-title>
@@ -60,11 +60,12 @@
         </vf-content>
 
     </div>
-    <div id="footer"></div>
+    <div id="footer" style="display:none"></div>
     <script>$('#footer').load('footer.html');</script>
 
     <script>
         $(document).ready(function () {
+            //$('#header').load('header.html');
             //$('#menu').load('menu.html');
             //$('#footer').load('footer.html');
         });
