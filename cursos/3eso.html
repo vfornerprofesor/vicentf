@@ -10,12 +10,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
 
 </head>
 
 <body>
-    <div id="menu"></div>
-    <div id="content">
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    div id="content" style="display:none">
         <vf-title  level="1" centered styles="" classes="">
             3r ESO
         </vf-title>
@@ -55,16 +57,10 @@
         </vf-content>
 
     </div>
-    <div id="footer"></div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script></div>
 
-    <script>
-        $(document).ready(function () {
-            $('#header').load('header.html');
-            $('#menu').load('menu.html');
-            $('#footer').load('footer.html');
-        });
-
-    </script>
+    
 </body>
 
 </html>
