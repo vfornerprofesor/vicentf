@@ -9,11 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
 
 </head>
 
 <body>
     <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
     <div id="content">
         <vf-title level="1" subtitle="Professor d'Informàtica">
             Vicent Forner
@@ -59,12 +61,12 @@
 
     </div>
     <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
 
     <script>
         $(document).ready(function () {
-            $('#header').load('header.html');
-            $('#menu').load('menu.html');
-            $('#footer').load('footer.html');
+            //$('#menu').load('menu.html');
+            //$('#footer').load('footer.html');
         });
 
     </script>
