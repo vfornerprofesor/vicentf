@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Bar</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.menu {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+}
+
+.categoria {
+    flex: 1;
+    padding: 20px;
+}
+
+.categoria:nth-child(1), .categoria:nth-child(2) {
+    border-right: 1px solid lightgrey;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nombre {
+    font-weight: bold;
+}
+
+.precio {
+    color: #666;
+}
+
+footer {
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Menú del Bar "Tu Bar Favorito"</h1>
+    </header>
+
+    <section class="menu">
+        <div class="categoria">
+            <h2>Entrantes</h2>
+            <ul>
+                <li>
+                    <span class="nombre">Bruschetta</span>
+                    <span class="precio">$5.99</span>
+                </li>
+                <li>
+                    <span class="nombre">Calamares a la Romana</span>
+                    <span class="precio">$7.99</span>
+                </li>
+                <li>
+                    <span class="nombre">Ensalada César</span>
+                    <span class="precio">$4.99</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="categoria">
+            <h2>Platos Principales</h2>
+            <ul>
+                <li>
+                    <span class="nombre">Bistec a la Parrilla</span>
+                    <span class="precio">$12.99</span>
+                </li>
+                <li>
+                    <span class="nombre">Pasta Alfredo</span>
+                    <span class="precio">$9.99</span>
+                </li>
+                <li>
+                    <span class="nombre">Pizza Margarita</span>
+                    <span class="precio">$8.99</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="categoria">
+            <h2>Postres</h2>
+            <ul>
+                <li>
+                    <span class="nombre">Tiramisú</span>
+                    <span class="precio">$6.99</span>
+                </li>
+                <li>
+                    <span class="nombre">Flan de Caramelo</span>
+                    <span class="precio">$4.99</span>
+                </li>
+                <li>
+                    <span class="nombre">Helado de Vainilla</span>
+                    <span class="precio">$3.99</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Tu Bar Favorito</p>
+    </footer>
+</body>
+</html>
