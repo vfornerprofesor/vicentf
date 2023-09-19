@@ -1,3 +1,4 @@
+
 function processStyles(element, styles) {
     if (styles && styles.length > 0) {
         styles = styles.split(';');
