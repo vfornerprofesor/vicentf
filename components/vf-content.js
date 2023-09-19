@@ -9,7 +9,8 @@ class VFContent extends HTMLElement {
       if(this.hasAttribute('colored')) {
         div.classList.add('block_color');
       }
-      
+      div = processClasses(div, this.getAttribute('classes'));
+
       div.innerHTML = this.innerHTML;
       this.innerHTML = '';
       this.appendChild(div);

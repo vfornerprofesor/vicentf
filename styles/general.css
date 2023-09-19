@@ -101,7 +101,9 @@
 
     .col-unit:hover, .col-unit:hover  h2 {
       background-color: var(--main-color);
+      transition: background-color 1s ease;
       color: white !important;
+      transition: color 1s ease;
     }
 
     .list-unit ul, .list-unit ol{
@@ -112,4 +114,9 @@
 
     .list-unit > li {
       color: red;
+    }
+
+    /*** BOX SHADOW ***/
+    .boxshadow {
+      box-shadow: 0 0 10px grey;
     }
