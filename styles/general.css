@@ -66,6 +66,9 @@
     }
 
     /* COLS */
+    vf-col {
+      min-width: fit-content;
+    }
     vf-col.col-min-200px {
       min-width: 200px;
     }
@@ -77,6 +80,7 @@
     vf-col.col-min-400px {
       min-width: 400px;
     }
+
 
     iframe {
       border: none;

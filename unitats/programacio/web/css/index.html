@@ -29,14 +29,427 @@
                 Es pot consultar el curs de [CSS de W3Schools](https://www.w3schools.com/css/default.asp)
             </vf-text>
         </vf-content>
+
+        <vf-title level="2">
+            Com aplicar estils?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Per aplicar estils a les pàgines web tenim 4 maneres diferents de fer-ho:
+            </vf-text>
+
+            <vf-title level="4">Dins de l'etiqueta</vf-title>
+
+            <vf-text>
+                Dins de l'etiqueta que vulga'm canviar es pot afegir l'atribut style i entre cometes els valors dels
+                estils que volem aplicar separats pel símbol ;
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="md-col-6">
+                    <vf-code>
+                        &lt;p style="color:red"&gt;Hola&lt;/p&gt;
+                        &lt;p style="color:red;background-color:blue"&gt;Adeu&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="md-col-6">
+                    <p style="color:red">Hola</p>
+                    <p style="color:red;background-color:blue">Adeu</p>
+                </vf-col>
+            </vf-row>
+
+            <hr>
+
+            <vf-title level="4">Per etiqueta</vf-title>
+
+            <vf-text>
+                Si volem aplicar un estil a TOTES les etiquetes iguals podem utilitzar-les en una etiqueta style en la
+                etiqueta head de la següent manera:
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="md-col-6">
+                    <vf-code>
+                        &lt;head&gt;
+                            ...
+                            &lt;style&gt;
+                                p {
+                                color: green;
+                                }
+                            &lt;/style&gt;
+                            ...
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                            ...
+                            &lt;h1&gt;Títol&lt;/h1&gt;
+                            &lt;p&gt;Hola&lt;/p&gt;
+                            &lt;p&gt;Adeu&lt;/p&gt;
+                            &lt;h2&gt;Subtítol&lt;/h2&gt;
+                            ...
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="md-col-6">
+                    <h1>Títol</h1>
+                    <p style="color:green">Hola</p>
+                    <p style="color:green">Adeu</p>
+                    <h2>Subtítol</h2>
+                </vf-col>
+            </vf-row>
+
+            <hr>
+
+            <vf-title level="4">Per identificador</vf-title>
+
+            <vf-text>
+                Quan volem canviar els estils d'un únic element el que fem és afegir-li un identificador amb un atribut id i dins de
+                l'etiqueta style (en head) l'utilitzem amb el símbol #
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="md-col-6">
+                    <vf-code>
+                        &lt;head&gt;
+                            ...
+                            &lt;style&gt;
+                            #titol {
+                                color: green;
+                            }
+                            &lt;/style&gt;
+                            ...
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                            ...
+                            &lt;h1 id="titol"&gt;Títol&lt;/h1&gt;
+                            &lt;p&gt;Hola&lt;/p&gt;
+                            &lt;p&gt;Adeu&lt;/p&gt;
+                            &lt;h2&gt;Subtítol&lt;/h2&gt;
+                            ...
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="md-col-6">
+                    <h1 style="color:green">Títol</h1>
+                    <p>Hola</p>
+                    <p>Adeu</p>
+                    <h2>Subtítol</h2>
+                </vf-col>
+            </vf-row>
+
+            <hr>
+
+            <vf-title level="4">Per classe</vf-title>
+
+            <vf-text>
+                Quan volem canviar els estils de diversos elements que poden provindre d'etiquetes diferents, utilitzem l'atribut class dins de les etiquetes que volem modificar i utilitzem el . per identificar-lo dins de l'etiqueta style (en head).
+                *Si es volen utilitzar dos classes es posa seguit d'un espai: class="classe1 classe2"*
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="md-col-6">
+                    <vf-code>
+                        &lt;head&gt;
+                        ...
+                        &lt;style&gt;
+                        .remarcat {
+                            color: green;
+                            background-color: yellow;
+                        }
+                        &lt;/style&gt;
+                        ...
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        ...
+                        &lt;h1 class="remarcat"&gt;Títol&lt;/h1&gt;
+                        &lt;p&gt;Hola&lt;/p&gt;
+                        &lt;p&gt;Adeu&lt;/p&gt;
+                        &lt;h2 class="remarcat"&gt;Subtítol&lt;/h2&gt;
+                        ...
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="md-col-6">
+                    <h1 style="color:green;background-color: yellow;">Títol</h1>
+                    <p>Hola</p>
+                    <p>Adeu</p>
+                    <h2 style="color:green;background-color: yellow;">Subtítol</h2>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Com pose els estils en un fitxer a banda?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Per posar els estils a banda hem d'indicar-li al fitxer HTML quin fitxer css va a utilitzar i després afegir el fitxer CSS a la mateixa carpeta de l'HTML</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>A l'etiqueta head afegim la següent etiqueta:</vf-text>
+                    <vf-code>
+                        &lt;head&gt;   
+                            ...
+                            &lt;link rel="stylesheet" href="estils.css"&gt;
+                            ...
+                        &lt;/head&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Afegim el fitxer estils.css</vf-text>
+                    <vf-code>
+                        p {
+                            color: red;
+                        }
         
+                        h1 {
+                            color: black;
+                        }
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+        <vf-title level="2">
+            Quins estils podem aplicar?
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-title level="4">
+                        Color de la lletra
+                    </vf-title>
+                    <vf-code>
+                        color: red;
+                        color: blue;
+                        color: #ff0000;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-title level="4">
+                        Color de fons
+                    </vf-title>
+                    <vf-code>
+                        background-color: red;
+                        background-color: #ff0000;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Amplada
+                    </vf-title>
+                    <vf-code>
+                        width: 100%;
+                        width: 40%;
+                        width: 200px;
+                        width: max-content; /*agafa tota l'amplada*/
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Alçada
+                    </vf-title>
+                    <vf-code>
+                        height: 100vh;
+                        height: 200px;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Alinear text
+                    </vf-title>
+                    <vf-code>
+                        text-align: center;
+                        text-align: left;
+                        text-align: right;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Tamany de la lletra
+                    </vf-title>
+                    <vf-code>
+                        font-size: 14px;
+                        font-size: 200%;
+                        font-size: 3em;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Negreta
+                    </vf-title>
+                    <vf-code>
+                        font-weight: bold;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Cursiva
+                    </vf-title>
+                    <vf-code>
+                        font-style: italic;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Marge (fora de la vora)
+                    </vf-title>
+                    <vf-code>
+                        margin: 10px 5px 4px 3px; (dalt, dreta, baix, esquerra)
+                        margin: 10px 20px; (dalt i baix, esquerra i dreta)                       
+                        margin: 10px; (dalt, baix, dreta i esquerra)                        
+                        margin-left: 10px;                        
+                        margin-right: 10px;                      
+                        margin-top: 10px;                       
+                        margin-bottom: 10px;                    
+                        margin: 0 auto; (dalt i baix 0 i esquerra i dreta automàtic)
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Encoixament (entre element i vora)
+                    </vf-title>
+                    <vf-code>
+                        padding: 10px 5px 4px 3px; (dalt, dreta, baix, esquerra)
+                        padding: 10px 20px; (dalt i baix, esquerra i dreta)
+                        padding: 10px; (dalt, baix, dreta i esquerra)
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    </vf-code>
+                </vf-col>
+
+                
+
+                <vf-col>
+                    <vf-title level="4">
+                        Icones
+                    </vf-title>
+                    <vf-text>
+                        [Enllaç](https://www.w3schools.com/css/css_icons.asp)
+                    </vf-text>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Llevar subratllat enllaços
+                    </vf-title>
+                    <vf-code>
+                        text-decoration: none;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Float  
+                    </vf-title>
+                    <vf-text>
+                        [Enllaç](https://www.w3schools.com/css/css_float.asp)
+                    </vf-text>
+                    <vf-code>
+                        float: right;
+                        float: left;
+                        float: none;
+                        clear: both;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Mostrar
+                    </vf-title>
+                    <vf-code>
+                        display: none; (no mostrar)
+                        display: block; (mostrar i que ocupe tota l’amplada → com p)
+                        display: inline; (mostrar i que ocupe només el que ocupa → com span)
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Posicionar elements
+                    </vf-title>
+                    <vf-text>
+                        [Enllaç](https://www.w3schools.com/css/css_positioning.asp)
+                    </vf-text>
+                    <vf-code>
+                        position:static;
+                        position:relative;
+                        position:fixed;
+                        position:absolute;
+                        position:sticky;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Ombra
+                    </vf-title>
+                    <vf-text>
+                        [Enllaç](https://www.w3schools.com/css/css3_shadows_box.asp)
+                    </vf-text>
+                    <vf-code>
+                        box-shadow: 5px 10px 15px red;
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Centrar div al centre
+                    </vf-title>
+                    <vf-text>
+                        Al contenedor que té els elements que s'han de centrar hem d'afegir:
+                    </vf-text>
+                    <vf-code>
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh; /*o posar un altura*/
+                    </vf-code>
+                </vf-col>
+
+                <vf-col>
+                    <vf-title level="4">
+                        Vora
+                    </vf-title>
+                    <vf-code>
+                        border: 1px solid black;
+                        border: 3px dashed red;
+                        /*tamany, tipus i color*/
+                    </vf-code>
+                    <p style="border: 1px solid black">Solid</p>
+                    <p style="border: 1px dotted black">Solid</p>
+                    <p style="border: 1px dashed black">Solid</p>
+                    <p style="border: 1px double black">Solid</p>
+                    <p style="border: 1px groove black">Solid</p>
+                    <p style="border: 1px ridge black">Solid</p>
+                    <p style="border: 1px inset black">Solid</p>
+                    <p style="border: 1px outset black">Solid</p>
+                    <p style="border-top: 1px solid black">Solid</p>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
         <vf-title level="2">
             Exercicis
         </vf-title>
         <vf-content>
             <vf-row>
                 <vf-col>
-                    <vf-btn link="unitats/programacio/web/css/aniversari.html" classes="btn-short">Targeta d'aniversari</vf-btn>
+                    <vf-btn link="unitats/programacio/web/css/aniversari.html" classes="btn-short">Targeta
+                        d'aniversari</vf-btn>
                 </vf-col>
                 <vf-col>
                     <vf-btn link="unitats/programacio/web/css/menu.html" classes="btn-short">Menú de bar</vf-btn>

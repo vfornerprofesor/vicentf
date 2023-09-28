@@ -1,4 +1,3 @@
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -14,17 +13,17 @@
 <link rel="stylesheet" href="styles/blocks.css">
 <link rel="stylesheet" href="styles/buttons.css">
 
-    <script src="scripts/utils.js"></script>
-    <script src="components/vf-text.js"></script>
-    <script src="components/vf-row.js"></script>
-    <script src="components/vf-col.js"></script>
-    <script src="components/vf-list.js"></script>
-    <script src="components/vf-img.js"></script>
-    <script src="components/vf-content.js"></script>
-    <script src="components/vf-title.js"></script>
-    <script src="components/vf-code.js"></script>
-    <script src="components/vf-btn.js"></script>
-    <script src="components/vf-frame.js"></script>
+<script src="scripts/utils.js"></script>
+<script src="components/vf-text.js"></script>
+<script src="components/vf-row.js"></script>
+<script src="components/vf-col.js"></script>
+<script src="components/vf-list.js"></script>
+<script src="components/vf-img.js"></script>
+<script src="components/vf-content.js"></script>
+<script src="components/vf-title.js"></script>
+<script src="components/vf-code.js"></script>
+<script src="components/vf-btn.js"></script>
+<script src="components/vf-frame.js"></script>
 
 
 <link rel="stylesheet" href="scripts/highlight/styles/default.min.css">
@@ -43,11 +42,28 @@
 </script>
 
 <script>
-    //setTimeout(() => {
-        document.getElementById('menu').style.display = 'block';
-        document.getElementById('content').style.display = 'block';
-        document.getElementById('footer').style.display = 'block';
-        document.getElementById('loading').style.display = 'none';
-        console.log('FIN: ' + new Date());
-        //}, 1000);
+    function showBlock(block) {
+        console.log('executing');
+        bl = document.getElementById(block);
+        if (bl.style.display != 'block') {
+            bl.style.display = 'block';
+        }
+    }
+
+    function hideBlock(block) {
+        bl = document.getElementById(block);
+        if (bl.style.display != 'none') {
+            bl.style.display = 'none';
+        }
+    }
+    showBlock('menu');
+    showBlock('content');
+    showBlock('footer');
+    hideBlock('loading');
+    setTimeout(() => {
+        showBlock('menu');
+        showBlock('content');
+        showBlock('footer');
+        hideBlock('loading');
+    }, 3000);
 </script>
