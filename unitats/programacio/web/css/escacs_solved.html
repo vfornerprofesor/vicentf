@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            display: flex;
+        }
+
+        #tablero {
+            width: 500px;
+            height: 500px;
+        }
+
+        div {
+            height: 50px;
+            width: 50px;
+        }
+
+        .fila {
+            display: flex;
+            width: 100%;
+            text-align: center;
+        }
+
+        .borde {
+            background-color: #c35e2e;
+        }
+
+        .clar {
+            background-color: #D1BEB1;
+
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .oscur {
+            background-color: #473D36;
+
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .text-girat {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tablero">
+
+        <div class="fila">
+            <div class="borde"></div>
+            <div class="borde">
+                <p>A</p>
+            </div>
+            <div class="borde">
+                <p>B</p>
+            </div>
+            <div class="borde">
+                <p>C</p>
+            </div>
+            <div class="borde">
+                <p>D</p>
+            </div>
+            <div class="borde">
+                <p>E</p>
+            </div>
+            <div class="borde">
+                <p>F</p>
+            </div>
+            <div class="borde">
+                <p>G</p>
+            </div>
+            <div class="borde">
+                <p>H</p>
+            </div>
+            <div class="borde"></div>
+        </div>
+
+
+        <div class="fila">
+            <div class="borde">
+                <p>1</p>
+            </div>
+            <div class="clar"><img src="imatges_escacs/negre_torre.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_cavall.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_alfil.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_reina.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_rei.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_alfil.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_cavall.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_torre.png" alt=""></div>
+            <div class="borde">
+                <p class="text-girat">8</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>2</p>
+            </div>
+            <div class="oscur"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/negre_peo.png" alt=""></div>
+            <div class="borde">
+                <p class="text-girat">7</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>3</p>
+            </div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="borde">
+                <p class="text-girat">6</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>4</p>
+            </div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="borde">
+                <p class="text-girat">5</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>5</p>
+            </div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="borde">
+                <p class="text-girat">4</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>6</p>
+            </div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="oscur"></div>
+            <div class="clar"></div>
+            <div class="borde">
+                <p class="text-girat">3</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>7</p>
+            </div>
+            <div class="clar"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_peo.png" alt=""></div>
+            <div class="borde">
+                <p class="text-girat">2</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde">
+                <p>8</p>
+            </div>
+            <div class="oscur"><img src="imatges_escacs/blanc_torre.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_cavall.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_alfil.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_reina.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_rei.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_alfil.png" alt=""></div>
+            <div class="oscur"><img src="imatges_escacs/blanc_cavall.png" alt=""></div>
+            <div class="clar"><img src="imatges_escacs/blanc_torre.png" alt=""></div>
+            <div class="borde">
+                <p class="text-girat">1</p>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="borde"></div>
+            <div class="borde">
+                <p class="text-girat">A</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">B</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">C</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">D</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">E</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">F</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">G</p>
+            </div>
+            <div class="borde">
+                <p class="text-girat">H</p>
+            </div>
+            <div class="borde"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
