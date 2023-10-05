@@ -66,8 +66,12 @@
     }
 
     /* COLS */
+    .col {
+      padding: 0;
+    }
     vf-col {
       min-width: fit-content;
+      padding: 0;
     }
     vf-col.col-min-200px {
       min-width: 200px;
