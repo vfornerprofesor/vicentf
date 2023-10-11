@@ -9,7 +9,7 @@ class VFTitle extends HTMLElement {
         let textSubtitle = this.getAttribute('subtitle');
 
         let centered = false;
-        if(this.hasAttribute('centered')) {
+        if (this.hasAttribute('centered')) {
             centered = true;
         }
 
@@ -21,7 +21,7 @@ class VFTitle extends HTMLElement {
             title = document.createElement('h1');
             title.classList.add('display-4');
 
-            if(textSubtitle) {
+            if (textSubtitle) {
                 subtitle = document.createElement('p');
                 subtitle.classList.add('lead');
             }
@@ -36,54 +36,57 @@ class VFTitle extends HTMLElement {
                     title = document.createElement('h3');
                     title.classList.add('block_black');
                     title.classList.add('block_h3');
-    
+
                 } else {
                     title = document.createElement('h4');
                 }
             }
 
         }
-        if(textTitle) {
+        if (textTitle) {
             title.textContent = textTitle;
             title.id = textTitle.replaceAll(' ', '');
         }
-        if(subtitle && textSubtitle) {
+        if (subtitle && textSubtitle) {
             subtitle.textContent = textSubtitle;
         }
         title = processStyles(title, this.getAttribute('styles'));
         title = processClasses(title, this.getAttribute('classes'));
 
-        if(level != 1) {
-            title.addEventListener('mouseover', () => {
-                const url = new URL(window.location.href);
+        if (level != 1) {
+            const url = new URL(window.location.href);
                 url.hash = title.id;
-                
-                if(title.children.length == 0) {
-                    const icon = document.createElement('i');
-                    icon.setAttribute('href', url.toString());
-                    icon.classList.add('fas');
-                    icon.classList.add('fa-copy');
-                    icon.classList.add('vf-icon-copy');
-                    title.appendChild(icon);
-                }
+            const icon = document.createElement('i');
+            icon.setAttribute('href', url.toString());
+            icon.classList.add('fas');
+            icon.classList.add('fa-copy');
+            icon.classList.add('vf-icon-copy');
+            icon.classList.add('vf-icon-copy-hide');
+            icon.id = title.id + '_icon';
+
+            title.appendChild(icon);
+
+            title.addEventListener('mouseover', () => {
+                title.children[0].classList.remove('vf-icon-copy-hide');
             });
-            
-            title.addEventListener('mouseout', ()=> {
-                title.removeChild(title.children[0]);
+
+            title.addEventListener('mouseout', () => {
+                title.children[0].classList.add('vf-icon-copy-hide');
             });
+
             title.addEventListener('click', () => {
                 navigator.clipboard.writeText(title.children[0].getAttribute('href'));
             });
-    
+
         }
 
-        if(centered) {
+        if (centered) {
             title.classList.add('center');
         }
 
         div_title.appendChild(title);
-        if(subtitle) {
-            if(centered) {
+        if (subtitle) {
+            if (centered) {
                 subtitle.classList.add('center');
             }
             div_title.appendChild(subtitle);

@@ -45,14 +45,14 @@
     function showBlock(block) {
         console.log('executing');
         bl = document.getElementById(block);
-        if (bl.style.display != 'block') {
+        if (bl && bl.style.display != 'block') {
             bl.style.display = 'block';
         }
     }
 
     function hideBlock(block) {
         bl = document.getElementById(block);
-        if (bl.style.display != 'none') {
+        if (bl && bl.style.display != 'none') {
             bl.style.display = 'none';
         }
     }
@@ -66,4 +66,6 @@
         showBlock('footer');
         hideBlock('loading');
     }, 3000);
+   
+
 </script>

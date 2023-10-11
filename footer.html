@@ -1,3 +1,16 @@
-<footer class="footer">
-    <p>Powered by Vicent Forner 2023</p>
-  </footer>
+<footer class="footer" onload="lastScript()">
+  <p>Powered by Vicent Forner 2023</p>
+</footer>
+
+  <script>
+    setTimeout(() => {
+    
+      //Open section if it selected
+      section_id = document.URL.split('#').length > 1 ? document.URL.split('#')[1] : '';
+      if (section_id != '') {
+        section_id = decodeURI(section_id);
+        element_section = document.getElementById(section_id)
+        element_section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 1000);
+  </script>

@@ -135,3 +135,7 @@
       cursor:pointer;
       font-size: 50%;
     }
+
+    .vf-icon-copy-hide {
+      display: none;
+    }
