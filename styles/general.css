@@ -128,3 +128,10 @@
     .boxshadow {
       box-shadow: 0 0 10px grey;
     }
+
+
+    /** TITLE LINKS **/
+    .vf-icon-copy {
+      cursor:pointer;
+      font-size: 50%;
+    }

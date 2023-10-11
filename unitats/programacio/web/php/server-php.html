@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            PHP Server
+        </vf-title>
+        <vf-title level="2">
+            Create LAMP
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                A LAMP server is one we use to web developing, and each letter belongs to an application we need to
+                install:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Linux*: Operating system</vf-text></li>
+                <li><vf-text>*Apache2*: Web server</vf-text></li>
+                <li><vf-text>*MySQL*: Database manager</vf-text></li>
+                <li><vf-text>*PHP*: Programming language</vf-text></li>
+            </vf-list>
+            <vf-text>
+                For that we must create a Virtual Machine with Linux Mint operating system with Mate edition. You can
+                download from [here](https://linuxmint.com/download.php).
+            </vf-text>
+            <vf-text>
+                Once we have installed the server we must install with (apt install) apache2, php, mysql-server,
+                mysql-client and openssh-server also.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Set private and public key
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                We need to access to server through ssh and with our public and private key. First of all we must create
+                the keys:
+            </vf-text>
+            <vf-code>
+                ssh-keygen -t rsa
+            </vf-code>
+            <vf-text>
+                There ask us for name file (we can type our name) and a passphrase that is a password. After that we
+                have two files, one private key with name file we typed and another one with the same name but with pub
+                extensions.
+            </vf-text>
+            <vf-text>
+                Now we must copy public key to the server:
+            </vf-text>
+            <vf-code>
+                ssh-copy-id -i filename.pub serveruser@serverip
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">
+            Visual Studio Code configuration
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Tasks we need to do are the following:
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>Install Remote SSH Extension</vf-text></li>
+                <li><vf-text>Set file configuration:</vf-text></li>
+                <vf-list ordered>
+                    <li><vf-text>Press F1</vf-text></li>
+                    <li><vf-text>Type: Remote SSH: Open SSH Configuration File</vf-text></li>
+                    <li>
+                        <vf-text>Set the file:</vf-text>
+                        <vf-code>
+                            Host server
+                            HostName your_server_ip
+                            User server_user
+                            IdentityFile where_is_your_private_key
+                        </vf-code>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>Connection to server:</vf-text>
+                    <vf-list>
+                        <li><vf-text>Press Open a Remote Window Button (at the bottom left)</vf-text></li>
+                        <li><vf-text>Select Connect to host</vf-text></li>
+                        <li><vf-text>Select server</vf-text></li>
+                        <li><vf-text>Type password</vf-text></li>
+                    </vf-list>
+                </li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Set the server folder to developing
+        </vf-title>
+        
+        <vf-content>
+            <vf-text>We must to create a folder where we're going to develop:</vf-text>
+            <vf-list ordered>
+                <li><vf-text>Go to /var/www/html</vf-text></li>
+                <li><vf-text>Create a folder with name php</vf-text></li>
+                <li><vf-text>Create a file index.php inside php folder</vf-text></li>
+                <li>
+                    <vf-text>Set owner's folder</vf-text>
+                    <vf-code>
+                        sudo chown -R serveruser:serveruser /var/www/html/php
+                    </vf-code>
+                </li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Access to web folder
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                In VSC open the folder /var/www/html/php and edit index.php to create a html structure with a text in body that say Hello!
+            </vf-text>
+            <vf-text>
+                After saving the file, you can go to a web browser and find server_ip/php and you'll look Hello message.
+            </vf-text>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

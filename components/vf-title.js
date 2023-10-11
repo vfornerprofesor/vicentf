@@ -45,12 +45,37 @@ class VFTitle extends HTMLElement {
         }
         if(textTitle) {
             title.textContent = textTitle;
+            title.id = textTitle.replaceAll(' ', '');
         }
         if(subtitle && textSubtitle) {
             subtitle.textContent = textSubtitle;
         }
         title = processStyles(title, this.getAttribute('styles'));
         title = processClasses(title, this.getAttribute('classes'));
+
+        if(level != 1) {
+            title.addEventListener('mouseover', () => {
+                const url = new URL(window.location.href);
+                url.hash = title.id;
+                
+                if(title.children.length == 0) {
+                    const icon = document.createElement('i');
+                    icon.setAttribute('href', url.toString());
+                    icon.classList.add('fas');
+                    icon.classList.add('fa-copy');
+                    icon.classList.add('vf-icon-copy');
+                    title.appendChild(icon);
+                }
+            });
+            
+            title.addEventListener('mouseout', ()=> {
+                title.removeChild(title.children[0]);
+            });
+            title.addEventListener('click', () => {
+                navigator.clipboard.writeText(title.children[0].getAttribute('href'));
+            });
+    
+        }
 
         if(centered) {
             title.classList.add('center');
