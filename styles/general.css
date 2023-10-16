@@ -139,3 +139,8 @@
     .vf-icon-copy-hide {
       display: none;
     }
+
+    /** VF-TEXT **/
+    vf-text {
+      display: block;
+    }

@@ -17,6 +17,11 @@
         color: #fff;
         font-weight: bold;
       }
+
+      .navbar-brand:hover {
+        color: var(--black-color);
+        transition: 0.5s color ease;
+      }
       
       .nav-title {
         display: inline;
@@ -38,6 +43,7 @@
     
       .nav-link:hover, router-link:hover {
         color: var(--black-color);
+        transition: 0.5s color ease;
       }
     
       .navbar-toggler-icon {
