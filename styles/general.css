@@ -67,11 +67,11 @@
 
     /* COLS */
     .col {
-      padding: 0;
+      padding: 15px;
     }
     vf-col {
-      min-width: fit-content;
-      padding: 0;
+      /* NO FUNCIONA */
+      /*min-width: fit-content;*/
     }
     vf-col.col-min-200px {
       min-width: 200px;
