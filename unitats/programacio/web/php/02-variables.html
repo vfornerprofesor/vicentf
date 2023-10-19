@@ -166,7 +166,10 @@
                 echo "Fruits: " . implode(", ", $fruits) . "&lt;br&gt;";
                 
                 // Removing Elements from an Array
-                unset($fruits[1]);
+                // 1st argument: list
+                // 2nd argument: starting position to remove
+                // 3rd argument: how many elements to remove
+                array_splice($fruits, 1, 2); //remove from position 1, 2 elements
                 echo "Updated Fruits: " . implode(", ", $fruits) . "&lt;br&gt;";
                 
                 // Looping through an Array
@@ -200,23 +203,24 @@
                 Download php files which you must complete from this [link](https://drive.google.com/drive/folders/1AF6rmqYnpiay92b_wMnZjQO2fAnX0ba-?usp=drive_link).
             </vf-text>
             <vf-row centered>
-                <vf-col classes="col-md-3">
+                <vf-col classes="">
                     <vf-title level="3">Exercise 1</vf-title>
                     <vf-img src="assets/unitats/programacio/web/php/02-variables/ex1.png"></vf-img>
                 </vf-col>
-                <vf-col classes="col-md-3">
+                <vf-col classes="">
                     <vf-title level="3">Exercise 2</vf-title>
                     <vf-img src="assets/unitats/programacio/web/php/02-variables/ex2.png"></vf-img>
                 </vf-col>
-                <vf-col classes="col-md-3">
+                <vf-col classes="">
                     <vf-title level="3">Exercise 3</vf-title>
                     <vf-img src="assets/unitats/programacio/web/php/02-variables/ex3.png"></vf-img>
                 </vf-col>
-                <vf-col classes="col-md-3">
+                <vf-col classes="">
                     <vf-title level="3">Exercise 4</vf-title>
                     <vf-img src="assets/unitats/programacio/web/php/02-variables/ex4.png"></vf-img>
                 </vf-col>
             </vf-row>
+
         </vf-content>
 
     </div>
