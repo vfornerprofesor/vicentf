@@ -43,6 +43,7 @@
         }
 
         #contacto {
+            margin-top: 10px;
             background-color: rgba(255,192,203, 0.6);
             margin-left: 20px;
             margin-right: 20px;
@@ -61,18 +62,24 @@
             text-align: center;
         }
 
+        #otros {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        #otros div {
+            width: 50%;
+        }
+
         a {
             color: #333;
         }
 
 
-        .fa-phone {
+        .fa-phone, .fa-map-marker, .fa-envelope {
             font-size: 250%;
         }
 
-        .fa-map-marker {
-            font-size: 400%;
-        }
     </style>
 
     <div id="maia_tot">
@@ -88,23 +95,31 @@
                     <a href="tel:+34695596937">
                         <i class="fa fa-phone"></i>
                         <p>Vicent Forner</p>
-                        <a href="tel:+34695596937">695596937</a>
+                        <!-- <a href="tel:+34695596937">695596937</a> -->
                     </a>
                 </div>
                 <div>
                     <a href="tel:+34635973127">
                         <i class="fa fa-phone"></i>
                         <p>Sonia Bonillo</p>
-                        <a href="tel:+34635973127">635973127</a>
+                        <!-- <a href="tel:+34635973127">635973127</a> -->
                     </a>
                 </div>
 
             </div>
-            <div>
-                <a href="https://maps.app.goo.gl/v1mJmmk3tya32TWm6">
-                    <p>Visc a Betxí al carrer Alfonso Franch número 29</p>
-                    <i class="fa fa-map-marker"></i>
-                </a>
+            <div id="otros">
+                <div>
+                    <a href="mailto:vicente.forner@gmail.com">
+                        <i class="fa fa-envelope"></i>
+                        <p>Correu electrònic</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://maps.app.goo.gl/v1mJmmk3tya32TWm6">
+                        <i class="fa fa-map-marker"></i>
+                        <p> C/ Alfonso Franch número 29, Betxí</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
