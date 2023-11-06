@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('background.avif');
+        }
+
+        #maia_tot {}
+
+        #foto {
+            max-height: 500px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px pink;
+            margin: 0 30px 10px 30px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #foto {
+                max-width: calc(100% - 100px);
+            }
+        }
+
+        #div_foto {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        #contacto {
+            background-color: rgba(255,192,203, 0.6);
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 10px;
+            font-size: 125%;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        #telefonos {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        a {
+            color: #333;
+        }
+
+
+        .fa-phone {
+            font-size: 250%;
+        }
+
+        .fa-map-marker {
+            font-size: 400%;
+        }
+    </style>
+
+    <div id="maia_tot">
+        <h1>Hola! Sóc Maia!</h1>
+        <div id="div_foto">
+            <img id="foto" src="maia2.jpeg" alt="">
+        </div>
+        <div id="contacto">
+            <p style="text-align: center;font-weight: bold;">Contacta amb els meus propietaris</p>
+
+            <div id="telefonos">
+                <div>
+                    <a href="tel:+34695596937">
+                        <i class="fa fa-phone"></i>
+                        <p>Vicent Forner</p>
+                        <a href="tel:+34695596937">695596937</a>
+                    </a>
+                </div>
+                <div>
+                    <a href="tel:+34635973127">
+                        <i class="fa fa-phone"></i>
+                        <p>Sonia Bonillo</p>
+                        <a href="tel:+34635973127">635973127</a>
+                    </a>
+                </div>
+
+            </div>
+            <div>
+                <a href="https://maps.app.goo.gl/v1mJmmk3tya32TWm6">
+                    <p>Visc a Betxí al carrer Alfonso Franch número 29</p>
+                    <i class="fa fa-map-marker"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
