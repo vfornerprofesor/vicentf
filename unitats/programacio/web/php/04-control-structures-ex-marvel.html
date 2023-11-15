@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Marvel exercise
+        </vf-title>
+
+
+        <vf-content>
+
+            <vf-text>We're going to create a website with a list of marvel's superheroes. </vf-text>
+            <vf-text>Follow this steps to reproduce the image</vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>Create a marvel.php file</vf-text>
+                </li>
+                <li>
+                    <vf-text>Inside, with code php create a function create_superhero with 3 parameters: name, colors,
+                        and
+                        power</vf-text>
+                </li>
+                <li>
+                    <vf-text>The function must create and show a div with class superhero. Inside this div you'll create
+                        a
+                        h1, h2 and h3 tag.</vf-text>
+                </li>
+                <li>
+                    <vf-text>After that call the function 5 times with different data</vf-text>
+                </li>
+                <li>
+                    <vf-text>The container of all divs must have these styles for see in mode grid:</vf-text>
+                    <vf-code>
+                        display: grid;
+                        column-gap: 20px;
+                        row-gap: 20px;
+                        grid-template-columns: auto auto auto;
+                        justify-content: space-around;
+                    </vf-code>
+                    <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/marvel01.png"></vf-img>
+                </li>
+                <li>
+                    <vf-text>When you show the five superheroes, you must use the following variable and with a foreach
+                        statement show all these elements:</vf-text>
+                    <vf-code>
+                        $superheroes = [
+                        [
+                        'name' => 'Spider-Man',
+                        'colors' => 'Red and Blue',
+                        'power' => 'Agility and strength, climbing walls, shooting webs',
+                        ],
+                        [
+                        'name' => 'Iron Man',
+                        'colors' => 'Red and Gold',
+                        'power' => 'Powered armor providing superhuman strength, flight, advanced weaponry',
+                        ],
+                        [
+                        'name' => 'Captain America',
+                        'colors' => 'Red, White, and Blue',
+                        'power' => 'Peak human condition, expert in hand-to-hand combat, shield handling',
+                        ],
+                        [
+                        'name' => 'Thor',
+                        'colors' => 'Red, Blue, and Silver',
+                        'power' => 'Superhuman strength, speed, durability, control over weather, flight',
+                        ],
+                        [
+                        'name' => 'Hulk',
+                        'colors' => 'Green',
+                        'power' => 'Transformation into Hulk with extreme rage, immense superhuman strength',
+                        ],
+                        [
+                        'name' => 'Black Widow',
+                        'colors' => 'Black',
+                        'power' => 'Master martial artist, expert markswoman, espionage skills',
+                        ],
+                        [
+                        'name' => 'Doctor Strange',
+                        'colors' => 'Blue and Red',
+                        'power' => 'Mastery of the mystic arts, time manipulation, reality warping',
+                        ],
+                        [
+                        'name' => 'Black Panther',
+                        'colors' => 'Black',
+                        'power' => 'Enhanced strength, speed, agility, and senses, Vibranium suit',
+                        ],
+                        [
+                        'name' => 'Wolverine',
+                        'colors' => 'Yellow and Blue',
+                        'power' => 'Regeneration, retractable adamantium claws, enhanced senses',
+                        ],
+                        [
+                        'name' => 'Storm',
+                        'colors' => 'White',
+                        'power' => 'Control over weather and atmospheric phenomena',
+                        ],
+                        [
+                        'name' => 'Ant-Man',
+                        'colors' => 'Red and Silver',
+                        'power' => 'Shrinking ability, control over ants, superhuman strength when enlarged',
+                        ],
+                        [
+                        'name' => 'Scarlet Witch',
+                        'colors' => 'Red',
+                        'power' => 'Reality manipulation, energy projection, telekinesis',
+                        ],
+                        [
+                        'name' => 'Vision',
+                        'colors' => 'Red, Yellow, and Green',
+                        'power' => 'Android with superhuman strength, density manipulation, energy projection',
+                        ],
+                        [
+                        'name' => 'Deadpool',
+                        'colors' => 'Red and Black',
+                        'power' => 'Regeneration, skilled marksman, breaking the fourth wall',
+                        ],
+                        [
+                        'name' => 'Groot',
+                        'colors' => 'Brown',
+                        'power' => 'Floral colossus with the ability to regenerate and grow',
+                        ],
+                        [
+                        'name' => 'Rocket Raccoon',
+                        'colors' => 'Brown and White',
+                        'power' => 'Genius-level intellect, expert marksman, mechanical skills',
+                        ],
+                        [
+                        'name' => 'Captain Marvel',
+                        'colors' => 'Red, Blue, and Gold',
+                        'power' => 'Superhuman strength, flight, energy absorption and projection',
+                        ],
+                        [
+                        'name' => 'Falcon',
+                        'colors' => 'Red, White, and Silver',
+                        'power' => 'Flight, skilled hand-to-hand combatant, access to advanced technology',
+                        ],
+                        [
+                        'name' => 'Winter Soldier',
+                        'colors' => 'Black and Silver',
+                        'power' => 'Enhanced strength, expert marksman, bionic arm with various functions',
+                        ],
+                        [
+                        'name' => 'Hawkeye',
+                        'colors' => 'Purple',
+                        'power' => 'Master archer, expert marksman, skilled hand-to-hand combatant',
+                        ],
+                        ];
+                    </vf-code>
+                </li>
+                <li>
+                    <vf-text>After that you must download the
+                        [images](https://drive.google.com/file/d/1aAV2gCm0BE1AkyMrkwc19Sex0h04WPRm/view?usp=drive_link),
+                        edit each element of the array with the name of the image:</vf-text>
+                    <vf-code>
+                        [
+                            'name' => 'Spider-Man',
+                            'colors' => 'Red and Blue',
+                            'power' => 'Agility and strength, climbing walls, shooting webs',
+                            'image' => 'spiderman.png'
+                        ],
+                    </vf-code>
+                </li>
+                <li>
+                    <vf-text>The last step is upload the function to add the image of the character. See the result</vf-text>
+                    <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/marvel02.png"></vf-img>
+                </li>
+                
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

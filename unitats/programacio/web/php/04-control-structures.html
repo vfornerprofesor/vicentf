@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    
-<div id="menu" style="display:none"></div>
+
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
         <vf-title level="1">
@@ -28,7 +28,10 @@
         </vf-title>
         <vf-content>
             <vf-text>
-                In this lesson, we will explore conditional statements and their usage in PHP. Conditional statements allow us to make decisions and execute different blocks of code based on certain conditions. In PHP, we have several conditional statements, including if, if-else, if-elseif-else ,and the switch statement. We will cover the syntax and usage of these statements, provide examples, and explain their functionality.
+                In this lesson, we will explore conditional statements and their usage in PHP. Conditional statements
+                allow us to make decisions and execute different blocks of code based on certain conditions. In PHP, we
+                have several conditional statements, including if, if-else, if-elseif-else ,and the switch statement. We
+                will cover the syntax and usage of these statements, provide examples, and explain their functionality.
             </vf-text>
             <vf-text>
                 Example code:
@@ -37,55 +40,63 @@
                 &lt;?php
                 // If Statement
                 $temperature = 25;
-                
+
                 if ($temperature &gt; 30) {
-                 echo "It's a hot day!";
+                echo "It's a hot day!";
                 }
-                
+
                 // If-Else Statement
                 $isRaining = true;
-                
+
                 if ($isRaining) {
-                 echo "Remember to take an umbrella.";
+                echo "Remember to take an umbrella.";
                 } else {
-                 echo "No need for an umbrella.";
+                echo "No need for an umbrella.";
                 }
-                
+
                 // If-Elseif-Else Statement
                 $time = 13;
-                
+
                 if ($time &lt; 12) {
-                 echo "Good morning!";
+                echo "Good morning!";
                 } elseif ($time &lt; 18) {
-                 echo "Good afternoon!";
+                echo "Good afternoon!";
                 } else {
-                 echo "Good evening!";
+                echo "Good evening!";
                 }
-                
+
                 // Switch Statement
                 $dayOfWeek = "Monday";
-                
+
                 switch ($dayOfWeek) {
-                 case "Monday":
-                 echo "It's Monday!";
-                 break;
-                 case "Tuesday":
-                 echo "It's Tuesday!";
-                 break;
-                 case "Wednesday":
-                 echo "It's Wednesday!";
-                 break;
-                 default:
-                 echo "It's another day of the week.";
-                 break;
+                case "Monday":
+                echo "It's Monday!";
+                break;
+                case "Tuesday":
+                echo "It's Tuesday!";
+                break;
+                case "Wednesday":
+                echo "It's Wednesday!";
+                break;
+                default:
+                echo "It's another day of the week.";
+                break;
                 }
                 ?&gt;
             </vf-code>
             <vf-text>
-                In this example, we provide examples of different conditional statements in PHP. We start with the if statement, which executes a block of code if the given condition is true. Next, we demonstrate the if-else statement, where one block of code is executed if the condition is true and another block is executed if the condition is false. Following that, we showcase the if-elseif-else statement, which allows for multiple conditions to be checked sequentially. Finally, we present the switch statement, which provides an alternative way to handle multiple conditions based on different cases. Each case is checked, and the corresponding block of code is executed. The break statement is used to exit the switch block after a case is matched.
+                In this example, we provide examples of different conditional statements in PHP. We start with the if
+                statement, which executes a block of code if the given condition is true. Next, we demonstrate the
+                if-else statement, where one block of code is executed if the condition is true and another block is
+                executed if the condition is false. Following that, we showcase the if-elseif-else statement, which
+                allows for multiple conditions to be checked sequentially. Finally, we present the switch statement,
+                which provides an alternative way to handle multiple conditions based on different cases. Each case is
+                checked, and the corresponding block of code is executed. The break statement is used to exit the switch
+                block after a case is matched.
             </vf-text>
             <vf-text>
-                Feel free to modify the conditions and statements to experiment with different scenarios. Conditional statements are essential tools for controlling the flow of your program based on specific conditions.
+                Feel free to modify the conditions and statements to experiment with different scenarios. Conditional
+                statements are essential tools for controlling the flow of your program based on specific conditions.
             </vf-text>
         </vf-content>
 
@@ -94,7 +105,10 @@
         </vf-title>
         <vf-content>
             <vf-text>
-                In this lesson, we will explore loops in PHP. Loops allow us to execute a block of code repeatedly based on certain conditions. They are essential for performing repetitive tasks and iterating over collections of data. In PHP, we have different types of loops, including the for loop, the while loop, and the foreach loop. We will provide examples and explain the functionality of each loop.
+                In this lesson, we will explore loops in PHP. Loops allow us to execute a block of code repeatedly based
+                on certain conditions. They are essential for performing repetitive tasks and iterating over collections
+                of data. In PHP, we have different types of loops, including the for loop, the while loop, and the
+                foreach loop. We will provide examples and explain the functionality of each loop.
             </vf-text>
             <vf-text>
                 Example code:
@@ -104,44 +118,54 @@
                 // For Loop
                 echo "For Loop: ";
                 for ($i = 1; $i &lt;= 5; $i++) {
-                 echo $i . " ";
+                echo $i . " ";
                 }
                 echo "&lt;br&gt;";
-                
+
                 // While Loop
                 echo "While Loop: ";
                 $j = 1;
                 while ($j &lt;= 5) {
-                 echo $j . " ";
-                 $j++;
+                echo $j . " ";
+                $j++;
                 }
                 echo "&lt;br&gt;";
-                
+
                 // Foreach Loop
                 echo "Foreach Loop: ";
                 $fruits = ["Apple", "Banana", "Orange"];
                 foreach ($fruits as $fruit) {
-                 echo $fruit . " ";
+                echo $fruit . " ";
                 }
                 ?&gt;
             </vf-code>
             <vf-text>
-                In this example, we showcase the usage of different types of loops in PHP. We start with the for loop, which allows us to specify an initialization, a condition, and an increment/decrement. The loop will execute the block of code as long as the condition is true. In the example, we use a for loop to display numbers from 1 to 5.
+                In this example, we showcase the usage of different types of loops in PHP. We start with the for loop,
+                which allows us to specify an initialization, a condition, and an increment/decrement. The loop will
+                execute the block of code as long as the condition is true. In the example, we use a for loop to display
+                numbers from 1 to 5.
             </vf-text>
             <vf-text>
-                Next, we demonstrate the while loop, which executes the block of code as long as the condition is true. We initialize a variable outside the loop, and within the loop, we update the variable. In the example, we use a while loop to display numbers from 1 to 5.
+                Next, we demonstrate the while loop, which executes the block of code as long as the condition is true.
+                We initialize a variable outside the loop, and within the loop, we update the variable. In the example,
+                we use a while loop to display numbers from 1 to 5.
             </vf-text>
             <vf-text>
-                Lastly, we explore the foreach loop, which is used specifically for iterating over arrays or other iterable objects. It allows us to iterate through each element in the array and perform operations on them. In the example, we use a foreach loop to iterate over an array of fruits and display each fruit.
+                Lastly, we explore the foreach loop, which is used specifically for iterating over arrays or other
+                iterable objects. It allows us to iterate through each element in the array and perform operations on
+                them. In the example, we use a foreach loop to iterate over an array of fruits and display each fruit.
             </vf-text>
         </vf-content>
-       
+
         <vf-title level="2">
             Functions
         </vf-title>
         <vf-content>
             <vf-text>
-                In this lesson, we will explore functions in PHP. Functions are reusable blocks of code that perform specific tasks. They allow us to organize our code, improve code reusability, and make our programs more modular. In PHP, we can define our own functions and also use built-in functions provided by PHP. We will provide examples and explain the functionality of functions.
+                In this lesson, we will explore functions in PHP. Functions are reusable blocks of code that perform
+                specific tasks. They allow us to organize our code, improve code reusability, and make our programs more
+                modular. In PHP, we can define our own functions and also use built-in functions provided by PHP. We
+                will provide examples and explain the functionality of functions.
             </vf-text>
             <vf-text>
                 Example code:
@@ -150,31 +174,36 @@
                 &lt;?php
                 // User-defined Function
                 function greet() {
-                 echo "Hello, welcome to our website!";
+                echo "Hello, welcome to our website!";
                 }
-                
+
                 // Function Call
                 greet();
-                
+
                 // Function with Parameters
                 function add($num1, $num2) {
-                 $sum = $num1 + $num2;
-                 return $sum;
+                $sum = $num1 + $num2;
+                return $sum;
                 }
-                
+
                 // Function Call with Arguments
                 $result = add(5, 3);
                 echo "Sum: " . $result;
                 ?&gt;
             </vf-code>
             <vf-text>
-                In this example, we showcase the usage of functions in PHP. We start with a user-defined function called greet() which simply echoes a greeting message. We then call the greet() function to execute the code inside it and display the greeting message.
+                In this example, we showcase the usage of functions in PHP. We start with a user-defined function called
+                greet() which simply echoes a greeting message. We then call the greet() function to execute the code
+                inside it and display the greeting message.
             </vf-text>
             <vf-text>
-                Next, we demonstrate a function called add() that takes two parameters, $num1 and $num2 adds them together, and returns the sum. We call the add() function with arguments (5, 3) to perform the addition and store the result in the variable $result We then display the result using the echo statement.
+                Next, we demonstrate a function called add() that takes two parameters, $num1 and $num2 adds them
+                together, and returns the sum. We call the add() function with arguments (5, 3) to perform the addition
+                and store the result in the variable $result We then display the result using the echo statement.
             </vf-text>
             <vf-text>
-                Feel free to define your own functions and call them with different arguments to suit your specific needs. Functions are essential for code organization, reusability, and modularization in PHP.
+                Feel free to define your own functions and call them with different arguments to suit your specific
+                needs. Functions are essential for code organization, reusability, and modularization in PHP.
             </vf-text>
         </vf-content>
 
@@ -184,7 +213,8 @@
 
         <vf-content>
             <vf-text>
-                Download php files which you must complete from this [link](https://drive.google.com/drive/folders/1wUBi1VlyxpednFoWyWW0xS982GvTyUgk?usp=drive_link).
+                Download php files which you must complete from this
+                [link](https://drive.google.com/drive/folders/1wUBi1VlyxpednFoWyWW0xS982GvTyUgk?usp=drive_link).
             </vf-text>
             <vf-row centered>
                 <vf-col>
@@ -219,13 +249,22 @@
                     <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/ex7.png"></vf-img>
                 </vf-col>
             </vf-row>
+            <vf-row>
+                <vf-col>
+                    <vf-title level="3">Exercise 8</vf-title>
+                    <vf-text>Go to [exercise 8 about Marvel](unitats/programacio/web/php/04-control-structures-ex-marvel.html)</vf-text>
+                    <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/marvel.png"></vf-img>
+
+                </vf-col>
+            </vf-row>
         </vf-content>
 
     </div>
     <div id="footer" style="display:none"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
 
-    
+
 </body>
 
 </html>
