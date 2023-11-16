@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1" centered styles="" classes="">
+            Comprovacions al login i registre
+        </vf-title>
+
+        <vf-title level="2" centered styles="" classes="">
+            Login
+        </vf-title>
+
+        <vf-content>
+
+            <vf-text>Com que encara no tenim accés a una base de dades anem a crear una llista amb les dades del login
+                de varios usuaris. La llista d'usuaris ha d'incloure un array associatiu per cada usuari amb els
+                atributs username i password. Pots preguntar a una IA que t'ajude a generar dades aleatories. Mira el
+                següent exemple de variable:</vf-text>
+            <vf-code>
+                $users = [
+                ['username': 'user1', 'password': 'the_password'],
+                ];
+            </vf-code>
+            <vf-text>
+                Una vegada tingues la llista s'ha de comprovar si el login és correcte per tant has de fer el següent:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>Crea un fitxer main.php</vf-text></li>
+                <li><vf-text>Afegeix l'etiqueta form entre els camps input per tal que s'envie el formulari</vf-text>
+                </li>
+                <li><vf-text>Assegura't que el botó del formulari és un input amb el tipus submit</vf-text></li>
+                <li>
+                    <vf-text>Dins del php crea un codi que comprove els usuaris:</vf-text>
+                </li>
+                <vf-list>
+                    <li><vf-text>Si l'usuari és correcte, redirigeix a main.php</vf-text></li>
+                    <li><vf-text>Si l'usuari no és correcte, crea una variable $error amb el missatge d'error i
+                            mostra-ho a
+                            la pantalla del login</vf-text></li>
+                </vf-list>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2" centered styles="" classes="">
+            Registre
+        </vf-title>
+        <vf-content>
+            <vf-text>Al registre només anem a comprovar que s'haguen emplenat els camps correctament, ja que al no
+                disposar d'una base de dades no podem insertar ningun usuari. Les comprovacions que has de fer són les
+                següents:</vf-text>
+            <vf-list>
+                <li><vf-text>El nom no pot superar els 20 caràcters</vf-text></li>
+                <li><vf-text>Els cognoms no poden superar els 30 caràcters</vf-text></li>
+                <li><vf-text>L'usuari ha de ser major d'edat</vf-text></li>
+                <li><vf-text>El nom d'usuari no pot superar els 10 caràcters i ha d'estar tot en minúscula</vf-text>
+                </li>
+                <li><vf-text>La contrasenya ha de contindre majúscules i minúscules i ha de tindre entre 8 i 12
+                        caràcters</vf-text></li>
+                <li><vf-text>La contrasenya i la repetició de la contrasenya deuen coincidir</vf-text></li>
+                <li><vf-text>S'ha d'haver marcat una de les 3 opcions del gènere</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
