@@ -151,6 +151,94 @@
             <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/calendar06.png"></vf-img>
 
         </vf-content>
+
+        <vf-title level="3">
+            Add icons
+        </vf-title>
+        <vf-content>
+            <vf-text>Now, we're going to add icon in a specific days about science. For do that we need a function get_specialday_from_day with a parameter $date where we receive a date in format dd-mm-yyyy.</vf-text>
+            <vf-text>This functions must has the list below, loop all the list and return the specific list if the date matches. If the loop ends and it has not return nothing, it must returns an empty text ''.</vf-text>
+            <vf-code>
+                $special_days = [
+                ['date' => '22-04-2023', 'icon' => 'fa-globe', 'description' => 'Día de la Tierra'],         
+                ['date' => '20-03-2023', 'icon' => 'fa-star', 'description' => 'Día de la Astronomía'],          
+                ['date' => '08-04-2023', 'icon' => 'fa-leaf', 'description' => 'Día de la Biología'],          
+                ['date' => '25-04-2023', 'icon' => 'fa-flask', 'description' => 'Día del ADN'],           
+                ['date' => '12-04-2023', 'icon' => 'fa-space-shuttle', 'description' => 'Día del Espacio'], 
+                ['date' => '15-12-2023', 'icon' => 'fa-laptop', 'description' => 'Día de la Informática'],        
+                ['date' => '22-03-2023', 'icon' => 'fa-tint', 'description' => 'Día del Agua'],          
+                ['date' => '09-11-2023', 'icon' => 'fa-lightbulb-o', 'description' => 'Día del Inventor'],   
+                ['date' => '10-11-2023', 'icon' => 'fa-flask', 'description' => 'Día del Científico'],          
+                ['date' => '14-02-2023', 'icon' => 'fa-bolt', 'description' => 'Día de la Energía'],          
+                ['date' => '14-05-2023', 'icon' => 'fa-balance-scale', 'description' => 'Día de la Física'], 
+                ['date' => '15-11-2023', 'icon' => 'fa-flask', 'description' => 'Día del Químico'],        
+                ['date' => '25-09-2023', 'icon' => 'fa-medkit', 'description' => 'Día del Medicamento'],       
+                ['date' => '02-03-2023', 'icon' => 'fa-android', 'description' => 'Día del Robot'],     
+                ['date' => '30-01-2023', 'icon' => 'fa-eye', 'description' => 'Día del Holograma'],          
+                ['date' => '23-03-2023', 'icon' => 'fa-cloud', 'description' => 'Día del Clima'],        
+                ['date' => '25-04-2023', 'icon' => 'fa-dna', 'description' => 'Día de la Genética'],          
+                ['date' => '12-07-2023', 'icon' => 'fa-cogs', 'description' => 'Día de la Robótica'],           
+                ['date' => '09-10-2023', 'icon' => 'fa-microchip', 'description' => 'Día de la Nanotecnología'],    
+                ['date' => '01-06-2023', 'icon' => 'fa-paw', 'description' => 'Día del Paleontólogo'],      
+            ];
+            </vf-code>
+            <vf-text>After that, in function show_days_month when we loop each day in a month, we must check with the above function if it is a special day. If it is you must do two things: add an extra class for the div of the day (special_day) and add an icon with the property icon of the special day:</vf-text>
+            <vf-code>
+                &lt;!-- You must upload DESCRIPTION with description of the special day and EXTRA_CLASS with the property icon--&gt;
+                &lt;i title='DESCRIPTION' class='icon_day fa EXTRA_CLASS'&gt;&lt;/i&gt;
+
+                &lt;!-- Remember to add this new line to head --&gt;
+                &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/calendar07.png"></vf-img>
+
+        </vf-content>
+
+        <vf-title level="3">
+            Add styles to position elements properly
+        </vf-title>
+        <vf-content>
+            <vf-text>We need to position the number day on the top and right of the div regardless, and the icon in the center on the div.</vf-text>
+            <vf-text>For that we need to apply the div a position:relative, and the paragraph with the number and the icon, a position absolute and the position we want.</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Apply this styles to the div:</vf-text>
+                    <vf-code>
+                        position: relative;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Apply this styles to the paragraph:</vf-text>
+                    <vf-code>
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+                        margin: 0;
+                        font-weight: bold;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Apply this styles to the icon:</vf-text>
+                    <vf-code>
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 150%;
+
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+            <vf-img src="assets/unitats/programacio/web/php/03-04-operators-control/calendar08.png"></vf-img>
+
+        </vf-content>
+
+        <vf-title level="3">
+            Final exercise
+        </vf-title>
+        <vf-content>
+            <vf-text>Add the number of the days to every month before numbers.</vf-text>
+        </vf-content>
        
         <vf-title level="3">
             Final Result
