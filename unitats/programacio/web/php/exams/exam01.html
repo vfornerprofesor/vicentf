@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Exam
+        </vf-title>
+
+        <vf-content>
+
+            <vf-text>
+                We're going to create a contact form of our company and we'll check if all fields are filled properly.
+            </vf-text>
+
+            <vf-title level=3>
+                HTML & CSS
+            </vf-title>
+            <vf-text>
+                We must develop this image:
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/php/exams/exam01-01.png"></vf-img>
+            <vf-text>
+                Tips to develop:
+            </vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>Topic drowpdown is a *select* tag of html. See the example:</vf-text>
+                    <vf-code>
+                        &lt;select id="gender" name="gender" required&gt;
+                        &lt;option value="male"&gt;Male&lt;/option&gt;
+                        &lt;option value="female"&gt;Female&lt;/option&gt;
+                        &lt;option value="other"&gt;Other&lt;/option&gt;
+                        &lt;/select&gt;
+                    </vf-code>
+                </li>
+                <li>
+                    <vf-text>Privacy policy must go to another file privacy_policy.html with only a title Privay Policy
+                        and the same logo</vf-text>
+                </li>
+                <li>
+                    <vf-text>You can download the logo</vf-text>
+                    <vf-img src="assets/logo.png"></vf-img>
+
+                </li>
+                <li>
+                    <vf-text>The form must go to process_contact.php (in action attribute) and with method
+                        post</vf-text>
+                </li>
+            </vf-list>
+            <vf-title level=3>
+                PHP
+            </vf-title>
+            <vf-text>
+                In process_contact.php we must check the following things:
+            </vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>Check that the email are inside this list:</vf-text>
+                    <vf-code>
+                        $emails_list = [
+                        "example01@example.com",
+                        "example02@example.com",
+                        "example03@example.com",
+                        "example04@example.com",
+                        "example05@example.com",
+                        "example06@example.com",
+                        "example07@example.com",
+                        "example08@example.com",
+                        "example09@example.com",
+                        "example10@example.com",
+                        "example11@example.com",
+                        "example12@example.com",
+                        "example13@example.com",
+                        "example14@example.com",
+                        "example15@example.com",
+                        "example16@example.com",
+                        "example17@example.com",
+                        "example18@example.com",
+                        "example19@example.com",
+                        "example20@example.com"
+                        ];
+                    </vf-code>
+                </li>
+                <li>
+                    <vf-text>Check that full name must have less than 30 characters</vf-text>
+                </li>
+                <li>
+                    <vf-text>Check that message must have less than 300 characters</vf-text>
+                </li>
+                <li>
+                    <vf-text>If the form has an error, show message in red color</vf-text>
+                    <vf-img src="assets/unitats/programacio/web/php/exams/exam01-02.png"></vf-img>
+
+                </li>
+                <li>
+                    <vf-text>If the form has no errors, show message in green color</vf-text>
+                    <vf-img src="assets/unitats/programacio/web/php/exams/exam01-03.png"></vf-img>
+
+                </li>
+                
+            </vf-list>
+            <vf-text>Remember that to process a POST action, when we receive from html file:</vf-text>
+            <vf-code>
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                //do things
+                }
+            </vf-code>
+
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
