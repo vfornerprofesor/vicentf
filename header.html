@@ -17,6 +17,7 @@
 
 <script src="scripts/utils.js"></script>
 <script src="components/vf-text.js"></script>
+<script src="components/vf-password.js"></script>
 <script src="components/vf-row.js"></script>
 <script src="components/vf-col.js"></script>
 <script src="components/vf-list.js"></script>
@@ -52,6 +53,11 @@
         }
     }
 
+    function showPopup(/**/) {
+        var args = arguments;
+
+    }
+
     function hideBlock(block) {
         bl = document.getElementById(block);
         if (bl && bl.style.display != 'none') {
@@ -59,15 +65,24 @@
         }
     }
     showBlock('menu');
-    showBlock('content');
+
+    //If password element exists, doesn't show
+    if (document.getElementsByTagName('vf-password').length == 0) {
+        showBlock('content');
+    }
+   
     showBlock('footer');
     hideBlock('loading');
     setTimeout(() => {
         showBlock('menu');
-        showBlock('content');
+
+        if (document.getElementsByTagName('vf-password').length == 0) {
+            showBlock('content');
+        }
+
         showBlock('footer');
         hideBlock('loading');
     }, 3000);
-   
+
 
 </script>

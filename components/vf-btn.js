@@ -10,7 +10,9 @@ class VFBtn extends HTMLElement {
 
     render() {
         let a = document.createElement('a');
-        a.href = this.getAttribute('link');
+        if(this.getAttribute('link')) {
+            a.href = this.getAttribute('link');
+        }
         a.classList.add('btn');
         a.classList.add('btn-primary');
 
