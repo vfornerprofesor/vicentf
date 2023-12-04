@@ -35,7 +35,7 @@
                 següent exemple de variable:</vf-text>
             <vf-code>
                 $users = [
-                ['username': 'user1', 'password': 'the_password'],
+                ['username' => 'user1', 'password' => 'the_password'],
                 ];
             </vf-code>
             <vf-text>
@@ -43,17 +43,36 @@
             </vf-text>
             <vf-list>
                 <li><vf-text>Crea un fitxer main.php</vf-text></li>
-                <li><vf-text>Afegeix l'etiqueta form entre els camps input per tal que s'envie el formulari</vf-text>
+                <li><vf-text>Crea un fitxer check_login.php</vf-text></li>
+                <li><vf-text>LOGIN: Afegeix l'etiqueta form entre els camps input per tal que s'envie el formulari a check_login</vf-text>
+                    <vf-code>
+                        &lt;form method="post" action="check_login.php"&gt;
+                            &lt;!-- CAMPS DEL FORMULARI--&gt;
+                        &lt;/form&gt;
+                    </vf-code>
                 </li>
+              
                 <li><vf-text>Assegura't que el botó del formulari és un input amb el tipus submit</vf-text></li>
                 <li>
-                    <vf-text>Dins del php crea un codi que comprove els usuaris:</vf-text>
+                    <vf-text>Dins del php check_login crea un codi que comprove els usuaris:</vf-text>
                 </li>
                 <vf-list>
-                    <li><vf-text>Si l'usuari és correcte, redirigeix a main.php</vf-text></li>
-                    <li><vf-text>Si l'usuari no és correcte, crea una variable $error amb el missatge d'error i
-                            mostra-ho a
-                            la pantalla del login</vf-text></li>
+                    <li><vf-text>Si l'usuari és correcte, redirigeix a main.php</vf-text>
+                    <vf-code>
+                        header("Location: main_shop.php");
+                        exit();
+                    </vf-code></li>
+                    <li><vf-text>Si l'usuari no és correcte, reenvia a login l'error</vf-text>
+                    <vf-code>
+                        header("Location: login.php?error=Usuari i contrasenya incorrectes");
+                        exit();
+                    </vf-code></li>
+                    <li><vf-text>Si hi ha error, en login has de rebre el camp error que se li ha enviat i mostrar-lo:</vf-text>
+                    <vf-code>
+                        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                            $error = $_REQUEST['error'];
+                        }
+                    </vf-code></li>
                 </vf-list>
             </vf-list>
         </vf-content>
@@ -63,7 +82,7 @@
         </vf-title>
         <vf-content>
             <vf-text>Al registre només anem a comprovar que s'haguen emplenat els camps correctament, ja que al no
-                disposar d'una base de dades no podem insertar ningun usuari. Les comprovacions que has de fer són les
+                disposar d'una base de dades no podem insertar ningun usuari. Recorda fer-ho en un fitxer *check_signup.php* i que redirigisca a main si tot està correcte i que redirigisca a signup amb els errors. Les comprovacions que has de fer són les
                 següents:</vf-text>
             <vf-list>
                 <li><vf-text>El nom no pot superar els 20 caràcters</vf-text></li>
