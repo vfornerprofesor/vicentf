@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    
+
     <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
@@ -71,21 +71,21 @@
                 <vf-col classes="md-col-6">
                     <vf-code>
                         &lt;head&gt;
-                            ...
-                            &lt;style&gt;
-                                p {
-                                color: green;
-                                }
-                            &lt;/style&gt;
-                            ...
+                        ...
+                        &lt;style&gt;
+                        p {
+                        color: green;
+                        }
+                        &lt;/style&gt;
+                        ...
                         &lt;/head&gt;
                         &lt;body&gt;
-                            ...
-                            &lt;h1&gt;Títol&lt;/h1&gt;
-                            &lt;p&gt;Hola&lt;/p&gt;
-                            &lt;p&gt;Adeu&lt;/p&gt;
-                            &lt;h2&gt;Subtítol&lt;/h2&gt;
-                            ...
+                        ...
+                        &lt;h1&gt;Títol&lt;/h1&gt;
+                        &lt;p&gt;Hola&lt;/p&gt;
+                        &lt;p&gt;Adeu&lt;/p&gt;
+                        &lt;h2&gt;Subtítol&lt;/h2&gt;
+                        ...
                         &lt;/body&gt;
                     </vf-code>
                 </vf-col>
@@ -102,7 +102,8 @@
             <vf-title level="4">Per identificador</vf-title>
 
             <vf-text>
-                Quan volem canviar els estils d'un únic element el que fem és afegir-li un identificador amb un atribut id i dins de
+                Quan volem canviar els estils d'un únic element el que fem és afegir-li un identificador amb un atribut
+                id i dins de
                 l'etiqueta style (en head) l'utilitzem amb el símbol #
             </vf-text>
 
@@ -110,21 +111,21 @@
                 <vf-col classes="md-col-6">
                     <vf-code>
                         &lt;head&gt;
-                            ...
-                            &lt;style&gt;
-                            #titol {
-                                color: green;
-                            }
-                            &lt;/style&gt;
-                            ...
+                        ...
+                        &lt;style&gt;
+                        #titol {
+                        color: green;
+                        }
+                        &lt;/style&gt;
+                        ...
                         &lt;/head&gt;
                         &lt;body&gt;
-                            ...
-                            &lt;h1 id="titol"&gt;Títol&lt;/h1&gt;
-                            &lt;p&gt;Hola&lt;/p&gt;
-                            &lt;p&gt;Adeu&lt;/p&gt;
-                            &lt;h2&gt;Subtítol&lt;/h2&gt;
-                            ...
+                        ...
+                        &lt;h1 id="titol"&gt;Títol&lt;/h1&gt;
+                        &lt;p&gt;Hola&lt;/p&gt;
+                        &lt;p&gt;Adeu&lt;/p&gt;
+                        &lt;h2&gt;Subtítol&lt;/h2&gt;
+                        ...
                         &lt;/body&gt;
                     </vf-code>
                 </vf-col>
@@ -141,7 +142,9 @@
             <vf-title level="4">Per classe</vf-title>
 
             <vf-text>
-                Quan volem canviar els estils de diversos elements que poden provindre d'etiquetes diferents, utilitzem l'atribut class dins de les etiquetes que volem modificar i utilitzem el . per identificar-lo dins de l'etiqueta style (en head).
+                Quan volem canviar els estils de diversos elements que poden provindre d'etiquetes diferents, utilitzem
+                l'atribut class dins de les etiquetes que volem modificar i utilitzem el . per identificar-lo dins de
+                l'etiqueta style (en head).
                 *Si es volen utilitzar dos classes es posa seguit d'un espai: class="classe1 classe2"*
             </vf-text>
 
@@ -152,8 +155,8 @@
                         ...
                         &lt;style&gt;
                         .remarcat {
-                            color: green;
-                            background-color: yellow;
+                        color: green;
+                        background-color: yellow;
                         }
                         &lt;/style&gt;
                         ...
@@ -182,15 +185,16 @@
         </vf-title>
 
         <vf-content>
-            <vf-text>Per posar els estils a banda hem d'indicar-li al fitxer HTML quin fitxer css va a utilitzar i després afegir el fitxer CSS a la mateixa carpeta de l'HTML</vf-text>
+            <vf-text>Per posar els estils a banda hem d'indicar-li al fitxer HTML quin fitxer css va a utilitzar i
+                després afegir el fitxer CSS a la mateixa carpeta de l'HTML</vf-text>
             <vf-row>
                 <vf-col>
                     <vf-text>A l'etiqueta head afegim la següent etiqueta:</vf-text>
                     <vf-code>
-                        &lt;head&gt;   
-                            ...
-                            &lt;link rel="stylesheet" href="estils.css"&gt;
-                            ...
+                        &lt;head&gt;
+                        ...
+                        &lt;link rel="stylesheet" href="estils.css"&gt;
+                        ...
                         &lt;/head&gt;
                     </vf-code>
                 </vf-col>
@@ -198,11 +202,11 @@
                     <vf-text>Afegim el fitxer estils.css</vf-text>
                     <vf-code>
                         p {
-                            color: red;
+                        color: red;
                         }
-        
+
                         h1 {
-                            color: black;
+                        color: black;
                         }
                     </vf-code>
                 </vf-col>
@@ -304,12 +308,12 @@
                     </vf-title>
                     <vf-code>
                         margin: 10px 5px 4px 3px; (dalt, dreta, baix, esquerra)
-                        margin: 10px 20px; (dalt i baix, esquerra i dreta)                       
-                        margin: 10px; (dalt, baix, dreta i esquerra)                        
-                        margin-left: 10px;                        
-                        margin-right: 10px;                      
-                        margin-top: 10px;                       
-                        margin-bottom: 10px;                    
+                        margin: 10px 20px; (dalt i baix, esquerra i dreta)
+                        margin: 10px; (dalt, baix, dreta i esquerra)
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
                         margin: 0 auto; (dalt i baix 0 i esquerra i dreta automàtic)
                     </vf-code>
                 </vf-col>
@@ -329,7 +333,7 @@
                     </vf-code>
                 </vf-col>
 
-                
+
 
                 <vf-col classes="col-md-3">
                     <vf-title level="4">
@@ -351,7 +355,7 @@
 
                 <vf-col classes="col-md-3">
                     <vf-title level="4">
-                        Float  
+                        Float
                     </vf-title>
                     <vf-text>
                         [Enllaç](https://www.w3schools.com/css/css_float.asp)
@@ -443,12 +447,162 @@
         </vf-content>
 
         <vf-title level="2">
+            Disposar elements horitzontalment
+        </vf-title>
+        <vf-content>
+            <vf-text>Tots els elements que vulgam disposar horitzontalment haurien d'estar tots dins d'una caixa. Anem a
+                disposar 7 caixes amb imatges dins d'un div. </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;div id="contenedor"&gt;
+                        &lt;div&gt;&lt;img src="1.png" alt=""&gt;&lt;/div&gt;
+                        &lt;div&gt;&lt;img src="2.png" alt=""&gt;&lt;/div&gt;
+                        &lt;div&gt;&lt;img src="3.png" alt=""&gt;&lt;/div&gt;
+                        &lt;div&gt;&lt;img src="4.png" alt=""&gt;&lt;/div&gt;
+                        &lt;div&gt;&lt;img src="5.png" alt=""&gt;&lt;/div&gt;
+                        &lt;div&gt;&lt;img src="6.png" alt=""&gt;&lt;/div&gt;
+                        &lt;div&gt;&lt;img src="7.png" alt=""&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_defecte.png"></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-title level="3">Col·lumnes variables</vf-title>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Si volem que les col·lumnes es disposen segons les necessitats dels elements de dins podem
+                        utilitzar els estils segÜents:</vf-text>
+                    <vf-code>
+                        #contenedor {
+                        display: flex;
+                        flex-wrap: wrap;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_flex_wrap.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>Ara, veuras que no està centrat en pantalla perquè els diferents elements estan disposats a
+                l'esquerra, ho podem canviar en la propietat justify-content:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        justify-content: center;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_flex_wrap_center.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        justify-content: space-between;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_flex_wrap_space_between.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        justify-content: space-around;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_flex_wrap_space_around.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>A banda, també hi ha altres com start, end, space-evently...</vf-text>
+            <vf-title level="3">Col·lumnes fixes</vf-title>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Si volem que les col·lumnes es disposen amb unes col·lumnes específiques podem utilitzar els estils segÜents:</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                        #contenedor {
+                            display: grid;
+                        }
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+            <vf-text>Ara, amb les propietats grid-template-columns i grid-template-rows anem definint el que van a ocupar les columnes</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        *3 col·lumnes iguals*
+                    </vf-text>
+                    <vf-code>
+                        grid-template-columns: 1fr 1fr 1fr; 
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_grid_1.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        *4 columnes: la primera que ocupe 2 i la resta 1*
+                    </vf-text>
+                    <vf-code>
+                        grid-template-columns: 2fr 1fr 1fr; 
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                        src="assets/unitats/programacio/web/css/display_grid_2.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            
+        </vf-content>
+
+        <vf-title level="2">
+            Disposar elements verticalment
+        </vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Podem tindre els elements disposats amb display flex i wrap-content wrap però volem ordenar els elements al centre verticalment. Per això, hauriem d'afegir una altura i també align-items:center</vf-text>
+                    <vf-code>
+                        #contenedor {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+
+                            height: 500px;
+                            align-items: center;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img styles="width: 50%;min-width: 200px;"
+                    src="assets/unitats/programacio/web/css/display_align_center.png"></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
             Exercicis
         </vf-title>
         <vf-content>
             <vf-row>
                 <vf-col>
-                    <vf-btn link="unitats/programacio/web/css/personal.html" classes="btn-short">Pàgina personal</vf-btn>
+                    <vf-btn link="unitats/programacio/web/css/personal.html" classes="btn-short">Pàgina
+                        personal</vf-btn>
                 </vf-col>
                 <vf-col>
                     <vf-btn link="unitats/programacio/web/css/aniversari.html" classes="btn-short">Targeta
