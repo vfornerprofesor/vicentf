@@ -148,3 +148,9 @@
       margin-top: 100px;
     }
     
+
+    /* VF-CODE */
+    vf-code {
+      display: block;
+      min-width: 250px;
+    }
