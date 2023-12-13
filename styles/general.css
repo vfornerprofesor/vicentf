@@ -236,3 +236,18 @@ vf-code {
   transition: all 0.5s ease;
   border: 1px solid var(--main-color);
 }
+
+/* HR SEPARATOR */
+.vf-hr {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  height: 2px;
+  color: var(--main-color);
+  background-color: var(--main-color);
+}
+
+.vf-hr-inverse {
+  background-color: white;
+  color: white;
+}

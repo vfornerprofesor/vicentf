@@ -1,11 +1,3 @@
-<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -14,6 +6,13 @@
 <link rel="stylesheet" href="styles/menu.css">
 <link rel="stylesheet" href="styles/blocks.css">
 <link rel="stylesheet" href="styles/buttons.css">
+
+<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script src="scripts/utils.js"></script>
 <script src="components/vf-text.js"></script>
@@ -27,6 +26,7 @@
 <script src="components/vf-code.js"></script>
 <script src="components/vf-btn.js"></script>
 <script src="components/vf-frame.js"></script>
+<script src="components/vf-hr.js"></script>
 
 
 <link rel="stylesheet" href="scripts/highlight/styles/default.min.css">
@@ -74,6 +74,10 @@
         index_title.textContent = 'Índex';
         index.appendChild(index_title);
 
+        /* var hr = document.createElement('vf-hr');
+        hr.setAttribute('inverse', '');
+        index.appendChild(hr); */
+
         var levels = index.getAttribute('levels');
         if (levels == "") {
             levels = [];
@@ -89,10 +93,6 @@
                     var hyperlink_id = t.children[0].children[0].id;
                     p.setAttribute('hyperlink', hyperlink_id);
                     p.setAttribute('onclick', 'scrollToSection("' + hyperlink_id + '")');
-                    /*p.addEventListener('click', function () {
-                        scrollToSection(p.getAttribute('hyperlink'));
-                    });*/
-
                     p.classList.add('vf-index-' + level);
                     p.textContent = t.textContent;
                     index.appendChild(p);
