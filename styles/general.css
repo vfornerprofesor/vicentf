@@ -4,6 +4,10 @@
   --black-color: #181818;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /*background-color: #f8f9fa;*/
   background-color: white;
