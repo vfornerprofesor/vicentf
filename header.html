@@ -36,6 +36,7 @@
 
 <script>
     //<link rel="icon" type="image/x-icon" href="img/icon.png">
+    //Add logo of the page
     var link = document.createElement('link');
     link.rel = 'icon';
     link.type = 'image/x-icon';
@@ -53,27 +54,67 @@
         }
     }
 
-    function showPopup(/**/) {
-        var args = arguments;
-
-    }
-
     function hideBlock(block) {
         bl = document.getElementById(block);
         if (bl && bl.style.display != 'none') {
             bl.style.display = 'none';
         }
     }
+
+    //CREATE INDEX
+    if (document.getElementById('vf-index')) {
+        var titles = document.getElementsByTagName('vf-title');
+        var index = document.getElementById('vf-index');
+        removeAllChildren(index);
+
+        var index_title = document.createElement('vf-title');
+        index_title.setAttribute('level', '2');
+        index_title.setAttribute('centered', '');
+        index_title.setAttribute('not-show-index', '');
+        index_title.textContent = 'Índex';
+        index.appendChild(index_title);
+
+        var levels = index.getAttribute('levels');
+        if (levels == "") {
+            levels = [];
+        } else {
+            levels = levels.split(',');
+        }
+        for (let t of titles) {
+            if (!t.hasAttribute('not-show-index')) {
+                var level = t.getAttribute('level');
+                if (level != '' && levels.includes(level)) {
+                    var p = document.createElement('div');
+
+                    var hyperlink_id = t.children[0].children[0].id;
+                    p.setAttribute('hyperlink', hyperlink_id);
+                    p.setAttribute('onclick', 'scrollToSection("' + hyperlink_id + '")');
+                    /*p.addEventListener('click', function () {
+                        scrollToSection(p.getAttribute('hyperlink'));
+                    });*/
+
+                    p.classList.add('vf-index-' + level);
+                    p.textContent = t.textContent;
+                    index.appendChild(p);
+                }
+            }
+        }
+
+    }
+
+    //START SHOWING ELEMENTS
     showBlock('menu');
 
-    //If password element exists, doesn't show
+    //If password element does not exist, then show
     if (document.getElementsByTagName('vf-password').length == 0) {
         showBlock('content');
     }
-   
+
     showBlock('footer');
     hideBlock('loading');
+
     setTimeout(() => {
+        //This is used if content doesn't load
         showBlock('menu');
 
         if (document.getElementsByTagName('vf-password').length == 0) {

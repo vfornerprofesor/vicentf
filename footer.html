@@ -1,16 +1,38 @@
+<div id="scrollToTopBtn">↑</div>
+<script>
+
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+  // Agrega un evento de clic al botón para hacer scroll hacia arriba
+  scrollToTopBtn.addEventListener('click', function () {
+    document.body.scrollTop = 0; // Para navegadores antiguos
+    document.documentElement.scrollTop = 0; // Para navegadores modernos
+  });
+
+  // Muestra u oculta el botón según la posición de desplazamiento
+  window.addEventListener('scroll', function () {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      scrollToTopBtn.style.display = 'block';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  });
+</script>
+
+
 <footer class="footer" onload="lastScript()">
   <p>Powered by Vicent Forner 2023</p>
 </footer>
 
-  <script>
-    setTimeout(() => {
-    
-      //Open section if it selected
-      section_id = document.URL.split('#').length > 1 ? document.URL.split('#')[1] : '';
-      if (section_id != '') {
-        section_id = decodeURI(section_id);
-        element_section = document.getElementById(section_id)
-        element_section.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 1000);
-  </script>
+<script>
+  setTimeout(() => {
+
+    //Open section if it selected
+    section_id = document.URL.split('#').length > 1 ? document.URL.split('#')[1] : '';
+    if (section_id != '') {
+      section_id = decodeURI(section_id);
+      element_section = document.getElementById(section_id)
+      element_section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 1000);
+</script>

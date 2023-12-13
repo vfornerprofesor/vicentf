@@ -43,4 +43,12 @@ function updateTextChangingLessThanAndGreaterThanSigns(text) {
     text = text.replaceAll('<', '&lt;');
     text = text.replaceAll('>', '&gt;');
     return text;
-  }
+}
+
+function scrollToSection(sectionId) {
+    debugger;
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
