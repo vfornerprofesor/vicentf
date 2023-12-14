@@ -1,34 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: bisque;
+        }
+
+        h1 {
+            text-align: center;
+            color: coral;
+            text-shadow: 0 0 3px black;
+        }
+
+        #peru {
+            color: #d20f22;
+        }
+
+        #sudafrica {
+            color: #009947;
+        }
+
+        #japo {
+            color: #bc002d;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+        td {
+            width: 33%;
+        }
+
+        .foto_lloc {
+            width: 100%;
+        }
+
+        .bandera {
+            width: 60px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            font-weight: bold;
+            background-color: coral;
+            border: 1px solid coral;
+            color: bisque;
+            text-decoration: none;
+            width: 50%;
+            border-radius: 20px;
+            transition: all 0.5s ease;
+        }
+
+        a:hover {
+            background-color: bisque;
+            color: coral;
+            transition: all 0.5s ease;
+
+        }
+    </style>
 </head>
+
 <body>
+    <h1>Paísos on vull viatjar</h1>
     <table>
-        <h1>Paísos on vull viatjar</h1>
         <tr>
             <td>
-                <img src="" alt="">
-                <h2></h2>
-                <p></p>
-                <a href=""></a>
+                <h2 id="peru">Perú</h2>
+                <img class="foto_lloc" src="peru.webp" alt="">
+                <img class="bandera" src="b_peru.png" alt="">
+                <br>
+                <a href="https://es.wikipedia.org/wiki/Per%C3%BA">Visitar</a>
             </td>
             <td>
-                <img src="" alt="">
-                <h2></h2>
-                <p></p>
-                <a href=""></a>
+                <h2 id="sudafrica">Sudàfrica</h2>
+                <img class="foto_lloc" src="sudafrica.jpg" alt="">
+                <img class="bandera" src="b_sudafrica.png" alt="">
+                <br>
+                <a href="https://es.wikipedia.org/wiki/Sud%C3%A1frica">Visitar</a>
             </td>
             <td>
-                <img src="" alt="">
-                <h2></h2>
-                <p></p>
-                <a href=""></a>
+                <h2 id="japo">Japó</h2>
+                <img class="foto_lloc" src="japo.jpg" alt="">
+                <img class="bandera" src="b_japo.png" alt="">
+                <br>
+                <a href="https://es.wikipedia.org/wiki/Jap%C3%B3n">Visitar</a>
             </td>
         </tr>
     </table>
 </body>
+
 </html>
