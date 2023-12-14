@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Exercicis CSS - Pel·lícula
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Has de reproduir la següent imatge:</vf-text>
+            <vf-img src="assets/unitats/programacio/web/css/pelicula.png"></vf-img>
+            <vf-text>Les condicions són les següents:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Crea un fitxer html nou: pelicula.html amb la següent *estructura*:
+                    </vf-text>
+                    <vf-list>
+                        <li>Dins de body una caixa (div)</li>
+                        <vf-list>
+                            <li>Dins de la caixa:</li>
+                            <vf-list>
+                                <li>Títol</li>
+                                <li>Imatge: portada</li>
+                                <li>Paràgraf: Any de llançament</li>
+                                <li>Paràgraf: Actors i actrius principals</li>
+                                <li>Llista: actors i actrius principals (4 o 5)</li>
+                            </vf-list>
+                        </vf-list>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>*Estils*</vf-text>
+                    <vf-list>
+                        <li>Caixa:</li>
+                        <vf-list>
+                            <li>alineat al centre</li>
+                            <li>fons color bisque</li>
+                            <li>amplada 50%</li>
+                            <li>margin 0 dalt i baix</li>
+                            <li>margin auto en esq i dreta</li>
+                            <li>borde de 2px linea color coral</li>
+                            <li>borde redondejat de 15px</li>
+                            <li>box-shadow: 0 0 20px coral</li>
+                            <li>marge INTERIOR de baix de 30px</li>
+                        </vf-list>
+                        <li>Imatge: amplada 200px</li>
+                        <li>Títol i paràgraf: color coral</li>
+                        <li>Llista:</li>
+                        <vf-list>
+                            <li>list-style: none</li>
+                            <li>amplada: fit-content</li>
+                            <li>margin 0 dalt i baix</li>
+                            <li>margin auto en esq i dreta</li>
+                            <li>marge INTERIOR de 0</li>
+                        </vf-list>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

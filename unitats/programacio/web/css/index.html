@@ -531,24 +531,26 @@
             <vf-title level="3">Col·lumnes fixes</vf-title>
             <vf-row>
                 <vf-col>
-                    <vf-text>Si volem que les col·lumnes es disposen amb unes col·lumnes específiques podem utilitzar els estils segÜents:</vf-text>
+                    <vf-text>Si volem que les col·lumnes es disposen amb unes col·lumnes específiques podem utilitzar
+                        els estils segÜents:</vf-text>
                 </vf-col>
                 <vf-col>
                     <vf-code>
                         #contenedor {
-                            display: grid;
+                        display: grid;
                         }
                     </vf-code>
                 </vf-col>
             </vf-row>
-            <vf-text>Ara, amb les propietats grid-template-columns i grid-template-rows anem definint el que van a ocupar les columnes</vf-text>
+            <vf-text>Ara, amb les propietats grid-template-columns i grid-template-rows anem definint el que van a
+                ocupar les columnes</vf-text>
             <vf-row>
                 <vf-col>
                     <vf-text>
                         *3 col·lumnes iguals*
                     </vf-text>
                     <vf-code>
-                        grid-template-columns: 1fr 1fr 1fr; 
+                        grid-template-columns: 1fr 1fr 1fr;
                     </vf-code>
                 </vf-col>
                 <vf-col>
@@ -562,7 +564,7 @@
                         *4 columnes: la primera que ocupe 2 i la resta 1*
                     </vf-text>
                     <vf-code>
-                        grid-template-columns: 2fr 1fr 1fr; 
+                        grid-template-columns: 2fr 1fr 1fr;
                     </vf-code>
                 </vf-col>
                 <vf-col>
@@ -570,7 +572,7 @@
                         src="assets/unitats/programacio/web/css/display_grid_2.png"></vf-img>
                 </vf-col>
             </vf-row>
-            
+
         </vf-content>
 
         <vf-title level="2">
@@ -579,21 +581,23 @@
         <vf-content>
             <vf-row>
                 <vf-col>
-                    <vf-text>Podem tindre els elements disposats amb display flex i wrap-content wrap però volem ordenar els elements al centre verticalment. Per això, hauriem d'afegir una altura i també align-items:center</vf-text>
+                    <vf-text>Podem tindre els elements disposats amb display flex i wrap-content wrap però volem ordenar
+                        els elements al centre verticalment. Per això, hauriem d'afegir una altura i també
+                        align-items:center</vf-text>
                     <vf-code>
                         #contenedor {
-                            display: flex;
-                            flex-wrap: wrap;
-                            justify-content: center;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
 
-                            height: 500px;
-                            align-items: center;
+                        height: 500px;
+                        align-items: center;
                         }
                     </vf-code>
                 </vf-col>
                 <vf-col>
                     <vf-img styles="width: 50%;min-width: 200px;"
-                    src="assets/unitats/programacio/web/css/display_align_center.png"></vf-img>
+                        src="assets/unitats/programacio/web/css/display_align_center.png"></vf-img>
                 </vf-col>
             </vf-row>
         </vf-content>
@@ -603,6 +607,12 @@
         </vf-title>
         <vf-content>
             <vf-row>
+                <vf-col>
+                    <vf-btn link="unitats/programacio/web/css/pelicula.html" classes="btn-short">Pel·lícula preferida</vf-btn>
+                </vf-col>
+                <vf-col>
+                    <vf-btn link="unitats/programacio/web/css/paisos.html" classes="btn-short">Països</vf-btn>
+                </vf-col>
                 <vf-col>
                     <vf-btn link="unitats/programacio/web/css/personal.html" classes="btn-short">Pàgina
                         personal</vf-btn>

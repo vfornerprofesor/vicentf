@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Exercicis CSS - Països
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Has de reproduir la següent imatge:</vf-text>
+            <vf-img src="assets/unitats/programacio/web/css/paisos.png"></vf-img>
+            <vf-text>Les condicions són les següents:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Crea un fitxer html nou: paisos.html amb la següent *estructura*:
+                    </vf-text>
+                    <vf-list>
+                        <li>Dins de body un títol h1 i una taula amb 1 fila i 3 columnes</li>
+                        <vf-list>
+                            <li>Cada columna:</li>
+                            <vf-list>
+                                <li>Títol h2</li>
+                                <li>Imatge: lloc</li>
+                                <li>Imatge: bandera</li>
+                                <li>Salt de línia</li>
+                                <li>Enllaç a la wikipedia del país</li>
+                            </vf-list>
+                        </vf-list>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>*Estils*</vf-text>
+                    <vf-list>
+                        <li>Body: color de fons</li>
+                        <li>Títol: </li>
+                        <vf-list>
+                            <li>Alineat al centre</li>
+                            <li>Assignar un color</li>
+                            <li>Ombra => text-shadow: 0 0 3px black</li>
+                        </vf-list>
+                        <li>Cada títol 2 ha de tindre un color relatiu a la bandera del país</li>
+                        <li>Taula:</li>
+                        <vf-list>
+                            <li>Alineat al centre</li>
+                            <li>Que utilitze tota la amplada</li>
+                        </vf-list>
+                        <li>Columna: amplada del 33%</li>
+                        <li>Fotos dels llocs: tota l'amplada</li>
+                        <li>Fotos de les banderes: amplada de 60px</li>
+                        <li>Enllaços:</li>
+                        <vf-list>
+                            <li>display: inline-block (perquè no ocupe només el text)</li>
+                            <li>Marge interior i exterior de 10px</li>
+                            <li>Negreta</li>
+                            <li>Assigna un color de fons</li>
+                            <li>Assigna un color de lletra</li>
+                            <li>Borde d'1px linea color que vulgues</li>
+                            <li>Borde redondejat de 20px</li>
+                            <li>text-decoration: none (llevar el subratllat dels enllaços)</li>
+                            <li>Amplada de la meitat</li>
+                        </vf-list>
+                        <li>Enllaços al passar el cursor per damunt: a:hover</li>
+                        <vf-list>
+                            <li>Intercanvia els colors de fons i de lletra</li>
+                        </vf-list>
+                        <li>Transicions</li>
+                        <vf-list>
+                            <li>En els dos anteriors (enllaços i enllaços:hover) posar => transition: all 0.5s ease</li>
+                        </vf-list>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
