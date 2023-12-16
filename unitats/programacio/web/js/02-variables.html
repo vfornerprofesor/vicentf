@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Variables en JS
+        </vf-title>
+
+        <vf-title level="2">
+            Què són les variables?
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Les variables són un concepte bàsic de tots els llenguatges de programació. En JavaScript, les variables
+                s'utilitzen per a emmagatzemar dades. Podem utilitzar variables per a emmagatzemar qualsevol tipus de
+                dades, com ara números, cadenes de text, o objectes.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Declarar variables
+        </vf-title>
+        <vf-content>
+            <vf-text>Per a declarar una variable en JavaScript, utilitzem la paraula clau let o const.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-list>
+                        <li>
+                            <vf-text>La paraula clau *let* declara una variable amb abast de bloqueig. Això significa
+                                que la variable només és visible dins del bloc en què s'ha declarat i *es podrà
+                                modificar*</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>La paraula clau *const* declara una variable amb abast de bloc i valor constant.
+                                Això significa que la variable només és visible dins del bloc en què s'ha declarat i que
+                                *el seu valor no es pot canviar*.</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                        let nom = "Joan";
+                        const edat = 30;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>En aquest exemple, hem declarat dues variables:
+
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>La variable *nom* és una variable amb abast de bloqueig que emmagatzema una cadena
+                                de text.</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>La variable *edat* és una variable amb abast de bloqueig i valor constant que
+                                emmagatzema un número.</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Assignació de valors i accés a les variables
+        </vf-title>
+        <vf-content>
+            <vf-text>Una vegada que hem declarat una variable, podem assignar-li un valor. Per a fer-ho, utilitzem el
+                signe d'igualtat (=).</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        //Fixa't que només utilitzem el let per declarar la variable la primera vegada
+                        let nom = 'Vicent';
+                        document.write('&lt;p&gt;' + nom + '&lt;/p&gt;');
+                        nom = 'Maria';
+                        document.write('&lt;p&gt;' + nom + '&lt;/p&gt;');
+                        nom = 'Hermenegildo';
+                        document.write('&lt;p&gt;' + nom + '&lt;/p&gt;');
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/js/01-js-basic/03.png" link="" styles=""
+                        classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+        <vf-title level="2">
+            Tipus de dades
+        </vf-title>
+        <vf-content>
+            <vf-text>Hi ha molts tipus de dades, però els que anem a veure ara són els que principalment
+                utilitzarem:</vf-text>
+            <vf-code>
+                let nom = 'Maia'; //text entre cometes simples
+                let raça = "Gos d'aigua"; //text entre cometes dobles
+                let any = 2022; //número
+                let pes = 14.7; //número decimal
+                let te_fam = true; //booleà: pot ser true o false
+                
+                let menjars = ['Pernil', 'Salmó', 'Caquis']; //llista entre [ i ] i els elements separats per comes
+                //Per mostrar Pernil seria amb menjars[0] perquè 0 és la primera posició 
+
+                /* Objecte amb diferents propietats i valors
+                L'objecte es defineix amb { i }
+                Cada propietat té un nom seguit del símbol : i el valor */
+                let dades_agrupades = {
+                    nom : 'Maia',
+                    raça : "Gos d'aigua",
+                    any: 2022,
+                    pes: 14.7,
+                    te_fam: true,
+                    menjars : ['Pernil', 'Salmó', 'Caquis']
+                }
+                //Per mostrar la raça seria amb dades_agrupades['raça']
+            </vf-code>    
+        </vf-content>
+
+        <vf-title level="2">
+            Exercicis
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Descarrega [l'exercici 1](https://drive.google.com/drive/folders/159KeGtHDrdHV8pCsZQoF_Q38-488ricc?usp=sharing) i fes el següent:
+            </vf-text>
+            <vf-text>Mostra els següents elements de la *teua mascota*:</vf-text>
+            <vf-row>
+                <vf-col>
+
+                    <vf-list>
+                        <li>
+                            <vf-text>Títol h1 amb el nom</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Imatge amb una imatge descarregada</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Un paràgraf que diga: És de la raça (i mostre la raça) i va nàixer l'any (i mostre l'any)</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Un paràgraf que diga: Pesa (i mostre el pes) kg i el que més li agrada és (i mostre els menjars)</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Hauràs de fer *2 versions diferents*</vf-text>
+                    <vf-list>
+                        <li><vf-text>Primer amb variables normals</vf-text></li>
+                        <li><vf-text>En segon lloc amb una variable de tipus objecte i que continga totes les dades</vf-text></li>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+            <vf-img src="assets/unitats/programacio/web/js/01-js-basic/04.png" link="" styles=""
+                        classes=""></vf-img>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

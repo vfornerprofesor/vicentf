@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    
-<div id="menu" style="display:none"></div>
+
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
         <vf-title level="1">
@@ -27,16 +27,31 @@
             <vf-text>
                 Es pot consultar el curs de [Javascript de W3Schools](https://www.w3schools.com/js/default.asp)
             </vf-text>
+
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/js.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-btn link="unitats/programacio/web/js/01-js-basic.html" styles="" classes="">
+                        Conceptes bàsics JS
+                    </vf-btn>
+                    <vf-btn link="unitats/programacio/web/js/02-variables.html" styles="" classes="">Variables</vf-btn>
+                    <vf-btn link="unitats/programacio/web/js/03-operadors.html" styles="" classes="">Operadors</vf-btn>
+                    
+                </vf-col>
+            </vf-row>
         </vf-content>
 
-        
+
 
 
     </div>
     <div id="footer" style="display:none"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
 
-    
+
 </body>
 
 </html>
