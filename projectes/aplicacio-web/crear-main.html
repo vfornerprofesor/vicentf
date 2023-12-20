@@ -23,10 +23,166 @@
             Crear main
         </vf-title>
         <vf-content>
+            <vf-text>Anem a crear el següent main pas a pas:</vf-text>
+            <vf-img src="assets/projectes/aplicacio-web/main.png"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Base de dades
+        </vf-title>
+        <vf-content>
+            <vf-text>En primer lloc anem a guardar les dades dels usuaris que teniem en check_login en un fitxer
+                database.php i desde check_login demanarem els usuaris a la base de dades.</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>*database.php*</vf-text>
+                    <vf-code>
+                        $users = [
+                            ['username' => 'user1', 'password' => 'the_password'],
+                        ];
+                        /* function that return list of the users */
+                        function get_users() {
+                            global $users;
+                            return $users;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>*check_login.php*</vf-text>
+                    <vf-code>
+                        /* remove this code */
+                        $users = [
+                            ['username' => 'user1', 'password' => 'the_password'],
+                        ];
+
+                        /* for this code */
+                        include('database.php');
+                        $users = get_users();
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+            <vf-text>Ara afegeix una llista de productes (uns 25 productes en dos categories diferents com a mínim) a
+                database.php on apareguen els productes amb els camps: nom, imatge, preu i categoria:</vf-text>
+            <vf-code>
+                $products = [
+                    ["name" => "Ordenador HP", "img" => "assets/photos/ordenador7.jpg", "price" => 665, "category" =>
+                    "computers"],
+                    ["name" => "Xiaomi", "img" => "assets/photos/smartphone5.jpg", "price" => 623, "category" =>
+                    "smartphones"],
+
+                ];
+            </vf-code>
+            <vf-text>Per últim crea la funció get_products que retorne la llista de productes.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Menú
+        </vf-title>
+        <vf-content>
+            <vf-text>El menú està format per un div principal i dos divs interiors. El div interior primer és el que
+                conté Hola i el nom d'usuari i el div segon és el que conté els elements del menú: Home, favorits,
+                usuari, carret i tancar la sessió.</vf-text>
+            <vf-text>El div principal i el div dels elements del menú han d'organitzar els elements horitzontalment
+                (consulta la pàgina de css).</vf-text>
+            <vf-btn link="unitats/programacio/web/css" styles="" classes="btn-short">Ves al temari de CSS</vf-btn>
+            <vf-text>Recorda utilitzar els iconos de Fontawesome. Després amb estils CSS t'ha de quedar semblant a
+                açò:</vf-text>
+            <vf-img src="assets/projectes/aplicacio-web/main_menu.png"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Filtres
+        </vf-title>
+        <vf-content>
+            <vf-text>Per crear els filtres anem a crear una caixa desplegable. Això es fa amb l'etiqueta details. Dins
+                de l'etiqueta hem de tindre dos, una per al nom visible i altra per al que es desplegarà. Per posar el
+                nom visible utilitzem l'etiqueta summary i l'etiqueta que es desplegarà ha de ser un form amb el mètode
+                GET i que vaja al mateix fitxer main.php</vf-text>
+            <vf-code>
+                &lt;div id="filters"&gt;
+                    &lt;details&gt;
+                        &lt;summary&gt;Filters:&lt;/summary&gt;
+                        &lt;form action="main_shop.php" method="GET"&gt;&lt;/form&gt;
+                    &lt;/details&gt;
+                &lt;/div&gt;
+            </vf-code>
+            <vf-text>Apareixerà el desplegable però al fer clic no mostrarà res perquè el formulari està buit</vf-text>
+            <vf-img src="assets/projectes/aplicacio-web/main_filter.png"></vf-img>
+            <vf-text>El formulari anem a dividir-ho en 4 parts i cada part serà un fieldset que tindrà un legend amb el
+                nom i els inputs que facen falta:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Els elements són:</vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>Nom: Camp de text per filtrar pel nom</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Categories: un checkbox per cada categoria que hi haja als productes</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Preus: dos inputs de tipus range per triar el preu mínim i màxim</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Filtrar: un input de tipus submit que llançarà el formulari</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Codi d'exemple del primer fieldset que té el nom:</vf-text>
+                    <vf-code>
+                        &lt;div id="filters"&gt;
+                            &lt;details&gt;
+                                &lt;summary&gt;Filters:&lt;/summary&gt;
+                                &lt;form action="main.php" method="GET"&gt;
+                                    &lt;fieldset&gt;
+                                        &lt;legend&gt;Name&lt;/legend&gt;
+                                        &lt;input type="text" name="name" id="name"&gt;
+                                    &lt;/fieldset&gt;
+                                &lt;/form&gt;
+                            &lt;/details&gt;
+                        &lt;/div&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/projectes/aplicacio-web/main_filters.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>En tindre-ho tot, modifica els estils perquè quede com la següent imatge. En el meu cas, perquè queden disposats horitzontalment els fieldset, li he dit al form que dispose els elements d'aquesta manera.</vf-text>
+            <vf-img src="assets/projectes/aplicacio-web/main_filters2.png"></vf-img>
+
 
         </vf-content>
 
+        <vf-title level="2">
+            Productes
+        </vf-title>
+        <vf-content>
+            <vf-text>Per visualitzar els productes en primer lloc s'ha de crear un div que mostrarà els productes. Dins d'aquest div posarem el codi php que s'encarregarà de mostrar tots els productes. </vf-text>
+            <vf-text>
+                Fixa't que dins del div he posat codi php que me crearà un div per a cada producte i mostrarà el nom. Modifica el codi afegint altres elements i estils perquè quede semblant a açò:
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;div id="products"&gt;
+                            &lt;?php
+                            $products = get_products();
+                            foreach ($products as $prod) {
+                                echo '&lt;div&gt;';
+                                echo $prod['name'];
+                                echo '&lt;/div&gt;';
+                            }
+                            ?&gt;
+                        &lt;/div&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/projectes/aplicacio-web/main.png"></vf-img>
 
+                </vf-col>
+            </vf-row>
+        </vf-content>
 
     </div>
     <div id="footer" style="display:none"></div>
