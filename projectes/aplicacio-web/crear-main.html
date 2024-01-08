@@ -184,6 +184,56 @@
             </vf-row>
         </vf-content>
 
+        <vf-title level="2">
+            Filtrar els productes
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Quan fem clic al botó de filtrar veiem que se'ns refresca la pàgina però se'ns envien uns sèrie de paràmetres:
+            </vf-text>
+            <vf-text>
+                *main_shop.php?name=&computers=on&smartphones=on&price_min=0&price_max=1000*
+            </vf-text>
+            <vf-text>
+                Si ho analitzem veiem que s'envien els paràmetres name, computers, smartphones, price_min i price_max. Aquests paràmetres els podem agafar perquè els rebem amb el mètode get. Després hem d'afegir aquests paràmetres a la funció que recull els productes per tal de poder-los filtrar. Per provar anem a començar amb el filtre de nom:
+            </vf-text>
+            <vf-text>
+                En main.php:
+            </vf-text>
+            <vf-code>
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    $name = $_REQUEST['name'];
+
+                    $products = get_products($name);
+
+                }
+            </vf-code>
+            <vf-text>
+                Ara, en database.php hem d'afegir el paràmetre nom i filtrar la llista abans de retornar-la:
+            </vf-text>
+            <vf-code>
+                function get_products($name) {
+                    global $products;
+                    //crear una llista auxiliar buida
+
+                    //recorrer tots els productes amb un foreach
+                    //    si el nom del producte conté el paràmetre name
+                    //        afegir el producte a la llista auxiliar
+
+                    //retornar la llista auxiliar
+                }
+            </vf-code>
+            <vf-img src="assets/projectes/aplicacio-web/main_filters3.png"></vf-img>
+
+        </vf-content>
+        <vf-title level="2">
+            Acabar els filtres
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Fes el mateix tenint en compte les categories i els preus.</vf-text>
+        </vf-content>
+
     </div>
     <div id="footer" style="display:none"></div>
     <script>$('#footer').load('footer.html');</script>
