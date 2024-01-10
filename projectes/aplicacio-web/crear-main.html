@@ -102,7 +102,7 @@
                 &lt;div id="filters"&gt;
                     &lt;details&gt;
                         &lt;summary&gt;Filters:&lt;/summary&gt;
-                        &lt;form action="main_shop.php" method="GET"&gt;&lt;/form&gt;
+                        &lt;form action="main.php" method="GET"&gt;&lt;/form&gt;
                     &lt;/details&gt;
                 &lt;/div&gt;
             </vf-code>
@@ -192,7 +192,7 @@
                 Quan fem clic al botó de filtrar veiem que se'ns refresca la pàgina però se'ns envien uns sèrie de paràmetres:
             </vf-text>
             <vf-text>
-                *main_shop.php?name=&computers=on&smartphones=on&price_min=0&price_max=1000*
+                *main.php?name=&computers=on&smartphones=on&price_min=0&price_max=1000*
             </vf-text>
             <vf-text>
                 Si ho analitzem veiem que s'envien els paràmetres name, computers, smartphones, price_min i price_max. Aquests paràmetres els podem agafar perquè els rebem amb el mètode get. Després hem d'afegir aquests paràmetres a la funció que recull els productes per tal de poder-los filtrar. Per provar anem a començar amb el filtre de nom:
