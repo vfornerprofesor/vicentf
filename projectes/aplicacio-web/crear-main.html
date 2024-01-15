@@ -234,6 +234,41 @@
             <vf-text>Fes el mateix tenint en compte les categories i els preus.</vf-text>
         </vf-content>
 
+        <vf-title level="2">
+            Pistes
+        </vf-title>
+
+        <vf-content>
+           
+                    <vf-text>
+                        *Comprovar que la propietat name del producte p té el text name buscat*
+                    </vf-text>
+                    <vf-code>
+                        if(strpos($p['name'], $name) !== false || $name == "") {
+
+                        }
+                    </vf-code>
+               
+                    <vf-text>
+                        *Comprovar que la categoria computers està activa i el producte p té eixa categoria o si la categoria smartphones està activa i el producte p té eixa categoria*
+                    </vf-text>
+                    <vf-code>
+                        if(($computers == "on" && $p['category'] == 'computers') || $smartphones == "on" && $p['category'] == 'smartphones') {
+                        
+                        }
+                    </vf-code>
+               
+                    <vf-text>
+                        *Comprovar que el preu siga major que el preu mínim i que el preu siga menor que el preu màxim*
+                    </vf-text>
+                    <vf-code>
+                        if($p['price'] &gt;= $price_min && $p['price'] &lt;= $price_max) {
+                        
+                        }
+                    </vf-code>
+               
+        </vf-content>
+
     </div>
     <div id="footer" style="display:none"></div>
     <script>$('#footer').load('footer.html');</script>

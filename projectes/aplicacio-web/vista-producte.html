@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1" centered styles="" classes="">
+            Vista producte
+        </vf-title>
+        <vf-content>
+            <vf-text>Anem a crear la vista de cada producte:</vf-text>
+            <vf-img src="assets/projectes/aplicacio-web/vista-producte.png"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Main
+        </vf-title>
+        <vf-content>
+            <vf-text>Al main hem d'afegir un enllaç a cada producte que vaja al fitxer product.php on se li envie el id del producte. Si en la llista de productes en database.php, els productes no tenen un id afegeix un a cada producte. Comença per l'id 1 fins l'últim que tingues.</vf-text>
+            <vf-text>La ruta a la que ha d'anar el producte ha de ser semblant a *product.php?id=3*</vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Producte
+        </vf-title>
+        <vf-content>
+            <vf-text>A la vista del producte, el que primer fem és cridar a la base de dades perquè ens done les dades del producte amb el id seleccionat. Per tant necessitem el següent:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        *main.php*
+                    </vf-text>
+                    <vf-code>
+                        //get id
+
+                        //include database file
+                        include('database.php');
+
+                        //get product by id
+                        $product = get_product_by_id($id);
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>
+                        *database.php*
+                    </vf-text>
+                    <vf-code>
+                        function get_product_by_id($id) {
+                            //loop all products
+                            //return the correct product
+                        }
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
