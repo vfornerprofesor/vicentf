@@ -15,24 +15,99 @@
 </head>
 
 <body>
-    
-<div id="menu" style="display:none"></div>
+
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
         <vf-title level="1">
             Nextcloud
         </vf-title>
 
+        <vf-title level="2">
+            Activity and documentation
+        </vf-title>
 
         <vf-content>
-            <vf-text>Accedeix a la [unitat](https://smx-awe.webprofes.com/unitats/nextcloud)</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        In this activity we are going to present a practical case in which your company manager asks you
+                        to investigate Nextcloud. You have to present a document explaining the following:
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>What is Nextcloud and what functions does it have (you can indicate that it is a
+                                web application).
+                            </vf-text>
+                        </li>
+                        <li>
+                            <vf-text>How do you install it?</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>How to start using it and configure it for your company</vf-text>
+                        </li>
+                    </vf-list>
+                    <vf-text>
+                        To do this you have to invent a company name and what the company does in order to explain how
+                        you could use Nextcloud.
+                    </vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-list>
+                        <li><vf-text>[System requirements](https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html)</vf-text>
+                        </li>
+                        <li><vf-text>[Example Ubuntu installation](https://docs.nextcloud.com/server/latest/admin_manual/installation/example_ubuntu.html)</vf-text></li>
+                        <li><vf-text>[Linux installation](https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html)</vf-text></li>
+                        <li><vf-text>[Client manual](https://docs.nextcloud.com/desktop/latest/)</vf-text></li>
+                        <li><vf-text>[Nextcloud configuratino](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/index.html)</vf-text></li>
+                    </vf-list>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Installation steps - help
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                To explain what Nextcloud is and what it does, you can look at the documentation or other pages you can find.
+            </vf-text>
+            <vf-text>
+                To do the installation you can follow the following steps (looking at the Ubuntu installation example):
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>Install Ubuntu server 22.04 LTS</vf-text></li>
+                <li><vf-text>Preconfigure: install the programs that are needed for Nextcloud to work.</vf-text></li>
+                <li><vf-text>Configure database: create database, user and give permissions</vf-text></li>
+                <li><vf-text>[Download nextcloud](https://download.nextcloud.com/server/releases/latest.zip) and NOT VERIFY</vf-text></li>
+                <li><vf-text>Put nextcloud folder in /var/www. Give permissions to www-data user</vf-text></li>
+                <li><vf-text>Configure Apache server</vf-text></li>
+                <vf-list ordered>
+                    <li><vf-text>Create the nextcloud.conf file on your computer and pass it with scp on your computer (remember in alias use nextcloud_vf, where vf is your initials)</vf-text></li>
+                    <li><vf-text>Enable the site with a2ensite</vf-text></li>
+                    <li><vf-text>Reload apache (reload)</vf-text></li>
+                    <li><vf-text>Enable mods: a2enmod rewrite, headers, env, dir, mime, ssl</vf-text></li>
+                    <li><vf-text>Enable site: default-ssl</vf-text></li>
+                    <li><vf-text>Reload apache (reload)</vf-text></li>
+                </vf-list>
+                <li><vf-text>Access the Nextcloud web application</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Tools
+        </vf-title>
+        <vf-content>
+            <vf-text>Set the appearence of your nextcloud. After that you must explain how the main tools we can see in the menu works and choose a new one, install it and use it.</vf-text>
         </vf-content>
 
     </div>
     <div id="footer" style="display:none"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
 
-    
+
 </body>
 
 </html>
