@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    
+<div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Multimèdia
+        </vf-title>
+        <vf-content>
+
+            <vf-row centered>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px"
+     link="unitats/multimedia/edicio-imatge-1"
+                        src="assets/gimp.png"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/multimedia/edicio-imatge-1">
+                        Edició d'imatge - Bàsic
+                    </vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px"
+     link="unitats/multimedia/edicio-imatge-2"
+                        src="assets/gimp.png"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/multimedia/edicio-imatge-2">
+                        Edició d'imatge - Avançat
+                    </vf-btn>
+                </vf-col>
+                
+            </vf-row>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script></div>
+
+    
+</body>
+
+</html>
