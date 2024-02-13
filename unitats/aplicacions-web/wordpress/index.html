@@ -23,9 +23,58 @@
             Wordpress
         </vf-title>
 
+        <vf-title level="2">
+            Installation
+        </vf-title>
+
         <vf-content>
-            <vf-text>Accedeix a la [instal·ació](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)</vf-text>
-            <vf-text>Accedeix també a [com utilitzar Wordpress](https://smx-awe.webprofes.com/unitats/wordpress-on-cloud/how-to-use-wordpress)</vf-text>
+            <vf-text>Follow this steps to install Wordpress:</vf-text>
+            <vf-list ordered>
+                <li>
+                    <vf-text>Install virtual machine with Ubuntu 20.04 LTS</vf-text>
+                </li>
+                <li>
+                    <vf-text>Install LAMP: Linux, Apache2, MySQL (server and client) and PHP</vf-text>
+                </li>
+                <li>
+                    <vf-text>Set up database: sudo mysql --> create database, user, grant permission and flush</vf-text>
+                </li>
+                <li>
+                    <vf-text>Download wordpress from [this link](https://wordpress.org/download/)</vf-text>
+                </li>
+                <vf-list ordered>
+                    <li>
+                        <vf-text>Unzip file</vf-text>
+                    </li>
+                    <li>
+                        <vf-text>Look for config file (wp-config-sample.php) and copy to wp-config.php</vf-text>
+                    </li>
+                    <li>
+                        <vf-text>Change the following content: DB_NAME, DB_USER, DB_PASSWORD</vf-text>
+                    </li>
+                    <li>
+                        <vf-text>Move wordpress folder to /opt/</vf-text>
+                    </li>
+                    <li>
+                        <vf-text>Create a symbolic link in default Apache2 path with the name wordpress and capital letters of your name (mine will be wordpress_vf). To create a symbolik link use this instruction:</vf-text>
+                        <vf-code>ln -s target link_name</vf-code>
+                    </li>
+                </vf-list>
+                <li>
+                    <vf-text>Access to wordpress through web browser and review if you must install something else</vf-text>
+                </li>
+                <li>
+                    <vf-text>When you're going to install type your full name as Site Title and remember user and password you're setting</vf-text>
+                </li>
+            </vf-list>
+          </vf-content>
+
+        <vf-title level="2">
+            How to use Wordpress
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Access to this link to [how to use wordpress](https://smx-awe.webprofes.com/unitats/wordpress-on-cloud/how-to-use-wordpress)</vf-text>
         </vf-content>
 
     </div>
