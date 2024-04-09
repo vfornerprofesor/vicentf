@@ -59,6 +59,26 @@
         </vf-content>
 
         <vf-title level="2">
+            Agafar valors dels inputs
+        </vf-title>
+        <vf-content>
+            <vf-text>Per recollir informació que posa l'usuari que interactua amb el web utilitzem els inputs, per tant, dels elements HTML hem d'obtindre el valor que han escrit de la següent manera:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;input id="nom" type="text"&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                        let inputNom = document.getElementById('nom');
+                        let nom = inputNom.value;
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
             Canviar text
         </vf-title>
         <vf-content>
@@ -230,6 +250,12 @@
             &lt;/script&gt;
         </vf-code>
         <vf-img src="assets/unitats/programacio/web/js/04-dom/03.png" link="" styles="" classes=""></vf-img>
+
+        <vf-title level="3">
+            Exercici 3
+        </vf-title>
+        <vf-text>Fes un formulari com el següent que mostre al fer clic al botó tota la informació emplenada.</vf-text>
+        <vf-img src="assets/unitats/programacio/web/js/04-dom/04.png" link="" styles="" classes=""></vf-img>
 
     </vf-content>
     </div>
