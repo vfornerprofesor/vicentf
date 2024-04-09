@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Operadors en JS
+        </vf-title>
+
+        <vf-title level="2">
+            Què són els operadors?
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Els operadors són símbols que ens permeten realitzar operacions, habitualment matemàtiques, sobre variables o sobre valors directament. Els operadors que anem a veure són suma (+), resta (-), multiplicació (asterisc), divisió (/), residu (%) i exponent (doble asterisc).
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        document.write(3 + 2);
+                        document.write('&lt;br&gt;');
+                        document.write(5 - 3);
+                        document.write('&lt;br&gt;');
+                        document.write(4 * 6);
+                        document.write('&lt;br&gt;');
+                        document.write(8 / 3);
+                        document.write('&lt;br&gt;');
+                        document.write(8 % 3);
+                        document.write('&lt;br&gt;');
+                        document.write(7 ** 2);
+                        document.write('&lt;br&gt;');
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>5</vf-text>
+                    <vf-text>2</vf-text>
+                    <vf-text>24</vf-text>
+                    <vf-text>2.6666666666666665</vf-text>
+                    <vf-text>2</vf-text>
+                    <vf-text>49</vf-text>
+                </vf-col>
+            </vf-row>
+            <vf-text>De la mateixa manera es poden gastar variables per realitzar operacions i emmagatzemar les operacions:</vf-text>
+            <vf-code>
+                let numero1 = 74;
+                document.write('El primer número és: ' + numero1);
+                document.write('&lt;br&gt;');
+
+                let numero2 = 87;
+                document.write('El segon número és: ' + numero2);
+                document.write('&lt;br&gt;');
+
+                let suma = numero1 + numero2;
+                document.write('La suma dels dos números és: ' + suma);
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">
+            Exercicis
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="3">Exercici 1</vf-title>
+            <vf-text>Escriu un programa en el que crees dos variables numero1 i numero2. Assigna uns valors a eixes variables i mostra el resultat de les següents operacions: suma, resta, multiplicació, divisió, residu i exponent.</vf-text>
+            <vf-title level="3">Exercici 2</vf-title>
+            <vf-text>Escriu un programa que calcule el següent:</vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>L'àrea d'un cercle. Es calcula amb pi per el radi al quadrat. El valor del radi pot ser 10. (en cm2)</vf-text>
+                </li>
+                <li>
+                    <vf-text>L'àrea d'un rectangle: base per altura (en m2)</vf-text>
+                </li>
+                <li>
+                    <vf-text>El pes d'un objecte: massa per gravetat (en N)</vf-text>
+                </li>
+            </vf-list>
+        </vf-content>
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

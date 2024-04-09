@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            DOM
+        </vf-title>
+
+        <vf-title level="2">
+            Què és el DOM i què podem fer?
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                El DOM és el Document Object Model que ens permet agafar tots els elements d'un web i canviar el contingut, la estructura i l'estil. És a dir ens permet modificar elements com el text d'un paràgraf, afegir elements HTML dins d'altres o també canviar el color d'alguns.
+            </vf-text>
+        </vf-content>
+        <vf-title level="2">
+            Agafar elements
+        </vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;body&gt;
+                            &lt;h1 id="titol_hola"&gt;Hola!&lt;/h1&gt;
+                            &lt;p id="p_comestas"&gt;Com estàs?&lt;/p&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                        //Agafar el títol i guardar-lo en una variable
+                        //S'agafa utilitzant document.getElementById
+                        //i enviant-li el identificador del element que volem agafar
+                        let titol = document.getElementById('titol_hola');
+
+                        //Agafar el paràgraf i guardar-lo en una variable
+                        let paragraf = document.getElementById('p_comestas');
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Canviar text
+        </vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                <vf-code>
+                    &lt;body&gt;
+                        &lt;h1 id="titol1" onclick="canviarTitol1()"&gt;Titol 1&lt;/h1&gt;
+                        &lt;h2 id="titol2" onclick="canviarTitol2()"&gt;Titol 2&lt;/h2&gt;
+                        &lt;p id="paragraf" onclick="canviarParagraf()"&gt;Paragraf&lt;/p&gt;
+                    &lt;/body&gt;
+                </vf-code>
+            </vf-col>
+            <vf-col>
+                <vf-code>
+                    //Agafe el títol 1 i li canvie el text a 'HOLA!'
+                    function canviarTitol1() {
+                        let titol1 = document.getElementById('titol1');
+                        titol1.textContent = 'HOLA!';
+                    }
+                    
+                    //Agafe el títol 2 i li canvie el text a 'Com estàs?'
+                    function canviarTitol2() {
+                        let titol2 = document.getElementById('titol2');
+                        titol2.textContent = 'Com estàs?';
+                    }
+                    
+                    //Agafe el paràgraf i li canvie el text a 'Estic aprenent JS'
+                    function canviarParagraf() {
+                        let paragraf = document.getElementById('paragraf');
+                        paragraf.textContent = 'Estic aprenent JS';
+                    }
+                </vf-code>
+            </vf-col>
+        </vf-row>
+        <vf-text>Fixa't que al fer clic sobre cada element s'executa la funció pertinent.</vf-text>
+    </vf-content>
+
+    <vf-title level="2">
+        Canviar estils
+    </vf-title>
+    <vf-content>
+        <vf-row>
+            <vf-col>
+                <vf-code>
+                    &lt;body&gt;
+                        &lt;p id="roig" onclick="canviarParagrafRoig()"&gt;Roig&lt;/p&gt;
+                        &lt;p id="verd" onclick="canviarParagrafVerd()"&gt;Verd&lt;/p&gt;
+                        &lt;p id="blau" onclick="canviarParagrafBlau()"&gt;Blau&lt;/p&gt;
+                    &lt;/body&gt;
+                </vf-code>
+            </vf-col>
+            <vf-col>
+                <vf-code>
+                    //Amb la propietat style podem canviar tots els estils d'un element HTML
+                    function canviarParagrafRoig() {
+                        var p = document.getElementById('roig');
+                        p.style.color = 'red';
+                    }
+                </vf-code>
+            </vf-col>
+        </vf-row>
+        <vf-text>
+            Recorda que estils hi ha molts: width, height, color, backgroundColor, fontSize, border, etc.
+        </vf-text>
+    </vf-content>
+
+    <vf-title level="2">
+        Exercicis
+    </vf-title>
+    <vf-content>
+        <vf-title level="3">
+            Exercici 1
+        </vf-title>
+
+        <vf-text>
+            Reprodueix el següent web amb el nom de 4 companys de classe i fes que al fer clic a cadascú, es canvie el tamany i color de la lletra del seleccionat i es torne al tamany i color original a la resta.  
+        </vf-text>
+        <vf-img src="assets/unitats/programacio/web/js/04-dom/01.png" link="" styles="" classes=""></vf-img>
+
+        <vf-title level="3">
+            Exercici 2
+        </vf-title>
+        <vf-text>
+            Fes que al fer clic al paràgraf el tamany del borde cada vegada siga 1px més
+        </vf-text>
+        <vf-code>
+            &lt;style&gt;
+                p {
+                    border: 1px solid coral;
+                    text-align: center;
+                    border-radius: 10px;
+                    width: fit-content;
+                    padding: 5px;
+                }
+            &lt;/style&gt;
+            &lt;p id="p" onclick="clickP()"&gt;CLIC ACÍ!&lt;/p&gt;
+            &lt;script&gt;
+                let tamany = 1;
+                let paragraf = document.getElementById('p');
+
+                function clickP() {
+                    //Crea una variable amb el nou tamany que serà el tamany però afegint-li 1
+                    //Canvia el tamany del borde amb el nou tamany
+                    //Canvia la variable tamany al valor del nou tamany
+                }
+            &lt;/script&gt;
+        </vf-code>
+        <vf-row>
+            <vf-col>
+                <vf-img src="assets/unitats/programacio/web/js/04-dom/02.1.png" link="" styles="" classes=""></vf-img>
+            </vf-col>
+            <vf-col>
+                <vf-img src="assets/unitats/programacio/web/js/04-dom/02.2.png" link="" styles="" classes=""></vf-img>
+            </vf-col>
+        </vf-row>
+
+        <vf-title level="3">
+            Exercici 3
+        </vf-title>
+        <vf-text>Arregla el següent codi perquè funcione canviant el color al fer clic a cada color i que s'esborre el color a la resta.</vf-text>
+        <vf-code>
+            &lt;style&gt;
+                #caixa {
+                    width: 100%;
+                    height: 100vh;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                #caixa &gt; div {
+                    width: 40%;
+                    margin-inline: 5%;
+                    height: 40vh;
+                    line-height: 40vh;
+                    text-align: center;
+                    font-size: 50px;
+                    border-radius: 20px;
+                }
+            &lt;/style&gt;
+            &lt;div id="caixa"&gt;
+                &lt;div id="roig" onclick="clickVerd()"&gt;Verd&lt;/div&gt;
+                &lt;div id="blau" onclick="clickBlau()"&gt;Roig&lt;/div&gt;
+                &lt;div id="blau" onclick="clickRoig()"&gt;Blau&lt;/div&gt;
+                &lt;div id="groc" onclick="clickGroc()"&gt;Groc&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;script&gt;
+                function clickVerd() {
+                    let verd = document.getElementById('groc');
+                    verd.style.backgroundColor = 'blue';
+                }
+
+                function clickGroc() {
+                    let groc = document.getElementById('blau');
+                    groc.style.backgroundColor = 'red';
+                }
+
+                function clickRoig() {
+                    let roig = document.getElementById('verd');
+                    roig.style.backgroundColor = 'green';
+                }
+
+                function clickBlau() {
+                    let blau = document.getElementById('blau');
+                    blau.style.backgroundColor = 'red';
+                }
+            &lt;/script&gt;
+        </vf-code>
+        <vf-img src="assets/unitats/programacio/web/js/04-dom/03.png" link="" styles="" classes=""></vf-img>
+
+    </vf-content>
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
