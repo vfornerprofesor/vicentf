@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Interficie d'App Inventor i com utilitzar-lo
+        </vf-title>
+
+        <vf-title level="2">
+            Interficie
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Per veure la interficie gràfica de l'aplicació anem a crear el nostre primer projecte, anomenat
+                Nom_Cognom_01_Series_Favorites. Recorda que on posa Nom_Cognom ha de ser el teu nom i el teu cognom.
+            </vf-text>
+            <vf-text>
+                Una vegada es cree, se'ns obrirà la interficie de l'aplicació com la següent:
+            </vf-text>
+
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/general.png" link="" styles=""
+                classes=""></vf-img>
+
+            <vf-text>Anem a desglossar tots els apartats:</vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>A la part esquerra tenim tots els apartats d'elements que podem afegir a les nostres
+                        pantalles: interficie, disposicions, etc.</vf-text>
+                </li>
+                <li>
+                    <vf-text>En la part superior tenim les finestres de la nostra aplicació on podem anar alternant o
+                        també podem afegir-ne i elmininar-ne.</vf-text>
+                </li>
+                <li>
+                    <vf-text>En la part central tenim la visualització de l'app i de la pantalla que tenim seleccionada
+                        per veure com queda (abans de vore-ho al mòbil).</vf-text>
+                </li>
+                <li>
+                    <vf-text>En la part dreta el primer element que tenim és una agrupació dels elements que tenim en
+                        pantalla. Veuràs que al afegir elements s'aniran afegint ahí.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Més a la dreta trobem les propietats de l'element seleccionat per poder canviar textos,
+                        colors, etc dels elements que vulga'm ja siguen pantalles, botons, textos, etc.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Per últim, en la part superior dreta està el botó per canviar entre el mode dissenyador
+                        (per afegir elements) i blocs (per afegir-li la funcionalitat als elements de la
+                        pantalla).</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-text>A continuació veuràs tots els apartats i elements que tenim per afegir a la pantalla.</vf-text>
+            <vf-row>
+                <vf-col class="col-md3">
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/interficie.png" link=""
+                        styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col class="col-md3">
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/disposicio.png" link=""
+                        styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col class="col-md3">
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/mitjans.png" link=""
+                        styles="" classes=""></vf-img>
+                </vf-col>
+                <vf-col class="col-md3">
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/dibuix.png" link=""
+                        styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Afegir i editar elements
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Per veure com afegir i editar elements anem a anar construint ja la nostra aplicació de sèries
+                favorites.</vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>
+                        Per crear una pantalla com la de la imatge anem a afegir el següent:
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>Una imatge</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Etiqueta</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Disposició horitzontal amb 3 botons. Recorda que els elements per defecte es posen
+                                un baix de l'altre. Amb una disposició horitzontal fem que es posen un al costat de
+                                l'altre.</vf-text>
+                        </li>
+                    </vf-list>
+                    <vf-text>
+                        Tips per deixar-ho com a la imatge:
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>Desmarca la propietat Títol Visible de la pantalla</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Posa centrat vertial i horitzontal a la pantalla</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Canvia l'altura de la imatge a 150px</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/01series.png" link=""
+                        styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Provar l'aplicació amb el mòbil
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Per provar-ho directament amb el mòbil t'has de connectar a la xarxa del centre que te dirà el
+                professor. A més, hauràs d'instal·lar una aplicació que es diu MIT AI2 Companion al teu mòbil.
+            </vf-text>
+            <vf-text>
+                Una vegada fet des de l'ordinador has de fer clic al menú superior Conectar > AI Companion.
+            </vf-text>
+            <vf-text>
+                Amb el mòbil, obriràs l'aplicació MIT AI2 COMPANION i escanejaràs el QR que t'ha eixit a l'ordinador.
+                D'aquesta manera tots els canvis els veuràs en directe.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Afegir pantalla
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Des del menú superior anem a afegir 3 pantalles, una per a cada sèrie que has triat. Fes clic al botó
+                d'Afegir finestra i posa de nom el nom de les sèries.
+            </vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>Fixa't que ara apareixen les 3 finestres noves i pots anar alternant:</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/02series.png" link=""
+                        styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>Ara completa NOMÉS la pantalla d'una de les sèries com la següent. Et deixe algunes pistes:</vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>Utilitza etiquetes en blanc per posar espais</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Canvia l'altura i l'amplada dels objectes</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Els 3 textos en horitzontal van també separats per etiquetes en blanc</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/03series.jpeg" link=""
+                    styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Copiar pantalles
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Ara, per tal de fer les altres dos pantalles de les sèries has de fer el següent:
+            </vf-text>
+            <vf-list ordered>
+                <li>
+                    <vf-text>Obri la pantalla que ja tens plena</vf-text>
+                </li>
+                <li>
+                    <vf-text>Selecciona l'objecte principal</vf-text>
+                </li>
+                <li>
+                    <vf-text>Control + C (copiar)</vf-text>
+                </li>
+                <li>
+                    <vf-text>Obri la pantalla on vols copiar-ho</vf-text>
+                </li>
+                <li>
+                    <vf-text>Selecciona l'objecte principal</vf-text>
+                </li>
+                <li>
+                    <vf-text>Control + V (apegar)</vf-text>
+                </li>
+            </vf-list>
+            <vf-text>
+                A continuació acaba les altres dos pantalles amb la informació de les altres dos sèries.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/04series.jpeg" link=""
+                    styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/05series.jpeg" link=""
+                    styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Navegació entre pantalles
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Per navegar entre pantalles hem de donar-li un poc de funcionalitat als botons. Per això anem a canviar al mode Blocs des de la part superior dreta.
+            </vf-text>
+            <vf-text>
+                Allí haurem de seleccionar de la finestra Screen1, el botó de la primera sèrie i l'esdeveniment al fer clic. Després en l'apartat control buscarem un per obrir pantalla.
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/01blocs.png" link=""
+                    styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/02blocs.png" link=""
+                    styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-text>
+                Fes el mateix amb els altres botons.
+            </vf-text>
+            <vf-text>
+                Per últim, als botons de tornar enrere de les tres pantalles de les tres sèries, has de tancar
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/01_interficie/03blocs.png" link=""
+                    styles="max-width:400px" classes=""></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Entregues
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Per entregar les tasques, has d'anar al menú Projectes > *Exportar al meu ordenador el projecte (.aia) seleccionat*.</vf-text>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
