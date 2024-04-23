@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Operacions de control
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Anem a aprendre a executar unes instruccions o unes altres depenent d'unes condicions. Per això anem a
+                fer una aplicació per a posar notes.
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/selector_nota.png" link="" styles=""
+                classes=""></vf-img>
+            <vf-text>A continuació anem a fer que al presionar el botó de + sume un punt i al de menys que
+                reste:</vf-text>
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/sumar_restar.png" link="" styles=""
+                classes=""></vf-img>
+            <vf-text>
+                Però ara tenim un problema, que podem tindre notes menors que 0 i majors que 10:
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/menor0.jpeg" link=""
+                        styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/major10.jpeg" link=""
+                        styles="max-width:400px" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>Anem a fer que al sumar només sume si la nota és inferior a 10. En cas de NO ser inferior a 10, que
+                mostre un error:</vf-text>
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/codi_sumar.png" link="" styles=""
+                classes=""></vf-img>
+            <vf-text>Acaba l'aplicació controlant el de restar</vf-text>
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/acabat.jpeg" link=""
+                styles="max-width:400px  " classes=""></vf-img>
+        </vf-content>
+
+
+
+        <vf-title level="2">
+            Exercici: Endevinar número
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Anem a crear una aplicació en què l'usuari ha d'endevinar un número entre l'1 i el 100. A l'usuari
+                se li indicarà el número de intents que porta i si el número que ha introduït és major, menor o l'ha
+                encertat.</vf-text>
+            <vf-img src="assets/unitats/programacio/blocs/app-inventor/02_control/endevinar.png" link=""
+                styles="" classes=""></vf-img>
+            <vf-text>Per als blocs hauràs de seguir aquestos passos:</vf-text>
+            <vf-list ordered>
+                <li>
+                    <vf-text>Crear variable amb número aleatori entre 1 i 100</vf-text>
+                </li>
+                <li>
+                    <vf-text>Al fer clic al botó COMPROVAR</vf-text>
+                </li>
+                <vf-list ordered>
+                    <li><vf-text>Si el número escrit és el número que busquem --> Posar ENCERTAT en la etiqueta resultat</vf-text></li>
+                    <li><vf-text>Si el número escrit és menor que el número que busquem --> Posar que EL NÚMERO QUE BUSQUEM ÉS MAJOR  en la etiqueta resultat</vf-text></li>
+                    <li><vf-text>Si el número escrit és major que el número que busquem --> Posar que EL NÚMERO QUE BUSQUEM ÉS MENOR en la etiqueta resultat</vf-text></li>
+                    <li><vf-text>Després de comprovar i canviar la etiqueta resultat és aconsellable buidar el text del camp de text</vf-text></li>
+                </vf-list>
+                <li>
+                    <vf-text>Intents: volem que cada vegada que no trobem el número, el número d'intents vaja incrementant-se</vf-text>
+                </li>
+                <vf-list ordered>
+                    <li><vf-text>Hem de crear una variable intents que comence en 0</vf-text></li>
+                    <li><vf-text>Cada vegada que el número es comprove i no siga, es sumarà 1 a la variable intents</vf-text></li>
+                    <li><vf-text>Es canviarà el text de l'etiqueta num_intents per el valor de la variable intents</vf-text></li>
+                </vf-list>
+                <li>
+                    <vf-text>Tornar a començar:</vf-text>
+                </li>
+                <vf-list ordered>
+                    <li><vf-text>Al trobar el número, es mostrarà el botó de tornar a començar</vf-text></li>
+                    <li><vf-text>Al presionar a tornar a començar:</vf-text></li>
+                    <vf-list ordered>
+                        <li><vf-text>S'ocultarà el botó de tornar a començar</vf-text></li>
+                        <li><vf-text>Es canviarà el valor de la variable intents a 0</vf-text></li>
+                        <li><vf-text>Es canviarà el text de pantalla de intents per 0</vf-text></li>
+                        <li><vf-text>Es tornarà a assignar un valor aleatori a la variable número</vf-text></li>
+                    </vf-list>
+                </vf-list>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Exercici: Marcador de handbol (o altres esports)
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                *Pots fer de pàdel / tenis per tindre punts extra!!!!*
+            </vf-text>
+            <vf-frame link="https://drive.google.com/file/u/0/d/16sZJpyDiDXFtSminIAcS4_8TnDjj88LG/preview"
+            classes="vf-frame-half"></vf-frame>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

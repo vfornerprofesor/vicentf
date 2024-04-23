@@ -150,6 +150,7 @@
         Exercicis
     </vf-title>
     <vf-content>
+
         <vf-title level="3">
             Exercici 1
         </vf-title>
@@ -163,9 +164,18 @@
             Exercici 2
         </vf-title>
 
-        <vf-text>
-            Fes un programa que tenint 2 inputs de tipus número i un botó de calcular, faça que al pressionar el botó de calcular s'obtinga el resultat de les operacions bàsiques: suma, resta, multiplicació, divisió, potència i residu
-        </vf-text>
+        <vf-text>Anem a crear una calculadora i per a mostrar els resultats, en lloc de mostrar textos amb document.write, anem a utilitzar un paràgraf:</vf-text>
+        <vf-code>
+            &lt;p id="resultat"&gt;&lt;/p&gt;
+        </vf-code>
+        <vf-text>D'aquesta manera, desde el codi javascript podem recuperar eixe element i canviar-li el text:</vf-text>
+        <vf-code>
+            ...
+            let resultat = document.getElementById('resultat');
+            resultat.textContent = 'La suma és ' + suma;
+        </vf-code>
+
+        <vf-img src="assets/unitats/programacio/web/js/04-dom/calculadora.png" link="" styles="" classes=""></vf-img>
 
         <vf-title level="3">
             Exercici 3
