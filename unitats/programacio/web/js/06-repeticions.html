@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Repeticions
+        </vf-title>
+
+        <vf-content>
+            <vf-text>En programació tenim ferramentes que ens permeten realitzar accions semblants o repetir-me d'una manera més senzilla que escriure les instruccions de manera reiterativa.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Bucles for
+        </vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                  <vf-text>Imagina que vull escriure amb el document.write els números de l'1 al 10, per fer-ho hauria d'escriure la mateixa instrucció 10 vegades. </vf-text>
+                 </vf-col>
+                <vf-col>
+                    <vf-code>
+                        document.write('1');
+                        document.write('2');
+                        document.write('3');
+                        document.write('4');
+                        document.write('5');
+                        document.write('6');
+                        document.write('7');
+                        document.write('8');
+                        document.write('9');
+                        document.write('10');
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>I si hi haguera la possibilitat de no repetir les instruccions? Ací és on entren en joc els bucles per tal d'evitar-nos escriure tantes linies de codi innecessàries. Mira l'exemple del bucle for:</vf-text>
+                    <vf-text>
+                        En el codi, el contingut d'instruccions a repetir es repetiran tantes vegades com es complisca la condició. La variable i comença en 1 i es repetirà mentre la i siga menor o igual que 10 i s'anirà incrementant d'1 en 1.
+                    </vf-text>
+                    <vf-text>Per tant, la i la primera vegada que s'executa val 1, la següent val 2, la següent 3 i així fins a 10</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                        for(inicia_variable ; condicio ; increment) {
+                            accions a realitzar
+                        }
+                        for(let i = 1; i &lt;= 10; i++) {
+                            document.write(i);
+                        }
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+
+            <vf-text>Per provar-ho anem a practicar amb diferents exemples:</vf-text>
+            <vf-list>
+                <li><vf-text>De l'1 al 100</vf-text></li>
+                <li><vf-text>De l'1 al 50 de 3 en 3</vf-text></li>
+                <li><vf-text>De l'1 al 50 només núltiples de 5</vf-text></li>
+                <li><vf-text>Del 40 al 10</vf-text></li>
+            </vf-list>
+
+            <vf-text>Ara, per continuar anem a utilitzar el següent codi i has de fer que es sumen els números entre l'1 i el 10</vf-text>
+            <vf-code>
+                &lt;style&gt;
+                    body {background-color: coral;color: white;text-align: center;}
+                    button {background-color: white;color:coral;border:2px solid white;padding: 10px;border-radius: 10px;}
+                    button:hover {background-color: coral;color:white}
+                &lt;/style&gt;
+                &lt;h1&gt;Suma dels números entre l'1 i el 10&lt;/h1&gt;
+                &lt;p id="resultat"&gt;&lt;/p&gt;
+                &lt;br&gt;
+                &lt;button onclick="sumar()"&gt;Sumar&lt;/button&gt;
+
+                &lt;script&gt;
+                    let resultat = document.getElementById('resultat');
+
+                    function sumar() {
+                        //Crea una variable suma que comence en 0
+                        
+                        //Bucle for 
+                        //    afegeix-li a la variable suma la variable del bucle
+                        
+                        //Mostra a resultat el total de la suma
+                    }
+                
+                &lt;/script&gt;
+            </vf-code>
+
+
+            <vf-img src="assets/unitats/programacio/web/js/06-repeticions/exemple.png" link="" styles="" classes=""></vf-img>
+
+         
+
+    </vf-content>
+    
+        
+
+    <vf-title level="2">
+        Exercicis
+    </vf-title>
+    <vf-content>
+
+        <vf-title level="3">
+            Exercici 1
+        </vf-title>
+
+        <vf-text>
+            Escriu un programa que pregunte per dos números i que tindrà un paràgraf on mostrar el resultat. Mostrarà tots els números (amb text dins d'un paràgraf) que hi haja entre els dos números. En el cas que el primer número siga major que el segon al paràgraf haurà de posar ERROR.
+
+        </vf-text>
+        <vf-row>
+            <vf-col>
+                <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex1.1.png" link="" styles="max-width:400px;" classes=""></vf-img>
+            </vf-col>
+            <vf-col>
+                <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex1.2.png" link="" styles="max-width:400px;" classes=""></vf-img>
+            </vf-col>
+        </vf-row>
+
+        <vf-title level="3">
+            Exercici 2
+        </vf-title>
+
+        <vf-text>Escriu un programa com l'anterior però que sume els números entre els dos números que s'indiquen i que mostre error també si el primer és major que el segon</vf-text>
+        <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex2.png" link="" styles="max-width:400px;" classes=""></vf-img>
+
+      
+        <vf-title level="3">
+            Exercici 3
+        </vf-title>
+        <vf-text>
+            Fes un programa que demane dos números i que compte quants d'entre ells són múltiples de 3. Que mostre també l'error si el primer número és major que el segon
+        </vf-text>
+        <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex3.png" link="" styles="max-width:400px;" classes=""></vf-img>
+
+
+        <vf-title level="3">
+            Exercici 4
+        </vf-title>
+        <vf-text>Fes un programa que mostre la taula de multiplicar que indique l'usuari</vf-text>
+        <vf-text>Cada operació (5x1=5 o 5x2=10) haurà d'estar en un paràgraf. Has de crear un div i dins amb javascript insertaras els paràgrafs. Mira l'exemple:</vf-text>
+        <vf-code>
+            &lt;div id="caixa"&gt;&lt;/div&gt;
+            &lt;script&gt;
+                //Agafar l'element caixa:
+                let caixa = document.getElementById('caixa');
+
+                //Crea un element de tipus paràgraf
+                let paragraf = document.createElement('p');
+
+                //Canvia el contingut del paràgraf
+                paragraf.textContent = 'hola';
+
+                //Afegir el paràgraf a la caixa
+                caixa.appendChild(paragraf);
+            &lt;/script&gt;
+        </vf-code>
+        
+        <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex4.png" link="" styles="max-width:400px;" classes=""></vf-img>
+
+    </vf-content>
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
