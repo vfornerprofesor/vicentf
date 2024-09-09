@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ6w5k+u9N6g5i07mkqT6+YL+h65Lt5DP0zgH3UvnCZ8j5p1Viw/aG7F4bwd/anO" crossorigin="anonymous">
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <style>
+        body {
+            background-color: #010141;
+        }
+
+        .img_main {
+            margin-inline: auto;
+            display: block;
+        }
+
+        .steps {
+            width: 70%;
+            margin-inline: auto;
+        }
+
+        .step {
+            background: rgb(255, 220, 88);
+            background: linear-gradient(90deg, rgba(255, 220, 88, 1) 0%, rgba(255, 146, 77, 1) 35%);
+            background: linear-gradient(90deg, rgba(255, 220, 88, 1) 0%, rgba(255, 146, 77, 1) 35%);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: x-large;
+            font-weight: bold;
+            color: #010141;
+            margin-inline: auto;
+        }
+
+        .step_selected {
+            border: 4px solid gold;
+        }
+
+        .bottom {
+            color: #ffdc58;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .right {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            font-size: 40px;
+        }
+
+        .right div:hover {
+            color: #ff924d;
+
+        }
+
+        .left {}
+
+        .left i {
+            font-size: 50px;
+            margin-right: 40px;
+        }
+
+        .left i:hover {
+            color: #ff924d;
+        }
+
+        #win img {
+            margin-inline: auto;
+            display: block;
+        }
+
+    </style>
+    <div id="game">
+
+        <img class="img_main" src="assets/activitats/qui-vol-ser-millonari/main.jpg" alt="">
+
+        <div class="steps">
+            <div id="s10" style="width:100%" class="step">1.000.000€</div>
+            <div id="s9" style="width:95%" class="step">300.000€</div>
+            <div id="s8" style="width:90%" class="step">100.000€</div>
+            <div id="s7" style="width:85%" class="step">25.000€</div>
+            <div id="s6" style="width:80%" class="step">10.000€</div>
+            <div id="s5" style="width:75%" class="step">1.000€</div>
+            <div id="s4" style="width:70%" class="step">250€</div>
+            <div id="s3" style="width:65%" class="step">100€</div>
+            <div id="s2" style="width:60%" class="step">30€</div>
+            <div id="s1" style="width:55%" class="step step_selected">10€</div>
+        </div>
+
+        <br><br>
+
+        <div class="bottom">
+            <div class="left">
+                <i onclick="clickComodin(this)" id="user" class="fas fa-user"></i>
+                <i onclick="clickComodin(this)" id="laptop" class="fas fa-laptop"></i>
+                <i onclick="clickComodin(this)" id="percentage" class="fas fa-percentage"></i>
+            </div>
+            <div class="right">
+                <div onclick="onClickCorrecte()" class="correcte">></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="win">
+        <img src="assets/activitats/qui-vol-ser-millonari/win.gif" alt="">
+    </div>
+
+    <script>
+        let step = 1;
+        let game = document.getElementById('game');
+        let win = document.getElementById('win');
+        win.style.display = 'none';
+        function onClickCorrecte() {
+            if (step < 10) {
+                let currStep = document.getElementById('s' + step);
+                currStep.classList.remove('step_selected');
+                step++;
+                let nextStep = document.getElementById('s' + step);
+                nextStep.classList.add('step_selected');
+            } else {
+                game.style.display = 'none';
+                win.style.display = 'block';
+            }
+
+        }
+
+        function clickComodin(elemento) {
+
+            if(elemento.style.color === 'rgb(223, 41, 41)') {
+                elemento.style.color = '#ffdc58';
+            } else {
+                elemento.style.color = '#df2929';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
