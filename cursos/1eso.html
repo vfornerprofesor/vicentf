@@ -15,25 +15,73 @@
 </head>
 
 <body>
-    
-<div id="menu" style="display:none"></div>
+
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
-        <vf-title  level="1" centered styles="" classes="">
+        <vf-title level="1" centered styles="" classes="">
             1r ESO
         </vf-title>
+
+        <vf-content>
+
+            <vf-img classes="vf-img-colored vf-img-link-centered boxshadow" classes="img-scale-hover"
+                src="assets/activitats/activitat_inicial.png"
+                link="activitats/activitats-inicials/avaluacio_inicial_1eso.html"></vf-img>
+
+        </vf-content>
 
         <vf-title level="2" centered>
             Situacions d'aprenentatge
         </vf-title>
 
-       
+        <vf-content>
+
+            <vf-row centered>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px" link="unitats/ordinadors/gestio-arxius"
+                        src="assets/gestio-arxius.png"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/ordinadors/gestio-arxius">
+                        Gestió d'arxius
+                    </vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px" link="unitats/ofimatica/correu-electronic"
+                        src="assets/correu-electronic.jpg"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/ofimatica/correu-electronic">
+                        Correu electrònic
+                    </vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px" link="unitats/ordinadors/digitalitzacio-saludable"
+                        src="assets/digitalitzacio-saludable.jpg"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/ordinadors/digitalitzacio-saludable">
+                        Digitalització saludable</vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px" link="unitats/ofimatica/editor-textos"
+                        src="assets/editor-textos.png"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/ofimatica/editor-textos">
+                        Editor de textos</vf-btn>
+                </vf-col>
+                <vf-col styles="width:20em">
+                    <vf-img styles="max-height:200px" link="unitats/programacio/basic/code"
+                        src="assets/code.jpg"></vf-img>
+                    <vf-btn classes="btn-short" link="unitats/programacio/basic/code">
+                        Code</vf-btn>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+
 
     </div>
     <div id="footer" style="display:none"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
 
-    
+
 </body>
 
 </html>
