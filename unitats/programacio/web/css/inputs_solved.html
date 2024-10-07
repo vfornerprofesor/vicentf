@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Computerize - Sign Up</title>
+</head>
+<body>
+   <style>
+
+       body {
+           background-color: coral;
+           font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+           color: coral;
+       }
+       #main {
+           width: 50%;
+           min-width: 400px;
+           margin-inline: auto;
+           margin-top: 50px;
+           background-color: white;
+           border-radius: 5px;
+           border: 1px solid white;
+       }
+
+       #main h1, #main h3 {
+           text-align: center;
+       }
+
+       form {
+           width: 300px;
+           margin-inline: auto;
+       }
+
+       label {
+           width: 300px;
+           display: inline-block;
+           text-align: center;
+       }
+
+       input {
+           width: 300px;
+           margin-bottom: 10px;
+           border: none;
+           border: 1px solid coral;
+           border-radius: 3px;
+           font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+           accent-color: coral;
+       }
+
+       #lnewsletter {
+           display: inline;
+       }
+       #newsletter {
+           width: fit-content;
+       }
+
+       #div_gender {
+           width: fit-content;
+           margin-inline: auto;
+       }
+
+       .gender_label {
+           display: inline;
+       }
+       .gender_input {
+           width: fit-content;
+       }
+
+       #btn_submit {
+           margin-block: 10px;
+           font-size: 20px;
+           background-color: coral;
+           color: white;
+       }
+
+       #btn_submit:hover {
+           color: coral;
+           background-color: white;
+       }
+   </style>
+   <div id="main">
+       <h1>COMPUTERIZE</h1>
+       <h3>SIGN UP</h3>
+       <form action="">
+           <label for="name">Name:</label>
+           <input type="text" name="name" id="name">
+           <br>
+           <label for="surname">Surname:</label>
+           <input type="text" name="surname" id="surname">
+           <br>
+           <label for="birthday">Birthday:</label>
+           <input type="date" name="birthday" id="birthday">
+           <br>
+           <label for="email">Email:</label>
+           <input type="email" name="email" id="email">
+           <br>
+           <label for="password">Password:</label>
+           <input type="password" name="password" id="password">
+           <br>
+           <label for="devices">Number of computing devices:</label>
+           <input type="number" name="devices" id="devices">
+           <br>
+           <label for="gender">Gender:</label>
+           <div id="div_gender">
+               <label class="gender_label" for="">Male:</label>
+               <input class="gender_input" type="radio" name="gender" id="male">
+               <label class="gender_label" for="">Female:</label>
+               <input class="gender_input" type="radio" name="gender" id="female">
+               <label class="gender_label" for="">Other:</label>
+               <input class="gender_input" type="radio" name="gender" id="other">
+           </div>
+           <br>
+           <label id="lnewsletter" for="newsletter">Do you want to receive newsletter?</label>
+           <input type="checkbox" name="newsletter" id="newsletter">
+           <br>
+           <input id="btn_submit" type="submit" value="SIGN UP">
+       </form>
+   </div>
+</body>
+</html>
