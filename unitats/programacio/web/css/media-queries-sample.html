@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="contenedor">
+        <div id="uno">1</div>
+        <div id="dos">2</div>
+        <div id="tres">3</div>
+    </div>
+
+    <style>
+        /* Computer styles */
+        @media (min-width: 1024px) {
+            #contenedor {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        /* Tablet styles */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #contenedor {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Phone styles */
+        @media (max-width: 767px) {
+            #contenedor {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #contenedor {
+            margin: 10px;
+            display: grid;
+            border: 1px solid grey;
+            padding: 10px;
+        }
+
+        #uno,
+        #dos,
+        #tres {
+            width: 300px;
+            height: 300px;
+            padding: 5px;
+            font-size: 50px;
+            line-height: 300px;
+            text-align: center;
+            margin-inline: auto;
+        }
+
+        #uno {
+            background-color: coral;
+        }
+
+        #dos {
+            background-color: cadetblue;
+        }
+
+        #tres {
+            background-color: lightgreen;
+        }
+    </style>
+
+</body>
+
+</html>

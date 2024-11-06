@@ -2,6 +2,8 @@
   --main-color: #6088f7;
   --main-color-hover: #7ea1ff;
   --black-color: #181818;
+  --shadow-color: grey;
+  --shadow-hover-color: lightgrey;
 }
 
 html {
@@ -43,6 +45,7 @@ body {
 
 .vf-img {
   max-width: -webkit-fill-available;
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .vf-img-col {
@@ -147,7 +150,7 @@ iframe {
 
 /*** BOX SHADOW ***/
 .boxshadow {
-  box-shadow: 0 0 10px grey;
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 
 
@@ -178,6 +181,36 @@ vf-text {
 vf-code {
   display: block;
   min-width: 250px;
+  width: fit-content;
+  border-radius: 3px;
+  box-shadow: 0 0 10px grey;
+  margin-inline: auto;
+  position: relative;
+}
+
+vf-code .vf-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.code_copied {
+  position: absolute;
+  top: 20px;
+    right: 0;
+    background-color: var(--shadow-color);
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+
+.vf-icon {
+  color: var(--shadow-color);
+}
+
+.vf-icon:hover {
+  color: var(--shadow-hover-color);
+  transition: all 0.5s ease;
 }
 
 /* INDEX */

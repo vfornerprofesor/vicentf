@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+
+    <div id="content" style="display:none">
+        <vf-title level="1">Responsive design</vf-title>
+        <vf-content>
+            <vf-text>El disseny responsiu és una tècnica de disseny web que permet que una pàgina web s'adapti a
+                diferents mides de pantalla i dispositius, com ara ordinadors, tauletes i mòbils. Això es fa utilitzant
+                CSS per ajustar el disseny i el contingut en funció de la mida de la pantalla.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">Ús de les media queries</vf-title>
+        <vf-content>
+            <vf-text>Les media queries són una part fonamental del disseny responsiu. Permeten aplicar diferents estils
+                CSS en funció de les característiques del dispositiu, com la mida de la pantalla, la resolució,
+                l'orientació, etc.</vf-text>
+        </vf-content>
+
+        <vf-title level="3">Exemple de disseny responsiu amb media queries</vf-title>
+        <vf-content>
+            <vf-text>A continuació es mostra un exemple de com utilitzar les media queries per crear un disseny
+                responsiu que s'adapti a diferents mides de pantalla:</vf-text>
+                <vf-text>El codi base seria el següent que mostraria 3 caixes en vertical i volem mostrar en pantalla d'ordinador les caixes en 3 columnes, en tauleta 2 columnes i en mòbil 1 columna.</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;div id="contenedor"&gt;
+                            &lt;div id="uno"&gt;1&lt;/div&gt;
+                            &lt;div id="dos"&gt;2&lt;/div&gt;
+                            &lt;div id="tres"&gt;3&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                    #contenedor {
+                        margin: 10px;
+                        display: grid;
+                        border: 1px solid grey;
+                        padding: 10px;
+                    }
+            
+                    #uno,
+                    #dos,
+                    #tres {
+                        width: 300px;
+                        height: 300px;
+                        padding: 5px;
+                        font-size: 50px;
+                        line-height: 300px;
+                        text-align: center;
+                        margin-inline: auto;
+                    }
+            
+                    #uno {
+                        background-color: coral;
+                    }
+            
+                    #dos {
+                        background-color: cadetblue;
+                    }
+            
+                    #tres {
+                        background-color: lightgreen;
+                    }
+                </vf-code>
+                </vf-col>
+            </vf-row>
+
+            <vf-text>Ara, per aplicar el que volem fer amb les columnes hem d'indicar els estils en els diferents models:</vf-text>
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-code>
+                        /* Computer styles */
+                        @media (min-width: 1024px) {
+                            #contenedor {
+                                grid-template-columns: 1fr 1fr 1fr;
+                            }
+                        }
+                    </vf-code>
+                    <vf-img src="assets/unitats/programacio/web/css/mq1-1.jpeg"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-code>
+                        /* Tablet styles */
+                        @media (min-width: 768px) and (max-width: 1023px) {
+                            #contenedor {
+                                grid-template-columns: 1fr 1fr;
+                            }
+                        }
+                    </vf-code>
+                    <vf-img src="assets/unitats/programacio/web/css/mq1-2.jpeg"></vf-img>
+
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-code>
+                        /* Phone styles */
+                        @media (max-width: 767px) {
+                            #contenedor {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </vf-code>
+                    <vf-img styles="max-height: 300px" src="assets/unitats/programacio/web/css/mq1-3.jpeg"></vf-img>
+                </vf-col>
+
+            </vf-row>
+            
+            <vf-text>En aquest exemple, hem canviat els estils del contenedor que té les 3 caixes per tal que tinga uns valors per a la propiedad grid-template-columns. Amb aquesta configuració, tal i com s'obriga el web en diferents dispositius es veurà les diferents configuracions.</vf-text>
+        </vf-content>
+
+        <vf-title level="3">Exercici 1</vf-title>
+        <vf-content>
+            <vf-text>Crea una pàgina web que tinga una imatge (gran) d'una empresa i baix el títol amb el nom en versió pantalla d'ordinador; en tauleta i mòbil estaran la imatge i el títol un al costat de l'altre. Has de tindre en compte el tamany de la imatge en versió tauleta i en versió mòbil.</vf-text>
+           
+        </vf-content>
+
+        <vf-title level="3">Exercici 2</vf-title>
+        <vf-content>
+            <vf-text>Agafa l'exercici que has fet abans dels països i fes que es mostren 3 columnes en mode pantalla d'ordinador; 2 en mode tauleta; i 1 en mode mòbil.</vf-text>
+          
+        </vf-content>
+
+        <vf-title level="3">Exercici 3</vf-title>
+        <vf-content>
+            <vf-text>Crea un formulari senzill d'inici de sessió amb el nom de la teua empresa, un camp per a l'usuari o el correu i un altre camp per a la contrasenya. En mode pantalla d'ordinador ha d'estar l'etiqueta del camp al costat del input; en mode tauleta el que tu consideres; en mode mòbil haurà d'estar l'etiqueta dalt i el camp baix.</vf-text>
+          
+        </vf-content>
+
+        <vf-title level="2">Recursos addicionals</vf-title>
+        <vf-content>
+            <vf-text>Ferramenta per veure a la vegada en mode pantalla d'ordinador, tauleta i mòbil: [responsively.app](https://responsively.app/)</vf-text>
+            <vf-text>Per a més informació sobre el disseny responsiu, pots visitar el [següent enllaç](https://www.w3schools.com/css/css_rwd_mediaqueries.asp).</vf-text>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

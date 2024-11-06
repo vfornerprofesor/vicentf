@@ -666,6 +666,47 @@
 
         </vf-content>
 
+        <vf-title level="2">
+            Responsive design - Media queries
+        </vf-title>
+
+        <vf-content>
+            <vf-btn link="unitats/programacio/web/css/media-queries.html" class="btn-short">Accedeix a la pàgina de Responsive design - Media queries</vf-btn>
+        </vf-content>
+
+        <vf-title level="2">
+            Variables en CSS
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Quan desenvolupem un web és necessari aplicar uns estils comuns per a tots 
+                els elements com el color dels títols que serà el mateix per als bordes dels elements.</vf-text>
+            <vf-code>
+                h1 {
+                    color: coral;
+                }
+
+                .box {
+                    border-color: coral;
+                }
+            </vf-code>
+            <vf-text>En cas de voler canviar-ho, ho hauriem de fer en tots els llocs i si hem triat un color en 20 selectors diferents ho hauriem de canviar en tots.</vf-text>
+            <vf-text>Per poder utilitzar variables que guarden aquests valors i només canviar-ho una vegada quan fem un canvi, hem d'utilitzar el següent esquema:</vf-text>
+            <vf-code>
+                :root {
+                    --main-color: coral;
+                    --background-color: white;
+                }
+
+                h1 {
+                    color: var(--main-color);
+                }
+
+                .box {
+                    border-color: var(--main-color);
+                }
+            </vf-code>
+        </vf-content>
 
     </div>
     <div id="footer" style="display:none"></div>
