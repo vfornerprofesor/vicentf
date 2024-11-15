@@ -184,7 +184,7 @@ vf-code {
   width: fit-content;
   border-radius: 3px;
   box-shadow: 0 0 10px grey;
-  margin-inline: auto;
+  /*margin-inline: auto;*/
   position: relative;
 }
 
