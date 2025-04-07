@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            5 - Condicionals
+        </vf-title>
+
+        <vf-content>
+
+            <vf-text>La funció SI és molt important dins de l'excel i ens serveix per a poder posar un valor o un altre
+                depenent d'alguna condició.</vf-text>
+
+            <vf-text>Anem a vore-ho dins d'un exemple en la pestanya Notes del full de càlcul:</vf-text>
+
+            <vf-row>
+                <vf-col classes="col-md-6 col-min-200px">
+                    <vf-text>En aquesta pestanya, a la columna C anem a incorporar un text que pose APROVAT o
+                        SUSPÉS.</vf-text>
+
+                    <vf-text>El format de fórmula comença per = i en concret, la funció SI té el següent
+                        esquema:</vf-text>
+
+                    <vf-text>SI( CONDICIÓ ; VALOR_SI_ES_COMPLEIX ; VALOR_SI_NO_ES_COMPLEIX )</vf-text>
+
+                    <vf-text>Per tant en el cas de C2 tenim que:</vf-text>
+
+                    <vf-list>
+
+                        <li><vf-text>Condició: B2>5</vf-text></li>
+
+                        <li><vf-text>Valor si es compleix: "APROVAT"</vf-text></li>
+
+                        <li><vf-text>Valor si no es compleix: "SUSPÉS"</vf-text></li>
+                    </vf-list>
+
+                    <vf-text>Completa-ho tenint en compte *els símbols de ; i ()*.</vf-text>
+
+                </vf-col>
+                <vf-col classes="col-md-6 col-min-200px">
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/5-01.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+
+        </vf-content>
+
+        <vf-title level="2">Exercici notes</vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>A la columna E, F i G anem a fer el mateix però amb les següents condicions:</vf-text>
+
+                    <vf-list>
+                        <li><vf-text>Menor que 5 suspés</vf-text></li>
+
+                        <li><vf-text>Menor que 7 bé</vf-text></li>
+
+                        <li><vf-text>Menor que 9 notable</vf-text></li>
+
+                        <li><vf-text>Menor o igual que 10 excel·lent</vf-text></li>
+
+                        <li><vf-text>Sinó nota incorrecta</vf-text></li>
+
+                    </vf-list>
+
+                    <vf-text>Canvia algun valor per comprovar que apareixen tots.</vf-text>
+
+                    <vf-text>Recorda que en el sinó has d'anar concatenant les condicions.</vf-text>
+
+                    <vf-text>SI(cond1;valor_cond1_si; si(cond2;valor_cond2_si; si(...</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/5-02.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Exercici pressupost compres</vf-title>
+
+        <vf-content>
+
+            <vf-text>A la pestanya Si...sino... has de copiar el que tenies en Càlcul II. Després ho hauràs de deixar
+                com en
+                la següent imatge:</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/5-03.png" styles=""></vf-img>
+
+            <vf-text>Les condicions són les següents:</vf-text>
+
+            <vf-list>
+                <li><vf-text>Afegir columnat Tipus amb desplegable MOBILIARI, OFICINA i ALTRES</vf-text></li>
+                <li><vf-text>Descompte serà: si el tipus de producte és MOBILIARI serà el 10% que està en la cel·la I2,
+                        si
+                        és OFICINA serà el 7% d'J2.</vf-text></li>
+
+                <li><vf-text>Import descompte és: total * descompte</vf-text></li>
+
+                <li><vf-text>Total descompte és: total - import descompte</vf-text></li>
+
+                <li><vf-text>Iva serà igual que abans, per el 21$ d'H2 en aquest cas</vf-text></li>
+
+                <li><vf-text>Total amb Iva: total dte + iva</vf-text></li>
+                <li><vf-text>Afegeix el TOTAL DTE</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

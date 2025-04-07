@@ -45,7 +45,6 @@ body {
 
 .vf-img {
   max-width: -webkit-fill-available;
-  box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .vf-img-col {
@@ -302,4 +301,13 @@ vf-code .vf-icon {
 .vf-hr-inverse {
   background-color: white;
   color: white;
+}
+
+#escaperoom  button{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border: 1px solid var(--main-color);
+  background-color: var(--background-color);
+  color: var(--main-color);
+  border-radius: 10px;
 }

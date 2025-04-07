@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            6 - Altres formats i filtres
+        </vf-title>
+
+        <vf-title level="2">
+            Format condicional
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>El format condicional ens serveix com el nom indica, per aplicar un tipus de format
+                        específic a unes cel·les depenent d'alguna condició concreta que li expressem.</vf-text>
+
+                    <vf-text>Per provar-ho, copia el contingut de Notes a Notes II.</vf-text>
+
+                    <vf-text>En primer lloc anem a seleccionar totes les dades de les columnes A, B i C.</vf-text>
+
+                    <vf-text>Després farem clic al menú Format > Format condicional i se'ns apareixerà una pestanya a la
+                        dreta del tot.</vf-text>
+
+                    <vf-text>Si ens fixem, les dades a emplenar són les següents:</vf-text>
+
+                    <vf-list>
+
+                        <li><vf-text>Rang (en aquest cas A2:C9)</vf-text></li>
+
+                        <li><vf-text>Regles de format</vf-text></li>
+                        <vf-list>
+
+                            <li><vf-text>Dar formato a la celda si... *major o igual a 5*</vf-text></li>
+
+                            <li><vf-text>Estil de format: *verd*</vf-text></li>
+                        </vf-list>
+
+                    </vf-list>
+                    <vf-text>*Fes el mateix però perquè els menors que 5 es posen en roig.*</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/6-01.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-hr></vf-hr>
+
+            <vf-text>Però, imagina que volem que es pinte tota la linia, en lloc de només la nota. Haurem de substituir
+                major o igual a 5 per una fòrmula personalitzada.</vf-text>
+
+            <vf-text>La fórmula ha de ser que =B2>=5 però si ho posem veiem que la columna C no es pinta, per tant, hem
+                de bloquejar la B amb un $. Prova-ho i aplica-ho també per al menor que 5 perquè quede així:</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/6-02.png" styles=""></vf-img>
+
+        </vf-content>
+
+        <vf-title level="3">Exercici</vf-title>
+
+        <vf-content>
+            <vf-text>Fes el mateix amb la taula de les columnes E, F i G perquè quede així:</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/6-03.png" styles=""></vf-img>
+
+        </vf-content>
+
+        <vf-title level="2">Filtres i dades</vf-title>
+
+        <vf-content>
+            <vf-text>Per treballar amb les dades anem a la pestanya Filtres i dades on trobarem una llista de 100
+                reparacions d'una tenda d'informàtica. Aquesta taula inclou el número de reparació, el nom del client,
+                el dia d'entrega, el component, el problema i l'estat de reparació.</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/6-04.png" styles=""></vf-img>
+
+            <vf-text>En aquesta taula que hi ha 100 elements, és "relativament fàcil" trobar un element, però i si volem
+                veure totes les reparacions d'un client? Seria molt difícil de trobar-ho.</vf-text>
+
+            <vf-text>Per això és tan senzill com utilitzar els filtres. Per activar-los anem a crear la taula pertinent
+                i veurem com en cada columna tenim les opcions d'ordenar, filtrar i agrupar.</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/6-05.png" styles=""></vf-img>
+
+            <vf-text>Si obrim el menú del botó dels filtres tenim moltes opcions però les que anem a utilitzar són les
+                d'ordenar i filtrar per valors.</vf-text>
+
+            <vf-list>
+                <li><vf-text>Ordenar ens va a permetre aplicar un ordre de tota la taula per la columna
+                        indicada ja siga ascendenment o descendenment.</vf-text></li>
+
+                <li><vf-text>Filtrar per valors ens va a ocultar aquells valors que no hem seleccionat.</vf-text></li>
+                <li><vf-text>Agrupar ens va a permetre juntar tots els registres per tipus per tal de
+                        contar-los.</vf-text></li>
+            </vf-list>
+
+            <vf-text>Seguint açò, anem a fer algunes preguntes i anem a veure qui és el més ràpid en trobar les
+                respostes.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">Validació de dades</vf-title>
+
+        <vf-content>
+            <vf-text>En la columna de l'estat de la reparació tenim els següents valors ENTREGAT, REPARANT, ACABAT i
+                TORNAT AL CLIENT.</vf-text>
+
+            <vf-text>Els treballadors, quan van a passar d'un estat a un altre han d'escriure el nou estat, però què
+                ocorre si no ho escriuen bé? Que després a l'hora de filtrar no apareix.</vf-text>
+
+            <vf-text>Per exemple, si a la fila 1 que està ENTREGAT, passa a REPARANT però ens equivoquem i posem
+                REPARAT, quan filtrem per REPARANT, aquest ja no ens apareixerà. Per això, el que necessitem és que els
+                valors d'eixa columna siguen fixes. Per fer-ho anem al menú de la columna i en tipus li seleccionem
+                Desplegable. </vf-text>
+
+            <vf-text>Dins del quadre d'opcions hem d'afegir una regla en un menú desplegable en les 4 opcions i podem
+                canviar els colors:</vf-text>
+            <vf-img src="assets/unitats/ofimatica/full-calcul/6-06.png" styles=""></vf-img>
+
+        </vf-content>
+        <vf-title level="3">Exercici</vf-title>
+        <vf-content>
+            <vf-text>Fes el mateix amb la columna Component i també Valoració del client afegint les estreles:</vf-text>
+            <vf-img src="assets/unitats/ofimatica/full-calcul/6-07.png" styles=""></vf-img>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

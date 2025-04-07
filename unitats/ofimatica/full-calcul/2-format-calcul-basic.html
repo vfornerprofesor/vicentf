@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            2 - Format i càlcul bàsic
+        </vf-title>
+
+        <vf-content>
+            <vf-text>En primer lloc anem a veure com agrupar i desagrupar cel·les. Això ens serveis per a posar títols
+                que puguen ocupar varies cel·les seguides. Com es veu en la imatge, es selecciona el rang de cel·les i
+                després es fa clic al botó Combinar cel·les.</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/2-01.png" styles=""></vf-img>
+
+            <vf-text>Veuràs que s'ha juntat tot en una única cel·la, però ara faltarà ordenar l'element al centre
+                utilitzant els botons de la imatge. A més pósa-li negreta i canvia el tamany i el color de la lletra
+                perquè quede com en la segona imatge.</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/2-02.png" styles=""></vf-img>
+            <vf-img src="assets/unitats/ofimatica/full-calcul/2-03.png" styles=""></vf-img>
+
+            <vf-text>A continuació com que és una taula amb dades i volem veure-les diferenciades unes i altres anem a
+                seleccionar des dels títols de les columnes fins el final de les dades i després farem clic al menú
+                *Format > Convertir a taula*.</vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-04.png" styles=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-05.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-text>Ara anem a canviar el format dels números per monedes. Com que la tercera columna, Preu Unitari és
+                en €, anem a seleccionar els valors i anem a fer clic a *Format > Numero > Moneda* o canviant el tipus de col·lumna</vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-06.png" styles=""></vf-img>
+
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-07.png" styles=""></vf-img>
+
+                </vf-col>
+            </vf-row>
+
+
+            <vf-text>Per últim per tal de calcular el preu, anem a fer que siga automàtic.</vf-text>
+
+            <vf-row>
+                <vf-col classes="col-md-6 col-min-200px">
+                    <vf-text>Posem el preu a mà, és a dir, escrivint 330 en la cel·la.</vf-text>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-08.png" styles=""></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-6 col-min-200px">
+                    <vf-text>Si canvien les unitats, veiem que el total l'hem de canviar.</vf-text>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-09.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-text>Per això, en la columna del total només hem de posar una fórmula que involucre a les cel·les que
+                intervenen en l'operació. És a dir, a la primera fila, a la de les taules, la quantitat està en B4 i el
+                preu unitari en C4. Per això, al D4, on aniria el total de la fila posariem la següent fòrmula =B4*C4.
+                Les cel·les o les pots escriure a mà o pots fer clic sobre la cel·la en qüestió.</vf-text>
+
+            <vf-text>Com veus, ara si canvies la quantitat o el preu, es canviarà el total automàticament.</vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-10.png" styles=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/2-11.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-text>Ara volem fer el mateix per a totes les files però no és necessari escriure la fórmula en cadascuna
+                de les files, sinó que hi ha una forma de propagar una fórmula. Per propagar-la fes clic a la cel·la on
+                tingues la fórmula i des del cantó inferior dret de la cel·la fas clic i arrastres fins a l'última de
+                les files, veuràs com la fòrmula s'ha propagat:</vf-text>
+
+            <vf-list>
+                <li><vf-text>A la fila 5 posa =B5*C5</vf-text></li>
+
+                <li><vf-text>A la fila 6 posa =B6*C6</vf-text></li>
+
+                <li><vf-text>A la fila 7 posa =B7*C7</vf-text></li>
+
+                <li><vf-text>...</vf-text></li>
+            </vf-list>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/2-12.png" styles=""></vf-img>
+
+            <vf-text>Ara per últim haurem d'afegir un total a la següent fila, en la cel·la D11, on posarem el sumatori
+                dels anteriors resultats. Hi ha dos formes de posar els resultats:</vf-text>
+
+            <vf-list>
+
+                <li><vf-text>Sumar un a un amb la fòrmula =D4+D5+D6+D7+D8+D9+D10</vf-text></li>
+
+                <li><vf-text>Utilitzant la fòrmula SUMA =SUM(D4:D10) on es veu que és un rang des de D4 fins
+                        D10</vf-text></li>
+
+                <li><vf-text>Utilitzant la fórmula SUMA =SUM(Taula_1[TOTAL]) on indiquem que agafe de la taula amb nom
+                        *Taula_1* la col·lumna *TOTAL*.</vf-text></li>
+            </vf-list>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/2-13.png" styles=""></vf-img>
+
+
+
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

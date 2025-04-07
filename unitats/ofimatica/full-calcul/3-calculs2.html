@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            3 - Càlculs II
+        </vf-title>
+
+        <vf-content>
+            <vf-text>En primer lloc còpia el que ja tens complet de l'exercici anterior de Format i càlcul bàsic i ho apegues en la pestanya Càlcul II.</vf-text>
+
+            <vf-text>Ahi hauràs d'afegir les columnes IVA i TOTAL IVA. Veuràs com al haver aplicat els colors alterns s'afegirà automàticament.</vf-text>
+
+            <vf-text>Després arregla el títol perquè ocupe 2 columnes més.</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/3-01.png" styles=""></vf-img>
+
+
+            <vf-text>Després, a la columna G, anem a posar en la primera fila la paraula IVA i a la segona el valor 21%:</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/3-02.png" styles=""></vf-img>
+
+            <vf-text>Ara, volem escriure la fòrmula que ens calcule l'IVA a partir del total que teniem, és a dir, a la columna E4 posariem =D4*G2 perquè D4 conté el total i G2 conté el 21% que és l'IVA.</vf-text>
+
+            <vf-text>Ara, al propagar fixe'm-nos en què ocorre:</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/3-03.png" styles=""></vf-img>
+
+            <vf-row>
+                <vf-col classes="col-md-9 col-min-200px">
+                    <vf-text>Veiem que al haver tirat la fila cap a baix, la columna D també ha baixat i ha passat de D4 a D5 però l'IVA que estava en G2 no volem que baixe a G3 i després a G4 i així successivament, sinó que volem que es quede fixe a G2.</vf-text>
+
+                    <vf-text>Per tant, si volem bloquejar en aquest cas la fila perquè no canvie el 2, li posarem en la fòrmula =D4*G$2. Amb aquest símbol del $ es quedarà fixe i si tornem a propagar, veurem que ja es quedarà correctament:</vf-text>
+
+                </vf-col>
+                <vf-col classes="col-md-3 col-min-200px">
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/3-04.png" styles=""></vf-img>
+
+                </vf-col>
+            </vf-row>
+
+            <vf-text>Per últim acaba de configurar les columnes amb els seus totals.</vf-text>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/3-05.png" styles=""></vf-img>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            1 - Interficie
+        </vf-title>
+
+        <vf-content>
+
+            <vf-img src="assets/unitats/ofimatica/full-calcul/1-01.png" styles=""></vf-img>
+
+            <vf-text>Aquesta és la interficie bàsica del full de càlcul.</vf-text>
+
+            <vf-text>En la part superior tenim un menú amb moltes opcions que s'aniran veient al llarg del
+                curs.</vf-text>
+
+            <vf-text>Just baix d'aquest menú d'opcions tenim una graella en la que les files es divideixen en números i
+                les columnes amb les lletres de l'abecedari.</vf-text>
+
+            <vf-text>Una cel·la es defineix per tant amb una columna i una fila. Per exemple:</vf-text>
+            <vf-list>
+
+                <li><vf-text>La cel·la G7 és la que actualment està seleccionada i així es pot veure en la part esquerra
+                        dalt de la graella</vf-text></li>
+
+                <li><vf-text>La cel·la B4 conté la paraula HOLA</vf-text></li>
+
+                <li><vf-text>La cel·la D8 conté la paraula ADEU</vf-text></li>
+
+                <li><vf-text>La cel·la B13 conté el número 37</vf-text></li>
+            </vf-list>
+
+            <vf-text>Però a més es poden seleccionar varies cel·les, el que s'anomena rang de cel·les i es defineixen
+                per la cel·la que està més cap a dalt i a l'esquerra, seguit de dos punts (:) i després la cel·la que
+                està més cap a baix i cap a la dreta. Per exemple:</vf-text>
+
+            <vf-list>
+                <li><vf-text>El rang pintat de blau és: A7:C7</vf-text></li>
+
+                <li><vf-text>El rang pintat de taronja és: F3:F7</vf-text></li>
+
+                <li><vf-text>El rang pintat de verd és: D13:F16</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
