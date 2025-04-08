@@ -303,11 +303,40 @@ vf-code .vf-icon {
   color: white;
 }
 
-#escaperoom  button{
-  margin-left: 10px;
+#escaperoom {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: 10%;
+  gap: 30px;
+  justify-content: space-around;
+}
+
+#escaperoom .div-escaperoom-activity {
+  text-align: center;
+}
+
+#escaperoom .div-escaperoom-activity h3 {
+  color: var(--main-color);
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+
+#escaperoom .div-escaperoom-activity input {
+  display: block;
+  margin-block: 20px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  text-align: center;
+  color: var(--main-color);
+}
+
+#escaperoom .div-escaperoom-activity button{
   margin-bottom: 5px;
   border: 1px solid var(--main-color);
   background-color: var(--background-color);
   color: var(--main-color);
   border-radius: 10px;
+  display: block;
+  margin-inline: auto;
 }
