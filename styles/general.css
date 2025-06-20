@@ -4,6 +4,9 @@
   --black-color: #181818;
   --shadow-color: grey;
   --shadow-hover-color: lightgrey;
+
+  --option1-color: #94e7b0;
+  --option2-color: #9aa8e7;
 }
 
 html {
@@ -301,6 +304,33 @@ vf-code .vf-icon {
 .vf-hr-inverse {
   background-color: white;
   color: white;
+}
+
+blockquote {
+  margin-inline: 30px;
+  background-color: var(--shadow-hover-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-style: italic;
+    white-space: pre-line;
+}
+
+blockquote.conversation_me,
+blockquote.conversation_other {
+  width: fit-content;
+  max-width: 80%;
+
+}
+
+blockquote.conversation_me {
+  background-color: var(--option1-color);
+  margin-left: auto;
+}
+
+blockquote.conversation_other {
+  background-color: var(--option2-color);
+  margin-right: auto;
+  
 }
 
 #escaperoom {

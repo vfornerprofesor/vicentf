@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1" centered styles="" classes="">
+            Situacions d'aprenentatge
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="2">Guia per a Docents: Creació de Situacions d'Aprenentatge amb Intel·ligència Artificial
+                (Currículum Valencià)</vf-title>
+
+            <vf-text>Hola, company/a! Aquesta guia està dissenyada per ajudar-te a utilitzar eines d'Intel·ligència
+                Artificial (IA) com un potent assistent per a la creació de Situacions d'Aprenentatge (SA) completes i
+                ben fonamentades, adaptades a qualsevol matèria d'ESO o Batxillerat del sistema educatiu
+                valencià.</vf-text>
+
+            <vf-text>L'objectiu no és que la IA faça tota la feina, sinó que actue com un *col·laborador creatiu i
+                eficient* que ens estalvie temps en les tasques més mecàniques, i ens aporte idees que després
+                nosaltres, com a experts docents, validarem i adaptarem al context de la nostra aula.</vf-text>
+
+            <vf-title level="3">Pas 0: La Preparació Essencial - El Currículum</vf-title>
+
+            <vf-text>Abans de començar, necessitem la nostra eina principal: el decret del currículum de la nostra
+                matèria. La IA no coneix per defecte els detalls específics del currículum valencià. Per tant, el primer
+                pas és proporcionar-li aquest context.</vf-text>
+
+            <vf-list ordered>
+                <li><vf-text>*Troba el teu currículum:* Fes una cerca per trobar el decret oficial que correspon. Per
+                        exemple:</vf-text>
+                    </li>
+                    <vf-list>
+                <li><vf-text>DECRET 107/2022, de 5 d’agost, del Consell, pel qual s’estableix l’ordenació i el
+                        currículum de l’Educació Secundària Obligatòria.</vf-text></li>
+                <li><vf-text>DECRET 108/2022, de 5 d’agost, del Consell, pel qual s’estableixen l’ordenació i el
+                        currículum de Batxillerat.</vf-text></li>
+            </vf-list>
+            <li><vf-text>*Prepara el text:* Dins d'aquests decrets, busca la teua matèria. Copia i pega en un document
+                    de text (o tingues a mà) les seccions clau que utilitzaràs: *Competències Específiques*, *Criteris d'Avaluació* i *Sabers Bàsics* del curs que vols treballar.</vf-text></li>
+            </vf-list>
+
+            <vf-title level="3">Pas 1: La Guspira Inicial - Trobant la Idea Central</vf-title>
+
+            <vf-text>Tota bona SA parteix d'un repte o una pregunta motivadora. Si no en tens una de clara, podem
+                demanar-li a la IA que ens ajude a generar idees.</vf-text>
+
+            <vf-text>Exemple de *prompt* (instrucció per a la IA):</vf-text>
+            <vf-quote>Actua com un docent expert en [la meva matèria, p. ex., Biologia i Geologia] per a [el meu curs, p. ex., 4t d'ESO] a la Comunitat Valenciana. Genera 5 idees per a una Situació d'Aprenentatge que siga engrescadora per a l'alumnat. Cada idea ha de basar-se en un repte, pregunta o problema del món real i connectar amb els seus interessos.</vf-quote>
+
+            <vf-text>La IA et donarà diverses opcions. Tria la que més t'agrade o combina-les.</vf-text>
+
+            <vf-title level="3">Pas 2: Definint la Identificació i el Producte Final</vf-title>
+
+            <vf-text>Una vegada tenim la idea, anem a donar-li forma, seguint l'estructura del teu document
+                d'exemple.</vf-text>
+
+            <vf-text>Exemple de *prompt*:</vf-text>
+            <vf-quote>He triat aquesta idea: [Pega aquí la idea que has triat, p. ex., 'Crear un pla de reforestació per a una zona local afectada per un incendi'].
+
+                Basant-te en aquesta idea, genera els següents apartats d'identificació per a una Situació d'Aprenentatge per a la matèria de [Biologia i Geologia] de [4t d'ESO]:
+
+                - *Títol:* Un títol creatiu i motivador.
+                - *Descripció:* Un paràgraf que explique breument la SA, connectant amb coneixements previs i justificant la seua importància.
+                - *Repte, Pregunta, Problema:* La pregunta central que guiarà l'aprenentatge de l'alumnat.
+                - *Producte Final:* El producte tangible que l'alumnat haurà de crear. Ha de ser competencial i avaluable.
+                - *Temporalització:* Una estimació realista del nombre de sessions necessàries.</vf-quote>
+
+            <vf-title level="3">Pas 3: La Concreció Curricular - Connectant amb el Decret</vf-title>
+
+            <vf-text>Aquest és el pas més tècnic i on la nostra feina de preparació (Pas 0) és crucial. Ara, li donarem
+                a la IA els elements del currículum que hem copiat prèviament.</vf-text>
+
+            <vf-text>Exemple de *prompt*:</vf-text>
+            <vf-quote>Ara, realitza la concreció curricular per a la Situació d'Aprenentatge que hem definit. A continuació, et proporcione els elements del currículum de [Biologia i Geologia] per a [4t d'ESO] del Decret 107/2022.
+
+                [Pega aquí les Competències Específiques, Criteris d'Avaluació i Sabers Bàsics de la teva matèria i
+                curs]
+
+                Basant-te en la descripció i el producte final ('Un pla de reforestació'), selecciona i llista:
+
+                1. Les *Competències Específiques* més adients.
+                2. Els *Criteris d'Avaluació* associats a aquestes competències que es treballaran.
+                3. Els *Sabers Bàsics* necessaris per poder dur a terme el repte.
+                4. Les *Competències Clau* que es mobilitzen (CCL, CP, STEM, CD, etc.).</vf-quote>
+
+            <vf-text>Recorda: La IA farà una proposta. *La teua tasca com a docent és revisar aquesta selecció*,
+                assegurant-te que és coherent i ajustada als teus objectius pedagògics. Ets tu qui té la darrera
+                paraula.</vf-text>
+
+            <vf-title level="3">Pas 4: El Disseny de les Activitats - La Seqüència Didàctica</vf-title>
+
+            <vf-text>Amb l'esquelet ja muntat, toca dissenyar el cor de la SA: les activitats. Podem demanar a la IA que
+                ens faça una proposta de seqüenciació.</vf-text>
+
+            <vf-text>Exemple de *prompt*:</vf-text>
+            <vf-quote>Basant-te en la SA 'El nostre pla de reforestació', dissenya una seqüència de [p. ex., 4 tasques o activitats] que porten a l'alumnat des dels coneixements inicials fins al producte final.
+
+                Per a cada activitat, defineix:
+
+                - *Nom de l'activitat:* Un nom clar i concís.
+                - *Objectius d'aprenentatge:* Què ha de saber o saber fer l'alumnat en acabar.
+                - *Descripció breu de la tasca:* Què faran els alumnes pas a pas.
+                - *Temporalització:* Sessions estimades per a aquesta activitat.
+                - *Metodologia i Agrupament:* Si treballaran individualment, en parelles, en grups cooperatius, etc..
+                - *Recursos necessaris:* Materials, espais, eines digitals, etc..</vf-quote>
+
+            <vf-title level="3">Pas 5: Garantint la Inclusió - Aprenentatge Accessible (DUA)</vf-title>
+
+            <vf-text>Un pilar fonamental. La IA pot ser una gran aliada per pensar en clau de Disseny Universal per a
+                l'Aprenentatge (DUA) i no deixar ningú enrere.</vf-text>
+
+            <vf-text>Exemple de *prompt*:</vf-text>
+            <vf-quote>Per a la seqüència d'activitats que has dissenyat, proposa *mesures de resposta per a un aprenentatge accessible*. Concretament:
+
+                - *Accessibilitat Física, Sensorial i Cognitiva:* Suggeriments concrets (p. ex., ús de lectors de pantalla, teclats en pantalla, informació en diversos formats).
+                - *Perspectiva cultural, de gènere i socioeconòmica:* Com podem asegurar que l'activitat siga respectuosa i representativa per a tothom?.
+                - *Connexió amb els ODS:* Com connecta aquesta SA amb els Objectius de Desenvolupament Sostenible?.
+                - *Múltiples formes de representació i expressió:* Ofereix alternatives perquè l'alumnat puga accedir a la informació (text, vídeo, àudio) i expressar el que ha aprés (escrit, presentació oral, pòster, vídeo).</vf-quote>
+
+            <vf-title level="3">Pas 6: L'Avaluació - Com Mesurem l'Aprenentatge?</vf-title>
+
+            <vf-text>L'avaluació ha de ser coherent amb els criteris que hem seleccionat. La IA pot ajudar-nos a
+                dissenyar els instruments.</vf-text>
+
+            <vf-text>Exemple de *prompt*:</vf-text>
+            <vf-quote>Per a la SA 'El nostre pla de reforestació', necessite avaluar els criteris [indica els codis dels criteris, p. ex., 2.1, 2.3, 4.2] que hem seleccionat abans.
+
+                Genera una *rúbrica d'avaluació* per al producte final ('El pla de reforestació'). La rúbrica ha de tenir 4 nivells de consecució (p. ex., 'Insuficient', 'Suficient', 'Bé', 'Notable/Excel·lent') i els seus descriptors han d'estar directament relacionats amb els criteris d'avaluació esmentats.</vf-quote>
+
+            <vf-text>També pots demanar-li que cree una *llista de control (*checklist*)* per a l'avaluació de tasques
+                intermèdies o per a la coavaluació entre alumnes.</vf-text>
+
+            <vf-title level="3">Pas 7: Els Criteris de Qualificació</vf-title>
+
+            <vf-text>Finalment, definim com es traduirà tot això en una qualificació, tal com es mostra al teu document
+                d'exemple.</vf-text>
+
+            <vf-text>Exemple de *prompt*:</vf-text>
+            <vf-quote>Redacta un apartat de 'Criteris de Qualificació' per a la meva programació. Explica que la qualificació final de la SA s'obtindrà a partir de l'avaluació de les competències específiques treballades. Proposa una ponderació, per exemple, un 90% per a les competències específiques i un 10% per a l'actitud i el comportament, justificant breument el mètode de càlcul.</vf-quote>
+
+            <vf-title level="3">Conclusions i Bones Pràctiques</vf-title>
+            <vf-list>
+                <li><vf-text>*Tu ets el/la cap:* La IA és un assistent. Tota la informació que genera ha de ser
+                        revisada, validada i adaptada per tu.</vf-text></li>
+                <li><vf-text>*Contextualitza:* Com més específica siga la teua petició (*prompt*) i més context li dones
+                        (currículum, característiques del teu alumnat), millor serà el resultat.</vf-text></li>
+                <li><vf-text>*Itera i refina:* No et conformes amb la primera resposta. Dialoga amb la IA, demana-li que
+                        refaça una part, que et done més opcions o que canvie l'enfocament.</vf-text></li>
+                <li><vf-text>*Sigues crític/a:* Verifica sempre les dades i les propostes. La IA pot cometre errors o
+                        inventar informació. La teua experiència docent és insubstituïble.</vf-text></li>
+            </vf-list>
+
+            <vf-text>Espero que aquesta guia siga un punt de partida excel·lent per al teu curs. És una eina potent que,
+                ben utilitzada, ens pot alliberar per dedicar més temps a allò que realment importa: acompanyar el
+                nostre alumnat en el seu procés d'aprenentatge. Molta sort!</vf-text>
+
+                <vf-btn classes="btn-short" link="formaciodocent/ia/sa-example.html">
+                        Accedeix a un exemple aplicat d'aquesta guia
+                    </vf-btn>
+
+        </vf-content>
+
+
+
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
