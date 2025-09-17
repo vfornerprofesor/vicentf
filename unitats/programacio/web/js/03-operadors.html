@@ -28,7 +28,9 @@
         </vf-title>
         <vf-content>
             <vf-text>
-                Els operadors són símbols que ens permeten realitzar operacions, habitualment matemàtiques, sobre variables o sobre valors directament. Els operadors que anem a veure són suma (+), resta (-), multiplicació (asterisc), divisió (/), residu (%) i exponent (doble asterisc).
+                Els operadors són símbols que ens permeten realitzar operacions, habitualment matemàtiques, sobre
+                variables o sobre valors directament. Els operadors que anem a veure són suma (+), resta (-),
+                multiplicació (asterisc), divisió (/), residu (%) i exponent (doble asterisc).
             </vf-text>
             <vf-row>
                 <vf-col>
@@ -56,7 +58,8 @@
                     <vf-text>49</vf-text>
                 </vf-col>
             </vf-row>
-            <vf-text>De la mateixa manera es poden gastar variables per realitzar operacions i emmagatzemar les operacions:</vf-text>
+            <vf-text>De la mateixa manera es poden gastar variables per realitzar operacions i emmagatzemar les
+                operacions:</vf-text>
             <vf-code>
                 let numero1 = 74;
                 document.write('El primer número és: ' + numero1);
@@ -72,25 +75,108 @@
         </vf-content>
 
         <vf-title level="2">
+            Com demanar informació a l'usuari?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Podem fer que un programa no utilitze valors fixes, sinó que aquests depenguen del que necessita
+                l'usuari. Per exemple, podem demanar un nom, un text, un número. Per fer-ho s'utilitza la funció
+                *prompt()* on entre el parèntesi indiquem el missatge que es mostrarà a l'usuari per demanar
+                informació.</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        //Guarda en la variable text_usuari el que escriurà l'usuari
+                        let text_usuari = prompt("Dona'm un text");
+                        //Mostra el que ha escrit l'usuari que estava guardat en la variable text_usuari
+                        document.write(text_usuari);
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/js/03-operadors/01.png" link="" styles=""
+                        classes=""></vf-img>
+
+                </vf-col>
+            </vf-row>
+            <vf-text>Però què ocorre si intentem sumar dos números que rebem de l'usuari?</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        //Guarda en la variable num1 el que escriurà l'usuari
+                        let num1 = prompt("Dona'm un número");
+                        //Guarda en la variable num2 el que escriurà l'usuari
+                        let num2 = prompt("Dona'm un altre número");
+                        //Mostra la suma dels dos números
+                        document.write(num1 + num2);
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Indicant els números 5 i 6</vf-text>
+                    <vf-text>Hem retorna com a suma: 56</vf-text>
+                    <vf-text>És a dir, que els ha juntat, no els ha sumat i això és perquè *el que escriu l'usuari
+                        sempre es guarda com a TEXT*, no com a número</vf-text>
+
+
+                </vf-col>
+
+            </vf-row>
+
+        </vf-content>
+        <vf-title level="2">
+            Com convertim una variable a número?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Per convertir a número utilitzem la funció *parseInt(numero_a_convertir)* o
+                *parseFloat(numero_a_convertir)* si volem convertir a número enter o número decimal respectívament. En
+                els següents exemples funciona la conversió a número enter, l'única cosa és que canvia la manera
+                d'escriure-ho.</vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text>Ací guardem una altra variable que guardarà el número. Després utilitzem les noves variables per sumar.</vf-text>
+                    <vf-code>
+                        let num1 = prompt("Dona'm un número"); 
+                        let num1_convert = parseInt(num1);
+                        let num2 = prompt("Dona'm un altre número"); 
+                        let num2_convert = parseInt(num2);
+                        document.write(num1_convert + num2_convert); 
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Ací reassignem el valor convertit a número a la variable que ja existia.</vf-text>
+                    <vf-code>
+                        let num1 = prompt("Dona'm un número"); 
+                        num1 = parseInt(num1);
+                        let num2 = prompt("Dona'm un altre número"); 
+                        num2 = parseInt(num2);
+                        document.write(num1 + num2); 
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Ací en la mateixa linia se converteix el que escriu l'usuari i es guarda a la variable.</vf-text>
+                    <vf-code>
+                        let num1 = parseInt(prompt("Dona'm un número")); 
+                        let num2 = parseInt(prompt("Dona'm un altre número"));
+                        document.write(num1 + num2); 
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
             Exercicis
         </vf-title>
 
         <vf-content>
-            <vf-title level="3">Exercici 1</vf-title>
-            <vf-text>Escriu un programa en el que crees dos variables numero1 i numero2. Assigna uns valors a eixes variables i mostra el resultat de les següents operacions: suma, resta, multiplicació, divisió, residu i exponent.</vf-text>
-            <vf-title level="3">Exercici 2</vf-title>
-            <vf-text>Escriu un programa que calcule el següent:</vf-text>
-            <vf-list>
-                <li>
-                    <vf-text>L'àrea d'un cercle. Es calcula amb pi per el radi al quadrat. El valor del radi pot ser 10. (en cm2)</vf-text>
-                </li>
-                <li>
-                    <vf-text>L'àrea d'un rectangle: base per altura (en m2)</vf-text>
-                </li>
-                <li>
-                    <vf-text>El pes d'un objecte: massa per gravetat (en N)</vf-text>
-                </li>
-            </vf-list>
+            <vf-title level="3">1: Càlculs de notes</vf-title>
+            <vf-text>*Enunciat*: Calcula la nota mitjana d'un alumne amb tres exàmens. </vf-text>
+            <vf-text>*Instruccions*: Pregunta a l’usuari per tres notes . Crea una nova variable mitjana que calculi la mitjana de les tres notes. Mostra el resultat per la consola. </vf-text>
+
+            <vf-title level="3">2: Conversió de text a nombre</vf-title>
+            <vf-text>*Enunciat*: Demana a l'usuari que introdueixi dos nombres com a text (amb prompt()). Mostra tots els resultats de les operacions anteriors. </vf-text>
+            <vf-text>*Instruccions*: Declara dues variables i demana a l'usuari que introdueixi els valors. Utilitza parseInt() o parseFloat() i realitza totes les operacions. </vf-text>
+           
         </vf-content>
     </div>
     <div id="footer" style="display:none"></div>

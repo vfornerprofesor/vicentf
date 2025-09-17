@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            PROJECTE FINAL UF1
+        </vf-title>
+
+        
+        <vf-title level="2" centered>
+CALCULADORA
+        </vf-title>
+        <vf-content>
+        <vf-text>Anem a crear una calculadora i per a mostrar els resultats, en lloc de mostrar textos amb document.write, anem a utilitzar un paràgraf:</vf-text>
+        <vf-code>
+            &lt;p id="resultat"&gt;&lt;/p&gt;
+        </vf-code>
+        <vf-text>D'aquesta manera, desde el codi javascript podem recuperar eixe element i canviar-li el text:</vf-text>
+        <vf-code>
+            ...
+            let resultat = document.getElementById('resultat');
+            resultat.textContent = 'La suma és ' + suma;
+        </vf-code>
+
+        <vf-img src="assets/unitats/programacio/web/js/04-dom/calculadora.png" link="" styles="" classes=""></vf-img>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Conceptes bàsics de JS
+        </vf-title>
+
+        <vf-title level="2">
+            Què és JS?
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                JavaScript és un llenguatge de programació basat en objectes (també conegut com a script) que s'utilitza
+                per a crear aplicacions web interactives. És un llenguatge essencial per a qualsevol desenvolupador web,
+                ja que permet afegir funcionalitats a les pàgines web que no es poden crear només amb HTML i CSS.
+            </vf-text>
+            <vf-text>
+                JavaScript s'executa al costat del navegador web, cosa que significa que no cal instal·lar cap
+                programari addicional per a utilitzar-lo. Això el converteix en una opció molt accessible per a
+                desenvolupar aplicacions web.
+            </vf-text>
+            <vf-text>
+                Amb JavaScript pots fer coses com:
+            </vf-text>
+            <vf-list>
+
+                <li><vf-text>Afegir interacció a les pàgines web, com ara fer que els elements s'animen, reaccionen a
+                        les accions de l'usuari o mostren informació dinàmica.</vf-text></li>
+                <li><vf-text>Validar les dades introduïdes per l'usuari.</vf-text></li>
+                <li><vf-text>Crear efectes visuals.</vf-text></li>
+                <li><vf-text>Comunicar-te amb servidors web.</vf-text></li>
+            </vf-list>
+            <vf-text>JavaScript és un llenguatge molt potent i flexible, i les seves possibilitats són gairebé
+                il·limitades.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Afegint codi JS a una pàgina web
+        </vf-title>
+        <vf-content>
+            <vf-text>El codi JS el podem posar tant dins del fitxer HTML com en un fitxer extern. </vf-text>
+            <vf-title level="3">
+                Dins de l'HTML
+            </vf-title>
+            <vf-text>L'etiqueta utilitzada és script i dins d'ella s'escriu tot el codi.</vf-text>
+            <vf-text>Fíxa't en els dos codis d'exemple per entendre què és el que s'executa abans</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;body&gt;
+                            &lt;p&gt;Hola HTML&lt;/p&gt;
+                            &lt;script&gt;
+                                document.write('Hola JS');
+                            &lt;/script&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Hola HTML</vf-text>
+                    <vf-text>Hola JS</vf-text>
+                </vf-col>
+            </vf-row>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;body&gt;
+                            &lt;script&gt;
+                                document.write('Hola JS');
+                            &lt;/script&gt;
+                            &lt;p&gt;Hola HTML&lt;/p&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Hola JS</vf-text>
+                    <vf-text>Hola HTML</vf-text>
+                </vf-col>
+            </vf-row>
+            <vf-title level="3">
+                En un fitxer a banda
+            </vf-title>
+            <vf-text>L'etiqueta utilitzada és script però en aquest cas s'indica el nom del fitxer JS.</vf-text>
+            <vf-text>Fíxa't en els dos codis d'exemple per entendre què és el que s'executa abans</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;body&gt;
+                            &lt;p&gt;Hola HTML&lt;/p&gt;
+                            &lt;script src="script.js"&gt&lt/script&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                    <vf-code>
+                        //script.js
+                        document.write('Hola JS');
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Hola HTML</vf-text>
+                    <vf-text>Hola JS</vf-text>
+                </vf-col>
+            </vf-row>
+            <vf-hr></vf-hr>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        &lt;body&gt;
+                            &lt;script src="script.js"&gt&lt/script&gt;
+                            &lt;p&gt;Hola HTML&lt;/p&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                    <vf-code>
+                        //script.js
+                        document.write('Hola JS');
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Hola JS</vf-text>
+                    <vf-text>Hola HTML</vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Mostrant missatges en pantalla i en consola
+        </vf-title>
+        <vf-content>
+            <vf-text>Com has vist en el codi anterior amb document.write podem escriure el que vulga'm en pantalla. Anem a veure diferents exemples:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        document.write("Hola JS només amb text");
+                        document.write("&lt;h1&gt;Hola JS dins d'un títol h1&lt;/h1&gt;");
+                        document.write("&lt;p&gt;Hola JS dins d'un paràgraf&lt;/p&gt;");
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/js/01-js-basic/01.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>També podem escriure missatges per a nosaltres, els programadors web, per tal d'anar comprovant coses i que no es vegen directament en pantalla. Per això utilitzem el *console.log()* i es veu amb la ferramenta web que s'obri al pressionar F12 al navegador.</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        console.log('Hola');
+                        console.log('Adeu');
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/js/01-js-basic/02.png" link="" styles="" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Comentant codi JS
+        </vf-title>
+        <vf-content>
+            <vf-text>Per comentar codi i fer anotacions sense que es mostren per pantalla tenim dos opcions:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-code>
+                        //Aquest és un comentari d'una linia
+                        //Aquest és un comentari també d'una linia
+                        //document.write('hola');
+                        //La linia anterior no s'executa
+                    </vf-code>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
+                        /* Aquest és un comentari de varies línies
+                        fins que no pose els mateixos símbols al final
+                        seguirà sent un comentari i per tant, aquesta linia:
+                        document.write('hola');
+                        no s'executaria */
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

@@ -86,35 +86,31 @@
                 <vf-col>
                 <vf-code>
                     &lt;body&gt;
-                        &lt;h1 id="titol1"&gt;Titol 1&lt;/h1&gt;
-                        &lt;h2 id="titol2"&gt;Titol 2&lt;/h2&gt;
-                        &lt;p id="paragraf"&gt;Paragraf&lt;/p&gt;
+                        &lt;h1 id="titol1" onclick="canviarTitol1()"&gt;Titol 1&lt;/h1&gt;
+                        &lt;h2 id="titol2" onclick="canviarTitol2()"&gt;Titol 2&lt;/h2&gt;
+                        &lt;p id="paragraf" onclick="canviarParagraf()"&gt;Paragraf&lt;/p&gt;
                     &lt;/body&gt;
                 </vf-code>
             </vf-col>
             <vf-col>
                 <vf-code>
-
-let titol1 = document.getElementById('titol1');
-titol1.addEventListener("click", canviarTitol1);
-
-let titol2 = document.getElementById('titol2');
-titol2.addEventListener("click", canviarTitol2);
-
-let paragraf = document.getElementById('paragraf');
-paragraf.addEventListener("click", canviarParagraf);
-
-function canviarTitol1() {
-    titol1.textContent = 'HOLA!';
-}
-
-function canviarTitol2() {
-    titol2.textContent = 'Com estàs?';
-}
-
-function canviarParagraf() {
-    paragraf.textContent = 'Estic aprenent JS';
-}
+                    //Agafe el títol 1 i li canvie el text a 'HOLA!'
+                    function canviarTitol1() {
+                        let titol1 = document.getElementById('titol1');
+                        titol1.textContent = 'HOLA!';
+                    }
+                    
+                    //Agafe el títol 2 i li canvie el text a 'Com estàs?'
+                    function canviarTitol2() {
+                        let titol2 = document.getElementById('titol2');
+                        titol2.textContent = 'Com estàs?';
+                    }
+                    
+                    //Agafe el paràgraf i li canvie el text a 'Estic aprenent JS'
+                    function canviarParagraf() {
+                        let paragraf = document.getElementById('paragraf');
+                        paragraf.textContent = 'Estic aprenent JS';
+                    }
                 </vf-code>
             </vf-col>
         </vf-row>
@@ -129,21 +125,18 @@ function canviarParagraf() {
             <vf-col>
                 <vf-code>
                     &lt;body&gt;
-                        &lt;p id="roig"&gt;Roig&lt;/p&gt;
-                        &lt;p id="verd"&gt;Verd&lt;/p&gt;
-                        &lt;p id="blau"&gt;Blau&lt;/p&gt;
-                        &lt;button id="btn_blau"&gt;Canviar BLAU&lt;/button&gt;
+                        &lt;p id="roig" onclick="canviarParagrafRoig()"&gt;Roig&lt;/p&gt;
+                        &lt;p id="verd" onclick="canviarParagrafVerd()"&gt;Verd&lt;/p&gt;
+                        &lt;p id="blau" onclick="canviarParagrafBlau()"&gt;Blau&lt;/p&gt;
                     &lt;/body&gt;
                 </vf-code>
             </vf-col>
             <vf-col>
                 <vf-code>
-                    let botoBlau = document.getElementById('btn_blau');
-                    botoBlau.addEventListener("click", canviarParagrafBlau);
-
-                    function canviarParagrafBlau() {
-                        let p = document.getElementById('blau');
-                        p.style.color = 'blue';
+                    //Amb la propietat style podem canviar tots els estils d'un element HTML
+                    function canviarParagrafRoig() {
+                        var p = document.getElementById('roig');
+                        p.style.color = 'red';
                     }
                 </vf-code>
             </vf-col>
@@ -169,6 +162,23 @@ function canviarParagraf() {
 
         <vf-title level="3">
             Exercici 2
+        </vf-title>
+
+        <vf-text>Anem a crear una calculadora i per a mostrar els resultats, en lloc de mostrar textos amb document.write, anem a utilitzar un paràgraf:</vf-text>
+        <vf-code>
+            &lt;p id="resultat"&gt;&lt;/p&gt;
+        </vf-code>
+        <vf-text>D'aquesta manera, desde el codi javascript podem recuperar eixe element i canviar-li el text:</vf-text>
+        <vf-code>
+            ...
+            let resultat = document.getElementById('resultat');
+            resultat.textContent = 'La suma és ' + suma;
+        </vf-code>
+
+        <vf-img src="assets/unitats/programacio/web/js/04-dom/calculadora.png" link="" styles="" classes=""></vf-img>
+
+        <vf-title level="3">
+            Exercici 3
         </vf-title>
         <vf-text>
             Fes que al fer clic al paràgraf el tamany del borde cada vegada siga 1px més
@@ -205,7 +215,7 @@ function canviarParagraf() {
         </vf-row>
 
         <vf-title level="3">
-            Exercici 3
+            Exercici 4
         </vf-title>
         <vf-text>Arregla el següent codi perquè funcione canviant el color al fer clic a cada color i que s'esborre el color a la resta.</vf-text>
         <vf-code>
@@ -260,7 +270,7 @@ function canviarParagraf() {
         <vf-img src="assets/unitats/programacio/web/js/04-dom/03.png" link="" styles="" classes=""></vf-img>
 
         <vf-title level="3">
-            Exercici 4
+            Exercici 5
         </vf-title>
         <vf-text>Fes un formulari com el següent que mostre al fer clic al botó tota la informació emplenada.</vf-text>
         <vf-img src="assets/unitats/programacio/web/js/04-dom/04.png" link="" styles="" classes=""></vf-img>
