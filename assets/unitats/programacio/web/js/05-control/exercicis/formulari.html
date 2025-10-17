@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validació de Formulari</title>
+    <link rel="stylesheet" href="estils_formulari.css"> </head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f4f8; /* Fons suau */
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+#formulariContacte {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+.grup-camp {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclou padding i border en l'amplada */
+    font-size: 16px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+#botoEnvia {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#botoEnvia:hover {
+    background-color: #2980b9;
+}
+
+#missatgeValidacio {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid transparent; /* Per mantenir l'alçada consistent */
+    background-color: #ecf0f1; /* Color inicial neutre */
+    color: #7f8c8d;
+}
+
+/* L'alumnat podrà utilitzar JS per afegir classes que canviïn el color, p. ex.: */
+.missatge.error {
+    background-color: #fcebeb;
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.missatge.exit {
+    background-color: #ebf9eb;
+    color: #2ecc71;
+    border-color: #2ecc71;
+}
+    </style>
+    <h1>Formulari de Contacte</h1>
+    
+    <div id="formulariContacte">
+        <div class="grup-camp">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="usuari@exemple.com">
+        </div>
+        
+        <div class="grup-camp">
+            <label for="contrasenya">Contrasenya:</label>
+            <input type="password" id="contrasenya" name="contrasenya" placeholder="Mínim 6 caràcters">
+        </div>
+        
+        <button id="botoEnvia">Enviar</button>
+
+        <div id="missatgeValidacio" class="missatge">
+            Introdueix les teves dades.
+        </div>
+    </div>
+
+    <script>
+        // Comprovar si els camps 'email' i 
+        // 'contrasenya' NO estan buits, usant &&.
+        // Mostrar el missatge d'èxit o d'error a 'missatgeValidacio'.
+
+    </script>
+
+</body>
+</html>

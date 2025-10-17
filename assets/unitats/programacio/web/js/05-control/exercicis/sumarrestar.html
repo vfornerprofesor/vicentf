@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comptador Simple amb Límits</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .contenidor-comptador {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50%; /* Per fer-los rodons */
+            cursor: pointer;
+            font-size: 2em; /* Mida gran per als símbols */
+            font-weight: bold;
+            width: 60px;
+            height: 60px;
+            line-height: 1;
+            transition: background-color 0.3s ease, transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #btnRestar {
+            background-color: #dc3545; /* Vermell per al menys */
+        }
+
+        #btnSumar {
+            background-color: #28a745; /* Verd per al més */
+        }
+
+        #numeroDisplay {
+            font-size: 4em;
+            color: #333;
+            margin: 0 20px;
+            min-width: 100px; /* Per centrar bé el número */
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenidor-comptador">
+        <h1>Comptador (Límits: -10 a 10)</h1>
+
+        <div class="controls">
+            <button id="btnRestar">-</button>
+
+            <p id="numeroDisplay">0</p>
+
+            <button id="btnSumar">+</button>
+        </div>
+    </div>
+
+    <script>
+        // VARIABLE que mantindrà el compte actual, començant per 0.
+        let numero = 0; 
+        
+        // El codi JavaScript per sumar, restar i comprovar els límits aniria aquí.
+    </script>
+
+</body>
+</html>

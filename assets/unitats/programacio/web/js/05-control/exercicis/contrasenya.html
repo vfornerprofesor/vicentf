@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joc d'Endevinar la Contrasenya</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e8f4f8;
+        }
+
+        .contenidor {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            text-align: center;
+            border-top: 5px solid #007bff;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e7e34;
+        }
+
+        #resultat {
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            min-height: 25px; /* Per reservar espai */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenidor">
+        <h1>🔐 Endevina la Contrasenya Secreta</h1>
+        <p>Tens una oportunitat per encertar la contrasenya guardada. Quina creus que és?</p>
+
+        <input type="text" id="inputContrasenya" placeholder="Endevina la contrasenya">
+
+        <button id="btnComprovar">Comprovar Contrasenya</button>
+
+        <p id="resultat"></p>
+    </div>
+
+    <script>
+        // VARIABLE de la contrasenya, tal com has demanat.
+        // Aquesta variable serà accessible pel codi JavaScript que s'afegirà posteriorment.
+        const contrasenyaSecreta = "CodingBetxi"; 
+
+        // El codi JavaScript per comprovar la contrasenya aniria aquí sota.
+    </script>
+
+</body>
+</html>

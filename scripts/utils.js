@@ -23,13 +23,25 @@ function processClasses(element, classes) {
 }
 
 function processTextBoldAndLinks(text) {
+    debugger;
     // Reemplaza los asteriscos (*) por etiquetas <strong> para el texto en negrita
     const formattedText = text.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
-    // Reemplaza los corchetes [] por etiquetas <a> para los enlaces
+
+    /* // Reemplaza los corchetes [] por etiquetas <a> para los enlaces
     const finalText = formattedText.replace(
         /\[(.*?)\]\((.*?)\)/g,
         '<a href="$2" target="_blank">$1</a>'
+    ); */
+
+    // Reemplaza los corchetes [] por etiquetas <a> para los enlaces, con soporte para |download
+    const finalText = formattedText.replace(
+        /\[([^\]|]+)(\|download)?\]\((.*?)\)/g,
+        (match, linkText, downloadFlag, url) => {
+            const downloadAttr = downloadFlag ? ' download' : '';
+            return `<a href="${url}" target="_blank"${downloadAttr}>${linkText}</a>`;
+        }
     );
+
     return finalText;
 }
 

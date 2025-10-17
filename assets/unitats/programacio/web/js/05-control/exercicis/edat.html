@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Major d'Edat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .contenidor {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultat {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            min-height: 20px; /* Per reservar espai */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenidor">
+        <h1>Verificador de Major d'Edat 🎂</h1>
+        <p>Introdueix el teu any de naixement (per exemple, 2005) i comprova si ja ets major d'edat a Espanya (18 anys).</p>
+
+        <input type="number" id="anyNaixement" placeholder="Escriu l'any de naixement" min="1900" max="2100">
+
+        <button id="btnComprovar">Comprovar Edat</button>
+
+        <p id="resultat"></p>
+    </div>
+
+    <script>
+        // Aquí s'afegirà el codi JavaScript més tard
+    </script>
+
+</body>
+</html>

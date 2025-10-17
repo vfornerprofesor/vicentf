@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #caixa {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #caixa>div {
+            width: 40%;
+            margin-inline: 5%;
+            height: 40vh;
+            line-height: 40vh;
+            text-align: center;
+            font-size: 50px;
+            border-radius: 20px;
+        }
+    </style>
+    <div id="caixa">
+        <div id="roig" onclick="clickVerd()">Verd</div>
+        <div id="blau" onclick="clickBlau()">Roig</div>
+        <div id="blau" onclick="clickRoig()">Blau</div>
+        <div id="groc" onclick="clickGroc()">Groc</div>
+    </div>
+    <script>
+        function clickVerd() {
+            let verd = document.getElementById('groc');
+            verd.style.backgroundColor = 'blue';
+        }
+
+        function clickGroc() {
+            let groc = document.getElementById('blau');
+            groc.style.backgroundColor = 'red';
+        }
+
+        function clickRoig() {
+            let roig = document.getElementById('verd');
+            roig.style.backgroundColor = 'green';
+        }
+
+        function clickBlau() {
+            let blau = document.getElementById('blau');
+            blau.style.backgroundColor = 'red';
+        }
+    </script>
+
+
+</body>
+
+</html>
