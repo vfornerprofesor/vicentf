@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Blocs Avançats, Funcions i Bases de Dades amb TinyDB
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                En aquesta secció aprofundirem en l'ús de TinyDB, una base de dades local en App Inventor, molt pràctica
+                perquè permet guardar dades directament al dispositiu mòbil sense necessitat de connexió.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Què és TinyDB?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                TinyDB és un component que permet emmagatzemar i recuperar informació de manera persistent en l'app.
+                Aquesta informació queda guardada encara que l'usuari tanqui l'aplicació.
+            </vf-text>
+
+            <vf-img src="ruta_imatge_tinydb_component.png" shadow></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Funcionalitats bàsiques amb TinyDB
+        </vf-title>
+
+        <vf-content>
+            <vf-list>
+                <li>
+                    <vf-text>Guardar dades amb claus i valors.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Recuperar dades per consultar-les o utilitzar-les després.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Esborra o actualitza informació desada.</vf-text>
+                </li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Com es treballa amb TinyDB?
+        </vf-title>
+
+        <vf-content>
+            <vf-list>
+                <li>
+                    <vf-text>Per desar dades, s'utilitza la combinació de blocs per escriure valor associat a una
+                        clau.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Per llegir dades, es recupera el valor a partir de la clau.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Si no existeix la clau, es pot retornar un valor per defecte.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-img src="ruta_imatge_tinydb_blocs.png" shadow></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Exercicis pràctics
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="3">
+                Exercici 1: Llista de desitjos
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>Crea una aplicació que permeti fer una llista de llibres, pel·lícules o objectes que
+                        vols.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Cada element s'ha d'afegir a la base de dades local amb TinyDB.</vf-text>
+                </li>
+                <li>
+                    <vf-text>La llista completa s'ha de mostrar a la pantalla.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Dona l'opció d'esborrar qualsevol element de la llista.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                Exercici 2: Diari personal
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>Fes una app on l'usuari pugui escriure notes o entrades diàries.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Cada entrada es desa a TinyDB amb la data actual com a clau o identificador.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Permet consultar les entrades ordenades per data.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Dona la possibilitat de modificar o eliminar entrades.</vf-text>
+                </li>
+            </vf-list>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

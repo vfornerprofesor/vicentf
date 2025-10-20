@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Projecte: App per portar el registre de notes
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Aquest projecte consisteix a crear una aplicació on l'alumnat pugui introduir, modificar i consultar les
+                seves notes de 2n de batxillerat. La informació es guardarà localment amb TinyDB, permetent l'ús offline
+                i persistència de dades. A més, la app calcularà mitjanes automàticament i mostrarà notificacions
+                sonores per millorar la interacció.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Condicions i funcionalitats que ha d'incloure
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="3">
+                1. Gestió de notes per assignatura i període
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>L'usuari podrà seleccionar l'assignatura per a la qual vol afegir o consultar
+                        notes.</vf-text>
+                </li>
+                <li>
+                    <vf-text>També podrà seleccionar el període (trimestre, semestre o qualsevol altra segmentació
+                        temporal).</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                2. Introduir notes
+            </vf-title>
+
+            <vf-text>
+                L'app permetrà afegir noves notes especificant:
+            </vf-text>
+
+            <vf-list>
+                <li>
+                    <vf-text>Assignatura</vf-text>
+                </li>
+                <li>
+                    <vf-text>Període</vf-text>
+                </li>
+                <li>
+                    <vf-text>Tipus de nota (examen, pràctica, projecte, etc.)</vf-text>
+                </li>
+                <li>
+                    <vf-text>Valoració numèrica (nota)</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-text>
+                *Validació de dades:* la nota ha de ser dins un rang vàlid (per exemple, 0 a 10).
+            </vf-text>
+
+            <vf-title level="3">
+                3. Modificar i eliminar notes
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>L'usuari podrà modificar notes ja introduïdes.</vf-text>
+                </li>
+                <li>
+                    <vf-text>S'haurà d'oferir una manera clara d'esborrar notes que vulgui eliminar.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                4. Emmagatzematge local amb TinyDB
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>Totes les notes es guardaran de manera local en la base de dades TinyDB.</vf-text>
+                </li>
+                <li>
+                    <vf-text>L'estructura de dades ha d'organitzar les notes per assignatura i període.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Caldrà gestionar claus que identifiquin unívocament cada nota per facilitar modificació i
+                        eliminació.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                5. Càlculs automàtics de mitjanes
+            </vf-title>
+
+            <vf-text>
+                La app calcularà la mitjana de notes per:
+            </vf-text>
+
+            <vf-list>
+                <li>
+                    <vf-text>Cada assignatura (acumulant totes les notes de la matèria)</vf-text>
+                </li>
+                <li>
+                    <vf-text>Períodes específics (com un trimestre o semestre)</vf-text>
+                </li>
+                <li>
+                    <vf-text>De manera que l'usuari pugui veure l'evolució i la nota final estimada.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                6. Visualització amigable
+            </vf-title>
+
+            <vf-text>
+                La interfície mostrarà llistes:
+            </vf-text>
+
+            <vf-list>
+                <li>
+                    <vf-text>Notes per assignatura, detallant tipus i valoració</vf-text>
+                </li>
+                <li>
+                    <vf-text>Mitjanes calculades</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-text>
+                Possibilitat de filtrar o canviar de visualització per períodes i assignatures.
+            </vf-text>
+
+            <vf-title level="3">
+                7. Notificacions i sons
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>Quan s'afegeixi, modifiqui o esborri una nota, la app mostrarà una notificació visual
+                        (popup o similar).</vf-text>
+                </li>
+                <li>
+                    <vf-text>També reproduirà sons breus per confirmar l'acció a l'usuari.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Utilitzar el component Notificador d'App Inventor amb les opcions de títol, missatge i
+                        botons.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                8. Usabilitat i accessibilitat
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>L'app ha de ser intuïtiva i clara.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Permetre la navegació fàcil entre introducció de dades i consultes.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Validar errors i mostrar missatges en cas d'entrades incorrectes.</vf-text>
+                </li>
+            </vf-list>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

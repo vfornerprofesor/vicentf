@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Dades i estructures amb App Inventor
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Aquest apartat introduïrà conceptes clau per manipular dades dins les aplicacions: variables avançades,
+                llistes i iteracions. L'objectiu és que l'alumnat pugui guardar i treballar amb col·leccions de dades,
+                com a llistes de tasques o noms, i processe aquestes dades mitjançant recorreguts i cerques.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Què són les llistes?
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Una llista és una col·lecció ordenada d'elements, on cada element té una posició que es denomina
+                *índex*. A App Inventor, els índexs comencen en 1 (el primer element).
+            </vf-text>
+
+            <vf-text>
+                Aquestes dades poden ser text, números, o fins i tot altres llistes o variables.
+            </vf-text>
+
+            <vf-img src="ruta_imatge_llista_fruits.png" shadow></vf-img>
+
+            <vf-text>
+                Per exemple, si la llista és ["manzana", "plátano", "naranja"], "manzana" està a l'índex 1.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Com crear i manipular llistes?
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="3">
+                1. Crear una llista
+            </vf-title>
+
+            <vf-text>
+                En els blocs, "make a list" permet generar una llista amb diversos elements. Es pot modificar afegint o
+                eliminant elements dins.
+            </vf-text>
+
+            <vf-title level="3">
+                2. Afegir elements
+            </vf-title>
+
+            <vf-text>
+                Es pot usar el bloc "add items to list" per afegir nous elements a una llista existent.
+            </vf-text>
+
+            <vf-title level="3">
+                3. Llegir elements
+            </vf-title>
+
+            <vf-text>
+                Amb el bloc "select list item" es pot accedir a un element concret mitjançant l'índex.
+            </vf-text>
+
+            <vf-title level="3">
+                4. Iterar llista
+            </vf-title>
+
+            <vf-text>
+                El bloc "for each item in list" permet recórrer tots els elements d'una llista i executar accions per
+                cada un.
+            </vf-text>
+
+            <vf-img src="ruta_imatge_bucle_foreach.png" shadow></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Variables avançades
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                És important saber que les llistes són un tipus especial de variable que permet guardar múltiples valors
+                relacionats.
+            </vf-text>
+
+            <vf-text>
+                Crear variables globals o locals per emmagatzemar aquestes llistes facilitarà la gestió de dades.
+            </vf-text>
+
+            <vf-img src="ruta_imatge_variable_global.png" shadow></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Exercicis pràctics
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="3">
+                Exercici 1: Llista de tasques pendents
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>Fes una app que permeti escriure tasques i afegir-les a una llista.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Mostra el nombre total de tasques pendents.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Permet eliminar tasques de la llista.</vf-text>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">
+                Exercici 2: Cerca en un llistat de noms
+            </vf-title>
+
+            <vf-list>
+                <li>
+                    <vf-text>Crea una app que tingui un llistat predefinit de noms.</vf-text>
+                </li>
+                <li>
+                    <vf-text>Afegeix un quadre de text on l'usuari introdueixi una paraula.</vf-text>
+                </li>
+                <li>
+                    <vf-text>L'aplicació ha de mostrar si la paraula està en el llistat o no, indicant la posició
+                        (índex) si la troba.</vf-text>
+                </li>
+            </vf-list>
+        </vf-content>
+
+
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

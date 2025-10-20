@@ -1,11 +1,13 @@
+<!-- Classes defined into classes attribute are optional, here are written beause you
+ can use it but it is not mandatory to use -->
 <!-- TEXT -->
 <vf-text
     styles=""
     classes=""
     
 >
-    Este *hola* y [Programa Ergo Sum](https://www.programoergosum.es/)
-    Descarrega [fitxer|download](enllaç_fitxer.html)
+    Este *hola* y [Programa Ergo Sum](https://www.programoergosum.es/) <!-- bold text between * and links with [] to see the text and () for the link -->
+    Descarrega [fitxer|download](enllaç_fitxer.html) <!-- to download file through link -->
 </vf-text>
 
 <vf-text
@@ -13,7 +15,7 @@
     classes=""
 ></vf-text>
 
-<!-- TITLE -->
+<!-- TITLE: use level to specify which kind of header is. Level 1 is the main header of website-->
 <vf-title
     subtitle=""
     level=""
@@ -29,7 +31,14 @@
     ordered
     styles=""
     classes=""
-></vf-list>
+>
+    <li>
+        <vf-text>Item 1</vf-text>
+    </li>
+    <li>
+        <vf-text>Item 2</vf-text>
+    </li>
+</vf-list>
 
 <!-- IMG -->
 <vf-img
@@ -61,18 +70,18 @@
     classes="btn-short"
 >TEXT</vf-btn>
 
-<!-- CONTENT -->
+<!-- CONTENT is the block where all tags except vf-title are inside-->
 <vf-content
     colored
 ></vf-content>
-<!-- ROW -->
+<!-- ROW has always inside vf-column-->
 <vf-row
     centered
 >
 
 </vf-row>
 
-<!-- COLUMN -->
+<!-- COLUMN is always inside vf-row-->
 <vf-col 
 classes="col-min-200px // col-min-300px // col-min-300px // col-md-6 (x2) // col-md-4 (x3) // col-md-3 (x4)">
 
