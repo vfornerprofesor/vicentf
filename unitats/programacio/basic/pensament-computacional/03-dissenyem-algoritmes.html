@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    
-<div id="menu" style="display:none"></div>
+
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
         <vf-title level="1">
@@ -29,7 +29,9 @@
 
         <vf-content>
             <vf-text>
-                En aquesta activitat, vas a dissenyar diferents algoritmes amb instruccions en el nostre llenguatge. Seran una sèrie de passos que l'ordinador o un robot hauria d'interpretar. Pots crear un document de Google Drive o escriure els programes a paper i després fer foto.
+                En aquesta activitat, vas a dissenyar diferents algoritmes amb instruccions en el nostre llenguatge.
+                Seran una sèrie de passos que l'ordinador o un robot hauria d'interpretar. Pots crear un document de
+                Google Drive o escriure els programes a paper i després fer foto.
             </vf-text>
 
             <vf-row>
@@ -37,7 +39,7 @@
                     <vf-text>
                         *Algoritme amb instruccions:*
                     </vf-text>
-        
+
                     <vf-list>
                         <li><vf-text>Recepta de truita</vf-text></li>
                         <li><vf-text>Rentar-se les dents</vf-text></li>
@@ -64,20 +66,224 @@
                 </vf-col>
             </vf-row>
 
-            <vf-title level="4">
-                Activitat final
-            </vf-title>
+        </vf-content>
+        <vf-title level="2">
+            Diagrames de Flux
+        </vf-title>
 
+        <vf-content>
             <vf-text>
-                Fes un algoritme per preparar una pizza. Has d'anar preguntant per quin tipus de pizza vol i posar els ingredients pertinents. Després, al posar-la al forn, has de repetir comprovar si la pizza està feta per deixar-la o per traure-la.
+                Ara que ja sabeu escriure algoritmes amb instruccions i condicionals, és el moment de representar-los
+                visualment mitjançant *diagrames de flux*. Els diagrames de flux utilitzen símbols geomètrics per
+                representar les diferents parts d'un algoritme de manera clara i visual.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="3">
+            Elements del Diagrama de Flux
+        </vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        *Inici/Fi:* S'utilitza un oval per indicar on comença i on acaba l'algoritme.
+                    </vf-text>
+                    <vf-img src="assets/unitats/programacio/basic/pensament_computacional/inici_final.png" shadow>
+                </vf-col>
+
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        *Procés/Acció:* Un rectangle representa una acció o instrucció que s'ha d'executar (per exemple:
+                        "Trencar els ous", "Posar pasta de dents").
+                    </vf-text>
+                    <vf-img src="assets/unitats/programacio/basic/pensament_computacional/proces.png" shadow>
+                </vf-col>
+
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        *Decisió/Condicional:* Un rombe s'usa per fer preguntes amb resposta Sí o No (per exemple: "Vols
+                        pernil?", "Nota >= 5?").
+                    </vf-text>
+                    <vf-img src="assets/unitats/programacio/basic/pensament_computacional/decisio.png" shadow>
+                </vf-col>
+
+
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Exemple de Diagrama de Flux
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Vegem com es convertiria un algoritme senzill en diagrama de flux:
+            </vf-text>
+
+
+            <vf-row>
+                <vf-col>
+                    <vf-title level="4" centered>
+                        Algoritme (text):
+                    </vf-title>
+                    <vf-list ordered>
+                        <li>
+                            <vf-text>Inici</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Agafar got</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Si vols aigua freda?</vf-text>
+                        </li>
+                        <vf-list ordered>
+
+                            <li>
+                                <vf-text>Posar gel</vf-text>
+                            </li>
+
+                        </vf-list>
+                        <li>
+                            <vf-text>Omplir got amb aigua</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Fi</vf-text>
+                        </li>
+                    </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-title level="4" centered>
+                        Diagrama de flux:
+                    </vf-title>
+
+                    <vf-img src="assets/unitats/programacio/basic/pensament_computacional/exemple_diagrama.png" shadow>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="3">
+            Tasca: Converteix els teus Algoritmes
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Ara has de convertir els algoritmes que ja has escrit en diagrames de flux. Recorda utilitzar els
+                símbols adequats per a cada element:
+            </vf-text>
+
+            <vf-list>
+
+                <li>
+                    <vf-text>*Recepta de truita amb pernil o sense i en pa o plat?* (amb condicional Si i també
+                        Si/Sinó)</vf-text>
+                </li>
+                <li>
+                    <vf-text>*Nota aprovat o suspès?* (amb condicional)</vf-text>
+                </li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="3">
+            Ferramentes Gratuïtes per Crear Diagrames de Flux
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Podeu utilitzar qualsevol d'aquestes ferramentes en línia gratuïtes per crear els vostres diagrames de
+                flux:
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        *[Draw.io (diagrams.net)](https://app.diagrams.net/)*
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>100% gratuïta</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>No cal registre</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Es pot desar a Google Drive o al vostre ordinador</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Molt completa i professional</vf-text>
+                        </li>
+                    </vf-list>
+                    <vf-btn newtab link="https://app.diagrams.net/">
+                        Obrir Draw.io
+                    </vf-btn>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        *[Lucidchart](https://www.lucidchart.com/)*
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>Gratuïta amb compte educatiu</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Cal registre amb correu electrònic</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Molt intuïtiva</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Permet col·laboració en temps real</vf-text>
+                        </li>
+                    </vf-list>
+                    <vf-btn newtab link="https://www.lucidchart.com/">
+                        Obrir Lucidchart
+                    </vf-btn>
+                </vf-col>
+
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        *[Google Drawings](https://docs.google.com/drawings/)*
+                    </vf-text>
+                    <vf-list>
+                        <li>
+                            <vf-text>Totalment gratuïta</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Cal compte de Google</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Es desa automàticament a Drive</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Fàcil de compartir</vf-text>
+                        </li>
+                    </vf-list>
+                    <vf-btn newtab link="https://docs.google.com/drawings/">
+                        Obrir Google Drawings
+                    </vf-btn>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+
+        <vf-title level="2">
+            Activitat final
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Fes un algoritme en diagrama de flux per preparar una pizza. Has d'anar preguntant per quin tipus de
+                pizza vol i posar els
+                ingredients pertinents. Després, al posar-la al forn, has de repetir comprovar si la pizza està feta per
+                deixar-la o per traure-la.
             </vf-text>
         </vf-content>
 
     </div>
     <div id="footer" style="display:none"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
 
-    
+
 </body>
 
 </html>

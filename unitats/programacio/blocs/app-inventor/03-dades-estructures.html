@@ -44,11 +44,21 @@
             <vf-text>
                 Aquestes dades poden ser text, números, o fins i tot altres llistes o variables.
             </vf-text>
-
-            <vf-img src="ruta_imatge_llista_fruits.png" shadow></vf-img>
+            <!--Imatge: Pantalla d’App Inventor 
+mostrant un bloc "crear una llista" amb 
+fruits (manzana, plátano, naranja) i els seus índexs -->
+            <vf-row>
+                <vf-col><vf-img
+                        src="assets/unitats/programacio/blocs/app-inventor/03_dades_estructures/exemple_llista.png"
+                        shadow></vf-col>
+                <vf-col><vf-img
+                        src="assets/unitats/programacio/blocs/app-inventor/03_dades_estructures/exemple_llista_vista.png"
+                        shadow></vf-col>
+            </vf-row>
 
             <vf-text>
-                Per exemple, si la llista és ["manzana", "plátano", "naranja"], "manzana" està a l'índex 1.
+                Per exemple, si la llista és ["taronja", 73, ["gos", "gat"], vertader], "taronja" està a l'índex 1,
+                l'altra llista que conté gos i gat està a l'index 3.
             </vf-text>
         </vf-content>
 
@@ -91,24 +101,6 @@
                 cada un.
             </vf-text>
 
-            <vf-img src="ruta_imatge_bucle_foreach.png" shadow></vf-img>
-        </vf-content>
-
-        <vf-title level="2">
-            Variables avançades
-        </vf-title>
-
-        <vf-content>
-            <vf-text>
-                És important saber que les llistes són un tipus especial de variable que permet guardar múltiples valors
-                relacionats.
-            </vf-text>
-
-            <vf-text>
-                Crear variables globals o locals per emmagatzemar aquestes llistes facilitarà la gestió de dades.
-            </vf-text>
-
-            <vf-img src="ruta_imatge_variable_global.png" shadow></vf-img>
         </vf-content>
 
         <vf-title level="2">
@@ -119,18 +111,25 @@
             <vf-title level="3">
                 Exercici 1: Llista de tasques pendents
             </vf-title>
+            <vf-row>
+                <vf-col>
+                    <vf-list>
+                        <li>
+                            <vf-text>Fes una app que permeti escriure tasques i afegir-les a una llista.</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Mostra el nombre total de tasques pendents.</vf-text>
+                        </li>
+                        <li>
+                            <vf-text>Permet eliminar tasques de la llista.</vf-text>
+                        </li>
+                    </vf-list>
 
-            <vf-list>
-                <li>
-                    <vf-text>Fes una app que permeti escriure tasques i afegir-les a una llista.</vf-text>
-                </li>
-                <li>
-                    <vf-text>Mostra el nombre total de tasques pendents.</vf-text>
-                </li>
-                <li>
-                    <vf-text>Permet eliminar tasques de la llista.</vf-text>
-                </li>
-            </vf-list>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor/03_dades_estructures/tasques.png" shadow>
+                </vf-col>
+            </vf-row>
 
             <vf-title level="3">
                 Exercici 2: Cerca en un llistat de noms
@@ -146,6 +145,11 @@
                 <li>
                     <vf-text>L'aplicació ha de mostrar si la paraula està en el llistat o no, indicant la posició
                         (índex) si la troba.</vf-text>
+                </li>
+
+                <li>
+                    <vf-text>En cas de no estar la paraula, indicarà si es vol afegir a la llista i amb dos botons o
+                        s'afegirà o no.</vf-text>
                 </li>
             </vf-list>
         </vf-content>
