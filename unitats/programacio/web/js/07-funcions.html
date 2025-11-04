@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">Funcions</vf-title>
+
+        <vf-title level="2">1. Què són les Funcions i Per a Què Serveixen?</vf-title>
+
+<vf-content>
+  <vf-text>
+    Una funció és un bloc de codi reutilitzable dissenyat per realitzar una tasca concreta. Penseu-hi com una "miniprèmia" o un "robot" dins del vostre programa.
+  </vf-text>
+
+  <vf-row>
+    <vf-col classes="col-md-4">
+      <vf-title level="3">Reutilització del Codi</vf-title>
+      <vf-text>
+        Permeten executar el mateix codi moltes vegades sense haver de reescriure'l. Si necessiteu calcular el quadrat d'un nombre deu vegades, només definiu la funció una vegada.
+      </vf-text>
+    </vf-col>
+    
+    <vf-col classes="col-md-4">
+      <vf-title level="3">Organització i Manteniment</vf-title>
+      <vf-text>
+        Fan que el codi siga més modular, net i fàcil de llegir. En lloc de tenir un codi "monolític", el dividim en tasques lògiques. Si hi ha un error en una part, sabeu exactament on buscar.
+      </vf-text>
+    </vf-col>
+    
+    <vf-col classes="col-md-4">
+      <vf-title level="3">Abstracció</vf-title>
+      <vf-text>
+        Permeten amagar la complexitat. Quan crideu a console.log(), no necessiteu saber com funciona internament, només que "escriu alguna cosa per consola". Les vostres funcions fan el mateix.
+      </vf-text>
+    </vf-col>
+  </vf-row>
+</vf-content>
+
+<vf-title level="2">2. Com Definir i Utilitzar una Funció (Amb i Sense return)</vf-title>
+
+<vf-content>
+  <vf-text>
+    Per poder utilitzar una funció, primer l'hem de definir. A JavaScript, la sintaxi més habitual és utilitzant la paraula clau *function*.
+  </vf-text>
+
+  <vf-title level="3">Definició Bàsica d'una Funció</vf-title>
+  
+  <vf-code language="javascript">
+function nomDeLaFuncio() {
+  // Instruccions que executa la funció
+  console.log("Aquesta funció s'ha executat!");
+}
+
+// Per utilitzar-la o "cridar-la":
+nomDeLaFuncio(); // S'executa el codi de dins
+  </vf-code>
+
+  <vf-row>
+    <vf-col classes="col-md-6">
+      <vf-title level="3">Funcions Sense Retorn (Procediments)</vf-title>
+      <vf-text>
+        Una funció sense la paraula clau *return* realitza una acció (com imprimir un missatge, modificar una variable global o actualitzar l'estil d'un element), però no retorna un valor explícitament al lloc on ha estat cridada. De fet, totes les funcions a JS retornen undefined si no hi ha un return explícit.
+      </vf-text>
+      
+      <vf-title level="4">Exemple de Funció Sense return:</vf-title>
+      <vf-code language="javascript">
+// La funció només SALUDA (fa una acció)
+function saludar() {
+  let missatge = "Hola, benvingut/da al món de les funcions!";
+  console.log(missatge);
+}
+
+// Crida:
+saludar(); // Només es veu el missatge per consola
+      </vf-code>
+    </vf-col>
+    
+    <vf-col classes="col-md-6">
+      <vf-title level="3">Funcions Amb Retorn (return)</vf-title>
+      <vf-text>
+        Les funcions que utilitzen *return* tenen com a objectiu calcular i retornar un valor al codi que les ha cridat. Aquest valor retornat es pot guardar en una variable o utilitzar-se directament en una expressió.
+      </vf-text>
+      
+      <vf-text>
+        *Regla Clau:* Quan s'executa la instrucció return, la funció finalitza immediatament, i el codi posterior no s'executa.
+      </vf-text>
+      
+      <vf-title level="4">Exemple de Funció Amb return:</vf-title>
+      <vf-code language="javascript">
+// La funció CALCULA i RETORNA un resultat
+function obtenirPI() {
+  return 3.14159; // Retorna el valor de PI
+}
+
+// Crida i assignació del valor retornat:
+let elMeuPI = obtenirPI();
+console.log("El valor de PI és: " + elMeuPI); 
+// Mostra: El valor de PI és: 3.14159
+
+// O es pot utilitzar directament:
+console.log(obtenirPI() * 2); 
+// Mostra: 6.28318 (retorna el valor i es multiplica)
+      </vf-code>
+    </vf-col>
+  </vf-row>
+</vf-content>
+
+<vf-title level="2">3. Funcions amb i sense Paràmetres</vf-title>
+
+<vf-content>
+  <vf-row>
+    <vf-col classes="col-md-6">
+      <vf-title level="3">Funcions Sense Paràmetres</vf-title>
+      <vf-text>
+        Com hem vist abans, són funcions que realitzen la seua tasca sense necessitat de cap dada externa.
+      </vf-text>
+      
+      <vf-title level="4">Exemple:</vf-title>
+      <vf-code language="javascript">
+function mostrarDataActual() {
+  let avui = new Date(); // Obté la data del sistema
+  console.log("La data és: " + avui.toDateString());
+  // No necessita cap dada d'entrada
+}
+
+mostrarDataActual();
+      </vf-code>
+    </vf-col>
+    
+    <vf-col classes="col-md-6">
+      <vf-title level="3">La Importància dels Paràmetres</vf-title>
+      <vf-text>
+        Els paràmetres són variables que actuen com a entrades de la funció, permetent-li rebre dades de l'exterior. Són essencials per fer que la funció siga flexible i genèrica, ja que pot operar amb diferents valors cada vegada que és cridada.
+      </vf-text>
+      
+      <vf-list>
+        <li>
+          <vf-text>*Definició:* Es col·loquen dins dels parèntesis de la definició de la funció.</vf-text>
+        </li>
+        <li>
+          <vf-text>*Argument:* És el valor concret que es passa a la funció quan la cridem.</vf-text>
+        </li>
+      </vf-list>
+      
+      <vf-title level="4">Exemple de Funció Amb Paràmetres i return:</vf-title>
+      <vf-code language="javascript">
+// 'base' i 'altura' són els PARÀMETRES
+function calcularAreaTriangle(base, altura) {
+  let area = (base * altura) / 2;
+  return area; // Retorna el resultat del càlcul
+}
+
+// Crides amb ARGUMENTS diferents:
+let area1 = calcularAreaTriangle(10, 5); // Arguments: 10 i 5
+let area2 = calcularAreaTriangle(20, 8); // Arguments: 20 i 8
+
+console.log("Àrea 1: " + area1); // Mostra: 25
+console.log("Àrea 2: " + area2); // Mostra: 80
+      </vf-code>
+    </vf-col>
+  </vf-row>
+</vf-content>
+
+<vf-title level="2">Exercicis de Funcions</vf-title>
+
+<vf-content>
+
+  <vf-title level="3">Exercici 1: El meu perfil de presentació</vf-title>
+  
+  <vf-list>
+    <li>
+      <vf-text>*Enunciat:* Crea una funció que es diu *presentar* que rebi com a paràmetres el teu nom i la teva edat. Hi haurà dos inputs (nom i edat) i un botó. Al fer click al botó es recolliran els valors dels inputs i es cridarà a la funció amb els paràmetres indicats.</vf-text>
+    </li>
+    <li>
+      <vf-text>*Instruccions:* La funció ha d'afegir un títol h1 al body amb el missatge "Em dic [el teu nom] i tinc [la teua edat] anys.". Crida la funció amb les teves dades.</vf-text>
+    </li>
+  </vf-list>
+
+  <vf-title level="3">Exercici 2: Calculadora de l'IVA</vf-title>
+  
+  <vf-list>
+    <li>
+      <vf-text>*Enunciat:* Crea una funció que es diu *calcularPreuFinal* que rebi dos paràmetres: un preu i un iva. Hi haurà dos inputs (preu i iva) i un botó. Al fer click al botó es recolliran els valors dels inputs i es cridarà a la funció amb els paràmetres indicats.</vf-text>
+    </li>
+    <li>
+      <vf-text>*Instruccions:* La funció ha de calcular el preu final aplicant l'IVA i ha d'escriure un missatge en un paràgraf al web.</vf-text>
+    </li>
+  </vf-list>
+
+  <vf-title level="3">Exercici 3: Mostra la seqüència de números</vf-title>
+  
+  <vf-list>
+    <li>
+      <vf-text>*Enunciat:* Crea una funció que es diu *mostrarNumeros* que rebi com a paràmetres dos nombres i mostrarà els nombres entre el primer i el segon. Hi haurà 3 blocs amb 2 inputs i botó cadascú que executaran la mateixa funció.</vf-text>
+    </li>
+    <li>
+      <vf-text>*Instruccions:* La funció ha de mostrar un paràgraf amb els números de la seqüència.</vf-text>
+    </li>
+  </vf-list>
+
+  <vf-title level="3">Exercici 4: Mix</vf-title>
+  
+  <vf-list>
+    <li>
+      <vf-text>*Enunciat:* Hi haurà diferents blocs. Un amb un input per al nom i l'edat com l'exercici 1. Un amb el preu i l'iva de l'exercici 2. Un amb dos números per mostrar la seqüència com el número 3. Hauràs de fer una funció per a cada botó i a més una funció *afegeixTextAPantalla* que rebrà els paràmetres tipus i missatge. El tipus serà 'p', 'h1', 'h2' i el missatge serà el text que es mostrarà en pantalla. El primer bloc cridarà a la funció per crear un h1, el bloc dos per crear un h2 i el bloc 3 per crear un paràgraf.</vf-text>
+    </li>
+    <li>
+      <vf-text>*Instruccions:* La funció ha de rebre el tipus i el missatge. Crearà un element com el que reba segons el tipus, li canviarà el text per el missatge que reba i l'afegirà al body.</vf-text>
+    </li>
+  </vf-list>
+</vf-content>
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
