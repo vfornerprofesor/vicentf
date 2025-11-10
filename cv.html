@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner Rogla - Currículum</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            border: 3px solid #e0e0e0;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #2980b9;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            letter-spacing: 0.5px;
+        }
+
+        .experience-item,
+        .education-item {
+            margin-bottom: 30px;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+
+        .item-period {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .item-description {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-item {
+            font-size: 15px;
+            color: #555;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-item:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+
+        .project-highlight {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .project-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .project-info {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .web-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .web-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="photo-placeholder">
+                <img src="assets/foto_cv.jpg" alt="foto_cv">
+            </div>
+            <h1>Vicent Forner Rogla</h1>
+            <p class="subtitle">Professor d'Informàtica | Autodidacta en Intel·ligència Artificial</p>
+            <div class="contact-info">
+                <div><a href="mailto:v.fornerrogla@edu.gva.es">v.fornerrogla@edu.gva.es</a></div>
+                <div class="web-link">
+                    <img src="assets/logo.png" alt="Web" class="web-icon">
+                    <a href="http://vicentf.webprofes.com" target="_blank">vicentf.webprofes.com</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Sobre Mi</h2>
+            <p class="item-description">
+                Professor d'informàtica amb experiència docent des del 2018 i sòlid background tècnic com a
+                programador i arquitecte de software. Gaudisc d'ensenyar tecnologies emergents,
+                particularment Intel·ligència Artificial, amb una formació autodidacta avançada en aquest camp.
+                Actualment desenvolupe cursos i tallers d'IA per a centres educatius amb l'objectiu d'apropar aquesta
+                tecnologia transformadora a estudiants i docents.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Experiència Professional</h2>
+
+            <div class="experience-item">
+                <div class="item-title">Director d'Estudis de Formació Professional</div>
+                <div class="item-period">2024 - Actualitat | IES de Betxí</div>
+                <p class="item-description">
+                    Coordinació i gestió dels cicles formatius del centre, planificació acadèmica i organització
+                    pedagògica de la Formació Professional.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-title">Professor d'Informàtica</div>
+                <div class="item-period">2019 - Actualitat | IES de Betxí</div>
+                <p class="item-description">
+                    Docència d'informàtica a ESO, Batxillerat i Cicle Formatiu de Grau Mitjà. 
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-title">Creador APP Fruitity</div>
+                <div class="item-period">2023</div>
+                <div class="project-highlight">
+                    <img src="assets/fruitity-icon.png" alt="Logo Fruitity" class="project-logo">
+                    <div class="project-info">
+                        <strong>Projecte destacat:</strong> Creador de <a href="https://fruitity.com" target="_blank"
+                            class="project-link"><em>Fruitity</em></a>, una aplicació educativa per fomentar el consum
+                        de fruita entre l'alumnat mitjançant un sistema de punts i recompenses que combina gamificació i
+                        hàbits saludables.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-title">Programador i Arquitecte de Software</div>
+                <div class="item-period">2014 - 2019</div>
+                <p class="item-description">
+                    Desenvolupament d'aplicacions web i software empresarial. Experiència en múltiples tecnologies i frameworks de desenvolupament.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Formació Acadèmica</h2>
+
+            <div class="education-item">
+                <div class="item-title">Màster en Direcció i Gestió de Centres Educatius</div>
+                <div class="item-period">2021</div>
+            </div>
+
+            <div class="education-item">
+                <div class="item-title">Màster Universitari en Professorat de Secundària</div>
+                <div class="item-period">2018</div>
+            </div>
+
+            <div class="education-item">
+                <div class="item-title">Grau en Enginyeria Informàtica</div>
+                <div class="item-period">2010 - 2014</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Formació Complementària</h2>
+            <div class="skills-list">
+                <div class="skill-item">Metodologies actives d'aprenentatge aplicades a l'aula</div>
+                <div class="skill-item">Intel·ligència Artificial (formació autodidacta avançada)</div>
+                <div class="skill-item">Desenvolupament de continguts educatius digitals</div>
+                <div class="skill-item">Programació web i desenvolupament d'aplicacions</div>
+            </div>
+        </section>
+
+        <!--<section class="section">
+            <h2>Competències</h2>
+            <div class="skills-list">
+                <div class="skill-item">Especialista en Intel·ligència Artificial aplicada a l'educació</div>
+                <div class="skill-item">Disseny i impartició de cursos i tallers d'IA</div>
+                <div class="skill-item">Programació i desenvolupament de software</div>
+                <div class="skill-item">Metodologies actives i innovació pedagògica</div>
+                <div class="skill-item">Gestió i coordinació de projectes educatius</div>
+            </div>
+        </section>-->
+    </div>
+</body>
+
+</html>
