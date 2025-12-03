@@ -24,7 +24,8 @@
         </vf-title>
 
         <vf-content>
-            <vf-text>En programació tenim ferramentes que ens permeten realitzar accions semblants o repetir-me d'una manera més senzilla que escriure les instruccions de manera reiterativa.</vf-text>
+            <vf-text>En programació tenim ferramentes que ens permeten realitzar accions semblants o repetir-me d'una
+                manera més senzilla que escriure les instruccions de manera reiterativa.</vf-text>
         </vf-content>
 
         <vf-title level="2">
@@ -33,8 +34,9 @@
         <vf-content>
             <vf-row>
                 <vf-col>
-                  <vf-text>Imagina que vull escriure amb el document.write els números de l'1 al 10, per fer-ho hauria d'escriure la mateixa instrucció 10 vegades. </vf-text>
-                 </vf-col>
+                    <vf-text>Imagina que vull escriure amb el document.write els números de l'1 al 10, per fer-ho hauria
+                        d'escriure la mateixa instrucció 10 vegades. </vf-text>
+                </vf-col>
                 <vf-col>
                     <vf-code>
                         document.write('1');
@@ -53,11 +55,16 @@
 
             <vf-row>
                 <vf-col>
-                    <vf-text>I si hi haguera la possibilitat de no repetir les instruccions? Ací és on entren en joc els bucles per tal d'evitar-nos escriure tantes linies de codi innecessàries. Mira l'exemple del bucle for:</vf-text>
+                    <vf-text>I si hi haguera la possibilitat de no repetir les instruccions? Ací és on entren en joc els
+                        bucles per tal d'evitar-nos escriure tantes linies de codi innecessàries. Mira l'exemple del
+                        bucle for:</vf-text>
                     <vf-text>
-                        En el codi, el contingut d'instruccions a repetir es repetiran tantes vegades com es complisca la condició. La variable i comença en 1 i es repetirà mentre la i siga menor o igual que 10 i s'anirà incrementant d'1 en 1.
+                        En el codi, el contingut d'instruccions a repetir es repetiran tantes vegades com es complisca
+                        la condició. La variable i comença en 1 i es repetirà mentre la i siga menor o igual que 10 i
+                        s'anirà incrementant d'1 en 1.
                     </vf-text>
-                    <vf-text>Per tant, la i la primera vegada que s'executa val 1, la següent val 2, la següent 3 i així fins a 10</vf-text>
+                    <vf-text>Per tant, la i la primera vegada que s'executa val 1, la següent val 2, la següent 3 i així
+                        fins a 10</vf-text>
                 </vf-col>
                 <vf-col>
                     <vf-code>
@@ -79,12 +86,13 @@
                 <li><vf-text>Del 40 al 10</vf-text></li>
             </vf-list>
 
-            <vf-text>Ara, per continuar anem a utilitzar el següent codi i has de fer que es sumen els números entre l'1 i el 10</vf-text>
+            <vf-text>Ara, per continuar anem a utilitzar el següent codi i has de fer que es sumen els números entre l'1
+                i el 10</vf-text>
             <vf-code>
                 &lt;style&gt;
-                    body {background-color: coral;color: white;text-align: center;}
-                    button {background-color: white;color:coral;border:2px solid white;padding: 10px;border-radius: 10px;}
-                    button:hover {background-color: coral;color:white}
+                body {background-color: coral;color: white;text-align: center;}
+                button {background-color: white;color:coral;border:2px solid white;padding: 10px;border-radius: 10px;}
+                button:hover {background-color: coral;color:white}
                 &lt;/style&gt;
                 &lt;h1&gt;Suma dels números entre l'1 i el 10&lt;/h1&gt;
                 &lt;p id="resultat"&gt;&lt;/p&gt;
@@ -92,104 +100,175 @@
                 &lt;button onclick="sumar()"&gt;Sumar&lt;/button&gt;
 
                 &lt;script&gt;
-                    let resultat = document.getElementById('resultat');
+                let resultat = document.getElementById('resultat');
 
-                    function sumar() {
-                        //Crea una variable suma que comence en 0
-                        
-                        //Bucle for 
-                        //    afegeix-li a la variable suma la variable del bucle
-                        
-                        //Mostra a resultat el total de la suma
-                    }
-                
+                function sumar() {
+                    //Crea una variable suma que comence en 0
+
+                    //Bucle for
+                        // afegeix-li a la variable suma la variable del bucle
+
+                    //Mostra a resultat el total de la suma
+                }
+
                 &lt;/script&gt;
             </vf-code>
-         
 
-    </vf-content>
 
-<vf-title level="2">
+        </vf-content>
+
+        <vf-title level="2">
             Bucles while
         </vf-title>
 
-    <vf-content>
-        <vf-row>
-            <vf-col>
-                <vf-text>Amb els bucles while es segueix el mateix funcionament que amb els bucles for però amb la peculiaritat que s'escriu el codi de diferent manera i es poden afegir altres condicionants més complexos</vf-text>
-            </vf-col>
-            <vf-col>
-                <vf-code>
+        <vf-content>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Amb els bucles while es segueix el mateix funcionament que amb els bucles for però amb la
+                        peculiaritat que s'escriu el codi de diferent manera i es poden afegir altres condicionants més
+                        complexos</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-code>
                         while(condicio) {
                             //accions a realitzar
                         }
-                        
+
                         //Si comparem un bucle for amb la variable i
                         for(inicia_variable ; condicio ; increment) {
-                            accions a realitzar
+                            //accions a realitzar
                         }
 
                         //En bucle while seria:
                         inicia_variable;
                         while(condicio) {
-                            //accions a realitzar
-                            increment
+                        //accions a realitzar
+                        increment
                         }
-                        
+
                     </vf-code>
-            </vf-col>
-        </vf-row>
-    </vf-content>
-    
-        
+                </vf-col>
+            </vf-row>
+        </vf-content>
 
-    <vf-title level="2">
-        Exercicis
-    </vf-title>
-    <vf-content>
-
-        <vf-title level="3">
-            Exercici 1
+        <vf-title level="2">
+            Sentència break
         </vf-title>
+        <vf-content>
+            <vf-text>Imagina que estàs buscant un llibre específic en una prestatgeria de 100 llibres. Comences pel
+                primer, el segon... Si trobes el llibre en la posició 10, té sentit continuar mirant els 90 llibres
+                restants? No. En eixe moment, deixes de buscar.</vf-text>
 
-        <vf-text>
-            Escriu un programa que pregunte per dos números i que tindrà un paràgraf on mostrar el resultat. Mostrarà tots els números (amb text dins d'un paràgraf) que hi haja entre els dos números. En el cas que el primer número siga major que el segon al paràgraf haurà de posar ERROR.
+            <vf-text>En programació, el break és eixa "eixida d'emergència" que trenca el bucle immediatament i continua
+                amb la resta del programa.</vf-text>
 
-        </vf-text>
-        <vf-row>
-            <vf-col>
-                <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex1.1.png" link="" styles="max-width:400px;" classes=""></vf-img>
-            </vf-col>
-            <vf-col>
-                <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex1.2.png" link="" styles="max-width:400px;" classes=""></vf-img>
-            </vf-col>
-        </vf-row>
+            <vf-text>Anem a vore-ho amb codi senzill, ja que estem començant i encara no hem vist estructures complexes
+                de dades.</vf-text>
 
-        <vf-title level="3">
-            Exercici 2
+            <vf-title level="4">
+                1. Exemple amb un bucle for
+            </vf-title>
+
+            <vf-text>Imagina que volem trobar el número 7 entre els números del 0 al 9.</vf-text>
+
+            <vf-code>
+                console.log("Comencem a buscar el número 7...");
+
+                for (let i = 0; i &lt; 10; i++) {
+                    console.log("Mirem el número: " + i);
+
+                    if (i === 7) {
+                        console.log("Ja l'hem trobat! Eixim del bucle.");
+                        break; // Aci trenquem el bucle. Els números 8 i 9 mai es mostraran.
+                    }
+                }
+
+                console.log("Continuem amb la resta del programa.");
+            </vf-code>
+
+            <vf-text>Què passa ací? Sense el break, el programa imprimiria fins al 9. Amb el break, quan i val 7, el
+                bucle es deté i salta fora. Això forma part de les "estructures de salt" que tenim al temari.</vf-text>
+
+            <vf-title level="4">
+                2. Exemple amb un bucle while
+            </vf-title>
+
+            <vf-text>El break és molt útil en bucles while (mentre) quan busquem una condició especial per
+                parar.</vf-text>
+
+            <vf-code>
+                let energia = 10;
+
+                // Bucle infinit teòric (sempre és true)
+                while (true) {
+                    console.log("Nivell d'energia: " + energia);
+                    energia = energia - 1; // Restem energia
+
+                    if (energia === 0) {
+                        console.log("Energia esgotada! Aturant sistema...");
+                        break; // Eixida forçada del bucle
+                    }
+                }
+            </vf-code>
+        </vf-content>
+
+
+        <vf-title level="2">
+            Exercicis
         </vf-title>
+        <vf-content>
 
-        <vf-text>Escriu un programa com l'anterior però que sume els números entre els dos números que s'indiquen i que mostre error també si el primer és major que el segon</vf-text>
-        <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex2.png" link="" styles="max-width:400px;" classes=""></vf-img>
+            <vf-title level="3">
+                Exercici 1
+            </vf-title>
 
-      
-        <vf-title level="3">
-            Exercici 3
-        </vf-title>
-        <vf-text>
-            Fes un programa que demane dos números i que compte quants d'entre ells són múltiples de 3. Que mostre també l'error si el primer número és major que el segon
-        </vf-text>
-        <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex3.png" link="" styles="max-width:400px;" classes=""></vf-img>
+            <vf-text>
+                Escriu un programa que pregunte per dos números i que tindrà un paràgraf on mostrar el resultat.
+                Mostrarà tots els números (amb text dins d'un paràgraf) que hi haja entre els dos números. En el cas que
+                el primer número siga major que el segon al paràgraf haurà de posar ERROR.
+
+            </vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex1.1.png" link=""
+                        styles="max-width:400px;" classes=""></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex1.2.png" link=""
+                        styles="max-width:400px;" classes=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-title level="3">
+                Exercici 2
+            </vf-title>
+
+            <vf-text>Escriu un programa com l'anterior però que sume els números entre els dos números que s'indiquen i
+                que mostre error també si el primer és major que el segon</vf-text>
+            <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex2.png" link="" styles="max-width:400px;"
+                classes=""></vf-img>
 
 
-        <vf-title level="3">
-            Exercici 4
-        </vf-title>
-        <vf-text>Fes un programa que mostre la taula de multiplicar que indique l'usuari</vf-text>
-        <vf-text>Cada operació (5x1=5 o 5x2=10) haurà d'estar en un paràgraf. Has de crear un div i dins amb javascript insertaras els paràgrafs. Mira l'exemple:</vf-text>
-        <vf-code>
-            &lt;div id="caixa"&gt;&lt;/div&gt;
-            &lt;script&gt;
+            <vf-title level="3">
+                Exercici 3
+            </vf-title>
+            <vf-text>
+                Fes un programa que demane dos números i que compte quants d'entre ells són múltiples de 3. Que mostre
+                també l'error si el primer número és major que el segon
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex3.png" link="" styles="max-width:400px;"
+                classes=""></vf-img>
+
+
+            <vf-title level="3">
+                Exercici 4
+            </vf-title>
+            <vf-text>Fes un programa que mostre la taula de multiplicar que indique l'usuari</vf-text>
+            <vf-text>Cada operació (5x1=5 o 5x2=10) haurà d'estar en un paràgraf. Has de crear un div i dins amb
+                javascript insertaras els paràgrafs. Mira l'exemple:</vf-text>
+            <vf-code>
+                &lt;div id="caixa"&gt;&lt;/div&gt;
+                &lt;script&gt;
                 //Agafar l'element caixa:
                 let caixa = document.getElementById('caixa');
 
@@ -201,12 +280,13 @@
 
                 //Afegir el paràgraf a la caixa
                 caixa.appendChild(paragraf);
-            &lt;/script&gt;
-        </vf-code>
-        
-        <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex4.png" link="" styles="max-width:400px;" classes=""></vf-img>
+                &lt;/script&gt;
+            </vf-code>
 
-    </vf-content>
+            <vf-img src="assets/unitats/programacio/web/js/06-repeticions/ex4.png" link="" styles="max-width:400px;"
+                classes=""></vf-img>
+
+        </vf-content>
     </div>
     <div id="footer" style="display:none"></div>
     <script>$('#footer').load('footer.html');</script>

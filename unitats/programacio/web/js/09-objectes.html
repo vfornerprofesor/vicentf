@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">Objectes (o diccionaris)</vf-title>
+
+        <vf-title level="2">Què són els objectes i per a què serveixen?</vf-title>
+
+        <vf-content>
+            <vf-text>
+                Les objectes són una estructura de dades que permeten emmagatzemar múltiples valors en una sola variable. Són com una cistella on puc guardar diversos objectes.
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Emmagatzematge Múltiple</vf-title>
+                    <vf-text>
+                        Permeten guardar diversos valors en una sola variable però amb diferents noms.
+                    </vf-text>
+                </vf-col>
+                
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Accés Ràpid</vf-title>
+                    <vf-text>
+                        Permeten accedir a qualsevol element de la llista utilitzant un nom (com un identificador).
+                    </vf-text>
+                </vf-col>
+                
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Flexibilitat</vf-title>
+                    <vf-text>
+                        Són flexibles i es poden utilitzar per diversos propòsits, com emmagatzemar dades, realitzar càlculs, etc.
+                    </vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Com definir i utilitzar un objecte</vf-title>
+
+        <vf-content>
+
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        Per crear un objecte en JavaScript, podem utilitzar el constructor Object o la notació literal.
+                    </vf-text>
+
+                    <vf-code>
+                        let objecte = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5
+                        };
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-text>
+                        Per accedir a un element de l'objecte, podem utilitzar el seu nom.
+                    </vf-text>
+
+                    <vf-code>
+                        let objecte = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5
+                        };
+                        let nom = objecte.nom; //pera
+                        let color = objecte.color; //verd
+                        let total = objecte.preu; //1.5
+                    </vf-code>
+
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+        <vf-title level="2">Operacions amb objectes</vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Afegir/Canviar elements</vf-title>
+                    <vf-text>
+                        Per afegir un element a l'objecte o canviar el valor, podem utilitzar el seu nom.
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        fruita.nom = "platan"; //Canvia el nom de la pera per platan
+                        fruita.color = "groc"; //Canvia el color de la pera per groc
+                        fruita.preu = 2.5; //Canvia el preu del platan per 2.5
+                        fruita.procedencia = "Comunitat Valenciana"; //Afegeix la procedència del platan
+                    </vf-code>
+                    
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Eliminar elements</vf-title>
+                    <vf-text>
+                        Per eliminar un element de l'objecte, podem utilitzar el mètode delete.
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        delete fruita.nom; //Elimina el nom de la pera
+                    </vf-code>
+
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Longitud de l'objecte</vf-title>
+                    <vf-text>
+                        Per obtenir la longitud de l'objecte, podem utilitzar la propietat length.
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        fruita.length; //3
+                    </vf-code>
+
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Accés a tots els elements</vf-title>
+                    <vf-text>
+                        Per accedir a tots els elements de l'objecte, podem utilitzar un bucle for.
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        for (let element in fruita) {
+                            console.log(element + ": " + fruita[element]);
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Quines propietats té?</vf-title>
+                    <vf-text>
+                        Per obtenir les propietats d'un objecte, podem utilitzar el mètode Object.keys().
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        let propietats = Object.keys(fruita); 
+                        console.log(propietats); // ["nom", "color", "preu"]
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

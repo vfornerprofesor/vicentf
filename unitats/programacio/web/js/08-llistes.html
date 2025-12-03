@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">Llistes</vf-title>
+
+        <vf-title level="2">Què són les llistes i per a què serveixen?</vf-title>
+
+        <vf-content>
+            <vf-text>
+                Les llistes són una estructura de dades que permeten emmagatzemar múltiples valors en una sola variable. Són com una cistella on puc guardar diversos objectes.
+            </vf-text>
+
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Emmagatzematge Múltiple</vf-title>
+                    <vf-text>
+                        Permeten guardar diversos valors en una sola variable, en lloc d'assignar un valor per variable.
+                    </vf-text>
+                </vf-col>
+                
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Accés Ràpid</vf-title>
+                    <vf-text>
+                        Permeten accedir a qualsevol element de la llista utilitzant un índex (com un número de posició).
+                    </vf-text>
+                </vf-col>
+                
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Flexibilitat</vf-title>
+                    <vf-text>
+                        Són flexibles i es poden utilitzar per diversos propòsits, com emmagatzemar dades, realitzar càlculs, etc.
+                    </vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Com definir i utilitzar una llista</vf-title>
+
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-text>
+                        Per crear una llista en JavaScript, podem utilitzar el constructor Array o la notació literal.
+                    </vf-text>
+
+                    <vf-code>
+                        let llista = ["pera", "poma", "raïm"];
+                    </vf-code>
+                </vf-col>  
+                <vf-col>
+                    <vf-text>
+                        Per accedir a un element de la llista, podem utilitzar el seu índex.
+                    </vf-text>
+
+                    <vf-code>
+                        let llista = ["pera", "poma", "raïm"];
+                        let element = llista[0]; //pera
+                    </vf-code>
+                </vf-col>
+            </vf-row>
+
+        </vf-content>
+
+        <vf-title level="2">Operacions amb llistes</vf-title>
+        <vf-content>
+        <vf-row>
+<vf-col classes="col-md-4">
+        <vf-content>
+      <vf-title level="3">Afegir elements</vf-title>
+            <vf-text>
+                Per afegir un element a la llista, podem utilitzar el mètode push.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm"];
+llista.push("platan"); // ["pera", "poma", "raïm", "platan"]
+ 
+            </vf-code>
+        </vf-content>
+</vf-col>
+<vf-col classes="col-md-4">
+        <vf-content>
+      <vf-title level="3">Afegir elements al principi</vf-title>
+            <vf-text>
+                Per afegir un element al principi de la llista, podem utilitzar el mètode unshift.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm"];
+llista.unshift("platan"); // ["platan", "pera", "poma", "raïm"]
+            </vf-code>
+        </vf-content>
+</vf-col>
+<vf-col classes="col-md-4">
+        <vf-content>
+      <vf-title level="3">Eliminar elements</vf-title>
+            <vf-text>
+                Per eliminar un element de la llista, podem utilitzar el mètode pop.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm"];
+llista.pop(); // ["pera", "poma"]
+            </vf-code>
+        </vf-content>
+</vf-col>
+<vf-col classes="col-md-4">
+        <vf-content>
+      <vf-title level="3">Eliminar elements al principi</vf-title>
+            <vf-text>
+                Per eliminar un element al principi de la llista, podem utilitzar el mètode shift.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm"];
+llista.shift(); // ["poma", "raïm"]
+            </vf-code>
+        </vf-content>
+</vf-col>
+<vf-col classes="col-md-4">
+        <vf-content>
+      <vf-title level="3">Longitud de la llista</vf-title>
+            <vf-text>
+                Per obtenir la longitud de la llista, podem utilitzar la propietat length.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm"];
+llista.length; // 3
+            </vf-code>
+        </vf-content>
+</vf-col>
+<vf-col classes="col-md-4">
+          <vf-content>
+          <vf-title level="3">Afegir elements en posició concreta</vf-title>
+            <vf-text>
+                Per afegir un element en una posició concreta de la llista, podem utilitzar el mètode splice.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm"];
+llista.splice(1, 0, "platan"); // ["pera", "platan", "poma", "raïm"]
+            </vf-code>
+        </vf-content>
+</vf-col>
+<vf-col classes="col-md-4">
+        <vf-content>
+          <vf-title level="3">Eliminar elements en posició concreta</vf-title>
+            <vf-text>
+                Per eliminar un element en una posició concreta de la llista, podem utilitzar el mètode splice.
+            </vf-text>
+
+            <vf-code>
+let llista = ["pera", "poma", "raïm", "platan"];
+llista.splice(2, 1); // ["pera", "poma", "platan"]
+            </vf-code>
+        </vf-content>
+</vf-col>
+</vf-row>
+</vf-content>
+        
+<vf-title level="2">Exercicis</vf-title>
+
+<vf-content>
+
+<vf-title level="3">Exercici 1</vf-title>
+<vf-text>
+    Practica amb les operacions bàsiques de les llistes.
+</vf-text>
+<vf-img src="assets/unitats/programacio/web/js/08-llistes/01.png" link="" styles=""
+                classes=""></vf-img>
+
+<vf-title level="3">Exercici 2</vf-title>
+<vf-text>
+    Practica amb les operacions avançades de les llistes.
+</vf-text>
+<vf-img src="assets/unitats/programacio/web/js/08-llistes/02.png" link="" styles=""
+                classes=""></vf-img>
+
+</vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
