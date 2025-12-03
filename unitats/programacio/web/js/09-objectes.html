@@ -179,10 +179,89 @@
                         console.log(propietats); // ["nom", "color", "preu"]
                     </vf-code>
                 </vf-col>
+
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Què valen?</vf-title>
+                    <vf-text>
+                        Per obtenir els valors d'un objecte, podem utilitzar el mètode Object.values().
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        let valors = Object.values(fruita); 
+                        console.log(valors); // ["pera", "verd", 1.5]
+                    </vf-code>
+                </vf-col>
+
+                <vf-col classes="col-md-4">
+                    <vf-title level="3">Mostrar tot l'objecte amb stringify</vf-title>
+                    <vf-text>
+                        Per mostrar tot l'objecte, podem utilitzar el mètode JSON.stringify().
+                    </vf-text>
+
+                    <vf-code>
+                        let fruita = {
+                            nom: "pera", 
+                            color: "verd", 
+                            preu: 1.5   
+                        };
+                        let json = JSON.stringify(fruita); 
+                        console.log(json); // {"nom":"pera","color":"verd","preu":1.5}
+                    </vf-code>
+                </vf-col>
             </vf-row>
 
         </vf-content>
 
+
+    <vf-title level="2">Exercicis</vf-title>
+
+    <vf-content>
+
+        
+
+<vf-title level="3">Exercici 1</vf-title>
+        <vf-text>
+            Crea un objecte JavaScript anomenat llibre que emmagatzeme el títol, l'autor i l'any de publicació. Crea una funció que permeta a l'usuari afegir una nova propietat (la ISBN) a l'objecte i mostrar el contingut actualitzat. Aquesta operació demostrarà com afegir una nova propietat a un diccionari
+        </vf-text>
+
+<vf-title level="3">Exercici 2</vf-title>
+        <vf-text>
+            Crea un objecte JavaScript anomenat compte que guarde un nom d'usuari i el seu saldo (saldo). Crea una funció que simule un ingrés (suma) i una altra que simule una retirada (resta). Ambdues funcions han de modificar el valor de la propietat saldo de l'objecte
+        </vf-text>
+
+<vf-title level="3">Exercici 3</vf-title>
+        <vf-text>
+            Crea un objecte JavaScript anomenat empleat amb les propietats: nom, departament, i telefon. Aquest objecte es crea amb la informació completa. Crea una funció que, en ser executada, esborre la propietat telefon de l'objecte, simulant que l'empleat passa a teletreballar i el telèfon de l'oficina ja no és rellevant. Mostra l'estat de l'objecte abans i després de l'esborrament.
+
+        </vf-text>
+
+<vf-title level="3">Exercici 4</vf-title>
+        <vf-text>
+            Amplia l'exercici del llibre. Crea un objecte llibre. En lloc d'afegir una propietat fixa (ISBN), permet a l'usuari introduir el nom de la nova propietat (clau) i el seu valor. La funció ha d'afegir aquesta parella clau-valor a l'objecte i després redibuixar tot l'objecte a la pantalla, utilitzant funcions del DOM per crear un nou div amb paràgrafs per a cada propietat
+        </vf-text>
+
+<vf-title level="3">Exercici 5</vf-title>
+        <vf-text>
+Crea una llista d'objectes (un diccionari on les claus són els noms d'usuari) que emmagatzeme diversos comptes amb els seus respectius saldos. A la interfície, l'usuari ha de poder seleccionar un dels comptes mitjançant un desplegable. En introduir una quantitat i fer clic a "Ingressar", el saldo només es suma al compte seleccionat. La visualització s'ha de fer creant un div nou per a cada usuari, mostrant el seu nom i saldo actualitzat.
+        </vf-text>
+
+<vf-title level="3">Exercici 6</vf-title>
+        <vf-text>
+            Basant-se en l'Exercici 5, ara cada objecte d'usuari ha de guardar, a més del saldo actual, una llista (operacions) amb els ingressos realitzats. En fer un ingrés, s'ha de sumar el saldo i afegir la quantitat a aquesta llista. La visualització ha de complir:
+        </vf-text>
+        <vf-list>
+            <li><vf-text>1. Mostrar l'estat actual de cada compte (Nom i Saldo).</vf-text></li>
+            <li><vf-text>2. Per a cada compte, mostrar la llista de totes les operacions d'ingrés realitzades.</vf-text></li>
+            <li><vf-text>3. Calcular i mostrar un Gran Total de tots els saldos combinats.</vf-text></li>
+
+        </vf-list>
+
+    </vf-content>
     </div>
     <div id="footer" style="display:none"></div>
     <script>$('#footer').load('footer.html');</script>
