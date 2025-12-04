@@ -6,17 +6,17 @@ class VFHr extends HTMLElement {
     }
 
     connectedCallback() {
-        setTimeout(() => {
-            this.render();
-        }, 0);
+        this.render();
     }
 
     render() {
-        let hr = document.createElement('hr');
+       const hr = document.createElement('hr');
         hr.classList.add('vf-hr');
+        
         if (this.hasAttribute('inverse')) {
             hr.classList.add('vf-hr-inverse');
         }
+        
         this.appendChild(hr);
     }
 

@@ -1,26 +1,27 @@
 class VFFrame extends HTMLElement {
 
-    constructor() {
-        super();
-        this.link = "";
-    }
-
     connectedCallback() {
-        setTimeout(() => {
-            this.render();
-        }, 0);
+        this.render();
     }
 
     render() {
-      let frame = document.createElement('iframe');
-      frame.src = this.getAttribute('link');
-      frame = processClasses(frame, this.getAttribute('classes'));
-      frame = processStyles(frame, this.getAttribute('styles'));
-      this.appendChild(frame);
+      const link = this.getAttribute('link');
+        if (!link) {
+            console.warn('vf-frame: falta el atributo "link"');
+            return;
+        }
+        
+        const frame = document.createElement('iframe');
+        frame.src = link;
+        frame.title = this.getAttribute('title') || 'Contenido incrustado';
+        
+        processClasses(frame, this.getAttribute('classes'));
+        processStyles(frame, this.getAttribute('styles'));
+        
+        this.appendChild(frame);
     }
 
 
 }
 
 customElements.define('vf-frame', VFFrame);
-//classes=vf-frame-full, vf-frame-half

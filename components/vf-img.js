@@ -13,28 +13,35 @@ class VFImage extends HTMLElement {
 
     render() {
 
-        let a;
-        if (this.getAttribute('link') && this.getAttribute('link') != "") {
-            a = document.createElement('a');
-            a.href = this.getAttribute('link');
-            //a.target = "_blank";
-        };
-
-        let img = document.createElement('img');
-        img.src = this.getAttribute('src');
-        img = processClasses(img, this.getAttribute('classes'));
-        img = processStyles(img, this.getAttribute('styles'));
-        //img.classList.add("img-fluid");
-        img.classList.add("my-3");
-        img.classList.add("center");
-        img.classList.add("vf-img");
-
-        if (a) {
+        const link = this.getAttribute('link');
+        const src = this.getAttribute('src');
+        const alt = this.getAttribute('alt') || '';
+        
+        if (!src) {
+            console.warn('vf-img: falta el atributo "src"');
+            return;
+        }
+        
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.classList.add('my-3', 'center', 'vf-img');
+        
+        processClasses(img, this.getAttribute('classes'));
+        processStyles(img, this.getAttribute('styles'));
+        
+        if (link && link !== "") {
+            const a = document.createElement('a');
+            a.href = link;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
             a.appendChild(img);
             this.appendChild(a);
         } else {
             this.appendChild(img);
         }
+        
+       
     }
 
 
@@ -42,4 +49,3 @@ class VFImage extends HTMLElement {
 
 customElements.define('vf-img', VFImage);
 
-//classes: img-scale-hover

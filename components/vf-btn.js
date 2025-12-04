@@ -8,28 +8,36 @@ class VFBtn extends HTMLElement {
         this.render();
     }
 
+
     render() {
-        let a = document.createElement('a');
-        if (this.getAttribute('link')) {
-            a.href = this.getAttribute('link');
+        // Si no hay link, usar un <button> en lugar de <a>
+        const hasLink = this.getAttribute('link');
+        let element;
+        
+        if (hasLink) {
+            element = document.createElement('a');
+            element.href = hasLink;
+            if (this.hasAttribute('newtab')) {
+                element.target = "_blank";
+                element.rel = "noopener noreferrer"; // Seguridad
+            }
+        } else {
+            element = document.createElement('button');
+            element.type = "button";
         }
-        a.classList.add('btn');
-        a.classList.add('btn-primary');
-
+        
+        element.classList.add('btn', 'btn-primary');
+        
         if (this.hasAttribute('inverse')) {
-            a.classList.add('btn-primary-inverse');
+            element.classList.add('btn-primary-inverse');
         }
-        if (this.hasAttribute('newtab')) {
-            a.target = "_blank";
-        }
-
-
-        a = processClasses(a, this.getAttribute('classes'));
-        a = processStyles(a, this.getAttribute('styles'));
-        a.textContent = this.textContent.trim();
+        
+        element = processClasses(element, this.getAttribute('classes'));
+        element = processStyles(element, this.getAttribute('styles'));
+        element.textContent = this.textContent.trim();
+        
         this.innerHTML = '';
-
-        this.appendChild(a);
+        this.appendChild(element);
     }
 
 

@@ -1,27 +1,56 @@
 /* BUTTONS */
 
 .btn-primary {
-    margin: 2vh 0;
-    background-color: var(--main-color);
-    border-color: var(--main-color);
+    margin: 2vh auto;
+    background: var(--gradient-primary);
+    border: 2px solid var(--main-color);
+    color: var(--white-color);
     width: calc(100% - 4vh);
     display: block;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background: var(--main-color-hover);
+    border-color: var(--main-color-dark);
+    box-shadow: 0 6px 18px var(--shadow-hover-color);
+    transform: translateY(-2px);
+    color: var(--white-color);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--shadow-color);
   }
   
   .btn-primary-inverse {
-    background-color: #fff;
+    background-color: var(--white-color);
     color: var(--main-color);
-    border: none;
+    border: 2px solid var(--main-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-soft);
   }
   
   .btn-primary-inverse:hover {
-    background-color: var(--main-color-hover);
-    border: none;
+    background: var(--gradient-primary);
+    color: var(--white-color);
+    border-color: var(--main-color-dark);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transform: translateY(-2px);
   }
 
   .btn-short {
     width: fit-content;
     margin: 1vh auto;
     display: block;
+    padding: 8px 20px;
   }
   

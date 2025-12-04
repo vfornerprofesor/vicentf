@@ -5,9 +5,7 @@ class VFCode extends HTMLElement {
     }
 
     connectedCallback() {
-        setTimeout(() => {
-            this.render();
-        }, 0);
+        this.render();
     }
 
     render() {
@@ -39,26 +37,20 @@ class VFCode extends HTMLElement {
 
         let icon = document.createElement('i');
         icon.classList.add('fas', 'fa-copy', 'vf-icon');
-        icon.addEventListener('click', () => {
-            const tempElement = document.createElement('textarea');
-            tempElement.innerHTML = newLines; // Decodifica entidades HTML en texto
-            document.body.appendChild(tempElement);
-            tempElement.select();
-            document.execCommand('copy'); // Copia el texto seleccionado
-            document.body.removeChild(tempElement);
-
-            // Mostrar el mensaje y configurar el desvanecimiento
-            message.style.display = 'block';
-            message.style.opacity = '1';
-            
-            setTimeout(() => {
-                message.style.transition = 'opacity 1s';
-                message.style.opacity = '0';
-            }, 500);
-
-            setTimeout(() => {
-                message.style.display = 'none';
-            }, 1000);
+        icon.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(newLines);
+                message.style.display = 'block';
+                message.style.opacity = '1';
+                
+                setTimeout(() => {
+                    message.style.transition = 'opacity 1s';
+                    message.style.opacity = '0';
+                    setTimeout(() => message.style.display = 'none', 1000);
+                }, 500);
+            } catch (err) {
+                console.error('Error al copiar:', err);
+            }
         });
 
         let message = document.createElement('p');
@@ -68,8 +60,10 @@ class VFCode extends HTMLElement {
 
         this.appendChild(icon);
         this.appendChild(message);
-        //PINTAR EL CÓDIGO
-        hljs.highlightAll();
+        // Validar que hljs existe
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
     }
 
 

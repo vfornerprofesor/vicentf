@@ -7,51 +7,85 @@
 /* BLOCKS */ 
 
 .block, .block_colored, .block_black {
-    padding: 1rem 3rem;
-    margin-bottom: 1rem;
+    padding: 2rem 3.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
   }
 
   .block > h1, .block_colored > h1, .block_black > h1 {
     text-align: center;
+    margin-bottom: 1.5rem;
   }
 
   .block {
-    /*background-color: #fff;*/
+    background-color: var(--white-color);
+    box-shadow: 0 2px 8px var(--shadow-soft);
   }
 
-  .block_h1 { margin-top: 3em; }
-  .block_h3 { margin-top: 1em; }
+  .block:hover {
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transform: translateY(-2px);
+  }
+
+  .block_h1 { 
+    margin-top: 3em; 
+  }
+  
+  .block_h3 { 
+    margin-top: 1em; 
+  }
 
   .block_colored {
-    background-color: var(--main-color);
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    color: var(--white-color);
+  }
+  
+  .block_colored:hover {
+    box-shadow: 0 6px 20px var(--shadow-hover-color);
+    transform: translateY(-3px);
   }
 
   .block_black {
-    background-color: var(--black-color);
+    background: linear-gradient(135deg, var(--black-color) 0%, var(--grey-color) 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: var(--white-color);
   }
 
   .block_colored.block_h2 {
-    color: #fff;
+    color: var(--white-color);
+word-wrap: break-word; /* Permitir que las palabras largas se rompan */
+    overflow-wrap: break-word; /* Compatibilidad moderna */
+    hyphens: auto; /* Guiones automáticos si es posible */
   }
 
   .block_black > h1, .block_black > h2, .block_black.block_h3 {
-    color: #fff;
+    color: var(--white-color);
   }
 
-
-  
   .block_color {
-    background-color: var(--main-color);
-    color: #fff;
+    background: var(--gradient-primary);
+    color: var(--white-color);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
   }
 
   .jumbotron {
-    background-color: var(--main-color);
-    color: #fff;
-    padding: 2rem;
+    background: var(--gradient-primary);
+    color: var(--white-color);
+    padding: 3rem;
     margin-top: 2rem;
     text-align: center;
-    border-radius: 0;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    transition: all 0.3s ease;
+  }
+
+  .jumbotron:hover {
+    box-shadow: 0 8px 25px var(--shadow-hover-color);
+    transform: translateY(-3px);
   }
 
   .pre_code {
@@ -59,10 +93,14 @@
     padding: 0 !important;
     padding-block: 0 !important;
     display: grid;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px var(--shadow-soft);
 }
 
 .code_block { 
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px !important;
     margin: 0 !important;
+    background-color: #f8f9fa;
 }

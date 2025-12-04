@@ -3,20 +3,15 @@ class VFTitle extends HTMLElement {
         this.render();
     }
     render() {
-        let level = this.getAttribute('level');
-        if (level == null) level = 1;
-        let textTitle = this.textContent.trim();
-        let textSubtitle = this.getAttribute('subtitle');
-
-        let centered = false;
-        if (this.hasAttribute('centered')) {
-            centered = true;
-        }
+        const level = parseInt(this.getAttribute('level')) || 1;
+        const textTitle = this.textContent.trim();
+        const textSubtitle = this.getAttribute('subtitle');
+        const centered = this.hasAttribute('centered');
 
         let div_title = document.createElement('div');
         let title = null;
         let subtitle = null;
-        if (level == 1) {
+        if (level === 1) {
             div_title.classList.add('jumbotron');
             title = document.createElement('h1');
             title.classList.add('display-4');
@@ -28,14 +23,11 @@ class VFTitle extends HTMLElement {
         } else {
             if (level == 2) {
                 title = document.createElement('h2');
-                title.classList.add('block_colored');
-                title.classList.add('block_h2');
-
+                title.classList.add('block_colored', 'block_h2');
             } else {
                 if (level == 3) {
                     title = document.createElement('h3');
-                    title.classList.add('block_black');
-                    title.classList.add('block_h3');
+                    title.classList.add('block_black', 'block_h3');
 
                 } else {
                     title = document.createElement('h4');
@@ -45,7 +37,7 @@ class VFTitle extends HTMLElement {
         }
         if (textTitle) {
             title.textContent = textTitle;
-            title.id = textTitle.replaceAll(' ', '');
+            title.id = this.createValidId(textTitle);
         }
         if (subtitle && textSubtitle) {
             subtitle.textContent = textSubtitle;
@@ -94,6 +86,15 @@ class VFTitle extends HTMLElement {
         this.innerHTML = '';
         this.appendChild(div_title);
     }
+
+    createValidId(text) {
+        // Crear ID más robusto
+        return text
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
 }
 
 customElements.define('vf-title', VFTitle);
