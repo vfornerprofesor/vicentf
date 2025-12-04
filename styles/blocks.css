@@ -53,11 +53,15 @@
     color: var(--white-color);
   }
 
-  .block_colored.block_h2 {
-    color: var(--white-color);
-word-wrap: break-word; /* Permitir que las palabras largas se rompan */
+  h1, h2, h3 {
+   word-wrap: break-word; /* Permitir que las palabras largas se rompan */
     overflow-wrap: break-word; /* Compatibilidad moderna */
     hyphens: auto; /* Guiones automáticos si es posible */
+  }
+
+  .block_colored.block_h2 {
+    color: var(--white-color);
+
   }
 
   .block_black > h1, .block_black > h2, .block_black.block_h3 {

@@ -23,7 +23,6 @@ function processClasses(element, classes) {
 }
 
 function processTextBoldAndLinks(text) {
-    debugger;
     // Reemplaza los asteriscos (*) por etiquetas <strong> para el texto en negrita
     const formattedText = text.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
 
@@ -58,7 +57,6 @@ function updateTextChangingLessThanAndGreaterThanSigns(text) {
 }
 
 function scrollToSection(sectionId) {
-    debugger;
     const section = document.getElementById(sectionId);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
