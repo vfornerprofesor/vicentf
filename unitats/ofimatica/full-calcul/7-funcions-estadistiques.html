@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            7 - Funcions estadístiques
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Fins ara hem vist com utilitzar els filtres per a veure certes dades, com per exemple quantes
+                reparacions tenim en estat "PENDENT". Però què passa si volem tindre un resum sempre visible sense haver
+                d'estar filtrant i desfiltrant?</vf-text>
+
+            <vf-text>Per a això utilitzarem les funcions estadístiques condicionals. Aquestes funcions ens permeten
+                comptar o sumar cel·les només si compleixen una condició específica.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Comptar si es compleix una condició
+        </vf-title>
+
+        <vf-content>
+            <vf-text>La funció <b>COMPTAR.SI</b> (<i>COUNTIF</i> en anglès) ens serveix per a comptar quantes cel·les
+                d'un rang compleixen un criteri.</vf-text>
+
+            <vf-text>La seua estructura és:</vf-text>
+            <vf-code>
+                =COMPTAR.SI(rang; criteri)
+            </vf-code>
+
+            <vf-list>
+                <li><vf-text><b>Rang:</b> És la llista de cel·les on volem buscar (per exemple, la columna
+                        d'Estats).</vf-text></li>
+                <li><vf-text><b>Criteri:</b> És el que estem buscant (per exemple, "ACABAT").</vf-text></li>
+            </vf-list>
+
+            <vf-text>Exemple pràctic: Si volem saber quantes reparacions tenim acabades, i la columna dels estats és la
+                F (des de F2 fins a F101), la fórmula seria:</vf-text>
+            <vf-code>
+                =COMPTAR.SI(F2:F101; "ACABAT")
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">
+            Sumar si es compleix una condició
+        </vf-title>
+
+        <vf-content>
+            <vf-text>De la mateixa manera, la funció <b>SUMAR.SI</b> (<i>SUMIF</i> en anglès) ens permet sumar els
+                valors d'una columna, però només aquells que corresponguen a les files que complisquen una
+                condició.</vf-text>
+
+            <vf-text>La seua estructura és:</vf-text>
+            <vf-code>
+                =SUMAR.SI(rang; criteri; rang_suma)
+            </vf-code>
+
+            <vf-list>
+                <li><vf-text><b>Rang:</b> On busquem la condició (Ex: Columna de Tipus de reparació).</vf-text></li>
+                <li><vf-text><b>Criteri:</b> La condició que busquem (Ex: "OFICINA").</vf-text></li>
+                <li><vf-text><b>Rang_suma:</b> La columna que volem sumar (Ex: Columna de Preu).</vf-text></li>
+            </vf-list>
+
+            <vf-text>Exemple: Si volem saber quants diners hem guanyat amb reparacions de tipus "OFICINA", on el tipus
+                està a la columna D i el preu a la columna H:</vf-text>
+            <vf-code>
+                =SUMAR.SI(D2:D101; "OFICINA"; H2:H101)
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">
+            Exercici: Tauler de control (Dashboard)
+        </vf-title>
+
+        <vf-content>
+            <vf-text>Anem a crear un petit resum estadístic al costat de la taula de reparacions (la de les 100
+                files).</vf-text>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text><b>1. Resum d'Estats:</b></vf-text>
+                    <vf-text>Crea una petita taula amb els 4 estats possibles (ENTREGAT, REPARANT, ACABAT, TORNAT). Al
+                        costat de cada estat, utilitza <code>COMPTAR.SI</code> per a que calcule automàticament quantes
+                        reparacions hi ha de cada tipus.</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/7-01.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-row>
+                <vf-col>
+                    <vf-text><b>2. Facturació per Categoria:</b></vf-text>
+                    <vf-text>Crea una altra taula amb les categories (MOBILIARI, OFICINA, ALTRES). <br>Utilitza
+                        <code>SUMAR.SI</code> per a calcular el total ingressat per a cadascuna d'elles.</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/ofimatica/full-calcul/7-02.png" styles=""></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-text><b>Nota:</b> Recorda utilitzar el símbol <code>$</code> en els rangs si vas a arrossegar la
+                fórmula, o escriu-la manualment per a cada fila.</vf-text>
+
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

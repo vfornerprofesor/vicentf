@@ -15,11 +15,11 @@
 </head>
 
 <body>
-    
-<div id="menu" style="display:none"></div>
+
+    <div id="menu" style="display:none"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content" style="display:none">
-        <vf-title level="1" title="Scratch">
+        <vf-title level="1" title="Scratch">Programació amb Scratch
         </vf-title>
 
         <vf-content>
@@ -28,28 +28,25 @@
             </vf-text>
             <vf-row>
                 <vf-col styles="width:20em">
-                    <vf-img styles="max-height:200px"
-     src="assets/unitats/programacio/blocs/scratch/laberint.png"
+                    <vf-img styles="max-height:200px" src="assets/unitats/programacio/blocs/scratch/laberint.png"
                         link="unitats/programacio/blocs/scratch/01-laberint.html"></vf-img>
-                    <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/01-laberint.html">Laberint<vf-btn>
+                    <vf-btn classes="btn-short"
+                        link="unitats/programacio/blocs/scratch/01-laberint.html">Laberint<vf-btn>
                 </vf-col>
                 <vf-col styles="width:20em">
-                    <vf-img styles="max-height:200px"
-     src="assets/unitats/programacio/blocs/scratch/flappy_bird.png"
+                    <vf-img styles="max-height:200px" src="assets/unitats/programacio/blocs/scratch/flappy_bird.png"
                         link="unitats/programacio/blocs/scratch/02-flappy-bird.html"></vf-img>
                     <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/02-flappy-bird.html">Flappy
                         Bird</vf-btn>
                 </vf-col>
                 <vf-col styles="width:20em">
-                    <vf-img styles="max-height:200px"
-     src="assets/unitats/programacio/blocs/scratch/space_invaders.png"
+                    <vf-img styles="max-height:200px" src="assets/unitats/programacio/blocs/scratch/space_invaders.png"
                         link="unitats/programacio/blocs/scratch/03-space-invaders.html"></vf-img>
                     <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/03-space-invaders.html">Space
                         Invaders</vf-btn>
                 </vf-col>
                 <vf-col styles="width:20em">
-                    <vf-img styles="max-height:200px"
-     src="assets/unitats/programacio/blocs/scratch/pong.png"
+                    <vf-img styles="max-height:200px" src="assets/unitats/programacio/blocs/scratch/pong.png"
                         link="unitats/programacio/blocs/scratch/04-pong.html"></vf-img>
                     <vf-btn classes="btn-short" link="unitats/programacio/blocs/scratch/04-pong.html">Pong</vf-btn>
                 </vf-col>
@@ -58,24 +55,125 @@
             </vf-row>
         </vf-content>
         <vf-title level="2">
-            Projecte final
+            🎮 Activitat Final: Crea el teu propi videojoc
         </vf-title>
 
         <vf-content>
             <vf-text>
-                Després d'haver creat els anteriors videojocs, has de pensar en el teu videojoc propi. Pot combinar diferents jocs vists anteriorment o ser totalment nou. Consulta abans de començar per no passar-se d'ambiciós o quedar-se curt amb el projecte.
+                Ha arribat el moment de demostrar tot el que heu aprés! Per a aquesta activitat final treballareu de
+                manera individual. Podeu triar quin tipus de projecte voleu fer segons la dificultat i la nota a la qual
+                voleu optar.
             </vf-text>
             <vf-text>
-                Recorda que es valorarà *la creativitat, el acabat final i la jugabilitat*
+                <strong>Trieu bé el vostre repte i mans a l'obra!</strong>
+            </vf-text>
 
+            <vf-title level="3">
+                📝 Pas previ obligatori: El Full de Disseny
+            </vf-title>
+            <vf-text>
+                Abans de tocar l'ordinador i començar a programar, has d'entregar al professor/a un full on respongues
+                clarament a aquestes 3 preguntes sobre el teu joc:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>Com es guanya? (Objectiu final).</vf-text></li>
+                <li><vf-text>Com es perd? (Condicions de derrota o "Game Over").</vf-text></li>
+                <li><vf-text>Quins personatges i objectes necessite?</vf-text></li>
+            </vf-list>
+
+            <vf-title level="3">
+                🟢 Nivell 1: Reforç de conceptes bàsics (Nota màxima: 7)
+            </vf-title>
+            <vf-text>
+                Aquests projectes són ideals per a agafar confiança ràpidament i
+                assegurar els fonaments.
+            </vf-text>
+            <vf-title level="4">
+                Pluja d'objectes (Catch Game)
+            </vf-title>
+            <vf-text>
+                *La idea:* El personatge principal està a la part de baix de la pantalla i es mou únicament
+                d'esquerra a dreta. Cauen objectes del cel (pomes, estrelles...) i els ha d'agafar per a guanyar punts.
+                Compte! Si agafa una "bomba" o un objecte dolent, perd punts.
+            </vf-text>
+            <vf-title level="4">
+                Joc de "Clicker" (Incremental)
+            </vf-title>
+            <vf-text>
+                *La idea:* Hi ha un objecte gran al mig de la pantalla (per exemple: una galeta o un diamant).
+                Cada vegada que hi fas clic, sumes punts. Amb els punts acumulats pots comprar "millores" (per exemple:
+                un cursor automàtic que suma punts a soles sense fer clic).
+            </vf-text>
+
+            <vf-title level="3">
+                🟡 Nivell 2: Combinació de lògiques (Nota màxima: 8,5)
+            </vf-title>
+            <vf-text>
+                Aquests projectes requereixen combinar moviment, interacció i
+                variables.
+            </vf-text>
+            <vf-title level="4">
+                Joc de Córrer Infinit (Tipus Dino de Chrome)
+            </vf-title>
+            <vf-text>
+                *La idea:* El personatge sembla que corre però està quiet a l'esquerra de la pantalla (animació
+                de córrer). La il·lusió de moviment es crea perquè els obstacles (arbres, pedres) es mouen de dreta a
+                esquerra cap a ell. Cal saltar per a esquivar-los.
+            </vf-text>
+            <vf-title level="4">
+                Colpeja el talp (Whack-a-Mole)
+            </vf-title>
+            <vf-text>
+                *La idea:* Un personatge apareix i desapareix en llocs aleatoris de la pantalla molt ràpidament.
+                Has de tindre bons reflexos i fer clic damunt d'ell per a sumar punts abans que s'amague.
+            </vf-text>
+            <vf-title level="4">
+                Curses de cotxes (Top-Down)
+            </vf-title>
+            <vf-text>
+                *La idea:* Un circuit dibuixat (amb carretera i gespa). El cotxe es mou vist des de dalt. Si el
+                cotxe toca la gespa (detectant el color verd), la velocitat baixa dràsticament. L'objectiu és fer 3
+                voltes el més ràpid possible.
+            </vf-text>
+            <vf-title level="4">
+                Concurs de Preguntes (Quiz)
+            </vf-title>
+            <vf-text>
+                *La idea:* Un presentador fa preguntes sobre un tema (mates, història o la teua sèrie preferida).
+                Si l'usuari encerta (escrivint la resposta exacta), suma punts i el personatge es posa feliç. Si falla,
+                perd una vida.
+            </vf-text>
+
+            <vf-title level="3">
+                🔴 Nivell 3: Creativitat i "Remix" avançat (Nota màxima: 10)
+            </vf-title>
+            <vf-text>
+                Per als qui volen un repte complet amb variables complexes i física.
+            </vf-text>
+            <vf-title level="4">
+                Mascota Virtual (Estil Tamagotchi)
+            </vf-title>
+            <vf-text>
+                *La idea:* Un personatge que té variables d'estat com "Fam", "Son" i "Felicitat". Aquestes
+                variables baixen a poc a poc amb el pas del temps. L'usuari ha de prémer botons a la pantalla per a
+                alimentar-lo, jugar o fer-lo dormir per a mantenir-lo viu.
+            </vf-text>
+            <vf-title level="4">
+                Arkanoid (Trenca-maons)
+            </vf-title>
+            <vf-text>
+                *La idea:* Controlem una pala a la part inferior que es mou horitzontalment. Hi ha una pilota que
+                rebota per la pantalla i files de maons a la part superior. Quan la pilota toca un maó, aquest ha de
+                desaparéixer i la pilota ha de rebotar correctament.
             </vf-text>
         </vf-content>
 
     </div>
     <div id="footer" style="display:none"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
 
-    
+
 </body>
 
 </html>
