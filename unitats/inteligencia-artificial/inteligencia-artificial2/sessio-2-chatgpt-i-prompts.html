@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domant la Bèstia: Com parlar amb una IA (Prompt Engineering)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu" style="display:none"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content" style="display:none">
+        <vf-title level="1">
+            Domant la Bèstia: Com parlar amb una IA (Prompt Engineering)
+        </vf-title>
+
+        <vf-content>
+            <vf-title level="2">📖 Explicació: El Lloro Estocàstic</vf-title>
+            <vf-text>Quan parles amb ChatGPT o Gemini, tens la sensació que hi ha "algú" a l'altra banda. Però no és
+                així. Estos models s'anomenen LLM (Large Language Models) i funcionen com l'autocorrector del teu
+                mòbil, però amb esteroides.</vf-text>
+
+            <vf-text>El seu únic objectiu és predir la següent paraula més probable en una frase, basant-se en tot el
+                text que han llegit a internet. Si tu escrius "El gat és al...", la IA calcula que la paraula "sofà" o
+                "jardí" té una probabilitat del 80%, mentre que "microones" té un 0,01%. No "sap" què és un gat, només
+                sap quines paraules solen anar juntes.</vf-text>
+
+            <vf-text>Per obtenir bons resultats, hem d'aprendre a guiar esta probabilitat. Això es diu Enginyeria de
+                Prompts. Un prompt és la instrucció que li donem. Si el prompt és vague, la resposta serà genèrica
+                (mitjana estadística). Si el prompt és específic, la resposta serà brillant.</vf-text>
+
+            <vf-text>La fórmula màgica per a un bon prompt és:</vf-text>
+            <vf-list>
+                <li><vf-text>*Rol:* Qui ha de ser la IA? (Un expert, un nen, un crític...)</vf-text></li>
+                <li><vf-text>*Tasca:* Què ha de fer exactament?</vf-text></li>
+                <li><vf-text>*Context:* Per a qui és això? Quina informació prèvia necessita?</vf-text></li>
+                <li><vf-text>*Format:* Com vols la resposta? (Taula, llista, poema, codi...).</vf-text></li>
+            </vf-list>
+
+            <vf-title level="2">💻 Activitat Pràctica: De Prompt Mediocre a Super-Prompt</vf-title>
+            <vf-text>*Eines:* ChatGPT o Gemini</vf-text>
+
+            <vf-title level="3">Exercici A: El resultat avorrit</vf-title>
+            <vf-text>Escriu al xat: "Parla'm de la Revolució Industrial."</vf-text>
+            <vf-text>Observa el resultat. Probablement serà un text estil Viquipèdia, correcte però dens i sense
+                personalitat.</vf-text>
+
+            <vf-title level="3">Exercici B: Aplicant la fórmula</vf-title>
+            <vf-text>Ara construirem un prompt utilitzant les 4 regles. Copia i adapta este exemple al xat:</vf-text>
+            <vf-quote>
+                "Actua com un obrer d'una fàbrica tèxtil de Manchester l'any 1850 (Rol). Escriu una carta curta al teu
+                germà que viu al camp explicant com ha canviat la teua vida amb les noves màquines de vapor (Tasca).
+                Vull que transmetis la por a perdre la feina però també la fascinació per la tecnologia, fes-ho en un to
+                emotiu i personal (Context). El format ha de ser una carta breu de menys de 200 paraules (Format)."
+            </vf-quote>
+
+            <vf-title level="3">Anàlisi</vf-title>
+            <vf-text>Compara els dos textos.</vf-text>
+            <vf-list>
+                <li>Quin és més fàcil de llegir?</li>
+                <li>Quin t'ajuda a entendre millor "l'ambient" de l'època?</li>
+            </vf-list>
+            <vf-text>Guarda els dos resultats en un document per comparar-los.</vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer" style="display:none"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>
