@@ -1,8 +1,4 @@
-class VFRow extends HTMLElement {
-  connectedCallback() {
-    this.render();
-  }
-
+class VFRow extends VFElement {
   render() {
     this.classList.add('row');
     if (this.hasAttribute('centered')) {

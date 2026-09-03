@@ -1,17 +1,12 @@
-class VFText extends HTMLElement {
-
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        setTimeout(() => {
-            this.render();
-        }, 0);
-    }
+class VFText extends VFElement {
+    // El primer render es retarda amb un setTimeout(0) (vegeu vf-element.js).
+    static deferRender = true;
 
     render() {
-        const text = this.textContent.trim();
+        // innerHTML i no textContent: aixi es respecta el HTML que s'haja
+        // escrit dins (<b>, <i>, <br>...) i les entitats &lt; &gt; no es
+        // reinterpreten com a etiquetes.
+        const text = this.innerHTML.trim();
 
         const text_processed = processTextBoldAndLinks(text);
         let p = document.createElement('p');

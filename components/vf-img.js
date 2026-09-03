@@ -1,15 +1,6 @@
-class VFImage extends HTMLElement {
-
-    constructor() {
-        super();
-        this.link = "";
-    }
-
-    connectedCallback() {
-        setTimeout(() => {
-            this.render();
-        }, 0);
-    }
+class VFImage extends VFElement {
+    // El primer render es retarda amb un setTimeout(0) (vegeu vf-element.js).
+    static deferRender = true;
 
     render() {
 
@@ -25,6 +16,11 @@ class VFImage extends HTMLElement {
         const img = document.createElement('img');
         img.src = src;
         img.alt = alt;
+        // Carrega diferida: moltes pagines (graelles d'unitats, cursos...)
+        // tenen moltes imatges de colp; aixi el navegador nomes descarrega
+        // les que arriben a estar a prop del viewport.
+        img.loading = 'lazy';
+        img.decoding = 'async';
         img.classList.add('my-3', 'center', 'vf-img');
         
         processClasses(img, this.getAttribute('classes'));

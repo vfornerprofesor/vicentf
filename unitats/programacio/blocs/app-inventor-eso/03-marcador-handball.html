@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador handball</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Marcador handball
+        </vf-title>
+
+        <vf-content>
+            <vf-btn classes="btn-short" link="https://drive.google.com/file/d/16sZJpyDiDXFtSminIAcS4_8TnDjj88LG/view" newtab>
+                Obrir el vídeo de l'app
+            </vf-btn>
+            <vf-video src="assets/unitats/programacio/blocs/app-inventor-eso/MARCADOR_HANDBALL.mp4"></vf-video>
+        </vf-content>
+
+        <vf-title level="2">
+            Blocs
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                L'app té *6 botons*: a la part esquerra (equip local) un botó de *gol* i un de *descomptar gol*;
+                a la part dreta (equip visitant) un altre de *gol* i un de *descomptar gol*; i a la part inferior
+                *finalitzar partit* i *iniciar partit*. Pensa com resoldre cada pas; ací tens l'esquelet per a completar.
+            </vf-text>
+            <vf-list ordered>
+                <li>Cal una variable per als gols del local i una altra per als del visitant. Pensa quin valor inicial han de tindre i quan s'han de reiniciar.</li>
+                <li>Botó *gol* (local): incrementa la variable corresponent i actualitza… (quina etiqueta?).</li>
+                <li>Botó *descomptar gol* (local): fa el contrari, però compte amb no baixar de 0.</li>
+                <li>Els dos botons de la dreta funcionen igual que els de l'esquerra, però sobre la variable del visitant.</li>
+                <li>Botó *iniciar partit*: deixa el marcador a 0-0 i… (què cal habilitar o mostrar?).</li>
+                <li>Botó *finalitzar partit*: què s'ha de mostrar? què cal bloquejar perquè ja no es puguen marcar gols?</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

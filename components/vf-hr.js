@@ -1,22 +1,16 @@
-class VFHr extends HTMLElement {
-
-    constructor() {
-        super();
-        this.ordered = false;
-    }
-
-    connectedCallback() {
-        this.render();
-    }
+class VFHr extends VFElement {
 
     render() {
        const hr = document.createElement('hr');
         hr.classList.add('vf-hr');
-        
+
         if (this.hasAttribute('inverse')) {
             hr.classList.add('vf-hr-inverse');
         }
-        
+
+        processClasses(hr, this.getAttribute('classes'));
+        processStyles(hr, this.getAttribute('styles'));
+
         this.appendChild(hr);
     }
 

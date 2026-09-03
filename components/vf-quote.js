@@ -1,11 +1,9 @@
-class VFQuote extends HTMLElement {
-    connectedCallback() {
-        this.render();
-    }
+class VFQuote extends VFElement {
     render() {
-        const text = this.textContent.trim();
+        // Vegeu vf-text: innerHTML per a no perdre el HTML interior.
+        const text = this.innerHTML.trim();
         const text_processed = processTextBoldAndLinks(text);
-        const blockquote = document.createElement('blockquote');
+        let blockquote = document.createElement('blockquote');
         blockquote = processStyles(blockquote, this.getAttribute('styles'));
         blockquote = processClasses(blockquote, this.getAttribute('classes'));
         

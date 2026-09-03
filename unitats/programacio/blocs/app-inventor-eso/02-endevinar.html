@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endevinar número</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Endevinar número
+        </vf-title>
+
+        <vf-title level="2">
+            Elements de l'app
+        </vf-title>
+        <vf-content>
+            <vf-row centered>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor-eso/appinv-eso-endevinar1.png"></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor-eso/appinv-eso-endevinar2.png"></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">
+            Blocs
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li>Crear variable amb número aleatori entre 1 i 100</li>
+                <li>Al fer clic al botó COMPROVAR
+                    <ol>
+                        <li>Si el número escrit és el número que busquem &rarr; Posar ENCERTAT en la etiqueta resultat</li>
+                        <li>Si el número escrit és menor que el número que busquem &rarr; Posar que EL NÚMERO QUE BUSQUEM ÉS MAJOR en la etiqueta resultat</li>
+                        <li>Si el número escrit és major que el número que busquem &rarr; Posar que EL NÚMERO QUE BUSQUEM ÉS MENOR en la etiqueta resultat</li>
+                        <li>Després de comprovar i canviar la etiqueta resultat és aconsellable buidar el text del camp de text</li>
+                    </ol>
+                </li>
+                <li>Intents: volem que cada vegada que no trobem el número, el número d'intents vaja incrementant-se
+                    <ol>
+                        <li>Hem de crear una variable intents que comence en 0</li>
+                        <li>Cada vegada que el número es comprove i no siga, es sumarà 1 a la variable intents</li>
+                        <li>Es canviarà el text de l'etiqueta num_intents per el valor de la variable intents</li>
+                    </ol>
+                </li>
+                <li>Tornar a començar:
+                    <ol>
+                        <li>Al trobar el número, es mostrarà el botó de tornar a començar</li>
+                        <li>Al presionar a tornar a començar:
+                            <ol>
+                                <li>S'ocultarà el botó de tornar a començar</li>
+                                <li>Es canviarà el valor de la variable intents a 0</li>
+                                <li>Es canviarà el text de pantalla de intents per 0</li>
+                                <li>Es tornarà a assignar un valor aleatori a la variable número</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

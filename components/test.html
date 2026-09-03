@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicent Forner - Professor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+
+    <div id="content">
+        <vf-title level="1" subtitle="Pagina de referencia interna, no forma part del contingut docent">
+            components/test.html
+        </vf-title>
+
+        <vf-content>
+            <vf-text>
+                Una instancia de cada component `vf-*` en els seus casos normals i en els casos limit que s'han
+                trobat durant la revisio de 2026-09-02 (vegeu [mejoras/2026_09_02_mejoras_componentes.md](mejoras/2026_09_02_mejoras_componentes.md)).
+                S'obri directament amb `python3 -m http.server` des de l'arrel del lloc; no cal cap eina de build.
+            </vf-text>
+            <vf-text>
+                No forma part del contingut docent: no s'enllaça des de cap menu ni curs, i no ix a `sitemap.xml`.
+            </vf-text>
+        </vf-content>
+
+        <div id="vf-index" levels="2"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-title</vf-title>
+        <vf-content>
+            <vf-text>Nivells 2, 3 i 4, centrat, i el cas limit de dos titols amb el mateix text (TI4: el segon ha de rebre l'id amb sufix -2).</vf-text>
+            <vf-title level="3">Un titol de nivell 3</vf-title>
+            <vf-title level="4">Un titol de nivell 4</vf-title>
+            <vf-title level="3" centered>Un titol de nivell 3 centrat</vf-title>
+            <vf-title level="3">Titol repetit</vf-title>
+            <vf-title level="3">Titol repetit</vf-title>
+            <vf-title level="3">Accents i punt volat: Intel·ligència, Àudio, Configuració</vf-title>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-content</vf-title>
+        <vf-content>
+            <vf-text>Un vf-content normal (aquest mateix bloc) i un altre amb l'atribut colored:</vf-text>
+        </vf-content>
+        <vf-content colored>
+            <vf-text>Aquest bloc te l'atribut `colored`.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-row / vf-col</vf-title>
+        <vf-content>
+            <vf-text>Tres columnes, la del mig amb `link` (ha de generar un `&lt;a&gt;` real, CL1) i `classes="col-min-300px"`:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-text>Columna normal</vf-text>
+                </vf-col>
+                <vf-col link="https://example.com" classes="col-min-300px boxshadow">
+                    <vf-text>Columna amb link (a real, target=_blank, rel=noopener)</vf-text>
+                </vf-col>
+                <vf-col>
+                    <vf-text>Columna normal</vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-text</vf-title>
+        <vf-content>
+            <vf-text>Text normal sense res especial.</vf-text>
+            <vf-text>Amb *negreta* i un [enllaç](https://example.com) i un [enllaç per descarregar|download](assets/logo.png).</vf-text>
+            <vf-text>Amb HTML de veritat: <b>negreta b</b>, <i>cursiva i</i>, salt<br>de linia.</vf-text>
+            <vf-text>Amb entitats escapades: &lt;p&gt;aixo no s'ha de veure com un paragraf&lt;/p&gt;</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-quote</vf-title>
+        <vf-content>
+            <vf-quote>Una cita normal, amb *negreta* inclosa.</vf-quote>
+            <vf-quote classes="conversation_me">Un missatge "meu" en una conversa simulada.</vf-quote>
+            <vf-quote classes="conversation_other">Un missatge de "l'altra part".</vf-quote>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-list</vf-title>
+        <vf-content>
+            <vf-text>Llista normal amb mini-llenguatge (L1) i un &lt;li&gt; amb codi a dins, que NO s'ha de processar com a mini-llenguatge:</vf-text>
+            <vf-list>
+                <li>Element normal</li>
+                <li>Element amb *negreta* i un [enllaç](https://example.com)</li>
+                <li>Element amb codi: <vf-code>SELECT * FROM taula WHERE a = *b*</vf-code></li>
+            </vf-list>
+            <vf-text>La mateixa llista, ordenada:</vf-text>
+            <vf-list ordered>
+                <li>Primer</li>
+                <li>Segon</li>
+                <li>Tercer</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-img</vf-title>
+        <vf-content>
+            <vf-text>Imatge normal, imatge amb link (s'obri en pestanya nova), i amb classes/styles:</vf-text>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/icon.png" alt="Icona del lloc"></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/icon.png" alt="Icona del lloc, amb link" link="https://example.com"></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/icon.png" alt="Icona del lloc, mes menuda" styles="max-height:60px"></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-video</vf-title>
+        <vf-content>
+            <vf-text>Vídeo local amb controls (src obligatori):</vf-text>
+            <vf-video src="assets/unitats/programacio/blocs/app-inventor-eso/MARCADOR_HANDBALL.mp4"></vf-video>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-btn</vf-title>
+        <vf-content>
+            <vf-btn link="https://example.com">Boto amb link</vf-btn>
+            <vf-btn link="https://example.com" newtab>Boto amb link, pestanya nova</vf-btn>
+            <vf-btn link="https://example.com" inverse>Boto amb link, invers</vf-btn>
+            <vf-btn classes="btn-short">Boto sense link, curt</vf-btn>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-code</vf-title>
+        <vf-content>
+            <vf-text>Bloc normal de diverses linies, amb llenguatge indicat (resaltat amb highlight.js):</vf-text>
+            <vf-code language="js">
+                function suma(a, b) {
+                    return a + b;
+                }
+            </vf-code>
+            <vf-text>Cas limit (C1): codi escrit en una unica linia, sense llenguatge indicat (abans llançava TypeError):</vf-text>
+            <vf-code>ln -s target link_name</vf-code>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-frame</vf-title>
+        <vf-content>
+            <vf-text>Iframe amb carrega diferida (F1). Cal fer scroll fins ací perque es note la carrega tardana:</vf-text>
+            <vf-frame link="https://www.w3schools.com" classes="vf-frame-half" title="Exemple d'iframe"></vf-frame>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-hr</vf-title>
+        <vf-content>
+            <vf-text>Separador normal:</vf-text>
+            <vf-hr></vf-hr>
+            <vf-text>Separador invers (pensat per a fons foscos; ací es veura blanc sobre blanc, normal):</vf-text>
+            <vf-hr inverse></vf-hr>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-password</vf-title>
+        <vf-content>
+            <vf-text>
+                No s'inclou una instancia en directe ací perque amagaria la resta d'aquesta pagina (el seu
+                comportament es amagar #content fins que s'encerta la contrasenya). Per a provar-lo, veure
+                [unitats/ordinadors/representacio-informacio/testA.html](unitats/ordinadors/representacio-informacio/testA.html)
+                (contrasenya al propi fitxer font).
+            </vf-text>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

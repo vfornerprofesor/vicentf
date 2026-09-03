@@ -1,0 +1,123 @@
+Vamos a definir projectes/comic
+
+# PÀGINA COMIC
+En la página principal de comic --> index.html
+Indicaremos lo siguiente:
+- Título nivel 1: PROJECTE CÒMIC
+- Texto "El projecte consisteix en fer un còmic d’una història que tracte algun dels Objectius de Desenvolupament Sostenible de les Nacions Unides."
+- Texto "Els objectius els podeu trobar ací." --> ací será un enlace a https://www.google.com/url?q=https%3A%2F%2Fwww.undp.org%2Fcontent%2Fundp%2Fes%2Fhome%2Fsustainable-development-goals.html&sa=D&sntz=1&usg=AOvVaw0Pbd05qGrmGDwXIHYTPd0i
+- Imagen assets/projectes/comic/ods.png
+- Texto: A l’enllaç podeu entrar i llegir sobre els 17 objectius per rebre més informació.
+- Texto: El treball que realitzarem serà:
+- Lista no ordenada
+Producció multimèdia: Pensar la història, crear el guió multimèdia i crear les vinyetes
+Àudio digital: Crear els fitxers de so per a cadascuna de les vinyetes
+Vídeo digital: Muntar la película del còmic amb les vinyetes i els sons anteriors
+- Separador vf-hr
+- Dos columnas: izquierda imagen assets/projectes/comic/guio.png, derecha título nivel 2: Elements de la producció multimèdia y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+- Separador vf-hr
+- Dos columnas: izquierda imagen assets/projectes/comic/audio.png, derecha título nivel 2: Àudio digital y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+- Separador vf-hr
+- Dos columnas: izquierda imagen assets/projectes/comic/video.png, derecha título nivel 2: Vídeo digital y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+
+# SUBPÁGINA ELEMENTS DE LA PRODUCCIÓ MULTIMÈDIA
+- Título nivel 1
+- Dos columnas: izquierda imagen assets/projectes/comic/guio/01.png, derecha título nivel 2: Guió multimèdia y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+- Separador vf-hr
+- Dos columnas: izquierda imagen assets/projectes/comic/guio/02.png, derecha título nivel 2: Creació de vinyetes y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+
+# SUBSUBPÁGINA GUIÓ MULTIMEDIA
+- Título de nivel 2: Documentació necessària per realitzar l’activitat
+- Texto: Un guió multimèdia és un suport informàtic que té una estructura amb columnes d’imatge, so, text, accions, etc, que identifiquen cadascun dels recursos informàtics per realitzar una producció multimèdia. Per exemple en una película, un guió multimèdia recull l’ordre de les escenes i el que apareixerà en cadascuna d’elles, els personatges, l’entorn, el so de fons i indumentaria.
+- Texto: Però, un guió multimèdia també pot servir per escriure llibres, còmics, crear música, disseny d’imatges, desenvolupament de jocs o treballs de classe.
+- Texto: El contingut del guió multimèdia ha d’estar correctament organitzat perquè la informació siga fàcilment interpretable i el que vaja a realitzar la producció multimèdia, seguint el guió puga fer exactament el que s’ha escrit al guió.
+- Texto: Els punts que s’han d’incloure en un guió multimèdia són:
+- Lista no ordenada:
+    • Resum del producte: es comptarà la producció que s’ha de fer
+    • Taula per a cada escena que continga tots els elements de cada escena
+- Título de nivel 2: Descripció de l'activitat
+- Texto: En aquesta activitat en primer lloc hauràs de crear un Document de Google al Google Drive dins de la carpeta Informàtica - 3 ESO > 1ª Avaluació > Unitat 1 - Elements comuns de la producció multimèdia. El seu nom serà Guió multimèdia.
+- Texto: Al document escriurem un títol que serà el nom de la història que desenvoluparem. Si en el moment de crear el document no saps el nom de la història escriurem Títol i més endavant ja escriuràs el nom.
+- Texto: Els punts que haurà de tindre del document són:
+- Lista ordenada:
+   1. Objectiu de Desenvolupament Sostenible
+
+    2. Resum de la història
+
+    3. Guió multimèdia
+
+        3.1. Vinyeta1
+
+        3.2. Vinyeta 2
+
+        3.3. Vinyeta 3
+
+        3.4. ...
+- Texto: Per al desenvolupament del punt 1 (Objectiu de Desenvolupament Sostenible) hauràs d’accedir ací per triar l’Objectiu del que tractarà el teu còmic. En aquest punt del document explicaràs de què tracta l’Objectiu i perquè has decidit triar aquest.
+- Texto: Ara pensaràs la història de que tractarà el teu còmic amb l’Objectiu triat. Recorda que haurà de tindre una introducció en la que es planteja un problema, un desenvolupament en el que s’intenta resoldre aquest problema i per últim una conclusió que mostre com s’aporta una solució al problema. La història la escriuràs al punt 2 (Resum de la història) i hauran d’apareixer ja els personatges i ambients.
+- Texto: A continuació hauràs de dividir la història en com a mínim 15 vinyetes. Si se t’ocorren més no hi ha problema.
+- Texto: En el punt 3 (Guió multimèdia) crearàs tants subtítols com vinyetes tingues. En cadascun escriuràs el resum de la vinyeta i crearàs una taula amb els elements que s’han de tractar en eixa vinyeta com la següent:
+- Imagen: max-width 450px assets/projectes/comic/guio/guio01.png
+- Título nivel 2: Lliurament a aules
+- Texto: Ara des del document de google Guió multimèdia que has creat, fes click a Archivo > Descargar > Documento PDF (.pdf). A continuació s’haurà descarregat a la carpeta Descargas un fitxer anomenat Guió multimèdia.pdf. Aquest és el fitxer que lliuraràs al moodle en Lliurament Activitat 2 de la Unitat 1.
+- Título nivel 2: Què se m'avaluarà?
+- Lista no ordenada:
+  • Redacció correcta sense faltes d’ortografia
+
+    • Que s’utilitze un ODS en la història i s’haja explicat de què tracta i perquè l’has triat
+
+    • Que la història tinga una introducció, desenvolupament i conclusió
+
+    • Que la història siga respectuosa i aporte una solució a l’Objectiu triat
+
+    • Que el document tinga títol i els 3 punts que es demanen desenvolupats
+
+    • Que la taula del guió multimèdia incloga com a mínim tots els punts: escena, so, personatges, diàlegs i altres elements
+
+    • Que hi haja almenys 15 vinyetes i que representen la història dividida per escenes
+
+# SUBSUBPÁGINA CREACIÓ DE VINYETES
+- Título nivel 1
+- Título nivel 2: Ferramenta per a crear les vinyetes
+- Texto: Aquesta serà la pàgina on crearàs el còmic: https://www.storyboardthat.com/
+- Texto: Si la pàgina ens apareix en anglès farem click amb el botó dret del ratolí en la pàgina web i seleccionarem Traducir al español.
+- Texto: Una vegada allí buscarem el botó Crear un guión gráfico i s’obrirà una pantalla com la següent: 
+- Imagen: full width assets/projectes/comic/guio/vinyetes01.png
+- Texto: A la pantalla ens apareixen un total de 3 vinyetes, per la qual cosa farem les vinyetes de 3 en 3. També ens apareix un menú superior amb diferents opcions, escenes, caracteres (personatges), texts, formes, etc:
+- Imagen: full width assets/projectes/comic/guio/vinyetes02.png
+- Text: Quan seleccionem una d’aquestes opcions ens apareixen altres subcategories i diferents imatges de la subcategoria seleccionada:
+- Fila amb dos columnes, una imatge en cada amb max-width 400px assets/projectes/comic/guio/vinyetes03.png i assets/projectes/comic/guio/vinyetes04.png
+- Fila amb dos columnes, una imatge en cada amb max-width 400px assets/projectes/comic/guio/vinyetes05.png i assets/projectes/comic/guio/vinyetes06.png
+- Text: Aquest és el menú principal per afegir objectes, escenes, texts, etc.
+- Título nivel 2: Ferramenta per a crear captures
+- Texto: Quan tinga’m les 3 primeres vinyetes creades el que farem serà fer una captura per cada vinyeta amb la ferramenta Shutter o Captura una regió rectangular.
+- Texto: Ara crea una carpeta a l’escriptori de Lliurex que s’anomene vinyetes. Després canvia els noms de les vinyetes amb Vinyeta1, Vinyeta2, etc, depenent de la vinyeta que siga.
+- Título: Descripció de l'activitat
+- Texto: En aquesta activitat, seguint el document que vas crear en l’anterior activitat anomenat Guió multimèdia hauràs de crear totes les vinyetes que havies definit amb la ferramenta Storyboardthat (enlace a https://www.google.com/url?q=https%3A%2F%2Fwww.storyboardthat.com%2F&sa=D&sntz=1&usg=AOvVaw3Qm4Woq5zI_SE6NsreA-mL). En el punt anterior s’explica com es creen les vinyetes.
+- Texto: A mesura que tingues 3 vinyetes construides, hauràs de realitzar les captures amb la ferramenta Shutter que també s’explica en el punt anterior.
+- Texto: Després hauràs de pujar les vinyetes al Google Drive en una carpeta que crearàs anomenada Vinyetes:
+- Imagen assets/projectes/comic/guio/vinyetes07.png
+- Text: Ara, arrastrant les imatges de la carpeta de l’escriptori a la carpeta Vinyetes del Google Drive, es pujaran les vinyetes.
+- Título nivel 2: Lliurament
+- Texto: Ara anem a l’escriptori de Lliurex on es troba la carpeta vinyetes. Prenem botó dret sobre la carpeta vinyetes i fem click en comprimir i després crear. Se’ns haurà creat un fitxer anomenat vinyetes.zip. Aquest és el fitxer que lliuraràs al moodle al Lliurament Activitat 3 de la Unitat 1.
+- Título nivel 2: Què se m'avaluarà?
+- Lista no ordenada
+   • S’hagen creat totes les vinyetes
+
+    • Que les vinyetes representen el que s’inclou al guió multimèdia
+
+    • Que les vinyetes no presenten ninguna falta de respecte
+
+    • Que s’haja pujat un fitxer .zip amb totes les vinyetes
+
+# SUBPÁGINA ÀUDIO DIGITAL
+- Título nivel 1
+- Dos columnas: izquierda imagen assets/unitats/multimedia/audacity.png, derecha título nivel 2: Audacity y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+- Separador vf-hr
+- Dos columnas: izquierda imagen assets/unitats/multimedia/audacity.png, derecha título nivel 2: Preparar àudios vinyetes y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+
+# SUBPÁGINA VÍDEO DIGITAL
+- Título nivel 1
+- Dos columnas: izquierda imagen assets/unitats/multimedia/video.png, derecha título nivel 2: Vídeo del còmic y botón "Accedir" que lleve a una página nueva dentro de ese proyecto
+- Separador vf-hr
+- Dos columnas: izquierda imagen assets/unitats/multimedia/disney.png, derecha título nivel 2: Vídeo pel·lícules y botón "Accedir" que lleve a una página nueva dentro de ese proyecto

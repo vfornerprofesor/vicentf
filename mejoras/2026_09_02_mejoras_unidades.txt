@@ -1,0 +1,107 @@
+Cambios que tienes que ir realizando en el proyecto:
+
+1: Cambia el title de todas las páginas con el título de cada página, ahora mismo solo pone en todas Vicent Forner - Profesor. Usa el h1 que tenga cada una o title de nivel 1.
+
+2: cursos/2eso.html tiene que tener estos bloques
+Ofimàtica - Full de càlcul;
+Pensament computacional: Ya està ;
+Programació - Scratch: Ya està ;
+Intel·ligència artificial: Ya està;
+Robòtica: unitats/programacio/robotica/microbit/;
+Edició d'imatge GIMP - Bàsic: unitats/multimedia/edicio-imatge-1/;
+
+3: unitats/programacio/index.html
+App inventor en la següent decisió passa a app inventor batxillerat i app inventor eso, ara estan assets/unitats/programacio/blocs i dins app-inventor-bat i app-inventor-eso i en unitats/programacio/blocs també app-inventor-bat i app-inventor-eso (tot feet a mà) has de fer el següent.
+En Blocs --> App Inventor canviar a App Inventor Batxillerat --> cambiar el nombre de la carpeta, de la carpeta de los assets y de los ficheros HTML, y subpáginas y enlaces dentro de los html
+En Blocs --> Añadir otro que sea App Inventor ESO (como el de App Inventor Batxillerat, añadirlo entre Scratch y App Inventor Batxillerat) --> Añadir también su respectiva carpeta para los assets y el index.html como el de App Inventor Batxillerat quitando los botones de Control, Dades i estructures, Bases de dades i Projecte. Por tanto, duplica el asset de App Inventor batxillerat a App Inventor ESO, y la página "Interficie del programa i com utilitzar-lo" duplícala entera, tanto el HTML como los assets.
+Esta unidad de App Inventor ESO tendrá los siguientes botones a continuación de "Interficie del programa i com utilitzar-lo": Endevinar número, Marcador handball, "Pedra, paper i tisora" i Atrapa el talp. Les imatges serán appinv-eso-endevinar.png, appinv-eso-marcador.png, appinv-eso-ppt.png i appinv-eso-atrapatalp.png respectivamente.
+
+4: La página Endevinar número tendrá por orden:
+- Título nivel 2: Elements de la app
+- fila con dos imágenes: appinv-eso-endevinar1.png y appinv-eso-endevinar2.png
+- Título nivel 2: Blocs
+- Lista con estos elementos
+1. Crear variable amb número aleatori entre 1 i 100
+2. Al fer clic al botó COMPROVAR
+2.1. Si el número escrit és el número que busquem --> Posar ENCERTAT en la etiqueta resultat
+2.2. Si el número escrit és menor que el número que busquem --> Posar que EL NÚMERO QUE BUSQUEM ÉS MAJOR  en la etiqueta resultat
+2.3. Si el número escrit és major que el número que busquem --> Posar que EL NÚMERO QUE BUSQUEM ÉS MENOR en la etiqueta resultat
+2.4. Després de comprovar i canviar la etiqueta resultat és aconsellable buidar el text del camp de text
+3. Intents: volem que cada vegada que no trobem el número, el número d'intents vaja incrementant-se
+3.1. Hem de crear una variable intents que comence en 0
+3.2. Cada vegada que el número es comprove i no siga, es sumarà 1 a la variable intents
+3.3. Es canviarà el text de l'etiqueta num_intents per el valor de la variable intents
+4. Tornar a començar:
+4.1. Al trobar el número, es mostrarà el botó de tornar a començar
+4.2. Al presionar a tornar a començar:
+4.2.1. S'ocultarà el botó de tornar a començar
+4.2.2. Es canviarà el valor de la variable intents a 0
+4.2.3. Es canviarà el text de pantalla de intents per 0
+4.2.4. Es tornarà a assignar un valor aleatori a la variable número
+
+5: La página Marcador Handball tendrá por orden:
+- Botón "Obrir el vídeo de l'app" que lleve a https://drive.google.com/file/d/16sZJpyDiDXFtSminIAcS4_8TnDjj88LG/view
+- Vídeo en assets llamado MARCADOR_HANDBALL.mp4
+- Título nivel 2: Blocs
+- Lista incompleta para dejar pensar a los alumnos el funcionamiento del marcador de hanball, en la app que desarrollaran habrá 6 botones, parte izquierda (local) gol y descontar gol, parte derecha (gol y descontar gol) y parte inferior finalizar partido e iniciar partido. Con esos botones piensa e indica como se realizaran los pasos del marcador pero no lo describas del todo, deja para que piensen un poco.
+
+6: La página Pedra, paper tisora tendrá tendrá por orden:
+- Título de nivel 2: Elements de l'app
+- Fila con dos imágenes: appinv-eso-ppt1.png y appinv-eso-ppt2.png
+- Text: Dels components s'ha de tindre en compte que:
+- Lista no ordenada con estos dos puntos: "Al principi es mostrará només DV_Dades" y "Al replenar el nom i clicar al botó BTN_Començar s'ocultarà DV_Ddades i es mostrarà DV_Partida"
+- Título de nivel 2: Blocs
+- Título de nivel 3: Tasques inicials
+- Lista ordenada:
+1. Al inicialitzar Screen1, s'ha d'ocultar DV_Partida i canviar l'altura de DH_Versus per l'altura de la imatge IMG_Pedra
+2. Al donar-li al botó de començar, s'ha de posar el nom del camp de text al label LBL_Nom
+3. Al fer clic a cada imatge (IMG_Paper, IMG_Pedra, IMG_Tisora) s'ha de cambiar la imatge de IMG_Jugador i es buidarà la imatge de IMG_MAQUINA (amb un text buit)
+4. Crearem una variable amb una llista buida
+5. Al inicialitzar la app (Screen1) afegirem a la llista els elements de les imatges, pedra.png, paper.png i tisores.png
+- Título de nivel 3: Comprovar jugada
+- Lista ordenada:
+1. Al fer clic al botó de jugar hem de comprovar si la IMG_Jugador té imatge per saber si el jugador ha seleccionat una opció. Si es compleix l'anterior farem el següent:
+1.1. actualitzarem la imatge de la máquina IMG_MAQUINA per un element aleatori de la llista que haviem creat abans
+1.2. Si la máquina ha triat aleatòriament *pedra*
+1.2.1. Si el jugador ha triat *pedra* es mostrarà a Resultat: EMPAT!
+1.2.2. Si el jugador ha triat *paper* es mostrarà a Resultat: GUANYES!
+1.2.3. Si el jugador ha triat *tisores* es mostrarà a Resultat: PERDS!
+1.3. Si la máquina ha triat aleatòriament *paper (completa amb el que falta)*
+1.4. Si la màquina ha triat aleatòriament *tisores (completa amb el que falta)*
+- Título de nivel 3: Comptar guanyades
+- Lista ordenada:
+1. Crea una variable global que compte les partides guanyades a 0
+2. En el joc anterior, quan fas clic al botó de Jugar, en els casos en els que guanye, incrementar la variable en 1
+3. Canviar el text LBL_Num_Victories amb el valor de la variable de partides guanyades
+- Título de nivel 3: Perdre
+- Lista ordenada:
+1. Crea un procediment que s'anomene acabar
+2. En el botó de Jugar, cada vegada que es perga s'ha de cridar al procediment acabar
+3. El procediment acabar tindrà les següents instruccions
+3.1. Ocultar el botó de Jugar
+3.2. Mostrar el botó de Tornar a començar
+3.3. Canviar el text de Resultat per: "Has aconseguit guanyar" + variable de partides guanyades + "guanyades"
+- Título de nivel 3: Tornar a començar
+- Lista ordenada:
+1. Al fer clic al botó de tornar a començar s'ha de fer el següent:
+1.1. Posar la variable de partides guanyades a 0
+1.2. Canviar el text de partides guanyades al valor de la variable de partides guanyades
+1.3. Ocultar el botó de Tornar a començar
+1.4. Mostrar el botó de Jugar
+1.5. Llevar la imatge del jugador en un text buit
+1.6. Llevar la imatge de la máquina en un text buit
+1.7. Buidar el text de Resultat amb un text buit
+
+7: La página Atrapa el talp tendrá los elementos en orden:
+- Título nivel 2: Resultat
+- Imagen: appinv-eso-atrapatalp.png
+- Título nivel 2: Descripció i tips
+- Textos con pistas para el desarrollo y ejecución que te tienes que inventar para ayudarles sin darles la solución. Habrá en la aplicación un texto con el título de la app, a la izquierda dos textos: talps restants i un número que empezará con 30. A la derecha dos textos Temps y un número que empiece por 0. Después 3 filas con 3 columnas de agujeros de topo vacíos menos uno lleno, cada un tiempo aleatorio entre 0.5s y 1.5s se cambiará el topo de un agujero a otro y el usuario tendrá que presionar para atraparlo, en atraparlo cambia el topo de sitio y baja 1 los Talps restantes. El tiempo avanza cada segundo y al finalizar los 30 talps se parará el tiempo y el topo ya no se moverá. Deberá aparecer un botón que muestre reiniciar juego y vuelva a ponerlo a 30 topos, el tiempo a 0 y el topo se volverá a mover.
+
+
+8: cursos/3eso.html: quitar los 3 que hay
+Intel·ligència artificial: añade el bloque (como en cursos/2eso.html) y déjalo sin enlace
+Projecte Còmic: imagen en assets/projectes/comic/comic.png
+Programació - AppInventor: que lleve al App inventor ESO
+Robòtica: imagen en assets/robotica.png y sin enlace de momento
+Edició d'imatge GIMP - Avançat: que lleve a unitats/multimedia/edicio-imatge-1/

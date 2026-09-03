@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, paper i tisora</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Pedra, paper i tisora
+        </vf-title>
+
+        <vf-title level="2">
+            Elements de l'app
+        </vf-title>
+        <vf-content>
+            <vf-row centered>
+                <vf-col>
+                    <vf-img styles="max-width:400px" src="assets/unitats/programacio/blocs/app-inventor-eso/appinv-eso-ppt1.png"></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/blocs/app-inventor-eso/appinv-eso-ppt2.png"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>Dels components s'ha de tindre en compte que:</vf-text>
+            <vf-list>
+                <li>Al principi es mostrarà només DV_Dades</li>
+                <li>Al replenar el nom i clicar al botó BTN_Començar s'ocultarà DV_Dades i es mostrarà DV_Partida</li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Blocs
+        </vf-title>
+        <vf-content>
+            <vf-title level="3">Tasques inicials</vf-title>
+            <vf-list ordered>
+                <li>Al inicialitzar Screen1, s'ha d'ocultar DV_Partida i canviar l'altura de DH_Versus per l'altura de la imatge IMG_Pedra</li>
+                <li>Al donar-li al botó de començar, s'ha de posar el nom del camp de text al label LBL_Nom</li>
+                <li>Al fer clic a cada imatge (IMG_Paper, IMG_Pedra, IMG_Tisora) s'ha de cambiar la imatge de IMG_Jugador i es buidarà la imatge de IMG_MAQUINA (amb un text buit)</li>
+                <li>Crearem una variable amb una llista buida</li>
+                <li>Al inicialitzar la app (Screen1) afegirem a la llista els elements de les imatges, pedra.png, paper.png i tisores.png</li>
+            </vf-list>
+
+            <vf-title level="3">Comprovar jugada</vf-title>
+            <vf-list ordered>
+                <li>Al fer clic al botó de jugar hem de comprovar si la IMG_Jugador té imatge per saber si el jugador ha seleccionat una opció. Si es compleix l'anterior farem el següent:
+                    <ol>
+                        <li>actualitzarem la imatge de la máquina IMG_MAQUINA per un element aleatori de la llista que haviem creat abans</li>
+                        <li>Si la máquina ha triat aleatòriament <strong>pedra</strong>
+                            <ol>
+                                <li>Si el jugador ha triat <strong>pedra</strong> es mostrarà a Resultat: EMPAT!</li>
+                                <li>Si el jugador ha triat <strong>paper</strong> es mostrarà a Resultat: GUANYES!</li>
+                                <li>Si el jugador ha triat <strong>tisores</strong> es mostrarà a Resultat: PERDS!</li>
+                            </ol>
+                        </li>
+                        <li>Si la máquina ha triat aleatòriament <strong>paper</strong> <em>(completa amb el que falta)</em></li>
+                        <li>Si la màquina ha triat aleatòriament <strong>tisores</strong> <em>(completa amb el que falta)</em></li>
+                    </ol>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">Comptar guanyades</vf-title>
+            <vf-list ordered>
+                <li>Crea una variable global que compte les partides guanyades a 0</li>
+                <li>En el joc anterior, quan fas clic al botó de Jugar, en els casos en els que guanye, incrementar la variable en 1</li>
+                <li>Canviar el text LBL_Num_Victories amb el valor de la variable de partides guanyades</li>
+            </vf-list>
+
+            <vf-title level="3">Perdre</vf-title>
+            <vf-list ordered>
+                <li>Crea un procediment que s'anomene acabar</li>
+                <li>En el botó de Jugar, cada vegada que es perga s'ha de cridar al procediment acabar</li>
+                <li>El procediment acabar tindrà les següents instruccions
+                    <ol>
+                        <li>Ocultar el botó de Jugar</li>
+                        <li>Mostrar el botó de Tornar a començar</li>
+                        <li>Canviar el text de Resultat per: "Has aconseguit guanyar" + variable de partides guanyades + "guanyades"</li>
+                    </ol>
+                </li>
+            </vf-list>
+
+            <vf-title level="3">Tornar a començar</vf-title>
+            <vf-list ordered>
+                <li>Al fer clic al botó de tornar a començar s'ha de fer el següent:
+                    <ol>
+                        <li>Posar la variable de partides guanyades a 0</li>
+                        <li>Canviar el text de partides guanyades al valor de la variable de partides guanyades</li>
+                        <li>Ocultar el botó de Tornar a començar</li>
+                        <li>Mostrar el botó de Jugar</li>
+                        <li>Llevar la imatge del jugador en un text buit</li>
+                        <li>Llevar la imatge de la máquina en un text buit</li>
+                        <li>Buidar el text de Resultat amb un text buit</li>
+                    </ol>
+                </li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

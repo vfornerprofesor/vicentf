@@ -43,6 +43,15 @@ a {
   color: var(--main-color);
 }
 
+/* Bootstrap defineix a:hover amb un blau propi i subratllat
+   (a:hover{color:#0056b3;text-decoration:underline}), amb mes especificitat
+   que la nostra regla de dalt. Sense aixo, qualsevol enllaç del lloc
+   canviava a blau amb subratllat en passar-hi el ratoli per damunt. */
+a:hover {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -75,6 +84,15 @@ a {
 
 .vf-img {
   max-width: -webkit-fill-available;
+}
+
+.vf-video {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .vf-img-col {
@@ -144,6 +162,13 @@ vf-col.col-min-400px {
   min-width: 400px;
 }
 
+.vf-col-link,
+.vf-col-link:hover {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 
 iframe {
   border: none;
@@ -198,16 +223,60 @@ iframe {
 
 
 /** TITLE LINKS **/
+.vf-title-anchor {
+  position: relative;
+}
+
+/* Els nivells 2 i 3 ja tenen padding lateral on cap la icona; el 4 no. */
+h4.vf-title-anchor {
+  padding-left: 2rem;
+}
+
 .vf-icon-copy {
-  cursor: pointer;
   font-size: 50%;
   position: absolute;
-  top: 10px;
+  top: 50%;
   left: 10px;
+  transform: translateY(-50%);
 }
 
 .vf-icon-copy-hide {
   display: none;
+}
+
+/* Visible tambe si el boto rep el focus (teclat), no nomes en hover */
+.vf-title-anchor:focus-within .vf-icon-copy-hide {
+  display: inline-block;
+}
+
+.vf-title-copied {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  background-color: var(--shadow-color);
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: var(--white-color);
+}
+
+/* Reset dels botons que nomes contenen una icona (copiar enllaç, copiar
+   codi): visualment identics a la <i> que substitueixen, pero activables
+   amb teclat i anunciats per lectors de pantalla. */
+.vf-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+.vf-icon-btn:focus-visible {
+  outline: 2px solid var(--main-color-dark);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
 /** VF-TEXT **/

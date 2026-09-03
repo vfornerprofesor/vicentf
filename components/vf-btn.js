@@ -1,13 +1,4 @@
-class VFBtn extends HTMLElement {
-
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        this.render();
-    }
-
+class VFBtn extends VFElement {
 
     render() {
         // Si no hay link, usar un <button> en lugar de <a>
@@ -21,21 +12,26 @@ class VFBtn extends HTMLElement {
                 element.target = "_blank";
                 element.rel = "noopener noreferrer"; // Seguridad
             }
+            if (this.hasAttribute('download')) {
+                element.setAttribute('download', '');
+            }
         } else {
             element = document.createElement('button');
             element.type = "button";
         }
-        
+
         element.classList.add('btn', 'btn-primary');
-        
+
         if (this.hasAttribute('inverse')) {
             element.classList.add('btn-primary-inverse');
         }
-        
+
         element = processClasses(element, this.getAttribute('classes'));
         element = processStyles(element, this.getAttribute('styles'));
-        element.textContent = this.textContent.trim();
-        
+        // Movem els nodes en lloc de copiar nomes el text: aixi es pot
+        // posar una icona o <b>/<i> dins del boto, no nomes text pla.
+        element.append(...this.childNodes);
+
         this.innerHTML = '';
         this.appendChild(element);
     }

@@ -10,19 +10,34 @@
 
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 
-<!-- Bootstrap JS + dependencias -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Bootstrap JS + dependencias. NO tornem a carregar jQuery ací: cada
+     pagina ja en carrega una copia completa (3.6.4) al <head> abans que
+     s'invoque $('#header').load(...), aixi que ja hi es disponible i
+     Bootstrap 4 s'hi enganxa igual. Carregar-ne una segona (3.5.1 slim)
+     nomes afegia pes i substituia el $ global a mitja carrega. -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Components -->
+<!-- Components. L'ORDRE IMPORTA: aquest fragment es carrega via
+     $('#header').load('header.html'), i jQuery evalua els <script src> d'un
+     fragment carregat aixi un darrere l'altre, en l'ordre exacte en que
+     apareixen (comprovat empiricament retardant un script i mesurant amb la
+     Performance API quan arrencava la peticio del seguent: no arrenca fins
+     que l'anterior ha acabat de carregar-se i executar-se). Per aixo
+     vf-element.js va primer: la resta de components l'esteneixen amb
+     "extends VFElement" i fallarien amb ReferenceError si encara no
+     existira. Si afegeixes un component nou, el seu <script> ha d'anar
+     despres de vf-element.js. -->
+
 <script src="scripts/utils.js"></script>
+<script src="components/vf-element.js"></script>
 <script src="components/vf-text.js"></script>
 <script src="components/vf-password.js"></script>
 <script src="components/vf-row.js"></script>
 <script src="components/vf-col.js"></script>
 <script src="components/vf-list.js"></script>
 <script src="components/vf-img.js"></script>
+<script src="components/vf-video.js"></script>
 <script src="components/vf-content.js"></script>
 <script src="components/vf-title.js"></script>
 <script src="components/vf-code.js"></script>
@@ -34,7 +49,16 @@
 
 <link rel="stylesheet" href="scripts/highlight/styles/default.min.css">
 <script src="scripts/highlight/highlight.min.js"></script>
+<!-- Cada vf-code ja es ressalta a si mateix amb hljs.highlightElement() en
+     renderitzar (vegeu components/vf-code.js), aixi que aquesta crida
+     normalment no fa cap faena de mes: hljs.highlightAll() salta els blocs
+     que ja tenen data-highlighted. Pero cal deixar-la: si un vf-code
+     renderitza abans que la llibreria haja acabat de carregar (l'ordre de
+     carrega dels components no esta garantit), la seua propia crida no fa
+     res en silenci (hljs encara no existeix) i aquest es l'unic punt del
+     document on tenim la garantia que hljs ja esta disponible. -->
 <script>hljs.highlightAll();</script>
+
 
 
 <script>
@@ -67,43 +91,67 @@
 
     //CREATE INDEX
     if (document.getElementById('vf-index')) {
-        var titles = document.getElementsByTagName('vf-title');
-        var index = document.getElementById('vf-index');
-        removeAllChildren(index);
+        // Esperem que vf-title estiga definit: whenDefined() no es resol
+        // fins que customElements.define('vf-title', ...) s'ha executat, i
+        // aquesta crida ja actualitza sincronament tots els <vf-title> que
+        // hi haja al document abans de retornar. Aixi ens assegurem que quan
+        // entrem ací tots ja han renderitzat el seu h1/h2/h3/h4 real, en lloc
+        // de dependre de l'ordre (no garantit) en que carreguen els scripts.
+        customElements.whenDefined('vf-title').then(() => {
+            var titles = document.getElementsByTagName('vf-title');
+            var index = document.getElementById('vf-index');
+            removeAllChildren(index);
 
-        var index_title = document.createElement('vf-title');
-        index_title.setAttribute('level', '2');
-        index_title.setAttribute('centered', '');
-        index_title.setAttribute('not-show-index', '');
-        index_title.textContent = 'Índex';
-        index.appendChild(index_title);
+            var index_title = document.createElement('vf-title');
+            index_title.setAttribute('level', '2');
+            index_title.setAttribute('centered', '');
+            index_title.setAttribute('not-show-index', '');
+            index_title.textContent = 'Índex';
+            index.appendChild(index_title);
 
-        /* var hr = document.createElement('vf-hr');
-        hr.setAttribute('inverse', '');
-        index.appendChild(hr); */
+            /* var hr = document.createElement('vf-hr');
+            hr.setAttribute('inverse', '');
+            index.appendChild(hr); */
 
-        var levels = index.getAttribute('levels');
-        if (levels == "") {
-            levels = [];
-        } else {
-            levels = levels.split(',');
-        }
-        for (let t of titles) {
-            if (!t.hasAttribute('not-show-index')) {
-                var level = t.getAttribute('level');
-                if (level != '' && levels.includes(level)) {
-                    var p = document.createElement('div');
-
-                    var hyperlink_id = t.children[0].children[0].id;
-                    p.setAttribute('hyperlink', hyperlink_id);
-                    p.setAttribute('onclick', 'scrollToSection("' + hyperlink_id + '")');
-                    p.classList.add('vf-index-' + level);
-                    p.textContent = t.textContent;
-                    index.appendChild(p);
+            var levels = index.getAttribute('levels');
+            if (levels == "") {
+                levels = [];
+            } else {
+                levels = levels.split(',');
+            }
+            for (let t of titles) {
+                if (!t.hasAttribute('not-show-index')) {
+                    var level = t.getAttribute('level');
+                    if (level != '' && levels.includes(level)) {
+                        // Cerquem l'encapçalament real (h1/h2/h3/h4) en lloc
+                        // de suposar una posició fixa dins de l'estructura
+                        // interna de vf-title: t.children[0].children[0] no
+                        // existia amb level="1" (no genera icona de copiar) i
+                        // trencava l'índex sencer.
+                        var heading = t.querySelector('h1, h2, h3, h4');
+                        if (!heading || !heading.id) {
+                            continue;
+                        }
+                        var hyperlink_id = heading.id;
+                        var p = document.createElement('div');
+                        p.setAttribute('hyperlink', hyperlink_id);
+                        p.setAttribute('onclick', 'scrollToSection("' + hyperlink_id + '")');
+                        p.classList.add('vf-index-' + level);
+                        // Text de l'encapçalament sense el boto de copiar
+                        // enllaç: t.textContent inclouria tambe el text del
+                        // seu missatge "Enllaç copiat!" (ocult amb CSS, pero
+                        // textContent no en fa cas).
+                        var headingClone = heading.cloneNode(true);
+                        var copyButton = headingClone.querySelector('button');
+                        if (copyButton) {
+                            copyButton.remove();
+                        }
+                        p.textContent = headingClone.textContent.trim();
+                        index.appendChild(p);
+                    }
                 }
             }
-        }
-
+        });
     }
 
     //START SHOWING ELEMENTS

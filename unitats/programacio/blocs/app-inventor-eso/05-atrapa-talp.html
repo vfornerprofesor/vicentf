@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atrapa el talp</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Atrapa el talp
+        </vf-title>
+
+        <vf-title level="2">
+            Resultat
+        </vf-title>
+        <vf-content>
+            <vf-img styles="max-width:400px" src="assets/unitats/programacio/blocs/app-inventor-eso/appinv-eso-atrapatalp.png"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Descripció i tips
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                La pantalla té a dalt un text amb el *títol del joc*. A l'esquerra, dos textos: «Talps restants» i un
+                número que comença en *30*. A la dreta, dos textos: «Temps» i un número que comença en *0*. Baix, una
+                graella de *3 files x 3 columnes* de forats de talp: tots buits menys un, que té el talp.
+            </vf-text>
+            <vf-list>
+                <li>Cada cert temps aleatori (entre *0.5 s i 1.5 s*) el talp canvia d'un forat a un altre. Pista: un rellotge (Clock) amb l'interval canviat a un valor aleatori cada vegada que dispara.</li>
+                <li>Quan l'usuari toca el forat que té el talp: el talp salta a un altre forat i «Talps restants» baixa en 1. Pensa com saber quin forat té el talp ara mateix.</li>
+                <li>Un segon rellotge fa avançar «Temps» en 1 cada segon.</li>
+                <li>Quan «Talps restants» arriba a 0: para els dos rellotges (el talp ja no es mou i el temps s'atura).</li>
+                <li>En eixe moment apareix un botó «Reiniciar joc». En prémer-lo: «Talps restants» torna a 30, «Temps» torna a 0, el botó s'amaga i els rellotges es tornen a activar.</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparar àudios de les vinyetes</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Preparar àudios de les vinyetes
+        </vf-title>
+
+        <vf-title level="2">
+            Descripció de l'activitat
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Per a cada vinyeta del còmic has de gravar la veu amb *Audacity* (llig la pàgina anterior si no saps
+                com fer-ho). Una vegada gravada, cada àudio ha de passar per estos passos: *llevar el soroll de la
+                gravació*, *afegir un so de fons*, *afegir efectes de so* i *exportar a MP3*.
+            </vf-text>
+            <vf-img src="assets/projectes/comic/audio.png"></vf-img>
+            <vf-text>
+                Treballa una vinyeta cada vegada. Guarda el projecte d'Audacity (*.aup3*) i, al final, exporta el
+                *.mp3* amb el nom *Vinyeta1.mp3*, *Vinyeta2.mp3*, etc.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            1. Llevar el soroll de la gravació
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Tota gravació porta un brunzit de fons (ventilador, ordinador, aire). Audacity el pot llevar si primer
+                li ensenyes com sona eixe soroll.
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>Busca un tros de la gravació on *no parle ningú* (només soroll de fons) i selecciona'l amb el ratolí. Com més llarg millor (1-2 segons).</vf-text></li>
+                <li><vf-text>*Efecte &gt; Reducció de soroll &gt; Obtén el perfil del soroll*. La finestra es tanca sola.</vf-text></li>
+                <li><vf-text>Selecciona tota la pista amb *Ctrl+A*.</vf-text></li>
+                <li><vf-text>*Efecte &gt; Reducció de soroll* una altra vegada. Deixa els valors per defecte (Reducció ~12 dB, Sensibilitat ~6) i prem *Accepta*.</vf-text></li>
+                <li><vf-text>Escolta el resultat. Si encara se sent soroll, repeteix amb una reducció una mica major; si la veu sona "metàl·lica" o "sota l'aigua", has passat: desfés amb *Ctrl+Z* i baixa els valors.</vf-text></li>
+                <li><vf-text>Talla els silencis llargs del principi i del final (selecciona i *Supr*).</vf-text></li>
+                <li><vf-text>Aplica *Normalitza* (a -1 dB) perquè totes les vinyetes sonen igual de fort.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            2. Afegir un so de fons
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                El so de fons és una música o un ambient suau que sona per davall de la veu durant tota la vinyeta.
+                Usa música lliure de drets (per exemple de [Pixabay](https://pixabay.com/music/) o
+                [Freesound](https://freesound.org/)).
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>*Fitxer &gt; Importa &gt; Àudio* i tria la música. Apareix en una pista nova davall de la veu.</vf-text></li>
+                <li><vf-text>Amb l'eina de moure, col·loca la música perquè comence a la vegada que la vinyeta.</vf-text></li>
+                <li><vf-text>Si la música és més llarga que la veu, selecciona el que sobra i *Supr*.</vf-text></li>
+                <li><vf-text>Baixa el volum de la pista de fons amb el control lliscant *-...+* de l'esquerra, fins a uns *-18 / -20 dB*: s'ha de notar però *no tapar la veu*.</vf-text></li>
+                <li><vf-text>Selecciona el primer segon de la música i aplica *Esvaïment progressiu d'aparició* (fade in). Fes el mateix amb l'últim segon i *Esvaïment progressiu d'ocultació* (fade out).</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            3. Afegir efectes de so
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Els efectes són sons puntuals que ajuden a contar la història: una porta, passos, un cop, aplaudiments,
+                el vent... Descarrega'ls de [Freesound](https://freesound.org/) i importa'ls a Audacity.
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>*Fitxer &gt; Importa &gt; Àudio* per cada efecte. Cada un pot anar a la seua pista o compartir-ne una.</vf-text></li>
+                <li><vf-text>Amb l'eina de moure, arrossega l'efecte fins al *moment exacte* de la vinyeta on passa l'acció.</vf-text></li>
+                <li><vf-text>Ajusta el volum de l'efecte perquè s'escolte clar però sense tapar la veu.</vf-text></li>
+                <li><vf-text>Posa un fade in / fade out curt si l'efecte comença o acaba de colp i queda brusc.</vf-text></li>
+                <li><vf-text>Reprodueix tota la vinyeta sencera i comprova que veu, fons i efectes s'entenen bé junts.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            4. Exportar a MP3
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>*Fitxer &gt; Exporta &gt; Exporta com a MP3*.</vf-text></li>
+                <li><vf-text>Guarda dins d'una carpeta anomenada *audios* a l'escriptori.</vf-text></li>
+                <li><vf-text>Nom del fitxer: *Vinyeta1.mp3*, *Vinyeta2.mp3*... segons la vinyeta.</vf-text></li>
+                <li><vf-text>Qualitat entre *128* i *192 kbps*. Prem *Desa* i *Accepta* a la finestra d'etiquetes.</vf-text></li>
+                <li><vf-text>Guarda també el projecte *.aup3* per si has de retocar-lo.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Lliurament
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Quan tingues tots els *.mp3*, prem botó dret sobre la carpeta *audios*, *comprimir* i *crear*. Se't
+                crearà *audios.zip*. Aquest és el fitxer que lliuraràs al moodle.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Què se m'avaluarà?
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Que hi haja un àudio per cada vinyeta i estiguen ben numerats</vf-text></li>
+                <li><vf-text>Que la veu s'entenga i no tinga soroll de fons ni distorsió</vf-text></li>
+                <li><vf-text>Que totes les vinyetes sonen a un volum semblant</vf-text></li>
+                <li><vf-text>Que hi haja so de fons per davall de la veu, amb fade in i fade out</vf-text></li>
+                <li><vf-text>Que s'hagen afegit efectes de so coherents amb l'acció de la vinyeta</vf-text></li>
+                <li><vf-text>Que s'haja pujat un *.zip* amb tots els *.mp3*</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+</body>
+
+</html>

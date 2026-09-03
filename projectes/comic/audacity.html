@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audacity</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Audacity
+        </vf-title>
+
+        <vf-title level="2">
+            Què és Audacity
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                *Audacity* és un programa lliure i gratuït per gravar i editar so. L'utilitzarem per gravar la veu de
+                cada vinyeta del còmic, netejar-la, afegir música i efectes, i exportar cada àudio a *MP3*.
+            </vf-text>
+            <vf-img src="assets/unitats/multimedia/audacity.png"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">
+            Obrir el programa
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                A Lliurex ja està instal·lat. Obri'l des del menú d'aplicacions (categoria *So i vídeo*). Si treballes
+                a casa el pots descarregar de [https://www.audacityteam.org/](https://www.audacityteam.org/).
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Interfície
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Les zones principals de la finestra són:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Barra de transport*: botons de reproduir, parar, gravar, pausa, anar a l'inici i al final.</vf-text></li>
+                <li><vf-text>*Barra d'eines*: selecció, envolupant (volum), moure, zoom.</vf-text></li>
+                <li><vf-text>*Selector de dispositius*: tria el micròfon d'entrada i els altaveus de sortida.</vf-text></li>
+                <li><vf-text>*Mesuradors de nivell*: indiquen el volum d'entrada i eixida; no han d'arribar al roig (0 dB) o el so es distorsiona.</vf-text></li>
+                <li><vf-text>*Zona de pistes*: cada so ocupa una pista horitzontal; pots tindre'n diverses (veu, música, efectes).</vf-text></li>
+                <li><vf-text>*Línia de temps*: la regla superior en segons; la barra vertical marca on sona ara.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Gravar
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Comprova al selector de dispositius que està triat el micròfon correcte.</vf-text></li>
+                <li><vf-text>Parla en veu normal i mira el mesurador d'entrada: ha de moure's entre -12 dB i -6 dB.</vf-text></li>
+                <li><vf-text>Prem el botó *Gravar* (cercle roig) i llig el text de la vinyeta.</vf-text></li>
+                <li><vf-text>Prem *Parar* (quadrat) quan acabes. Es crea una pista nova amb la gravació.</vf-text></li>
+                <li><vf-text>Prem *Reproduir* per escoltar-la. Si no t'agrada, desfés amb *Ctrl+Z* i torna a gravar.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Edició bàsica
+        </vf-title>
+        <vf-content>
+            <vf-img src="assets/unitats/multimedia/audacity2.png"></vf-img>
+            <vf-list>
+                <li><vf-text>*Seleccionar*: amb l'eina de selecció, arrossega el ratolí sobre el tros d'ona que vols.</vf-text></li>
+                <li><vf-text>*Tallar / Copiar / Enganxar*: *Ctrl+X* / *Ctrl+C* / *Ctrl+V*, com en un editor de text.</vf-text></li>
+                <li><vf-text>*Esborrar*: selecciona i prem *Supr* per llevar silencis o errades al principi i al final.</vf-text></li>
+                <li><vf-text>*Silenci*: *Edició &gt; Elimina un àudio especial &gt; Silencia l'àudio seleccionat* deixa el tros mut sense moure la resta.</vf-text></li>
+                <li><vf-text>*Duplicar*: *Ctrl+D* copia la selecció a una pista nova.</vf-text></li>
+                <li><vf-text>*Dividir*: *Ctrl+I* parteix la pista en el punt del cursor per moure els trossos per separat.</vf-text></li>
+                <li><vf-text>*Moure*: amb l'eina de moure (fletxes) desplaça un clip cap a l'esquerra o la dreta en el temps.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Efectes útils
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Selecciona primer el tros (o *Ctrl+A* per a tota la pista) i després obri el menú *Efecte*:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Amplificar*: puja o baixa el volum de la selecció.</vf-text></li>
+                <li><vf-text>*Normalitza*: ajusta el volum màxim a un valor fix (per exemple -1 dB) perquè totes les gravacions sonen igual de fort.</vf-text></li>
+                <li><vf-text>*Reducció de soroll*: lleva el brunzit de fons (explicat a la pàgina següent).</vf-text></li>
+                <li><vf-text>*Esvaïment progressiu d'aparició* i *d'ocultació* (fade in / fade out): fan que el so entre i isca suau.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Treballar amb diverses pistes
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>*Afegir pista*: *Pistes &gt; Afegeix una pista nova &gt; Pista d'àudio mono/estèreo*.</vf-text></li>
+                <li><vf-text>*Importar un so*: *Fitxer &gt; Importa &gt; Àudio* per portar música o efectes ja fets.</vf-text></li>
+                <li><vf-text>*Volum de cada pista*: el control lliscant *-...+* a l'esquerra de la pista baixa el volum d'eixa pista sense tocar les altres.</vf-text></li>
+                <li><vf-text>*Silenciar / Solo*: els botons *Silencia* i *Solo* de cada pista ajuden a escoltar-les per separat.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Exportar a MP3
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>*Fitxer &gt; Exporta &gt; Exporta com a MP3*.</vf-text></li>
+                <li><vf-text>Tria la carpeta i escriu el nom (per exemple *Vinyeta1.mp3*).</vf-text></li>
+                <li><vf-text>Deixa la qualitat entre *128* i *192 kbps* i prem *Desa*.</vf-text></li>
+                <li><vf-text>A la finestra d'etiquetes pots deixar-ho buit i prémer *Accepta*.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                El fitxer *.aup3* és el projecte editable d'Audacity; el *.mp3* és el resultat final que s'escolta en
+                qualsevol dispositiu. Guarda sempre els dos.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Consells
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Grava en un lloc silenciós i a prop del micròfon.</vf-text></li>
+                <li><vf-text>Fes una prova curta abans de gravar tot el text i comprova els nivells.</vf-text></li>
+                <li><vf-text>Guarda el projecte sovint amb *Ctrl+S*.</vf-text></li>
+                <li><vf-text>Si distorsiona (nivells en roig), baixa el volum d'entrada i torna a gravar; amplificar després no ho arregla.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+</body>
+
+</html>

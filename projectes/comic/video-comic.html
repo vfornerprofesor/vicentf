@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo del còmic</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Vídeo del còmic
+        </vf-title>
+
+        <vf-title level="2">
+            Descripció de l'activitat
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Ara ajuntaràs tot: les *vinyetes* (imatges) i els *àudios* (MP3) que ja tens fets, i muntaràs un vídeo
+                del còmic amb una *introducció* al principi i un *final* al tancament. El resultat serà un fitxer *MP4*.
+            </vf-text>
+            <vf-img src="assets/projectes/comic/video.png"></vf-img>
+            <vf-text>
+                Farem servir un editor de vídeo (a Lliurex tens *OpenShot* o *Kdenlive*). Els passos són els mateixos
+                en qualsevol dels dos: pistes, línia de temps i exportació.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Material necessari
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>La carpeta *Vinyetes* amb totes les imatges numerades.</vf-text></li>
+                <li><vf-text>La carpeta *audios* amb els *Vinyeta1.mp3*, *Vinyeta2.mp3*...</vf-text></li>
+                <li><vf-text>Una música per a la introducció i el final (lliure de drets).</vf-text></li>
+                <li><vf-text>El nom de la història i l'ODS que has treballat.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            1. Introducció
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Crea una imatge o una diapositiva amb el *títol del còmic*, el teu *nom i cognom* i el *curs*.</vf-text></li>
+                <li><vf-text>Col·loca-la al principi de la línia de temps amb una durada de *3 a 5 segons*.</vf-text></li>
+                <li><vf-text>Posa la música de fons i acaba-la amb un fade out abans que comence la primera vinyeta.</vf-text></li>
+                <li><vf-text>Pots afegir una transició curta (fosa) entre la introducció i la Vinyeta 1.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            2. Muntatge de les vinyetes
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Importa totes les vinyetes i tots els àudios al projecte (*Fitxer &gt; Importa* o arrossegant-los).</vf-text></li>
+                <li><vf-text>A la *pista de vídeo* posa *Vinyeta1*; a la *pista d'àudio* de davall posa *Vinyeta1.mp3* alineat al mateix punt.</vf-text></li>
+                <li><vf-text>Ajusta la *durada de la imatge* perquè dure *exactament el mateix que l'àudio* d'eixa vinyeta (arrossega la vora del clip d'imatge).</vf-text></li>
+                <li><vf-text>Repeteix amb *Vinyeta2* + *Vinyeta2.mp3*, i així fins a l'última, sempre *en ordre* i sense buits entre clips.</vf-text></li>
+                <li><vf-text>Opcional: posa una transició curta (fosa o desplaçament) entre vinyeta i vinyeta.</vf-text></li>
+                <li><vf-text>Opcional: una música de fons molt fluixa (*-22 dB*) al llarg de tot el còmic, per davall de les veus.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            3. Final
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Afig una diapositiva de tancament amb la paraula *Fi* o uns crèdits curts.</vf-text></li>
+                <li><vf-text>Indica l'*ODS* que has treballat i, si vols, una frase de conclusió.</vf-text></li>
+                <li><vf-text>Durada de *3 a 5 segons*, amb la música tornant a pujar i un fade out final.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            4. So i exportació
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Reprodueix el vídeo sencer i comprova que *la veu se sent per damunt* de la música de fons a totes les vinyetes.</vf-text></li>
+                <li><vf-text>Revisa que no hi ha talls bruscs ni silencis inesperats entre vinyetes.</vf-text></li>
+                <li><vf-text>*Fitxer &gt; Exporta el vídeo*. Format *MP4*, resolució *1920 x 1080* (1080p), 25 o 30 fps.</vf-text></li>
+                <li><vf-text>Nom del fitxer: *comic_Nom_Cognom.mp4*.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            Lliurament
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Puja el fitxer *comic_Nom_Cognom.mp4* al moodle. Si pesa massa, puja'l al *Google Drive*, comparteix-lo
+                amb permís de lectura i entrega l'enllaç.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            Què se m'avaluarà?
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Que el vídeo tinga introducció, totes les vinyetes en ordre i final</vf-text></li>
+                <li><vf-text>Que cada imatge dure el mateix que el seu àudio i estiguen ben sincronitzats</vf-text></li>
+                <li><vf-text>Que no hi haja buits, talls bruscs ni vinyetes desordenades</vf-text></li>
+                <li><vf-text>Que la veu s'entenga per damunt de la música de fons</vf-text></li>
+                <li><vf-text>Que la introducció incloga títol, nom i curs, i el final l'ODS treballat</vf-text></li>
+                <li><vf-text>Que s'haja entregat un *.mp4* (o enllaç de Drive) amb el nom correcte</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+    </div>
+
+</body>
+
+</html>

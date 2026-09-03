@@ -1,12 +1,4 @@
-class VFCode extends HTMLElement {
-
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        this.render();
-    }
+class VFCode extends VFElement {
 
     render() {
         let pre = document.createElement('pre');
@@ -19,11 +11,15 @@ class VFCode extends HTMLElement {
         }
         const lines = this.innerHTML.trim().split('\n');
 
-        let totalSpaces = this.innerHTML.split('\n')[1].match(/^\s*/)[0].length;
+        // Indentacio a llevar de cada linia: la de la segona linia del bloc.
+        // Si el codi s'ha escrit en una sola linia no hi ha segona linia; abans
+        // aixo llancava TypeError i el bloc no es renderitzava.
+        const secondLine = this.innerHTML.split('\n')[1];
+        const totalSpaces = secondLine ? secondLine.match(/^\s*/)[0].length : 0;
 
         let newLines = '';
         for(let l of lines) {
-            if(l.substring(0, totalSpaces) === ' '.repeat(totalSpaces)) {
+            if(totalSpaces > 0 && l.substring(0, totalSpaces) === ' '.repeat(totalSpaces)) {
                 l = l.substring(totalSpaces);
             }
             newLines += l + '\n';
@@ -35,8 +31,17 @@ class VFCode extends HTMLElement {
         this.appendChild(pre);
 
 
-        let icon = document.createElement('i');
-        icon.classList.add('fas', 'fa-copy', 'vf-icon');
+        // Icona dins d'un boto real: activable amb teclat i anunciada per
+        // lectors de pantalla (abans era un <i> nu, nomes clicable amb ratoli).
+        let iconGlyph = document.createElement('i');
+        iconGlyph.classList.add('fas', 'fa-copy');
+        iconGlyph.setAttribute('aria-hidden', 'true');
+
+        let icon = document.createElement('button');
+        icon.type = 'button';
+        icon.classList.add('vf-icon', 'vf-icon-btn');
+        icon.setAttribute('aria-label', 'Copiar codi');
+        icon.appendChild(iconGlyph);
         icon.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(newLines);
@@ -60,9 +65,12 @@ class VFCode extends HTMLElement {
 
         this.appendChild(icon);
         this.appendChild(message);
-        // Validar que hljs existe
+        // Ressaltem nomes aquest bloc, no hljs.highlightAll(): highlightAll()
+        // recorre TOT el document cada vegada, i amb N blocs de codi a la
+        // pagina aixo era treball O(N) per bloc (O(N²) en total) i generava
+        // avisos "element already highlighted" a la consola.
         if (typeof hljs !== 'undefined') {
-            hljs.highlightAll();
+            hljs.highlightElement(code);
         }
     }
 
