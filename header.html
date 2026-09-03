@@ -117,6 +117,19 @@
         }
     }
 
+    // Amaga la pantalla de carrega (vegeu l'estil i el div #loading,
+    // definits en linia a cada pagina perque apareguen abans que aquest
+    // header.html arribe). Amb transicio suau en lloc del tall sec de
+    // hideBlock(): aquesta si que val la pena animar-la, es l'unica cosa
+    // que l'usuari mira mentre espera.
+    function hideLoading() {
+        var l = document.getElementById('loading');
+        if (l && !l.classList.contains('vf-loading-hide')) {
+            l.classList.add('vf-loading-hide');
+            setTimeout(() => { l.style.display = 'none'; }, 300);
+        }
+    }
+
     //CREATE INDEX
     if (document.getElementById('vf-index')) {
         // Esperem que vf-title estiga definit: whenDefined() no es resol
@@ -231,7 +244,7 @@
         }
 
         showBlock('footer');
-        hideBlock('loading');
+        hideLoading();
     }, 3000);
 
 
