@@ -182,6 +182,62 @@
             </vf-text>
         </vf-content>
 
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-card</vf-title>
+        <vf-content>
+            <vf-text>Tres targetes (imatge + titol, tot clicable), pensades per a substituir el patro vf-col+vf-img+vf-btn de les graelles de cursos/unitats (EP1):</vf-text>
+            <vf-row centered>
+                <vf-card link="https://example.com" img="assets/icon.png">Amb alt automatic (el propi titol)</vf-card>
+                <vf-card link="https://example.com" img="assets/icon.png" alt="Text alternatiu explicit">Amb alt explicit</vf-card>
+                <vf-card link="https://example.com" img="assets/logo.png">Logo del lloc</vf-card>
+            </vf-row>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-callout</vf-title>
+        <vf-content>
+            <vf-text>Les quatre variants (EP2), amb *negreta* i [enllaços](https://example.com) dins:</vf-text>
+            <vf-callout type="atencio">Compte amb aquest pas: si l'ometeu, l'exercici *no* funcionarà.</vf-callout>
+            <vf-callout type="consell">Pots fer-ho més ràpid amb la drecera Ctrl+D.</vf-callout>
+            <vf-callout type="exercici">Fes ara els exercicis 1 a 5 i entrega'ls abans de eixir de classe.</vf-callout>
+            <vf-callout type="recorda">Recorda guardar el projecte abans de tancar [App Inventor](https://example.com).</vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-details</vf-title>
+        <vf-content>
+            <vf-text>Plegable natiu (sense JS propi), per a solucions o contingut opcional (EP3):</vf-text>
+            <vf-details summary="Mostra la solució">
+                <vf-text>Ací aniria la solució de l'exercici, o qualsevol contingut que no calga veure d'entrada.</vf-text>
+            </vf-details>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-steps</vf-title>
+        <vf-content>
+            <vf-text>Passos numerats amb linia de continuitat, per a tutorials (EP4):</vf-text>
+            <vf-steps>
+                <vf-step title="Obri l'aplicació">
+                    <vf-text>Descripció del primer pas.</vf-text>
+                </vf-step>
+                <vf-step title="Configura el projecte">
+                    <vf-text>Descripció del segon pas.</vf-text>
+                </vf-step>
+                <vf-step title="Prova el resultat">
+                    <vf-text>Descripció del tercer i últim pas.</vf-text>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">vf-badge</vf-title>
+        <vf-content>
+            <vf-text>Etiqueta menuda, per exemple per a marcar el curs d'una targeta (EP5):</vf-text>
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>2n BAT</vf-badge>
+            <vf-badge>SMX</vf-badge>
+        </vf-content>
+
     </div>
     <div id="footer"></div>
     <script>$('#footer').load('footer.html');</script>

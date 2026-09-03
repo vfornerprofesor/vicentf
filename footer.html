@@ -1,4 +1,4 @@
-<div id="scrollToTopBtn">↑</div>
+<div id="scrollToTopBtn" aria-hidden="true">↑</div>
 <script>
 
   const scrollToTopBtn = document.getElementById('scrollToTopBtn');
@@ -9,22 +9,39 @@
     document.documentElement.scrollTop = 0; // Para navegadores modernos
   });
 
-  // Muestra u oculta el botón según la posición de desplazamiento
+  // Muestra u oculta el botón según la posición de desplazamiento.
+  // EN2: classe (animable) en lloc de display, i llindar mes alt (abans
+  // apareixia quasi immediatament, a 20px de scroll).
   window.addEventListener('scroll', function () {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      scrollToTopBtn.style.display = 'block';
-    } else {
-      scrollToTopBtn.style.display = 'none';
-    }
-  });
+    const show = document.body.scrollTop > 400 || document.documentElement.scrollTop > 400;
+    scrollToTopBtn.classList.toggle('is-visible', show);
+  }, { passive: true });
 </script>
 
 
-<footer class="footer" onload="lastScript()">
-  <p>Powered by Vicent Forner 2023</p>
+<footer class="footer">
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h5>Seccions</h5>
+      <a href="unitats">Unitats</a>
+      <a href="cursos">Cursos</a>
+      <a href="ferramentes">Ferramentes</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contacte</h5>
+      <a href="contacte.html">Contacte</a>
+    </div>
+    <div class="footer-col">
+      <h5>Llicència</h5>
+      <p>Els materials es poden utilitzar sempre i quan s'anomene aquesta font.</p>
+    </div>
+  </div>
+  <p class="footer-credit">Powered by Vicent Forner <span id="footer-year"></span></p>
 </footer>
 
 <script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
   setTimeout(() => {
 
     //Open section if it selected
@@ -32,7 +49,9 @@
     if (section_id != '') {
       section_id = decodeURI(section_id);
       element_section = document.getElementById(section_id)
-      element_section.scrollIntoView({ behavior: 'smooth' });
+      if (element_section) {
+        element_section.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }, 1000);
 </script>

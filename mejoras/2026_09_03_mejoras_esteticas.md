@@ -3,7 +3,7 @@
 **Fecha:** 2026-09-03
 **Alcance:** apariencia del sitio en conjunto (`styles/*.css`, `header.html`, `menu.html`, `footer.html`) y de los componentes `vf-*` tal y como se ven en pantalla.
 **Método:** navegación real del sitio servido con `python3 -m http.server` (Chrome, 1440×900 y 500×641), medidas tomadas del DOM y de los CSS. No es una revisión de código: los bugs funcionales están en `2026_09_02_mejoras_componentes.md`.
-**Estado:** propuesta. Nada aplicado.
+**Estado:** aplicado el 2026-09-03 (ver §14).
 
 Cada punto lleva un **ID** para poder decir "aplica `EC1`, `EL1` y `EM2`" sin ambigüedad. Los prefijos no colisionan con los del informe de componentes.
 
@@ -679,3 +679,32 @@ Para que la lista de arriba no dé una impresión equivocada:
 - **Las burbujas de conversación** (`conversation_me` / `conversation_other`) son el mejor componente visual del sitio: reconocibles al instante, con buen contraste (10.4:1 y 9.1:1) y bien resueltas en `width: fit-content; max-width: 75%`.
 - **El icono de copiar enlace de `vf-title`**, que aparece en hover y en `:focus-within`, es un detalle de acabado por encima de lo habitual en un sitio de estas características.
 - **Todo el color ya está en variables CSS.** Es lo que hace que las propuestas `EC1` y `EA5` sean de cinco líneas en vez de un rediseño.
+
+---
+
+## 14. Aplicación — 2026-09-03
+
+Aplicado en la misma sesión, todo de golpe (el usuario pidió aplicar el informe completo). Antes de tocar `EC3`/`EC4` (el cambio de identidad visual) se confirmó explícitamente con el usuario: violeta más oscuro + títulos sin fondo, tal cual estaba escrito arriba.
+
+**Aplicado:**
+
+- **Tanda 1** (`EL1`, `ET1`, `ET3`): contenedor de 1140px en `#content`, `max-width:68ch` en párrafos/código/citas, `line-height:1.65` en body y `1.25` en encabezados.
+- **Tanda 2** (`EM1`-`EM5`): `--menu-h` medido en vivo con `ResizeObserver` (`header.html`) en vez de margen fijo, media query `max-width:767.98px` con los ajustes de padding/margen, `clamp()` en la escala tipográfica, marca del menú acortada en móvil (`d-none`/`d-sm-inline`), `min()` en los `col-min-*px`.
+- **Tanda 3** (`EC1`, `EC2`, `EA2`, `EA4`): paleta reoscurecida (`--main-color` `#8b7fc7`→`#6d5fb3`, gradiente recalculado a ≥4.5:1 con blanco), enlaces de texto en `--main-color-dark` con subrayado en hover, `:focus-visible` genérico, `prefers-reduced-motion`.
+- **Tanda 4** (`EC3`, `EC4`, `ET2`, `EL2`, `EB1`, `EB2`, `EI3`): `h2`/`h3` sin fondo degradado (color + borde), escala `--fs-h1..h4`, ritmo vertical entre bloques. `EB1`/`EB2`/`EI3` quedaron resueltos como efecto directo de quitarle el fondo a `.block_colored`.
+- **Tanda 5** (`EI1`, `EI2`, `EA3`, `EI4`): `#vf-index` en dos columnas con fondo claro y sangrado en `em`, entradas como `<a href="#id">` reales (antes `<div onclick>`), índice añadido a las 46 páginas largas que no lo tenían. Al verificar `EA3` en el navegador apareció un bug real: `href="#id"` a secas se resuelve contra el *path* del `<base href>` (que apunta a la raíz), no contra la página actual, así que el enlace saltaba a la portada en vez de quedarse en la página — arreglado con `location.pathname + '#' + id`. Además, como el `id` lo asigna JS y no está en el HTML servido, se añadió un `scrollIntoView` explícito en el clic (en vez de confiar en el salto nativo del navegador), documentado en `vf-web.md` §6.
+- **Tanda 6** (`EB3`, `EB4`, `EB5`, `EB6` parcial, `EN1`, `EN2`, `EN3`): icono de copiar código con color propio, `overflow-x:auto` en el código, blockquote sin margen fijo en móvil, enlace activo en el menú, botón scroll-to-top con clase animada (umbral 400px) en vez de `display` a 20px, footer con tres columnas y año automático.
+- **Tanda 7** (`EC5`, `ES1`, `ES2`, `ES4` parcial): colores literales (`#f8f9fa`, `rgba(0,0,0,.3)`, `#7dc99b`, `rgba(255,255,255,.2)`) llevados a variables; escalas `--space-*`, `--radius-*`, `--elev-*`; `transition: all` sustituido por propiedades concretas en `.block`, `.jumbotron`, `.col-unit`, `.btn-primary`, `.btn-primary-inverse`.
+- **Tanda 8** (`EP1`, `EP2`): componentes `vf-card` y `vf-callout` nuevos, documentados en `components/test.html` y en la tabla de `vf-web.md`. Las 93 tarjetas `vf-col`+`vf-img`+`vf-btn` repetidas en 18 páginas (`cursos/*.html`, `unitats/index.html` y sub-índices, `projectes/index.html`, `escaperooms/index.html`) migradas a `<vf-card>` con un script; de paso se corrigió una etiqueta `<vf-btn>` mal cerrada en `unitats/programacio/blocs/scratch/index.html` que bloqueaba esa tarjeta.
+- **Tanda 9 parcial** (`EL4`, `EL5`, `EP3`, `EP4`, `EP5`): `.btn-primary` ya no ocupa todo el ancho por defecto (nueva clase `.btn-block-full` para cuando sí se quiera), márgenes en `rem` en vez de `vh`; componentes `vf-details`, `vf-steps`/`vf-step` y `vf-badge` nuevos.
+- `vf-img` avisa por consola si falta el atributo `alt` (el paso barato de `EA1`).
+
+**Deliberadamente no aplicado** (fuera del alcance razonable de una pasada de CSS/componentes):
+
+- **`EA1` completo**: escribir el texto `alt` real de las ~464 imágenes de contenido existentes. Requiere ver cada imagen y saber qué enseña — es trabajo de contenido, no de diseño. Lo que sí se hizo: el aviso en consola, y que `vf-card` (componente nuevo) ya usa el título de la tarjeta como `alt` por defecto en sus 93 usos.
+- **`EI5`** (índice lateral sticky con `IntersectionObserver`): es una funcionalidad nueva de JS, no una corrección; se dejó para pedirla aparte si se quiere.
+- **`EA5`** (modo oscuro): los tokens ya están listos para ello (todo el color vive en `:root`), pero no se ha escrito la media query `prefers-color-scheme` ni revisado el tema de highlight.js en oscuro.
+- **`ES3` fuera de las tarjetas**: siguen quedando `styles="max-height:200px"` / `max-width:400px` sueltos en páginas de unidad con una sola imagen (51 y 34 casos respectivamente) — no forman parte del patrón de tarjeta migrado a `vf-card` y tocarlos uno a uno no es mecánico ni seguro sin mirar cada página.
+- **`EB6`** (clases `.vf-img-card`/`.vf-img-plain` para las imágenes sueltas fuera de tarjeta): no se ha creado; las imágenes de contenido (capturas, fotos) siguen sin recorte common.
+
+**Archivos tocados:** `styles/general.css`, `styles/blocks.css`, `styles/buttons.css`, `styles/menu.css`, `header.html`, `menu.html`, `footer.html`, `components/vf-img.js`, `components/test.html`, `.claude/agents/vf-web.md`, más los 6 componentes nuevos (`components/vf-card.js`, `vf-callout.js`, `vf-details.js`, `vf-steps.js`, `vf-step.js`, `vf-badge.js`) registrados en `header.html`. Contenido: las 18 páginas con tarjetas migradas a `vf-card` (más la corrección del `<vf-btn>` mal cerrado) y las 46 páginas largas con `#vf-index` añadido.

@@ -23,6 +23,8 @@
             Vídeo pel·lícules
         </vf-title>
 
+        <div id="vf-index" levels="2,3"></div>
+
         <vf-title level="2">
             Descripció de l'activitat
         </vf-title>
@@ -34,9 +36,17 @@
             </vf-text>
             <vf-img src="assets/unitats/multimedia/disney.png"></vf-img>
             <vf-text>
-                Ho farem amb un editor de vídeo (a Lliurex tens *OpenShot* o *Kdenlive*), igual que en el vídeo del
-                còmic.
+                Ho farem amb *Kdenlive*, el mateix editor de vídeo que hem usat en el vídeo del còmic (a Lliurex ja
+                està instal·lat).
             </vf-text>
+            <vf-text>
+                Es pot fer *individual* o *per parelles*. Segons el material que muntes tens tres opcions:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Només imatges*: cada frase mostra una imatge fixa de la seua pel·lícula.</vf-text></li>
+                <li><vf-text>*Imatges i vídeos* (barreja, ~50/50): algunes frases amb imatge i altres amb un tros curt de vídeo de la peli.</vf-text></li>
+                <li><vf-text>*Només vídeos*: totes les frases amb fragments de vídeo. És l'opció més treballada.</vf-text></li>
+            </vf-list>
         </vf-content>
 
         <vf-title level="2">
@@ -48,12 +58,17 @@
                 *Autor*: *David Rees* (youtuber i cantant). La cançó es va publicar al seu canal de YouTube.
             </vf-text>
             <vf-text>
-                Busca a YouTube *"David Rees - De ellos aprendí"* per escoltar-la i mira el vídeo original. Descarrega't
-                només l'*àudio* (MP3) per al muntatge.
+                *Vídeo original a YouTube*: [De ellos aprendí — David Rees](https://www.youtube.com/watch?v=Kb4Y9WWEt0Y).
+                Mira'l per fer-te una idea del muntatge.
+            </vf-text>
+            <vf-text>
+                *Àudio per al muntatge*: descarrega l'MP3 des d'ací:
+                [Audio - De ellos aprendí.mp3](https://drive.google.com/file/d/1Qd8CSamJNT_R3gZGQNWhF57zL1QJyfTF/view?usp=sharing).
             </vf-text>
             <vf-text>
                 *La lletra*: apunta-la tu escoltant la cançó (o mira la descripció i els comentaris fixats del vídeo de
                 YouTube, on sol estar). Copia-la al teu Document de Google: transcriure-la és part de l'activitat.
+                Al *Pas 1* emparellaràs cada frase de la lletra amb la pel·lícula a què fa referència.
             </vf-text>
             <vf-text>
                 Tota la cançó està feta de frases de *pel·lícules d'animació* (sobretot Disney i Pixar): cada frase és
@@ -96,14 +111,16 @@
         </vf-content>
 
         <vf-title level="2">
-            Pas 2 — Buscar les imatges
+            Pas 2 — Buscar les imatges (i els vídeos)
         </vf-title>
         <vf-content>
             <vf-list ordered>
                 <li><vf-text>Obri *Google Imatges* i busca cada pel·lícula (cartell oficial o un fotograma conegut).</vf-text></li>
                 <li><vf-text>A *Eines &gt; Mida* tria *Gran*, i a *Eines &gt; Drets d'ús* marca *Llicències Creative Commons* sempre que en trobes; és un treball educatiu d'aula.</vf-text></li>
+                <li><vf-text>Sempre que pugues, descarrega les imatges en format *PNG sense fons* (busca "png" o "sense fons" / "transparent"); així es veuen millor damunt del fons del vídeo.</vf-text></li>
                 <li><vf-text>Descarrega com a mínim *una imatge per frase*. Millor horitzontals (apaïsades) i de bona resolució (més de 1000 px d'ample).</vf-text></li>
-                <li><vf-text>Guarda-les en una carpeta anomenada *pelicules*, amb noms ordenats: *01_rei-lleo.jpg*, *02_mulan.jpg*, *03_frozen.jpg*... (l'ordre és el de la cançó).</vf-text></li>
+                <li><vf-text>Si fas l'opció amb *vídeos*: baixa un tros de la peli (de YouTube) i retalla només els segons que necessites amb [online-video-cutter.com](https://online-video-cutter.com/). Guarda cada clip curt (5-10 s).</vf-text></li>
+                <li><vf-text>Guarda-ho tot en una carpeta anomenada *pelicules*, amb noms ordenats: *01_rei-lleo.png*, *02_mulan.png*, *03_frozen.png*... (l'ordre és el de la cançó).</vf-text></li>
             </vf-list>
         </vf-content>
 
@@ -112,14 +129,15 @@
         </vf-title>
         <vf-content>
             <vf-list ordered>
-                <li><vf-text>Obri l'editor de vídeo i crea un projecte nou.</vf-text></li>
+                <li><vf-text>Obri *Kdenlive* i crea un projecte nou.</vf-text></li>
                 <li><vf-text>Importa l'*àudio* de la cançó i posa'l a la línia de temps des del segon 0.</vf-text></li>
-                <li><vf-text>Importa totes les *imatges* de la carpeta *pelicules*.</vf-text></li>
-                <li><vf-text>Col·loca la *primera imatge* al principi. Col·loca la *segona imatge* just en el temps on comença la seua frase (mira la taula del Pas 1). I així successivament.</vf-text></li>
-                <li><vf-text>Ajusta la *durada de cada imatge* perquè òmpliga fins que comença la següent frase: cada pel·lícula es veu mentre sona la seua frase.</vf-text></li>
-                <li><vf-text>Posa una *transició curta* (fosa, ~0,5 s) entre imatge i imatge.</vf-text></li>
+                <li><vf-text>Importa totes les *imatges i vídeos* de la carpeta *pelicules*.</vf-text></li>
+                <li><vf-text>Tria un *fons* (un color o una imatge) i deixa'l igual durant tot el vídeo: dóna unitat al muntatge, sobretot amb les imatges PNG sense fons.</vf-text></li>
+                <li><vf-text>Col·loca el *primer clip* al principi. Col·loca el *segon* just en el temps on comença la seua frase (mira la taula del Pas 1). I així successivament.</vf-text></li>
+                <li><vf-text>Ajusta la *durada de cada clip* perquè òmpliga fins que comença la següent frase: cada pel·lícula es veu mentre sona la seua frase.</vf-text></li>
+                <li><vf-text>Posa una *transició curta* (fosa, ~0,5 s) entre clip i clip.</vf-text></li>
                 <li><vf-text>Opcional: afig un *títol de text* amb el nom de la pel·lícula a un cantó.</vf-text></li>
-                <li><vf-text>*Portada* (3-5 s): títol "De ellos aprendí", el teu nom i el curs. *Final* (3-5 s): "Fi" o crèdits amb la llista de pel·lícules.</vf-text></li>
+                <li><vf-text>*Portada* (3-5 s): títol "De ellos aprendí" i imatges de pel·lícules. *Crèdits finals* (3-5 s): el teu *nom*, el *grup*, *IES Betxí* i el *curs*.</vf-text></li>
             </vf-list>
         </vf-content>
 

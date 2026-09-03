@@ -1,0 +1,28 @@
+Canvis:
+
+Projecte còmic: projectes/comic/index.html
+- Canviar imatge d'audio digital per: assets/projecte/comic/audio/audacity/audacity00.png
+
+Audio digital: projectes/comic/audio-digital.html
+- Canviar imatge preparar àudios vinyetes per: assets/projecte/comic/audio/audacity/audacity00.png
+
+Audacity: projectes/comic/audacity.html
+- Reduir tamany imatge inicial d'audacity
+- Bloc interficie, afegir imatge assets/projecte/comic/audio/audacity/audacity01.png
+- Bloc gravar, canvia'l per gravar amb audacity o amb el mòbil i afegeix perquè graven les veus en el mòbil, es compartisquen les gravacions amb el google drive i després les afegisquen a audacity.
+- Bloc edició bàsica: canvia la imatge per assets/projecte/comic/audio/audacity/audacity00.png
+- Bloc treballar amb diverses pistes, afegir imatge: assets/projecte/comic/audio/audacity/audacity02.png
+- Afegir activitats: els rescursos estan en assets/projectes/comic/audio/audacity totes les activitats les pujaran el mp3 resultant a aules
+-- Exercici 1: Recursos 02 juntar àudios de hola don pepito i hola don josé perquè queden units i queden com la cançó original
+-- Exercici 2: Recurs 03 llevar el soroll de la gravació
+-- Exercici 3: Recursos 04, llevar la tos i posar el 04_SEGUNDO on calga perquè quede la frase completa
+-- Exercici 4: Recurs 05_Malvado posar-lo en veu greu de malvado, 05_Marina posar-lo a la inversa "Alístate a la marina" al revés, referència de los simpsons, 05_Papá pitufo que s'escolte en veu aguda de pitufo, 05_Rapidito canviar la velocitat perquè s'escolte més ràpid
+-- Exercici 5: Recurs 06, buscar efectes de so online: un rayo i pluja en https://pixabay.com/ o https://sonidosmp3gratis.com/ i juntar-los a l'àudio perquè quede bé
+-- Exercici 6: Recursos 07, que quede tipus radio, que s'escolte la música, quan parle la persona que es baixe el volum del so i després que torne a pujar
+
+
+Vídeo pel·lícules: projectes/comic/video-pelicules.html
+- Fes un mix amb el que hi ha i el que jo ja tenia: https://sites.google.com/view/vicent-forner-professor-3reso/projecte-c%C3%B2mic/ud3-v%C3%ADdeo-digital/ud2-2-v%C3%ADdeo-pell%C3%ADcules
+- Però tin en compte que ja no es gasta openshot sinó kdenlive
+- Has d'afegir la lletra i les pel·lícules a que fan referència cadascú
+- Afegeix l'enllaç de drive on es pot descarregar la cançó

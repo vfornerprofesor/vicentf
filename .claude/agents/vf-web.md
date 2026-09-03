@@ -91,6 +91,11 @@ Todos extienden `VFElement` (`components/vf-element.js`, cargado primero de todo
 | `vf-frame` | `link` (obligatorio), `frame-title` (o `title`, alias antiguo), `styles`, `classes` | `<iframe loading="lazy" allowfullscreen>`. Clases útiles: `vf-frame-full`, `vf-frame-half` |
 | `vf-hr` | `inverse`, `styles`, `classes` | `<hr class="vf-hr">` |
 | `vf-password` | `pass` | modal que desbloquea `#content`; `Enter` envía; 2 intentos fallidos piden reintentar, el 3º expulsa. Varias `<vf-password>` en la misma página funcionan de forma independiente (hay que acertarlas todas para que se muestre `#content`) |
+| `vf-card` | `link` (obligatorio), `img` (obligatorio), `alt`, `styles`, `classes` | Tarjeta clicable imagen+título (añade `.col`). Sustituye el patrón repetido `vf-col`+`vf-img`+`vf-btn` de las rejillas de cursos/unidades. Si no hay `alt`, usa el propio título como texto alternativo |
+| `vf-callout` | `type` (`atencio` / `consell` / `exercici` / `recorda`, por defecto `atencio`), `styles`, `classes` | Aviso destacado con icono, color y contenido pasado por `processTextBoldAndLinks` (como `vf-quote`) |
+| `vf-details` | `summary`, `styles`, `classes` | `<details>`/`<summary>` nativo estilizado, para soluciones o contenido plegable sin JS propio |
+| `vf-steps` / `vf-step` | `vf-step`: `title`, `styles`, `classes` | `vf-steps` es el contenedor; cada `vf-step` hijo se numera solo según su posición entre hermanos y dibuja una línea de continuidad hasta el siguiente |
+| `vf-badge` | `styles`, `classes` | Etiqueta pequeña en píldora, para marcar nivel/curso en una tarjeta |
 
 ### Mini-lenguaje de texto (`processTextBoldAndLinks`, en `scripts/utils.js`)
 
@@ -114,7 +119,7 @@ Los delimitadores de negrita/cursiva excluyen el propio símbolo del contenido (
 
 Todo el color sale de variables CSS en `:root` de `styles/general.css`. **Nunca escribas colores literales en CSS nuevo**: usa las variables.
 
-- Principales: `--main-color: #8b7fc7`, `--main-color-hover`, `--main-color-light`, `--main-color-dark`
+- Principales: `--main-color: #6d5fb3` (oscurecido el 2026-09-03 respecto al original `#8b7fc7`: blanco encima no llegaba a 4.5:1 de contraste, ver `mejoras/2026_09_03_mejoras_esteticas.md` EC1), `--main-color-hover`, `--main-color-light`, `--main-color-dark`
 - Acentos: `--accent-color`, `--accent-secondary`
 - Neutros: `--black-color`, `--grey-color`, `--light-grey`, `--white-color`
 - Sombras: `--shadow-color`, `--shadow-hover-color`, `--shadow-soft`
@@ -125,7 +130,7 @@ Lenguaje visual establecido: `border-radius` 8–15px, `box-shadow` suave que cr
 
 Reparto de archivos: `general.css` (variables, layout, utilidades, componentes sueltos), `blocks.css` (`.block*`, `.jumbotron`, código), `buttons.css` (`.btn-*`), `menu.css` (navbar). Pon cada regla nueva en el archivo que le toca.
 
-Clases útiles ya existentes: `center`, `boxshadow`, `col-unit`, `list-unit`, `row-unit`, `img-scale-hover`, `vf-img-col`, `vf-img-half`, `vf-img-colored`, `col-min-200px/300px/400px`, `btn-short`, `vf-frame-full`, `vf-frame-half`.
+Clases útiles ya existentes: `center`, `boxshadow`, `col-unit`, `list-unit`, `row-unit`, `img-scale-hover`, `vf-img-col`, `vf-img-half`, `vf-img-colored`, `col-min-200px/300px/400px`, `btn-short`, `btn-block-full` (botón a todo ancho; desde 2026-09-03 `.btn-primary` por defecto ya no ocupa todo el ancho, ver EL4), `vf-frame-full`, `vf-frame-half`, `full-bleed` (escapa del contenedor de 1140px de `#content`, ver EL1).
 
 ## 5. Cómo crear un componente nuevo
 
@@ -161,6 +166,7 @@ Clases útiles ya existentes: `center`, `boxshadow`, `col-unit`, `list-unit`, `r
 - **Botones-icono (`vf-title`, `vf-code`) usan la clase `.vf-icon-btn`** para no parecer un `<button>` nativo (sin fondo/borde/padding) y tener `outline` en `:focus-visible`. Reutilízala en cualquier icono nuevo que sea clicable.
 - **Todo componente lleva una guarda `data-vf-rendered`** en `connectedCallback()`: se renderiza una sola vez, aunque `vf-content`/`vf-list` lo desconecten y reconecten al construir su propio contenido. Si creas un componente nuevo, cópiala (ver paso 2 de la sección 5).
 - **El índice `#vf-index` espera a `customElements.whenDefined('vf-title')`** antes de leer los `<vf-title>` de la página, para no depender del orden (no garantizado) en que cargan los scripts de `components/`.
+- **No uses `href="#id"` a secas en un enlace interno.** Todas las páginas internas llevan `<base href="../...">` apuntando a la raíz, y una referencia que sólo tiene fragmento se resuelve manteniendo el *path* del `<base>` (RFC 3986 §5.3), no el de la página actual — con `<base>` apuntando a la raíz, `href="#id"` navega a `/#id` (la portada) en vez de quedarse en la página. Usa `location.pathname + '#' + id`. Además, el `id` de un `<vf-title>` lo asigna JS (no existe en el HTML servido), así que el salto nativo del navegador al abrir un enlace con `#hash` ya en la URL puede no encontrarlo a tiempo (por eso `footer.html` hace su propio `scrollIntoView` con `setTimeout`, y el generador de `#vf-index` en `header.html` hace lo mismo explícitamente en cada clic en vez de confiar en el salto nativo).
 - **Los `id` de `vf-title` son únicos aunque el texto se repita**: el segundo título con el mismo texto recibe `-2`, el tercero `-3`, etc.
 - **El algoritmo de slug normaliza acentos** (`Intel·ligència` → `intelligencia`, tanda 6, `TI3`). Ya se rompió una vez a propósito con permiso del usuario (sólo había 1 enlace interno afectado, y ya estaba roto). **Si lo vuelves a tocar, avisa antes**: cambia el `#hash` de todos los títulos acentuados del sitio, y rompe cualquier enlace externo ya compartido.
 - **`a:hover` está sobrescrito a propósito en `general.css`.** Bootstrap pone `a:hover{color:#0056b3;text-decoration:underline}` (su azul, con más especificidad que la regla propia `a{color:var(--main-color)}`) — sin el override, **cualquier enlace del sitio** se pone azul y subrayado al pasar el ratón, no sólo los de `vf-col`. Si añades un nuevo tipo de enlace con su propio color, dale también su propio `:hover` explícito — no asumas que「normal」y「hover」van a coincidir solos.
@@ -168,6 +174,8 @@ Clases útiles ya existentes: `center`, `boxshadow`, `col-unit`, `list-unit`, `r
 ### Revisión pendiente
 
 `mejoras/2026_09_02_mejoras_componentes.md` tiene el inventario completo de problemas y mejoras propuestas, con IDs (`Q1`, `C1`, `T1`, …) y tandas de implementación. **Tandas 1 a 7 aplicadas el 2026-09-02** — prácticamente todos los IDs del informe ya están hechos o descartados a propósito (marcados `⏸️`: `P5`, `F4`, `U7` — el usuario no los quiso). Consúltalo igualmente si tocas algo: ahí está el porqué de cada decisión, incluidas dos correcciones sobre la marcha (una regresión real en la regex de negrita que se detectó y arregló antes de cerrar la tanda 7, y dos falsas alarmas del propio proceso de prueba que no eran bugs).
+
+`mejoras/2026_09_03_mejoras_esteticas.md` es la revisión estética (color/contraste, layout, móvil, accesibilidad visual, componentes nuevos), con IDs `EC*`/`ET*`/`EL*`/`EM*`/`EB*`/`EI*`/`EN*`/`ES*`/`EA*`/`EP*`. **Tandas 1 a 6 y parte de la 7-9 aplicadas el 2026-09-03**: contenedor de `#content`, paleta reoscurecida, menú/móvil, jerarquía de títulos sin gradiente, índice compacto con `<a>`, footer y botón scroll-to-top, migración de ~93 tarjetas a `vf-card`, e índice automático añadido a las 46 páginas largas que no lo tenían. Quedan pendientes y explícitamente sin tocar: `EA1` completo (texto `alt` real en las imágenes de contenido — sólo se añadió el aviso en consola), `EI5` (índice lateral sticky), `EA5` (modo oscuro), y la migración de `ES3` fuera de las tarjetas (siguen quedando `styles="max-height:200px"` sueltos en páginas de unidad con una sola imagen).
 
 ## 7. Cómo trabajas
 

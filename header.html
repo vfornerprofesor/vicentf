@@ -45,6 +45,12 @@
 <script src="components/vf-frame.js"></script>
 <script src="components/vf-hr.js"></script>
 <script src="components/vf-quote.js"></script>
+<script src="components/vf-card.js"></script>
+<script src="components/vf-callout.js"></script>
+<script src="components/vf-details.js"></script>
+<script src="components/vf-steps.js"></script>
+<script src="components/vf-step.js"></script>
+<script src="components/vf-badge.js"></script>
 
 
 <link rel="stylesheet" href="scripts/highlight/styles/default.min.css">
@@ -60,6 +66,28 @@
 <script>hljs.highlightAll();</script>
 
 
+
+<script>
+    // Alçada real del menu (EM1): es fixa, pero varia amb l'amplada de
+    // finestra (Bootstrap col·lapsa el menu per davall de 992px, i la
+    // marca ocupa mes files en movil). #content restava un marge fix
+    // (5em) mentre el menu podia arribar a fer-ne mes de 100px, i quedaven
+    // uns 20px del titol tapats davall. La publiquem com a variable CSS
+    // perque #content reserve exactament l'espai real.
+    (function () {
+        var menuEl = document.getElementById('menu');
+        if (!menuEl || !window.ResizeObserver) {
+            return;
+        }
+        var setMenuHeight = function () {
+            var h = menuEl.offsetHeight;
+            if (h > 0) {
+                document.documentElement.style.setProperty('--menu-h', h + 'px');
+            }
+        };
+        new ResizeObserver(setMenuHeight).observe(menuEl);
+    })();
+</script>
 
 <script>
     console.log('Loading header');
@@ -133,9 +161,23 @@
                             continue;
                         }
                         var hyperlink_id = heading.id;
-                        var p = document.createElement('div');
-                        p.setAttribute('hyperlink', hyperlink_id);
-                        p.setAttribute('onclick', 'scrollToSection("' + hyperlink_id + '")');
+                        // EA3: <a href="#id"> real en lloc de <div onclick>:
+                        // aixi rep focus de teclat, ix a la navegacio per
+                        // tabulador i s'anuncia com a enllaç. L'scroll suau
+                        // ja el fa `html{scroll-behavior:smooth}`, no cal
+                        // scrollToSection() ací.
+                        var p = document.createElement('a');
+                        // NO fem servir nomes "#id": totes les pagines
+                        // internes tenen <base href="../..."> apuntant a
+                        // l'arrel, i una referencia que nomes te fragment
+                        // es resol MANTENINT EL PATH DEL BASE (RFC 3986
+                        // §5.3) en lloc del path de la pagina actual —
+                        // amb <base> apuntant a l'arrel, "#id" acabava
+                        // navegant a "/#id" (la portada) en lloc de
+                        // quedar-se a la pagina. location.pathname no el
+                        // toca el <base>, aixi que el path sempre es el
+                        // correcte.
+                        p.href = location.pathname + '#' + hyperlink_id;
                         p.classList.add('vf-index-' + level);
                         // Text de l'encapçalament sense el boto de copiar
                         // enllaç: t.textContent inclouria tambe el text del
@@ -147,6 +189,21 @@
                             copyButton.remove();
                         }
                         p.textContent = headingClone.textContent.trim();
+                        // No confiem nomes en el salt nadiu del navegador
+                        // (href="...#id"): l'`id` de cada titol l'assigna
+                        // vf-title per JS, i si mai encara no existira quan
+                        // el navegador intenta saltar (carrega inicial amb
+                        // #hash a la URL, abans que vf-title.js haja
+                        // arrencat) el salt nadiu no reintenta despres. Fem
+                        // el scroll explicitament nosaltres, com ja fa
+                        // footer.html per a l'obertura amb #hash — aixi
+                        // funciona igual clicant des de l'index com obrint
+                        // un enllaç compartit.
+                        p.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            history.pushState(null, '', p.getAttribute('href'));
+                            heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        });
                         index.appendChild(p);
                     }
                 }

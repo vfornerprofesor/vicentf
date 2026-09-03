@@ -4,16 +4,16 @@
   justify-content: center;
 }
 
-/* BLOCKS */ 
+/* BLOCKS */
 
-.block, .block_colored, .block_black {
+.block {
     padding: 2rem 3.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
-  .block > h1, .block_colored > h1, .block_black > h1 {
+  .block > h1 {
     text-align: center;
     margin-bottom: 1.5rem;
   }
@@ -28,29 +28,8 @@
     transform: translateY(-2px);
   }
 
-  .block_h1 { 
-    margin-top: 3em; 
-  }
-  
-  .block_h3 { 
-    margin-top: 1em; 
-  }
-
-  .block_colored {
-    background: var(--gradient-primary);
-    box-shadow: 0 4px 15px var(--shadow-color);
-    color: var(--white-color);
-  }
-  
-  .block_colored:hover {
-    box-shadow: 0 6px 20px var(--shadow-hover-color);
-    transform: translateY(-3px);
-  }
-
-  .block_black {
-    background: linear-gradient(135deg, var(--black-color) 0%, var(--grey-color) 100%);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    color: var(--white-color);
+  .block_h1 {
+    margin-top: 3em;
   }
 
   h1, h2, h3 {
@@ -59,13 +38,50 @@
     hyphens: auto; /* Guiones automáticos si es posible */
   }
 
+  /* h2 - vf-title level 2. Fins al 2026-09-02 era una barra plena amb el
+     mateix --gradient-primary que botons, index i menu; amb tot compartint
+     el mateix color, el color deixava de comunicar cap jerarquia (EC3).
+     Ara nomes es color + vora inferior. */
   .block_colored.block_h2 {
-    color: var(--white-color);
-
+    background: none;
+    box-shadow: none;
+    color: var(--main-color-dark);
+    /* Lateral simetric (no nomes esquerra): deixa lloc a la icona de
+       copiar enllaç sense desequilibrar els titols centrats (`centered`),
+       que si no quedarien desplaçats cap a la dreta. */
+    padding: 0 1.75rem 0.6rem 1.75rem;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-4);
+    border-radius: 0;
+    border-bottom: 3px solid var(--main-color-light);
+    font-size: var(--fs-h2);
   }
 
-  .block_black > h1, .block_black > h2, .block_black.block_h3 {
-    color: var(--white-color);
+  /* h3 - vf-title level 3. Abans un rectangle en degradat quasi negre
+     (l'unica aparicio de negre en tot el lloc) que pesava mes que el seu
+     propi h2 pare (EC4). Ara vora esquerra + text fosc. */
+  .block_black.block_h3 {
+    background: none;
+    box-shadow: none;
+    color: var(--black-color);
+    /* 1.75rem (no 1rem): deixa prou marge perque la icona de copiar
+       enllaç no quede damunt de les primeres lletres del titol. */
+    padding: 0 0 0 1.75rem;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    border-radius: 0;
+    border-left: 4px solid var(--main-color);
+    font-size: var(--fs-h3);
+  }
+
+  h4 {
+    font-size: var(--fs-h4);
+    font-weight: 600;
+    color: var(--grey-color);
+  }
+
+  .display-4 {
+    font-size: var(--fs-h1);
   }
 
   .block_color {
@@ -84,7 +100,7 @@
     text-align: center;
     border-radius: 15px;
     box-shadow: 0 6px 20px var(--shadow-color);
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .jumbotron:hover {
@@ -102,9 +118,10 @@
     box-shadow: 0 2px 10px var(--shadow-soft);
 }
 
-.code_block { 
+.code_block {
     border-radius: 8px;
     padding: 20px !important;
     margin: 0 !important;
-    background-color: #f8f9fa;
+    background-color: var(--code-bg);
+    overflow-x: auto;
 }

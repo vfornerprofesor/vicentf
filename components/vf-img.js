@@ -7,10 +7,17 @@ class VFImage extends VFElement {
         const link = this.getAttribute('link');
         const src = this.getAttribute('src');
         const alt = this.getAttribute('alt') || '';
-        
+
         if (!src) {
             console.warn('vf-img: falta el atributo "src"');
             return;
+        }
+
+        // EA1: avisem quan falta l'atribut sencer (no quan es alt=""
+        // explicit, que es la manera correcta de marcar una imatge
+        // purament decorativa).
+        if (!this.hasAttribute('alt')) {
+            console.warn('vf-img: falta el atributo "alt" (' + src + '). Si la imatge es decorativa, posa alt="" explicit.');
         }
         
         const img = document.createElement('img');

@@ -1,32 +1,81 @@
 :root {
-  /* Paleta principal - Violeta/Púrpura suave */
-  --main-color: #8b7fc7;
-  --main-color-hover: #a599d9;
+  /* Paleta principal - Violeta/Púrpura suave.
+     2026-09-03: oscurit un esglaó respecte a l'original (#8b7fc7) perque
+     el text blanc a damunt no tenia prou contrast (3.52:1, sota el 4.5:1
+     que demana AA). Amb aquest to, blanc-sobre-main-color queda a 5.33:1.
+     Vegeu mejoras/2026_09_03_mejoras_esteticas.md, EC1. */
+  --main-color: #6d5fb3;
+  --main-color-hover: #5b4e9c;
   --main-color-light: #c4baeb;
-  --main-color-dark: #6d5fb3;
-  
+  --main-color-dark: #4a3f80;
+
   /* Colores de acento */
   --accent-color: #9b87d6;
   --accent-secondary: #b5a4e3;
-  
+
   /* Colores neutros */
   --black-color: #2a2a2a;
   --grey-color: #555555;
   --light-grey: #f5f5f5;
   --white-color: #ffffff;
-  
+
   /* Sombras */
-  --shadow-color: rgba(139, 127, 199, 0.3);
-  --shadow-hover-color: rgba(139, 127, 199, 0.5);
+  --shadow-color: rgba(109, 95, 179, 0.3);
+  --shadow-hover-color: rgba(109, 95, 179, 0.5);
   --shadow-soft: rgba(0, 0, 0, 0.1);
-  
+  --shadow-strong: rgba(42, 42, 42, 0.25);
+  --overlay-light: rgba(255, 255, 255, 0.2);
+
   /* Opciones de conversación */
   --option1-color: #b8e6c8;
+  --option1-border: #7dc99b;
   --option2-color: #d4c7f5;
-  
+
   /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, #8b7fc7 0%, #a599d9 100%);
+  --gradient-primary: linear-gradient(135deg, #6d5fb3 0%, #7268b8 100%);
   --gradient-soft: linear-gradient(135deg, #c4baeb 0%, #d4c7f5 100%);
+
+  /* Codi */
+  --code-bg: #f8f9fa;
+
+  /* Avisos (vf-callout) */
+  --callout-atencio: #c77d4f;
+  --callout-atencio-bg: #fbeee5;
+  --callout-consell: #4f9e6b;
+  --callout-consell-bg: #e9f6ee;
+  --callout-exercici: var(--main-color-dark);
+  --callout-exercici-bg: #efecfa;
+  --callout-recorda: #4a90b8;
+  --callout-recorda-bg: #e8f2f7;
+
+  /* Escala d'espaiat */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  /* Radis i elevacio */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --elev-1: 0 1px 3px rgba(42, 42, 42, .08);
+  --elev-2: 0 4px 12px rgba(42, 42, 42, .10);
+  --elev-3: 0 8px 24px var(--shadow-hover-color);
+
+  /* Escala tipografica: es una mica mes gran quan hi ha espai (clamp) */
+  --fs-h1: clamp(2rem, 1.3rem + 3vw, 3.5rem);
+  --fs-h2: clamp(1.4rem, 1.2rem + 1vw, 1.85rem);
+  --fs-h3: 1.3rem;
+  --fs-h4: 1.05rem;
+
+  /* Alçada del menu fixe: header.html la substitueix per la real amb un
+     ResizeObserver (EM1); aquest valor nomes es el que s'usa fins que el
+     menu carrega o si mai falla la mesura. */
+  --menu-h: 78px;
+
+  color-scheme: light;
 }
 
 html {
@@ -34,22 +83,37 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+  /* Un violeta molt clar en lloc de gris gairebe blanc: aixi els .block
+     blancs es distingeixen del fons sense dependre nomes de la sombra
+     (EC6). */
+  background: #f2f0f7;
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  /* Perque un clic a l'index o un #hash compartit no deixe el titol mig
+     tapat davall del menu fixe (EM1). */
+  scroll-margin-top: calc(var(--menu-h) + 12px);
 }
 
 a {
-  color: var(--main-color);
+  color: var(--main-color-dark);
 }
 
 /* Bootstrap defineix a:hover amb un blau propi i subratllat
    (a:hover{color:#0056b3;text-decoration:underline}), amb mes especificitat
    que la nostra regla de dalt. Sense aixo, qualsevol enllaç del lloc
-   canviava a blau amb subratllat en passar-hi el ratoli per damunt. */
+   canviava a blau amb subratllat en passar-hi el ratoli per damunt.
+   2026-09-03 (EC2): recuperem el subratllat en hover per als enllaços de
+   text corrent (l'unica senyal no cromatica que son enllaços), pero els
+   enllaços que ja son un boto o una targeta (nav, botons, targetes, index)
+   mantenen el seu propi :hover sense subratllat, definit en cada un. */
 a:hover {
   color: var(--main-color);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .center {
@@ -59,17 +123,74 @@ a:hover {
   text-align: center;
 }
 
+/* CONTENIDOR (EL1): sense aixo el contingut ocupava tot l'ample de la
+   finestra i una linia de paragraf arribava a 130 caracters en un monitor
+   normal. 1140px es la mateixa mida de contenidor que fa servir Bootstrap
+   al seu breakpoint `lg`, aixi que segueix sent familiar. */
 #content {
-  margin-top: 5em;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+  margin-top: calc(var(--menu-h) + var(--space-4));
+}
+
+/* Classe d'escapament per si mai cal un element a tot l'ample de la
+   finestra (una imatge, un iframe) dins d'un #content ara limitat. */
+.full-bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 
 .footer {
-  background: var(--gradient-primary);
+  background: var(--main-color-dark);
   color: var(--white-color);
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
+  padding: var(--space-5) var(--space-4);
+  margin-top: var(--space-6);
   box-shadow: 0 -4px 12px var(--shadow-soft);
+}
+
+/* EN3: abans nomes hi havia una linia amb l'any fix a 2023. */
+.footer-cols {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-6);
+  max-width: 1140px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.footer-col h5 {
+  color: var(--white-color);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.footer-col a {
+  display: block;
+  color: var(--white-color);
+  opacity: .85;
+  margin-bottom: var(--space-1);
+}
+
+.footer-col a:hover {
+  opacity: 1;
+  color: var(--white-color);
+  text-decoration: underline;
+}
+
+.footer-col p {
+  opacity: .85;
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+.footer-credit {
+  text-align: center;
+  margin-top: var(--space-5);
+  margin-bottom: 0;
+  opacity: .85;
+  font-size: .9rem;
 }
 
 .img-scale-hover {
@@ -84,6 +205,7 @@ a:hover {
 
 .vf-img {
   max-width: -webkit-fill-available;
+  border-radius: var(--radius-sm);
 }
 
 .vf-video {
@@ -106,7 +228,7 @@ a:hover {
 
 .vf-img-colored {
   background-color: var(--main-color);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   box-shadow: 0 2px 8px var(--shadow-soft);
 }
 .vf-img-colored:hover {
@@ -150,16 +272,18 @@ vf-col {
   /*min-width: fit-content;*/
 }
 
+/* min() perque el minim no faça apareixer scroll horitzontal en pantalles
+   mes estretes que el propi minim (EM5). */
 vf-col.col-min-200px {
-  min-width: 200px;
+  min-width: min(200px, 100%);
 }
 
 vf-col.col-min-300px {
-  min-width: 300px;
+  min-width: min(300px, 100%);
 }
 
 vf-col.col-min-400px {
-  min-width: 400px;
+  min-width: min(400px, 100%);
 }
 
 .vf-col-link,
@@ -184,12 +308,11 @@ iframe {
   padding: 20px;
   background-color: var(--white-color);
   box-shadow: 0 2px 10px var(--shadow-soft);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .col-unit h2 {
   background-color: transparent;
-  /*color: var(--main-color) !important;*/
   transition: color 0.3s ease;
 }
 
@@ -233,10 +356,10 @@ h4.vf-title-anchor {
 }
 
 .vf-icon-copy {
-  font-size: 50%;
+  font-size: 34%;
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: -6px;
   transform: translateY(-50%);
 }
 
@@ -279,9 +402,18 @@ h4.vf-title-anchor {
   border-radius: 3px;
 }
 
+/* FOCUS VISIBLE GENERIC (EA2): abans nomes els botons-icona mostraven cap
+   senyal en navegar amb teclat. */
+:where(a, button, .vf-index-1, .vf-index-2, .vf-index-3, .vf-index-4, .vf-details summary):focus-visible {
+  outline: 3px solid var(--main-color-dark);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /** VF-TEXT **/
 vf-text {
   display: block;
+  max-width: 68ch;
 }
 
 /* VF-PASSWORD MODAL */
@@ -296,12 +428,13 @@ vf-text {
 vf-code {
   display: block;
   min-width: 250px;
-  width: fit-content;
+  width: 100%;
+  max-width: 68ch;
   border-radius: 8px;
   box-shadow: 0 2px 12px var(--shadow-soft);
   border: 1px solid var(--main-color-light);
   position: relative;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 vf-code:hover {
@@ -325,34 +458,43 @@ vf-code .vf-icon {
 }
 
 .vf-icon {
-  color: var(--shadow-color);
+  color: var(--grey-color);
+  opacity: .55;
 }
 
 .vf-icon:hover {
-  color: var(--shadow-hover-color);
-  transition: all 0.5s ease;
+  color: var(--main-color-dark);
+  opacity: 1;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-/* INDEX */
+/* INDEX (EI1, EI2, EI3): abans era un bloc violeta a tot ample, amb una
+   entrada per linia i sagnats del 5/10/15/20% (saltava desenes de px per
+   nivell). Ara es un bloc clar en dues columnes, amb sagnat proporcional
+   al text (em) en lloc de percentatge de l'ample. */
 #vf-index {
-  background: var(--gradient-primary);
-  padding: 25px 0;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 10px var(--shadow-soft);
+  background-color: var(--light-grey);
+  border: 1px solid var(--main-color-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--elev-1);
 }
 
 .vf-index-1,
 .vf-index-2,
 .vf-index-3,
 .vf-index-4 {
-  color: var(--white-color);
+  display: block;
+  color: var(--main-color-dark);
   font-weight: 600;
-  padding: 10px 15px;
-  border-left: 3px solid var(--white-color);
+  padding: 6px 10px;
+  border-left: 3px solid var(--main-color-light);
   border-radius: 0 8px 8px 0;
-  width: fit-content;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  width: auto;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  break-inside: avoid;
+  text-decoration: none;
 }
 
 .vf-index-1:hover,
@@ -360,31 +502,20 @@ vf-code .vf-icon {
 .vf-index-3:hover,
 .vf-index-4:hover {
   background-color: var(--white-color);
-  color: var(--main-color);
+  color: var(--main-color-dark);
   border-left-color: var(--main-color);
-  padding-left: 20px;
   box-shadow: 0 2px 8px var(--shadow-soft);
+  text-decoration: none;
 }
 
-.vf-index-1 {
-  margin-left: 5%;
-}
+.vf-index-1 { margin-left: 0; }
+.vf-index-2 { margin-left: 1.5em; }
+.vf-index-3 { margin-left: 3em; }
+.vf-index-4 { margin-left: 4.5em; }
 
-.vf-index-2 {
-  margin-left: 10%;
-
-}
-
-.vf-index-3 {
-  margin-left: 15%;
-
-}
-
-.vf-index-4 {
-  margin-left: 20%;
-}
-
-/* SCROLL TO TOP */
+/* SCROLL TO TOP (EN2): opacitat en lloc de display, perque es puga animar
+   sense el salt brusc d'aparicio/desaparicio, i nomes visible a partir
+   d'un scroll real (400px) en lloc de gairebe immediat (20px). */
 #scrollToTopBtn {
   position: fixed;
   bottom: 25px;
@@ -397,12 +528,23 @@ vf-code .vf-icon {
   font-size: 28px;
   cursor: pointer;
   box-shadow: 0 4px 15px var(--shadow-color);
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-weight: bold;
   border: 2px solid var(--white-color);
-  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   z-index: 999;
+}
+
+#scrollToTopBtn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 #scrollToTopBtn:hover {
@@ -413,7 +555,7 @@ vf-code .vf-icon {
   transform: translateY(-3px) scale(1.05);
 }
 
-#scrollToTopBtn:active {
+#scrollToTopBtn.is-visible:active {
   transform: translateY(-1px) scale(1);
 }
 
@@ -441,6 +583,7 @@ blockquote {
   font-style: italic;
   white-space: pre-line;
   box-shadow: 0 2px 8px var(--shadow-soft);
+  max-width: 68ch;
 }
 
 blockquote.conversation_me,
@@ -456,7 +599,7 @@ blockquote.conversation_me {
   margin-left: auto;
   margin-right: 20px;
   border-left: none;
-  border-right: 4px solid #7dc99b;
+  border-right: 4px solid var(--option1-border);
 }
 
 blockquote.conversation_other {
@@ -469,7 +612,6 @@ blockquote.conversation_other {
 #escaperoom {
   display: flex;
   flex-wrap: wrap;
-  margin-inline: 10%;
   gap: 30px;
   justify-content: space-around;
 }
@@ -502,4 +644,269 @@ blockquote.conversation_other {
   border-radius: 10px;
   display: block;
   margin-inline: auto;
+}
+
+/* VF-CARD (EP1): substitueix el patro repetit vf-col+vf-img+vf-btn que
+   generava files de targetes descompensades (EL3) i estil escrit a ma a
+   cada pagina (ES3). */
+vf-card {
+  display: flex;
+}
+
+/* vf-card.js li afegeix la classe `col` de Bootstrap per l'espaiat, pero
+   `.col` (sense numero) porta `flex:1 0 0%`: en una fila incompleta (1 o 2
+   targetes soles) Bootstrap les estirava per omplir l'ample sencer, i cada
+   fila acabava amb una mida diferent. Ho desactivem i li donem una mida
+   fixa: totes iguals, s'ompli o no la fila. Cal el selector combinat
+   `vf-card.col` (no nomes `vf-card`): un selector d'etiqueta sol te menys
+   especificitat que la classe `.col` de Bootstrap i no la guanyaria mai. */
+vf-card.col {
+  flex: 0 0 auto;
+  width: 240px;
+  max-width: 100%;
+}
+
+.vf-card-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  background-color: var(--white-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elev-1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vf-card-link:hover,
+.vf-card-link:focus-visible {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: var(--elev-3);
+}
+
+.vf-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.vf-card-title {
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--main-color-dark);
+}
+
+/* VF-CALLOUT (EP2): avisos, consells i exercicis dins d'una unitat, per no
+   dependre nomes de la negreta o de vf-content colored (que amb tot el
+   bloc violeta ple costa de llegir). */
+vf-callout {
+  display: block;
+  margin: var(--space-4) 0;
+}
+
+.vf-callout {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--main-color);
+  background-color: var(--light-grey);
+  box-shadow: var(--elev-1);
+}
+
+.vf-callout i {
+  margin-top: 0.2rem;
+  color: var(--main-color-dark);
+}
+
+.vf-callout-body p {
+  margin: 0;
+}
+
+.vf-callout-atencio { border-left-color: var(--callout-atencio); background-color: var(--callout-atencio-bg); }
+.vf-callout-atencio i { color: var(--callout-atencio); }
+
+.vf-callout-consell { border-left-color: var(--callout-consell); background-color: var(--callout-consell-bg); }
+.vf-callout-consell i { color: var(--callout-consell); }
+
+.vf-callout-exercici { border-left-color: var(--callout-exercici); background-color: var(--callout-exercici-bg); }
+.vf-callout-exercici i { color: var(--callout-exercici); }
+
+.vf-callout-recorda { border-left-color: var(--callout-recorda); background-color: var(--callout-recorda-bg); }
+.vf-callout-recorda i { color: var(--callout-recorda); }
+
+/* VF-DETAILS (EP3): solucio plegable sense JS propi, amb l'estil del lloc */
+.vf-details {
+  margin: var(--space-3) 0;
+  border: 1px solid var(--main-color-light);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-4);
+  background-color: var(--white-color);
+}
+
+.vf-details summary {
+  cursor: pointer;
+  padding: var(--space-3) 0;
+  font-weight: 600;
+  color: var(--main-color-dark);
+  list-style: none;
+}
+
+.vf-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.vf-details summary::before {
+  content: '\25B8';
+  display: inline-block;
+  margin-right: var(--space-2);
+  transition: transform 0.2s ease;
+}
+
+.vf-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.vf-details-body {
+  padding: 0 0 var(--space-3) 0;
+}
+
+/* VF-STEPS / VF-STEP (EP4): tutorials pas a pas amb numero i linia de
+   continuitat, en lloc de titols i imatges soltes sense estructura */
+.vf-steps {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-4) 0;
+}
+
+.vf-step {
+  display: flex;
+  gap: var(--space-3);
+  position: relative;
+  padding-bottom: var(--space-5);
+}
+
+.vf-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 36px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--main-color-light);
+}
+
+.vf-step-marker {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.vf-step-body {
+  flex: 1 1 auto;
+  padding-top: 4px;
+}
+
+.vf-step-title {
+  font-weight: 600;
+  color: var(--main-color-dark);
+  margin-bottom: 0.4rem;
+}
+
+/* VF-BADGE (EP5): etiqueta menuda per marcar nivell/curs a una targeta */
+vf-badge {
+  display: inline-block;
+}
+
+.vf-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0.15rem;
+}
+
+/* MOBIL (EM2): fins ara nomes existia una media query a tot el CSS
+   (.vf-frame-half). Per davall de 768px tot mantenia mides pensades per a
+   escriptori: el .block conservava 3.5rem de padding lateral (el 22% de
+   l'ample en una pantalla de 500px). */
+@media (max-width: 767.98px) {
+  #content {
+    padding-inline: var(--space-3);
+  }
+
+  .col {
+    padding: 8px;
+  }
+
+  .col-unit {
+    margin: 8px 0;
+    padding: 14px;
+  }
+
+  blockquote {
+    margin-inline: 0;
+  }
+
+  blockquote.conversation_me,
+  blockquote.conversation_other {
+    max-width: 92%;
+  }
+
+  blockquote.conversation_me {
+    margin-right: 0;
+  }
+
+  blockquote.conversation_other {
+    margin-left: 0;
+  }
+
+  #escaperoom {
+    gap: 16px;
+  }
+
+  .vf-frame-full {
+    height: 60vh;
+  }
+
+  #scrollToTopBtn {
+    width: 44px;
+    height: 44px;
+    bottom: 12px;
+    right: 12px;
+    font-size: 20px;
+  }
+}
+
+/* MOVIMENT REDUIT (EA4): tot el lloc anima (transitions, translateY,
+   scale, scroll suau). Per a qui tinga activada la reduccio de moviment
+   al sistema, ho traiem quasi tot. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
