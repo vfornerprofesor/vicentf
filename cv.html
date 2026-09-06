@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 
 <head>
     <style>
@@ -42,6 +42,12 @@
     <link rel="icon" type="image/png" href="assets/icon.png">
 
     <style>
+        :root {
+            --accent: #6d5fb3;
+            --accent-dark: #574a94;
+            --accent-soft: rgba(109, 95, 179, .12);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -54,6 +60,58 @@
             color: #333;
             background-color: #fafafa;
             padding: 40px 20px;
+        }
+
+        /* --- i18n: mostra només l'idioma actiu --- */
+        body[data-lang="es"] .t-va {
+            display: none !important;
+        }
+
+        body[data-lang="va"] .t-es {
+            display: none !important;
+        }
+
+        /* --- Barra de progrés de scroll --- */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--accent);
+            z-index: 10000;
+            transition: width .1s linear;
+        }
+
+        /* --- Barra d'eines (idioma + imprimir) --- */
+        .toolbar {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 10001;
+            display: flex;
+            gap: 8px;
+        }
+
+        .toolbar button {
+            font: 600 13px/1 'Segoe UI', Tahoma, sans-serif;
+            padding: 7px 12px;
+            border: 1px solid #d7d2ea;
+            background: #fff;
+            color: var(--accent-dark);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+        }
+
+        .toolbar button:hover {
+            box-shadow: 0 4px 12px rgba(109, 95, 179, .22);
+        }
+
+        .toolbar .lang-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
         .container {
@@ -83,6 +141,7 @@
             color: #999;
             font-size: 14px;
             border: 3px solid #e0e0e0;
+            animation: vf-pop .8s ease both;
         }
 
         .photo-placeholder img {
@@ -91,6 +150,44 @@
             object-fit: cover;
             border-radius: 50%;
             display: block;
+        }
+
+        @keyframes vf-pop {
+            from {
+                opacity: 0;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes vf-fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .header h1,
+        .header .subtitle,
+        .header .contact-info {
+            animation: vf-fade-up .7s ease both;
+        }
+
+        .header .subtitle {
+            animation-delay: .1s;
+        }
+
+        .header .contact-info {
+            animation-delay: .2s;
         }
 
         h1 {
@@ -118,17 +215,29 @@
         }
 
         .contact-info a {
-            color: #3498db;
+            color: var(--accent);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
-            color: #2980b9;
+            color: var(--accent-dark);
         }
 
         .section {
             margin-bottom: 50px;
+        }
+
+        /* --- Animació d'aparició en fer scroll --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
         }
 
         h2 {
@@ -137,7 +246,7 @@
             color: #2c3e50;
             margin-bottom: 25px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #3498db;
+            border-bottom: 2px solid var(--accent);
             letter-spacing: 0.5px;
         }
 
@@ -183,41 +292,91 @@
             content: "▸";
             position: absolute;
             left: 0;
-            color: #3498db;
+            color: var(--accent);
         }
 
-        .project-highlight {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
+        /* --- Targetes de projecte --- */
+        .cards {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .project-logo {
-            width: 50px;
-            height: 50px;
+        .card {
+            display: flex;
+            gap: 18px;
+            padding: 20px;
+            border: 1px solid #ececf3;
+            border-radius: 12px;
+            background: #fff;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(109, 95, 179, .16);
+        }
+
+        .card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(180deg, var(--accent-soft), #fff 70%);
+        }
+
+        .card-logo {
+            width: 56px;
+            height: 56px;
             object-fit: contain;
             flex-shrink: 0;
         }
 
-        .project-info {
-            font-size: 15px;
+        .card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            color: #fff;
+            background: var(--accent);
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .card-role {
+            font-size: 13px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin: 3px 0 10px;
+        }
+
+        .card-desc {
+            font-size: 14.5px;
             color: #555;
             line-height: 1.7;
         }
 
-        .project-link {
-            color: #3498db;
+        .card-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: color .3s ease;
         }
 
-        .project-link:hover {
-            color: #2980b9;
+        .card-link:hover {
+            color: var(--accent-dark);
             text-decoration: underline;
         }
 
@@ -247,6 +406,45 @@
             }
         }
 
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 14px;
+            }
+
+            .container {
+                padding: 34px 22px;
+            }
+
+            .toolbar {
+                top: 8px;
+                right: 8px;
+                gap: 6px;
+            }
+
+            .toolbar button {
+                padding: 6px 9px;
+                font-size: 12px;
+            }
+
+            .card {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .reveal,
+            .header h1,
+            .header .subtitle,
+            .header .contact-info,
+            .photo-placeholder {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
         @media print {
             body {
                 background-color: white;
@@ -256,12 +454,44 @@
             .container {
                 box-shadow: none;
                 padding: 40px;
+                max-width: none;
+            }
+
+            #progress,
+            .toolbar,
+            #loading {
+                display: none !important;
+            }
+
+            .reveal,
+            .header h1,
+            .header .subtitle,
+            .header .contact-info,
+            .photo-placeholder {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .card {
+                break-inside: avoid;
+                border-color: #ccc;
+            }
+
+            .card.featured {
+                background: none;
+            }
+
+            a {
+                color: #000 !important;
+                text-decoration: none;
             }
         }
     </style>
 </head>
 
-<body>
+<body data-lang="es">
     <div id="loading">
         <div class="vf-spinner"></div>
     </div>
@@ -273,117 +503,302 @@
             var l = document.getElementById('loading');
             if (l) { l.style.display = 'none'; }
         }, 5000);
+        // Aplica l'idioma guardat al més prompte possible (evita el flaix).
+        try {
+            var _l = localStorage.getItem('cv-lang');
+            if (_l === 'va' || _l === 'es') {
+                document.body.setAttribute('data-lang', _l);
+                document.documentElement.lang = (_l === 'va' ? 'ca' : 'es');
+            }
+        } catch (e) { }
     </script>
+
+    <div id="progress"></div>
+
+    <div class="toolbar">
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
+        <button class="lang-btn" data-lang="va" type="button">VA</button>
+    </div>
+
     <div class="container">
         <header class="header">
             <div class="photo-placeholder">
                 <img src="assets/foto_cv.jpg" alt="foto_cv">
             </div>
             <h1>Vicent Forner Rogla</h1>
-            <p class="subtitle">Professor d'Informàtica | Autodidacta en Intel·ligència Artificial</p>
+            <p class="subtitle">
+                <span class="t t-es">Profesor de Informática | Autodidacta en Inteligencia Artificial</span>
+                <span class="t t-va">Professor d'Informàtica | Autodidacta en Intel·ligència Artificial</span>
+            </p>
             <div class="contact-info">
-                <div><a href="mailto:v.fornerrogla@edu.gva.es">v.fornerrogla@edu.gva.es</a></div>
+                <div><a href="mailto:vicente.forner@gmail.com">vicente.forner@gmail.com</a></div>
                 <div class="web-link">
                     <img src="assets/logo.png" alt="Web" class="web-icon">
-                    <a href="http://vicentf.webprofes.com" target="_blank">vicentf.webprofes.com</a>
+                    <a href="https://vicentf.webprofes.com" target="_blank" rel="noopener">vicentf.webprofes.com</a>
                 </div>
             </div>
         </header>
 
-        <section class="section">
-            <h2>Sobre Mi</h2>
+        <section class="section reveal">
+            <h2><span class="t t-es">Sobre mí</span><span class="t t-va">Sobre mi</span></h2>
             <p class="item-description">
-                Professor d'informàtica amb experiència docent des del 2018 i sòlid background tècnic com a
-                programador i arquitecte de software. Gaudisc d'ensenyar tecnologies emergents,
-                particularment Intel·ligència Artificial, amb una formació autodidacta avançada en aquest camp.
-                Actualment desenvolupe cursos i tallers d'IA per a centres educatius amb l'objectiu d'apropar aquesta
-                tecnologia transformadora a estudiants i docents.
+                <span class="t t-es">Profesor de informática con experiencia docente desde 2018 y una sólida base
+                    técnica como programador y arquitecto de software. Disfruto enseñando tecnologías emergentes, en
+                    particular la Inteligencia Artificial, con una formación autodidacta avanzada en este campo.
+                    Actualmente desarrollo <strong>Codocente</strong>, una plataforma de IA para el profesorado, e
+                    imparto cursos y talleres de IA para centros educativos.</span>
+                <span class="t t-va">Professor d'informàtica amb experiència docent des del 2018 i una sòlida base
+                    tècnica com a programador i arquitecte de software. Gaudisc ensenyant tecnologies emergents,
+                    particularment la Intel·ligència Artificial, amb una formació autodidacta avançada en aquest camp.
+                    Actualment desenvolupe <strong>Codocente</strong>, una plataforma d'IA per al professorat, i
+                    impartisc cursos i tallers d'IA per a centres educatius.</span>
             </p>
         </section>
 
-        <section class="section">
-            <h2>Experiència Professional</h2>
+        <section class="section reveal">
+            <h2><span class="t t-es">Proyectos</span><span class="t t-va">Projectes</span></h2>
 
-            <div class="experience-item">
-                <div class="item-title">Director d'Estudis de Formació Professional</div>
-                <div class="item-period">2024 - Actualitat | IES de Betxí</div>
-                <p class="item-description">
-                    Coordinació i gestió dels cicles formatius del centre, planificació acadèmica i organització
-                    pedagògica de la Formació Professional.
-                </p>
-            </div>
+            <div class="cards">
+                <div class="card featured">
+                    <img src="assets/codocente-icon.png" alt="Logo Codocente" class="card-logo">
+                    <div class="card-body">
+                        <span class="card-badge">
+                            <span class="t t-es">App principal</span>
+                            <span class="t t-va">App principal</span>
+                        </span>
+                        <div class="card-title">Codocente</div>
+                        <div class="card-role">
+                            <span class="t t-es">Creador y desarrollador principal · 2026 - Actualidad</span>
+                            <span class="t t-va">Creador i desenvolupador principal · 2026 - Actualitat</span>
+                        </div>
+                        <p class="card-desc">
+                            <span class="t t-es">Plataforma educativa con Inteligencia Artificial para el profesorado.
+                                Reúne más de 40 asistentes de generación de materiales (fichas, situaciones de
+                                aprendizaje, cuestionarios, rúbricas…), un módulo completo de gestión de aula (listas,
+                                plano de clase, asistencia, registro de conducta con puntos, aula virtual para familias,
+                                cuaderno por competencias y estadísticas) y una pizarra digital con proyección ilimitada.
+                                Alineada con la LOMLOE, sin publicidad y con servidores europeos.</span>
+                            <span class="t t-va">Plataforma educativa amb Intel·ligència Artificial per al professorat.
+                                Reunix més de 40 assistents de generació de materials (fitxes, situacions d'aprenentatge,
+                                qüestionaris, rúbriques…), un mòdul complet de gestió d'aula (llistes, pla de classe,
+                                assistència, registre de conducta amb punts, aula virtual per a famílies, quadern per
+                                competències i estadístiques) i una pissarra digital amb projecció il·limitada. Alineada
+                                amb la LOMLOE, sense publicitat i amb servidors europeus.</span>
+                        </p>
+                        <a href="https://codocente.com" target="_blank" rel="noopener" class="card-link">codocente.com</a>
+                    </div>
+                </div>
 
-            <div class="experience-item">
-                <div class="item-title">Professor d'Informàtica</div>
-                <div class="item-period">2019 - Actualitat | IES de Betxí</div>
-                <p class="item-description">
-                    Docència d'informàtica a ESO, Batxillerat i Cicle Formatiu de Grau Mitjà. 
-                </p>
-            </div>
+                <div class="card">
+                    <img src="assets/logo.png" alt="Logo web de recursos" class="card-logo">
+                    <div class="card-body">
+                        <div class="card-title">vicentf.webprofes.com</div>
+                        <div class="card-role">
+                            <span class="t t-es">Creador y responsable de contenidos</span>
+                            <span class="t t-va">Creador i responsable de continguts</span>
+                        </div>
+                        <p class="card-desc">
+                            <span class="t t-es">Web de recursos de informática de uso libre para que el profesorado los
+                                utilice en sus clases: unidades didácticas, actividades, escape rooms y materiales para
+                                ESO, Bachillerato y Formación Profesional.</span>
+                            <span class="t t-va">Web de recursos d'informàtica d'ús lliure perquè el professorat els
+                                utilitze a les seues classes: unitats didàctiques, activitats, escape rooms i materials
+                                per a ESO, Batxillerat i Formació Professional.</span>
+                        </p>
+                        <a href="https://vicentf.webprofes.com" target="_blank" rel="noopener"
+                            class="card-link">vicentf.webprofes.com</a>
+                    </div>
+                </div>
 
-            <div class="experience-item">
-                <div class="item-title">Creador APP Fruitity</div>
-                <div class="item-period">2023</div>
-                <div class="project-highlight">
-                    <img src="assets/fruitity-icon.png" alt="Logo Fruitity" class="project-logo">
-                    <div class="project-info">
-                        <strong>Projecte destacat:</strong> Creador de <a href="https://fruitity.com" target="_blank"
-                            class="project-link"><em>Fruitity</em></a>, una aplicació educativa per fomentar el consum
-                        de fruita entre l'alumnat mitjançant un sistema de punts i recompenses que combina gamificació i
-                        hàbits saludables.
+                <div class="card">
+                    <img src="assets/fruitity-icon.png" alt="Logo Fruitity" class="card-logo">
+                    <div class="card-body">
+                        <div class="card-title">Fruitity</div>
+                        <div class="card-role">
+                            <span class="t t-es">Creador · 2023</span>
+                            <span class="t t-va">Creador · 2023</span>
+                        </div>
+                        <p class="card-desc">
+                            <span class="t t-es">Aplicación educativa para fomentar el consumo de fruta entre el alumnado
+                                mediante un sistema de puntos y recompensas que combina gamificación y hábitos
+                                saludables.</span>
+                            <span class="t t-va">Aplicació educativa per fomentar el consum de fruita entre l'alumnat
+                                mitjançant un sistema de punts i recompenses que combina gamificació i hàbits
+                                saludables.</span>
+                        </p>
+                        <a href="https://fruitity.com" target="_blank" rel="noopener" class="card-link">fruitity.com</a>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="section reveal">
+            <h2><span class="t t-es">Experiencia Profesional</span><span class="t t-va">Experiència Professional</span>
+            </h2>
 
             <div class="experience-item">
-                <div class="item-title">Programador i Arquitecte de Software</div>
+                <div class="item-title">
+                    <span class="t t-es">Director de Estudios de Formación Profesional</span>
+                    <span class="t t-va">Director d'Estudis de Formació Professional</span>
+                </div>
+                <div class="item-period">
+                    <span class="t t-es">2024 - Actualidad · IES de Betxí</span>
+                    <span class="t t-va">2024 - Actualitat · IES de Betxí</span>
+                </div>
+                <p class="item-description">
+                    <span class="t t-es">Coordinación y gestión de los ciclos formativos del centro, planificación
+                        académica y organización pedagógica de la Formación Profesional.</span>
+                    <span class="t t-va">Coordinació i gestió dels cicles formatius del centre, planificació acadèmica i
+                        organització pedagògica de la Formació Professional.</span>
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-title">
+                    <span class="t t-es">Profesor de Informática</span>
+                    <span class="t t-va">Professor d'Informàtica</span>
+                </div>
+                <div class="item-period">
+                    <span class="t t-es">2019 - Actualidad · IES de Betxí</span>
+                    <span class="t t-va">2019 - Actualitat · IES de Betxí</span>
+                </div>
+                <p class="item-description">
+                    <span class="t t-es">Docencia de informática en ESO, Bachillerato y Ciclo Formativo de Grado
+                        Medio.</span>
+                    <span class="t t-va">Docència d'informàtica a ESO, Batxillerat i Cicle Formatiu de Grau Mitjà.</span>
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-title">
+                    <span class="t t-es">Programador y Arquitecto de Software</span>
+                    <span class="t t-va">Programador i Arquitecte de Software</span>
+                </div>
                 <div class="item-period">2014 - 2019</div>
                 <p class="item-description">
-                    Desenvolupament d'aplicacions web i software empresarial. Experiència en múltiples tecnologies i frameworks de desenvolupament.
+                    <span class="t t-es">Desarrollo de aplicaciones web y software empresarial. Experiencia en múltiples
+                        tecnologías y frameworks de desarrollo.</span>
+                    <span class="t t-va">Desenvolupament d'aplicacions web i software empresarial. Experiència en
+                        múltiples tecnologies i frameworks de desenvolupament.</span>
                 </p>
             </div>
         </section>
 
-        <section class="section">
-            <h2>Formació Acadèmica</h2>
+        <section class="section reveal">
+            <h2><span class="t t-es">Formación Académica</span><span class="t t-va">Formació Acadèmica</span></h2>
 
             <div class="education-item">
-                <div class="item-title">Màster en Direcció i Gestió de Centres Educatius</div>
+                <div class="item-title">
+                    <span class="t t-es">Máster en Dirección y Gestión de Centros Educativos</span>
+                    <span class="t t-va">Màster en Direcció i Gestió de Centres Educatius</span>
+                </div>
                 <div class="item-period">2021</div>
             </div>
 
             <div class="education-item">
-                <div class="item-title">Màster Universitari en Professorat de Secundària</div>
+                <div class="item-title">
+                    <span class="t t-es">Máster Universitario en Profesorado de Secundaria</span>
+                    <span class="t t-va">Màster Universitari en Professorat de Secundària</span>
+                </div>
                 <div class="item-period">2018</div>
             </div>
 
             <div class="education-item">
-                <div class="item-title">Grau en Enginyeria Informàtica</div>
+                <div class="item-title">
+                    <span class="t t-es">Grado en Ingeniería Informática</span>
+                    <span class="t t-va">Grau en Enginyeria Informàtica</span>
+                </div>
                 <div class="item-period">2010 - 2014</div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>Formació Complementària</h2>
+        <section class="section reveal">
+            <h2><span class="t t-es">Formación Complementaria</span><span class="t t-va">Formació Complementària</span>
+            </h2>
             <div class="skills-list">
-                <div class="skill-item">Metodologies actives d'aprenentatge aplicades a l'aula</div>
-                <div class="skill-item">Intel·ligència Artificial (formació autodidacta avançada)</div>
-                <div class="skill-item">Desenvolupament de continguts educatius digitals</div>
-                <div class="skill-item">Programació web i desenvolupament d'aplicacions</div>
+                <div class="skill-item">
+                    <span class="t t-es">Metodologías activas de aprendizaje aplicadas al aula</span>
+                    <span class="t t-va">Metodologies actives d'aprenentatge aplicades a l'aula</span>
+                </div>
+                <div class="skill-item">
+                    <span class="t t-es">Inteligencia Artificial (formación autodidacta avanzada)</span>
+                    <span class="t t-va">Intel·ligència Artificial (formació autodidacta avançada)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="t t-es">Desarrollo de contenidos educativos digitales</span>
+                    <span class="t t-va">Desenvolupament de continguts educatius digitals</span>
+                </div>
+                <div class="skill-item">
+                    <span class="t t-es">Programación web y desarrollo de aplicaciones</span>
+                    <span class="t t-va">Programació web i desenvolupament d'aplicacions</span>
+                </div>
             </div>
         </section>
-
-        <!--<section class="section">
-            <h2>Competències</h2>
-            <div class="skills-list">
-                <div class="skill-item">Especialista en Intel·ligència Artificial aplicada a l'educació</div>
-                <div class="skill-item">Disseny i impartició de cursos i tallers d'IA</div>
-                <div class="skill-item">Programació i desenvolupament de software</div>
-                <div class="skill-item">Metodologies actives i innovació pedagògica</div>
-                <div class="skill-item">Gestió i coordinació de projectes educatius</div>
-            </div>
-        </section>-->
     </div>
+
+    <script>
+        (function () {
+            var KEY = 'cv-lang';
+
+            function setLang(l) {
+                l = (l === 'va') ? 'va' : 'es';
+                document.body.setAttribute('data-lang', l);
+                document.documentElement.lang = (l === 'va' ? 'ca' : 'es');
+                try { localStorage.setItem(KEY, l); } catch (e) { }
+                var btns = document.querySelectorAll('.lang-btn');
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].classList.toggle('active', btns[i].getAttribute('data-lang') === l);
+                }
+            }
+
+            var saved = 'es';
+            try { saved = localStorage.getItem(KEY) || 'es'; } catch (e) { }
+            setLang(saved);
+
+            var langBtns = document.querySelectorAll('.lang-btn');
+            for (var i = 0; i < langBtns.length; i++) {
+                langBtns[i].addEventListener('click', function () {
+                    setLang(this.getAttribute('data-lang'));
+                });
+            }
+
+            // Barra de progrés de scroll
+            var progress = document.getElementById('progress');
+            function onScroll() {
+                var h = document.documentElement;
+                var max = h.scrollHeight - h.clientHeight;
+                var ratio = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+                if (progress) progress.style.width = (ratio * 100) + '%';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Aparició de seccions en fer scroll
+            var reveals = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                for (var j = 0; j < reveals.length; j++) { io.observe(reveals[j]); }
+            } else {
+                for (var k = 0; k < reveals.length; k++) { reveals[k].classList.add('in'); }
+            }
+
+            // Amaga la pantalla de càrrega
+            window.addEventListener('load', function () {
+                var l = document.getElementById('loading');
+                if (l) {
+                    l.classList.add('vf-loading-hide');
+                    setTimeout(function () { l.style.display = 'none'; }, 350);
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>
