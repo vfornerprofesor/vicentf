@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Loops
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Why loops</vf-title>
+        <vf-content>
+            <vf-text>
+                Writing the numbers from 1 to 100 by hand a hundred times is not
+                programming. A *loop* repeats a block of code while a condition is true.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">while</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const output = document.querySelector("#output");
+                let text = "";
+                let i = 1;
+
+                while (i &lt;= 5) {
+                    text = text + i + "&lt;br>";
+                    i++;
+                }
+
+                output.innerHTML = text;
+            </vf-code>
+            <vf-text>
+                Three things you always need:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Before*: create the variable (`let i = 1`).</vf-text></li>
+                <li><vf-text>*The condition*: when do we stop (`i &lt;= 5`).</vf-text></li>
+                <li><vf-text>*Inside*: change the variable (`i++`), or the loop never ends.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                Notice the pattern for showing the result: we *build a string inside the
+                loop* and we put it in the page *once*, at the end. Touching the page
+                inside a loop is slow and messy.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">for</vf-title>
+        <vf-content>
+            <vf-text>
+                The same three things, all on one line. Use it when you know how many times
+                you repeat:
+            </vf-text>
+            <vf-code language="javascript">
+                let text = "";
+
+                for (let i = 1; i &lt;= 5; i++) {
+                    text += i + "&lt;br>";
+                }
+
+                output.innerHTML = text;
+            </vf-code>
+            <vf-code language="javascript">
+                for (let i = 10; i >= 1; i--) {     // backwards
+                }
+
+                for (let i = 0; i &lt;= 20; i += 2) {  // in steps of two
+                }
+            </vf-code>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/06-loops/for-anatomy.png" alt="Anatomy of a for loop"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/06-loops/for-anatomy.png — el for de l'exemple amb tres fletxes de colors etiquetades "1. start", "2. condition (checked every time)", "3. step (runs after each repetition)".] -->
+        </vf-content>
+
+        <vf-title level="2">for...of</vf-title>
+        <vf-content>
+            <vf-text>
+                To go through a list of things, without worrying about the index:
+            </vf-text>
+            <vf-code language="javascript">
+                const colours = ["red", "green", "blue"];
+                let text = "";
+
+                for (const colour of colours) {
+                    text += `&lt;p style="color: ${colour}">${colour}&lt;/p>`;
+                }
+
+                output.innerHTML = text;
+            </vf-code>
+            <vf-text>
+                You will study arrays properly in lesson 8. Here we only need to walk
+                through one.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">break and continue</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                for (let i = 1; i &lt;= 10; i++) {
+                    if (i === 5) {
+                        break;          // leave the loop right now
+                    }
+                    text += i + " ";    // 1 2 3 4
+                }
+
+                for (let i = 1; i &lt;= 5; i++) {
+                    if (i === 3) {
+                        continue;       // skip this one, go to the next
+                    }
+                    text += i + " ";    // 1 2 4 5
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Counters and totals</vf-title>
+        <vf-content>
+            <vf-text>
+                Two patterns you will use for the rest of your life:
+            </vf-text>
+            <vf-code language="javascript">
+                // Total (accumulator)
+                let total = 0;
+                for (let i = 1; i &lt;= 100; i++) {
+                    total += i;
+                }
+                output.textContent = total;             // 5050
+
+                // Counter
+                const marks = [3, 7, 9, 4, 6];
+                let passed = 0;
+                for (const mark of marks) {
+                    if (mark >= 5) {
+                        passed++;
+                    }
+                }
+                output.textContent = `${passed} students passed.`;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Building HTML with a loop</vf-title>
+        <vf-content>
+            <vf-text>
+                This is where loops become useful in a page. A loop can build a whole list,
+                a whole table or a whole board:
+            </vf-text>
+            <vf-code language="javascript">
+                // A list
+                let html = "&lt;ul>";
+                for (let i = 1; i &lt;= 5; i++) {
+                    html += `&lt;li>Item ${i}&lt;/li>`;
+                }
+                html += "&lt;/ul>";
+                output.innerHTML = html;
+            </vf-code>
+            <vf-code language="javascript">
+                // A multiplication table, as a real HTML table
+                const n = Number(document.querySelector("#value").value);
+                let html = "&lt;table border='1'>";
+
+                for (let i = 1; i &lt;= 10; i++) {
+                    html += `&lt;tr>&lt;td>${n} x ${i}&lt;/td>&lt;td>${n * i}&lt;/td>&lt;/tr>`;
+                }
+
+                html += "&lt;/table>";
+                output.innerHTML = html;
+            </vf-code>
+            <vf-callout type="consell">
+                Build the whole string first, put it in the page at the end. If you write
+                output.innerHTML += ... inside the loop, the browser rebuilds the page on
+                every turn: with 100 elements you will see it slow down.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Loops inside loops</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                let html = "";
+
+                for (let table = 1; table &lt;= 3; table++) {
+                    html += `&lt;h3>Table of ${table}&lt;/h3>`;
+                    for (let i = 1; i &lt;= 10; i++) {
+                        html += `${table} x ${i} = ${table * i}&lt;br>`;
+                    }
+                }
+
+                output.innerHTML = html;
+            </vf-code>
+            <vf-text>
+                The inner loop runs completely *for each* turn of the outer loop. Here: 3 ×
+                10 = 30 lines.
+            </vf-text>
+            <vf-text>
+                Two loops, one inside the other, is also how you draw anything with rows
+                and columns: a chessboard, a calendar, a grid of images.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Infinite loops</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                let i = 1;
+                while (i &lt;= 5) {
+                    text += i;
+                    // i++;  &lt;- forgotten!
+                }
+            </vf-code>
+            <vf-text>
+                This never stops and the tab freezes. If it happens, close the tab.
+            </vf-text>
+            <vf-text>
+                Before running a loop, ask yourself: *what changes inside, so that one day
+                the condition becomes false?* If you cannot answer, do not run it.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 6.1.* Show the numbers from 1 to 20 in the page, one per line. Do
+                it with `while` and then with `for`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 6.2.* Show the even numbers from 0 to 50, separated by commas.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 6.3.* The user types a number and the page draws its
+                multiplication table as an HTML table.
+            </vf-callout>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/javascript/06-loops/ex1-1.png" alt="Numbers from 1 to 20, one per line"></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/javascript/06-loops/ex1-2.png" alt="Multiplication table drawn as an HTML table"></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-callout type="exercici">
+                *Exercise 6.4.* Draw a triangle of stars of the height the user asks for,
+                inside a `&lt;pre&gt;` so the spaces are respected:
+                <vf-code language="text">
+                    *
+                    **
+                    ***
+                    ****
+                    *****
+                </vf-code>
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/06-loops/ex2.png" alt="Triangle of stars drawn with a loop"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 6.5. Chessboard.* Draw an 8 × 8 board of `&lt;div&gt;`s,
+                alternating black and white. Two loops, one inside the other. The trick for
+                the colour: `(row + column) % 2 === 0`.
+            </vf-callout>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/06-loops/ex5.png" alt="8x8 chessboard drawn with two nested loops"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/06-loops/ex5.png — captura del tauler acabat. Si es vol, es pot reutilitzar el disseny de assets/unitats/programacio/web/css/escacs.png de la unitat de CSS.] -->
+
+            <vf-callout type="exercici">
+                *Exercise 6.6. Colour ramp.* Draw 20 boxes in a row, each one a little
+                darker than the one before.
+                (`backgroundColor = 'rgb(' + v + ',' + v + ',' + v + ')'`)
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/06-loops/ex3.png" alt="Row of 20 boxes, each one darker"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 6.7.* Given `const marks = [4, 8, 6, 2, 9, 5];`, show the highest
+                mark, the lowest mark and the average. Do not use `Math.max`: find it with a
+                loop.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/06-loops/ex7.png" alt="Highest, lowest and average of an array of marks"></vf-img>
+
+            <vf-details summary="Show the solution (6.4, 6.5 and 6.7)">
+                <vf-code language="javascript">
+                    // 6.4
+                    const height = Number(document.querySelector("#value").value);
+                    let text = "";
+
+                    for (let row = 1; row &lt;= height; row++) {
+                        for (let i = 1; i &lt;= row; i++) {
+                            text += "*";
+                        }
+                        text += "\n";
+                    }
+
+                    output.innerHTML = "&lt;pre>" + text + "&lt;/pre>";
+
+                    // 6.5
+                    let html = "";
+
+                    for (let row = 0; row &lt; 8; row++) {
+                        html += "&lt;div style='display: flex'>";
+                        for (let column = 0; column &lt; 8; column++) {
+                            const colour = (row + column) % 2 === 0 ? "white" : "black";
+                            html += `&lt;div style="width: 40px; height: 40px; background: ${colour}">&lt;/div>`;
+                        }
+                        html += "&lt;/div>";
+                    }
+
+                    output.innerHTML = html;
+
+                    // 6.7
+                    const marks = [4, 8, 6, 2, 9, 5];
+                    let highest = marks[0];
+                    let lowest = marks[0];
+                    let total = 0;
+
+                    for (const mark of marks) {
+                        if (mark > highest) {
+                            highest = mark;
+                        }
+                        if (mark &lt; lowest) {
+                            lowest = mark;
+                        }
+                        total += mark;
+                    }
+
+                    output.innerHTML = `Highest: ${highest}&lt;br>Lowest: ${lowest}&lt;br>Average: ${total / marks.length}`;
+                </vf-code>
+                <vf-text>
+                    Notice the trick in 6.7: we start `highest` and `lowest` with the *first
+                    element* of the array, not with 0. If we started with 0, no negative
+                    number would ever be smaller.
+                </vf-text>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/05-conditions.html">
+                    &larr; Previous: Making decisions
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/07-functions.html">
+                    Next: Functions &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

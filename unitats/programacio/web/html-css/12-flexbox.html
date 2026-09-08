@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Flexbox
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">The problem flexbox solves</vf-title>
+        <vf-content>
+            <vf-text>
+                Until now, every block element takes a full line. But real pages have things *side by
+                side*: a menu across the top, three cards in a row, a logo on the left and buttons on the
+                right.
+            </vf-text>
+            <vf-text>
+                *Flexbox* puts elements in a row (or in a column) and shares the space between them. It is
+                one line of CSS to start.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">The container and the items</vf-title>
+        <vf-content>
+            <vf-text>
+                You always work with *two levels*: the ~container~ (the parent) and the ~items~ (its direct
+                children).
+            </vf-text>
+            <vf-code language="html">
+                &lt;div class="row"&gt;
+                    &lt;div class="item"&gt;One&lt;/div&gt;
+                    &lt;div class="item"&gt;Two&lt;/div&gt;
+                    &lt;div class="item"&gt;Three&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-code>
+            <vf-code language="css">
+                .row {
+                    display: flex;
+                }
+            </vf-code>
+            <vf-text>
+                That is it. The three boxes are now in a row. *You put <code>display: flex</code> on the parent, never
+                on the children.*
+            </vf-text>
+            <vf-text>Both files together, in the browser:</vf-text>
+            <vf-preview>
+                &lt;style&gt;
+                    .row {
+                        display: flex;
+                        gap: 12px;
+                    }
+
+                    .item {
+                        padding: 16px 24px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="row"&gt;
+                    &lt;div class="item"&gt;One&lt;/div&gt;
+                    &lt;div class="item"&gt;Two&lt;/div&gt;
+                    &lt;div class="item"&gt;Three&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-text>
+                (The previews in this lesson also give <code>.item</code> a background, some padding and rounded
+                corners, just so the boxes are visible — only the flex properties shown in the code above are
+                actually part of the lesson.)
+            </vf-text>
+            <vf-row centered>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/no-flex.png" alt="Three boxes stacked one under the other, without flexbox"></vf-img>
+                    <vf-text styles="text-align:center">Without flexbox</vf-text>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/flex-wrap.png" alt="The same three boxes in a row, with display: flex"></vf-img>
+                    <vf-text styles="text-align:center">With display: flex</vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Direction</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .row {
+                    display: flex;
+                    flex-direction: row;        /* the default: left to right */
+                    flex-direction: column;     /* top to bottom */
+                }
+            </vf-code>
+            <vf-preview label="Result (with the last flex-direction line, the one that wins: column)">
+                &lt;style&gt;
+                    .row {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                    }
+
+                    .item {
+                        padding: 16px 24px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="row"&gt;
+                    &lt;div class="item"&gt;One&lt;/div&gt;
+                    &lt;div class="item"&gt;Two&lt;/div&gt;
+                    &lt;div class="item"&gt;Three&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+        </vf-content>
+
+        <vf-title level="2">justify-content</vf-title>
+        <vf-content>
+            <vf-text>Space along the row:</vf-text>
+            <vf-code language="css">
+                .row {
+                    display: flex;
+                    justify-content: flex-start;    /* all at the start (default) */
+                    justify-content: center;        /* all in the centre */
+                    justify-content: flex-end;      /* all at the end */
+                    justify-content: space-between; /* first at the start, last at the end, equal gaps */
+                    justify-content: space-around;  /* equal space around each item */
+                }
+            </vf-code>
+            <vf-preview label="Result (with the last justify-content line, the one that wins: space-around)">
+                &lt;style&gt;
+                    .row {
+                        display: flex;
+                        justify-content: space-around;
+                    }
+
+                    .item {
+                        padding: 16px 24px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="row"&gt;
+                    &lt;div class="item"&gt;One&lt;/div&gt;
+                    &lt;div class="item"&gt;Two&lt;/div&gt;
+                    &lt;div class="item"&gt;Three&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-row centered>
+                <vf-col classes="col-md-4">
+                    <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/justify-center.png" alt="Three boxes centred in the row with justify-content: center"></vf-img>
+                    <vf-text styles="text-align:center"><code>justify-content: center</code></vf-text>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/justify-space-between.png" alt="Three boxes spread with justify-content: space-between"></vf-img>
+                    <vf-text styles="text-align:center"><code>justify-content: space-between</code></vf-text>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/justify-space-around.png" alt="Three boxes spread with justify-content: space-around"></vf-img>
+                    <vf-text styles="text-align:center"><code>justify-content: space-around</code></vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">align-items</vf-title>
+        <vf-content>
+            <vf-text>Space across the row:</vf-text>
+            <vf-code language="css">
+                .row {
+                    display: flex;
+                    height: 200px;
+                    align-items: stretch;       /* items fill the height (default) */
+                    align-items: center;        /* vertically centred */
+                    align-items: flex-start;    /* at the top */
+                    align-items: flex-end;      /* at the bottom */
+                }
+            </vf-code>
+            <vf-preview label="Result (with the last align-items line, the one that wins: flex-end)">
+                &lt;style&gt;
+                    .row {
+                        display: flex;
+                        height: 200px;
+                        align-items: flex-end;
+                        gap: 12px;
+                        background: #f5f5f5;
+                    }
+
+                    .item {
+                        padding: 16px 24px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="row"&gt;
+                    &lt;div class="item"&gt;One&lt;/div&gt;
+                    &lt;div class="item"&gt;Two&lt;br&gt;lines of text&lt;/div&gt;
+                    &lt;div class="item"&gt;Three&lt;br&gt;lines&lt;br&gt;of&lt;br&gt;text&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/align-center.png" alt="Three boxes of different heights, vertically centred with align-items: center"></vf-img>
+            <vf-callout type="recorda">
+                justify-content works along the direction of the row. align-items works across it. If you
+                change flex-direction to column, the two swap meaning.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">gap</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        .row {
+                            display: flex;
+                            gap: 20px;          /* space between items */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            .row {
+                                display: flex;
+                                gap: 20px;
+                            }
+
+                            .item {
+                                width: 60px;
+                                height: 60px;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="item"&gt;&lt;/div&gt;
+                            &lt;div class="item"&gt;&lt;/div&gt;
+                            &lt;div class="item"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>gap</code> is the modern way to separate flex items. Before, we used margins and it was painful.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">flex-wrap</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .row {
+                    display: flex;
+                    flex-wrap: wrap;    /* if there is no room, go to the next line */
+                }
+            </vf-code>
+            <vf-text>
+                Without <code>wrap</code>, five cards in a narrow screen get squashed to nothing. With <code>wrap</code>, they
+                jump to a second line. Almost always you want <code>wrap</code>.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="Without flex-wrap: the cards get squashed">
+                        &lt;style&gt;
+                            .row {
+                                display: flex;
+                                gap: 10px;
+                            }
+
+                            .item {
+                                flex: 1 1 120px;
+                                padding: 12px;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                                text-align: center;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="item"&gt;Card 1&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 2&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 3&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 4&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 5&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="With flex-wrap: wrap: the cards jump to a new line">
+                        &lt;style&gt;
+                            .row {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 10px;
+                            }
+
+                            .item {
+                                flex: 1 1 120px;
+                                padding: 12px;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                                text-align: center;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="item"&gt;Card 1&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 2&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 3&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 4&lt;/div&gt;
+                            &lt;div class="item"&gt;Card 5&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Making a nav bar</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;header class="site-header"&gt;
+                    &lt;div class="logo"&gt;Marc Ferrer&lt;/div&gt;
+                    &lt;nav&gt;
+                        &lt;ul class="menu"&gt;
+                            &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/nav&gt;
+                &lt;/header&gt;
+            </vf-code>
+            <vf-code language="css">
+                .site-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px 30px;
+                    background-color: #2b2b40;
+                }
+
+                .logo {
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.3rem;
+                }
+
+                .menu {
+                    display: flex;
+                    gap: 25px;
+                    list-style: none;   /* removes the bullet points */
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .menu a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                .menu a:hover {
+                    color: #ffcc00;
+                }
+            </vf-code>
+            <vf-text>Both files together, in the browser:</vf-text>
+            <vf-preview>
+                &lt;style&gt;
+                    .site-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 15px 30px;
+                        background-color: #2b2b40;
+                    }
+
+                    .logo {
+                        color: white;
+                        font-weight: bold;
+                        font-size: 1.3rem;
+                    }
+
+                    .menu {
+                        display: flex;
+                        gap: 25px;
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .menu a {
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    .menu a:hover {
+                        color: #ffcc00;
+                    }
+                &lt;/style&gt;
+                &lt;header class="site-header"&gt;
+                    &lt;div class="logo"&gt;Marc Ferrer&lt;/div&gt;
+                    &lt;nav&gt;
+                        &lt;ul class="menu"&gt;
+                            &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/nav&gt;
+                &lt;/header&gt;
+            </vf-preview>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A navigation bar with a logo on the left and links on the right, dark background"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">Making a row of cards</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .cards {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    justify-content: center;
+                }
+
+                .card {
+                    flex: 1 1 280px;    /* grow, shrink, minimum width 280px */
+                    max-width: 350px;
+                }
+            </vf-code>
+            <vf-preview>
+                &lt;style&gt;
+                    .cards {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px;
+                        justify-content: center;
+                    }
+
+                    .card {
+                        flex: 1 1 280px;
+                        max-width: 350px;
+                        padding: 20px;
+                        background: #f5f5f5;
+                        border-radius: 12px;
+                        text-align: center;
+                    }
+                &lt;/style&gt;
+                &lt;div class="cards"&gt;
+                    &lt;div class="card"&gt;Card one&lt;/div&gt;
+                    &lt;div class="card"&gt;Card two&lt;/div&gt;
+                    &lt;div class="card"&gt;Card three&lt;/div&gt;
+                    &lt;div class="card"&gt;Card four&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-text>
+                (The preview also gives <code>.card</code> some padding, a light background and rounded corners, just
+                so each card is visible as a box — only <code>flex</code> and <code>max-width</code> are in the lesson's code.)
+            </vf-text>
+            <vf-text>
+                <code>flex: 1 1 280px</code> means: this card can grow to fill space, can shrink if needed, and its
+                base width is 280px. With <code>wrap</code>, you get a grid that adapts by itself.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 12.1.* Put three coloured boxes in a row, centred, with a 20px gap.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.2.* Repeat with <code>space-between</code>, then with <code>column</code>. Write down the difference.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.3.* Centre a single box in the middle of a 400px tall container, both
+                horizontally and vertically.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.4.* Build the nav bar of the example with your own colours.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.5.* Build a row of 6 cards (image + title + text) that wraps to a second line
+                when the window is narrow.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 12.3)">
+                <vf-row>
+                    <vf-col classes="col-md-6">
+                        <vf-code language="css">
+                            .container {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                height: 400px;
+                                background-color: #eeeeee;
+                            }
+                        </vf-code>
+                    </vf-col>
+                    <vf-col classes="col-md-6">
+                        <vf-preview>
+                            &lt;style&gt;
+                                .container {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    height: 400px;
+                                    background-color: #eeeeee;
+                                }
+
+                                .box {
+                                    padding: 16px 24px;
+                                    background: #c4baeb;
+                                    border-radius: 8px;
+                                }
+                            &lt;/style&gt;
+                            &lt;div class="container"&gt;
+                                &lt;div class="box"&gt;Centred box&lt;/div&gt;
+                            &lt;/div&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+                <vf-text>
+                    Three lines to centre something in both directions. Before flexbox this was famously
+                    hard.
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 12.4. Navigation menu.* Reproduce the horizontal menu in the picture, with the
+                hover effect.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A horizontal navigation menu with a hover effect on the links"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/12-flexbox/ex1.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 12.5. Countries.* Reproduce the grid of country cards. They must wrap when the
+                window gets narrow.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex2.png" alt="A grid of country cards that wraps to more than one line"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/12-flexbox/ex2.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 12.6. Band page.* Reproduce the page of the music group.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex3.png" alt="A music band page laid out with flexbox"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/12-flexbox/ex3.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/11-box-model.html">
+                    &larr; Previous: The box model
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/13-grid.html">
+                    Next: CSS Grid &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

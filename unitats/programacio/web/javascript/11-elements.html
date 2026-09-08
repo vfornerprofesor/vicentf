@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating and removing elements</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Creating and removing elements
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">innerHTML or createElement?</vf-title>
+        <vf-content>
+            <vf-text>
+                Until now we built our lists with a string and `innerHTML`. That is fine,
+                quick, and it works. But it has two limits:
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>You cannot attach an event to something that is only text in a string.</vf-text></li>
+                <li><vf-text>If the text comes from the user, `innerHTML` will run any HTML they typed. That is a real security problem.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                So we learn the other way: build the element as an *object*, and put it in
+                the page.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Creating an element</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const list = document.querySelector("#myList");
+
+                const item = document.createElement("li");      // 1. create it
+                item.textContent = "New task";                  // 2. fill it
+                list.appendChild(item);                         // 3. put it in the page
+            </vf-code>
+            <vf-text>
+                Three steps, always the same: *create, fill, append*. Until step 3, the
+                element exists only in memory and nobody sees it.
+            </vf-text>
+            <vf-code language="javascript">
+                const item = document.createElement("li");
+                item.textContent = "Important task";
+                item.classList.add("important");        // a class
+                item.style.color = "red";               // a style
+                item.dataset.id = 7;                    // information for later
+                list.appendChild(item);
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Building a list from an array</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const tasks = ["Study", "Shopping", "Football"];
+                const list = document.querySelector("#myList");
+
+                function draw() {
+                    list.innerHTML = "";                // empty it first!
+
+                    for (const task of tasks) {
+                        const li = document.createElement("li");
+                        li.textContent = task;
+                        list.appendChild(li);
+                    }
+                }
+
+                draw();
+            </vf-code>
+            <vf-callout type="atencio">
+                list.innerHTML = "" as the first line of draw() is not optional. Without it,
+                every time you draw you ADD the whole list again, and after three clicks you
+                have the same three tasks three times. This is the most reported bug of the
+                final project.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">A button on every row</vf-title>
+        <vf-content>
+            <vf-text>
+                Now the payoff. Each row can carry its own delete button, with its own
+                listener:
+            </vf-text>
+            <vf-code language="javascript">
+                function draw() {
+                    list.innerHTML = "";
+
+                    for (let i = 0; i &lt; tasks.length; i++) {
+                        const li = document.createElement("li");
+                        li.textContent = tasks[i];
+
+                        const button = document.createElement("button");
+                        button.textContent = "Delete";
+                        button.addEventListener("click", function () {
+                            tasks.splice(i, 1);     // remove it from the ARRAY
+                            draw();                 // and draw again
+                        });
+
+                        li.appendChild(button);
+                        list.appendChild(li);
+                    }
+                }
+            </vf-code>
+            <vf-text>
+                Read the listener again: it does *not* remove the `li` from the screen. It
+                removes the item from the *array* and redraws. The array is the truth; the
+                screen is a picture of it. Same rule as lesson 8.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Removing elements</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const item = document.querySelector("#myList li");
+                item.remove();                              // remove one element
+
+                document.querySelector("#myList").innerHTML = "";       // empty a container
+            </vf-code>
+            <vf-text>
+                Use `.remove()` for one-off things (close a message, hide a card). For a
+                list that comes from an array, always: change the array, redraw.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Why innerHTML is dangerous with user text</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // The user types this in your "add task" field:
+                //     &lt;img src="x" onerror="alert('I am in your page')">
+
+                list.innerHTML += `&lt;li>${text}&lt;/li>`;       // the browser RUNS it
+
+                const li = document.createElement("li");
+                li.textContent = text;                      // safe: it is only text
+                list.appendChild(li);
+            </vf-code>
+            <vf-text>
+                Rule: *`textContent` for anything the user typed. `innerHTML` only for
+                HTML you wrote yourself.*
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 11.1.* Rewrite exercise 10.4 (the add-item list) using
+                `createElement` instead of `innerHTML`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.2.* Add a "Delete" button to every row, that removes that item
+                from the array and redraws.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.3.* Add a counter under the list: "4 items".
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.4.* A "Gallery" page: an array of 6 image URLs, and a loop that
+                creates 6 `&lt;img&gt;` elements with `createElement`. Clicking on one makes
+                it bigger.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.5.* A table of students created with `createElement`: one
+                `&lt;tr&gt;` per student, one `&lt;td&gt;` per property.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.6.* A "message box": a function `showMessage(text, type)` that
+                creates a `&lt;div&gt;` with the class `ok` or `error`, puts it at the top
+                of the page, and removes it by itself after 3 seconds.
+                (`setTimeout(function () { ... }, 3000)`)
+            </vf-callout>
+
+            <vf-details summary="Show the solution (11.6)">
+                <vf-code language="javascript">
+                    function showMessage(text, type) {
+                        const box = document.createElement("div");
+                        box.textContent = text;
+                        box.classList.add("message", type);
+
+                        document.body.prepend(box);
+
+                        setTimeout(function () {
+                            box.remove();
+                        }, 3000);
+                    }
+
+                    showMessage("Task added", "ok");
+                </vf-code>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">Mini-project 2: A list that works</vf-title>
+        <vf-content>
+            <vf-text>
+                One page with a list of anything you like (films to watch, songs, shopping,
+                homework). It must:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>keep the data in an *array*;</vf-text></li>
+                <li><vf-text>add an item with a button *and* with Enter;</vf-text></li>
+                <li><vf-text>refuse an empty item;</vf-text></li>
+                <li><vf-text>draw the list with `createElement`, never with `innerHTML` for the user's text;</vf-text></li>
+                <li><vf-text>have a Delete button on every row that changes the array and redraws;</vf-text></li>
+                <li><vf-text>show a counter of items;</vf-text></li>
+                <li><vf-text>have a "Clear all" button that asks for confirmation (`confirm("Are you sure?")`).</vf-text></li>
+            </vf-list>
+            <vf-text>
+                No `localStorage` yet: that comes in lesson 13, and then you will add it to
+                this same page.
+            </vf-text>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/10-events.html">
+                    &larr; Previous: Events
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/12-forms.html">
+                    Next: Forms and validation &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

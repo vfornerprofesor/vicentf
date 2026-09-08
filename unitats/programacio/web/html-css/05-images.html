@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images and media</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Images and media
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">The img tag</vf-title>
+        <vf-content>
+            <vf-text><code>&lt;img&gt;</code> is an empty tag: it has no content and no closing tag.</vf-text>
+            <vf-code language="html">
+                &lt;img src="photos/cat.jpg" alt="A grey cat sleeping on a keyboard"&gt;
+            </vf-code>
+            <vf-list>
+                <li><vf-text><code>src</code> (~source~) is the path to the image file. Same rules as links: relative for your own images.</vf-text></li>
+                <li><vf-text><code>alt</code> (~alternative text~) is a short description of the image.</vf-text></li>
+            </vf-list>
+            <vf-text>Example: a screenshot reused from another unit, shown with <code>&lt;img&gt;</code>.</vf-text>
+            <vf-img src="assets/unitats/programacio/web/html-css/05-images/sample.png" alt="An example image showing a computer science classroom scene"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">The alt text</vf-title>
+        <vf-content>
+            <vf-text>
+                The <code>alt</code> text is read out loud to blind users, and it is shown if the image does not load.
+                It is *not optional*.
+            </vf-text>
+            <vf-text>
+                Write what the image ~shows~, in a few words. Do not write "image of" — the browser already
+                says that.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;!-- Good --&gt;
+                        &lt;img src="team.jpg" alt="Our class in the computer lab"&gt;
+
+                        &lt;!-- Bad --&gt;
+                        &lt;img src="team.jpg" alt="image"&gt;
+                        &lt;img src="team.jpg" alt="team.jpg"&gt;
+                        &lt;img src="team.jpg"&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;!-- Good --&gt;
+                        &lt;img src="team.jpg" alt="Our class in the computer lab"&gt;
+
+                        &lt;!-- Bad --&gt;
+                        &lt;img src="team.jpg" alt="image"&gt;
+                        &lt;img src="team.jpg" alt="team.jpg"&gt;
+                        &lt;img src="team.jpg"&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                If the image is only decoration and says nothing, write an empty alt: <code>alt=""</code>. That tells
+                the screen reader to skip it.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Size and formats</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;img src="logo.png" alt="Company logo" width="200" height="80"&gt;
+            </vf-code>
+            <vf-text>
+                <code>width</code> and <code>height</code> are in pixels. Always write both if you know them: the browser reserves
+                the space and the page does not jump around while it loads.
+            </vf-text>
+            <table class="table">
+                <thead>
+                    <tr><th>Format</th><th>Use it for</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>.jpg</code></td><td>photos</td><td>small files, but no transparency</td></tr>
+                    <tr><td><code>.png</code></td><td>logos, drawings, screenshots</td><td>supports transparency</td></tr>
+                    <tr><td><code>.webp</code></td><td>anything</td><td>smaller than jpg and png, works everywhere today</td></tr>
+                    <tr><td><code>.svg</code></td><td>logos, icons</td><td>it is a drawing, so it never gets blurry</td></tr>
+                </tbody>
+            </table>
+            <vf-callout type="atencio">
+                Never put a 6000x4000 pixel photo straight from your phone into a web page. It weighs 5 MB
+                and it takes forever to load on mobile data. Resize it first to the size you really need
+                (for example 1200 px wide).
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Where do I put my images?</vf-title>
+        <vf-content>
+            <vf-text>
+                Keep them in a folder called <code>images</code> or <code>img</code> inside your project. Use lowercase names with
+                no spaces and no accents.
+            </vf-text>
+            <vf-code language="html">
+                my-site/
+                    index.html
+                    about.html
+                    images/
+                        photo-me.jpg
+                        logo.png
+            </vf-code>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/05-folder-structure.png — captura de l'explorador de VS Code amb l'arbre my-site/ (index.html, about.html, images/, css/) exactament com l'exemple.] -->
+        </vf-content>
+
+        <vf-title level="2">Figures and captions</vf-title>
+        <vf-content>
+            <vf-text>If the image needs a caption, use <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>:</vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;figure&gt;
+                            &lt;img src="images/motherboard.jpg" alt="An ATX motherboard with the CPU socket in the centre"&gt;
+                            &lt;figcaption&gt;An ATX motherboard. The CPU goes in the square socket.&lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;figure&gt;
+                            &lt;img src="images/motherboard.jpg" alt="An ATX motherboard with the CPU socket in the centre"&gt;
+                            &lt;figcaption&gt;An ATX motherboard. The CPU goes in the square socket.&lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Audio and video</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;audio src="music/song.mp3" controls&gt;&lt;/audio&gt;
+
+                &lt;video src="videos/demo.mp4" controls width="640"&gt;&lt;/video&gt;
+            </vf-code>
+            <vf-text>
+                <code>controls</code> shows the play button and the volume. Without it, the user cannot do anything.
+            </vf-text>
+            <vf-text>Do not add <code>autoplay</code>. People hate it.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 5.1.* Download three images, put them in an <code>images</code> folder and show them in a
+                page, each one with a good <code>alt</code> text and a heading above it.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 5.2.* Add a <code>&lt;figure&gt;</code> with a caption for one of them.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 5.3.* Make one of the images a link to the website where you found it.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 5.4.* Break one image on purpose: change its <code>src</code> to a name that does not exist.
+                Reload and look at what the browser shows. Now you know why <code>alt</code> matters.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 5.3)">
+                <vf-code language="html">
+                    &lt;a href="https://unsplash.com" target="_blank" rel="noopener"&gt;
+                        &lt;img src="images/mountain.jpg" alt="Snow on a mountain at sunrise" width="600"&gt;
+                    &lt;/a&gt;
+                </vf-code>
+            </vf-details>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/04-lists-links.html">
+                    &larr; Previous: Lists and links
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/06-tables.html">
+                    Next: Tables &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

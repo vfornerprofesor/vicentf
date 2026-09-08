@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making decisions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Making decisions
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-text>
+            All the examples of this lesson read from an `&lt;input&gt;` and write in a
+            `&lt;div&gt;` of the page. No `console.log` in the main examples. The given
+            HTML is this one, and it repeats in every lesson from 05 to 09:
+        </vf-text>
+        <vf-code language="html">
+            &lt;input type="text" id="value"&gt;
+            &lt;button id="check"&gt;Check&lt;/button&gt;
+            &lt;div id="output"&gt;&lt;/div&gt;
+        </vf-code>
+
+        <vf-title level="2">if</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const input = document.querySelector("#value");
+                const output = document.querySelector("#output");
+
+                document.querySelector("#check").addEventListener("click", function () {
+                    const age = Number(input.value);
+
+                    if (age >= 18) {
+                        output.textContent = "You can vote.";
+                    }
+                });
+            </vf-code>
+            <vf-text>
+                The condition goes between `( )`. The code that runs goes between `{ }`. If
+                the condition is `false`, the block is skipped and nothing happens — the
+                user sees no change at all, which is confusing. That is why we almost
+                always want an `else`.
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/05-conditions/if.png" alt="Flow chart of a simple if"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">else</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                if (age >= 18) {
+                    output.textContent = "You can vote.";
+                } else {
+                    output.textContent = "You cannot vote yet.";
+                }
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/javascript/05-conditions/else.png" alt="Flow chart of if/else"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">else if</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const mark = Number(input.value);
+
+                if (mark >= 9) {
+                    output.textContent = "Excellent";
+                    output.style.color = "green";
+                } else if (mark >= 7) {
+                    output.textContent = "Good";
+                    output.style.color = "blue";
+                } else if (mark >= 5) {
+                    output.textContent = "Pass";
+                    output.style.color = "orange";
+                } else {
+                    output.textContent = "Fail";
+                    output.style.color = "red";
+                }
+            </vf-code>
+            <vf-text>
+                The order matters. JavaScript checks the conditions from top to bottom and
+                *stops at the first one that is true*.
+            </vf-text>
+            <vf-text>
+                If you wrote `mark >= 5` first, a 9 would show "Pass": it is also true that
+                9 is bigger than 5.
+            </vf-text>
+            <vf-text>
+                Notice that we change the *colour* as well as the text. The user reads the
+                colour before the word.
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/05-conditions/elseif.png" alt="Flow chart with the four outcomes"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">Conditions with && and ||</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const age = Number(document.querySelector("#age").value);
+                const hasPermission = document.querySelector("#permission").checked;
+
+                if (age >= 18 || (age >= 16 && hasPermission)) {
+                    output.textContent = "You can come in.";
+                    output.className = "ok";
+                } else {
+                    output.textContent = "Sorry, you cannot come in.";
+                    output.className = "error";
+                }
+            </vf-code>
+            <vf-text>
+                A checkbox does not use `.value`. It uses `.checked`, which is already a
+                boolean: `true` or `false`.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">switch</vf-title>
+        <vf-content>
+            <vf-text>
+                When you compare *one variable* against *many exact values*, `switch` is
+                clearer:
+            </vf-text>
+            <vf-code language="javascript">
+                const day = Number(input.value);
+                let name;
+
+                switch (day) {
+                    case 1:
+                        name = "Monday";
+                        break;
+                    case 2:
+                        name = "Tuesday";
+                        break;
+                    case 3:
+                        name = "Wednesday";
+                        break;
+                    default:
+                        name = "Another day";
+                }
+
+                output.textContent = name;
+            </vf-code>
+            <vf-callout type="atencio">
+                Do not forget the break. Without it, JavaScript keeps running the next cases
+                too. It is the classic switch bug.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">The ternary operator</vf-title>
+        <vf-content>
+            <vf-text>
+                A short `if/else` that gives a value:
+            </vf-text>
+            <vf-code language="javascript">
+                const age = Number(input.value);
+                output.textContent = age >= 18 ? "adult" : "minor";
+            </vf-code>
+            <vf-text>
+                Read it: *condition* `?` *value if true* `:` *value if false*.
+            </vf-text>
+            <vf-text>
+                Use it only for short, simple things. Never nest one inside another.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // 1. One = instead of three
+                if (age = 18) { }       // WRONG: this ASSIGNS 18, it does not compare
+                if (age === 18) { }     // right
+
+                // 2. A semicolon after the if
+                if (age >= 18); {       // WRONG: the block always runs
+                    output.textContent = "hi";
+                }
+
+                // 3. Comparing text with a number
+                const answer = input.value;
+                if (answer === 18) { }          // never true: answer is "18", text
+                if (Number(answer) === 18) { }  // right
+
+                // 4. Forgetting the else
+                //    The user clicks, the condition is false, nothing changes on the screen,
+                //    and they think your program is broken. Always say something.
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-text>
+                All of these read from an input and show the answer *in the page*. No
+                `prompt`, no `alert`, no console.
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 5.1. Traffic light.* Three buttons: Stop, Wait, Go. Each one
+                paints the circle in the page with the right colour and writes the message
+                under it.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/05-conditions/ex1.html)
+            </vf-text>
+
+            <vf-callout type="exercici">
+                *Exercise 5.2. Age check.* The user types their age. Show "Child",
+                "Teenager", "Adult" or "Senior", each one in a different colour. If the
+                number is negative or over 120, show an error message in red.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/05-conditions/ex2.html)
+            </vf-text>
+
+            <vf-callout type="exercici">
+                *Exercise 5.3. Password check.* The user types a password. Show, one under
+                the other, whether it has at least 8 characters, whether it has a number,
+                and whether it has a capital letter. Green tick or red cross for each one.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/05-conditions/ex3.html)
+            </vf-text>
+
+            <vf-callout type="exercici">
+                *Exercise 5.4. Leap year.* The user types a year and the page says if it is
+                a leap year. (A leap year is divisible by 4, but not by 100, unless it is
+                also divisible by 400.)
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/05-conditions/ex4.html)
+            </vf-text>
+
+            <vf-callout type="exercici">
+                *Exercise 5.5. Calculator, first version.* Two numbers, a `&lt;select&gt;`
+                with `+ - * /`, and a button. Show the result. If the user divides by zero,
+                show "You cannot divide by zero" in red.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/05-conditions/ex5.html)
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/05-conditions/ex5.png" alt="Simple calculator with a select and a result"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 5.6. Cinema ticket.* A ticket costs 8 €. Under 14 and over 65 pay
+                5 €. On Wednesday everybody pays 5 €. The user types the age and chooses the
+                day; the page shows the price.
+            </vf-callout>
+
+            <vf-callout type="exercici">
+                *Exercise 5.7. Final mark.* Three inputs with three marks. Show the average
+                and, next to it, the word (Fail, Pass, Good, Excellent) with the right
+                colour.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/05-conditions/ex7.png" alt="Final mark with the average and the word Excellent"></vf-img>
+
+            <vf-details summary="Show the solution (5.4 and 5.6)">
+                <vf-code language="javascript">
+                    // 5.4
+                    const input = document.querySelector("#value");
+                    const output = document.querySelector("#output");
+
+                    document.querySelector("#check").addEventListener("click", function () {
+                        const year = Number(input.value);
+                        let isLeap;
+
+                        if (year % 400 === 0) {
+                            isLeap = true;
+                        } else if (year % 100 === 0) {
+                            isLeap = false;
+                        } else if (year % 4 === 0) {
+                            isLeap = true;
+                        } else {
+                            isLeap = false;
+                        }
+
+                        if (isLeap) {
+                            output.textContent = `${year} is a leap year.`;
+                            output.style.color = "green";
+                        } else {
+                            output.textContent = `${year} is NOT a leap year.`;
+                            output.style.color = "red";
+                        }
+                    });
+
+                    // 5.6
+                    const age = Number(document.querySelector("#age").value);
+                    const day = document.querySelector("#day").value;
+                    let price = 8;
+
+                    if (day === "wednesday" || age &lt; 14 || age > 65) {
+                        price = 5;
+                    }
+
+                    output.textContent = `Your ticket costs ${price} euros.`;
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/04-dom.html">
+                    &larr; Previous: The DOM: changing the page
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/06-loops.html">
+                    Next: Loops &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

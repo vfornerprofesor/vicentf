@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        #loginForm {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #2980b9;
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #messages {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #messages.ok {
+            background-color: #ebf9eb;
+            color: #2ecc71;
+        }
+
+        #messages.error {
+            background-color: #fcebeb;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    <form id="loginForm">
+        <div class="field-group">
+            <label for="user">User</label>
+            <input type="text" id="user">
+        </div>
+        <div class="field-group">
+            <label for="pass">Password</label>
+            <input type="password" id="pass">
+        </div>
+        <button type="submit">Log in</button>
+    </form>
+
+    <div id="messages"></div>
+
+    <script>
+        // If the user is "admin" and the password is "smx2027", show
+        // "Welcome!". If not, show "Wrong user or password" and count the
+        // failed attempts. After 3 attempts, disable the button.
+    </script>
+</body>
+
+</html>

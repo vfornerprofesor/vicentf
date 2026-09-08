@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The structure of an HTML page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            The structure of an HTML page
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Tags and elements</vf-title>
+        <vf-content>
+            <vf-text>
+                HTML is made of *tags*. A tag is a word between <code>&lt;</code> and <code>&gt;</code>.
+            </vf-text>
+            <vf-text>
+                Most tags come in pairs: an *opening tag* and a *closing tag*. The closing tag has a slash
+                <code>/</code>.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;This is a paragraph.&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;This is a paragraph.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                Here <code>&lt;p&gt;</code> opens, <code>&lt;/p&gt;</code> closes, and the text in the middle is the *content*.
+                The three parts together are called an *element*.
+            </vf-text>
+            <vf-text>
+                A few tags have no content and no closing tag. We call them *empty tags*:
+            </vf-text>
+            <vf-code language="html">
+                &lt;br&gt;
+                &lt;hr&gt;
+                &lt;img src="cat.jpg" alt="A grey cat"&gt;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Attributes</vf-title>
+        <vf-content>
+            <vf-text>
+                An *attribute* gives extra information about an element. It goes inside the opening tag, and
+                it has a name and a value between quotes.
+            </vf-text>
+            <vf-code language="html">
+                &lt;a href="https://www.wikipedia.org"&gt;Go to Wikipedia&lt;/a&gt;
+                &lt;img src="photo.jpg" alt="Me at the beach"&gt;
+                &lt;html lang="en"&gt;
+            </vf-code>
+            <vf-text>
+                <code>href</code>, <code>src</code>, <code>alt</code> and <code>lang</code> are attributes. Always use double quotes <code>"</code> around the
+                value. Never leave a space around the <code>=</code>.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">The head and the body</vf-title>
+        <vf-content>
+            <vf-text>Every page has the same skeleton:</vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html lang="en"&gt;
+
+                        &lt;head&gt;
+                            &lt;meta charset="utf-8"&gt;
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                            &lt;title&gt;The name of my page&lt;/title&gt;
+                        &lt;/head&gt;
+
+                        &lt;body&gt;
+                            &lt;h1&gt;What people see&lt;/h1&gt;
+                        &lt;/body&gt;
+
+                        &lt;/html&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html lang="en"&gt;
+
+                        &lt;head&gt;
+                            &lt;meta charset="utf-8"&gt;
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                            &lt;title&gt;The name of my page&lt;/title&gt;
+                        &lt;/head&gt;
+
+                        &lt;body&gt;
+                            &lt;h1&gt;What people see&lt;/h1&gt;
+                        &lt;/body&gt;
+
+                        &lt;/html&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-list>
+                <li><vf-text><code>&lt;!DOCTYPE html&gt;</code> tells the browser "this is a modern HTML file". It is always the first line.</vf-text></li>
+                <li><vf-text><code>&lt;html lang="en"&gt;</code> wraps everything. <code>lang</code> says which language the page is in. Screen readers use it.</vf-text></li>
+                <li><vf-text><code>&lt;head&gt;</code> is *information about the page*. Nobody sees it in the page itself.</vf-text></li>
+                <li><vf-text><code>&lt;meta charset="utf-8"&gt;</code> lets you write accents and special characters: à, ñ, ç, €. Without it you get strange symbols.</vf-text></li>
+                <li><vf-text><code>&lt;meta name="viewport" ...&gt;</code> makes the page work on phones. We will explain it in the responsive lesson. For now, always copy it.</vf-text></li>
+                <li><vf-text><code>&lt;title&gt;</code> is the text in the browser tab, and the text Google shows in the search results.</vf-text></li>
+                <li><vf-text><code>&lt;body&gt;</code> is *what people see*: your content.</vf-text></li>
+            </vf-list>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/02-head-body.png — diagrama de dues caixes: HEAD ("information about the page — invisible") amb title/meta dins, i BODY ("the content — visible") amb h1/p/img dins. Amb una fletxa cap a una captura del navegador indicant on es veu el title (la pestanya) i on el body (la pàgina).] -->
+        </vf-content>
+
+        <vf-title level="2">Nesting and indentation</vf-title>
+        <vf-content>
+            <vf-text>
+                Elements go *inside* other elements. This is called *nesting*.
+            </vf-text>
+            <vf-text>
+                The rule is simple: ~the last tag you open is the first tag you close~.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;This is &lt;strong&gt;very&lt;/strong&gt; important.&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;This is &lt;strong&gt;very&lt;/strong&gt; important.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>This is correct. This is *wrong*:</vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;This is &lt;strong&gt;very important.&lt;/p&gt;&lt;/strong&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;This is &lt;strong&gt;very important.&lt;/p&gt;&lt;/strong&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                To see the nesting, we use *indentation*: every time we go one level in, we add 4 spaces.
+                The browser does not care, but you and your teacher do.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;body&gt;
+                            &lt;div&gt;
+                                &lt;h2&gt;My favourite games&lt;/h2&gt;
+                                &lt;p&gt;Here is my list.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;body&gt;
+                            &lt;div&gt;
+                                &lt;h2&gt;My favourite games&lt;/h2&gt;
+                                &lt;p&gt;Here is my list.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/body&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-callout type="atencio">
+                An unclosed tag is the most common error of all. If half your page suddenly looks bold or
+                blue, look for a tag you forgot to close.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Comments</vf-title>
+        <vf-content>
+            <vf-text>A comment is a note for humans. The browser ignores it.</vf-text>
+            <vf-code language="html">
+                &lt;!-- This is a comment. It does not appear in the page. --&gt;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 2.1.* Find the three errors in this code and write the correct version.
+            </vf-callout>
+            <vf-code language="html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                &lt;title&gt;My page
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;h1&gt;Welcome&lt;h1&gt;
+                &lt;p&gt;Hello there.
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </vf-code>
+            <vf-callout type="exercici">
+                *Exercise 2.2.* Write the skeleton of a page from memory, without looking. Then compare it
+                with the example above.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.3.* Take your page from lesson 1 and indent it correctly with 4 spaces per
+                level.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.4.* Add a comment at the top of your file with your name and the date.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 2.1)">
+                <vf-row>
+                    <vf-col classes="col-md-6">
+                        <vf-code language="html">
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+
+                            &lt;head&gt;
+                                &lt;meta charset="utf-8"&gt;
+                                &lt;title&gt;My page&lt;/title&gt;
+                            &lt;/head&gt;
+
+                            &lt;body&gt;
+                                &lt;h1&gt;Welcome&lt;/h1&gt;
+                                &lt;p&gt;Hello there.&lt;/p&gt;
+                            &lt;/body&gt;
+
+                            &lt;/html&gt;
+                        </vf-code>
+                    </vf-col>
+                    <vf-col classes="col-md-6">
+                        <vf-preview>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+
+                            &lt;head&gt;
+                                &lt;meta charset="utf-8"&gt;
+                                &lt;title&gt;My page&lt;/title&gt;
+                            &lt;/head&gt;
+
+                            &lt;body&gt;
+                                &lt;h1&gt;Welcome&lt;/h1&gt;
+                                &lt;p&gt;Hello there.&lt;/p&gt;
+                            &lt;/body&gt;
+
+                            &lt;/html&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+                <vf-text>
+                    The three errors were: <code>&lt;title&gt;</code> was not closed, <code>&lt;h1&gt;</code> was closed with
+                    <code>&lt;h1&gt;</code> instead of <code>&lt;/h1&gt;</code>, and the <code>&lt;p&gt;</code> was not closed. (The missing
+                    <code>charset</code> and <code>lang</code> are not errors, but you should always add them.)
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/01-first-page.html">
+                    &larr; Previous: Your first web page
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/03-text.html">
+                    Next: Text: headings and paragraphs &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

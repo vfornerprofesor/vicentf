@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What comes next</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            What comes next
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">You already know how to program</vf-title>
+        <vf-content>
+            <vf-text>
+                If you can read the code you wrote at the start of this unit and understand
+                it, you are a programmer. The rest is more of the same, with bigger words.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Things that exist and you have not seen</vf-title>
+        <vf-content>
+            <vf-text>
+                You do not have to learn these now. Just know the names, so you are not
+                scared when you meet them:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Asynchronous code and `fetch`*: asking another computer on the internet for data (the weather, a list of films) and doing something with the answer when it arrives. This is the next big step.</vf-text></li>
+                <li><vf-text>*Promises and `async/await`*: the way we write that waiting so it is readable.</vf-text></li>
+                <li><vf-text>*Classes*: a way to build your own kinds of objects, with their own functions inside.</vf-text></li>
+                <li><vf-text>*Modules*: splitting your code into several files that import each other.</vf-text></li>
+                <li><vf-text>*Frameworks* (React, Vue, Angular): big toolboxes for building large applications. They are all written in JavaScript. If you know plain JavaScript well, you can learn any of them.</vf-text></li>
+                <li><vf-text>*Node.js*: JavaScript running outside the browser, on a server.</vf-text></li>
+                <li><vf-text>*Git*: keeping the history of your code and working with other people. You will thank yourself for learning this early.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">How to keep learning</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Build something you actually want. Nothing teaches like needing the thing to work.</vf-text></li>
+                <li><vf-text>Read other people's code, even when you do not understand all of it.</vf-text></li>
+                <li><vf-text>When you are stuck, explain your problem out loud to a friend or to an empty chair. Half the time you find the bug while you explain it.</vf-text></li>
+                <li><vf-text>Use documentation, not only videos: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) is the reference.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Useful links</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>[MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)</vf-text></li>
+                <li><vf-text>[JavaScript.info](https://javascript.info/) — free and very well written.</vf-text></li>
+                <li><vf-text>[W3Schools JavaScript](https://www.w3schools.com/js/default.asp)</vf-text></li>
+            </vf-list>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/14-project.html">
+                    &larr; Previous: Final project
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

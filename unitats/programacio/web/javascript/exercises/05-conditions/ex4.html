@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap year</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e8f5e9;
+            color: #333;
+        }
+
+        h1 {
+            color: #1b5e20;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        #year {
+            padding: 10px;
+            border: 2px solid #a5d6a7;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+            width: 150px;
+            outline: none;
+        }
+
+        #year:focus {
+            border-color: #4caf50;
+        }
+
+        #checkButton {
+            padding: 10px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        #checkButton:hover {
+            background-color: #388e3c;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            min-height: 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1b5e20;
+            text-align: center;
+            border: 1px dashed #a5d6a7;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Leap year checker</h1>
+
+    <div class="container">
+        <label for="year">Type a year:</label>
+        <input type="number" id="year" placeholder="e.g. 2024">
+
+        <button id="checkButton">Check</button>
+
+        <div id="result">
+            Waiting for the check...
+        </div>
+    </div>
+
+    <script>
+        // A year is a leap year if it is divisible by 4. However, if it is
+        // divisible by 100, it is NOT a leap year, unless it is also
+        // divisible by 400. Use an if with && and || to check the year and
+        // show the right message in #result.
+    </script>
+</body>
+
+</html>

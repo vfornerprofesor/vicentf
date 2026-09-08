@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        #contactForm {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        #sendButton {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #sendButton:hover {
+            background-color: #2980b9;
+        }
+
+        #validationMessage {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid transparent;
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .message.error {
+            background-color: #fcebeb;
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .message.success {
+            background-color: #ebf9eb;
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Contact form</h1>
+
+    <div id="contactForm">
+        <div class="field-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="user@example.com">
+        </div>
+
+        <div class="field-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="At least 6 characters">
+        </div>
+
+        <button id="sendButton">Send</button>
+
+        <div id="validationMessage" class="message">
+            Type your data.
+        </div>
+    </div>
+
+    <script>
+        // Check that the 'email' and 'password' fields are NOT empty,
+        // using &&. Show the success or error message in
+        // #validationMessage.
+    </script>
+</body>
+
+</html>

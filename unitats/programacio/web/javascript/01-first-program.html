@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your first program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Your first program
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What is a program?</vf-title>
+        <vf-content>
+            <vf-text>
+                A program is a *list of instructions* for a computer. The computer reads
+                them one by one, from top to bottom, and does exactly what you wrote — not
+                what you meant.
+            </vf-text>
+            <vf-text>
+                Most bugs in the world are not the computer being wrong. They are a person
+                writing an instruction that says something slightly different from what
+                they thought.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">What is JavaScript?</vf-title>
+        <vf-content>
+            <vf-text>
+                JavaScript (JS) is the programming language of the web. Every browser
+                understands it, with nothing to install.
+            </vf-text>
+            <vf-text>
+                With JavaScript you can make a page *do things*: show and hide content,
+                count points, check a form, save data, draw a chart, run a game.
+            </vf-text>
+            <vf-text>
+                JavaScript has nothing to do with Java. The name was a marketing decision
+                in 1995. Do not confuse them in an exam.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">The HTML you need (and nothing more)</vf-title>
+        <vf-content>
+            <vf-text>
+                JavaScript needs a page to live in. In this module we are *not* studying
+                HTML, so here is the only file you need. Copy it, save it as `index.html`,
+                and reuse it in every lesson.
+            </vf-text>
+            <vf-code language="html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+
+                &lt;head&gt;
+                    &lt;meta charset="utf-8"&gt;
+                    &lt;title&gt;My JavaScript page&lt;/title&gt;
+                &lt;/head&gt;
+
+                &lt;body&gt;
+                    &lt;h1&gt;My JavaScript page&lt;/h1&gt;
+
+                    &lt;script src="script.js"&gt;&lt;/script&gt;
+                &lt;/body&gt;
+
+                &lt;/html&gt;
+            </vf-code>
+            <vf-text>
+                That is all you need to know about it:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>`&lt;!DOCTYPE html&gt;` says "this is a web page". Always the first line.</vf-text></li>
+                <li><vf-text>`&lt;html&gt;` ... `&lt;/html&gt;` wraps the whole page.</vf-text></li>
+                <li><vf-text>`&lt;head&gt;` is information about the page (the title of the tab).</vf-text></li>
+                <li><vf-text>`&lt;body&gt;` is what people see.</vf-text></li>
+                <li><vf-text>`&lt;h1&gt;` is a big title.</vf-text></li>
+                <li><vf-text>`&lt;script src="script.js"&gt;&lt;/script&gt;` loads your JavaScript file.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                Next to it, create a second file called `script.js`. That is where *you*
+                write.
+            </vf-text>
+            <vf-callout type="atencio">
+                The script tag goes at the *end* of the body, just before /body. If you put
+                it in the head, your code runs before the page exists and it will not find
+                anything.
+            </vf-callout>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/01-first-program/two-files.png" alt="VS Code with index.html and script.js"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/01-first-program/two-files.png — captura de VS Code amb els dos fitxers (index.html i script.js) en la mateixa carpeta i tots dos oberts en pestanyes.] -->
+        </vf-content>
+
+        <vf-title level="2">Where to write your JavaScript</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;!-- 1. Inside the HTML (fine for a tiny test) --&gt;
+                &lt;script&gt;
+                    document.write("Hello");
+                &lt;/script&gt;
+
+                &lt;!-- 2. In a separate file (this is what we use) --&gt;
+                &lt;script src="script.js"&gt;&lt;/script&gt;
+            </vf-code>
+            <vf-text>
+                There is a third place: the *console* of the browser. Press *F12* and you
+                can type JavaScript straight into it. Perfect for trying one line.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Showing things on the page</vf-title>
+        <vf-content>
+            <vf-text>
+                A program that shows nothing is not much fun. `document.write()` writes
+                text directly into the page, exactly where your `&lt;script&gt;` is:
+            </vf-text>
+            <vf-code language="javascript">
+                document.write("Hello, world!");
+                document.write("&lt;br>");
+                document.write(2 + 3);
+            </vf-code>
+            <vf-text>
+                `&lt;br&gt;` is an HTML tag that means "new line". `document.write` writes
+                HTML, so you can use it to separate your lines:
+            </vf-text>
+            <vf-code language="javascript">
+                document.write("First line &lt;br>");
+                document.write("Second line &lt;br>");
+                document.write("The answer is " + 42 + "&lt;br>");
+            </vf-code>
+            <vf-img src="assets/unitats/programacio/web/javascript/01-first-program/01.png" alt="Browser showing the three lines written on the page"></vf-img>
+            <vf-callout type="atencio">
+                document.write only works while the browser is still reading the page. If you
+                call it later - for example inside a function that runs when the user clicks
+                a button - it erases the whole page and leaves you with an empty screen.
+                We use it in lessons 1, 2 and 3 because it is the shortest way to see a
+                result. From lesson 4 we use the DOM instead, and we never write it again.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Asking the user</vf-title>
+        <vf-content>
+            <vf-text>
+                `prompt()` opens a small window and asks for text. `alert()` shows a
+                message.
+            </vf-text>
+            <vf-code language="javascript">
+                let name = prompt("What is your name?");
+                document.write("Hello, " + name + "!");
+
+                alert("Nice to meet you.");
+            </vf-code>
+            <vf-text>
+                `prompt` *always gives you text*, even if the user types a number. We will
+                fix that in lesson 2.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Comments</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // A comment on one line
+
+                /*
+                   A comment
+                   on several lines
+                */
+            </vf-code>
+            <vf-text>
+                Write comments to explain *why* you did something, not what the code says.
+                `count = count + 1; // add one to count` is a useless comment.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">When something goes wrong</vf-title>
+        <vf-content>
+            <vf-text>
+                Your code will fail. Every day. That is normal, and the *console* tells you
+                what happened. Press *F12*, then click on the *Console* tab.
+            </vf-text>
+            <vf-code language="javascript">
+                Uncaught SyntaxError: missing ) after argument list    script.js:4
+                Uncaught ReferenceError: nmae is not defined          script.js:7
+            </vf-code>
+            <vf-text>
+                Read it like this: the *type* of error (`SyntaxError`, `ReferenceError`,
+                `TypeError`), the *message*, and the *file and the line number* on the
+                right — click it and the browser takes you there.
+            </vf-text>
+            <vf-list>
+                <li><vf-text>`SyntaxError` — you wrote something the language cannot read: a missing `)`, `}` or `"`.</vf-text></li>
+                <li><vf-text>`ReferenceError` — you used a name that does not exist. Look for a typo.</vf-text></li>
+                <li><vf-text>`TypeError` — the value is not what you thought: often `null` or `undefined`.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                The console is also where you check what your variables really hold, with
+                `console.log()`:
+            </vf-text>
+            <vf-code language="javascript">
+                let price = prompt("Price?");
+                console.log(price);             // it appears in the console, not in the page
+                console.log(typeof price);      // "string" - useful to find bugs
+            </vf-code>
+            <vf-callout type="consell">
+                Two different tools, two different jobs. document.write is for what the USER
+                must see. console.log is for what YOU need to check while you build. When you
+                are lost, put console.log in the middle of your code and print your
+                variables. Most of the time you will find that a variable does not hold what
+                you believed.
+            </vf-callout>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/01-first-program/console-error.png" alt="Browser console with a ReferenceError"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/01-first-program/console-error.png — captura de la consola amb un ReferenceError, la fletxa assenyalant el fitxer i el número de línia a la dreta.] -->
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 1.1.* Create the two files (`index.html` and `script.js`) and write
+                "Hello, my name is ..." in the page.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 1.2.* Write the result of `7 * 8`, of `100 / 3` and of `10 - 4`,
+                each one on its own line in the page.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 1.3.* Use `prompt` to ask for the user's name, and then write a
+                greeting *in the page* (not in an `alert`).
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 1.4.* Ask for the user's name and their favourite colour, and write
+                a sentence with both.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 1.5.* Break your code on purpose: remove a `)`. Open the console,
+                read the error, and write down which type of error it is and on which line.
+            </vf-callout>
+            <vf-details summary="Show the solution (1.3 and 1.4)">
+                <vf-code language="javascript">
+                    // 1.3
+                    let name = prompt("What is your name?");
+                    document.write("Hello, " + name + "! Nice to meet you.&lt;br>");
+
+                    // 1.4
+                    let colour = prompt("What is your favourite colour?");
+                    document.write(name + " likes " + colour + ".&lt;br>");
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/02-variables.html">
+                    Next: Variables and data types &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

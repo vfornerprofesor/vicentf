@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix the broken code</title>
+    <style>
+        #box {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box>div {
+            width: 40%;
+            margin-inline: 5%;
+            height: 40vh;
+            line-height: 40vh;
+            text-align: center;
+            font-size: 50px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+        This code is broken: the colours do not match the boxes. Fix it so
+        that clicking on a box paints it with its own colour and clears the
+        other three. There are THREE kinds of mistake: a repeated id, ids
+        that do not match the text of the box, and functions that paint the
+        wrong element.
+    -->
+    <div id="box">
+        <div id="red" onclick="clickGreen()">Green</div>
+        <div id="blue" onclick="clickBlue()">Red</div>
+        <div id="blue" onclick="clickRed()">Blue</div>
+        <div id="yellow" onclick="clickYellow()">Yellow</div>
+    </div>
+
+    <script>
+        function clickGreen() {
+            let green = document.getElementById('yellow');
+            green.style.backgroundColor = 'blue';
+        }
+
+        function clickYellow() {
+            let yellow = document.getElementById('blue');
+            yellow.style.backgroundColor = 'red';
+        }
+
+        function clickRed() {
+            let red = document.getElementById('green');
+            red.style.backgroundColor = 'green';
+        }
+
+        function clickBlue() {
+            let blue = document.getElementById('blue');
+            blue.style.backgroundColor = 'red';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The box model</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            The box model
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Everything is a box</vf-title>
+        <vf-content>
+            <vf-text>In CSS, every element is a rectangle. Even a word inside a sentence.</vf-text>
+            <vf-text>Every box has four layers, from the inside out:</vf-text>
+            <vf-list ordered>
+                <li><vf-text>*content* — the text or the image;</vf-text></li>
+                <li><vf-text>*padding* — space ~inside~ the box, between the content and the border;</vf-text></li>
+                <li><vf-text>*border* — the line around the box;</vf-text></li>
+                <li><vf-text>*margin* — space ~outside~ the box, between this box and its neighbours.</vf-text></li>
+            </vf-list>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/11-box-model.png — el diagrama clàssic del box model: quatre rectangles concèntrics amb colors distints etiquetats content, padding, border, margin. Es pot copiar l'estil del que mostra DevTools.] -->
+            <vf-callout type="consell">
+                Open DevTools, select any element and scroll down in the Styles panel. You will see this
+                same diagram with the real numbers of that element. It is the fastest way to understand why
+                a box is where it is.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Padding, border, margin</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        .card {
+                            padding: 20px;                      /* the same on the four sides */
+                            padding: 10px 20px;                 /* top-bottom  left-right */
+                            padding: 10px 20px 30px 40px;       /* top right bottom left (clockwise) */
+
+                            border: 2px solid #333333;          /* width  style  colour */
+                            border-bottom: 4px solid red;       /* only one side */
+
+                            margin: 20px;
+                            margin-bottom: 40px;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="Result (with the last padding line, the one that wins)">
+                        &lt;style&gt;
+                            .card {
+                                padding: 10px 20px 30px 40px;
+                                border: 2px solid #333333;
+                                border-bottom: 4px solid red;
+                                margin: 20px;
+                                margin-bottom: 40px;
+                                background: #f5f5f5;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="card"&gt;Card with asymmetric padding, a dark border and a thicker red bottom.&lt;/div&gt;
+                        &lt;div class="card"&gt;Second card, so the margins between them are visible.&lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>Border styles: <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>none</code>.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">Width and height</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        .box {
+                            width: 300px;
+                            height: 200px;
+                            max-width: 100%;     /* never wider than its container */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            .box {
+                                width: 300px;
+                                height: 200px;
+                                max-width: 100%;
+                                background: #c4baeb;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="box"&gt;300 x 200&lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>max-width: 100%</code> is a small rule that saves you a lot of problems on phones. Use it on
+                images too:
+            </vf-text>
+            <vf-code language="css">
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">box-sizing: the fix</vf-title>
+        <vf-content>
+            <vf-text>
+                By default, <code>width: 300px</code> is the width of the *content only*. If you add <code>20px</code> of padding
+                and a <code>2px</code> border on each side, the box really takes <code>300 + 40 + 4 = 344px</code>. That is
+                confusing.
+            </vf-text>
+            <vf-text>Put this at the top of every CSS file you write, forever:</vf-text>
+            <vf-code language="css">
+                * {
+                    box-sizing: border-box;
+                }
+            </vf-code>
+            <vf-text>Same width, padding and border, only the box-sizing changes:</vf-text>
+            <vf-preview label="Result: both boxes asked for width: 200px">
+                &lt;style&gt;
+                    .compare {
+                        display: flex;
+                        gap: 20px;
+                        flex-wrap: wrap;
+                    }
+
+                    .compare div {
+                        width: 200px;
+                        padding: 20px;
+                        border: 4px solid #333333;
+                        background: #f5f5f5;
+                    }
+
+                    .border-box {
+                        box-sizing: border-box;
+                    }
+                &lt;/style&gt;
+                &lt;div class="compare"&gt;
+                    &lt;div&gt;Default (content-box): this box ends up WIDER than 200px, because the padding and
+                    the border are added on top.&lt;/div&gt;
+                    &lt;div class="border-box"&gt;box-sizing: border-box: this box really is 200px wide in total,
+                    padding and border included.&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-text>
+                <code>*</code> means "all the elements". With <code>border-box</code>, <code>width: 300px</code> means the box is really
+                300px, padding and border included. Much easier.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Block and inline</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .menu-item {
+                    display: block;         /* takes the full line */
+                    display: inline;        /* stays inside the text line */
+                    display: inline-block;  /* stays in the line, but accepts width and height */
+                    display: none;          /* disappears completely */
+                }
+            </vf-code>
+            <vf-text>
+                <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code> are block by default. <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>,
+                <code>&lt;strong&gt;</code> are inline.
+            </vf-text>
+            <vf-text>
+                An inline element *ignores* <code>width</code>, <code>height</code> and vertical margins. If you need them, use
+                <code>inline-block</code>.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Rounded corners and shadows</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        .card {
+                            border-radius: 12px;                            /* rounded corners */
+                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);      /* x  y  blur  colour */
+                        }
+
+                        .avatar {
+                            border-radius: 50%;     /* a perfect circle, if the box is square */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            .card {
+                                border-radius: 12px;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                                padding: 16px;
+                                background: white;
+                                width: fit-content;
+                            }
+
+                            .avatar {
+                                border-radius: 50%;
+                                width: 60px;
+                                height: 60px;
+                                background: #9b87d6;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="card"&gt;A card with rounded corners and a soft shadow&lt;/div&gt;
+                        &lt;div class="avatar"&gt;&lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Centring a box</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        .container {
+                            width: 90%;
+                            max-width: 1000px;
+                            margin: 0 auto;     /* 0 top and bottom, auto left and right = centred */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="Result (max-width scaled down to fit this preview)">
+                        &lt;style&gt;
+                            .container {
+                                width: 90%;
+                                max-width: 220px;
+                                margin: 0 auto;
+                                background: #c4baeb;
+                                padding: 10px;
+                                text-align: center;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="container"&gt;Centred box&lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>margin: 0 auto</code> is the classic way to centre a block box. It only works if the box has a
+                width.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 11.1.* Create a <code>div</code> with the class <code>card</code>, with 20px padding, a 1px grey border,
+                20px margin and a width of 300px. Put a heading and a paragraph inside.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.2.* Add <code>* { box-sizing: border-box; }</code> to your CSS and measure the card in
+                DevTools before and after. Write down the two widths.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.3.* Give the card rounded corners and a soft shadow. Make the shadow bigger on
+                <code>:hover</code>.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.4.* Turn the links of your nav into buttons: <code>inline-block</code>, padding, background
+                colour, rounded corners, no underline.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 11.5.* Centre the whole content of your page in a container of maximum 1000px.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 11.3)">
+                <vf-row>
+                    <vf-col classes="col-md-6">
+                        <vf-code language="css">
+                            .card {
+                                width: 300px;
+                                padding: 20px;
+                                margin: 20px;
+                                border: 1px solid #dddddd;
+                                border-radius: 12px;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                                transition: all 0.3s ease;
+                            }
+
+                            .card:hover {
+                                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+                                transform: translateY(-3px);
+                            }
+                        </vf-code>
+                    </vf-col>
+                    <vf-col classes="col-md-6">
+                        <vf-preview label="Result (try hovering the card)">
+                            &lt;style&gt;
+                                .card {
+                                    width: 220px;
+                                    padding: 20px;
+                                    margin: 20px;
+                                    border: 1px solid #dddddd;
+                                    border-radius: 12px;
+                                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                                    transition: all 0.3s ease;
+                                }
+
+                                .card:hover {
+                                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+                                    transform: translateY(-3px);
+                                }
+                            &lt;/style&gt;
+                            &lt;div class="card"&gt;Hover over me!&lt;/div&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+                <vf-text>
+                    <code>transition</code> makes the change smooth instead of instant. <code>transform: translateY(-3px)</code>
+                    lifts the card 3 pixels.
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">Mini-project 2: Styled band page</vf-title>
+        <vf-content>
+            <vf-text>Take your page from mini-project 1 and give it a design with an *external* CSS file.</vf-text>
+            <vf-text>It must have:</vf-text>
+            <vf-list>
+                <li><vf-text><code>css/style.css</code> linked from the HTML, and no <code>style=</code> attributes in the HTML;</vf-text></li>
+                <li><vf-text><code>* { box-sizing: border-box; }</code>;</vf-text></li>
+                <li><vf-text>a Google Font;</vf-text></li>
+                <li><vf-text>a colour scheme of 3 or 4 colours, used consistently;</vf-text></li>
+                <li><vf-text>a centred container with a maximum width;</vf-text></li>
+                <li><vf-text>the nav links styled as buttons, with a <code>:hover</code> effect;</vf-text></li>
+                <li><vf-text>at least one block with <code>border-radius</code> and <code>box-shadow</code>;</vf-text></li>
+                <li><vf-text>readable text: <code>line-height</code> of at least 1.5 and good contrast.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 11.4. Film card.* Reproduce the card in the picture. Watch the padding, the border
+                and the shadow.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/11-box-model/ex1.png" alt="A film information card with padding, a border and a soft shadow"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/11-box-model/ex1.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 11.5. Birthday invitation.* Reproduce the invitation in the picture.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/11-box-model/ex2.png" alt="A birthday invitation card styled with the box model"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/11-box-model/ex2.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/10-text-colors.html">
+                    &larr; Previous: Text, fonts and colours
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/12-flexbox.html">
+                    Next: Flexbox &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

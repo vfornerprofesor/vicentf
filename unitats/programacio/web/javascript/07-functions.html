@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Functions
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Why functions</vf-title>
+        <vf-content>
+            <vf-text>
+                A *function* is a block of code with a name, that you can run whenever you
+                want, as many times as you want.
+            </vf-text>
+            <vf-text>
+                Three reasons to use them:
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>You write the code *once* and use it many times.</vf-text></li>
+                <li><vf-text>If there is a bug, you fix it in *one* place.</vf-text></li>
+                <li><vf-text>A program made of small named pieces is much easier to read than 300 lines in a row.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                You have been using them since lesson 4: everything you passed to
+                `addEventListener` was a function.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Declaring and calling</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // Declaring: this only creates the function, it does not run it
+                function sayHello() {
+                    document.querySelector("#output").textContent = "Hello!";
+                }
+
+                // Calling: now it runs
+                sayHello();
+            </vf-code>
+            <vf-text>
+                The brackets `()` are what runs it. `sayHello` without brackets is the
+                function itself; `sayHello()` is the function *doing its job*. That is
+                exactly why `addEventListener("click", sayHello)` has no brackets: you are
+                handing the function over, not running it.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Parameters</vf-title>
+        <vf-content>
+            <vf-text>
+                A *parameter* is information you give to the function when you call it:
+            </vf-text>
+            <vf-code language="javascript">
+                function greet(name) {
+                    document.querySelector("#output").textContent = `Hello, ${name}!`;
+                }
+
+                greet("Marta");     // Hello, Marta!
+                greet("Ahmed");     // Hello, Ahmed!
+            </vf-code>
+            <vf-code language="javascript">
+                function showTotal(price, quantity) {
+                    document.querySelector("#output").textContent = `Total: ${price * quantity} euros`;
+                }
+
+                showTotal(12.5, 3);     // Total: 37.5 euros
+            </vf-code>
+            <vf-text>
+                The order matters: the first value goes to the first parameter.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">return</vf-title>
+        <vf-content>
+            <vf-text>
+                `return` sends a value *back* to whoever called the function:
+            </vf-text>
+            <vf-code language="javascript">
+                function add(a, b) {
+                    return a + b;
+                }
+
+                const result = add(3, 4);
+                output.textContent = result;            // 7
+            </vf-code>
+            <vf-text>
+                Difference between showing and returning:
+            </vf-text>
+            <vf-code language="javascript">
+                function addAndShow(a, b) {
+                    output.textContent = a + b;     // it shows it, but gives nothing back
+                }
+
+                function addAndReturn(a, b) {
+                    return a + b;                   // it gives the value back, you decide what to do
+                }
+
+                const x = addAndShow(2, 3);     // x is undefined!
+                const y = addAndReturn(2, 3);   // y is 5
+            </vf-code>
+            <vf-text>
+                *Almost always you want `return`.* A function that returns a value can be
+                reused anywhere: in a message, in another calculation, in a condition.
+            </vf-text>
+            <vf-callout type="recorda">
+                The rule for this unit: a function either calculates (and returns) or it
+                draws (and touches the page). Not both. That separation is what makes your
+                final project readable.
+            </vf-callout>
+            <vf-text>
+                `return` also *ends* the function immediately. Nothing after it runs:
+            </vf-text>
+            <vf-code language="javascript">
+                function checkAge(age) {
+                    if (age &lt; 0) {
+                        return "That is not a valid age.";
+                    }
+                    if (age &lt; 18) {
+                        return "Minor";
+                    }
+                    return "Adult";
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Functions and buttons</vf-title>
+        <vf-content>
+            <vf-text>
+                The normal shape of an interactive page, from now on:
+            </vf-text>
+            <vf-code language="javascript">
+                const output = document.querySelector("#output");
+
+                // 1. A function that calculates and returns
+                function celsiusToFahrenheit(celsius) {
+                    return celsius * 9 / 5 + 32;
+                }
+
+                // 2. A function that reads the page, calls the first one, and shows the answer
+                function convert() {
+                    const celsius = Number(document.querySelector("#celsius").value);
+                    const fahrenheit = celsiusToFahrenheit(celsius);
+                    output.textContent = `${celsius} °C = ${fahrenheit} °F`;
+                }
+
+                // 3. The button connects the two
+                document.querySelector("#convertButton").addEventListener("click", convert);
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Scope</vf-title>
+        <vf-content>
+            <vf-text>
+                A variable created *inside* a function only exists inside it:
+            </vf-text>
+            <vf-code language="javascript">
+                function test() {
+                    let secret = 42;
+                    console.log(secret);    // 42
+                }
+
+                test();
+                console.log(secret);        // ReferenceError: secret is not defined
+            </vf-code>
+            <vf-text>
+                This is good news: two functions can use the same variable name without
+                breaking each other.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Arrow functions</vf-title>
+        <vf-content>
+            <vf-text>
+                A shorter way to write a function. You will see it a lot in other people's
+                code:
+            </vf-text>
+            <vf-code language="javascript">
+                // Normal
+                function double(n) {
+                    return n * 2;
+                }
+
+                // Arrow
+                const double2 = (n) => {
+                    return n * 2;
+                };
+
+                // Arrow, very short version (one line, returns automatically)
+                const double3 = (n) => n * 2;
+            </vf-code>
+            <vf-text>
+                All three do exactly the same. At this level, use the normal one. Just
+                learn to *read* the arrow version — it turns up inside `addEventListener`
+                all the time.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Cutting a problem into pieces</vf-title>
+        <vf-content>
+            <vf-text>
+                A good function does *one thing* and its name says which one.
+            </vf-text>
+            <vf-code language="javascript">
+                function calculateVat(price) {
+                    return price * 0.21;
+                }
+
+                function calculateTotal(price) {
+                    return price + calculateVat(price);
+                }
+
+                function showInvoice(product, price) {
+                    output.innerHTML = `
+                        Product: ${product}&lt;br>
+                        Price without VAT: ${price} euros&lt;br>
+                        VAT: ${calculateVat(price)} euros&lt;br>
+                        &lt;strong>TOTAL: ${calculateTotal(price)} euros&lt;/strong>
+                    `;
+                }
+
+                showInvoice("Keyboard", 30);
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 7.1.* Write a function `square(n)` that returns `n * n`. Add an
+                input and a button so the user can test it with any number.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.2.* Write a function `isEven(n)` that returns `true` or
+                `false`. Show the answer in the page as "Even" in green or "Odd" in orange.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.3.* Write a function `biggest(a, b, c)` that returns the biggest
+                of three numbers. Three inputs, one button.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.4. Calculator.* Build the calculator below. One function per
+                operation, all of them returning a value, plus one function that reads the
+                inputs and shows the result. No repeated code.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/07-functions/ex4.html)
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/07-functions/ex4.png" alt="Calculator with one function per operation"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 7.5.* Write `celsiusToFahrenheit(c)` and `fahrenheitToCelsius(f)`.
+                One page with two converters, side by side. Check that one undoes the
+                other.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.6.* Write a function `finalPrice(price, discount)` that returns
+                the price with the discount applied. If no discount is given, it should be
+                0. (Look up "default parameter".)
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.7.* Write a function `countVowels(text)` that returns how many
+                vowels a text has. The user types a sentence in an input and the page shows
+                the count as they click the button.
+            </vf-callout>
+
+            <vf-details summary="Show the solution (7.3, 7.6 and 7.7)">
+                <vf-code language="javascript">
+                    // 7.3
+                    function biggest(a, b, c) {
+                        let max = a;
+                        if (b > max) {
+                            max = b;
+                        }
+                        if (c > max) {
+                            max = c;
+                        }
+                        return max;
+                    }
+
+                    // 7.6
+                    function finalPrice(price, discount = 0) {
+                        return price - (price * discount / 100);
+                    }
+                    // finalPrice(100, 20) -> 80      finalPrice(100) -> 100
+
+                    // 7.7
+                    function countVowels(text) {
+                        const vowels = "aeiou";
+                        let count = 0;
+                        for (const letter of text.toLowerCase()) {
+                            if (vowels.includes(letter)) {
+                                count++;
+                            }
+                        }
+                        return count;
+                    }
+                </vf-code>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">Test 1</vf-title>
+        <vf-content>
+            <vf-text>
+                Once you finish this lesson, you will have a written test (1 hour) about:
+                saying what a piece of code shows, declaring variables and types, writing a
+                compound condition, finding an element and changing its text and style,
+                fixing 5 errors, writing a loop with an accumulator, and tracing a table of
+                values of a loop step by step.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Mini-project 1: My toolbox page</vf-title>
+        <vf-content>
+            <vf-text>
+                One page with *at least eight small tools*. Each tool is one input (or
+                two), one button, and one place where the answer appears. Behind each
+                button there is *one function that returns a value*.
+            </vf-text>
+            <vf-text>
+                Ideas: convert units, calculate a mark average, check if a word is a
+                palindrome, count the words in a sentence, calculate a price with VAT and
+                discount, give a random number between two values, say if a year is a leap
+                year, draw a row of N stars, calculate how many days until a date.
+            </vf-text>
+            <vf-text>
+                Rules:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>every calculation must be a function that uses `return` (not one that writes in the page);</vf-text></li>
+                <li><vf-text>one separate function reads the inputs and shows the answer;</vf-text></li>
+                <li><vf-text>every function needs a comment above it saying what it does and what it returns;</vf-text></li>
+                <li><vf-text>clear names in camelCase, 4-space indentation;</vf-text></li>
+                <li><vf-text>*no errors in the console* when you use the page normally.</vf-text></li>
+            </vf-list>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/06-loops.html">
+                    &larr; Previous: Loops
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/08-arrays.html">
+                    Next: Arrays &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

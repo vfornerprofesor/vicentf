@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growing border</title>
+    <style>
+        p {
+            border: 1px solid coral;
+            text-align: center;
+            border-radius: 10px;
+            width: fit-content;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="p">CLICK HERE!</p>
+
+    <script>
+        let size = 1;
+        const paragraph = document.querySelector("#p");
+
+        paragraph.addEventListener("click", function () {
+            // 1. Make a variable with the new size: the size plus 1
+
+            // 2. Change the border of the paragraph using the new size
+
+            // 3. Store the new size back in the variable size
+
+        });
+    </script>
+</body>
+
+</html>

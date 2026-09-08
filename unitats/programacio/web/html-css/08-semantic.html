@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic HTML</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Semantic HTML
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What "semantic" means</vf-title>
+        <vf-content>
+            <vf-text>
+                A *semantic* tag is a tag whose name says what the content ~is~, not how it looks.
+            </vf-text>
+            <vf-text>
+                <code>&lt;h1&gt;</code> is semantic: it means "main title". <code>&lt;div&gt;</code> is not: it means "a box, for
+                whatever".
+            </vf-text>
+            <vf-text>Why do we care? Because three groups of readers use that information:</vf-text>
+            <vf-list ordered>
+                <li><vf-text>*People with a screen reader* can jump straight to the navigation or to the main content.</vf-text></li>
+                <li><vf-text>*Google* understands your page better and shows it better in the search results.</vf-text></li>
+                <li><vf-text>*You*, in three months, when you open your code again and want to find something.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">The main areas of a page</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;body&gt;
+                            &lt;header&gt;
+                                &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+                                &lt;nav&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a href="about.html"&gt;About me&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/nav&gt;
+                            &lt;/header&gt;
+
+                            &lt;main&gt;
+                                &lt;section&gt;
+                                    &lt;h2&gt;My projects&lt;/h2&gt;
+                                    &lt;article&gt;
+                                        &lt;h3&gt;A weather station&lt;/h3&gt;
+                                        &lt;p&gt;I built it with an Arduino and two sensors.&lt;/p&gt;
+                                    &lt;/article&gt;
+                                    &lt;article&gt;
+                                        &lt;h3&gt;My first website&lt;/h3&gt;
+                                        &lt;p&gt;This one!&lt;/p&gt;
+                                    &lt;/article&gt;
+                                &lt;/section&gt;
+
+                                &lt;aside&gt;
+                                    &lt;h2&gt;Links I like&lt;/h2&gt;
+                                    &lt;p&gt;Places where I learn things.&lt;/p&gt;
+                                &lt;/aside&gt;
+                            &lt;/main&gt;
+
+                            &lt;footer&gt;
+                                &lt;p&gt;&amp;copy; 2027 Marc Ferrer&lt;/p&gt;
+                            &lt;/footer&gt;
+                        &lt;/body&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;body&gt;
+                            &lt;header&gt;
+                                &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+                                &lt;nav&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a href="about.html"&gt;About me&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/nav&gt;
+                            &lt;/header&gt;
+
+                            &lt;main&gt;
+                                &lt;section&gt;
+                                    &lt;h2&gt;My projects&lt;/h2&gt;
+                                    &lt;article&gt;
+                                        &lt;h3&gt;A weather station&lt;/h3&gt;
+                                        &lt;p&gt;I built it with an Arduino and two sensors.&lt;/p&gt;
+                                    &lt;/article&gt;
+                                    &lt;article&gt;
+                                        &lt;h3&gt;My first website&lt;/h3&gt;
+                                        &lt;p&gt;This one!&lt;/p&gt;
+                                    &lt;/article&gt;
+                                &lt;/section&gt;
+
+                                &lt;aside&gt;
+                                    &lt;h2&gt;Links I like&lt;/h2&gt;
+                                    &lt;p&gt;Places where I learn things.&lt;/p&gt;
+                                &lt;/aside&gt;
+                            &lt;/main&gt;
+
+                            &lt;footer&gt;
+                                &lt;p&gt;&amp;copy; 2027 Marc Ferrer&lt;/p&gt;
+                            &lt;/footer&gt;
+                        &lt;/body&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <table class="table">
+                <thead>
+                    <tr><th>Tag</th><th>Meaning</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>&lt;header&gt;</code></td><td>the top of the page (or of a section): title, logo, menu</td></tr>
+                    <tr><td><code>&lt;nav&gt;</code></td><td>a group of navigation links</td></tr>
+                    <tr><td><code>&lt;main&gt;</code></td><td>the main content. Only one per page</td></tr>
+                    <tr><td><code>&lt;section&gt;</code></td><td>a part of the content with its own heading</td></tr>
+                    <tr><td><code>&lt;article&gt;</code></td><td>a piece that makes sense on its own: a post, a product, a news item</td></tr>
+                    <tr><td><code>&lt;aside&gt;</code></td><td>secondary content: a sidebar, related links</td></tr>
+                    <tr><td><code>&lt;footer&gt;</code></td><td>the bottom: copyright, contact, small print</td></tr>
+                </tbody>
+            </table>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/08-semantic-layout.png — esquema de la maquetació d'una pàgina amb caixes de colors etiquetades header, nav, main, section, article, aside, footer. Molt visual, tipus wireframe.] -->
+        </vf-content>
+
+        <vf-title level="2">div and span</vf-title>
+        <vf-content>
+            <vf-text>Sometimes there is no semantic tag for what you need. Then:</vf-text>
+            <vf-list>
+                <li><vf-text><code>&lt;div&gt;</code> is a generic *block* box (it takes a full line).</vf-text></li>
+                <li><vf-text><code>&lt;span&gt;</code> is a generic *inline* box (it stays inside a line of text).</vf-text></li>
+            </vf-list>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;div class="card"&gt;
+                            &lt;h3&gt;Ryzen 5 5600&lt;/h3&gt;
+                            &lt;p&gt;Price: &lt;span class="price"&gt;130 &amp;euro;&lt;/span&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;div class="card"&gt;
+                            &lt;h3&gt;Ryzen 5 5600&lt;/h3&gt;
+                            &lt;p&gt;Price: &lt;span class="price"&gt;130 &amp;euro;&lt;/span&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                Use them only when nothing else fits. A page made only of <code>div</code> elements is called ~div
+                soup~, and it is a bad sign.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Accessibility: why it matters</vf-title>
+        <vf-content>
+            <vf-text>
+                Some people cannot see the screen, cannot use a mouse, or cannot tell red from green. If your
+                page is built well, they can still use it. Small habits that cost you nothing:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>real <code>alt</code> texts;</vf-text></li>
+                <li><vf-text><code>&lt;label&gt;</code> connected to every input;</vf-text></li>
+                <li><vf-text>headings in order, without jumps;</vf-text></li>
+                <li><vf-text>link texts that make sense on their own;</vf-text></li>
+                <li><vf-text>the language declared in <code>&lt;html lang="en"&gt;</code>.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Check your page with the validator</vf-title>
+        <vf-content>
+            <vf-text>
+                Go to [validator.w3.org](https://validator.w3.org/), choose ~Validate by File Upload~,
+                upload your <code>.html</code> file and press Check.
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*Errors* (red) must be fixed. They are real mistakes.</vf-text></li>
+                <li><vf-text>*Warnings* (yellow) are advice. Read them, but the page still works.</vf-text></li>
+            </vf-list>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/08-validator.png — captura del resultat del validador W3C sobre una pàgina amb 2 errors, mostrant el missatge i la línia.] -->
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 8.1.* Take your mini-project 1 page and rewrite it with semantic tags: <code>header</code>,
+                <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code>.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.2.* Validate it. Fix every error until you get the green message.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.3.* Open a real website (a newspaper, a shop) with DevTools and find its
+                <code>header</code>, <code>nav</code>, <code>main</code> and <code>footer</code>. Write down which ones you found and which ones are
+                missing.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Test 1</vf-title>
+        <vf-content>
+            <vf-text>
+                At the end of this lesson there is a 1-hour test: the skeleton of an HTML page from memory,
+                fixing 8 errors in a given code, writing a nested list, writing a table with <code>colspan</code>,
+                writing a 4-field form with <code>label</code> and <code>required</code>, and choosing the right semantic tag in 6
+                cases.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 8.4.* Here is a complete page. Rewrite it using semantic tags: <code>header</code>, <code>nav</code>,
+                <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>. The result must look the same.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/08-semantic/ex1.png" alt="A complete non-semantic page about the SMX modules"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/08-semantic/ex1.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/07-forms.html">
+                    &larr; Previous: Forms
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/09-css-basics.html">
+                    Next: CSS basics &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

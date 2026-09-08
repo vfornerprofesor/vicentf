@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text: headings and paragraphs</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Text: headings and paragraphs
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Headings</vf-title>
+        <vf-content>
+            <vf-text>
+                There are six levels of heading, from <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>. <code>&lt;h1&gt;</code> is the most
+                important, <code>&lt;h6&gt;</code> the least.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;h1&gt;My website&lt;/h1&gt;
+                        &lt;h2&gt;About me&lt;/h2&gt;
+                        &lt;h3&gt;My studies&lt;/h3&gt;
+                        &lt;h3&gt;My hobbies&lt;/h3&gt;
+                        &lt;h2&gt;Contact&lt;/h2&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;h1&gt;My website&lt;/h1&gt;
+                        &lt;h2&gt;About me&lt;/h2&gt;
+                        &lt;h3&gt;My studies&lt;/h3&gt;
+                        &lt;h3&gt;My hobbies&lt;/h3&gt;
+                        &lt;h2&gt;Contact&lt;/h2&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                Use headings for their *meaning*, not for their size. Do not choose <code>&lt;h4&gt;</code> because "it
+                looks the right size" — choose it because it is a sub-sub-section. If you want smaller
+                text, that is CSS, and we will do it later.
+            </vf-text>
+            <vf-text>
+                Rule: *one <code>&lt;h1&gt;</code> per page*, and do not jump levels (no <code>&lt;h1&gt;</code> straight to
+                <code>&lt;h3&gt;</code>).
+            </vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/03-headings.png — captura del navegador amb els sis nivells h1..h6 un davall de l'altre, perquè es veja la diferència de mida.] -->
+        </vf-content>
+
+        <vf-title level="2">Paragraphs</vf-title>
+        <vf-content>
+            <vf-text>
+                Text goes inside <code>&lt;p&gt;</code> (paragraph). The browser adds space above and below.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;I was born in Valencia in 2010. I study computer science.&lt;/p&gt;
+                        &lt;p&gt;In my free time I play basketball and I repair old computers.&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;I was born in Valencia in 2010. I study computer science.&lt;/p&gt;
+                        &lt;p&gt;In my free time I play basketball and I repair old computers.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                The browser *ignores extra spaces and line breaks* in your code. These two lines look
+                exactly the same in the browser:
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;Hello        world&lt;/p&gt;
+                        &lt;p&gt;Hello world&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;Hello        world&lt;/p&gt;
+                        &lt;p&gt;Hello world&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Line breaks and horizontal rules</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;
+                            Carrer Major, 12&lt;br&gt;
+                            46001 Valencia&lt;br&gt;
+                            Spain
+                        &lt;/p&gt;
+
+                        &lt;hr&gt;
+
+                        &lt;p&gt;A new part of the page starts here.&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;
+                            Carrer Major, 12&lt;br&gt;
+                            46001 Valencia&lt;br&gt;
+                            Spain
+                        &lt;/p&gt;
+
+                        &lt;hr&gt;
+
+                        &lt;p&gt;A new part of the page starts here.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>&lt;br&gt;</code> is a line break inside the same paragraph. Use it for addresses or poems, not
+                to separate paragraphs — for that, use another <code>&lt;p&gt;</code>.
+            </vf-text>
+            <vf-text>
+                <code>&lt;hr&gt;</code> draws a horizontal line to separate parts of the page.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Strong and emphasis</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;This exam is &lt;strong&gt;very important&lt;/strong&gt;.&lt;/p&gt;
+                        &lt;p&gt;I said &lt;em&gt;maybe&lt;/em&gt;, not yes.&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;This exam is &lt;strong&gt;very important&lt;/strong&gt;.&lt;/p&gt;
+                        &lt;p&gt;I said &lt;em&gt;maybe&lt;/em&gt;, not yes.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>&lt;strong&gt;</code> means "this is important" and the browser shows it *bold*. <code>&lt;em&gt;</code>
+                means "this word is emphasised" and the browser shows it ~italic~.
+            </vf-text>
+            <vf-text>
+                There are also <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code>, which only change how the text looks. Prefer
+                <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>: they have meaning, and a screen reader for a blind person
+                can read them with a different voice.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Special characters</vf-title>
+        <vf-content>
+            <vf-text>
+                Some characters are part of HTML itself, so you cannot write them directly. You write an
+                *entity* instead:
+            </vf-text>
+            <table class="table">
+                <thead>
+                    <tr><th>You want</th><th>You write</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>&lt;</td><td><code>&amp;lt;</code></td></tr>
+                    <tr><td>&gt;</td><td><code>&amp;gt;</code></td></tr>
+                    <tr><td>&amp;</td><td><code>&amp;amp;</code></td></tr>
+                    <tr><td>a space that never breaks</td><td><code>&amp;nbsp;</code></td></tr>
+                    <tr><td>&copy;</td><td><code>&amp;copy;</code></td></tr>
+                </tbody>
+            </table>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;To open a tag you write &amp;lt;p&amp;gt; and to close it &amp;lt;/p&amp;gt;.&lt;/p&gt;
+                        &lt;p&gt;&amp;copy; 2027 Marc Ferrer&lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;To open a tag you write &amp;lt;p&amp;gt; and to close it &amp;lt;/p&amp;gt;.&lt;/p&gt;
+                        &lt;p&gt;&amp;copy; 2027 Marc Ferrer&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 3.1.* Build a page about your favourite video game, with an <code>h1</code> (the name of the
+                game), three <code>h2</code> sections (Story, How to play, Why I like it) and two paragraphs under each
+                one.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 3.2.* Write your postal address in a single paragraph, using <code>&lt;br&gt;</code>.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 3.3.* Write a paragraph where the words "never" and "always" are bold, and the
+                word "maybe" is in italics. Use the tags with meaning.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 3.4.* Write a paragraph that shows this text in the browser, exactly: <code>The tag
+                &lt;h1&gt; &amp; the tag &lt;p&gt; are different.</code>
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 3.4)">
+                <vf-row>
+                    <vf-col classes="col-md-6">
+                        <vf-code language="html">
+                            &lt;p&gt;The tag &amp;lt;h1&amp;gt; &amp;amp; the tag &amp;lt;p&amp;gt; are different.&lt;/p&gt;
+                        </vf-code>
+                    </vf-col>
+                    <vf-col classes="col-md-6">
+                        <vf-preview>
+                            &lt;p&gt;The tag &amp;lt;h1&amp;gt; &amp;amp; the tag &amp;lt;p&amp;gt; are different.&lt;/p&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+            </vf-details>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/02-structure.html">
+                    &larr; Previous: The structure of an HTML page
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/04-lists-links.html">
+                    Next: Lists and links &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

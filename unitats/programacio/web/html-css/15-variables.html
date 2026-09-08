@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS variables and good practice</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            CSS variables and good practice
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Repeating yourself is a bug</vf-title>
+        <vf-content>
+            <vf-text>
+                Imagine your main colour <code>#6d5fb3</code> appears 30 times in your CSS. Your client says
+                "make it a bit darker". Now you have to find and change 30 lines, and you will miss two.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">CSS variables</vf-title>
+        <vf-content>
+            <vf-text>A *variable* is a name that holds a value. You write the value once, and you use the name everywhere.</vf-text>
+            <vf-code language="css">
+                :root {
+                    --main-color: #6d5fb3;
+                    --main-color-dark: #4f4488;
+                    --text-color: #2b2b2b;
+                    --light-grey: #f5f5f5;
+                    --radius: 12px;
+                    --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                }
+
+                .button {
+                    background-color: var(--main-color);
+                    border-radius: var(--radius);
+                    box-shadow: var(--shadow);
+                }
+
+                .button:hover {
+                    background-color: var(--main-color-dark);
+                }
+            </vf-code>
+            <vf-preview label="Result (try hovering the button)">
+                &lt;style&gt;
+                    :root {
+                        --main-color: #6d5fb3;
+                        --main-color-dark: #4f4488;
+                        --text-color: #2b2b2b;
+                        --light-grey: #f5f5f5;
+                        --radius: 12px;
+                        --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                    }
+
+                    body {
+                        padding: 20px;
+                        background: var(--light-grey);
+                    }
+
+                    .button {
+                        background-color: var(--main-color);
+                        border-radius: var(--radius);
+                        box-shadow: var(--shadow);
+                        color: white;
+                        border: 0;
+                        padding: 10px 20px;
+                        font-size: 1rem;
+                        cursor: pointer;
+                    }
+
+                    .button:hover {
+                        background-color: var(--main-color-dark);
+                    }
+                &lt;/style&gt;
+                &lt;button class="button"&gt;Click me&lt;/button&gt;
+            </vf-preview>
+            <vf-list>
+                <li><vf-text><code>:root</code> means "the whole document". Put your variables there, at the top of the file.</vf-text></li>
+                <li><vf-text>A variable name always starts with two dashes: <code>--main-color</code>.</vf-text></li>
+                <li><vf-text>To use it: <code>var(--main-color)</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Now, changing the whole site is changing *one line*.</vf-text>
+            <vf-callout type="recorda">
+                This is exactly how this website you are reading works. Open styles/general.css and you
+                will see the same :root block with the colours of the site.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">A small design system</vf-title>
+        <vf-content>
+            <vf-text>Define, at the start of your project:</vf-text>
+            <vf-list>
+                <li><vf-text>*3 to 5 colours*: one main, one dark version, one light background, one text colour, maybe one accent.</vf-text></li>
+                <li><vf-text>*2 fonts* maximum.</vf-text></li>
+                <li><vf-text>*One radius* and *one shadow*, used everywhere.</vf-text></li>
+                <li><vf-text>*A spacing scale*: <code>8px</code>, <code>16px</code>, <code>24px</code>, <code>32px</code>. Do not invent random numbers like <code>13px</code> or <code>27px</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                A page looks professional when the same few decisions are repeated, not when it has many
+                different ones.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Organising your CSS file</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                /* ============ 1. Variables ============ */
+                :root { ... }
+
+                /* ============ 2. Reset and base ============ */
+                * { box-sizing: border-box; }
+                body { ... }
+
+                /* ============ 3. Layout ============ */
+                .container { ... }
+                .site-header { ... }
+                .site-footer { ... }
+
+                /* ============ 4. Components ============ */
+                .button { ... }
+                .card { ... }
+
+                /* ============ 5. Media queries ============ */
+                @media (min-width: 768px) { ... }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Naming things</vf-title>
+        <vf-content>
+            <vf-text>
+                Class names in English, lowercase, with dashes: <code>main-menu</code>,
+                <code>product-card</code>, <code>price-tag</code>.
+            </vf-text>
+            <vf-text>
+                Name things by *what they are*, not by how they look. <code>.red-text</code> is a bad name:
+                the day you change it to blue, the name lies. <code>.error-message</code> is a good name.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Transitions</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .card {
+                    transition: all 0.3s ease;
+                }
+
+                .card:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+                }
+            </vf-code>
+            <vf-preview label="Result (try hovering the card)">
+                &lt;style&gt;
+                    .card {
+                        width: 220px;
+                        padding: 20px;
+                        margin: 20px;
+                        background: white;
+                        border-radius: 12px;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                        transition: all 0.3s ease;
+                    }
+
+                    .card:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+                    }
+                &lt;/style&gt;
+                &lt;div class="card"&gt;Hover over me!&lt;/div&gt;
+            </vf-preview>
+            <vf-text>
+                <code>transition</code> on the normal state, the changes in <code>:hover</code>. Keep it
+                short: <code>0.2s</code> to <code>0.4s</code>. Longer feels slow.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Checklist before you deliver</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>The page passes the W3C validator with no errors.</vf-text></li>
+                <li><vf-text>Every image has a real <code>alt</code>.</vf-text></li>
+                <li><vf-text>Every input has its <code>label</code>.</vf-text></li>
+                <li><vf-text>There are no <code>style=</code> attributes left in the HTML.</vf-text></li>
+                <li><vf-text>All the colours come from variables.</vf-text></li>
+                <li><vf-text>It works on a 375px wide screen with no horizontal scrolling.</vf-text></li>
+                <li><vf-text>All the links work (test every one).</vf-text></li>
+                <li><vf-text>File and folder names: lowercase, no spaces, no accents.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 15.1.* Take your CSS file and move every colour to a <code>:root</code> block of
+                variables. Then change your main colour and check that the whole page follows.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 15.2.* Add <code>--radius</code> and <code>--shadow</code> variables and use them
+                in at least three places.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 15.3.* Add the section comments to your CSS file and reorder your rules.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 15.4.* Go through the checklist and fix everything that fails.
+            </vf-callout>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/14-responsive.html">
+                    &larr; Previous: Responsive design
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/16-project.html">
+                    Next: Final project &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

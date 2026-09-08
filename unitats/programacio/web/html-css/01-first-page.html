@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your first web page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Your first web page
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What is a web page?</vf-title>
+        <vf-content>
+            <vf-text>
+                A web page is just a *file*. It is a text file with the extension <code>.html</code>.
+            </vf-text>
+            <vf-text>
+                Inside that file you write *HTML*. HTML is not a programming language: it is a ~markup~
+                language. That means you take your content (a title, a photo, a paragraph) and you put
+                *labels* around it to say what each part is.
+            </vf-text>
+            <vf-text>
+                The *browser* (Chrome, Firefox, Edge...) reads the file, understands the labels, and draws
+                the page on the screen.
+            </vf-text>
+            <vf-text>
+                When you visit <code>www.example.com</code>, your browser asks a computer called a *server* for those
+                files, and the server sends them back. When we are learning, the server is not needed: we
+                open our own file directly from our own computer.
+            </vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/01-browser-server.png — diagrama senzill: ordinador de l'usuari amb el navegador → fletxa "I want index.html" → servidor → fletxa "here are the files" → navegador dibuixant la pàgina. Text en anglés.] -->
+        </vf-content>
+
+        <vf-title level="2">What you need</vf-title>
+        <vf-content>
+            <vf-title level="3">A code editor</vf-title>
+            <vf-text>
+                A code editor is a program to write code. It colours the code so it is easier to read, and
+                it warns you about some errors. We will use *Visual Studio Code* (VS Code). It is free.
+            </vf-text>
+            <vf-title level="3">A browser</vf-title>
+            <vf-text>
+                You already have one. We will use Firefox or Chrome, because they have good developer tools.
+            </vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/01-vscode.png — captura de VS Code amb un fitxer index.html obert, mostrant el ressaltat de sintaxi i l'arbre de carpetes a l'esquerra.] -->
+            <vf-callout type="consell">
+                Install the *Live Server* extension in VS Code. Then you can right-click your file and
+                choose *Open with Live Server*. The page reloads by itself every time you save. You will
+                save a lot of time.
+            </vf-callout>
+            <vf-btn link="https://code.visualstudio.com/" newtab>Download VS Code</vf-btn>
+        </vf-content>
+
+        <vf-title level="2">Make your first page</vf-title>
+        <vf-content>
+            <vf-steps>
+                <vf-step title="Create a folder">
+                    <vf-text>
+                        On your desktop, create a folder called <code>my-site</code>. Everything of this project goes
+                        inside. Never use spaces or accents in file names: use <code>my-site</code>, not <code>My Site</code> or
+                        <code>mi página</code>.
+                    </vf-text>
+                </vf-step>
+                <vf-step title="Create the file">
+                    <vf-text>
+                        Open the folder in VS Code (<code>File > Open Folder</code>). Create a new file and call it
+                        <code>index.html</code>. The name <code>index.html</code> is special: it is the page a server shows when
+                        nobody asks for a file name. It is always the home page.
+                    </vf-text>
+                </vf-step>
+                <vf-step title="Write this code">
+                    <vf-row>
+                        <vf-col classes="col-md-6">
+                            <vf-code language="html">
+                                &lt;!DOCTYPE html&gt;
+                                &lt;html lang="en"&gt;
+
+                                &lt;head&gt;
+                                    &lt;meta charset="utf-8"&gt;
+                                    &lt;title&gt;My first page&lt;/title&gt;
+                                &lt;/head&gt;
+
+                                &lt;body&gt;
+                                    &lt;h1&gt;Hello!&lt;/h1&gt;
+                                    &lt;p&gt;This is my first web page.&lt;/p&gt;
+                                &lt;/body&gt;
+
+                                &lt;/html&gt;
+                            </vf-code>
+                        </vf-col>
+                        <vf-col classes="col-md-6">
+                            <vf-preview>
+                                &lt;!DOCTYPE html&gt;
+                                &lt;html lang="en"&gt;
+
+                                &lt;head&gt;
+                                    &lt;meta charset="utf-8"&gt;
+                                    &lt;title&gt;My first page&lt;/title&gt;
+                                &lt;/head&gt;
+
+                                &lt;body&gt;
+                                    &lt;h1&gt;Hello!&lt;/h1&gt;
+                                    &lt;p&gt;This is my first web page.&lt;/p&gt;
+                                &lt;/body&gt;
+
+                                &lt;/html&gt;
+                            </vf-preview>
+                        </vf-col>
+                    </vf-row>
+                </vf-step>
+                <vf-step title="Save and open it">
+                    <vf-text>
+                        Save with <code>Ctrl+S</code>. Then right-click the file and open it with your browser. You
+                        should see a big "Hello!" and one line of text.
+                    </vf-text>
+                </vf-step>
+            </vf-steps>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/01-first-result.png — captura del navegador mostrant "Hello!" en gran i el paràgraf a baix, amb la pestanya del navegador on es llig "My first page".] -->
+        </vf-content>
+
+        <vf-title level="2">Look inside the page: DevTools</vf-title>
+        <vf-content>
+            <vf-text>
+                Every browser has a hidden tool for developers. Press *F12* (or right-click on the page and
+                choose ~Inspect~).
+            </vf-text>
+            <vf-text>
+                A panel opens. In the *Elements* tab you can see the HTML of any page in the world. Try it
+                on your favourite website. You can even change the text there and see it change on the
+                screen — do not worry, you are only changing your copy, and it goes back to normal when you
+                reload.
+            </vf-text>
+            <vf-text>
+                We will use this tool in every class. It is the fastest way to understand why something
+                does not look right.
+            </vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/01-devtools.png — captura de DevTools obert (pestanya Elements) sobre la pàgina d'exemple, amb l'element h1 seleccionat i destacat en la pàgina.] -->
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 1.1.* Change the title of the page to your name. Change the text of the <code>h1</code> and
+                of the <code>p</code>. Save and reload.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 1.2.* Add two more paragraphs: one about the music you like, one about a film you
+                like.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 1.3.* Open your page with DevTools and find your <code>h1</code> in the Elements tab. Change
+                its text from DevTools. Then reload the page. What happened? Write the answer in a comment
+                inside your HTML file.
+            </vf-callout>
+            <vf-details summary="Show the solution">
+                <vf-row>
+                    <vf-col classes="col-md-6">
+                        <vf-code language="html">
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+
+                            &lt;head&gt;
+                                &lt;meta charset="utf-8"&gt;
+                                &lt;title&gt;Marc Ferrer&lt;/title&gt;
+                            &lt;/head&gt;
+
+                            &lt;body&gt;
+                                &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+                                &lt;p&gt;This is my first web page.&lt;/p&gt;
+                                &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+                                &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+                                &lt;!-- 1.3: the change is lost when I reload. DevTools only changes the
+                                     copy that is in the browser memory, not my file. --&gt;
+                            &lt;/body&gt;
+
+                            &lt;/html&gt;
+                        </vf-code>
+                    </vf-col>
+                    <vf-col classes="col-md-6">
+                        <vf-preview>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+
+                            &lt;head&gt;
+                                &lt;meta charset="utf-8"&gt;
+                                &lt;title&gt;Marc Ferrer&lt;/title&gt;
+                            &lt;/head&gt;
+
+                            &lt;body&gt;
+                                &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+                                &lt;p&gt;This is my first web page.&lt;/p&gt;
+                                &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+                                &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+                                &lt;!-- 1.3: the change is lost when I reload. DevTools only changes the
+                                     copy that is in the browser memory, not my file. --&gt;
+                            &lt;/body&gt;
+
+                            &lt;/html&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+            </vf-details>
+            <vf-btn link="https://www.w3schools.com/html/html_intro.asp" newtab>W3Schools: HTML intro</vf-btn>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-6">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-6">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/02-structure.html">
+                    Next: The structure of an HTML page &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

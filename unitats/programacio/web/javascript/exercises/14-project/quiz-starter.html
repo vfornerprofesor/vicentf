@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="quiz-starter.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Quiz</h1>
+
+        <!-- This bar is optional: you can fill it with JavaScript to show progress -->
+        <div id="progressBar">
+            <div id="progressFill"></div>
+        </div>
+
+        <div id="quizScreen">
+            <p id="score">Score: 0</p>
+            <h2 id="question">Question text goes here</h2>
+            <div id="options">
+                <!-- Create the option buttons here from JavaScript -->
+            </div>
+            <p id="feedback"></p>
+            <button id="nextButton" style="display: none;">Next question</button>
+        </div>
+
+        <div id="finalScreen" style="display: none;">
+            <h2>Finished!</h2>
+            <p id="finalScore"></p>
+            <p id="bestScore"></p>
+            <button id="playAgainButton">Play again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Arrays
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What is an array</vf-title>
+        <vf-content>
+            <vf-text>
+                An array is a *list of values* with one name. Each value has a position,
+                called the *index*.
+            </vf-text>
+            <vf-code language="javascript">
+                const fruits = ["apple", "banana", "orange"];
+                const marks = [7, 4, 9, 10];
+                const mixed = ["Marta", 16, true];      // possible, but avoid it
+                const empty = [];
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Reading and changing</vf-title>
+        <vf-content>
+            <vf-text>
+                *Indexes start at 0.* The first element is `[0]`, not `[1]`. This surprises
+                everybody at first, and then it becomes normal.
+            </vf-text>
+            <vf-code language="javascript">
+                const fruits = ["apple", "banana", "orange"];
+
+                output.textContent = fruits[0];     // "apple"
+                output.textContent = fruits[2];     // "orange"
+                output.textContent = fruits[5];     // undefined (there is nothing there)
+
+                fruits[1] = "pear";                 // ["apple", "pear", "orange"]
+            </vf-code>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/08-arrays/indexes.png" alt="Three boxes with apple, banana, orange and their indexes 0, 1, 2"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/08-arrays/indexes.png — dibuix de tres caselles en fila amb "apple", "banana", "orange" dins i els índexs 0, 1, 2 escrits davall de cada casella.] -->
+            <vf-callout type="recorda">
+                We wrote const fruits, and yet we changed an element. That is allowed: const
+                protects the *box*, not what is inside. You cannot do fruits = [...] again,
+                but you can change, add and remove elements.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">length</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const fruits = ["apple", "banana", "orange"];
+
+                output.textContent = fruits.length;                 // 3
+                output.textContent = fruits[fruits.length - 1];     // "orange", the last one
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Adding and removing</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const list = ["a", "b"];
+
+                list.push("c");         // add at the end        -> ["a", "b", "c"]
+                list.pop();             // remove the last one   -> ["a", "b"]
+                list.unshift("z");      // add at the start      -> ["z", "a", "b"]
+                list.shift();           // remove the first one  -> ["a", "b"]
+
+                list.splice(1, 1);      // remove 1 element starting at index 1 -> ["a"]
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Searching</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const names = ["Ana", "Luis", "Marta"];
+
+                names.includes("Luis");     // true
+                names.indexOf("Marta");     // 2
+                names.indexOf("Pere");      // -1  (it is not there)
+            </vf-code>
+            <vf-text>
+                `indexOf` gives `-1` when it does not find it. Remember that number:
+                `if (names.indexOf(x) === -1)` means "it is not in the list".
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Going through an array</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const marks = [7, 4, 9, 10];
+
+                // With for...of: simple, when you do not need the index
+                for (const mark of marks) {
+                    // ...
+                }
+
+                // With for: when you need the index
+                for (let i = 0; i &lt; marks.length; i++) {
+                    // `Student ${i + 1}: ${marks[i]}`
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Drawing an array in the page</vf-title>
+        <vf-content>
+            <vf-text>
+                This is the pattern you will repeat for the rest of the unit and in your
+                project. *One function that draws the whole list from the array*, called
+                every time the data changes:
+            </vf-text>
+            <vf-code language="javascript">
+                const names = ["Ana", "Luis", "Marta"];
+                const output = document.querySelector("#output");
+
+                function draw() {
+                    let html = "&lt;ul>";
+                    for (const name of names) {
+                        html += `&lt;li>${name}&lt;/li>`;
+                    }
+                    html += "&lt;/ul>";
+                    output.innerHTML = html;
+                }
+
+                draw();
+            </vf-code>
+            <vf-code language="javascript">
+                // Add one and redraw
+                document.querySelector("#addButton").addEventListener("click", function () {
+                    const input = document.querySelector("#nameInput");
+                    const value = input.value.trim();
+
+                    if (value === "") {
+                        return;             // nothing typed: do nothing
+                    }
+
+                    names.push(value);
+                    input.value = "";
+                    draw();                 // the array changed, so we draw again
+                });
+            </vf-code>
+            <vf-callout type="consell">
+                Never change the page and the array separately. Change the ARRAY, then call
+                draw(). The array is the truth; the page is only a picture of it. If you
+                follow this rule your project will work. If you do not, you will spend hours
+                wondering why the screen and the data disagree.
+            </vf-callout>
+            <vf-text>
+                `.trim()` removes the spaces at the start and at the end. Without it, a user
+                could add an item made only of spaces.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Useful methods</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const words = ["one", "two", "three"];
+
+                words.join(", ");       // "one, two, three"
+                words.slice(0, 2);      // ["one", "two"]  (a copy, does not change the original)
+                words.reverse();        // ["three", "two", "one"]
+
+                const numbers = [10, 3, 25, 7];
+                numbers.sort((a, b) => a - b);      // [3, 7, 10, 25] from small to big
+            </vf-code>
+            <vf-callout type="atencio">
+                Plain sort() sorts as *text*: [10, 3, 25] becomes [10, 25, 3], because "1"
+                comes before "2". For numbers you always need sort((a, b) => a - b).
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 8.1.* Create an array with the names of five classmates and draw
+                it as a list in the page. Show the first, the last and the total number
+                under it.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.2. Shopping list.* An input, an "Add" button and a list. Every
+                click adds the text to the array and redraws the list. The empty field adds
+                nothing.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/08-arrays/ex2.png" alt="Shopping list built from an array"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 8.3.* Add a "Remove last" button and a "Clear all" button to the
+                previous exercise.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/08-arrays/ex3.png" alt="Shopping list with remove last and clear all buttons"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 8.4.* With an array of 8 marks: draw them as a list, and under it
+                show the average, how many passed and how many failed. Failed marks appear
+                in red.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/javascript/08-arrays/ex4.png" alt="List of 8 marks with average, passed and failed"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 8.5.* Write a function `contains(list, value)` that returns
+                `true` or `false`, without using `includes`. Use it to tell the user
+                whether the name they typed is in the list.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.6.* Write a function `noDuplicates(list)` that returns a new
+                array with no repeated values. Show the original list and the clean one
+                side by side.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.7.* A search box: as the user types, show only the names of the
+                array that contain what they typed. (`.toLowerCase()` and `.includes()`)
+            </vf-callout>
+
+            <vf-details summary="Show the solution (8.5 and 8.6)">
+                <vf-code language="javascript">
+                    // 8.5
+                    function contains(list, value) {
+                        for (const item of list) {
+                            if (item === value) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+
+                    // 8.6
+                    function noDuplicates(list) {
+                        const result = [];
+                        for (const item of list) {
+                            if (!result.includes(item)) {
+                                result.push(item);
+                            }
+                        }
+                        return result;
+                    }
+                    // noDuplicates([1, 2, 2, 3, 1, 4]) -> [1, 2, 3, 4]
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/07-functions.html">
+                    &larr; Previous: Functions
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/09-objects.html">
+                    Next: Objects &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

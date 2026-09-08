@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Final project
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Choose one</vf-title>
+        <vf-content>
+            <vf-text>
+                You build *one* small application. Choose one of these two, or propose your
+                own idea to your teacher before you start.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Option A: Quiz app</vf-title>
+        <vf-content>
+            <vf-text>
+                A quiz of 8 to 10 questions about a topic you like: music, football, films,
+                computers, history.
+            </vf-text>
+            <vf-text>
+                *It must have:*
+            </vf-text>
+            <vf-list>
+                <li><vf-text>the questions stored in an *array of objects*, each one with the question, an array of options and the correct answer;</vf-text></li>
+                <li><vf-text>one question shown at a time, with its options as buttons *created from JavaScript*;</vf-text></li>
+                <li><vf-text>immediate feedback: green if correct, red if wrong, and the correct answer shown;</vf-text></li>
+                <li><vf-text>a score that goes up;</vf-text></li>
+                <li><vf-text>a "Next question" button;</vf-text></li>
+                <li><vf-text>a final screen with the score and a message that depends on it;</vf-text></li>
+                <li><vf-text>a "Play again" button that restarts everything;</vf-text></li>
+                <li><vf-text>the *best score* saved in `localStorage`.</vf-text></li>
+            </vf-list>
+            <vf-code language="javascript">
+                // The data structure to start from
+                const questions = [
+                    {
+                        question: "Which language gives structure to a web page?",
+                        options: ["HTML", "CSS", "JavaScript", "Python"],
+                        correct: 0
+                    },
+                    {
+                        question: "What does CPU mean?",
+                        options: ["Central Power Unit", "Central Processing Unit", "Computer Personal Unit", "Control Process Unit"],
+                        correct: 1
+                    }
+                ];
+            </vf-code>
+            <vf-text>
+                Download the starter files: [quiz-starter.html|download](unitats/programacio/web/javascript/exercises/14-project/quiz-starter.html)
+                and [quiz-starter.css|download](unitats/programacio/web/javascript/exercises/14-project/quiz-starter.css)
+            </vf-text>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/14-project/quiz.png" alt="Finished example of the quiz: question, four option buttons, score and progress bar"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/14-project/quiz.png — captura d'un exemple acabat del quiz: pregunta, quatre botons d'opció, marcador i barra de progrés.] -->
+        </vf-content>
+
+        <vf-title level="2">Option B: To-do list</vf-title>
+        <vf-content>
+            <vf-text>
+                A task manager you would actually use. It is your mini-project 2, finished
+                properly.
+            </vf-text>
+            <vf-text>
+                *It must have:*
+            </vf-text>
+            <vf-list>
+                <li><vf-text>a field and a button to add a task (and Enter also works);</vf-text></li>
+                <li><vf-text>the tasks stored in an *array of objects*, each one with the text, whether it is done, and a priority;</vf-text></li>
+                <li><vf-text>a list on the screen, drawn from the array with `createElement`;</vf-text></li>
+                <li><vf-text>a way to mark a task as done (it appears crossed out);</vf-text></li>
+                <li><vf-text>a button to delete a task;</vf-text></li>
+                <li><vf-text>a counter: "3 of 7 done";</vf-text></li>
+                <li><vf-text>filter buttons: All / Pending / Done;</vf-text></li>
+                <li><vf-text>everything saved in `localStorage`, so the list is there when you come back;</vf-text></li>
+                <li><vf-text>the empty field must not add anything.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                Download the starter files: [todo-starter.html|download](unitats/programacio/web/javascript/exercises/14-project/todo-starter.html)
+                and [todo-starter.css|download](unitats/programacio/web/javascript/exercises/14-project/todo-starter.css)
+            </vf-text>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/14-project/todo.png" alt="Finished example of the to-do list: text field, add button, three tasks (one crossed out), counter and filters"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/14-project/todo.png — captura d'un exemple acabat de la llista de tasques: camp de text, botó afegir, tres tasques (una ratllada), comptador i filtres.] -->
+        </vf-content>
+
+        <vf-title level="2">The HTML and CSS you are given</vf-title>
+        <vf-content>
+            <vf-text>
+                You get a working `index.html` and a `style.css` for each option. You may
+                change them if you want, but you will *not* be marked on the design. *All
+                the marks come from your JavaScript.*
+            </vf-text>
+            <vf-callout type="consell">
+                Before writing any code, draw your app on paper. Which boxes are on the
+                screen? Which data do you need? Which functions? Fifteen minutes on paper
+                save you two hours of confusion.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Requirements for the code</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>At least *6 functions*, each one doing one job, with clear names.</vf-text></li>
+                <li><vf-text>At least one *array of objects*.</vf-text></li>
+                <li><vf-text>At least one *loop* that builds elements in the page with `createElement`.</vf-text></li>
+                <li><vf-text>At least two *`addEventListener`*.</vf-text></li>
+                <li><vf-text>*`localStorage`* working.</vf-text></li>
+                <li><vf-text>The rule of the unit: the array is the truth, `draw()` paints it, `save()` stores it.</vf-text></li>
+                <li><vf-text>`textContent` for anything the user typed. No `innerHTML` with user data.</vf-text></li>
+                <li><vf-text>Indentation of 4 spaces, camelCase names, and a comment above every function.</vf-text></li>
+                <li><vf-text>*No errors in the console.* Open F12 before you deliver.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Milestones</vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Your choice, the paper drawing, and the data structure written in JavaScript.</vf-text></li>
+                <li><vf-text>The data works: functions to add, delete, score, calculate, tested one by one.</vf-text></li>
+                <li><vf-text>It works on the screen: `draw()`, events, `localStorage`.</vf-text></li>
+                <li><vf-text>Tested, no console errors, README, zip, presentation.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Delivery</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>A zip called `surname-name-project.zip`.</vf-text></li>
+                <li><vf-text>A `README.txt` with: your name, which option you chose, how to use the app, what was hardest, and one thing you would add if you had more time.</vf-text></li>
+                <li><vf-text>A 3-minute presentation: show it working, and explain *one function* of your code line by line.</vf-text></li>
+            </vf-list>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/13-localstorage.html">
+                    &larr; Previous: Saving data with localStorage
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/15-next.html">
+                    Next: What comes next &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

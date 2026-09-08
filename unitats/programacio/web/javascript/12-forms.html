@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms and validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Forms and validation
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">The form we will use</vf-title>
+        <vf-content>
+            <vf-text>
+                Again, the HTML is given. You only work in `script.js`.
+            </vf-text>
+            <vf-code language="html">
+                &lt;form id="signupForm"&gt;
+                    &lt;p&gt;
+                        &lt;label for="name"&gt;Name&lt;/label&gt;
+                        &lt;input type="text" id="name"&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;label for="email"&gt;Email&lt;/label&gt;
+                        &lt;input type="text" id="email"&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;label for="age"&gt;Age&lt;/label&gt;
+                        &lt;input type="text" id="age"&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;label for="password"&gt;Password&lt;/label&gt;
+                        &lt;input type="password" id="password"&gt;
+                    &lt;/p&gt;
+                    &lt;button type="submit"&gt;Sign up&lt;/button&gt;
+                &lt;/form&gt;
+
+                &lt;div id="messages"&gt;&lt;/div&gt;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">The submit event</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const form = document.querySelector("#signupForm");
+
+                form.addEventListener("submit", function (event) {
+                    // ...
+                });
+            </vf-code>
+            <vf-text>
+                The `submit` event fires on the *form*, not on the button. It fires both
+                when you click the button and when the user presses Enter in a field — you
+                get that for free.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">preventDefault</vf-title>
+        <vf-content>
+            <vf-text>
+                By default, sending a form *reloads the page* and everything your
+                JavaScript did is lost. We do not want that:
+            </vf-text>
+            <vf-code language="javascript">
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();     // stop the normal behaviour
+                    // ... now our code runs quietly
+                });
+            </vf-code>
+            <vf-text>
+                `event.preventDefault()` is the first line of almost every `submit`
+                handler you will ever write. If your page blinks and empties when you press
+                the button, you forgot it.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Reading the fields</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const name = document.querySelector("#name").value.trim();
+                const email = document.querySelector("#email").value.trim();
+                const age = Number(document.querySelector("#age").value);
+            </vf-code>
+            <vf-text>
+                Remember: `.value` always gives *text*. Convert it with `Number()` when you
+                need a number.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Validating</vf-title>
+        <vf-content>
+            <vf-text>
+                To validate is to check that the data makes sense *before* using it.
+            </vf-text>
+            <vf-code language="javascript">
+                if (name === "") {
+                    // error: empty name
+                }
+
+                if (name.length &lt; 3) {
+                    // error: too short
+                }
+
+                if (!email.includes("@") || !email.includes(".")) {
+                    // error: it does not look like an email
+                }
+
+                if (isNaN(age) || age &lt; 16 || age > 99) {
+                    // error: not a valid age
+                }
+
+                if (password.length &lt; 8) {
+                    // error: too short
+                }
+            </vf-code>
+            <vf-text>
+                `isNaN(x)` returns `true` when `x` is not a number. Useful after a
+                `Number()` conversion.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Showing good error messages</vf-title>
+        <vf-content>
+            <vf-text>
+                A message must say *what* is wrong and *how to fix it*.
+            </vf-text>
+            <vf-list>
+                <li><vf-text>Bad: "Error". Good: "Please write your name."</vf-text></li>
+                <li><vf-text>Bad: "Invalid data". Good: "The age must be a number between 16 and 99."</vf-text></li>
+                <li><vf-text>Bad: "Wrong email". Good: "The email must contain an @, for example marta@mail.com."</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Marking the wrong fields</vf-title>
+        <vf-content>
+            <vf-text>
+                A list of errors at the bottom is good. Marking the field itself is
+                better:
+            </vf-text>
+            <vf-code language="css">
+                .wrong {
+                    border: 2px solid red;
+                    background-color: #ffecec;
+                }
+            </vf-code>
+            <vf-code language="javascript">
+                function clearMarks() {
+                    for (const input of document.querySelectorAll("input")) {
+                        input.classList.remove("wrong");
+                    }
+                }
+
+                function mark(id) {
+                    document.querySelector(id).classList.add("wrong");
+                }
+            </vf-code>
+            <vf-text>
+                Call `clearMarks()` at the start of every check, so a field that has been
+                fixed stops being red.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">A complete example</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const form = document.querySelector("#signupForm");
+                const messages = document.querySelector("#messages");
+
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    clearMarks();
+
+                    const name = document.querySelector("#name").value.trim();
+                    const email = document.querySelector("#email").value.trim();
+                    const age = Number(document.querySelector("#age").value);
+                    const password = document.querySelector("#password").value;
+
+                    const errors = [];
+
+                    if (name.length &lt; 3) {
+                        errors.push("The name must have at least 3 letters.");
+                        mark("#name");
+                    }
+
+                    if (!email.includes("@") || !email.includes(".")) {
+                        errors.push("The email must contain an @ and a dot.");
+                        mark("#email");
+                    }
+
+                    if (isNaN(age) || age &lt; 16 || age > 99) {
+                        errors.push("The age must be a number between 16 and 99.");
+                        mark("#age");
+                    }
+
+                    if (password.length &lt; 8) {
+                        errors.push("The password must have at least 8 characters.");
+                        mark("#password");
+                    }
+
+                    messages.innerHTML = "";
+
+                    if (errors.length > 0) {
+                        const list = document.createElement("ul");
+
+                        for (const error of errors) {
+                            const li = document.createElement("li");
+                            li.textContent = error;
+                            list.appendChild(li);
+                        }
+
+                        messages.appendChild(list);
+                        messages.className = "error";
+                    } else {
+                        messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                        messages.className = "ok";
+                        form.reset();       // empties all the fields
+                    }
+                });
+            </vf-code>
+            <vf-text>
+                Notice the pattern: we collect *all* the errors in an array and show them
+                together. It is much better than stopping at the first one and making the
+                user try five times.
+            </vf-text>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/12-forms/validation-errors.png" alt="Form submitted with wrong data: red error list and red fields"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/12-forms/validation-errors.png — captura del formulari enviat amb dades incorrectes: la llista roja de tres errors davall i els tres camps amb la vora roja.] -->
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 12.1.* Make the form of the example work, with the four checks
+                and the red borders.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.2.* Add a "repeat password" field and check that both are the
+                same.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.3.* Validate as the user types, not only when they send: use
+                the `input` event to remove the red border as soon as the field becomes
+                correct.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.4. Login.* User and password. If the user is `admin` and the
+                password is `smx2027`, show "Welcome". If not, show "Wrong user or
+                password" and count the failed attempts. After 3, disable the button
+                (`button.disabled = true`).
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/12-forms/ex4.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 12.5. Sign-up with a summary.* When all the data is correct, do
+                not just say "welcome": draw a card with everything the user typed, and a
+                "Change data" button that brings the form back.
+            </vf-callout>
+
+            <vf-details summary="Show the solution (12.4)">
+                <vf-code language="javascript">
+                    const form = document.querySelector("#loginForm");
+                    const button = form.querySelector("button");
+                    const messages = document.querySelector("#messages");
+                    let attempts = 0;
+
+                    form.addEventListener("submit", function (event) {
+                        event.preventDefault();
+
+                        const user = document.querySelector("#user").value.trim();
+                        const pass = document.querySelector("#pass").value;
+
+                        if (user === "admin" && pass === "smx2027") {
+                            messages.textContent = "Welcome!";
+                            messages.className = "ok";
+                            return;
+                        }
+
+                        attempts++;
+                        messages.textContent = `Wrong user or password. Attempt ${attempts} of 3.`;
+                        messages.className = "error";
+
+                        if (attempts >= 3) {
+                            button.disabled = true;
+                            messages.textContent = "Too many attempts. The form is blocked.";
+                        }
+                    });
+                </vf-code>
+                <vf-callout type="atencio">
+                    This login is only an exercise. Never put a real password in
+                    JavaScript: anybody can read your code with F12. Real passwords are
+                    checked on the server, and you will see that in another module.
+                </vf-callout>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">Test 2</vf-title>
+        <vf-content>
+            <vf-text>
+                Once you finish this lesson, you will have a written test (1 hour) about:
+                finding an element and changing its text and style, creating elements from
+                an array, writing a correct `addEventListener`, fixing 5 errors in a piece
+                of DOM/events code, and validating three fields of a form and marking them.
+            </vf-text>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/11-elements.html">
+                    &larr; Previous: Creating and removing elements
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/13-localstorage.html">
+                    Next: Saving data with localStorage &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

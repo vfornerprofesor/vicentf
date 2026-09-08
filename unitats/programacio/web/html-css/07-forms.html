@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Forms
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What is a form?</vf-title>
+        <vf-content>
+            <vf-text>
+                A form is the part of a page where the user *writes something*: a login box, a search bar,
+                a contact form, an order.
+            </vf-text>
+            <vf-text>
+                In this module we only build the form. Sending the data to a server needs another language
+                (PHP, for example), and that is a different module. Our forms will look real and will check
+                the data, but they will not store anything yet.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">The form element</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;form action="#" method="post"&gt;
+                    &lt;!-- all the fields go here --&gt;
+                &lt;/form&gt;
+            </vf-code>
+            <vf-list>
+                <li><vf-text><code>action</code> is the address that will receive the data. We write <code>#</code> because we have no server yet.</vf-text></li>
+                <li><vf-text><code>method</code> is how the data travels: <code>get</code> (visible in the address bar, for searches) or <code>post</code> (hidden, for everything else).</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Text inputs and labels</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;form action="#" method="post"&gt;
+                            &lt;p&gt;
+                                &lt;label for="name"&gt;Your name&lt;/label&gt;
+                                &lt;input type="text" id="name" name="name" placeholder="Marc Ferrer"&gt;
+                            &lt;/p&gt;
+                        &lt;/form&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;form action="#" method="post"&gt;
+                            &lt;p&gt;
+                                &lt;label for="name"&gt;Your name&lt;/label&gt;
+                                &lt;input type="text" id="name" name="name" placeholder="Marc Ferrer"&gt;
+                            &lt;/p&gt;
+                        &lt;/form&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>Three attributes you must always write:</vf-text>
+            <vf-list>
+                <li><vf-text><code>type</code> says what kind of field it is.</vf-text></li>
+                <li><vf-text><code>id</code> identifies this field in the page. It must be unique.</vf-text></li>
+                <li><vf-text><code>name</code> is the name of the data when it is sent. Without <code>name</code>, the field is never sent.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                The <code>&lt;label&gt;</code> is the text of the field. Its <code>for</code> must be *exactly the same* as the
+                <code>id</code> of the input. Then, when you click the label, the cursor jumps into the field — and
+                screen readers can say what the field is for.
+            </vf-text>
+            <vf-callout type="atencio">
+                label for="name" must match input id="name". If you copy and paste a field and forget to
+                change the id, two fields will have the same id and the labels will stop working.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Other input types</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;input type="email" id="mail" name="mail"&gt;
+                        &lt;input type="password" id="pass" name="pass"&gt;
+                        &lt;input type="number" id="age" name="age" min="16" max="99"&gt;
+                        &lt;input type="date" id="birth" name="birth"&gt;
+                        &lt;input type="color" id="fav" name="fav"&gt;
+                        &lt;input type="range" id="volume" name="volume" min="0" max="10"&gt;
+                        &lt;input type="file" id="photo" name="photo"&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;input type="email" id="mail" name="mail"&gt;
+                        &lt;input type="password" id="pass" name="pass"&gt;
+                        &lt;input type="number" id="age" name="age" min="16" max="99"&gt;
+                        &lt;input type="date" id="birth" name="birth"&gt;
+                        &lt;input type="color" id="fav" name="fav"&gt;
+                        &lt;input type="range" id="volume" name="volume" min="0" max="10"&gt;
+                        &lt;input type="file" id="photo" name="photo"&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                The <code>type</code> changes the keyboard on a phone, the little widget the browser shows, and the
+                automatic checks. <code>type="email"</code> will not accept a text without <code>@</code>.
+            </vf-text>
+            <vf-text>Reused screenshot: a form showing several input types.</vf-text>
+            <vf-img src="assets/unitats/programacio/web/html-css/07-forms/ex2.png" alt="A form showing several HTML input types, one under the other, each with its label"></vf-img>
+        </vf-content>
+
+        <vf-title level="2">Choices: radio and checkbox</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;p&gt;Choose one course:&lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;input type="radio" id="smx" name="course" value="smx"&gt;
+                            &lt;label for="smx"&gt;SMX&lt;/label&gt;
+
+                            &lt;input type="radio" id="asir" name="course" value="asir"&gt;
+                            &lt;label for="asir"&gt;ASIR&lt;/label&gt;
+                        &lt;/p&gt;
+
+                        &lt;p&gt;Choose all the languages you know:&lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;input type="checkbox" id="html" name="lang" value="html"&gt;
+                            &lt;label for="html"&gt;HTML&lt;/label&gt;
+
+                            &lt;input type="checkbox" id="css" name="lang" value="css"&gt;
+                            &lt;label for="css"&gt;CSS&lt;/label&gt;
+                        &lt;/p&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;p&gt;Choose one course:&lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;input type="radio" id="smx" name="course" value="smx"&gt;
+                            &lt;label for="smx"&gt;SMX&lt;/label&gt;
+
+                            &lt;input type="radio" id="asir" name="course" value="asir"&gt;
+                            &lt;label for="asir"&gt;ASIR&lt;/label&gt;
+                        &lt;/p&gt;
+
+                        &lt;p&gt;Choose all the languages you know:&lt;/p&gt;
+                        &lt;p&gt;
+                            &lt;input type="checkbox" id="html" name="lang" value="html"&gt;
+                            &lt;label for="html"&gt;HTML&lt;/label&gt;
+
+                            &lt;input type="checkbox" id="css" name="lang" value="css"&gt;
+                            &lt;label for="css"&gt;CSS&lt;/label&gt;
+                        &lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>*Radio* = choose only one. *Checkbox* = choose zero, one or many.</vf-text>
+            <vf-text>
+                The trick with radio buttons: they must all share the *same <code>name</code>*. That is what makes them
+                a group where only one can be selected. Their <code>id</code> must be different.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Select and textarea</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;label for="city"&gt;City&lt;/label&gt;
+                        &lt;select id="city" name="city"&gt;
+                            &lt;option value=""&gt;-- choose one --&lt;/option&gt;
+                            &lt;option value="val"&gt;Valencia&lt;/option&gt;
+                            &lt;option value="cas"&gt;Castello&lt;/option&gt;
+                            &lt;option value="ali"&gt;Alacant&lt;/option&gt;
+                        &lt;/select&gt;
+
+                        &lt;label for="message"&gt;Your message&lt;/label&gt;
+                        &lt;textarea id="message" name="message" rows="5" cols="40"&gt;&lt;/textarea&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;label for="city"&gt;City&lt;/label&gt;
+                        &lt;select id="city" name="city"&gt;
+                            &lt;option value=""&gt;-- choose one --&lt;/option&gt;
+                            &lt;option value="val"&gt;Valencia&lt;/option&gt;
+                            &lt;option value="cas"&gt;Castello&lt;/option&gt;
+                            &lt;option value="ali"&gt;Alacant&lt;/option&gt;
+                        &lt;/select&gt;
+
+                        &lt;label for="message"&gt;Your message&lt;/label&gt;
+                        &lt;textarea id="message" name="message" rows="5" cols="40"&gt;&lt;/textarea&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                A <code>&lt;textarea&gt;</code> is for long text. It has an opening and a closing tag, and anything
+                between them appears already written inside — so leave it empty.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Buttons</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;button type="submit"&gt;Send&lt;/button&gt;
+                        &lt;button type="reset"&gt;Clear the form&lt;/button&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;button type="submit"&gt;Send&lt;/button&gt;
+                        &lt;button type="reset"&gt;Clear the form&lt;/button&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Simple validation</vf-title>
+        <vf-content>
+            <vf-text>The browser can check some things for you, with no programming at all:</vf-text>
+            <vf-code language="html">
+                &lt;input type="email" id="mail" name="mail" required&gt;
+                &lt;input type="text" id="user" name="user" required minlength="3" maxlength="12"&gt;
+                &lt;input type="number" id="age" name="age" required min="16" max="99"&gt;
+            </vf-code>
+            <vf-list>
+                <li><vf-text><code>required</code>: the form will not be sent if it is empty.</vf-text></li>
+                <li><vf-text><code>minlength</code> / <code>maxlength</code>: minimum and maximum number of characters.</vf-text></li>
+                <li><vf-text><code>min</code> / <code>max</code>: minimum and maximum value for numbers and dates.</vf-text></li>
+            </vf-list>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/07-validation.png — captura del missatge groc/roig que trau el navegador quan s'intenta enviar un formulari amb un camp required buit.] -->
+        </vf-content>
+
+        <vf-title level="2">Grouping fields</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;fieldset&gt;
+                            &lt;legend&gt;Personal data&lt;/legend&gt;
+                            &lt;!-- fields --&gt;
+                        &lt;/fieldset&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;fieldset&gt;
+                            &lt;legend&gt;Personal data&lt;/legend&gt;
+                            &lt;!-- fields --&gt;
+                        &lt;/fieldset&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 7.1.* Build a sign-up form with: name, email, password, date of birth and a Send
+                button. Every field must have its label.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.2.* Add to that form: a radio group to choose a T-shirt size (S, M, L), a
+                checkbox "I accept the rules" that is <code>required</code>, and a <code>select</code> with three countries.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 7.3.* Add a <code>textarea</code> for a comment and put all the personal fields inside a
+                <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code>.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 7.1)">
+                <vf-row>
+                    <vf-col classes="col-md-6">
+                        <vf-code language="html">
+                            &lt;form action="#" method="post"&gt;
+                                &lt;fieldset&gt;
+                                    &lt;legend&gt;Sign up&lt;/legend&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="name"&gt;Name&lt;/label&gt;
+                                        &lt;input type="text" id="name" name="name" required&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="mail"&gt;Email&lt;/label&gt;
+                                        &lt;input type="email" id="mail" name="mail" required&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="pass"&gt;Password&lt;/label&gt;
+                                        &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="birth"&gt;Date of birth&lt;/label&gt;
+                                        &lt;input type="date" id="birth" name="birth" required&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;button type="submit"&gt;Send&lt;/button&gt;
+                                    &lt;/p&gt;
+                                &lt;/fieldset&gt;
+                            &lt;/form&gt;
+                        </vf-code>
+                    </vf-col>
+                    <vf-col classes="col-md-6">
+                        <vf-preview>
+                            &lt;form action="#" method="post"&gt;
+                                &lt;fieldset&gt;
+                                    &lt;legend&gt;Sign up&lt;/legend&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="name"&gt;Name&lt;/label&gt;
+                                        &lt;input type="text" id="name" name="name" required&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="mail"&gt;Email&lt;/label&gt;
+                                        &lt;input type="email" id="mail" name="mail" required&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="pass"&gt;Password&lt;/label&gt;
+                                        &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;label for="birth"&gt;Date of birth&lt;/label&gt;
+                                        &lt;input type="date" id="birth" name="birth" required&gt;
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                        &lt;button type="submit"&gt;Send&lt;/button&gt;
+                                    &lt;/p&gt;
+                                &lt;/fieldset&gt;
+                            &lt;/form&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">Mini-project 1: My band page (HTML only)</vf-title>
+        <vf-content>
+            <vf-text>
+                Build a page about a band, a football team, a game or a series you like. No CSS yet.
+            </vf-text>
+            <vf-text>It must have:</vf-text>
+            <vf-list>
+                <li><vf-text>a correct skeleton with a <code>&lt;title&gt;</code> and <code>charset</code>;</vf-text></li>
+                <li><vf-text>one <code>h1</code> and at least three <code>h2</code> sections;</vf-text></li>
+                <li><vf-text>at least five paragraphs;</vf-text></li>
+                <li><vf-text>one ordered list and one unordered list;</vf-text></li>
+                <li><vf-text>at least three images with real <code>alt</code> texts, in an <code>images</code> folder;</vf-text></li>
+                <li><vf-text>a table with at least three rows (for example, the albums and their year);</vf-text></li>
+                <li><vf-text>a "join the fan club" form with at least five fields and their labels;</vf-text></li>
+                <li><vf-text>links to two other websites, opening in a new tab.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                Deliver a zip file with the folder of the project. The page must open with no errors.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 7.4.* Build the sign-up form of the picture. You only write the HTML here; you
+                will style it in lesson 10.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/07-forms/ex2.png" alt="A sign-up form with several styled input types"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/07-forms/ex2.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/06-tables.html">
+                    &larr; Previous: Tables
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/08-semantic.html">
+                    Next: Semantic HTML &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

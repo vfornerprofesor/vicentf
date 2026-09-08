@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text, fonts and colours</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Text, fonts and colours
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Font family</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        body {
+                            font-family: Arial, Helvetica, sans-serif;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            body {
+                                font-family: Arial, Helvetica, sans-serif;
+                            }
+                        &lt;/style&gt;
+                        &lt;p&gt;The quick brown fox jumps over the lazy dog.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                You give a *list*. The browser uses the first font that exists on the user's computer. The
+                last one is always a generic family, as a safety net:
+            </vf-text>
+            <vf-list>
+                <li><vf-text><code>sans-serif</code> — no little feet on the letters (Arial, Verdana). Best for screens.</vf-text></li>
+                <li><vf-text><code>serif</code> — with little feet (Times). More classic.</vf-text></li>
+                <li><vf-text><code>monospace</code> — all letters take the same width. For code.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Web fonts (Google Fonts)</vf-title>
+        <vf-content>
+            <vf-text>If you want a font the user may not have, you can load it from the internet.</vf-text>
+            <vf-text>
+                Go to [fonts.google.com](https://fonts.google.com), choose a font, copy the <code>&lt;link&gt;</code>
+                and paste it in your <code>&lt;head&gt;</code> *before* your own CSS file:
+            </vf-text>
+            <vf-code language="html">
+                &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+                &lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"&gt;
+                &lt;link rel="stylesheet" href="css/style.css"&gt;
+            </vf-code>
+            <vf-code language="css">
+                body {
+                    font-family: 'Roboto', Arial, sans-serif;
+                }
+            </vf-code>
+            <vf-text>Do not load six fonts. Two is plenty: one for headings, one for text.</vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/10-google-fonts.png — captura de fonts.google.com amb una font seleccionada i el panell lateral on es veu el codi <link> que cal copiar.] -->
+        </vf-content>
+
+        <vf-title level="2">Size: px, rem and %</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        h1 {
+                            font-size: 32px;    /* pixels: an exact size */
+                        }
+
+                        p {
+                            font-size: 1rem;    /* rem: relative to the browser's base size (16px) */
+                        }
+
+                        small {
+                            font-size: 0.875rem;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            h1 {
+                                font-size: 32px;
+                            }
+
+                            p {
+                                font-size: 1rem;
+                            }
+
+                            small {
+                                font-size: 0.875rem;
+                            }
+                        &lt;/style&gt;
+                        &lt;h1&gt;A heading&lt;/h1&gt;
+                        &lt;p&gt;A normal paragraph.&lt;/p&gt;
+                        &lt;p&gt;&lt;small&gt;Small print, a little smaller than the paragraph.&lt;/small&gt;&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>rem</code> is better than <code>px</code> for text, because if the user makes the text bigger in the
+                browser settings, your page follows. <code>1rem</code> is normally 16px, <code>2rem</code> is 32px.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Weight, style and spacing</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        h2 {
+                            font-weight: bold;          /* or a number: 400 normal, 700 bold */
+                        }
+
+                        .quote {
+                            font-style: italic;
+                        }
+
+                        p {
+                            line-height: 1.6;           /* space between lines. 1.5-1.7 is comfortable */
+                            letter-spacing: 0.5px;      /* space between letters */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            h2 {
+                                font-weight: bold;
+                            }
+
+                            .quote {
+                                font-style: italic;
+                            }
+
+                            p {
+                                line-height: 1.6;
+                                letter-spacing: 0.5px;
+                            }
+                        &lt;/style&gt;
+                        &lt;h2&gt;A bold heading&lt;/h2&gt;
+                        &lt;p class="quote"&gt;An italic quote.&lt;/p&gt;
+                        &lt;p&gt;A paragraph with extra line-height and letter-spacing, so it is more comfortable
+                        to read on more than one line.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>line-height: 1.6</code> means "1.6 times the font size". Text with no line-height is hard to
+                read: it looks squashed.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Alignment and decoration</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        h1 {
+                            text-align: center;         /* left, right, center, justify */
+                            text-transform: uppercase;  /* uppercase, lowercase, capitalize */
+                        }
+
+                        a {
+                            text-decoration: none;      /* removes the underline of links */
+                        }
+
+                        a:hover {
+                            text-decoration: underline; /* and puts it back when the mouse is over */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            h1 {
+                                text-align: center;
+                                text-transform: uppercase;
+                            }
+
+                            a {
+                                text-decoration: none;
+                            }
+
+                            a:hover {
+                                text-decoration: underline;
+                            }
+                        &lt;/style&gt;
+                        &lt;h1&gt;centered and uppercase&lt;/h1&gt;
+                        &lt;p&gt;&lt;a href="#"&gt;A link with no underline (try hovering it)&lt;/a&gt;&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>:hover</code> is a *pseudo-class*: a rule that only applies in a certain situation. <code>a:hover</code>
+                means "a link, while the mouse is on top of it".
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Backgrounds</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        body {
+                            background-color: #f5f5f5;
+                        }
+
+                        header {
+                            background-image: url("../images/hero.jpg");
+                            background-size: cover;         /* fill the box, cut what is left over */
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="Result (no photo in this preview)">
+                        &lt;style&gt;
+                            body {
+                                background-color: #f5f5f5;
+                            }
+
+                            header {
+                                padding: 20px;
+                            }
+                        &lt;/style&gt;
+                        &lt;header&gt;
+                            &lt;h1&gt;Site header&lt;/h1&gt;
+                        &lt;/header&gt;
+                        &lt;p&gt;The rest of the page has the light grey background-color.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-callout type="atencio">
+                The path inside url() is relative to the *CSS file*, not to the HTML file. If your CSS is in
+                css/style.css and your image in images/hero.jpg, you need url("../images/hero.jpg").
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 10.1.* Choose a Google Font for your headings and a different one for the body
+                text. Apply them.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 10.2.* Set the body font size to <code>1rem</code> and <code>line-height: 1.6</code>. Compare before and
+                after.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 10.3.* Make the links of your <code>nav</code> white, with no underline, and underlined on
+                hover.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 10.4.* Put a background image in your <code>header</code>, with <code>cover</code>, and white text on
+                top. Make sure you can still read the text.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 10.4)">
+                <vf-code language="css">
+                    header {
+                        background-image: url("../images/hero.jpg");
+                        background-size: cover;
+                        background-position: center;
+                        color: white;
+                        text-align: center;
+                        padding: 60px 20px;
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+                    }
+                </vf-code>
+                <vf-text>
+                    The <code>text-shadow</code> is the trick to keep white text readable on any photo.
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 10.5. Personal page.* Reproduce the page in the picture: fonts, sizes, colours and
+                text alignment. The HTML is given.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/10-text-colors/ex1.png" alt="A personal page styled with a chosen font, colours and text alignment"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/10-text-colors/ex1.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 10.6. Sign-up form.* Style the form you built in lesson 7: fields, labels, button,
+                focus state.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/10-text-colors/ex2.png" alt="A sign-up form styled with colours, spacing and a focus state"></vf-img>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/09-css-basics.html">
+                    &larr; Previous: CSS basics
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/11-box-model.html">
+                    Next: The box model &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

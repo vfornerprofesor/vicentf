@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            CSS Grid
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Grid or flexbox?</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>*Flexbox* works in *one direction*: a row, or a column. Perfect for a menu, a row of buttons, a card.</vf-text></li>
+                <li><vf-text>*Grid* works in *two directions* at once: columns ~and~ rows. Perfect for a gallery or the layout of a whole page.</vf-text></li>
+            </vf-list>
+            <vf-text>You can use both in the same page. In fact you almost always do.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">Columns and rows</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .gallery {
+                    display: grid;
+                    grid-template-columns: 200px 200px 200px;   /* three columns of 200px */
+                }
+            </vf-code>
+            <vf-preview>
+                &lt;style&gt;
+                    .gallery {
+                        display: grid;
+                        grid-template-columns: 200px 200px 200px;
+                        gap: 10px;
+                    }
+
+                    .gallery div {
+                        height: 100px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="gallery"&gt;
+                    &lt;div&gt;1&lt;/div&gt;
+                    &lt;div&gt;2&lt;/div&gt;
+                    &lt;div&gt;3&lt;/div&gt;
+                    &lt;div&gt;4&lt;/div&gt;
+                    &lt;div&gt;5&lt;/div&gt;
+                    &lt;div&gt;6&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-text>
+                (The preview also gives the boxes a gap, a background and some height, just so the three
+                columns are visible — only <code>display: grid</code> and <code>grid-template-columns</code> are in the
+                lesson's code.)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">repeat and fr</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);      /* three equal columns */
+                }
+            </vf-code>
+            <vf-list>
+                <li><vf-text><code>repeat(3, ...)</code> saves you writing the same thing three times.</vf-text></li>
+                <li><vf-text><code>fr</code> means ~fraction of the free space~. <code>1fr 1fr 1fr</code> = three equal columns. <code>2fr 1fr</code> = the first column is twice as wide as the second.</vf-text></li>
+            </vf-list>
+            <vf-text><code>fr</code> is better than <code>%</code> because it already takes the <code>gap</code> into account.</vf-text>
+            <vf-preview>
+                &lt;style&gt;
+                    .gallery {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 10px;
+                    }
+
+                    .gallery div {
+                        height: 100px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="gallery"&gt;
+                    &lt;div&gt;1&lt;/div&gt;
+                    &lt;div&gt;2&lt;/div&gt;
+                    &lt;div&gt;3&lt;/div&gt;
+                    &lt;div&gt;4&lt;/div&gt;
+                    &lt;div&gt;5&lt;/div&gt;
+                    &lt;div&gt;6&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+        </vf-content>
+
+        <vf-title level="2">gap</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 15px;                  /* same gap in both directions */
+                    gap: 15px 30px;             /* rows  columns */
+                }
+            </vf-code>
+            <vf-preview label="Result (with the last gap line, the one that wins: 15px 30px)">
+                &lt;style&gt;
+                    .gallery {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 15px 30px;
+                    }
+
+                    .gallery div {
+                        height: 80px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="gallery"&gt;
+                    &lt;div&gt;1&lt;/div&gt;
+                    &lt;div&gt;2&lt;/div&gt;
+                    &lt;div&gt;3&lt;/div&gt;
+                    &lt;div&gt;4&lt;/div&gt;
+                    &lt;div&gt;5&lt;/div&gt;
+                    &lt;div&gt;6&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+        </vf-content>
+
+        <vf-title level="2">Making an image gallery</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;div class="gallery"&gt;
+                    &lt;img src="images/p1.jpg" alt="A red car"&gt;
+                    &lt;img src="images/p2.jpg" alt="A blue bike"&gt;
+                    &lt;img src="images/p3.jpg" alt="A green bus"&gt;
+                    &lt;img src="images/p4.jpg" alt="A yellow taxi"&gt;
+                    &lt;img src="images/p5.jpg" alt="A white van"&gt;
+                    &lt;img src="images/p6.jpg" alt="A black train"&gt;
+                &lt;/div&gt;
+            </vf-code>
+            <vf-code language="css">
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 15px;
+                }
+
+                .gallery img {
+                    width: 100%;
+                    height: 180px;
+                    object-fit: cover;      /* fills the box without deforming the photo */
+                    border-radius: 8px;
+                }
+            </vf-code>
+            <vf-text>
+                That one line, <code>repeat(auto-fit, minmax(220px, 1fr))</code>, is magic: "make as many
+                columns as fit, each one at least 220px wide". The gallery reorganises itself on any screen
+                with *no media queries at all*.
+            </vf-text>
+            <vf-preview label="Result (coloured boxes stand in for the photos in this preview)">
+                &lt;style&gt;
+                    .gallery {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                        gap: 15px;
+                    }
+
+                    .gallery div {
+                        width: 100%;
+                        height: 100px;
+                        border-radius: 8px;
+                        background: #c4baeb;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #2b2b2b;
+                    }
+                &lt;/style&gt;
+                &lt;div class="gallery"&gt;
+                    &lt;div&gt;Photo 1&lt;/div&gt;
+                    &lt;div&gt;Photo 2&lt;/div&gt;
+                    &lt;div&gt;Photo 3&lt;/div&gt;
+                    &lt;div&gt;Photo 4&lt;/div&gt;
+                    &lt;div&gt;Photo 5&lt;/div&gt;
+                    &lt;div&gt;Photo 6&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-row centered>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/13-grid/grid-1.png" alt="A CSS grid gallery example, first view"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/13-grid/grid-2.png" alt="A CSS grid gallery example, second view"></vf-img>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">A page layout with grid</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                .layout {
+                    display: grid;
+                    grid-template-columns: 1fr 300px;   /* main content + sidebar */
+                    gap: 30px;
+                }
+            </vf-code>
+            <vf-code language="html">
+                &lt;div class="layout"&gt;
+                    &lt;main&gt;...&lt;/main&gt;
+                    &lt;aside&gt;...&lt;/aside&gt;
+                &lt;/div&gt;
+            </vf-code>
+            <vf-text>Both files together, in the browser (with some real content instead of the <code>...</code>):</vf-text>
+            <vf-preview>
+                &lt;style&gt;
+                    .layout {
+                        display: grid;
+                        grid-template-columns: 1fr 300px;
+                        gap: 30px;
+                    }
+
+                    .layout main, .layout aside {
+                        padding: 16px;
+                        background: #f5f5f5;
+                        border-radius: 8px;
+                    }
+                &lt;/style&gt;
+                &lt;div class="layout"&gt;
+                    &lt;main&gt;Main content of the page goes here.&lt;/main&gt;
+                    &lt;aside&gt;Sidebar: links, ads, related content.&lt;/aside&gt;
+                &lt;/div&gt;
+            </vf-preview>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 13.1.* Build a grid of 9 coloured squares, 3 columns, with a 10px gap.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.2.* Turn it into <code>repeat(auto-fit, minmax(150px, 1fr))</code> and resize
+                the window. Describe what happens.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.3.* Build an image gallery of 8 photos, all the same height, with
+                <code>object-fit: cover</code>.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.4.* Build a two-column layout: content on the left, sidebar of 280px on the
+                right.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Test 2</vf-title>
+        <vf-content>
+            <vf-text>
+                At the end of this lesson there is a 1-hour test: write a rule for a given selector, the box
+                model (calculate the real size of a box), centre a box with flexbox, lay out a navigation
+                bar, a gallery with grid, and find 5 errors in a given CSS.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 13.3. Chessboard.* Draw an 8 × 8 chessboard with CSS Grid. All 64 squares are in
+                the HTML; you write the CSS.
+            </vf-callout>
+            <vf-img src="assets/unitats/programacio/web/html-css/13-grid/ex1.png" alt="An 8 by 8 chessboard laid out with CSS Grid"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/13-grid/ex1.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/12-flexbox.html">
+                    &larr; Previous: Flexbox
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/14-responsive.html">
+                    Next: Responsive design &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

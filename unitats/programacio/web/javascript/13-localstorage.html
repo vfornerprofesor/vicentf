@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving data with localStorage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Saving data with localStorage
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">The problem</vf-title>
+        <vf-content>
+            <vf-text>
+                Everything your program stores in variables disappears when the page
+                reloads. Your to-do list, your score, the user's settings: gone. Try it
+                with your mini-project 2 — add three items and press F5.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">What localStorage is</vf-title>
+        <vf-content>
+            <vf-text>
+                `localStorage` is a small storage space that the browser keeps *on the
+                user's computer*. What you save there is still there tomorrow, and next
+                month.
+            </vf-text>
+            <vf-text>
+                Three things to know:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>It belongs to one website. Another site cannot read your data.</vf-text></li>
+                <li><vf-text>It only stores *text*.</vf-text></li>
+                <li><vf-text>It has about 5 MB of space. Plenty for our projects.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                It is not a database. It is not safe for secrets. It is perfect for
+                "remember what the user had".
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Saving and reading</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                localStorage.setItem("username", "Marta");
+
+                const name = localStorage.getItem("username");
+
+                localStorage.removeItem("username");
+                localStorage.clear();           // deletes everything of this site
+            </vf-code>
+            <vf-text>
+                If the key does not exist, `getItem` returns `null`:
+            </vf-text>
+            <vf-code language="javascript">
+                const name = localStorage.getItem("username");
+
+                if (name === null) {
+                    output.textContent = "Nobody has been here before.";
+                } else {
+                    output.textContent = `Welcome back, ${name}!`;
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Only text: JSON</vf-title>
+        <vf-content>
+            <vf-text>
+                `localStorage` cannot store an array or an object directly. Watch:
+            </vf-text>
+            <vf-code language="javascript">
+                const tasks = ["Study", "Shopping"];
+                localStorage.setItem("tasks", tasks);
+                localStorage.getItem("tasks");      // "Study,Shopping" -> a string!
+            </vf-code>
+            <vf-text>
+                The solution is *JSON*: a standard way of writing data as text.
+            </vf-text>
+            <vf-code language="javascript">
+                // Save: from array to text
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+
+                // Read: from text back to array
+                const saved = JSON.parse(localStorage.getItem("tasks"));
+                saved[0];       // "Study"  -> a real array again
+            </vf-code>
+            <vf-text>
+                Remember the pair:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>`JSON.stringify(something)` → turns it into text. Use it when you *save*.</vf-text></li>
+                <li><vf-text>`JSON.parse(text)` → turns it back. Use it when you *read*.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                It works with arrays of objects too, which is what your project will need.
+            </vf-text>
+            <vf-callout type="atencio">
+                JSON.parse(null) gives null, and then your loop crashes. Always check
+                first: const list = JSON.parse(localStorage.getItem("tasks")) || [];
+                The || [] means "if there is nothing saved, start with an empty array".
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">The save-and-draw pattern</vf-title>
+        <vf-content>
+            <vf-text>
+                This is the skeleton of your final project. Learn it well:
+            </vf-text>
+            <vf-code language="javascript">
+                const input = document.querySelector("#taskInput");
+                const button = document.querySelector("#addButton");
+                const list = document.querySelector("#taskList");
+
+                // 1. Load what was saved (or an empty array)
+                let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+                // 2. One function that draws the whole list from the array
+                function draw() {
+                    list.innerHTML = "";
+
+                    for (let i = 0; i &lt; tasks.length; i++) {
+                        const li = document.createElement("li");
+                        li.textContent = tasks[i];
+
+                        const deleteButton = document.createElement("button");
+                        deleteButton.textContent = "Delete";
+                        deleteButton.addEventListener("click", function () {
+                            tasks.splice(i, 1);
+                            save();
+                            draw();
+                        });
+
+                        li.appendChild(deleteButton);
+                        list.appendChild(li);
+                    }
+                }
+
+                // 3. One function that saves
+                function save() {
+                    localStorage.setItem("tasks", JSON.stringify(tasks));
+                }
+
+                // 4. Add
+                button.addEventListener("click", function () {
+                    const text = input.value.trim();
+
+                    if (text === "") {
+                        return;
+                    }
+
+                    tasks.push(text);
+                    save();
+                    draw();
+                    input.value = "";
+                });
+
+                // 5. Draw on load
+                draw();
+            </vf-code>
+            <vf-text>
+                *An array with the data, one function that draws it, one function that
+                saves it.* Every time the array changes: `save()` and `draw()`. Always in
+                that order, always both.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Seeing it in DevTools</vf-title>
+        <vf-content>
+            <vf-text>
+                F12 → tab *Application* (Chrome) or *Storage* (Firefox) → *Local Storage*.
+                You can see everything you saved, and delete it while testing.
+            </vf-text>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/13-localstorage/devtools.png" alt="DevTools Application tab showing the tasks key"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/13-localstorage/devtools.png — captura de la pestanya Application/Storage de DevTools amb la clau "tasks" i el seu valor JSON visible.] -->
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 13.1.* Ask the user's name the first time and save it. The next
+                time the page loads, greet them directly, with no question. Add a "Forget
+                me" button.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.2.* A click counter that survives a reload.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.3.* Add `localStorage` to your mini-project 2. This is the
+                important one: your list must still be there after F5.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.4.* Add a "Clear all" button that empties the array, saves and
+                redraws.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.5.* Save an array of objects: products with name and price.
+                Draw them as cards and keep them after a reload.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.6. Dark mode.* A button that adds or removes the class `dark`
+                on `&lt;body&gt;`, and remembers the choice in `localStorage`.
+            </vf-callout>
+
+            <vf-details summary="Show the solution (13.1)">
+                <vf-code language="javascript">
+                    const output = document.querySelector("#output");
+                    const nameInput = document.querySelector("#nameInput");
+                    const saveButton = document.querySelector("#saveButton");
+                    const forgetButton = document.querySelector("#forgetButton");
+
+                    const name = localStorage.getItem("username");
+
+                    if (name === null) {
+                        output.textContent = "Hello! What is your name?";
+                    } else {
+                        output.textContent = `Welcome back, ${name}!`;
+                    }
+
+                    saveButton.addEventListener("click", function () {
+                        const value = nameInput.value.trim();
+
+                        if (value === "") {
+                            return;
+                        }
+
+                        localStorage.setItem("username", value);
+                        output.textContent = `Nice to meet you, ${value}!`;
+                    });
+
+                    forgetButton.addEventListener("click", function () {
+                        localStorage.removeItem("username");
+                        output.textContent = "I have forgotten you. Reload the page.";
+                    });
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/12-forms.html">
+                    &larr; Previous: Forms and validation
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/14-project.html">
+                    Next: Final project &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

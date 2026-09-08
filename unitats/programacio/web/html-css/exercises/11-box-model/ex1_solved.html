@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            background-color: bisque;
+            width: 50%;
+            margin: 0 auto;
+            border: 2px solid coral;
+            border-radius: 15px;
+            box-shadow: 0 0 20px coral;
+            padding-bottom: 30px;
+        }
+
+        img {
+            width: 200px;
+        }
+
+        h1,
+        p {
+            color: coral;
+        }
+
+        ul {
+            list-style: circle;
+            list-style: none;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    <div>
+        <h1>El señor de los anillos</h1>
+        <img src="esdla.jpg" alt="">
+        <p>Any de llançament <strong>2021</strong></p>
+        <p><strong>Actors i actrius principals:</strong></p>
+        <ul>
+            <li>Elijah Wood</li>
+            <li>Ian McKellen</li>
+            <li>Viggo Mortensen</li>
+            <li>Orlando Bloom</li>
+            <li>Liv Tyler</li>
+        </ul>
+    </div>
+</body>
+
+</html>

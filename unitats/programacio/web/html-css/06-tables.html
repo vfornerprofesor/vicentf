@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Tables
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What tables are for</vf-title>
+        <vf-content>
+            <vf-text>
+                A table shows *data*: a timetable, a price list, the specifications of a computer. Something
+                with rows and columns.
+            </vf-text>
+            <vf-text>
+                Tables are *not* for the layout of a page. Twenty years ago people used them for that. Today
+                we use CSS (flexbox and grid), and you will learn that later in this module.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">A basic table</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;table&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;Component&lt;/th&gt;
+                                &lt;th&gt;Model&lt;/th&gt;
+                                &lt;th&gt;Price&lt;/th&gt;
+                            &lt;/tr&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;CPU&lt;/td&gt;
+                                &lt;td&gt;Ryzen 5 5600&lt;/td&gt;
+                                &lt;td&gt;130 &amp;euro;&lt;/td&gt;
+                            &lt;/tr&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;RAM&lt;/td&gt;
+                                &lt;td&gt;16 GB DDR4&lt;/td&gt;
+                                &lt;td&gt;45 &amp;euro;&lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/table&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;table&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;Component&lt;/th&gt;
+                                &lt;th&gt;Model&lt;/th&gt;
+                                &lt;th&gt;Price&lt;/th&gt;
+                            &lt;/tr&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;CPU&lt;/td&gt;
+                                &lt;td&gt;Ryzen 5 5600&lt;/td&gt;
+                                &lt;td&gt;130 &amp;euro;&lt;/td&gt;
+                            &lt;/tr&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;RAM&lt;/td&gt;
+                                &lt;td&gt;16 GB DDR4&lt;/td&gt;
+                                &lt;td&gt;45 &amp;euro;&lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/table&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-list>
+                <li><vf-text><code>&lt;table&gt;</code> is the whole table.</vf-text></li>
+                <li><vf-text><code>&lt;tr&gt;</code> is a *table row*.</vf-text></li>
+                <li><vf-text><code>&lt;th&gt;</code> is a *header cell* (bold and centred by default).</vf-text></li>
+                <li><vf-text><code>&lt;td&gt;</code> is a normal *data cell*.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                Read it row by row: every <code>&lt;tr&gt;</code> is one line, and inside it every <code>&lt;td&gt;</code> is one
+                column.
+            </vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/06-table-parts.png — la taula anterior renderitzada al navegador, amb etiquetes de colors assenyalant quina part és tr, th i td.] -->
+        </vf-content>
+
+        <vf-title level="2">Head, body and foot</vf-title>
+        <vf-content>
+            <vf-text>
+                For bigger tables, group the rows. It is clearer, and CSS can style each part separately.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;table&gt;
+                            &lt;thead&gt;
+                                &lt;tr&gt;
+                                    &lt;th&gt;Day&lt;/th&gt;
+                                    &lt;th&gt;Subject&lt;/th&gt;
+                                &lt;/tr&gt;
+                            &lt;/thead&gt;
+                            &lt;tbody&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;Monday&lt;/td&gt;
+                                    &lt;td&gt;Networks&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;Tuesday&lt;/td&gt;
+                                    &lt;td&gt;Web pages&lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/tbody&gt;
+                        &lt;/table&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;table&gt;
+                            &lt;thead&gt;
+                                &lt;tr&gt;
+                                    &lt;th&gt;Day&lt;/th&gt;
+                                    &lt;th&gt;Subject&lt;/th&gt;
+                                &lt;/tr&gt;
+                            &lt;/thead&gt;
+                            &lt;tbody&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;Monday&lt;/td&gt;
+                                    &lt;td&gt;Networks&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;Tuesday&lt;/td&gt;
+                                    &lt;td&gt;Web pages&lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/tbody&gt;
+                        &lt;/table&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                You can also add a <code>&lt;caption&gt;</code> right after <code>&lt;table&gt;</code> with the title of the
+                table.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Cells that take more space</vf-title>
+        <vf-content>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="html">
+                        &lt;table&gt;
+                            &lt;tr&gt;
+                                &lt;th colspan="2"&gt;Contact&lt;/th&gt;
+                            &lt;/tr&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;Email&lt;/td&gt;
+                                &lt;td&gt;marc@example.com&lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/table&gt;
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;table&gt;
+                            &lt;tr&gt;
+                                &lt;th colspan="2"&gt;Contact&lt;/th&gt;
+                            &lt;/tr&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;Email&lt;/td&gt;
+                                &lt;td&gt;marc@example.com&lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/table&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                <code>colspan="2"</code> makes a cell as wide as two columns. <code>rowspan="2"</code> makes it as tall as two
+                rows.
+            </vf-text>
+            <vf-text>
+                Careful: if you use <code>colspan="2"</code> in a row, that row needs *one cell less* than the others.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 6.1.* Build a table with your school timetable: one column per day, one row per
+                hour.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 6.2.* Build a table with the parts of a computer you would buy with 800 €:
+                component, model, price. Add a last row with the total, using <code>colspan</code> so the words "TOTAL"
+                take two columns.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 6.3.* Rewrite the table of exercise 6.1 using <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and
+                <code>&lt;caption&gt;</code>.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 6.2, total row)">
+                <vf-code language="html">
+                    &lt;tfoot&gt;
+                        &lt;tr&gt;
+                            &lt;td colspan="2"&gt;&lt;strong&gt;TOTAL&lt;/strong&gt;&lt;/td&gt;
+                            &lt;td&gt;&lt;strong&gt;795 &amp;euro;&lt;/strong&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tfoot&gt;
+                </vf-code>
+            </vf-details>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/05-images.html">
+                    &larr; Previous: Images and media
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/07-forms.html">
+                    Next: Forms &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

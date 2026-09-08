@@ -646,6 +646,58 @@ blockquote.conversation_other {
   margin-inline: auto;
 }
 
+/* PROVA INICIAL ENCADENADA (scripts/proves/create_prova.js): formulari de
+   contrasenya que porta d'una prova a la seguent. Mateix llenguatge visual
+   que els inputs de l'escape room, pero centrat davall de la imatge. */
+.vf-prova {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.vf-prova label {
+  margin: 0;
+  color: var(--grey-color);
+  font-weight: 600;
+  text-align: center;
+}
+
+.vf-prova input {
+  min-width: min(280px, 100%);
+  padding: 8px 12px;
+  border: 1px solid var(--main-color);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  color: var(--main-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vf-prova input:focus {
+  border-color: var(--main-color-dark);
+  box-shadow: 0 0 0 3px var(--shadow-color);
+  outline: none;
+}
+
+/* Reserva l'altura del missatge encara que estiga buit: sense aixo, el boto
+   pegava un bot cap amunt en fallar la primera vegada. */
+.vf-prova .vf-prova-msg {
+  min-height: 1.5em;
+  margin: 0;
+  font-weight: 600;
+  color: var(--callout-atencio);
+}
+
+.vf-prova .vf-prova-msg.vf-prova-ok {
+  color: var(--callout-consell);
+}
+
+/* Imatge de cada prova: gran, pero sense passar de l'ample del bloc. */
+.vf-prova-img {
+  width: min(700px, 100%);
+}
+
 /* VF-CARD (EP1): substitueix el patro repetit vf-col+vf-img+vf-btn que
    generava files de targetes descompensades (EL3) i estil escrit a ma a
    cada pagina (ES3). */

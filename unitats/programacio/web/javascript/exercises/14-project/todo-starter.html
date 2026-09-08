@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+    <link rel="stylesheet" href="todo-starter.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>My to-do list</h1>
+
+        <div id="addBar">
+            <input type="text" id="taskInput" placeholder="What do you need to do?">
+            <button id="addButton">Add</button>
+        </div>
+
+        <div id="filters">
+            <button class="filter-button" data-filter="all">All</button>
+            <button class="filter-button" data-filter="pending">Pending</button>
+            <button class="filter-button" data-filter="done">Done</button>
+        </div>
+
+        <ul id="taskList">
+            <!-- Create the <li> elements here from JavaScript -->
+        </ul>
+
+        <p id="counter">0 of 0 done</p>
+
+        <button id="clearButton">Clear all</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

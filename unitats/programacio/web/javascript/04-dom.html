@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The DOM: changing the page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            The DOM: changing the page
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-callout type="consell">
+            This is the hinge lesson of the whole unit. From here on, everything you build
+            is visible on the screen and document.write is never used again.
+        </vf-callout>
+
+        <vf-title level="2">What is the DOM</vf-title>
+        <vf-content>
+            <vf-text>
+                Until now our programs wrote text with `document.write`, and once the page
+                had finished loading we could not change anything any more. Now we are
+                going to change the *page itself*, at any moment.
+            </vf-text>
+            <vf-text>
+                When the browser reads your HTML, it builds a tree of objects in memory.
+                That tree is called the *DOM* (*Document Object Model*).
+            </vf-text>
+            <vf-text>
+                Your JavaScript can look at that tree, change it, add branches and remove
+                them. Every change appears on the screen immediately.
+            </vf-text>
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/04-dom/dom-tree.png" alt="DOM tree of a simple page"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/04-dom/dom-tree.png — arbre del DOM d'una pàgina senzilla: document → html → head/body → h1, p, input, button, div#output. Amb el codi HTML al costat per a veure la correspondència.] -->
+        </vf-content>
+
+        <vf-title level="2">The HTML we will use</vf-title>
+        <vf-content>
+            <vf-text>
+                Copy this `index.html`. All the examples of this lesson use it. Remember:
+                you are not designing the page, you are only using the boxes that are
+                already there.
+            </vf-text>
+            <vf-code language="html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+
+                &lt;head&gt;
+                    &lt;meta charset="utf-8"&gt;
+                    &lt;title&gt;DOM practice&lt;/title&gt;
+                    &lt;style&gt;
+                        .highlight {
+                            background-color: yellow;
+                            font-weight: bold;
+                        }
+
+                        .hidden {
+                            display: none;
+                        }
+                    &lt;/style&gt;
+                &lt;/head&gt;
+
+                &lt;body&gt;
+                    &lt;h1 id="title"&gt;Hello&lt;/h1&gt;
+
+                    &lt;p class="text"&gt;First paragraph&lt;/p&gt;
+                    &lt;p class="text"&gt;Second paragraph&lt;/p&gt;
+
+                    &lt;input type="text" id="nameInput"&gt;
+                    &lt;button id="myButton"&gt;Click me&lt;/button&gt;
+
+                    &lt;div id="output"&gt;&lt;/div&gt;
+
+                    &lt;script src="script.js"&gt;&lt;/script&gt;
+                &lt;/body&gt;
+
+                &lt;/html&gt;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Finding an element</vf-title>
+        <vf-content>
+            <vf-text>
+                Before you can change something, you have to *find* it. Every element you
+                want to touch needs an `id` (a unique name) or a `class` (a name that
+                several elements can share).
+            </vf-text>
+            <vf-code language="javascript">
+                const title = document.getElementById("title");     // by id
+            </vf-code>
+            <vf-text>
+                There is a second way, which also works with classes and is the one you
+                will see in most code today:
+            </vf-text>
+            <vf-code language="javascript">
+                const title = document.querySelector("#title");     // by id
+                const first = document.querySelector(".text");      // the FIRST with that class
+                const all = document.querySelectorAll(".text");     // ALL of them (a list)
+            </vf-code>
+            <vf-text>
+                The text inside `querySelector` is written exactly like a *CSS selector*:
+                `#` for an id, `.` for a class, the plain name for a tag. Learn
+                `querySelector` and `querySelectorAll` and you have everything.
+            </vf-text>
+            <vf-callout type="atencio">
+                If querySelector does not find anything it returns null, and the next line
+                gives you "TypeError: Cannot read properties of null". Nine times out of ten
+                the cause is a typo in the id, or a script tag placed in the head instead of
+                at the end of the body.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Changing the text</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const title = document.querySelector("#title");
+
+                console.log(title.textContent);         // "Hello"   (in the console)
+                title.textContent = "Goodbye";          // changes the text ON THE SCREEN
+            </vf-code>
+            <vf-text>
+                This one line is the whole point of the lesson. Read it again: on the left,
+                the element and the property; on the right, the new value. The page changes
+                at that instant.
+            </vf-text>
+            <vf-code language="javascript">
+                const output = document.querySelector("#output");
+
+                output.textContent = "Plain text, always safe";
+                output.innerHTML = "&lt;strong>This is bold&lt;/strong>";     // interprets the HTML
+            </vf-code>
+            <vf-list>
+                <li><vf-text>`textContent` puts *plain text*. Safe. Use it by default.</vf-text></li>
+                <li><vf-text>`innerHTML` puts *HTML*, so tags work. Powerful, but never use it with text that the user typed: someone could inject code in your page.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Reading an input</vf-title>
+        <vf-content>
+            <vf-text>
+                An `&lt;input&gt;` does not use `textContent`. It uses `value`:
+            </vf-text>
+            <vf-code language="javascript">
+                const input = document.querySelector("#nameInput");
+
+                const typed = input.value;      // read what the user typed
+                input.value = "";               // empty the field
+            </vf-code>
+            <vf-text>
+                This replaces `prompt` for good. From now on the user types in the page,
+                not in a pop-up window.
+            </vf-text>
+            <vf-callout type="recorda">
+                value always gives you TEXT, exactly like prompt did. If you need a number,
+                convert it: Number(input.value).
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Changing the style</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const title = document.querySelector("#title");
+
+                title.style.color = "red";
+                title.style.backgroundColor = "yellow";
+                title.style.fontSize = "40px";
+                title.style.border = "2px solid black";
+            </vf-code>
+            <vf-text>
+                Careful with the names: in CSS it is `background-color`, in JavaScript it
+                is `backgroundColor`. The dash disappears and the next letter goes uppercase
+                (camelCase).
+            </vf-text>
+            <vf-text>
+                The value is *always text*, between quotes, with its unit: `"40px"`, not
+                `40`.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">classList</vf-title>
+        <vf-content>
+            <vf-text>
+                Changing styles one by one from JavaScript gets messy fast. It is better to
+                write the style in CSS as a class, and only add or remove the class from
+                JavaScript. The two classes are already in the HTML above:
+            </vf-text>
+            <vf-code language="javascript">
+                const p = document.querySelector(".text");
+
+                p.classList.add("highlight");           // add the class
+                p.classList.remove("highlight");        // remove it
+                p.classList.toggle("hidden");           // if it is there, remove it; if not, add it
+                console.log(p.classList.contains("highlight"));     // true / false
+            </vf-code>
+            <vf-text>
+                `toggle` is what you use for a "show / hide" button.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Doing something when the user clicks</vf-title>
+        <vf-content>
+            <vf-text>
+                A program that changes the page as soon as it loads is not interactive. We
+                want things to happen *when the user does something*:
+            </vf-text>
+            <vf-code language="javascript">
+                const button = document.querySelector("#myButton");
+                const title = document.querySelector("#title");
+
+                function changeTitle() {
+                    title.textContent = "You clicked!";
+                    title.style.color = "green";
+                }
+
+                button.addEventListener("click", changeTitle);
+            </vf-code>
+            <vf-text>
+                Read it: *on this button, listen for the event "click", and when it
+                happens, run the function `changeTitle`.*
+            </vf-text>
+            <vf-text>
+                You will see the full family of events in lesson 10. For now, `click` is
+                enough for everything.
+            </vf-text>
+            <vf-callout type="atencio">
+                Write changeTitle WITHOUT brackets. With brackets,
+                addEventListener("click", changeTitle()) runs the function once,
+                immediately, and then listens for nothing. This is the most common mistake
+                of the whole unit.
+            </vf-callout>
+            <vf-text>
+                Any element can listen for a click, not only buttons:
+            </vf-text>
+            <vf-code language="javascript">
+                const paragraphs = document.querySelectorAll(".text");
+
+                for (const p of paragraphs) {
+                    p.addEventListener("click", function () {
+                        p.classList.toggle("highlight");
+                    });
+                }
+            </vf-code>
+            <vf-text>
+                (You will study `for` properly in lesson 6. For now, copy the shape: it
+                repeats the same instruction for every paragraph.)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // 1. The script runs before the page exists
+                //    -> put &lt;script> at the END of the body
+
+                // 2. A typo in the id
+                const t = document.querySelector("#titel");     // null
+                t.textContent = "Hi";                           // TypeError
+
+                // 3. Forgetting .value on an input
+                const input = document.querySelector("#nameInput");
+                console.log(input);             // the whole element, not what the user typed
+                console.log(input.value);       // right
+
+                // 4. Forgetting the unit in a style
+                title.style.fontSize = 40;      // does nothing
+                title.style.fontSize = "40px";  // right
+
+                // 5. Brackets in addEventListener
+                button.addEventListener("click", changeTitle());    // WRONG
+                button.addEventListener("click", changeTitle);      // right
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 4.1.* Reproduce the page below with the names of four classmates.
+                When you click on one of them, that name changes size and colour, and the
+                other three go back to their original size and colour.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/04-dom/ex1.html)
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/04-dom/ex1.png" alt="Four classmate names, click changes size and colour"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 4.2.* Make the paragraph's border grow by 1 px every time you
+                click on it.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/04-dom/ex2.html)
+            </vf-text>
+            <vf-code language="html">
+                &lt;style&gt;
+                    p {
+                        border: 1px solid coral;
+                        text-align: center;
+                        border-radius: 10px;
+                        width: fit-content;
+                        padding: 5px;
+                    }
+                &lt;/style&gt;
+
+                &lt;p id="p"&gt;CLICK HERE!&lt;/p&gt;
+
+                &lt;script&gt;
+                    let size = 1;
+                    const paragraph = document.querySelector("#p");
+
+                    paragraph.addEventListener("click", function () {
+                        // 1. Make a variable with the new size: the size plus 1
+                        // 2. Change the border of the paragraph using the new size
+                        // 3. Store the new size back in the variable size
+                    });
+                &lt;/script&gt;
+            </vf-code>
+            <vf-row>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/javascript/04-dom/ex2-1.png" alt="Paragraph before clicking"></vf-img>
+                </vf-col>
+                <vf-col>
+                    <vf-img src="assets/unitats/programacio/web/javascript/04-dom/ex2-2.png" alt="Paragraph after several clicks, border thicker"></vf-img>
+                </vf-col>
+            </vf-row>
+
+            <vf-callout type="exercici">
+                *Exercise 4.3.* The code below is broken: the colours do not match the
+                boxes. Fix it so that clicking on a box paints it with its own colour and
+                clears the other three.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/04-dom/ex3.html)
+            </vf-text>
+            <vf-code language="html">
+                &lt;div id="box"&gt;
+                    &lt;div id="red" onclick="clickGreen()"&gt;Green&lt;/div&gt;
+                    &lt;div id="blue" onclick="clickBlue()"&gt;Red&lt;/div&gt;
+                    &lt;div id="blue" onclick="clickRed()"&gt;Blue&lt;/div&gt;
+                    &lt;div id="yellow" onclick="clickYellow()"&gt;Yellow&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;script&gt;
+                    function clickGreen() {
+                        const green = document.querySelector("#yellow");
+                        green.style.backgroundColor = "blue";
+                    }
+
+                    function clickYellow() {
+                        const yellow = document.querySelector("#blue");
+                        yellow.style.backgroundColor = "red";
+                    }
+
+                    function clickRed() {
+                        const red = document.querySelector("#green");
+                        red.style.backgroundColor = "green";
+                    }
+
+                    function clickBlue() {
+                        const blue = document.querySelector("#blue");
+                        blue.style.backgroundColor = "red";
+                    }
+                &lt;/script&gt;
+            </vf-code>
+            <vf-text>
+                There are *three* kinds of mistake in there: an id that is repeated, ids
+                that do not match the text of the box, and functions that paint the wrong
+                element. Find them all.
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/04-dom/ex3.png" alt="Four coloured boxes, red, blue, green and yellow"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 4.4.* Build the form below. When the user clicks the button, all
+                the data they typed appears under it.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/04-dom/ex4.html)
+            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/javascript/04-dom/ex4.png" alt="Form with personal data and the result shown below"></vf-img>
+
+            <vf-callout type="exercici">
+                *Exercise 4.5.* One input and one button. When you click, the `h1` says
+                `Hello, NAME!` with the name the user typed, and the field is emptied.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 4.6.* Three buttons: red, green and blue. Each one changes the
+                background colour of the whole page.
+                (`document.body.style.backgroundColor`)
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 4.7.* A "Show / hide" button that makes a paragraph appear and
+                disappear using `classList.toggle`.
+            </vf-callout>
+
+            <vf-details summary="Show the solution (4.5 and 4.7)">
+                <vf-code language="javascript">
+                    // 4.5
+                    const input = document.querySelector("#nameInput");
+                    const button = document.querySelector("#myButton");
+                    const title = document.querySelector("#title");
+
+                    button.addEventListener("click", function () {
+                        const name = input.value;
+                        title.textContent = `Hello, ${name}!`;
+                        input.value = "";
+                    });
+
+                    // 4.7
+                    const paragraph = document.querySelector(".text");
+                    const toggleButton = document.querySelector("#toggleButton");
+
+                    toggleButton.addEventListener("click", function () {
+                        paragraph.classList.toggle("hidden");
+                    });
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/03-operators.html">
+                    &larr; Previous: Operators
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/05-conditions.html">
+                    Next: Making decisions &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

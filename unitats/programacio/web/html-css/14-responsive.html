@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive design</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Responsive design
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Why responsive?</vf-title>
+        <vf-content>
+            <vf-text>
+                More than half of the people who visit a website do it from a phone. A page designed only
+                for a big screen is unusable there: tiny text, horizontal scrolling, buttons you cannot hit
+                with a finger.
+            </vf-text>
+            <vf-text>*Responsive design* means the same page adapts to the size of the screen.</vf-text>
+            <vf-row centered>
+                <vf-col classes="col-md-4">
+                    <vf-img src="assets/unitats/programacio/web/html-css/14-responsive/width-1.jpeg" alt="The same page shown at a narrow, phone-sized width"></vf-img>
+                    <vf-text styles="text-align:center">Narrow (phone)</vf-text>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-img src="assets/unitats/programacio/web/html-css/14-responsive/width-2.jpeg" alt="The same page shown at a medium, tablet-sized width"></vf-img>
+                    <vf-text styles="text-align:center">Medium (tablet)</vf-text>
+                </vf-col>
+                <vf-col classes="col-md-4">
+                    <vf-img src="assets/unitats/programacio/web/html-css/14-responsive/width-3.jpeg" alt="The same page shown at a wide, desktop-sized width"></vf-img>
+                    <vf-text styles="text-align:center">Wide (desktop)</vf-text>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-title level="2">The viewport tag</vf-title>
+        <vf-content>
+            <vf-code language="html">
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            </vf-code>
+            <vf-text>
+                This line goes in the <code>&lt;head&gt;</code> of every page. Without it, a phone pretends
+                its screen is 980px wide and shows your page zoomed out and tiny. *This is the number one
+                cause of "my page looks bad on mobile".*
+            </vf-text>
+            <vf-text>
+                (No live preview here: this tag only changes how a real phone, or DevTools' device mode,
+                reports its width — an iframe on a desktop page cannot show that effect.)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Flexible images</vf-title>
+        <vf-content>
+            <vf-code language="css">
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            </vf-code>
+            <vf-text>
+                Without this, a 1200px image on a 375px screen sticks out and creates horizontal scrolling.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="Without max-width: 100% (scroll sideways to see it all)">
+                        &lt;style&gt;
+                            .photo {
+                                width: 600px;
+                                height: 150px;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="photo"&gt;A 600px wide photo&lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview label="With max-width: 100%; height: auto">
+                        &lt;style&gt;
+                            .photo {
+                                width: 600px;
+                                max-width: 100%;
+                                height: auto;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                                padding: 20px 0;
+                                text-align: center;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="photo"&gt;A 600px wide photo, shrunk to fit&lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                (Coloured boxes stand in for a real photo in this preview; a real <code>&lt;img&gt;</code> behaves the
+                same way.)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Media queries</vf-title>
+        <vf-content>
+            <vf-text>A *media query* is a block of CSS that only applies when a condition is true.</vf-text>
+            <vf-code language="css">
+                /* Normal rules: they apply always */
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 20px;
+                }
+
+                /* Only when the screen is 768px wide or less */
+                @media (max-width: 768px) {
+                    .cards {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .site-header {
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+            </vf-code>
+            <vf-text>
+                The two previews below use the exact same CSS. The only thing that changes is how wide the
+                preview box itself is — and since each preview is a real, independent web page in an
+                iframe, the media query genuinely turns on or off depending on that width, just like it
+                would on a real phone or desktop.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-preview label="Narrow preview (under 768px): the media query is active">
+                        &lt;style&gt;
+                            .site-header {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding: 12px;
+                                background-color: #2b2b40;
+                                color: white;
+                            }
+
+                            .cards {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 10px;
+                                padding: 12px;
+                            }
+
+                            .cards div {
+                                padding: 12px;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                                text-align: center;
+                            }
+
+                            @media (max-width: 768px) {
+                                .cards {
+                                    grid-template-columns: 1fr;
+                                }
+
+                                .site-header {
+                                    flex-direction: column;
+                                    gap: 10px;
+                                }
+                            }
+                        &lt;/style&gt;
+                        &lt;header class="site-header"&gt;
+                            &lt;div&gt;Logo&lt;/div&gt;
+                            &lt;nav&gt;Menu&lt;/nav&gt;
+                        &lt;/header&gt;
+                        &lt;div class="cards"&gt;
+                            &lt;div&gt;Card 1&lt;/div&gt;
+                            &lt;div&gt;Card 2&lt;/div&gt;
+                            &lt;div&gt;Card 3&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-preview label="Wide preview (over 768px): the media query is not active">
+                &lt;style&gt;
+                    .site-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 12px;
+                        background-color: #2b2b40;
+                        color: white;
+                    }
+
+                    .cards {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 10px;
+                        padding: 12px;
+                    }
+
+                    .cards div {
+                        padding: 12px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                        text-align: center;
+                    }
+
+                    @media (max-width: 768px) {
+                        .cards {
+                            grid-template-columns: 1fr;
+                        }
+
+                        .site-header {
+                            flex-direction: column;
+                            gap: 10px;
+                        }
+                    }
+                &lt;/style&gt;
+                &lt;header class="site-header"&gt;
+                    &lt;div&gt;Logo&lt;/div&gt;
+                    &lt;nav&gt;Menu&lt;/nav&gt;
+                &lt;/header&gt;
+                &lt;div class="cards"&gt;
+                    &lt;div&gt;Card 1&lt;/div&gt;
+                    &lt;div&gt;Card 2&lt;/div&gt;
+                    &lt;div&gt;Card 3&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+            <vf-text>The usual breakpoints:</vf-text>
+            <table class="table">
+                <thead>
+                    <tr><th>Breakpoint</th><th>Devices</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>up to 576px</td><td>phones</td></tr>
+                    <tr><td>577–768px</td><td>big phones, small tablets</td></tr>
+                    <tr><td>769–992px</td><td>tablets</td></tr>
+                    <tr><td>993px and up</td><td>laptops and desktops</td></tr>
+                </tbody>
+            </table>
+            <vf-text>
+                You do not need all of them. Two well-chosen breakpoints are usually enough. Choose them
+                where *your* design breaks, not because of a table.
+            </vf-text>
+            <vf-text>
+                A live example you can resize in your own browser: [open the media queries sample](unitats/programacio/web/html-css/exercises/14-responsive/sample.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Mobile first</vf-title>
+        <vf-content>
+            <vf-text>There are two ways to write your CSS:</vf-text>
+            <vf-list>
+                <li><vf-text>*Desktop first*: write the big design, then use <code>max-width</code> queries to fix the small screens.</vf-text></li>
+                <li><vf-text>*Mobile first*: write the simple, one-column design, then use <code>min-width</code> queries to add columns on bigger screens.</vf-text></li>
+            </vf-list>
+            <vf-text>Mobile first usually gives shorter and cleaner CSS:</vf-text>
+            <vf-code language="css">
+                /* Base: phone. One column. */
+                .cards {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                }
+
+                /* From 768px up: two columns */
+                @media (min-width: 768px) {
+                    .cards {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                /* From 1024px up: three columns */
+                @media (min-width: 1024px) {
+                    .cards {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+            </vf-code>
+            <vf-text>
+                Same trick as above: same CSS, two preview widths, real behaviour.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-preview label="Narrow preview (under 768px): base rule, one column">
+                        &lt;style&gt;
+                            .cards {
+                                display: grid;
+                                grid-template-columns: 1fr;
+                                gap: 10px;
+                            }
+
+                            @media (min-width: 768px) {
+                                .cards {
+                                    grid-template-columns: repeat(2, 1fr);
+                                }
+                            }
+
+                            @media (min-width: 1024px) {
+                                .cards {
+                                    grid-template-columns: repeat(3, 1fr);
+                                }
+                            }
+
+                            .cards div {
+                                padding: 12px;
+                                background: #c4baeb;
+                                border-radius: 8px;
+                                text-align: center;
+                            }
+                        &lt;/style&gt;
+                        &lt;div class="cards"&gt;
+                            &lt;div&gt;Card 1&lt;/div&gt;
+                            &lt;div&gt;Card 2&lt;/div&gt;
+                            &lt;div&gt;Card 3&lt;/div&gt;
+                        &lt;/div&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-preview label="Wide preview (over 1024px): three columns">
+                &lt;style&gt;
+                    .cards {
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 10px;
+                    }
+
+                    @media (min-width: 768px) {
+                        .cards {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+
+                    @media (min-width: 1024px) {
+                        .cards {
+                            grid-template-columns: repeat(3, 1fr);
+                        }
+                    }
+
+                    .cards div {
+                        padding: 12px;
+                        background: #c4baeb;
+                        border-radius: 8px;
+                        text-align: center;
+                    }
+                &lt;/style&gt;
+                &lt;div class="cards"&gt;
+                    &lt;div&gt;Card 1&lt;/div&gt;
+                    &lt;div&gt;Card 2&lt;/div&gt;
+                    &lt;div&gt;Card 3&lt;/div&gt;
+                &lt;/div&gt;
+            </vf-preview>
+        </vf-content>
+
+        <vf-title level="2">Testing on a phone</vf-title>
+        <vf-content>
+            <vf-text>
+                Open DevTools (F12) and press the little phone icon (or <code>Ctrl+Shift+M</code>). You get
+                a fake phone screen and you can choose the model and the width.
+            </vf-text>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/14-devtools-mobile.png — captura de DevTools en mode dispositiu, amb el selector de model desplegat i la pàgina renderitzada a 375px.] -->
+            <vf-callout type="consell">
+                The fastest test of all: grab the corner of your browser window and make it narrow, slowly.
+                Watch where your design breaks. That is where your breakpoint goes.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 14.1.* Add the viewport tag and <code>img { max-width: 100%; }</code> to all your
+                pages. Compare the result on a narrow window before and after.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 14.2.* Make your row of cards show 3 per line on a desktop, 2 on a tablet and 1 on
+                a phone. Use mobile first.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 14.3.* Make your nav bar become a vertical column below 600px.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 14.4.* Hide the sidebar (<code>aside</code>) on screens under 768px using
+                <code>display: none</code>. Then think: is it a good idea to hide content on mobile? Write
+                two lines with your opinion.
+            </vf-callout>
+            <vf-details summary="Show the solution (Exercise 14.3)">
+                <vf-code language="css">
+                    @media (max-width: 600px) {
+                        .site-header {
+                            flex-direction: column;
+                            gap: 12px;
+                            text-align: center;
+                        }
+
+                        .menu {
+                            flex-direction: column;
+                            gap: 8px;
+                        }
+                    }
+                </vf-code>
+                <vf-row>
+                    <vf-col classes="col-md-5">
+                        <vf-preview label="Narrow preview (under 600px): the media query is active">
+                            &lt;style&gt;
+                                .site-header {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    padding: 15px;
+                                    background-color: #2b2b40;
+                                }
+
+                                .menu {
+                                    display: flex;
+                                    gap: 15px;
+                                    list-style: none;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+
+                                .menu a {
+                                    color: white;
+                                    text-decoration: none;
+                                }
+
+                                @media (max-width: 600px) {
+                                    .site-header {
+                                        flex-direction: column;
+                                        gap: 12px;
+                                        text-align: center;
+                                    }
+
+                                    .menu {
+                                        flex-direction: column;
+                                        gap: 8px;
+                                    }
+                                }
+                            &lt;/style&gt;
+                            &lt;header class="site-header"&gt;
+                                &lt;div style="color:white;font-weight:bold"&gt;Marc Ferrer&lt;/div&gt;
+                                &lt;ul class="menu"&gt;
+                                    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/header&gt;
+                        </vf-preview>
+                    </vf-col>
+                </vf-row>
+                <vf-text>
+                    (The preview also gives <code>.site-header</code> and <code>.menu</code> their base flex styles from
+                    lesson 12, since the exercise solution only shows the <code>@media</code> block.)
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">More exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 14.4.* Take the band page of exercise 12.6 and make it work on a phone: one
+                column under 600 px, two between 600 and 900, three above.
+            </vf-callout>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/13-grid.html">
+                    &larr; Previous: CSS Grid
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/15-variables.html">
+                    Next: CSS variables and good practice &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

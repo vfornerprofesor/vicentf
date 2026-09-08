@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables and data types</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Variables and data types
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What is a variable?</vf-title>
+        <vf-content>
+            <vf-text>
+                A variable is a *box with a name* where you keep a value, so you can use it
+                later.
+            </vf-text>
+            <vf-code language="javascript">
+                let score = 0;
+                document.write(score + "&lt;br>");     // 0
+
+                score = 10;
+                document.write(score + "&lt;br>");     // 10
+            </vf-code>
+            <vf-text>
+                `=` is not "equals" in the maths sense. It means *"put this value in this
+                box"*. You read it from right to left.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">let and const</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                let points = 0;         // I can change it later
+                points = 5;             // fine
+
+                const PI = 3.14159;     // I cannot change it
+                PI = 3;                 // TypeError: Assignment to constant variable
+            </vf-code>
+            <vf-list>
+                <li><vf-text>Use `const` by default. It protects you: if you try to change it by accident, the browser tells you.</vf-text></li>
+                <li><vf-text>Use `let` when the value really has to change (a counter, a total, a user answer).</vf-text></li>
+                <li><vf-text>You will see `var` in old code. *Do not use it.* It behaves in strange ways.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Rules for names</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Letters, numbers, `_` and `$`. *No spaces*, and it cannot start with a number.</vf-text></li>
+                <li><vf-text>JavaScript is *case sensitive*: `score`, `Score` and `SCORE` are three different variables.</vf-text></li>
+                <li><vf-text>Use *camelCase*: `userName`, `totalPrice`, `isLoggedIn`.</vf-text></li>
+                <li><vf-text>Name things for what they hold. `x` and `data2` tell you nothing. `remainingLives` tells you everything.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Data types</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // String: text. Always between quotes
+                let name = "Marta";
+                let city = 'Valencia';
+
+                // Number: whole numbers and decimals, all the same type
+                let age = 16;
+                let price = 19.95;
+
+                // Boolean: only two values
+                let isStudent = true;
+                let hasPassed = false;
+
+                // Nothing
+                let prize = null;           // "empty on purpose"
+                let unknown;                // undefined: declared, never given a value
+            </vf-code>
+            <vf-text>
+                To ask what type something is:
+            </vf-text>
+            <vf-code language="javascript">
+                document.write(typeof "hello" + "&lt;br>");    // "string"
+                document.write(typeof 16 + "&lt;br>");         // "number"
+                document.write(typeof true + "&lt;br>");       // "boolean"
+            </vf-code>
+            <vf-callout type="atencio">
+                "5" and 5 are NOT the same thing. The first is text, the second is a number.
+                "5" + 1 gives "51". 5 + 1 gives 6. This single confusion causes a huge
+                number of bugs.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Template literals</vf-title>
+        <vf-content>
+            <vf-text>
+                Joining text with `+` gets ugly fast:
+            </vf-text>
+            <vf-code language="javascript">
+                let name = "Marta";
+                let age = 16;
+
+                document.write("Hello, " + name + ". You are " + age + " years old.&lt;br>");
+            </vf-code>
+            <vf-text>
+                With backticks `` ` `` you can put variables inside the text with `${ }`:
+            </vf-text>
+            <vf-code language="javascript">
+                document.write(`Hello, ${name}. You are ${age} years old.&lt;br>`);
+            </vf-code>
+            <vf-text>
+                The backtick is not the same key as the normal quote. On a Spanish keyboard
+                it is next to the `P`. Use this style from now on: it is shorter and much
+                easier to read.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Reading data from the user</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                let name = prompt("Your name?");
+                let ageText = prompt("Your age?");
+            </vf-code>
+            <vf-text>
+                *Careful: `prompt` always gives you a string*, even if the user types a
+                number.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Converting types</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                let ageText = "16";
+
+                let age = Number(ageText);          // 16 as a number
+                let age2 = parseInt("16 years");    // 16 (reads until it is not a number)
+                let price = parseFloat("19.95");    // 19.95
+
+                let text = String(16);              // "16"
+                let text2 = (16).toString();        // "16"
+
+                document.write(Number("hello"));    // NaN = Not a Number
+            </vf-code>
+            <vf-text>
+                `NaN` means "this is not a number". If you see `NaN` in your page, somewhere
+                you did maths with something that was not a number.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 2.1.* Declare variables for your name, age, height (with decimals)
+                and whether you have a driving licence. Write each one in the page, with its
+                `typeof` next to it.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.2.* Write a sentence in the page with all four values, using a
+                template literal.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.3.* Try to change a `const`. Open the console and copy the error
+                you get.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.4.* Predict, without running it, what these show. Then run them
+                and check:
+                <vf-code language="javascript">
+                    document.write("5" + 3 + "&lt;br>");
+                    document.write(5 + 3 + "&lt;br>");
+                    document.write("5" - 3 + "&lt;br>");
+                    document.write(typeof (5 + "3") + "&lt;br>");
+                </vf-code>
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.5.* Ask the user for two numbers with `prompt`, add them, and
+                write the result in the page. Make sure the result is 8 and not "35" when
+                the user types 3 and 5.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.6.* Ask for a temperature in Celsius and write it in Fahrenheit.
+                The formula is `F = C * 9 / 5 + 32`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 2.7.* Ask for the price of a product and the quantity, and write an
+                invoice line: name, quantity, price per unit and total.
+            </vf-callout>
+            <vf-details summary="Show the solution (2.4 and 2.5)">
+                <vf-code language="javascript">
+                    // 2.4
+                    document.write("5" + 3 + "&lt;br>");           // "53"  -> + with a string joins text
+                    document.write(5 + 3 + "&lt;br>");             // 8
+                    document.write("5" - 3 + "&lt;br>");           // 2     -> - only works with numbers
+                    document.write(typeof (5 + "3") + "&lt;br>");  // "string"
+
+                    // 2.5
+                    const a = Number(prompt("First number?"));
+                    const b = Number(prompt("Second number?"));
+                    document.write(`${a} + ${b} = ${a + b}&lt;br>`);
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/01-first-program.html">
+                    &larr; Previous: Your first program
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/03-operators.html">
+                    Next: Operators &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

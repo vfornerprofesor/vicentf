@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMX</title>
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    <style>
+body {
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+
+}
+
+#main {
+    color: white;
+    text-align: center;
+    background-color: darkcyan;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#img_main {
+    width: 50%;
+}
+
+h2 {
+    margin-inline: 20px;
+    color: darkcyan;
+    box-shadow: 0 0 10px darkcyan;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-block: 10px;
+}
+
+p {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-align: justify;
+}
+
+ul {
+    background-color: darkcyan;
+    padding-block: 15px;
+    color: white;
+    list-style: square;
+}
+
+.remarcable {
+    font-weight: bold;
+    color: darkcyan;
+}
+    </style>
+    <header id="main">
+        <h1>Computer Networks and Systems</h1>
+        <h3>Study programme overview</h3>
+        <h5>Year 2 - 24/25</h5>
+        <img id="img_main" src="assets/smx.jpeg" alt="">
+        <br>
+    </header>
+
+    <main>
+        <section>
+            <h2>Computer security</h2>
+            <p>Computer security is essential to <span class="remarcable">protect systems</span> and data from external threats. In this
+                module you will learn to identify and reduce risks to the security of computer systems. You will study
+                different types of attacks, such as viruses, trojans and denial-of-service attacks, and
+                you will learn to apply security measures to prevent them. You will also
+                explore concepts such as firewalls, intrusion detection systems and cryptography.
+
+            </p>
+        </section>
+
+        <section>
+            <h2>Network operating systems</h2>
+            <p>A network operating system is software that manages a computer's resources and <span class="remarcable">allows communication
+                with other computers connected to the network</span>. This module will teach you to configure and manage
+                network operating systems, such as Windows Server and Linux. You will learn to create and manage user
+                accounts, share resources between different computers and configure network services. You will also
+                explore concepts such as domains, workgroups and network protocols.
+
+            </p>
+        </section>
+
+        <section>
+            <h2>Web applications</h2>
+            <p>In this module you will learn to <span class="remarcable">develop and manage web applications</span>. Web applications are programs that
+                run on a server and are displayed through a web browser. These applications are the basis of
+                many online services we use every day, such as social networks, online shops and
+                email. You will study the programming languages used to build web applications, such as
+                HTML, CSS and JavaScript, and you will learn to design intuitive and functional user interfaces. You will also
+                explore concepts such as databases, web security and performance optimisation. </p>
+        </section>
+
+        <section>
+            <h2>Network services</h2>
+            <p>Network services are programs that run on a server and <span class="remarcable">provide specific functions to other
+                devices connected to the network</span>. This module will teach you to configure and manage several network services,
+                such as email servers, web servers, FTP servers and database servers. You will learn to
+                configure the communication protocols needed for each service and to ensure their availability and
+                security. You will also explore concepts such as IP addresses, DNS and communication ports.
+
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <h2>Other modules</h2>
+        <ul>
+            <li>English</li>
+            <li>Entrepreneurship</li>
+            <li>Work placement</li>
+            <li>Tutoring</li>
+        </ul>
+    </footer>
+
+</body>
+
+</html>

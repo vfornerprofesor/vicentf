@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final project: my personal website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Final project: my personal website
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">The brief</vf-title>
+        <vf-content>
+            <vf-text>
+                *My personal website.* You are going to build a small website about yourself. It is not a
+                joke project: this is the kind of page you can send with a job application, or use as your
+                portfolio when you finish the cycle. Write things you would really show.
+            </vf-text>
+            <vf-text>
+                If you prefer not to talk about yourself, you can do it about an invented character, a
+                band, a shop or a small business. Ask your teacher first.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">What it must have</vf-title>
+        <vf-content>
+            <vf-text>*Four pages, at least:*</vf-text>
+            <table class="table">
+                <thead>
+                    <tr><th>File</th><th>Content</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>index.html</code></td><td>Home: who you are, a photo, a short introduction</td></tr>
+                    <tr><td><code>about.html</code></td><td>About: your studies, your skills, your interests. A table or a list</td></tr>
+                    <tr><td><code>projects.html</code></td><td>Projects: 3 or more things you have done, with images</td></tr>
+                    <tr><td><code>contact.html</code></td><td>Contact: a form and your links</td></tr>
+                </tbody>
+            </table>
+
+            <vf-text>*HTML requirements*</vf-text>
+            <vf-list>
+                <li><vf-text>Correct skeleton in every page, with a real <code>&lt;title&gt;</code> for each one.</vf-text></li>
+                <li><vf-text>Semantic tags: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code>.</vf-text></li>
+                <li><vf-text>The same navigation menu in the four pages, and every link working.</vf-text></li>
+                <li><vf-text>At least 5 images, all with real <code>alt</code> texts, in an <code>images</code> folder.</vf-text></li>
+                <li><vf-text>At least one table and one ordered or unordered list.</vf-text></li>
+                <li><vf-text>A contact form with at least 6 fields, all with <code>label</code>, and <code>required</code> where it makes sense.</vf-text></li>
+                <li><vf-text>Zero errors in the W3C validator.</vf-text></li>
+            </vf-list>
+
+            <vf-text>*CSS requirements*</vf-text>
+            <vf-list>
+                <li><vf-text>One single external CSS file for the whole site.</vf-text></li>
+                <li><vf-text>No <code>style=</code> attributes in the HTML.</vf-text></li>
+                <li><vf-text>A <code>:root</code> block with at least 5 variables.</vf-text></li>
+                <li><vf-text>A Google Font.</vf-text></li>
+                <li><vf-text>Flexbox for the navigation bar.</vf-text></li>
+                <li><vf-text>Grid or flexbox for the projects page.</vf-text></li>
+                <li><vf-text>At least one <code>:hover</code> effect with a <code>transition</code>.</vf-text></li>
+                <li><vf-text>At least one media query. The site must work at 375px wide.</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Delivery*</vf-text>
+            <vf-list>
+                <li><vf-text>A zip file called <code>surname-name-project.zip</code> with the whole folder.</vf-text></li>
+                <li><vf-text>A <code>README.txt</code> inside with: your name, what your site is about, where you got the images, and one paragraph about what was hardest.</vf-text></li>
+                <li><vf-text>A presentation of 3 minutes in class: show your site and explain one thing you are proud of and one thing you would improve.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Milestones</vf-title>
+        <vf-content>
+            <table class="table">
+                <thead>
+                    <tr><th>Stage</th><th>What must be ready</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Stage 1</td><td>The folder structure, the four HTML pages with real content and the menu working. No CSS yet.</td></tr>
+                    <tr><td>Stage 2</td><td>The CSS file with variables, fonts, colours, the nav bar and the layout of the pages.</td></tr>
+                    <tr><td>Stage 3</td><td>Responsive, checklist, validator, README, zip and presentation.</td></tr>
+                </tbody>
+            </table>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/16-project-wireframe.png — wireframe de les 4 pàgines del projecte (rectangles grisos amb etiquetes), perquè l'alumnat veja l'estructura esperada abans de començar.] -->
+            <vf-callout type="atencio">
+                Do not use images you found on Google without checking. Use your own photos, or free image
+                sites like Unsplash, Pexels or Pixabay. Write where each image comes from in your README.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Reference: a project already built</vf-title>
+        <vf-content>
+            <vf-text>
+                Here is an example of a similar 4-page project (login, sign-up and two content pages),
+                built by a previous student group. Use it as a reference for the *level* expected, not to
+                copy it.
+            </vf-text>
+            <vf-row centered>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/login.png" alt="Example project: login page"></vf-img>
+                    <vf-text styles="text-align:center">Login page</vf-text>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/signup.png" alt="Example project: sign-up page"></vf-img>
+                    <vf-text styles="text-align:center">Sign-up page</vf-text>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/main-1.png" alt="Example project: main content page, first view"></vf-img>
+                    <vf-text styles="text-align:center">Main page (1)</vf-text>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/main-2.png" alt="Example project: main content page, second view"></vf-img>
+                    <vf-text styles="text-align:center">Main page (2)</vf-text>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                Download the starter/reference project [here|download](unitats/programacio/web/html-css/exercises/16-project/project.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Alternative option: a quiz layout</vf-title>
+        <vf-content>
+            <vf-text>
+                If you prefer a more visual, playful project, here is the layout of a question quiz. In
+                this module you only build the *layout*: the logic (checking answers, keeping score) belongs
+                to the JavaScript module.
+            </vf-text>
+            <vf-row centered>
+                <vf-col classes="col-md-3">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/joc1.png" alt="Quiz layout, screen 1"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-3">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/joc2.png" alt="Quiz layout, screen 2"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-3">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/joc3.png" alt="Quiz layout, screen 3"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-3">
+                    <vf-img src="assets/unitats/programacio/web/html-css/16-project/joc4.png" alt="Quiz layout, screen 4"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-img src="assets/unitats/programacio/web/html-css/16-project/joc_flux.png" alt="Flow diagram of the quiz screens"></vf-img>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/16-project/quiz-layout.html)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Rubric</vf-title>
+        <vf-content>
+            <vf-text>Weight of the final module grade:</vf-text>
+            <table class="table">
+                <thead>
+                    <tr><th>Element</th><th>Weight</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Class exercises (delivered and corrected)</td><td>20 %</td></tr>
+                    <tr><td>Mini-project 1 (HTML)</td><td>10 %</td></tr>
+                    <tr><td>Mini-project 2 (CSS)</td><td>10 %</td></tr>
+                    <tr><td>Test 1 (HTML)</td><td>15 %</td></tr>
+                    <tr><td>Test 2 (CSS)</td><td>15 %</td></tr>
+                    <tr><td>Final project</td><td>25 %</td></tr>
+                    <tr><td>Presentation and attitude</td><td>5 %</td></tr>
+                </tbody>
+            </table>
+
+            <vf-text>Final project rubric (25 % of the grade), out of 10 points:</vf-text>
+            <table class="table">
+                <thead>
+                    <tr><th>Criterion</th><th>0–1 (insufficient)</th><th>2 (correct)</th><th>3 (very good)</th><th>Points</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>HTML structure and validator</td><td>Missing pages or serious errors</td><td>4 pages, few errors</td><td>4 pages, 0 errors, correct semantics</td><td>/3</td></tr>
+                    <tr><td>Content (text, images, table, list, form)</td><td>Incomplete or filler</td><td>Everything present and coherent</td><td>Everything present, well written, real <code>alt</code> texts</td><td>/2</td></tr>
+                    <tr><td>CSS: variables, typography, colour</td><td>Inline styles or none</td><td>External file with basic styles</td><td>Variables, spacing scale, coherent design</td><td>/2</td></tr>
+                    <tr><td>Layout (flexbox/grid) and responsive</td><td>Does not adapt</td><td>Works on mobile with some issue</td><td>Flawless at 375, 768 and 1200 px</td><td>/2</td></tr>
+                    <tr><td>Delivery, README and presentation</td><td>Late or incomplete</td><td>Correct</td><td>Clear presentation, reasoned self-criticism</td><td>/1</td></tr>
+                    <tr><td colspan="4"><strong>Total</strong></td><td><strong>/10</strong></td></tr>
+                </tbody>
+            </table>
+            <vf-callout type="atencio">
+                Note: if the site does not open, or the menu links do not work, the project is returned for
+                correction before it is graded.
+            </vf-callout>
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/16-project-example.png — captura d'un exemple acabat del projecte (pot ser un fet pel professor), per a fixar el nivell esperat.] -->
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-6">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/15-variables.html">
+                    &larr; Previous: CSS variables and good practice
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-6">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>
