@@ -61,27 +61,38 @@
             if (l) { l.style.display = 'none'; }
         }, 5000);
     </script>
-    
-<div id="menu"></div>
+
+    <div id="menu"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content">
-        <vf-title level="1">
+        <vf-title level="1" subtitle="Prova única" centered>
             Activitat inicial 1r d'ESO
         </vf-title>
 
         <vf-content>
-            <vf-img classes="vf-img-half" src="assets/cursos/eso1/ActivitatInicial.png"></vf-img>
+            <vf-text>Observa bé la imatge i segueix les instruccions del professor.
+                Quan tingues la contrasenya, escriu-la ací baix per acabar l'activitat inicial.</vf-text>
 
-            <vf-frame link="https://docs.google.com/forms/d/e/1FAIpQLSePBEAR_sztosXgjVjIT55sj0qboQ_3sLWiniM7-xeuduXHtw/viewform?embedded=true"
-            classes="vf-frame-half"></vf-frame>
+            <vf-img classes="vf-prova-img boxshadow" src="assets/cursos/eso1/ActivitatInicial.png"
+                alt="Activitat inicial de 1r d'ESO"></vf-img>
+
+            <div id="prova"></div>
+            <script src="scripts/proves/create_prova.js"></script>
+            <script>
+                createProva({
+                    solucio: 'SOCALUMNATDEINFORMATICADE1ESOHOLA',
+                    seguent: 'activitats/activitats-inicials/avaluacio_inicial_1eso_superada.html',
+                    etiqueta: 'Escriu la contrasenya per acabar l\'activitat inicial:',
+                    textOk: 'Correcte! Ja has acabat...'
+                });
+            </script>
         </vf-content>
-        
 
     </div>
     <div id="footer"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
 
-    
+
 </body>
 
 </html>

@@ -36,11 +36,11 @@
             }
         }
     </style>
-    <base href="../../../">
+    <base href="../../">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prova inicial 3r d'ESO - Prova 3</title>
+    <title>Activitat inicial 1r d'ESO - Superada!</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div id="header"></div>
@@ -65,24 +65,18 @@
     <div id="menu"></div>
     <script>$('#menu').load('menu.html');</script>
     <div id="content">
-        <vf-title level="1" subtitle="Prova 3 de 4" centered>
-            Prova inicial 3r d'ESO
+        <vf-title level="1" subtitle="Activitat inicial superada" centered>
+            Has superat l'activitat per començar 1r d'ESO!
         </vf-title>
 
         <vf-content>
-            <vf-text>Observa bé la imatge i resol el repte. Quan tingues la resposta, escriu-la ací baix
-                per passar a la *prova següent*.</vf-text>
+            <vf-callout type="consell">
+                Enhorabona! Ja pots començar el curs de *1r d'ESO*.
+            </vf-callout>
 
-            <vf-img classes="vf-prova-img boxshadow" src="assets/activitats/provainicial_3eso_3.png"
-                alt="Prova 3 de la prova inicial de 3r d'ESO"></vf-img>
-            <div id="prova"></div>
-            <script src="scripts/proves/create_prova.js"></script>
-            <script>
-                createProva({
-                    solucio: '729415',
-                    seguent: 'activitats/activitats-inicials/prova-inicial-3eso/prova4.html'
-                });
-            </script>
+            <vf-row centered>
+                <vf-btn link="cursos/1eso.html">Anar a 1r d'ESO</vf-btn>
+            </vf-row>
         </vf-content>
 
     </div>
