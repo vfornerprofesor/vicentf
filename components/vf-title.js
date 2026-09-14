@@ -90,12 +90,19 @@ class VFTitle extends VFElement {
                 button.classList.add('vf-icon-copy-hide');
             });
 
-            button.addEventListener('click', (event) => {
+            button.addEventListener('click', async (event) => {
                 // Evitem que el clic "puge" fins al titol (per si algun dia
                 // torna a tindre algun altre listener) i que el boto siga
                 // l'unica cosa que reacciona al clic.
                 event.stopPropagation();
-                navigator.clipboard.writeText(button.dataset.href);
+                // copyToClipboard (scripts/utils.js) cau a execCommand quan no
+                // hi ha context segur (file://, IP de la xarxa), on
+                // navigator.clipboard ni tan sols existix.
+                const ok = await copyToClipboard(button.dataset.href);
+                if (!ok) {
+                    console.error('vf-title: no s\'ha pogut copiar l\'enllac');
+                    return;
+                }
 
                 copiedMsg.style.display = 'inline';
                 copiedMsg.style.opacity = '1';

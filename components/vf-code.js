@@ -43,24 +43,28 @@ class VFCode extends VFElement {
         icon.setAttribute('aria-label', 'Copiar codi');
         icon.appendChild(iconGlyph);
         icon.addEventListener('click', async () => {
-            try {
-                // Copiem el TEXT del <code>, no la cadena `newLines`: aquesta
-                // ve de this.innerHTML i encara porta les entitats escapades
-                // (&lt;h1&gt;), aixi que en apegar eixia el codi sense
-                // desescapar. textContent ja dona els caracters reals i no
-                // s'altera pel ressaltat de hljs (que nomes afig <span>).
-                await navigator.clipboard.writeText(code.textContent);
-                message.style.display = 'block';
-                message.style.opacity = '1';
-                
-                setTimeout(() => {
-                    message.style.transition = 'opacity 1s';
-                    message.style.opacity = '0';
-                    setTimeout(() => message.style.display = 'none', 1000);
-                }, 500);
-            } catch (err) {
-                console.error('Error al copiar:', err);
+            // Copiem el TEXT del <code>, no la cadena `newLines`: aquesta ve de
+            // this.innerHTML i encara porta les entitats escapades (&lt;h1&gt;),
+            // aixi que en apegar eixia el codi sense desescapar. textContent ja
+            // dona els caracters reals i no s'altera pel ressaltat de hljs (que
+            // nomes afig <span>).
+            // copyToClipboard (scripts/utils.js) cau a execCommand quan no hi ha
+            // context segur (file://, IP de la xarxa), on navigator.clipboard
+            // ni tan sols existix.
+            const ok = await copyToClipboard(code.textContent);
+            if (!ok) {
+                console.error('vf-code: no s\'ha pogut copiar el codi');
+                return;
             }
+
+            message.style.display = 'block';
+            message.style.opacity = '1';
+
+            setTimeout(() => {
+                message.style.transition = 'opacity 1s';
+                message.style.opacity = '0';
+                setTimeout(() => message.style.display = 'none', 1000);
+            }, 500);
         });
 
         let message = document.createElement('p');

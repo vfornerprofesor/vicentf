@@ -72,3 +72,53 @@ function scrollToSection(sectionId) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+/**
+ * Copia text al porta-retalls.
+ *
+ * navigator.clipboard NOMES existeix en contextos segurs (https:// o
+ * http://localhost). Obrint el lloc per file://, per la IP de la xarxa
+ * (http://192.168.x.x:8000) o per qualsevol http:// que no siga localhost,
+ * `navigator.clipboard` es undefined i el `.writeText()` peta amb
+ * "Cannot read properties of undefined (reading 'writeText')".
+ *
+ * Per a eixos casos caiem al metode antic: un <textarea> fora de pantalla,
+ * seleccionar-lo i document.execCommand('copy'). Esta obsolet pero funciona
+ * en tots els navegadors i no exigix context segur.
+ *
+ * Torna una Promise<boolean>: true si s'ha copiat, false si no s'ha pogut.
+ */
+async function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch (err) {
+            // Pot fallar si l'usuari denega el permis: provem el fallback.
+            console.warn('copyToClipboard: ha fallat navigator.clipboard, provem execCommand', err);
+        }
+    }
+
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    // Fora de la vista i sense provocar scroll ni zoom al mobil.
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.top = '0';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+
+    // En iOS .select() a soles no basta.
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+
+    let ok = false;
+    try {
+        ok = document.execCommand('copy');
+    } catch (err) {
+        console.error('copyToClipboard: execCommand tambe ha fallat', err);
+    }
+
+    document.body.removeChild(textarea);
+    return ok;
+}
