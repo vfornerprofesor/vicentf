@@ -413,7 +413,6 @@ h4.vf-title-anchor {
 /** VF-TEXT **/
 vf-text {
   display: block;
-  max-width: 68ch;
 }
 
 /* VF-PASSWORD MODAL */

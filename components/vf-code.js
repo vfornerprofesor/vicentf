@@ -44,7 +44,12 @@ class VFCode extends VFElement {
         icon.appendChild(iconGlyph);
         icon.addEventListener('click', async () => {
             try {
-                await navigator.clipboard.writeText(newLines);
+                // Copiem el TEXT del <code>, no la cadena `newLines`: aquesta
+                // ve de this.innerHTML i encara porta les entitats escapades
+                // (&lt;h1&gt;), aixi que en apegar eixia el codi sense
+                // desescapar. textContent ja dona els caracters reals i no
+                // s'altera pel ressaltat de hljs (que nomes afig <span>).
+                await navigator.clipboard.writeText(code.textContent);
                 message.style.display = 'block';
                 message.style.opacity = '1';
                 
