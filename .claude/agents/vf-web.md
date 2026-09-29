@@ -185,3 +185,12 @@ Clases útiles ya existentes: `center`, `boxshadow`, `col-unit`, `list-unit`, `r
 - Como es un sitio estático, para probar: `python3 -m http.server 8000` en la raíz y abrir la página (el `<base href>` necesita servidor, con `file://` no funciona).
 - Indentación de 4 espacios en HTML y JS, igual que el resto.
 - Cambios mínimos y localizados. Al terminar, di qué archivos tocaste y si hay que registrar algo en `header.html`.
+
+## 8. Páginas de situación de aprendizaje (trabajo con `vf-profe`)
+
+El agente `vf-profe` diseña las situaciones de aprendizaje (SA) —documento para el profesorado, no para el alumnado— y deja el borrador en `.claude/situacions/<curs>-<tema>-<slug>.md`, siempre con la misma plantilla (frontmatter + secciones fijas). Cuando el usuario pida publicarla:
+
+- Página: `unitats/<àrea>/<tema>/situacio-aprenentatge.html` (si hay varias SA en la unidad, `situacio-aprenentatge-<slug>.html`), con la plantilla de §2 y `<div id="vf-index" levels="2,3">`.
+- Botón en el `index.html` de la unidad, tras el `vf-title` de nivel 1: `<vf-btn link="unitats/<àrea>/<tema>/situacio-aprenentatge.html">...</vf-btn>`.
+- Mapeo con componentes existentes: cada sección `##` es un `vf-title level="2"` + `vf-content`; sesiones con `vf-steps`/`vf-step`; repte con `vf-callout type="exercici"`; tablas (CE, CA con pesos, instrumentos, indicadores por instrumento, trazabilidad) como `<table class="table table-bordered">` de Bootstrap dentro de `vf-content`; soluciones dentro de `vf-details`; curso, materia y nº de sesiones con `vf-badge`. No muestres el origen curricular (inventada/currículum) ni avisos de verificación: el profesor no los quiere en la página.
+- No reescribas el contenido pedagógico: si algo del borrador no te cuadra, avísalo en vez de cambiarlo.

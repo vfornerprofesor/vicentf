@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - Gestió d'arxius</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · Gestió d'arxius (document per al professorat)">La meua motxilla digital</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Taller de Relacions Digitals Responsables</vf-badge>
+            <vf-badge>5 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/ordinadors/gestio-arxius/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>Primera unitat del curs. L'alumnat arriba de Primària amb experiències molt desiguals: molts han usat tauletes i mòbils, on els arxius "no es veuen", i pocs han treballat amb un explorador d'arxius. Saber on es guarden les coses és la base de tot el curs (adjuntar a un correu, pujar a Aules, recuperar un treball) i és també una qüestió de responsabilitat digital: cuidar el propi espai, no acumular descàrregues, tindre còpia al núvol i decidir amb qui es comparteix.</vf-text>
+
+            <vf-text>La SA servix per a <strong>Google Drive</strong> o <strong>OneDrive</strong>; el professorat tria la del centre (vegeu la taula de l'activitat A4). Les instruccions valen per a LliureX i Windows. Els equips conserven els arxius de cada alumne entre sessions.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>"Prepara la teua motxilla digital per a tot el curs."</strong> Deixa l'ordinador i el núvol ordenats: carpetes amb sentit, res perdut a Baixades i una carpeta per a cada assignatura que faràs servir tot l'any.
+            </vf-callout>
+
+            <vf-text><strong>Productes</strong>: estructures locals Països i Pokémon; estructura d'assignatures al núvol amb un document de text "Què he aprés"; presentació amb captures del que s'ha fet, compartida amb el professor.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Competència específica</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1</td>
+                            <td>Gestionar de manera ordenada i responsable els arxius personals i acadèmics, en l'equip local i al núvol, creant estructures jeràrquiques de carpetes, aplicant les operacions bàsiques sobre arxius i explicant el procés seguit, per a localitzar, conservar i compartir la informació de manera eficient i segura.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                            <th>Pes %</th>
+                            <th>Justificació del pes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>Identificar les carpetes principals de l'usuari, expressar la ruta d'un arxiu i reconéixer el tipus d'arxiu per l'extensió.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Coneixement de base i de dificultat baixa.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.2</td>
+                            <td>Aplicar les operacions bàsiques sobre arxius (descarregar, reanomenar, copiar, moure, capturar la pantalla) triant bé entre copiar i moure i mantenint Baixades i l'Escriptori nets.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Destresa clau i font dels errors més habituals.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.3</td>
+                            <td>Construir en l'equip local estructures jeràrquiques de carpetes d'almenys tres nivells a partir d'un esquema, amb noms descriptius i cada arxiu al seu lloc.</td>
+                            <td>30&nbsp;%</td>
+                            <td>Nucli de la unitat; integra CE1.1 i CE1.2.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>Organitzar arxius al núvol (crear carpetes, pujar, crear documents en línia) i compartir-los amb qui cal i amb el permís adequat.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Entorn nou i dimensió responsable de compartir.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>Explicar el que s'ha aprés i mostrar el procés seguit mitjançant un document de text i una presentació amb captures, valorant els hàbits d'ordre digital.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Comunicació i reflexió; exigeix eines noves (editor en línia, presentació, captures).</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Explorador d'arxius: carpeta d'usuari (Documents, Baixades, Escriptori, Imatges) i ruta d'un arxiu.</li>
+                <li>Nom, extensió i tipus d'arxiu (<code>.txt</code>, <code>.jpg</code>, <code>.png</code>, <code>.pdf</code>, <code>.docx</code>, <code>.pptx</code>).</li>
+                <li>Operacions: crear, reanomenar, copiar, moure, eliminar. Dreceres <code>Ctrl+C</code>, <code>Ctrl+X</code>, <code>Ctrl+V</code>, <code>F2</code>.</li>
+                <li>Descàrrega des del navegador i carpeta Baixades. Captura de pantalla.</li>
+                <li>Estructures jeràrquiques de carpetes i noms descriptius.</li>
+                <li>Núvol: diferència amb l'emmagatzematge local, pujar arxius, documents en línia, compartir i permisos.</li>
+                <li>Hàbits d'ordre i responsabilitat digital.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Descriptors del perfil d'eixida</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Descriptor</th>
+                            <th>Relació amb la SA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CD2</td>
+                            <td>Gestiona el seu entorn personal digital d'aprenentatge (carpetes locals i núvol).</td>
+                        </tr>
+                        <tr>
+                            <td>CD4</td>
+                            <td>Protegix les seues dades: còpia al núvol, permisos de compartició, Baixades neta.</td>
+                        </tr>
+                        <tr>
+                            <td>CD1</td>
+                            <td>Cerca imatges i dades en la web i les guarda de manera ordenada.</td>
+                        </tr>
+                        <tr>
+                            <td>CCL1</td>
+                            <td>Explica per escrit què ha aprés (document de text i presentació).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 1 — On estan les meues coses? (55 min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: conéixer la carpeta d'usuari i les operacions bàsiques.<br>
+                        <strong>Agrupament</strong>: gran grup i individual.<br>
+                        <strong>Material</strong>: projector, targeta A.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Arrencada, inici de sessió i normes de l'aula.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Activació: foto d'una motxilla desordenada i d'una ordenada. Ordinador = motxilla, carpetes = butxaques.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A0. Demostració pas a pas</strong> (l'alumnat ho repetix alhora).</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td><strong>A1. "El meu famós"</strong>. Full d'observació: DB4-DB8.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Preguntes flash ("on va una descàrrega?", "si moc, quantes còpies queden?", "què és un <code>.png</code>?"). Full d'observació: DB1-DB3.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 2 — Construïm el Planeta Terra (55 min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: crear una estructura de diversos nivells seguint un esquema, de manera guiada.<br>
+                        <strong>Agrupament</strong>: gran grup i individual.<br>
+                        <strong>Material</strong>: esquema Països imprés, targeta A.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>L'arbre de carpetes a la pissarra: carpeta pare i carpeta filla.</td>
+                                </tr>
+                                <tr>
+                                    <td>12&nbsp;min</td>
+                                    <td><strong>A2</strong>: el professor fa <code>PLANETA TERRA</code>, els continents i <code>MARROC</code> complet; l'alumnat el seguix.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>A2</strong>: l'alumnat completa la resta. Rondes i full d'observació.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Revisió de Baixades: tots la deixen buida.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 3 — La Pokédex ordenada (55 min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: reproduir de manera autònoma una estructura de 4 nivells.<br>
+                        <strong>Agrupament</strong>: individual.<br>
+                        <strong>Material</strong>: esquema Pokémon imprés.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Presentació del repte.</td>
+                                </tr>
+                                <tr>
+                                    <td>32&nbsp;min</td>
+                                    <td><strong>A3. Activitat Pokémon</strong> en autonomia ("pregunta a 2 abans que a mi").</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Captures de l'arbre <code>POKEMONS</code> i d'una carpeta de Pokémon. El professor revisa les estructures i tanca el full d'observació.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 4 — La motxilla al núvol (55 min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: organitzar arxius al núvol.<br>
+                        <strong>Agrupament</strong>: gran grup i individual.<br>
+                        <strong>Material</strong>: credencials del compte educatiu en paper, targeta B.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Arrencada i primer inici de sessió al compte educatiu.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració: local i núvol (la motxilla es queda a casa; la taquilla amb clau t'acompanya). Crear carpeta, pujar, crear document dins d'una carpeta.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>A4</strong>: estructura d'assignatures, pujada de captures i captura de l'estructura del núvol.</td>
+                                </tr>
+                                <tr>
+                                    <td>12&nbsp;min</td>
+                                    <td><strong>A4</strong>: crear el document "Què he aprés" dins de <code>1. GESTIÓ ARXIUS</code> i començar a respondre.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 5 — Explique el que he fet (55 min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: documentar el procés i compartir-lo de manera responsable.<br>
+                        <strong>Agrupament</strong>: individual.<br>
+                        <strong>Material</strong>: targeta B.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada i inici de sessió al núvol.</td>
+                                </tr>
+                                <tr>
+                                    <td>12&nbsp;min</td>
+                                    <td><strong>A4</strong>: acabar el document "Què he aprés".</td>
+                                </tr>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td><strong>A5. Presentació</strong> amb les captures.</td>
+                                </tr>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Compartir <code>1. GESTIÓ ARXIUS</code> amb el professor (només lectura). Pont amb la unitat següent: la carpeta <code>2. CORREU ELECTRÒNIC</code> ja està preparada.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+
+            <!-- A0 -->
+            <vf-title level="3">A0. Demostració inicial (sessió 1)</vf-title>
+            <vf-text>"Fes el mateix que jo, pas a pas."</vf-text>
+            <vf-list ordered>
+                <li>Obri l'explorador i localitza Documents, Baixades, Escriptori i Imatges.</li>
+                <li>Activa "mostrar extensions": el que va després del punt diu el tipus d'arxiu.</li>
+                <li>Descarrega la imatge d'un personatge famós (obri-la en gran, clic dret, "Guarda la imatge com a..."). Busca-la a Baixades.</li>
+                <li>Reanomena-la (<code>F2</code>) sense tocar l'extensió.</li>
+                <li>Mou-la a Documents. Copia-la a l'Escriptori.</li>
+                <li>Crea a l'Escriptori un <code>.txt</code> amb el nom del personatge i tres dades.</li>
+                <li>Fes una captura de pantalla, guarda-la i mou-la a Documents.</li>
+            </vf-list>
+            <vf-text><strong>Notes per al professorat</strong>: moure és canviar de calaix, copiar és fer una fotocòpia. Captura: LliureX <code>Impr Pant</code>; Windows <code>Win+Maj+S</code> (queda al porta-retalls si no es guarda). Evitar imatges <code>.webp</code> i miniatures.</vf-text>
+
+            <!-- A1 -->
+            <vf-title level="3">A1. "El meu famós" (sessió 1)</vf-title>
+            <vf-text>"Tria un personatge que t'agrade. Descarrega'n una imatge, troba-la a Baixades, reanomena-la, mou-la a Documents i copia-la a l'Escriptori. Crea un <code>.txt</code> amb el seu nom i 3 dades. Fes una captura de Documents. Al final, Baixades ha d'estar buida."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: amb la targeta A i un company de suport.</li>
+                <li><strong>Estàndard</strong>: sense la targeta.</li>
+                <li><strong>Ampliació</strong>: posa-ho tot en una carpeta <code>FAMOSOS</code> i descarrega una segona imatge en un altre format.</li>
+            </vf-list>
+
+            <!-- A2 -->
+            <vf-title level="3">A2. Estructura Països (sessió 2, guiada)</vf-title>
+            <vf-text>"Crea dins de Documents l'estructura de l'esquema: <code>PLANETA TERRA</code>, els continents i, dins d'<code>AFRICA</code>, una imatge del continent i una carpeta per país amb la bandera i un <code>.txt</code> amb el nom i el nombre d'habitants."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: <code>PLANETA TERRA</code>, continents i <code>MARROC</code> complet.</li>
+                <li><strong>Estàndard</strong>: a més, <code>NIGÈRIA</code> i <code>SUDÀFRICA</code>.</li>
+                <li><strong>Ampliació</strong>: un país per a cada continent.</li>
+            </vf-list>
+
+            <!-- A3 -->
+            <vf-title level="3">A3. Activitat Pokémon (sessió 3, autònoma)</vf-title>
+            <vf-text>"Crea l'esquema <code>Documents &gt; POKEMONS &gt; AIGUA / FOC / PLANTA / TERRA</code>, amb tres Pokémon per tipus. Cada carpeta de Pokémon porta el seu nom i conté una imatge i un <code>.txt</code> amb el nom i les evolucions. NO ha de quedar res a Baixades."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: 2 Pokémon per tipus.</li>
+                <li><strong>Estàndard</strong>: 3 Pokémon per tipus, amb evolucions.</li>
+                <li><strong>Ampliació</strong>: un cinqué tipus i una imatge de cada evolució.</li>
+                <li>Alternativa temàtica: mateixa estructura amb futbol (lligues &gt; equips) o música (gèneres &gt; artistes).</li>
+            </vf-list>
+
+            <!-- A4 -->
+            <vf-title level="3">A4. Activitat núvol (sessions 4-5)</vf-title>
+            <vf-text>"Dins de la carpeta principal del núvol, crea <code>1r ESO</code> i una carpeta per a cada assignatura. Dins d'<code>INFORMÀTICA</code>, crea <code>1. GESTIÓ ARXIUS</code> i <code>2. CORREU ELECTRÒNIC</code>. Puja a <code>1. GESTIÓ ARXIUS</code> les captures de <code>POKEMONS</code> i afig una captura de l'estructura <code>1r ESO</code>. Dins de <code>1. GESTIÓ ARXIUS</code>, crea un document de text i respon:"</vf-text>
+            <vf-list ordered>
+                <li>Quina diferència hi ha entre copiar i moure?</li>
+                <li>Per a què servix Baixades i per què l'has de buidar?</li>
+                <li>Què és una extensió? Posa'n tres exemples.</li>
+                <li>Quina diferència hi ha entre guardar a l'ordinador i al núvol?</li>
+                <li>Quin hàbit d'ordre digital faràs a partir d'ara?</li>
+            </vf-list>
+            <vf-list>
+                <li><strong>Bàsic</strong>: Informàtica, Valencià i Educació Física; una frase per pregunta.</li>
+                <li><strong>Estàndard</strong>: totes les assignatures; respostes amb un exemple propi.</li>
+                <li><strong>Ampliació</strong>: pujar la carpeta <code>PLANETA TERRA</code> sencera; afegir la pregunta "Amb qui compartiries aquesta carpeta i amb quin permís?".</li>
+            </vf-list>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Acció</th>
+                            <th>Google Drive</th>
+                            <th>OneDrive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Carpeta principal</td>
+                            <td><em>La meva unitat</em></td>
+                            <td><em>Els meus fitxers</em></td>
+                        </tr>
+                        <tr>
+                            <td>Crear carpeta</td>
+                            <td><code>+ Nou</code> &gt; <em>Carpeta nova</em></td>
+                            <td><code>+ Crea o penja</code> &gt; <em>Carpeta</em></td>
+                        </tr>
+                        <tr>
+                            <td>Pujar</td>
+                            <td><code>+ Nou</code> &gt; <em>Penja un fitxer</em> / <em>Penja una carpeta</em>, o arrossegar</td>
+                            <td><code>+ Crea o penja</code> &gt; <em>Penja fitxers</em> / <em>Penja una carpeta</em>, o arrossegar</td>
+                        </tr>
+                        <tr>
+                            <td>Moure</td>
+                            <td>Clic dret &gt; <em>Organitza</em> &gt; <em>Mou</em></td>
+                            <td>Clic dret &gt; <em>Mou a</em></td>
+                        </tr>
+                        <tr>
+                            <td>Document en línia</td>
+                            <td>Dins de la carpeta: <code>+ Nou</code> &gt; <em>Documents de Google</em></td>
+                            <td>Dins de la carpeta: <code>+ Crea o penja</code> &gt; <em>Document de Word</em></td>
+                        </tr>
+                        <tr>
+                            <td>Presentació en línia</td>
+                            <td><code>+ Nou</code> &gt; <em>Presentacions de Google</em></td>
+                            <td><code>+ Crea o penja</code> &gt; <em>Presentació de PowerPoint</em></td>
+                        </tr>
+                        <tr>
+                            <td>Compartir</td>
+                            <td><em>Comparteix</em> &gt; correu del professor &gt; <em>Lector</em>; accés general <em>Restringit</em></td>
+                            <td><em>Comparteix</em> &gt; correu del professor &gt; <em>Pot visualitzar</em>; sense enllaços de <em>Qualsevol persona</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A5 -->
+            <vf-title level="3">A5. Activitat presentació (sessió 5)</vf-title>
+            <vf-text>"Dins de <code>1. GESTIÓ ARXIUS</code>, crea una presentació amb: 1) portada amb títol, nom i grup; 2) captura de l'arbre <code>POKEMONS</code>; 3) captura de l'interior d'una carpeta de Pokémon; 4) captura de l'estructura <code>1r ESO</code> al núvol; 5) el teu consell per a tindre l'ordinador ordenat. Cada captura porta un títol."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: diapositives 1, 2, 4 i 5.</li>
+                <li><strong>Estàndard</strong>: les cinc, amb títols.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: targetes A (local) i B (núvol) amb captures reals; esquemes impresos per a marcar amb llapis; vídeo curt de la demostració a Aules; glossari visual valencià-castellà-anglés.</li>
+                <li><strong>Acció i expressió</strong>: el document "Què he aprés" es pot lliurar com a àudio; ratolí o teclat, indistintament; ratolí adaptat si cal; nivells bàsic / estàndard / ampliació en cada activitat.</li>
+                <li><strong>Implicació</strong>: personatge i temàtica de lliure elecció; l'estructura del núvol s'usa tot el curs; rol rotatiu de "tècnic de suport" per a qui acaba abans.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Moment</th>
+                            <th>Qui avalua</th>
+                            <th>Activitat on s'aplica</th>
+                            <th>Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rúbrica de la SA (únic instrument que qualifica)</td>
+                            <td>Final de la sessió 5</td>
+                            <td>Heteroavaluació</td>
+                            <td>A0-A5</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Full d'observació de destreses bàsiques (suport, sense pes)</td>
+                            <td>Sessions 1-3</td>
+                            <td>Heteroavaluació</td>
+                            <td>A0-A3</td>
+                            <td>Fet/no fet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+
+            <vf-title level="3">Rúbrica de la SA</vf-title>
+            <vf-text><strong>Rúbrica de 4 nivells.</strong> Una fila per criteri. Els descriptors valen tant si el professor només ha observat a l'aula com si ha revisat també els productes: descriuen el que es veu a la pantalla o a l'arxiu.</vf-text>
+            <!-- Taula central de la pagina: amplades minimes perque, en
+                 pantalles estretes, faça scroll horitzontal dins de
+                 .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 170px;">Evidència</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R1. Carpetes, rutes i extensions</strong></td>
+                            <td>CE1.1</td>
+                            <td>100&nbsp;% del criteri (10&nbsp;% de la SA)</td>
+                            <td>Observació a l'aula, sessions 1-3 (DB1, DB2, DB3, DB5)</td>
+                            <td>Demostra sense ajuda 0-1 de les 4 destreses.</td>
+                            <td>En demostra 2.</td>
+                            <td>En demostra 3.</td>
+                            <td>Demostra les 4 sense ajuda.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R2. Operacions bàsiques</strong></td>
+                            <td>CE1.2</td>
+                            <td>100&nbsp;% del criteri (20&nbsp;% de la SA)</td>
+                            <td>Observació a l'aula, sessions 1-3 (DB4, DB6, DB7, DB8), i Baixades en l'activitat Pokémon</td>
+                            <td>Fa sense ajuda 0-1 de les 4 operacions (descarregar, capturar, reanomenar, copiar/moure) o deixa Baixades plena.</td>
+                            <td>En fa 2-3; queden restes a Baixades o a l'Escriptori.</td>
+                            <td>Fa les 4; queda alguna resta a Baixades o a l'Escriptori.</td>
+                            <td>Fa les 4 i deixa Baixades i l'Escriptori nets.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R3. Estructura jeràrquica local</strong></td>
+                            <td>CE1.3</td>
+                            <td>100&nbsp;% del criteri (30&nbsp;% de la SA)</td>
+                            <td>Activitat Pokémon</td>
+                            <td>Menys de 4 tipus, carpetes fora de lloc o molts noms genèrics (<code>Nova carpeta</code>, <code>descarrega (n)</code>).</td>
+                            <td>4 tipus amb almenys 2 Pokémon ben ubicats; alguna carpeta sense imatge o <code>.txt</code> o algun nom genèric.</td>
+                            <td>4 tipus amb 3 Pokémon, cada carpeta amb imatge i <code>.txt</code>; noms descriptius.</td>
+                            <td>Com Notable, amb el mateix format de noms en tota l'estructura i fet en autonomia.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R4. Organització al núvol</strong></td>
+                            <td>CE1.4</td>
+                            <td>100&nbsp;% del criteri (20&nbsp;% de la SA)</td>
+                            <td>Activitat núvol</td>
+                            <td>No hi ha <code>1r ESO</code>, els arxius estan a l'arrel o no comparteix.</td>
+                            <td><code>1r ESO</code> amb almenys 3 assignatures i les subcarpetes d'Informàtica; compartit amb un permís inadequat (edició o enllaç públic).</td>
+                            <td>Totes les assignatures; captures i documents a <code>1. GESTIÓ ARXIUS</code>; compartit només amb el professor.</td>
+                            <td>Com Notable, en només lectura, i sap explicar per què.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R5. Explicació del procés</strong></td>
+                            <td>CE1.5</td>
+                            <td>100&nbsp;% del criteri (20&nbsp;% de la SA)</td>
+                            <td>Activitat núvol (document de text) i activitat presentació</td>
+                            <td>Menys de 3 respostes o errors de concepte; presentació amb menys de 2 captures llegibles.</td>
+                            <td>Respon les 5 preguntes sense exemples; presentació amb 2 captures o sense títols.</td>
+                            <td>Respostes amb exemples propis; presentació amb les 5 diapositives, captures llegibles i títols.</td>
+                            <td>Com Notable, amb un hàbit concret i justificat i un consell clar a la presentació.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Full d'observació de destreses bàsiques (suport)</vf-title>
+            <vf-text><strong>Fet/no fet, sense pes propi.</strong> Sessions 1-3. Es marca "fet" la primera vegada que l'alumne ho demostra sense ajuda. Servix per a decidir el nivell de les files R1 (DB1, DB2, DB3, DB5) i R2 (DB4, DB6, DB7, DB8) de la rúbrica.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Destresa</th>
+                            <th>Fila de la rúbrica</th>
+                            <th>Fet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DB1. Localitza Documents, Baixades, Escriptori i Imatges</td>
+                            <td>R1 (CE1.1)</td>
+                            <td>Les obri sense ajuda.</td>
+                        </tr>
+                        <tr>
+                            <td>DB2. Diu la ruta d'un arxiu</td>
+                            <td>R1 (CE1.1)</td>
+                            <td>Diu la ruta completa i en ordre d'un arxiu seu.</td>
+                        </tr>
+                        <tr>
+                            <td>DB3. Sap què són les extensions</td>
+                            <td>R1 (CE1.1)</td>
+                            <td>Ho explica i identifica almenys 4 de 5 tipus preguntats.</td>
+                        </tr>
+                        <tr>
+                            <td>DB5. Troba a Baixades el que ha descarregat</td>
+                            <td>R1 (CE1.1)</td>
+                            <td>Obri Baixades i hi troba l'arxiu sense ajuda.</td>
+                        </tr>
+                        <tr>
+                            <td>DB4. Descarrega arxius d'Internet</td>
+                            <td>R2 (CE1.2)</td>
+                            <td>Descarrega una imatge a mida completa en un format que s'obri.</td>
+                        </tr>
+                        <tr>
+                            <td>DB6. Fa captures de pantalla</td>
+                            <td>R2 (CE1.2)</td>
+                            <td>Fa una captura i la guarda com a arxiu o l'apega en un document.</td>
+                        </tr>
+                        <tr>
+                            <td>DB7. Reanomena fitxers</td>
+                            <td>R2 (CE1.2)</td>
+                            <td>Canvia el nom per un de descriptiu i conserva l'extensió.</td>
+                        </tr>
+                        <tr>
+                            <td>DB8. Tria entre copiar i moure</td>
+                            <td>R2 (CE1.2)</td>
+                            <td>Executa bé tres ordres seguides (moure, copiar, moure).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteri</th>
+                            <th>Pes %</th>
+                            <th>Activitat(s)</th>
+                            <th>Instrument i indicador</th>
+                            <th>Pes de l'indicador dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>10&nbsp;%</td>
+                            <td>A0, A1, A2</td>
+                            <td>Rúbrica, R1 (amb el full d'observació)</td>
+                            <td>R1 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.2</td>
+                            <td>20&nbsp;%</td>
+                            <td>A0, A1, A2, A3</td>
+                            <td>Rúbrica, R2 (amb el full d'observació)</td>
+                            <td>R2 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.3</td>
+                            <td>30&nbsp;%</td>
+                            <td>A2, A3</td>
+                            <td>Rúbrica, R3</td>
+                            <td>R3 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>20&nbsp;%</td>
+                            <td>A4</td>
+                            <td>Rúbrica, R4</td>
+                            <td>R4 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>20&nbsp;%</td>
+                            <td>A4, A5</td>
+                            <td>Rúbrica, R5</td>
+                            <td>R5 100&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text><strong>Nota de la SA = 0,10·R1 + 0,20·R2 + 0,30·R3 + 0,20·R4 + 0,20·R5</strong></vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Equips amb explorador d'arxius, navegador i accés al compte educatiu; "mostrar extensions" activat.</li>
+                <li>Projector.</li>
+                <li><a href="unitats/ordinadors/gestio-arxius/index.html">Pàgina de la unitat</a> amb els esquemes Països, Pokémon i Assignatures; esquemes impresos.</li>
+                <li>Targeta A (operacions locals i dreceres) i targeta B (núvol, versió Google Drive o OneDrive).</li>
+                <li>Credencials del compte educatiu en paper.</li>
+                <li>Vídeo de la demostració inicial a Aules.</li>
+                <li>Full d'observació de destreses bàsiques (DB1-DB8) i rúbrica de la SA.</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

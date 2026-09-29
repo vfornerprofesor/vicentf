@@ -159,3 +159,29 @@
     border: 0;
     background-color: var(--white-color);
 }
+
+/* Taules de Bootstrap (.table) dins d'un vf-content: capçalera amb el color
+   del lloc en lloc del gris neutre per defecte, i marge coherent. Es fan
+   servir, per exemple, a les pagines de situacio d'aprenentatge (criteris,
+   rubriques, tracabilitat). Envolteu-les en .table-responsive per a mobil. */
+.block .table-responsive {
+    margin: var(--space-3) 0;
+    border-radius: var(--radius-sm);
+}
+
+.block .table {
+    margin-bottom: 0;
+    background-color: var(--white-color);
+}
+
+.block .table thead th {
+    background-color: var(--main-color-light);
+    color: var(--main-color-dark);
+    border-color: var(--main-color-light);
+    border-bottom-width: 2px;
+    vertical-align: middle;
+}
+
+.block .table td {
+    vertical-align: top;
+}
