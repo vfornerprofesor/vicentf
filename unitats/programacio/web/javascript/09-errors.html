@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errors and exceptions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Errors and exceptions
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">When things go wrong</vf-title>
+        <vf-content>
+            <vf-text>
+                Your code is correct, but the world is not: the user types "abc" where you
+                expected a number, divides by zero, or leaves a field empty. Without
+                control, you get `NaN`, `Infinity` or a program that stops working.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">throw: "I cannot go on"</vf-title>
+        <vf-content>
+            <vf-text>
+                When a function receives data it cannot work with, it can *throw* an error.
+                The function stops right there.
+            </vf-text>
+            <vf-code language="javascript">
+                function divide(a, b) {
+                    if (b === 0) {
+                        throw new Error("You cannot divide by zero");
+                    }
+                    return a / b;
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">try and catch: "if something fails, do this"</vf-title>
+        <vf-content>
+            <vf-text>
+                Whoever calls the function decides what to do with the error:
+            </vf-text>
+            <vf-code language="javascript">
+                button.addEventListener("click", function () {
+                    try {
+                        const result = divide(Number(aInput.value), Number(bInput.value));
+                        output.textContent = result;
+                        output.className = "";
+                    } catch (error) {
+                        output.textContent = error.message;
+                        output.className = "error";
+                    }
+                });
+            </vf-code>
+            <vf-text>
+                If everything inside `try` works, `catch` is skipped. If anything throws,
+                JavaScript jumps straight to `catch`, and `error.message` is the text you
+                wrote in `new Error(...)`.
+            </vf-text>
+            <vf-text>
+                `finally` runs at the end *always*, whether there was an error or not:
+            </vf-text>
+            <vf-code language="javascript">
+                try {
+                    // ...
+                } catch (error) {
+                    // ...
+                } finally {
+                    aInput.value = "";
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Your own errors</vf-title>
+        <vf-content>
+            <vf-text>
+                An error has a `name` and a `message`. The browser's errors are called
+                `TypeError`, `ReferenceError`... You can give yours a name too, so that you
+                know where they come from:
+            </vf-text>
+            <vf-code language="javascript">
+                function readNumber(input) {
+                    const text = input.value.trim();
+
+                    if (text === "") {
+                        const error = new Error("The field is empty");
+                        error.name = "ValidationError";
+                        throw error;
+                    }
+                    // ...
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Who throws and who catches</vf-title>
+        <vf-content>
+            <vf-text>
+                The same rule as `return`: functions that *calculate* throw; the function
+                connected to the button *catches* and shows the message in the page.
+                Calculations never write in the page, and the button never does maths.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>An empty `catch`: the error disappears and you never know what happened.</vf-text></li>
+                <li><vf-text>One giant `try` around the whole program. Put it only around what can fail.</vf-text></li>
+                <li><vf-text>`throw "error"` with a text instead of `new Error(...)`: you lose the name and the line.</vf-text></li>
+                <li><vf-text>Showing the error with `alert`. Show it in the page, next to the field.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 9.1.* In your calculator of exercise 5.5, the division throws an
+                error when the second number is 0. The button catches it and shows the
+                message in red.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 9.2.* Write `readNumber(input)`: it returns the number in the
+                field, or throws an error with name `"ValidationError"` and a different
+                message when the field is empty, when it is not a number, or when it is
+                outside a range you choose. Use it in exercises 7.1, 7.2 and 7.3.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 9.3.* Add `finally` to exercise 9.2 so that the field is always
+                emptied.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 9.4.* Call a function that does not exist inside a `try`. In the
+                `catch`, show a different message for your own errors
+                (`error.name === "ValidationError"`) and for the browser's errors.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Mini-project 1: My toolbox page</vf-title>
+        <vf-content>
+            <vf-text>
+                One page with *at least eight small tools*. Each tool is one input (or
+                two), one button, and one place where the answer appears. Behind each
+                button there is *one function that returns a value*.
+            </vf-text>
+            <vf-text>
+                Ideas: convert units, calculate a mark average, check if a word is a
+                palindrome, count the words in a sentence, calculate a price with VAT and
+                discount, give a random number between two values, say if a year is a leap
+                year, draw a row of N stars, calculate how many days until a date.
+            </vf-text>
+            <vf-text>
+                Rules:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>every calculation must be a function that uses `return` (not one that writes in the page);</vf-text></li>
+                <li><vf-text>one separate function reads the inputs and shows the answer;</vf-text></li>
+                <li><vf-text>every function needs a comment above it saying what it does and what it returns;</vf-text></li>
+                <li><vf-text>clear names in camelCase, 4-space indentation;</vf-text></li>
+                <li><vf-text>*no errors in the console* when you use the page normally;</vf-text></li>
+                <li><vf-text>every calculation function has at least two `console.assert` that pass;</vf-text></li>
+                <li><vf-text>at least one function throws an error when the data is not valid, and the page catches it and shows the message.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">RA3 test</vf-title>
+        <vf-content>
+            <vf-callout type="atencio">
+                *RA3 test.* Next session you have the test of this part: 55 minutes, on
+                the computer, alone and without notes. You deliver your folder in a zip.
+                It checks every skill of the list "RA3" in the [unit index](unitats/programacio/web/javascript).
+                <br>
+                What it covers: a function with a loop and conditions, a trace table, fixing 5 errors with DevTools, throwing and catching errors, assertions, a JSDoc comment.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/08-debugging.html">
+                    &larr; Previous: Testing and debugging
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/10-arrays.html">
+                    Next: Arrays &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

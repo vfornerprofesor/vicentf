@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static methods, parameters and libraries</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Static methods, parameters and libraries
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Two kinds of methods</vf-title>
+        <vf-content>
+            <vf-text>
+                Most methods belong to an object: you need the object first. *Static*
+                methods belong to the class itself: you call them on the class name.
+            </vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr><th>Method of an object</th><th>Static method</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>"hola".toUpperCase()</code></td><td><code>Math.round(4.6)</code></td></tr>
+                        <tr><td><code>prices.push(10)</code></td><td><code>Number.isInteger(4.6)</code></td></tr>
+                        <tr><td><code>today.getDay()</code></td><td><code>JSON.parse(text)</code></td></tr>
+                        <tr><td><code>(4.567).toFixed(2)</code></td><td><code>Array.isArray(x)</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>
+                A static method does not need an object because it does not work with
+                *one* object's data: rounding a number, converting a text, checking a
+                value.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Parameters</vf-title>
+        <vf-content>
+            <vf-text>
+                Parameters go in order, and some are optional:
+            </vf-text>
+            <vf-code language="javascript">
+                "JavaScript".slice(0, 4);          // "Java"
+                "JavaScript".slice(4);             // "Script"  -> the second one was optional
+                (3.14159).toFixed(2);              // "3.14"
+            </vf-code>
+            <vf-text>
+                Some methods accept an *object of options* as a parameter:
+            </vf-text>
+            <vf-code language="javascript">
+                (19.9).toLocaleString("ca-ES", { style: "currency", currency: "EUR" });   // "19,90 €"
+                (19.9).toLocaleString("en-US", { style: "currency", currency: "USD" });   // "$19.90"
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Libraries: other people's code</vf-title>
+        <vf-content>
+            <vf-text>
+                A *library* is code written by other people that you add to your page. You
+                do not reinvent dates, charts or animations: you use a library and read its
+                documentation.
+            </vf-text>
+            <vf-text>
+                To add it, a `&lt;script&gt;` with its address (a *CDN*) *before* your own
+                script:
+            </vf-text>
+            <vf-code language="html">
+                &lt;script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"&gt;&lt;/script&gt;
+                &lt;script src="script.js"&gt;&lt;/script&gt;
+            </vf-code>
+            <vf-text>
+                Now your code can use what the library offers:
+            </vf-text>
+            <vf-code language="javascript">
+                dayjs().format("DD/MM/YYYY");                     // "20/05/2027"
+                dayjs("2027-06-24").diff(dayjs(), "day");         // days until 24 June
+            </vf-code>
+            <vf-callout type="consell">
+                If there is no internet, the CDN fails. Download the file, put it in your
+                folder and change the `src` to the local file.
+            </vf-callout>
+            <vf-text>
+                Local copy of Day.js: [dayjs.min.js|download](unitats/programacio/web/javascript/exercises/21-static-libraries/dayjs.min.js)
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Your script before the library: "dayjs is not defined".</vf-text></li>
+                <li><vf-text>Calling a static method on an object (`4.6.round()`) or an object method on the class (`String.toUpperCase("a")`).</vf-text></li>
+                <li><vf-text>Copying code from the library's website without reading what each parameter means.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 21.1.* Classify these 10 calls into "method of an object" and
+                "static": `Math.max(3, 8)`, `"hi".includes("h")`, `JSON.stringify(a)`,
+                `list.indexOf(3)`, `Number.parseFloat("2.5")`, `today.getFullYear()`,
+                `Math.random()`, `text.split(",")`, `Array.isArray(list)`,
+                `(5).toFixed(1)`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 21.2.* Add Day.js to a page. Show today's date as `DD/MM/YYYY`
+                and the days until your birthday with `diff`. Compare it with your result
+                of exercise 20.2.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 21.3.* A price field: show the price in euros and in dollars with
+                the options of `toLocaleString`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 21.4.* Find the library canvas-confetti, add it, and launch
+                confetti when a button is clicked.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">RA2 test</vf-title>
+        <vf-content>
+            <vf-callout type="atencio">
+                *RA2 test.* Next session you have the test of this part: 55 minutes, on
+                the computer, alone and without notes. You deliver your folder in a zip.
+                It checks every skill of the list "RA2" in the [unit index](unitats/programacio/web/javascript).
+                <br>
+                What it covers: objects and classes vocabulary, a small complete program, `Date` and `Set`, methods and properties, static methods, parameters, using a library.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/20-built-in-objects.html">
+                    &larr; Previous: Objects and built-in classes
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/22-classes.html">
+                    Next: Your own classes &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

@@ -33,6 +33,10 @@ Muchas situaciones de aprendizaje **no salen del currículum**: el profesor las 
 
 **Codificación, siempre la misma** (sea cual sea el origen): competencias específicas `CE1`, `CE2`…; criterios de evaluación `CE1.1`, `CE1.2`… (número de la CE + número del criterio). En las tablas la columna del criterio se llama "Criteri".
 
+**En FP**: resultados de aprendizaje `RA1`, `RA2`…; criterios de evaluación `CA1.1`, `CA1.2`… (número del RA + número del criterio). Los pesos de los criterios se reparten **dentro de su RA** (los CA de cada RA suman 100 %), y cada RA lleva su propio peso en la SA (los RA suman 100 %). El peso de un criterio en la SA = peso del CA en su RA × peso del RA. El profesor de FP **no lleva registro de seguimiento**: no lo propongas.
+
+**Evaluación competencial (siempre, ESO y FP)**: la nota sale de abajo arriba: **indicador → criterio → RA/CE → SA**. Nota del criterio = Σ nota del indicador × peso del indicador dentro del criterio; nota del RA/CE = Σ nota del criterio × peso dentro del RA/CE; nota de la SA = Σ nota del RA/CE × su peso. **Los instrumentos no tienen peso propio** (una prueba o un proyecto no "valen" un %): no fuerces ni muestres pesos por instrumento. Lo que importa y siempre se muestra es el **peso de cada indicador dentro de su criterio** (los indicadores de un criterio suman 100 %), elegido por la calidad de la evidencia (p. ej. el proyecto pesa más que la prueba si el criterio se demuestra mejor en un producto real), con números redondos.
+
 Si el encargo no dice cuál es el caso, **no lo decidas tú**: lee las actividades de la unidad, haz una propuesta razonada ("las actividades de la unidad encajan con la CE X de la materia Y" o "no encajan con nada del currículum, propongo inventarlas") y **termina tu respuesta con la pregunta** para que el usuario confirme. No redactes la situación de aprendizaje completa hasta tener la respuesta.
 
 ## 3. Regla de oro: nunca inventes normativa

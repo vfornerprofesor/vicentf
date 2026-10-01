@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <book>
+        <title>Dune</title>
+        <author>Frank Herbert</author>
+        <year>1965</year>
+        <price>12.95</price>
+    </book>
+    <book>
+        <title>Matilda</title>
+        <author>Roald Dahl</author>
+        <year>1988</year>
+        <price>8.5</price>
+    </book>
+    <book>
+        <title>The Hobbit</title>
+        <author>J. R. R. Tolkien</author>
+        <year>1937</year>
+        <price>10.9</price>
+    </book>
+    <book>
+        <title>Wonder</title>
+        <author>R. J. Palacio</author>
+        <year>2012</year>
+        <price>9.99</price>
+    </book>
+</catalog>

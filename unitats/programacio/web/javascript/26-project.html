@@ -114,11 +114,11 @@
                 ];
             </vf-code>
             <vf-text>
-                Download the starter files: [quiz-starter.html|download](unitats/programacio/web/javascript/exercises/14-project/quiz-starter.html)
-                and [quiz-starter.css|download](unitats/programacio/web/javascript/exercises/14-project/quiz-starter.css)
+                Download the starter files: [quiz-starter.html|download](unitats/programacio/web/javascript/exercises/26-project/quiz-starter.html)
+                and [quiz-starter.css|download](unitats/programacio/web/javascript/exercises/26-project/quiz-starter.css)
             </vf-text>
-            <!-- <vf-img src="assets/unitats/programacio/web/javascript/14-project/quiz.png" alt="Finished example of the quiz: question, four option buttons, score and progress bar"></vf-img> -->
-            <!-- [IMATGE: assets/unitats/programacio/web/javascript/14-project/quiz.png — captura d'un exemple acabat del quiz: pregunta, quatre botons d'opció, marcador i barra de progrés.] -->
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/26-project/quiz.png" alt="Finished example of the quiz: question, four option buttons, score and progress bar"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/26-project/quiz.png — captura d'un exemple acabat del quiz: pregunta, quatre botons d'opció, marcador i barra de progrés.] -->
         </vf-content>
 
         <vf-title level="2">Option B: To-do list</vf-title>
@@ -142,11 +142,11 @@
                 <li><vf-text>the empty field must not add anything.</vf-text></li>
             </vf-list>
             <vf-text>
-                Download the starter files: [todo-starter.html|download](unitats/programacio/web/javascript/exercises/14-project/todo-starter.html)
-                and [todo-starter.css|download](unitats/programacio/web/javascript/exercises/14-project/todo-starter.css)
+                Download the starter files: [todo-starter.html|download](unitats/programacio/web/javascript/exercises/26-project/todo-starter.html)
+                and [todo-starter.css|download](unitats/programacio/web/javascript/exercises/26-project/todo-starter.css)
             </vf-text>
-            <!-- <vf-img src="assets/unitats/programacio/web/javascript/14-project/todo.png" alt="Finished example of the to-do list: text field, add button, three tasks (one crossed out), counter and filters"></vf-img> -->
-            <!-- [IMATGE: assets/unitats/programacio/web/javascript/14-project/todo.png — captura d'un exemple acabat de la llista de tasques: camp de text, botó afegir, tres tasques (una ratllada), comptador i filtres.] -->
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/26-project/todo.png" alt="Finished example of the to-do list: text field, add button, three tasks (one crossed out), counter and filters"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/26-project/todo.png — captura d'un exemple acabat de la llista de tasques: camp de text, botó afegir, tres tasques (una ratllada), comptador i filtres.] -->
         </vf-content>
 
         <vf-title level="2">The HTML and CSS you are given</vf-title>
@@ -163,44 +163,95 @@
             </vf-callout>
         </vf-content>
 
-        <vf-title level="2">Requirements for the code</vf-title>
+        <vf-title level="2">Requirements (the minimum to pass)</vf-title>
         <vf-content>
+            <vf-text>*Structure*</vf-text>
             <vf-list>
-                <li><vf-text>At least *6 functions*, each one doing one job, with clear names.</vf-text></li>
-                <li><vf-text>At least one *array of objects*.</vf-text></li>
-                <li><vf-text>At least one *loop* that builds elements in the page with `createElement`.</vf-text></li>
-                <li><vf-text>At least two *`addEventListener`*.</vf-text></li>
-                <li><vf-text>*`localStorage`* working.</vf-text></li>
-                <li><vf-text>The rule of the unit: the array is the truth, `draw()` paints it, `save()` stores it.</vf-text></li>
-                <li><vf-text>`textContent` for anything the user typed. No `innerHTML` with user data.</vf-text></li>
-                <li><vf-text>Indentation of 4 spaces, camelCase names, and a comment above every function.</vf-text></li>
-                <li><vf-text>*No errors in the console.* Open F12 before you deliver.</vf-text></li>
+                <li><vf-text>Folders and files: `index.html`, `css/`, `js/main.js`, `js/model.js`, `js/tests.js`. Names in lowercase, no spaces. It opens with Live Server.</vf-text></li>
             </vf-list>
+
+            <vf-text>*It works*</vf-text>
+            <vf-list>
+                <li><vf-text>Everything listed for your option (A or B) works.</vf-text></li>
+                <li><vf-text>Every decision works (right or wrong answer, empty field, filters, final message) and every loop ends.</vf-text></li>
+                <li><vf-text>*No errors in the console* when you use it normally.</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Classes*</vf-text>
+            <vf-list>
+                <li><vf-text>At least *2 classes* in `model.js` (for example `Question` and `Quiz`, or `Task` and `TaskList`), exported and imported in `main.js`.</vf-text></li>
+                <li><vf-text>Your data is an *array of objects of your classes*.</vf-text></li>
+                <li><vf-text>At least one *static method* that you use (for example `fromJSON` to rebuild the objects when you load).</vf-text></li>
+                <li><vf-text>The model *throws an error* with a clear message when it gets invalid data (empty text, a question with no options).</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Tests*</vf-text>
+            <vf-list>
+                <li><vf-text>`tests.js` with at least *6 `console.assert`* on the methods of your classes. All green, and a summary line in the console.</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Data*</vf-text>
+            <vf-list>
+                <li><vf-text>`localStorage` with `JSON.stringify` when you save and `JSON.parse` when you load.</vf-text></li>
+                <li><vf-text>`try/catch` when you load and around calls that can throw.</vf-text></li>
+                <li><vf-text>At least *two different array methods* among `filter`, `map`, `reduce`.</vf-text></li>
+                <li><vf-text>`for...of` or `forEach` to go through your lists.</vf-text></li>
+                <li><vf-text>At least one field checked with a *regular expression*.</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Interface*</vf-text>
+            <vf-list>
+                <li><vf-text>At least *3 `addEventListener`* of *2 different types*. No `onclick` in the HTML.</vf-text></li>
+                <li><vf-text>`createElement` and `textContent` for anything the user typed.</vf-text></li>
+                <li><vf-text>Numbers with a proper format (score, counters, percentages).</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Language*</vf-text>
+            <vf-list>
+                <li><vf-text>At least 5 different methods or properties of strings, arrays or elements.</vf-text></li>
+                <li><vf-text>One *external library* added with a `&lt;script&gt;` (for example Day.js or canvas-confetti) and used.</vf-text></li>
+            </vf-list>
+
+            <vf-text>*Documentation and delivery*</vf-text>
+            <vf-list>
+                <li><vf-text>A comment above every function and method.</vf-text></li>
+                <li><vf-text>`surname-name-project.zip` with a `README.txt`: your name, the option, how to use it, what was hardest, what you would add.</vf-text></li>
+                <li><vf-text>A 3-minute presentation: show it working and explain *one function* line by line. Your teacher will ask you one question about your code.</vf-text></li>
+            </vf-list>
+
+            <vf-callout type="atencio">
+                If your app does not open or shows an error when it loads, it is returned to
+                you to fix before it is marked.
+            </vf-callout>
         </vf-content>
 
         <vf-title level="2">Milestones</vf-title>
         <vf-content>
             <vf-list ordered>
-                <li><vf-text>Your choice, the paper drawing, and the data structure written in JavaScript.</vf-text></li>
-                <li><vf-text>The data works: functions to add, delete, score, calculate, tested one by one.</vf-text></li>
-                <li><vf-text>It works on the screen: `draw()`, events, `localStorage`.</vf-text></li>
-                <li><vf-text>Tested, no console errors, README, zip, presentation.</vf-text></li>
+                <li><vf-text>Your choice, the paper drawing of the screen and of your classes (properties and methods).</vf-text></li>
+                <li><vf-text>The model works: classes in `model.js`, tested with `tests.js`. All green.</vf-text></li>
+                <li><vf-text>It works on the screen: `draw()`, events, validation.</vf-text></li>
+                <li><vf-text>It remembers: `localStorage` with `try/catch`.</vf-text></li>
+                <li><vf-text>Tested, no console errors, comments, README, zip, presentation.</vf-text></li>
             </vf-list>
         </vf-content>
 
-        <vf-title level="2">Delivery</vf-title>
+        <vf-title level="2">How it is marked</vf-title>
         <vf-content>
-            <vf-list>
-                <li><vf-text>A zip called `surname-name-project.zip`.</vf-text></li>
-                <li><vf-text>A `README.txt` with: your name, which option you chose, how to use the app, what was hardest, and one thing you would add if you had more time.</vf-text></li>
-                <li><vf-text>A 3-minute presentation: show it working, and explain *one function* of your code line by line.</vf-text></li>
-            </vf-list>
+            <vf-text>
+                Your project is marked with a rubric of four levels (Insufficient,
+                Sufficient, Good, Excellent) for each skill it shows. The requirements above
+                are the *Sufficient* level. To get more, look at the rubric your teacher
+                gives you: each level adds something concrete (for example, JSDoc comments,
+                one event handler for all the buttons of a list, or the logic inside the
+                classes instead of `main.js`).
+            </vf-text>
         </vf-content>
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/13-localstorage.html">
-                    &larr; Previous: Saving data with localStorage
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/25-modules.html">
+                    &larr; Previous: Modules
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
@@ -209,7 +260,7 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/15-next.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/27-next.html">
                     Next: What comes next &rarr;
                 </vf-btn>
             </vf-col>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON and XML</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            JSON and XML
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Data that travels</vf-title>
+        <vf-content>
+            <vf-text>
+                When two programs share data (your page and a server, an app and a file),
+                they send it as *text*, in a format both understand. The two most common
+                ones are *JSON* and *XML*. Here is the same data in both:
+            </vf-text>
+            <vf-code language="json">
+                [
+                    { "title": "Dune", "author": "Frank Herbert", "year": 1965 },
+                    { "title": "Matilda", "author": "Roald Dahl", "year": 1988 }
+                ]
+            </vf-code>
+            <vf-code language="xml">
+                &lt;catalog&gt;
+                    &lt;book&gt;
+                        &lt;title&gt;Dune&lt;/title&gt;
+                        &lt;author&gt;Frank Herbert&lt;/author&gt;
+                        &lt;year&gt;1965&lt;/year&gt;
+                    &lt;/book&gt;
+                    &lt;book&gt;
+                        &lt;title&gt;Matilda&lt;/title&gt;
+                        &lt;author&gt;Roald Dahl&lt;/author&gt;
+                        &lt;year&gt;1988&lt;/year&gt;
+                    &lt;/book&gt;
+                &lt;/catalog&gt;
+            </vf-code>
+            <vf-text>
+                JSON looks like JavaScript, and it is what you will use most. XML looks like
+                HTML, and you will still find it in configuration files, invoices and older
+                services.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">JSON rules</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Keys always in *double quotes*.</vf-text></li>
+                <li><vf-text>Texts in double quotes, never single.</vf-text></li>
+                <li><vf-text>No comma after the last element.</vf-text></li>
+                <li><vf-text>Only data: no functions, no `undefined`, no comments.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">From JavaScript to JSON and back</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const text = JSON.stringify(books);              // one long line
+                const pretty = JSON.stringify(books, null, 2);   // indented, easy to read
+                const onlyTitles = JSON.stringify(books, ["title"], 2);
+
+                const again = JSON.parse(text);                  // a real array again
+            </vf-code>
+            <vf-text>
+                If the text is not valid JSON, `JSON.parse` throws a `SyntaxError`. Data
+                that comes from outside can always be broken, so:
+            </vf-text>
+            <vf-code language="javascript">
+                try {
+                    const data = JSON.parse(text);
+                    // ...
+                } catch (error) {
+                    output.textContent = "The data is not valid.";
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Reading XML</vf-title>
+        <vf-content>
+            <vf-text>
+                The browser has a class for that, `DOMParser`. It turns the text into a
+                document that you search exactly like a web page:
+            </vf-text>
+            <vf-code language="javascript">
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(xmlText, "application/xml");
+
+                for (const book of xml.querySelectorAll("book")) {
+                    const title = book.querySelector("title").textContent;
+                    // ...
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Which tool for what</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr><th>I want to…</th><th>I use</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>turn an object or array into JSON text</td><td><code>JSON.stringify</code></td></tr>
+                        <tr><td>turn JSON text into an object or array</td><td><code>JSON.parse</code></td></tr>
+                        <tr><td>read an XML text</td><td><code>DOMParser</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Single quotes in JSON written by hand.</vf-text></li>
+                <li><vf-text>`JSON.parse` of something that is already an object.</vf-text></li>
+                <li><vf-text>No `try/catch` around `JSON.parse` of external data.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 15.1.* Turn the products array of exercise 11.2 into JSON text,
+                show the text in a `&lt;pre&gt;`, and turn it back into an array.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 15.2.* Copy the content of `books.json` into a string. Parse it,
+                change the price of one book, add a new book and show the result as
+                indented JSON.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [books.json|download](unitats/programacio/web/javascript/exercises/15-json-xml/books.json)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 15.3.* Remove one quote from the JSON of 15.2 and show a clear
+                message instead of a broken page.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 15.4.* Copy the content of `books.xml` into a string and show the
+                list of titles using `DOMParser`.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [books.xml|download](unitats/programacio/web/javascript/exercises/15-json-xml/books.xml)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 15.5.* Use the second parameter of `JSON.stringify` to keep only
+                the title and the year.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">RA6 test</vf-title>
+        <vf-content>
+            <vf-callout type="atencio">
+                *RA6 test.* Next session you have the test of this part: 55 minutes, on
+                the computer, alone and without notes. You deliver your folder in a zip.
+                It checks every skill of the list "RA6" in the [unit index](unitats/programacio/web/javascript).
+                <br>
+                What it covers: arrays of arrays, a list of objects (add, remove, change), going through collections, Set and Map, regular expressions, JSON, `filter`/`map`/`reduce`/`sort`.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/14-collections.html">
+                    &larr; Previous: Sets and maps
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/16-events.html">
+                    Next: Events &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

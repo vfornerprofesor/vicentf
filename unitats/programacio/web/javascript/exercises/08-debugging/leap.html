@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap year</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e8f5e9;
+            color: #333;
+        }
+
+        h1 {
+            color: #1b5e20;
+        }
+
+        p {
+            max-width: 420px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Leap year</h1>
+    <p>
+        Open the console (F12). Write your assertions at the end of the script,
+        reload, and read what the console says.
+    </p>
+
+    <script>
+        // Returns true if the year is a leap year, false if it is not.
+        // A year is a leap year if it is divisible by 4. However, if it is
+        // divisible by 100, it is NOT a leap year, unless it is also
+        // divisible by 400.
+        function isLeapYear(year) {
+            if (year % 4 === 0) {
+                return true;
+            }
+            return false;
+        }
+
+        // Your assertions here, for 2024, 2023, 2000 and 1900:
+        // console.assert(isLeapYear(2024) === true, "2024 should be a leap year");
+    </script>
+</body>
+
+</html>

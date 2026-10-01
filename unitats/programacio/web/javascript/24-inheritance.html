@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Inheritance
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Building on another class</vf-title>
+        <vf-content>
+            <vf-text>
+                A car is a vehicle. A motorbike is a vehicle. They share brand, model and a
+                description, but each one has something of its own. *Inheritance* lets a
+                class get everything from another and add or change only what is
+                different.
+            </vf-text>
+            <vf-code language="javascript">
+                class Vehicle {
+                    constructor(brand, model) {
+                        this.brand = brand;
+                        this.model = model;
+                    }
+
+                    describe() {
+                        return `${this.brand} ${this.model}`;
+                    }
+                }
+
+                class Car extends Vehicle {
+                    constructor(brand, model, doors) {
+                        super(brand, model);         // first: the constructor of Vehicle
+                        this.doors = doors;
+                    }
+
+                    describe() {
+                        return `${super.describe()}, ${this.doors} doors`;
+                    }
+                }
+
+                const c = new Car("Seat", "Ibiza", 5);
+                c.describe();       // "Seat Ibiza, 5 doors"
+            </vf-code>
+            <vf-list>
+                <li><vf-text>`extends`: Car is a Vehicle.</vf-text></li>
+                <li><vf-text>`super(...)`: calls the constructor of the parent class. It must go first.</vf-text></li>
+                <li><vf-text>Writing a method with the same name *overrides* it; `super.describe()` still calls the parent's version.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Your own kinds of error</vf-title>
+        <vf-content>
+            <vf-text>
+                `Error` is a class too, so you can extend it:
+            </vf-text>
+            <vf-code language="javascript">
+                class InsufficientFundsError extends Error {
+                    constructor(message) {
+                        super(message);
+                        this.name = "InsufficientFundsError";
+                    }
+                }
+
+                try {
+                    account.withdraw(500);
+                } catch (error) {
+                    if (error instanceof InsufficientFundsError) {
+                        output.textContent = "Not enough money.";
+                    } else {
+                        output.textContent = "Something unexpected happened.";
+                    }
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">When to use it</vf-title>
+        <vf-content>
+            <vf-text>
+                Only when one class really *is a kind of* the other ("a car is a vehicle").
+                If you just want to reuse a function, a normal function is simpler.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Using `this` in the constructor before calling `super`.</vf-text></li>
+                <li><vf-text>Forgetting `super(...)`: "Must call super constructor".</vf-text></li>
+                <li><vf-text>Long chains of classes inheriting from classes. One level is usually enough.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 24.1.* Write `Vehicle` and `Car` as above, create two cars and
+                show their description.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 24.2.* Add `Motorbike extends Vehicle` with the engine size, and
+                override `describe()` using `super.describe()`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 24.3.* Starting from `bank.html`, create
+                `InsufficientFundsError`, throw it from `withdraw`, and show a different
+                message for it in the `catch`.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/24-inheritance/bank.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 24.4.* An array with cars and motorbikes mixed: go through it
+                calling `describe()` on each one. Why does each one use its own version?
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/23-private-static.html">
+                    &larr; Previous: Private fields and static methods
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/25-modules.html">
+                    Next: Modules &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

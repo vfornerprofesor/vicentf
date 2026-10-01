@@ -165,7 +165,7 @@
             <vf-text>
                 Read the listener again: it does *not* remove the `li` from the screen. It
                 removes the item from the *array* and redraws. The array is the truth; the
-                screen is a picture of it. Same rule as lesson 8.
+                screen is a picture of it. Same rule as lesson 10.
             </vf-text>
         </vf-content>
 
@@ -204,33 +204,33 @@
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 11.1.* Rewrite exercise 10.4 (the add-item list) using
+                *Exercise 17.1.* Rewrite exercise 16.4 (the add-item list) using
                 `createElement` instead of `innerHTML`.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 11.2.* Add a "Delete" button to every row, that removes that item
+                *Exercise 17.2.* Add a "Delete" button to every row, that removes that item
                 from the array and redraws.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 11.3.* Add a counter under the list: "4 items".
+                *Exercise 17.3.* Add a counter under the list: "4 items".
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 11.4.* A "Gallery" page: an array of 6 image URLs, and a loop that
+                *Exercise 17.4.* A "Gallery" page: an array of 6 image URLs, and a loop that
                 creates 6 `&lt;img&gt;` elements with `createElement`. Clicking on one makes
                 it bigger.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 11.5.* A table of students created with `createElement`: one
+                *Exercise 17.5.* A table of students created with `createElement`: one
                 `&lt;tr&gt;` per student, one `&lt;td&gt;` per property.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 11.6.* A "message box": a function `showMessage(text, type)` that
+                *Exercise 17.6.* A "message box": a function `showMessage(text, type)` that
                 creates a `&lt;div&gt;` with the class `ok` or `error`, puts it at the top
                 of the page, and removes it by itself after 3 seconds.
                 (`setTimeout(function () { ... }, 3000)`)
             </vf-callout>
 
-            <vf-details summary="Show the solution (11.6)">
+            <vf-details summary="Show the solution (17.6)">
                 <vf-code language="javascript">
                     function showMessage(text, type) {
                         const box = document.createElement("div");
@@ -265,14 +265,14 @@
                 <li><vf-text>have a "Clear all" button that asks for confirmation (`confirm("Are you sure?")`).</vf-text></li>
             </vf-list>
             <vf-text>
-                No `localStorage` yet: that comes in lesson 13, and then you will add it to
+                No `localStorage` yet: that comes in lesson 19, and then you will add it to
                 this same page.
             </vf-text>
         </vf-content>
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/10-events.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/16-events.html">
                     &larr; Previous: Events
                 </vf-btn>
             </vf-col>
@@ -282,7 +282,7 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/12-forms.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/18-forms.html">
                     Next: Forms and validation &rarr;
                 </vf-btn>
             </vf-col>

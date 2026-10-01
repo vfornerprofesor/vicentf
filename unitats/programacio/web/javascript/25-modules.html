@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Modules
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">One file is not enough</vf-title>
+        <vf-content>
+            <vf-text>
+                Your project will have classes, the code of the page and the tests. In one
+                file, that is hundreds of lines. *Modules* let you split the code into
+                files that use each other.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">export and import</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // js/model.js
+                export class Product {
+                    // ...
+                }
+
+                export class Cart {
+                    // ...
+                }
+            </vf-code>
+            <vf-code language="javascript">
+                // js/main.js
+                import { Product, Cart } from "./model.js";
+
+                const p = new Product("Mouse", 15);
+            </vf-code>
+            <vf-code language="html">
+                &lt;script type="module" src="js/main.js"&gt;&lt;/script&gt;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">A library of classes</vf-title>
+        <vf-content>
+            <vf-text>
+                `model.js` is now *your own library*: a set of classes that knows nothing
+                about the page. Any file can import it: the page (`main.js`) and the tests
+                (`tests.js`).
+            </vf-text>
+            <vf-code language="text">
+                my-app/
+                ├── index.html
+                ├── tests.html
+                ├── css/style.css
+                └── js/
+                    ├── model.js     -> the classes (no document, no querySelector)
+                    ├── main.js      -> the page: events, draw(), localStorage
+                    └── tests.js     -> console.assert on the classes
+            </vf-code>
+            <vf-callout type="atencio">
+                Modules do not work if you open the page with a double click (the address
+                starts with `file://`). Always use Live Server.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>`import { Product } from "./model"` without `.js`.</vf-text></li>
+                <li><vf-text>Forgetting `type="module"` in the `&lt;script&gt;`.</vf-text></li>
+                <li><vf-text>`onclick="add()"` in the HTML stops working: functions in a module are not global. Use `addEventListener`.</vf-text></li>
+                <li><vf-text>Writing `document.querySelector` inside `model.js`. The model must not know the page.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 25.1.* Move `Product` and `BankAccount` to `js/model.js` with
+                `export`, and import them in `js/main.js`. The page must work exactly as
+                before.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 25.2.* Create `tests.html` and `js/tests.js`. The tests import the
+                same classes and check them with at least six `console.assert`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 25.3.* A second page that uses the same `model.js` with a
+                different interface (for example, only a table).
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">RA4 test</vf-title>
+        <vf-content>
+            <vf-callout type="atencio">
+                *RA4 test.* Next session you have the test of this part: 55 minutes, on
+                the computer, alone and without notes. You deliver your folder in a zip.
+                It checks every skill of the list "RA4" in the [unit index](unitats/programacio/web/javascript).
+                <br>
+                What it covers: the parts of a class, a class with constructor, private field, get/set and a static method, a child class, and a module with your classes.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/24-inheritance.html">
+                    &larr; Previous: Inheritance
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/26-project.html">
+                    Next: Final project &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

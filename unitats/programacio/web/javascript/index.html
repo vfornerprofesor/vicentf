@@ -69,6 +69,8 @@
             Programming with JavaScript
         </vf-title>
 
+        <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/situacio-aprenentatge.html"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Situació d'aprenentatge (professorat)</vf-btn>
+
         <div id="vf-index" levels="2,3"></div>
 
         <!-- <vf-img src="assets/unitats/programacio/web/javascript/00-unit-cover.png" alt="Programming with JavaScript"></vf-img> -->
@@ -92,7 +94,8 @@
                     </vf-text>
                     <vf-text>
                         At the end you will build your own complete application: a quiz or a
-                        to-do list, entirely your own work.
+                        to-do list, entirely your own work, organised in your own classes,
+                        tested and saved in the browser.
                     </vf-text>
                 </vf-col>
             </vf-row>
@@ -103,71 +106,131 @@
             <vf-list>
                 <li><vf-text>What a program is, and how a computer follows your instructions one by one.</vf-text></li>
                 <li><vf-text>How to store data in variables, and what kinds of data exist.</vf-text></li>
-                <li><vf-text>How to change a web page from JavaScript: text, colours, styles, new elements.</vf-text></li>
-                <li><vf-text>How to make decisions in your code with *if*, and how to repeat work with loops.</vf-text></li>
-                <li><vf-text>How to write functions, so you never write the same code twice.</vf-text></li>
-                <li><vf-text>How to store many values together in arrays and objects, and show them on the screen.</vf-text></li>
-                <li><vf-text>How to react when the user clicks, types or chooses something.</vf-text></li>
-                <li><vf-text>How to read a form, check the data and show a clear error message.</vf-text></li>
+                <li><vf-text>How to make decisions with *if* and repeat work with loops, and how to put it all in functions.</vf-text></li>
+                <li><vf-text>How to find and fix your own errors, test your code automatically, and handle errors without breaking the page.</vf-text></li>
+                <li><vf-text>How to work with lists of data: arrays, objects, sets and maps, and the methods *filter*, *map* and *reduce*.</vf-text></li>
+                <li><vf-text>How to check texts with regular expressions, and how data travels as JSON and XML.</vf-text></li>
+                <li><vf-text>How to change a web page from JavaScript and react when the user clicks, types or sends a form.</vf-text></li>
                 <li><vf-text>How to save data in the browser so it is still there tomorrow.</vf-text></li>
-                <li><vf-text>How to build a complete small application and deliver it.</vf-text></li>
+                <li><vf-text>How to use the objects JavaScript gives you, and libraries written by other people.</vf-text></li>
+                <li><vf-text>How to build your own classes and organise your code in modules.</vf-text></li>
+                <li><vf-text>How to build a complete application and deliver it.</vf-text></li>
             </vf-list>
         </vf-content>
 
         <vf-title level="2">How I know I have learned it</vf-title>
         <vf-content>
 
-            <vf-title level="3">RA1 — I understand the basics of programming</vf-title>
+            <vf-title level="3">RA1 — I understand how a program is built (10 %)</vf-title>
             <vf-list>
-                <li><vf-text>I declare variables with *let* and *const* and I choose good names.</vf-text></li>
-                <li><vf-text>I know the difference between a number, a string and a boolean.</vf-text></li>
-                <li><vf-text>I use arithmetic, comparison and logical operators correctly.</vf-text></li>
-                <li><vf-text>I can read a piece of code and say what it will show, without running it.</vf-text></li>
+                <li><vf-text>I can name the blocks of a program: data, input, process and output.</vf-text></li>
+                <li><vf-text>I can create a project folder with `index.html` and `script.js` linked.</vf-text></li>
+                <li><vf-text>I can work with VS Code, Live Server and the browser console.</vf-text></li>
+                <li><vf-text>I know the data types (number, string, boolean…) and what each one is for.</vf-text></li>
+                <li><vf-text>I can change a program to use variables instead of repeated values.</vf-text></li>
+                <li><vf-text>I use `const` for values that do not change, and I write literals correctly.</vf-text></li>
+                <li><vf-text>I use arithmetic, comparison and logical operators, and I can predict their result.</vf-text></li>
+                <li><vf-text>I know when JavaScript converts types by itself, and I can convert them myself.</vf-text></li>
+                <li><vf-text>I write comments that help to understand the code.</vf-text></li>
             </vf-list>
 
-            <vf-title level="3">RA2 — I can change a web page from my code</vf-title>
+            <vf-title level="3">RA2 — I can use the objects JavaScript gives me (10 %)</vf-title>
             <vf-list>
-                <li><vf-text>I find an element in the page and change its text, its value and its style.</vf-text></li>
-                <li><vf-text>I read what the user typed in an input.</vf-text></li>
-                <li><vf-text>I run my code when the user clicks a button.</vf-text></li>
+                <li><vf-text>I can explain class, object, property, method, encapsulation and inheritance.</vf-text></li>
+                <li><vf-text>I can write small complete programs: input, process and output.</vf-text></li>
+                <li><vf-text>I create objects with `new`: `Date`, `Set`, `Map`.</vf-text></li>
+                <li><vf-text>I use the methods and properties of strings, arrays and page elements.</vf-text></li>
+                <li><vf-text>I call static methods such as `Math.round` or `JSON.parse`.</vf-text></li>
+                <li><vf-text>I give methods the right parameters, including optional ones.</vf-text></li>
+                <li><vf-text>I can add an external library to my page and use it.</vf-text></li>
+                <li><vf-text>I choose the right constructor for what I need (`new Date(2027, 5, 20)`).</vf-text></li>
             </vf-list>
 
-            <vf-title level="3">RA3 — I can control the flow of a program</vf-title>
+            <vf-title level="3">RA3 — I can control the flow of a program and fix it (20 %)</vf-title>
             <vf-list>
-                <li><vf-text>I write *if*, *else if* and *else* for a real problem.</vf-text></li>
-                <li><vf-text>I choose the right loop (*while*, *for*, *for...of*) for each case.</vf-text></li>
-                <li><vf-text>My loops always end. I can explain why.</vf-text></li>
+                <li><vf-text>I write `if`, `else if`, `else` and `switch` for real problems.</vf-text></li>
+                <li><vf-text>I choose the right loop, and my loops always end.</vf-text></li>
+                <li><vf-text>I use `break`, `continue` and `return` when they make the code simpler.</vf-text></li>
+                <li><vf-text>I catch errors with `try` and `catch` so the page does not break.</vf-text></li>
+                <li><vf-text>I build complete programs that combine conditions, loops and functions.</vf-text></li>
+                <li><vf-text>I find and fix errors with the console and breakpoints.</vf-text></li>
+                <li><vf-text>I comment and document my functions (JSDoc) and my project (README).</vf-text></li>
+                <li><vf-text>I throw my own errors with a clear message.</vf-text></li>
+                <li><vf-text>I test my functions with `console.assert`.</vf-text></li>
             </vf-list>
 
-            <vf-title level="3">RA4 — I can organise code and data</vf-title>
+            <vf-title level="3">RA4 — I can build my own classes (10 %)</vf-title>
             <vf-list>
-                <li><vf-text>I write functions with parameters and a *return* value.</vf-text></li>
-                <li><vf-text>I use arrays: add, remove, search, count, go through them.</vf-text></li>
-                <li><vf-text>I use objects with properties, and arrays of objects.</vf-text></li>
-                <li><vf-text>I draw a list or a set of cards in the page from an array.</vf-text></li>
+                <li><vf-text>I can recognise the parts of a class.</vf-text></li>
+                <li><vf-text>I can define a class.</vf-text></li>
+                <li><vf-text>I can give a class properties and methods.</vf-text></li>
+                <li><vf-text>I can write a constructor.</vf-text></li>
+                <li><vf-text>I build programs that create and use objects of my own classes.</vf-text></li>
+                <li><vf-text>I protect data with private fields, `get` and `set`.</vf-text></li>
+                <li><vf-text>I can make a class that inherits from another.</vf-text></li>
+                <li><vf-text>I can write and use static methods.</vf-text></li>
+                <li><vf-text>I organise my classes in a module that other files import.</vf-text></li>
             </vf-list>
 
-            <vf-title level="3">RA5 — I can build an interactive application</vf-title>
+            <vf-title level="3">RA5 — I can build interactive pages (25 %)</vf-title>
             <vf-list>
-                <li><vf-text>I create and remove elements from JavaScript.</vf-text></li>
-                <li><vf-text>I react to clicks and to typing with *addEventListener*.</vf-text></li>
-                <li><vf-text>I read a form, validate it and show useful messages.</vf-text></li>
-                <li><vf-text>I save and load data with *localStorage*.</vf-text></li>
+                <li><vf-text>I use the console to ask for and show information.</vf-text></li>
+                <li><vf-text>I show numbers, prices and dates with the right format.</vf-text></li>
+                <li><vf-text>I know the ways a program can get information and show it, and when to use each one.</vf-text></li>
+                <li><vf-text>I react to clicks, typing and forms with `addEventListener`.</vf-text></li>
+                <li><vf-text>I read what the user types and show results and messages in the page.</vf-text></li>
             </vf-list>
 
-            <vf-title level="3">RA6 — I can finish and deliver a project</vf-title>
+            <vf-title level="3">RA6 — I can work with data (25 %)</vf-title>
             <vf-list>
-                <li><vf-text>My code is indented, with clear names and useful comments.</vf-text></li>
-                <li><vf-text>I test my application and I fix the errors I find.</vf-text></li>
-                <li><vf-text>I deliver on time and I explain my work in 3 minutes.</vf-text></li>
+                <li><vf-text>I use arrays, also arrays of arrays.</vf-text></li>
+                <li><vf-text>I know the classes JavaScript has for data: `Array`, `Set`, `Map`, `String`, `RegExp`.</vf-text></li>
+                <li><vf-text>I keep lists of objects and add, remove and change their elements.</vf-text></li>
+                <li><vf-text>I go through lists with `for...of` and `forEach`.</vf-text></li>
+                <li><vf-text>I choose between array, set, map and object for each problem.</vf-text></li>
+                <li><vf-text>I check and search texts with regular expressions.</vf-text></li>
+                <li><vf-text>I know which tools read and write JSON and XML.</vf-text></li>
+                <li><vf-text>I convert data to JSON and back.</vf-text></li>
+                <li><vf-text>I use `filter`, `map`, `reduce` and `sort` instead of long loops.</vf-text></li>
             </vf-list>
 
+        </vf-content>
+
+        <vf-title level="2">How you are marked</vf-title>
+        <vf-content>
+            <vf-text>
+                Your mark is built from the skills above, not from separate exams.
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>Each skill ("I can…") gets a mark from 1 to 10, from the *test* of its part, from your *final project*, or from both. When it is checked in both, the one that shows the skill better counts more.</vf-text></li>
+                <li><vf-text>The mark of each RA is the average of its skills, weighted by how important each one is.</vf-text></li>
+                <li><vf-text>Your final mark is the average of the six RA, with these weights:</vf-text></li>
+            </vf-list>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr><th>RA</th><th>What it is about</th><th>Weight</th><th>Checked in</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>RA1</td><td>How a program is built</td><td>10 %</td><td>RA1 test (after lesson 3)</td></tr>
+                        <tr><td>RA2</td><td>Using JavaScript's objects</td><td>10 %</td><td>RA2 test (after lesson 21) and the project</td></tr>
+                        <tr><td>RA3</td><td>Control the flow and fix errors</td><td>20 %</td><td>RA3 test (after lesson 9) and the project</td></tr>
+                        <tr><td>RA4</td><td>Your own classes</td><td>10 %</td><td>RA4 test (after lesson 25) and the project</td></tr>
+                        <tr><td>RA5</td><td>Interactive pages</td><td>25 %</td><td>RA5 test (after lesson 19) and the project</td></tr>
+                        <tr><td>RA6</td><td>Working with data</td><td>25 %</td><td>RA6 test (after lesson 15) and the project</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>
+                Every test and the project are marked with a rubric of four levels. Your
+                teacher will show you the rubric before each one.
+            </vf-text>
         </vf-content>
 
         <vf-title level="2">Lessons</vf-title>
         <vf-content>
 
-            <vf-title level="3">Part 1 — The programmer's desk</vf-title>
+            <vf-title level="3">Part 1 — The basics</vf-title>
             <vf-row centered>
                 <vf-card link="unitats/programacio/web/javascript/01-first-program.html" img="assets/js.png">
                     1. Your first program
@@ -178,13 +241,13 @@
                 <vf-card link="unitats/programacio/web/javascript/03-operators.html" img="assets/js.png">
                     3. Operators
                 </vf-card>
-                <vf-card link="unitats/programacio/web/javascript/04-dom.html" img="assets/js.png">
-                    4. The DOM: changing the page
-                </vf-card>
             </vf-row>
 
             <vf-title level="3">Part 2 — Control the flow</vf-title>
             <vf-row centered>
+                <vf-card link="unitats/programacio/web/javascript/04-dom.html" img="assets/js.png">
+                    4. The DOM: changing the page
+                </vf-card>
                 <vf-card link="unitats/programacio/web/javascript/05-conditions.html" img="assets/js.png">
                     5. Making decisions
                 </vf-card>
@@ -194,41 +257,85 @@
                 <vf-card link="unitats/programacio/web/javascript/07-functions.html" img="assets/js.png">
                     7. Functions
                 </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/08-debugging.html" img="assets/js.png">
+                    8. Testing and debugging
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/09-errors.html" img="assets/js.png">
+                    9. Errors and exceptions
+                </vf-card>
             </vf-row>
 
-            <vf-title level="3">Part 3 — Storing data</vf-title>
+            <vf-title level="3">Part 3 — Working with data</vf-title>
             <vf-row centered>
-                <vf-card link="unitats/programacio/web/javascript/08-arrays.html" img="assets/js.png">
-                    8. Arrays
+                <vf-card link="unitats/programacio/web/javascript/10-arrays.html" img="assets/js.png">
+                    10. Arrays
                 </vf-card>
-                <vf-card link="unitats/programacio/web/javascript/09-objects.html" img="assets/js.png">
-                    9. Objects
+                <vf-card link="unitats/programacio/web/javascript/11-objects.html" img="assets/js.png">
+                    11. Objects
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/12-array-methods.html" img="assets/js.png">
+                    12. Array methods: filter, map and reduce
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/13-regex.html" img="assets/js.png">
+                    13. Regular expressions
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/14-collections.html" img="assets/js.png">
+                    14. Sets and maps
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/15-json-xml.html" img="assets/js.png">
+                    15. JSON and XML
                 </vf-card>
             </vf-row>
 
             <vf-title level="3">Part 4 — Making it interactive</vf-title>
             <vf-row centered>
-                <vf-card link="unitats/programacio/web/javascript/10-events.html" img="assets/js.png">
-                    10. Events
+                <vf-card link="unitats/programacio/web/javascript/16-events.html" img="assets/js.png">
+                    16. Events
                 </vf-card>
-                <vf-card link="unitats/programacio/web/javascript/11-elements.html" img="assets/js.png">
-                    11. Creating and removing elements
+                <vf-card link="unitats/programacio/web/javascript/17-elements.html" img="assets/js.png">
+                    17. Creating and removing elements
                 </vf-card>
-                <vf-card link="unitats/programacio/web/javascript/12-forms.html" img="assets/js.png">
-                    12. Forms and validation
+                <vf-card link="unitats/programacio/web/javascript/18-forms.html" img="assets/js.png">
+                    18. Forms and validation
                 </vf-card>
-                <vf-card link="unitats/programacio/web/javascript/13-localstorage.html" img="assets/js.png">
-                    13. Saving data with localStorage
+                <vf-card link="unitats/programacio/web/javascript/19-localstorage.html" img="assets/js.png">
+                    19. Saving data with localStorage
+                </vf-card>
+            </vf-row>
+
+            <vf-title level="3">Part 5 — Using objects</vf-title>
+            <vf-row centered>
+                <vf-card link="unitats/programacio/web/javascript/20-built-in-objects.html" img="assets/js.png">
+                    20. Objects and built-in classes
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/21-static-libraries.html" img="assets/js.png">
+                    21. Static methods, parameters and libraries
+                </vf-card>
+            </vf-row>
+
+            <vf-title level="3">Part 6 — Your own classes</vf-title>
+            <vf-row centered>
+                <vf-card link="unitats/programacio/web/javascript/22-classes.html" img="assets/js.png">
+                    22. Your own classes
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/23-private-static.html" img="assets/js.png">
+                    23. Private fields and static methods
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/24-inheritance.html" img="assets/js.png">
+                    24. Inheritance
+                </vf-card>
+                <vf-card link="unitats/programacio/web/javascript/25-modules.html" img="assets/js.png">
+                    25. Modules
                 </vf-card>
             </vf-row>
 
             <vf-title level="3">Final project</vf-title>
             <vf-row centered>
-                <vf-card link="unitats/programacio/web/javascript/14-project.html" img="assets/code.jpg">
-                    14. Final project
+                <vf-card link="unitats/programacio/web/javascript/26-project.html" img="assets/code.jpg">
+                    26. Final project
                 </vf-card>
-                <vf-card link="unitats/programacio/web/javascript/15-next.html" img="assets/code.jpg">
-                    15. What comes next
+                <vf-card link="unitats/programacio/web/javascript/27-next.html" img="assets/code.jpg">
+                    27. What comes next
                 </vf-card>
             </vf-row>
 

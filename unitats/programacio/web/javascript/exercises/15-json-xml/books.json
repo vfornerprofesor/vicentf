@@ -1,0 +1,6 @@
+[
+    { "title": "Dune", "author": "Frank Herbert", "year": 1965, "price": 12.95 },
+    { "title": "Matilda", "author": "Roald Dahl", "year": 1988, "price": 8.5 },
+    { "title": "The Hobbit", "author": "J. R. R. Tolkien", "year": 1937, "price": 10.9 },
+    { "title": "Wonder", "author": "R. J. Palacio", "year": 2012, "price": 9.99 }
+]

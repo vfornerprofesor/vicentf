@@ -98,7 +98,7 @@
                 <li><vf-text>`input` — the user types *one* character in a field.</vf-text></li>
                 <li><vf-text>`change` — the user leaves the field, or picks an option in a `&lt;select&gt;`.</vf-text></li>
                 <li><vf-text>`keydown` — the user presses a key.</vf-text></li>
-                <li><vf-text>`submit` — a form is sent (lesson 12).</vf-text></li>
+                <li><vf-text>`submit` — a form is sent (lesson 18).</vf-text></li>
                 <li><vf-text>`mouseover` / `mouseout` — the mouse enters / leaves the element.</vf-text></li>
             </vf-list>
         </vf-content>
@@ -118,7 +118,7 @@
             <vf-text>
                 The two you really need: `event.target` (which element fired it) and
                 `event.preventDefault()` (stop the normal behaviour — we use it with forms
-                in lesson 12).
+                in lesson 18).
             </vf-text>
         </vf-content>
 
@@ -216,43 +216,43 @@
 
                 // 3. Listening on an element that does not exist yet
                 //    -> if you create a button from JavaScript, add its listener
-                //       right after you create it (lesson 11).
+                //       right after you create it (lesson 17).
             </vf-code>
         </vf-content>
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 10.1.* A live character counter: as the user types in a field,
+                *Exercise 16.1.* A live character counter: as the user types in a field,
                 show "17 / 100 characters", and turn it red over 100.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 10.2.* An input where, as you type, the text appears in capital
+                *Exercise 16.2.* An input where, as you type, the text appears in capital
                 letters in `#output`. (`.toUpperCase()`)
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 10.3.* Six colour buttons that change the background of the page,
+                *Exercise 16.3.* Six colour buttons that change the background of the page,
                 built with one loop and `data-colour`.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 10.4.* A field and an "Add" button: every click adds what you
+                *Exercise 16.4.* A field and an "Add" button: every click adds what you
                 typed to the list, and clears the field. Pressing Enter in the field does
                 the same. The empty field adds nothing.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 10.5.* A `&lt;select&gt;` with three cities. When the user chooses
+                *Exercise 16.5.* A `&lt;select&gt;` with three cities. When the user chooses
                 one, the page shows a sentence about it (`change` event).
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 10.6.* An image that changes when the mouse is over it and goes
+                *Exercise 16.6.* An image that changes when the mouse is over it and goes
                 back when it leaves.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 10.7. Live search.* An array of 10 names drawn as a list, and a
+                *Exercise 16.7. Live search.* An array of 10 names drawn as a list, and a
                 search box. As the user types, only the matching names stay on the screen.
             </vf-callout>
 
-            <vf-details summary="Show the solution (10.4)">
+            <vf-details summary="Show the solution (16.4)">
                 <vf-code language="javascript">
                     const input = document.querySelector("#nameInput");
                     const button = document.querySelector("#addButton");
@@ -293,8 +293,8 @@
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/09-objects.html">
-                    &larr; Previous: Objects
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/15-json-xml.html">
+                    &larr; Previous: JSON and XML
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
@@ -303,7 +303,7 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/11-elements.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/17-elements.html">
                     Next: Creating and removing elements &rarr;
                 </vf-btn>
             </vf-col>

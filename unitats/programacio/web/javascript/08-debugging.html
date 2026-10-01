@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing and debugging</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Testing and debugging
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Two kinds of errors</vf-title>
+        <vf-content>
+            <vf-text>
+                A *syntax error* is a mistake in how the code is written: a missing `)`, a
+                `}` in the wrong place, a word typed wrong. The browser refuses to run the
+                file and shows a red message in the console.
+            </vf-text>
+            <vf-text>
+                A *logic error* is worse: the code runs, there is nothing red in the
+                console, but the result is wrong. The average of 5 and 7 comes out as 6.5.
+                The computer did exactly what you wrote; you wrote the wrong thing.
+            </vf-text>
+            <vf-code language="javascript">
+                // Syntax error: the browser stops here
+                const total = (5 + 7;
+
+                // Logic error: it runs, and gives 8.5 instead of 6
+                const average = 5 + 7 / 2;
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Reading an error message</vf-title>
+        <vf-content>
+            <vf-code language="text">
+                Uncaught ReferenceError: totl is not defined    script.js:12
+            </vf-code>
+            <vf-text>
+                Three things to read, always in this order:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>*The type*: `SyntaxError` (badly written), `ReferenceError` (a name that does not exist), `TypeError` (you used something the wrong way, e.g. `null.length`).</vf-text></li>
+                <li><vf-text>*The message*: what went wrong, in plain English.</vf-text></li>
+                <li><vf-text>*The line*: click on `script.js:12` and the browser takes you there.</vf-text></li>
+            </vf-list>
+            <vf-callout type="consell">
+                The line the browser shows is where it *noticed* the problem. Sometimes the
+                real mistake is one or two lines above.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Breakpoints: stopping the program</vf-title>
+        <vf-content>
+            <vf-text>
+                `console.log` is useful, but you have to guess where to put it. A
+                *breakpoint* stops the program on a line and lets you look at every
+                variable.
+            </vf-text>
+            <vf-list ordered>
+                <li><vf-text>Open DevTools (F12) → tab *Sources* (Chrome) or *Debugger* (Firefox).</vf-text></li>
+                <li><vf-text>Open your `script.js` on the left.</vf-text></li>
+                <li><vf-text>Click on a line number. A blue mark appears: that is the breakpoint.</vf-text></li>
+                <li><vf-text>Do whatever runs that code (click the button). The program stops on that line.</vf-text></li>
+                <li><vf-text>Move with the buttons: *Step over* (F10) runs one line; *Step into* (F11) goes inside a function; *Resume* (F8) continues until the next breakpoint.</vf-text></li>
+                <li><vf-text>Hover over any variable to see its value, or look at the *Scope* panel.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                You can also stop the program from your code with the word `debugger;`. It
+                only stops when DevTools is open.
+            </vf-text>
+            <vf-callout type="atencio">
+                Remove every `debugger;` before you deliver your work.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Assertions: tests that check themselves</vf-title>
+        <vf-content>
+            <vf-text>
+                An *assertion* says "this must be true". If it is true, nothing happens. If
+                it is false, a red message appears in the console.
+            </vf-text>
+            <vf-code language="javascript">
+                function square(n) {
+                    return n * n;
+                }
+
+                console.assert(square(3) === 9, "square(3) should be 9");
+                console.assert(square(0) === 0, "square(0) should be 0");
+                console.assert(square(-2) === 4, "square(-2) should be 4");
+            </vf-code>
+            <vf-text>
+                For each function, test three kinds of case:
+            </vf-text>
+            <vf-list>
+                <li><vf-text>a *normal* case (`square(3)`),</vf-text></li>
+                <li><vf-text>an *edge* case, at the limit (`square(0)`),</vf-text></li>
+                <li><vf-text>a *strange* case: negative numbers, empty text, an empty array (`square(-2)`).</vf-text></li>
+            </vf-list>
+            <vf-text>
+                Put your assertions at the end of the file, or in a separate `tests.js`.
+                Every time you change a function, reload and look at the console: if
+                nothing is red, you did not break anything.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Documenting a function</vf-title>
+        <vf-content>
+            <vf-text>
+                A comment above each function says what it does. If you write it in
+                *JSDoc* format, VS Code shows it when you hover over any call to that
+                function.
+            </vf-text>
+            <vf-code language="javascript">
+                /**
+                 * Returns the biggest of three numbers.
+                 * @param {number} a - first number
+                 * @param {number} b - second number
+                 * @param {number} c - third number
+                 * @returns {number} the biggest one
+                 */
+                function biggest(a, b, c) {
+                    // ...
+                }
+            </vf-code>
+            <vf-text>
+                Type `/**` and press Enter above a function: VS Code writes the skeleton
+                for you.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Reading only the first word of the error and not the line.</vf-text></li>
+                <li><vf-text>Writing assertions that test what the function *does* instead of what it *should do*: copy the expected value from your head, not from the console.</vf-text></li>
+                <li><vf-text>Comments that repeat the code (`i++ // add one to i`). Explain *why*, not *what*.</vf-text></li>
+                <li><vf-text>Forgetting `debugger;` or test `console.log`s in the delivered code.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 8.1.* Put a breakpoint inside your function `biggest` from
+                exercise 7.3. Call it with 4, 9 and 2 and go line by line with F10. Write a
+                table with the value of `max` after each line.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.2.* Download the starter file `average.html`. The average is
+                wrong. Find the bug *with the debugger* (not by reading the code) and fix
+                it. Above the line you fixed, write a comment saying what was wrong.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/08-debugging/average.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 8.3.* Write three `console.assert` (normal, edge and strange
+                case) for each of your functions `square`, `isEven` and `biggest` of
+                lesson 7.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 8.4.* Download `leap.html`. Write assertions for 2024, 2023, 2000
+                and 1900. One of them fails: use it to find the bug and fix the function.
+            </vf-callout>
+            <vf-text>
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/08-debugging/leap.html)
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 8.5.* Write the JSDoc comment of every function of your
+                calculator (exercise 7.4) and check that VS Code shows it when you hover
+                over a call.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/07-functions.html">
+                    &larr; Previous: Functions
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/09-errors.html">
+                    Next: Errors and exceptions &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - JavaScript</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · JavaScript (document per al professorat)">La meua primera aplicació</vf-title>
+
+        <div class="center">
+            <vf-badge>2n CFGM SMX</vf-badge>
+            <vf-badge>Introducció a la programació</vf-badge>
+            <vf-badge>62 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>Esta SA cobrix el mòdul sencer: 65 hores lectives, amb 62 sessions de 55 min programades i 3 de marge. La majoria de l'alumnat no ha programat mai i els nivells són molt desiguals. El llenguatge és JavaScript al navegador: el resultat de cada línia es veu en la pàgina, no cal instal·lar res més que l'editor, i l'HTML i el CSS els dona fets la unitat. El mòdul parteix de zero i acaba amb una aplicació completa (un joc de preguntes o un gestor de tasques) organitzada en classes, que recorda les dades en tancar el navegador.</vf-text>
+            <vf-text>Les lliçons de la web estan en anglés: els enunciats són curts i amb codi, però cal llegir-los en veu alta a classe les primeres setmanes. Treball individual en VS Code (amb Live Server) i navegador, amb una carpeta de treball per alumne que es conserva entre sessions.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>"Programa una aplicació que faries servir de veritat."</strong> Un joc de preguntes sobre un tema que t'agrade o un gestor de tasques per a organitzar el curs, que recorda les dades quan tornes a obrir-lo.
+            </vf-callout>
+            <vf-text>Alternativa amb el permís del professor: una idea pròpia de complexitat semblant (llista de la compra, col·lecció de pel·lícules, comptador de punts d'un joc).</vf-text>
+            <vf-text>Productes intermedis: miniprojecte 1 (pàgina de xicotetes eines, cada una amb la seua funció) i miniprojecte 2 (una llista que funciona i recorda les dades).</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Resultats d'aprenentatge</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                            <th>Pes en la SA</th>
+                            <th>Justificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RA1</td>
+                            <td>Reconeix l'estructura d'un programa informàtic, i identificat i relacionat els elements propis del llenguatge de programació utilitzat.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Base de tot el mòdul, poques sessions i dificultat baixa.</td>
+                        </tr>
+                        <tr>
+                            <td>RA2</td>
+                            <td>Escriu i prova programes senzills, reconeix i aplica els fonaments de la programació orientada a objectes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>L'ús d'objectes predefinits està en tot el mòdul, però té poques sessions pròpies.</td>
+                        </tr>
+                        <tr>
+                            <td>RA3</td>
+                            <td>Escriu i depura codi, analitzant i utilitzant les estructures de control del llenguatge.</td>
+                            <td>20&nbsp;%</td>
+                            <td>El nucli del pensament de programació: control del flux, depuració i excepcions.</td>
+                        </tr>
+                        <tr>
+                            <td>RA4</td>
+                            <td>Desenrotlla programes organitzats en classes analitzant i aplicant els principis de la programació orientada a objectes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Sis sessions; s'aplica en el model del projecte.</td>
+                        </tr>
+                        <tr>
+                            <td>RA5</td>
+                            <td>Realitza operacions d'entrada i eixida d'informació, utilitzant procediments específics del llenguatge i llibreries de classes.</td>
+                            <td>25&nbsp;%</td>
+                            <td>DOM, esdeveniments i formularis: el bloc amb més sessions i el que sosté la interfície del projecte.</td>
+                        </tr>
+                        <tr>
+                            <td>RA6</td>
+                            <td>Escriu programes que manipulen informació, seleccionant i utilitzant tipus avançats de dades.</td>
+                            <td>25&nbsp;%</td>
+                            <td>Arrays, objectes, col·leccions i JSON: les dades de totes les aplicacions del mòdul i del projecte.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <vf-text>Cada criteri s'avalua en la prova del seu RA i, quan es pot observar en l'aplicació, també en el projecte.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                            <th>Pes dins del RA</th>
+                            <th>Pes en la SA</th>
+                            <th>Justificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CA1.1</td>
+                            <td>S'han identificat els blocs que componen l'estructura d'un programa informàtic.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Identificació conceptual senzilla.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.2</td>
+                            <td>S'han creat projectes de desenrotllament d'aplicacions.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Rutina de carpetes i arxius.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.3</td>
+                            <td>S'han utilitzat entorns integrats de desenrotllament.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>S'aprén en les primeres sessions.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.4</td>
+                            <td>S'han identificat els diferents tipus de variables i la utilitat específica de cada un.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>JavaScript té pocs tipus bàsics.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.5</td>
+                            <td>S'ha modificat el codi d'un programa per a crear i utilitzar variables.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>S'automatitza ràpidament.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.6</td>
+                            <td>S'han creat i utilitzat constants i literals.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Distinció <code>let</code>/<code>const</code> i escriptura de literals.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.7</td>
+                            <td>S'han classificat, reconegut i utilitzat en expressions els operadors del llenguatge.</td>
+                            <td>20&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Font constant d'errors (<code>===</code>, <code>%</code>, precedència) i base de les condicions.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.8</td>
+                            <td>S'ha comprovat el funcionament de les conversions de tipus explícites i implícites.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Error típic i acotat (<code>"5" + 3</code>).</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.9</td>
+                            <td>S'han introduït comentaris en el codi.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Hàbit senzill.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA1</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>10&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA2.1</td>
+                            <td>S'han identificat els fonaments de la programació orientada a objectes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Conceptes de base, sobretot teòrics.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.2</td>
+                            <td>S'han escrit programes simples.</td>
+                            <td>20&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Integra la resta del RA en un programa que funciona.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.3</td>
+                            <td>S'han instanciat objectes a partir de classes predefinides.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Poques classes predefinides (<code>Date</code>, <code>Set</code>, <code>Map</code>).</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.4</td>
+                            <td>S'han utilitzat mètodes i propietats dels objectes.</td>
+                            <td>20&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>S'usen contínuament en cadenes, arrays i elements de la pàgina.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.5</td>
+                            <td>S'han escrit crides a mètodes estàtics.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Crides puntuals (<code>Math</code>, <code>Number</code>, <code>JSON</code>).</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.6</td>
+                            <td>S'han utilitzat paràmetres en la crida a mètodes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Present en qualsevol crida; poca dificultat.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.7</td>
+                            <td>S'han incorporat i utilitzat llibreries d'objectes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Una llibreria, ús senzill.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.8</td>
+                            <td>S'han utilitzat constructors.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Constructors predefinits amb paràmetres.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA2</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>10&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA3.1</td>
+                            <td>S'ha escrit i provat codi que faça ús d'estructures de selecció.</td>
+                            <td>15&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Estructura central, amb molts exercicis.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.2</td>
+                            <td>S'han utilitzat estructures de repetició.</td>
+                            <td>20&nbsp;%</td>
+                            <td>4&nbsp;%</td>
+                            <td>El contingut més difícil del bloc (acumuladors, traça).</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.3</td>
+                            <td>S'han reconegut les possibilitats de les sentències de salt.</td>
+                            <td>5&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td><code>break</code>, <code>continue</code> i <code>return</code>: ús puntual.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.4</td>
+                            <td>S'ha escrit codi utilitzant control d'excepcions.</td>
+                            <td>10&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Imprescindible quan les dades vénen de fora.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.5</td>
+                            <td>S'han creat programes executables utilitzant diferents estructures de control.</td>
+                            <td>15&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Integra totes les estructures en un programa real.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.6</td>
+                            <td>S'han provat i depurat els programes.</td>
+                            <td>15&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Destresa clau per a treballar de manera autònoma.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.7</td>
+                            <td>S'ha comentat i documentat el codi.</td>
+                            <td>5&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Hàbit de dificultat baixa.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.8</td>
+                            <td>S'han creat excepcions.</td>
+                            <td>5&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Ampliació del control d'excepcions, una sessió.</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.9</td>
+                            <td>S'han utilitzat assercions per a la detecció i la correcció d'errors durant la fase de desenrotllament.</td>
+                            <td>10&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Base de les proves automàtiques del projecte.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA3</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>20&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA4.1</td>
+                            <td>S'han reconegut la sintaxi, l'estructura i els components típics d'una classe.</td>
+                            <td>5&nbsp;%</td>
+                            <td>0,5&nbsp;%</td>
+                            <td>Reconeixement, prerequisit de la resta.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.2</td>
+                            <td>S'han definit classes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Sintaxi bàsica de la classe.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.3</td>
+                            <td>S'han definit propietats i mètodes.</td>
+                            <td>15&nbsp;%</td>
+                            <td>1,5&nbsp;%</td>
+                            <td>El contingut d'una classe; on està la lògica.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.4</td>
+                            <td>S'han creat constructors.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Inicialització de l'objecte.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.5</td>
+                            <td>S'han desenrotllat programes que instancien i utilitzen objectes de les classes creades anteriorment.</td>
+                            <td>20&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Integra la resta del RA en un programa real (model del projecte).</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.6</td>
+                            <td>S'han utilitzat mecanismes per a controlar la visibilitat de les classes i dels seus membres.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Camps privats i accessors, una sessió.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.7</td>
+                            <td>S'han definit i utilitzat classes heretades.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Herència, una sessió.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.8</td>
+                            <td>S'han creat i utilitzat mètodes estàtics.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Creació d'instàncies a partir de dades guardades.</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.9</td>
+                            <td>S'han creat i utilitzat conjunts i llibreries de classes.</td>
+                            <td>10&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Un mòdul de classes reutilitzable.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA4</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>10&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA5.1</td>
+                            <td>S'ha utilitzat la consola per a realitzar operacions d'entrada i eixida d'informació.</td>
+                            <td>8&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Primeres lliçons; base de la depuració i de les proves.</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.2</td>
+                            <td>S'han aplicat formats en la visualització de la informació</td>
+                            <td>12&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Present en tots els resultats que es mostren.</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.3</td>
+                            <td>S'han reconegut les possibilitats d'entrada/eixida del llenguatge i les llibreries associades.</td>
+                            <td>4&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Reconeixement.</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.4</td>
+                            <td>S'han programat controladors d'esdeveniments.</td>
+                            <td>40&nbsp;%</td>
+                            <td>10&nbsp;%</td>
+                            <td>El cor de les aplicacions interactives i el criteri amb més sessions.</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.5</td>
+                            <td>S'han escrit programes que utilitzen interfícies gràfiques per a l'entrada i l'eixida d'informació.</td>
+                            <td>36&nbsp;%</td>
+                            <td>9&nbsp;%</td>
+                            <td>Lectura de controls i dibuix de resultats en totes les aplicacions.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA5</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>25&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA6.1</td>
+                            <td>S'han escrit programes que utilitzen matrius (arrays).</td>
+                            <td>8&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Arrays d'una i dues dimensions.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.2</td>
+                            <td>S'han reconegut les llibreries de classes relacionades amb tipus de dades avançades.</td>
+                            <td>4&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Reconeixement.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.3</td>
+                            <td>S'han utilitzat llistes per a emmagatzemar i processar informació.</td>
+                            <td>16&nbsp;%</td>
+                            <td>4&nbsp;%</td>
+                            <td>L'array d'objectes és l'estructura de totes les aplicacions del mòdul.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.4</td>
+                            <td>S'han utilitzat iteradors per a recórrer els elements de les llistes.</td>
+                            <td>8&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Recorregut amb <code>for...of</code> i <code>forEach</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.5</td>
+                            <td>S'han reconegut les característiques i els avantatges de cada una de les col·leccions de dades disponibles.</td>
+                            <td>8&nbsp;%</td>
+                            <td>2&nbsp;%</td>
+                            <td>Triar l'estructura adequada a cada problema.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.6</td>
+                            <td>S'han utilitzat expressions regulars en la busca de patrons en cadenes de text.</td>
+                            <td>12&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Validació de dades; sintaxi nova i exigent.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.7</td>
+                            <td>S'han identificat les classes relacionades amb el tractament de documents escrits en diferents llenguatges d'intercanvi de dades.</td>
+                            <td>4&nbsp;%</td>
+                            <td>1&nbsp;%</td>
+                            <td>Reconeixement.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.8</td>
+                            <td>S'han realitzat programes que realitzen manipulacions sobre documents escrits en diferents llenguatges d'intercanvi de dades.</td>
+                            <td>16&nbsp;%</td>
+                            <td>4&nbsp;%</td>
+                            <td>JSON en <code>localStorage</code>: imprescindible per a guardar les dades.</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.9</td>
+                            <td>S'han utilitzat operacions agregades per al maneig d'informació emmagatzemada en col·leccions.</td>
+                            <td>24&nbsp;%</td>
+                            <td>6&nbsp;%</td>
+                            <td>Substituïx la majoria de bucles de cerca, filtre i suma; dificultat alta.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA6</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>25&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Estructura d'un programa: blocs (dades, entrada, procés, eixida), arxius <code>index.html</code> i <code>script.js</code>, editor, Live Server, consola i DevTools.</li>
+                <li>Variables (<code>let</code>), constants (<code>const</code>), tipus de dades (<code>number</code>, <code>string</code>, <code>boolean</code>, <code>undefined</code>, <code>null</code>), <code>typeof</code>, literals i plantilles de text. Conversions implícites i explícites.</li>
+                <li>Operadors aritmètics, d'assignació, de comparació i lògics. Precedència.</li>
+                <li>Selecció (<code>if</code>, <code>else if</code>, <code>else</code>, <code>switch</code>, ternari), repetició (<code>while</code>, <code>for</code>, <code>for...of</code>), salt (<code>break</code>, <code>continue</code>, <code>return</code>).</li>
+                <li>Funcions: paràmetres, valor de retorn, àmbit, funcions fletxa.</li>
+                <li>Prova i depuració: errors de sintaxi i de lògica, punts d'interrupció, <code>console.assert</code>. Comentaris i documentació (JSDoc, README).</li>
+                <li>Excepcions: <code>try</code>, <code>catch</code>, <code>finally</code>, <code>throw</code>, errors propis.</li>
+                <li>Arrays i matrius bidimensionals. Arrays d'objectes. Col·leccions: <code>Array</code>, <code>Set</code>, <code>Map</code> i objectes. Iteradors.</li>
+                <li>Operacions agregades: <code>filter</code>, <code>map</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>sort</code>.</li>
+                <li>Expressions regulars: patrons, <code>test</code>, <code>match</code>, <code>replace</code>.</li>
+                <li>Formats d'intercanvi: JSON (<code>JSON.parse</code>, <code>JSON.stringify</code>) i XML (<code>DOMParser</code>).</li>
+                <li>Entrada i eixida per consola (<code>prompt</code>, <code>console.log</code>, <code>console.table</code>) i en la pàgina. Formats (<code>toFixed</code>, <code>toLocaleString</code>, plantilles).</li>
+                <li>El DOM: trobar elements, canviar text, valor, estil i classes. Crear i eliminar elements. Esdeveniments: <code>addEventListener</code>, objecte <code>event</code>, ratolí, teclat i formulari. Formularis i validació. <code>localStorage</code>.</li>
+                <li>Objectes predefinits: <code>String</code>, <code>Array</code>, <code>Math</code>, <code>Number</code>, <code>Date</code>, <code>JSON</code>. Mètodes d'instància i estàtics. Constructors. Llibreries externes.</li>
+                <li>Classes: propietats, mètodes, constructor, camps privats, accessors, mètodes estàtics, herència (<code>extends</code>, <code>super</code>). Mòduls (<code>export</code>, <code>import</code>).</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-text>Els blocs van per RA i cada un acaba amb la prova del seu RA. L'ordre és <strong>RA1 → RA3 → RA6 → RA5 → RA2 → RA4</strong>: primer el llenguatge i el control del flux, després les dades, a continuació la interfície que les mostra i les modifica, i finalment els objectes predefinits i les classes pròpies, que el projecte aplica immediatament. La lliçó 4 (el DOM) es fa en el bloc de RA3 com a eina per a veure els resultats en la pàgina; el que s'hi treballa s'avalua més avant: l'entrada i l'eixida en la pàgina (CA5.5) en la prova de RA5, i els mètodes i les propietats dels elements (CA2.4) en la prova de RA2, i tots dos també en el projecte.</vf-text>
+            <vf-text><strong>Estructura tipus d'una sessió de 55 min</strong>: 5 min d'arrencada (obrir VS Code, la carpeta de treball i Live Server) · 10-15 min de demostració en directe, escrivint el codi davant de l'alumnat · 30-35 min d'exercicis · 5 min de tancament (desar i comprovar que no hi ha errors en la consola). Les sessions de miniprojecte, prova i projecte no tenen demostració.</vf-text>
+            <vf-text><strong>Correcció de les proves</strong>: en els primers 15 min de la sessió següent a cada prova, correcció comentada amb la rúbrica. Qui ha tret Insuficient en alguna fila repetix els exercicis bàsics d'eixe criteri en el temps d'exercicis de les sessions següents, amb ajuda del professor.</vf-text>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 1 — RA1: elements del programa (sessions 1-7)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Lliçó</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1. El primer programa</td>
+                                    <td>Què és un programa; VS Code, Live Server, carpeta de treball, <code>index.html</code> i <code>script.js</code>. Ex. 1.1, 1.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>1. El primer programa</td>
+                                    <td><code>prompt</code>, comentaris, errors en la consola. Ex. 1.3-1.5.</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>2. Variables</td>
+                                    <td><code>let</code> i <code>const</code>, noms, tipus, <code>typeof</code>. Ex. 2.1-2.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>2. Variables</td>
+                                    <td>Plantilles de text, lectura de dades, conversions. Ex. 2.4-2.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>3. Operadors</td>
+                                    <td>Aritmètics, d'assignació i de comparació; <code>===</code>. Ex. 3.1-3.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>3. Operadors</td>
+                                    <td>Lògics i precedència. Ex. 3.5, 3.6. Repàs del format de la prova.</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><strong>Prova RA1</strong></td>
+                                    <td>55 min.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 2 — RA3: control del flux (sessions 8-20)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Lliçó</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8</td>
+                                    <td>4. El DOM</td>
+                                    <td>Trobar un element, canviar el text, llegir un camp. Ex. 4.1, 4.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>4. El DOM</td>
+                                    <td>Estil, <code>classList</code>, clic. Ex. 4.3-4.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>5. Decisions</td>
+                                    <td><code>if</code>, <code>else</code>, <code>else if</code>, <code>&amp;&amp;</code> i <code>||</code>. Ex. 5.1-5.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>5. Decisions</td>
+                                    <td><code>switch</code>, ternari, errors típics. Ex. 5.4-5.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>6. Bucles</td>
+                                    <td><code>while</code>, <code>for</code>, <code>for...of</code>, <code>break</code> i <code>continue</code>. Ex. 6.1-6.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>6. Bucles</td>
+                                    <td>Comptadors i totals, HTML amb un bucle, bucles niats. Ex. 6.4-6.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>7. Funcions</td>
+                                    <td>Declarar i cridar, paràmetres, <code>return</code>. Ex. 7.1-7.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>7. Funcions</td>
+                                    <td>Àmbit, funcions fletxa, dividir un problema. Ex. 7.4-7.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>8. Depuració i assercions</td>
+                                    <td>Activitat N1.</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>9. Errors i excepcions</td>
+                                    <td>Activitat N2.</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>9. Miniprojecte 1</td>
+                                    <td>Caixa d'eines: funcions i proves amb <code>console.assert</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>9. Miniprojecte 1</td>
+                                    <td>Interfície, captura d'errors; revisió en parelles; lliurament. Repàs del format de la prova.</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td><strong>Prova RA3</strong></td>
+                                    <td>55 min.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 3 — RA6: tipus avançats de dades (sessions 21-30)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Lliçó</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>21</td>
+                                    <td>10. Arrays</td>
+                                    <td>Llegir i canviar, <code>length</code>, afegir i llevar, buscar. Ex. 10.1-10.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>10. Arrays</td>
+                                    <td>Recórrer, dibuixar un array, mètodes útils. Ex. 10.4-10.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>10. Arrays (arrays d'arrays)</td>
+                                    <td>Activitat N3: ex. 10.8-10.10.</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>11. Objectes</td>
+                                    <td>Crear, llegir i canviar, arrays d'objectes. Ex. 11.1-11.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>11. Objectes</td>
+                                    <td>Targetes a partir d'un array d'objectes, recórrer un objecte. Ex. 11.4-11.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td>12. Mètodes d'arrays</td>
+                                    <td>Activitat N4.</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td>13. Expressions regulars</td>
+                                    <td>Activitat N5.</td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td>14. Col·leccions</td>
+                                    <td>Activitat N6.</td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td>15. JSON i XML</td>
+                                    <td>Activitat N7. Repàs del format de la prova.</td>
+                                </tr>
+                                <tr>
+                                    <td>30</td>
+                                    <td><strong>Prova RA6</strong></td>
+                                    <td>55 min.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 4 — RA5: entrada i eixida (sessions 31-41)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Lliçó</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>31</td>
+                                    <td>16. Esdeveniments</td>
+                                    <td>Objecte <code>event</code>, esdeveniments de camps. Ex. 16.1-16.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>32</td>
+                                    <td>16. Esdeveniments</td>
+                                    <td>Teclat, molts elements alhora, llevar un controlador. Ex. 16.4-16.7.</td>
+                                </tr>
+                                <tr>
+                                    <td>33</td>
+                                    <td>17. Crear elements</td>
+                                    <td><code>createElement</code>, llista a partir d'un array, botó en cada fila. Ex. 17.1-17.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>34</td>
+                                    <td>17. Crear elements</td>
+                                    <td>Eliminar elements, perill d'<code>innerHTML</code> amb text de l'usuari. Ex. 17.4-17.6.</td>
+                                </tr>
+                                <tr>
+                                    <td>35</td>
+                                    <td>17. Miniprojecte 2</td>
+                                    <td>Una llista que funciona: array, afegir, dibuixar.</td>
+                                </tr>
+                                <tr>
+                                    <td>36</td>
+                                    <td>17. Miniprojecte 2</td>
+                                    <td>Eliminar, comptador, "Esborra-ho tot"; revisió en parelles; lliurament.</td>
+                                </tr>
+                                <tr>
+                                    <td>37</td>
+                                    <td>18. Formularis</td>
+                                    <td><code>submit</code>, <code>preventDefault</code>, llegir i validar camps. Ex. 18.1, 18.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>38</td>
+                                    <td>18. Formularis</td>
+                                    <td>Validació en viu (amb les expressions regulars de la lliçó 13), missatges, marcar camps. Ex. 18.3-18.5.</td>
+                                </tr>
+                                <tr>
+                                    <td>39</td>
+                                    <td>19. localStorage</td>
+                                    <td>Guardar i llegir, JSON. Ex. 19.1-19.3 (<code>localStorage</code> en el miniprojecte 2).</td>
+                                </tr>
+                                <tr>
+                                    <td>40</td>
+                                    <td>19. localStorage</td>
+                                    <td>Patró desar i dibuixar; <code>try/catch</code> en llegir dades corruptes. Ex. 19.4, 19.5. Activitat N8: ex. 19.7-19.9.</td>
+                                </tr>
+                                <tr>
+                                    <td>41</td>
+                                    <td><strong>Prova RA5</strong></td>
+                                    <td>55 min.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 5 — RA2: objectes predefinits (sessions 42-44)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Tema</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>42</td>
+                                    <td>20. Objectes i classes predefinides</td>
+                                    <td>Classe, objecte, atributs, mètodes, encapsulació, herència. <code>Date</code> i els seus constructors. Activitat N9.</td>
+                                </tr>
+                                <tr>
+                                    <td>43</td>
+                                    <td>21. Mètodes estàtics, paràmetres i llibreries</td>
+                                    <td>Activitat N10. Repàs del format de la prova.</td>
+                                </tr>
+                                <tr>
+                                    <td>44</td>
+                                    <td><strong>Prova RA2</strong></td>
+                                    <td>55 min.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 6 — RA4: classes (sessions 45-50)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Tema</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>45</td>
+                                    <td>22. Classes pròpies</td>
+                                    <td><code>class</code>, <code>constructor</code>, propietats, mètodes, instàncies en un array. Activitat N11 (bàsic).</td>
+                                </tr>
+                                <tr>
+                                    <td>46</td>
+                                    <td>22. Classes pròpies</td>
+                                    <td>Activitat N11 (estàndard i ampliació).</td>
+                                </tr>
+                                <tr>
+                                    <td>47</td>
+                                    <td>23. Visibilitat i mètodes estàtics</td>
+                                    <td>Activitat N12.</td>
+                                </tr>
+                                <tr>
+                                    <td>48</td>
+                                    <td>24. Herència</td>
+                                    <td>Activitat N13.</td>
+                                </tr>
+                                <tr>
+                                    <td>49</td>
+                                    <td>25. Mòduls</td>
+                                    <td>Activitat N14. Repàs del format de la prova.</td>
+                                </tr>
+                                <tr>
+                                    <td>50</td>
+                                    <td><strong>Prova RA4</strong></td>
+                                    <td>55 min.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 7 — Projecte final (sessions 51-62)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Fase</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>51</td>
+                                    <td>Planificació</td>
+                                    <td>Presentació del repte i de la rúbrica. Tria de l'opció, esbós en paper de la pantalla i de les classes (atributs i mètodes), estructura de carpetes.</td>
+                                </tr>
+                                <tr>
+                                    <td>52</td>
+                                    <td>Fase 1: model</td>
+                                    <td>Classes en <code>model.js</code>: constructor, propietats, mètodes, camp privat; errors propis davant de dades no vàlides.</td>
+                                </tr>
+                                <tr>
+                                    <td>53</td>
+                                    <td>Fase 1: model</td>
+                                    <td>Mètodes amb operacions agregades (puntuació, comptadors, filtres); mètode estàtic de creació.</td>
+                                </tr>
+                                <tr>
+                                    <td>54</td>
+                                    <td>Fase 1: model</td>
+                                    <td><code>tests.js</code> amb <code>console.assert</code>. <strong>Fita 1</strong>: el professor comprova que tots els tests passen.</td>
+                                </tr>
+                                <tr>
+                                    <td>55</td>
+                                    <td>Fase 2: interfície</td>
+                                    <td><code>draw()</code> amb <code>createElement</code> a partir de l'array d'instàncies.</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Fase 2: interfície</td>
+                                    <td>Esdeveniments.</td>
+                                </tr>
+                                <tr>
+                                    <td>57</td>
+                                    <td>Fase 2: interfície</td>
+                                    <td>Validació d'un camp amb expressió regular; missatges i formats en la pàgina.</td>
+                                </tr>
+                                <tr>
+                                    <td>58</td>
+                                    <td>Fase 2: interfície</td>
+                                    <td><code>localStorage</code> amb <code>try/catch</code>. <strong>Fita 2</strong>: l'aplicació funciona i recorda les dades després de F5.</td>
+                                </tr>
+                                <tr>
+                                    <td>59</td>
+                                    <td>Fase 3: revisió</td>
+                                    <td>Llibreria externa. Proves de casos límit, consola sense errors, JSDoc, README. Repàs amb la rúbrica. Zip.</td>
+                                </tr>
+                                <tr>
+                                    <td>60</td>
+                                    <td>Lliurament</td>
+                                    <td>Marge per a acabar i lliurar; qui ja ha lliurat, opcions d'ampliació.</td>
+                                </tr>
+                                <tr>
+                                    <td>61</td>
+                                    <td>Presentacions</td>
+                                    <td>Presentacions de 3 min amb una pregunta del professor sobre el codi.</td>
+                                </tr>
+                                <tr>
+                                    <td>62</td>
+                                    <td>Presentacions</td>
+                                    <td>Resta de presentacions. Tancament del mòdul amb la lliçó 27.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-text>Els enunciats de les lliçons estan en la web. Nivells: <strong>bàsic</strong> = primers exercicis de la lliçó; <strong>estàndard</strong> = tots els exercicis de l'apartat <em>Exercises</em>; <strong>ampliació</strong> = els últims exercicis de l'apartat. Qui va endarrerit fa el bàsic i passa a la lliçó següent.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Lliçó</th>
+                            <th>Bàsic</th>
+                            <th>Estàndard</th>
+                            <th>Ampliació</th>
+                            <th>Criteris</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. El primer programa</td>
+                            <td>1.1, 1.2</td>
+                            <td>+ 1.3-1.5</td>
+                            <td>—</td>
+                            <td>CA1.1, CA1.2, CA1.3, CA1.9, CA5.1</td>
+                        </tr>
+                        <tr>
+                            <td>2. Variables</td>
+                            <td>2.1, 2.2</td>
+                            <td>+ 2.3-2.7</td>
+                            <td>—</td>
+                            <td>CA1.4, CA1.5, CA1.6, CA1.8</td>
+                        </tr>
+                        <tr>
+                            <td>3. Operadors</td>
+                            <td>3.1, 3.2</td>
+                            <td>+ 3.3-3.6</td>
+                            <td>—</td>
+                            <td>CA1.7, CA2.5, CA5.2</td>
+                        </tr>
+                        <tr>
+                            <td>4. El DOM</td>
+                            <td>4.1, 4.2</td>
+                            <td>+ 4.3-4.7</td>
+                            <td>—</td>
+                            <td>CA2.4, CA5.5</td>
+                        </tr>
+                        <tr>
+                            <td>5. Decisions</td>
+                            <td>5.1, 5.2</td>
+                            <td>+ 5.3-5.7</td>
+                            <td>—</td>
+                            <td>CA3.1</td>
+                        </tr>
+                        <tr>
+                            <td>6. Bucles</td>
+                            <td>6.1-6.3</td>
+                            <td>+ 6.4, 6.7</td>
+                            <td>6.5, 6.6</td>
+                            <td>CA3.2, CA3.3</td>
+                        </tr>
+                        <tr>
+                            <td>7. Funcions</td>
+                            <td>7.1-7.3</td>
+                            <td>+ 7.4-7.6</td>
+                            <td>7.7</td>
+                            <td>CA2.2, CA2.6, CA3.5</td>
+                        </tr>
+                        <tr>
+                            <td>8. Depuració i assercions</td>
+                            <td>8.1</td>
+                            <td>+ 8.2-8.4</td>
+                            <td>8.5</td>
+                            <td>CA3.6, CA3.7, CA3.9</td>
+                        </tr>
+                        <tr>
+                            <td>9. Errors i excepcions</td>
+                            <td>9.1</td>
+                            <td>+ 9.2, 9.3</td>
+                            <td>9.4</td>
+                            <td>CA3.4, CA3.8</td>
+                        </tr>
+                        <tr>
+                            <td>10. Arrays</td>
+                            <td>10.1, 10.2</td>
+                            <td>+ 10.3-10.5, 10.8, 10.9</td>
+                            <td>10.6, 10.7, 10.10</td>
+                            <td>CA6.1, CA6.3, CA6.4</td>
+                        </tr>
+                        <tr>
+                            <td>11. Objectes</td>
+                            <td>11.1, 11.2</td>
+                            <td>+ 11.3-11.6</td>
+                            <td>11.7</td>
+                            <td>CA6.3</td>
+                        </tr>
+                        <tr>
+                            <td>12. Mètodes d'arrays</td>
+                            <td>12.1</td>
+                            <td>+ 12.2, 12.3</td>
+                            <td>12.4, 12.5</td>
+                            <td>CA6.4, CA6.9</td>
+                        </tr>
+                        <tr>
+                            <td>13. Expressions regulars</td>
+                            <td>13.1, 13.2</td>
+                            <td>+ 13.3, 13.4</td>
+                            <td>13.5, 13.6</td>
+                            <td>CA6.6</td>
+                        </tr>
+                        <tr>
+                            <td>14. Col·leccions</td>
+                            <td>14.1</td>
+                            <td>+ 14.2, 14.3</td>
+                            <td>14.4</td>
+                            <td>CA6.2, CA6.4, CA6.5</td>
+                        </tr>
+                        <tr>
+                            <td>15. JSON i XML</td>
+                            <td>15.1</td>
+                            <td>+ 15.2-15.4</td>
+                            <td>15.5</td>
+                            <td>CA6.7, CA6.8</td>
+                        </tr>
+                        <tr>
+                            <td>16. Esdeveniments</td>
+                            <td>16.1, 16.2, 16.4</td>
+                            <td>+ 16.3, 16.5, 16.6</td>
+                            <td>16.7</td>
+                            <td>CA5.4</td>
+                        </tr>
+                        <tr>
+                            <td>17. Crear elements</td>
+                            <td>17.1, 17.2</td>
+                            <td>+ 17.3-17.5</td>
+                            <td>17.6</td>
+                            <td>CA5.5</td>
+                        </tr>
+                        <tr>
+                            <td>18. Formularis</td>
+                            <td>18.1</td>
+                            <td>+ 18.2-18.4</td>
+                            <td>18.5</td>
+                            <td>CA5.4, CA5.5, CA6.6</td>
+                        </tr>
+                        <tr>
+                            <td>19. localStorage</td>
+                            <td>19.1, 19.2</td>
+                            <td>+ 19.3-19.5, 19.7, 19.8</td>
+                            <td>19.6, 19.9</td>
+                            <td>CA3.4, CA5.1, CA5.2, CA5.3, CA6.8</td>
+                        </tr>
+                        <tr>
+                            <td>20. Objectes i classes predefinides</td>
+                            <td>20.1</td>
+                            <td>+ 20.2, 20.3</td>
+                            <td>20.4</td>
+                            <td>CA2.1, CA2.2, CA2.3, CA2.8</td>
+                        </tr>
+                        <tr>
+                            <td>21. Mètodes estàtics, paràmetres i llibreries</td>
+                            <td>21.1</td>
+                            <td>+ 21.2, 21.3</td>
+                            <td>21.4</td>
+                            <td>CA2.4, CA2.5, CA2.6, CA2.7</td>
+                        </tr>
+                        <tr>
+                            <td>22. Classes pròpies</td>
+                            <td>22.1, 22.5</td>
+                            <td>+ 22.2, 22.3</td>
+                            <td>22.4</td>
+                            <td>CA4.1-CA4.5</td>
+                        </tr>
+                        <tr>
+                            <td>23. Visibilitat i mètodes estàtics</td>
+                            <td>23.1</td>
+                            <td>+ 23.2, 23.3</td>
+                            <td>23.4</td>
+                            <td>CA4.6, CA4.8, CA6.8</td>
+                        </tr>
+                        <tr>
+                            <td>24. Herència</td>
+                            <td>24.1</td>
+                            <td>+ 24.2, 24.3</td>
+                            <td>24.4</td>
+                            <td>CA4.7, CA3.8</td>
+                        </tr>
+                        <tr>
+                            <td>25. Mòduls</td>
+                            <td>25.1</td>
+                            <td>+ 25.2</td>
+                            <td>25.3</td>
+                            <td>CA4.9, CA4.5, CA3.9</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Activitats noves (N1-N14)</vf-title>
+
+            <vf-title level="4">N1. Depuració i assercions (lliçó 8, sessió 16) — CA3.6, CA3.7, CA3.9</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: posa un punt d'interrupció en la funció de l'exercici 7.3, executa-la pas a pas i anota el valor de <code>max</code> després de cada línia.</li>
+                <li><strong>Estàndard</strong>: la funció <code>average(marks)</code> que dona el professor té un error de lògica; troba'l amb el depurador i corregix-lo. Escriu tres <code>console.assert</code> per a cada funció dels exercicis 7.1-7.3 (un cas normal, un límit i un negatiu).</li>
+                <li><strong>Ampliació</strong>: escriu el comentari JSDoc (<code>@param</code>, <code>@returns</code>) de les funcions de l'exercici 7.4 i comprova que VS Code el mostra en passar el ratolí per damunt.</li>
+            </vf-list>
+
+            <vf-title level="4">N2. Excepcions (lliçó 9, sessió 17) — CA3.4, CA3.8</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: en la calculadora de l'exercici 5.5, la funció de dividir llança <code>new Error("No es pot dividir per zero")</code>; el botó la crida dins de <code>try/catch</code> i mostra el missatge en roig.</li>
+                <li><strong>Estàndard</strong>: escriu <code>readNumber(input)</code>, que torna el número d'un camp o llança un error amb un missatge diferent si el camp és buit, si no és un número o si està fora de rang, i amb <code>name = "ValidationError"</code>. Usa-la en els exercicis 7.1-7.3. Amb <code>finally</code>, el camp es buida sempre.</li>
+                <li><strong>Ampliació</strong>: distingix en el <code>catch</code> els errors propis dels del navegador amb <code>error.name</code>.</li>
+            </vf-list>
+
+            <vf-title level="4">N3. Matrius (lliçó 10, ex. 10.8-10.10, sessió 23) — CA6.1</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: crea el tauler del tres en ratlla com un array de tres arrays i dibuixa'l en una taula amb dos bucles niats.</li>
+                <li><strong>Estàndard</strong>: en fer clic en una casella buida, s'hi posa <code>X</code> o <code>O</code> per torns (canvia l'array i redibuixa) i la pàgina avisa si una fila està completa amb el mateix símbol.</li>
+                <li><strong>Ampliació</strong>: comprova també columnes i diagonals i declara el guanyador.</li>
+            </vf-list>
+
+            <vf-title level="4">N4. Operacions agregades (lliçó 12, sessió 26) — CA6.9, CA6.4</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: refés l'exercici 11.3 (valor total de l'estoc) amb <code>reduce</code>.</li>
+                <li><strong>Estàndard</strong>: refés l'exercici 11.5 amb <code>filter</code> i <code>map</code>, i l'11.7 (mitjana, millor alumne, aprovats) amb <code>reduce</code>, <code>find</code> i <code>filter</code>, sense cap bucle <code>for</code>.</li>
+                <li><strong>Ampliació</strong>: amb <code>some</code> i <code>every</code>, digues si hi ha algun producte sense estoc i si tots costen menys de 50 €.</li>
+            </vf-list>
+
+            <vf-title level="4">N5. Expressions regulars (lliçó 13, sessió 27) — CA6.6</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: comprova amb <code>test()</code> si una llista de cadenes són codis postals (5 xifres) o correus senzills.</li>
+                <li><strong>Estàndard</strong>: refés la comprovació de contrasenya de l'exercici 5.3 amb tres expressions regulars; valida un DNI (8 xifres i una lletra) i extrau-ne la lletra amb <code>match</code>.</li>
+                <li><strong>Ampliació</strong>: amb <code>replace</code>, normalitza un telèfon escrit amb espais i guions; amb <code>match</code>, extrau tots els números d'un text.</li>
+            </vf-list>
+
+            <vf-title level="4">N6. Col·leccions (lliçó 14, sessió 28) — CA6.2, CA6.4, CA6.5</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: refés l'exercici 10.6 amb un <code>Set</code>.</li>
+                <li><strong>Estàndard</strong>: compta quantes vegades apareix cada paraula d'un text amb un <code>Map</code> i recorre'l amb <code>for...of</code> i <code>entries()</code>. Taula comparativa <code>Array</code> / <code>Set</code> / <code>Map</code> / objecte: ordre, repetits, accés per clau, mètodes principals.</li>
+                <li><strong>Ampliació</strong>: per a cinc situacions donades, tria la col·lecció i justifica-ho en una línia.</li>
+            </vf-list>
+
+            <vf-title level="4">N7. JSON i XML (lliçó 15, sessió 29) — CA6.7, CA6.8</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: convertix l'array de productes de l'exercici 11.2 a text amb <code>JSON.stringify</code>, mostra el text en la pàgina i torna'l a array amb <code>JSON.parse</code>.</li>
+                <li><strong>Estàndard</strong>: a partir d'un text JSON donat (catàleg de llibres), modifica un preu, afig un llibre i torna'l a text. Llig la versió XML del mateix catàleg (cadena donada) amb <code>DOMParser</code> i mostra els títols.</li>
+                <li><strong>Ampliació</strong>: <code>JSON.stringify</code> amb sagnat i amb només algunes propietats (segon paràmetre).</li>
+            </vf-list>
+
+            <vf-title level="4">N8. Possibilitats d'entrada i eixida (lliçó 19, ex. 19.7-19.9, sessió 40) — CA5.1, CA5.2, CA5.3</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: completa la taula "necessitat → recurs" (<code>prompt</code>, <code>alert</code>, <code>confirm</code>, <code>console</code>, DOM, <code>localStorage</code>, <code>fetch</code>) amb un exemple de cada un que ja hages usat en el mòdul.</li>
+                <li><strong>Estàndard</strong>: en el miniprojecte 2, mostra l'array amb <code>console.table</code> cada vegada que es desa i, en la pàgina, el nombre d'elements amb <code>toLocaleString</code>.</li>
+                <li><strong>Ampliació</strong>: data de l'última modificació de la llista en format local.</li>
+            </vf-list>
+
+            <vf-title level="4">N9. Objectes i classes predefinides (lliçó 20, sessió 42) — CA2.1, CA2.2, CA2.3, CA2.8</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: amb <code>new Date()</code> mostra la data i l'hora actuals en format local.</li>
+                <li><strong>Estàndard</strong>: amb <code>new Date(any, mes, dia)</code> calcula quants dies falten per al teu aniversari i l'edat exacta a partir de la data de naixement d'un camp <code>date</code>.</li>
+                <li><strong>Ampliació</strong>: crea la mateixa data amb tres formes del constructor (números, cadena <code>"AAAA-MM-DD"</code>, mil·lisegons) i comprova que són iguals.</li>
+            </vf-list>
+
+            <vf-title level="4">N10. Mètodes estàtics, paràmetres i llibreries (lliçó 21, sessió 43) — CA2.4, CA2.5, CA2.6, CA2.7</vf-title>
+            <vf-list>
+                <li><em>Bàsic</em> (ex. 21.1): classifica 10 crides (<code>Math.max</code>, <code>"hi".includes</code>, <code>JSON.stringify</code>, <code>list.indexOf</code>, <code>Number.parseFloat</code>, <code>today.getFullYear</code>, <code>Math.random</code>, <code>text.split</code>, <code>Array.isArray</code>, <code>toFixed</code>) en mètodes estàtics i mètodes d'un objecte.</li>
+                <li><em>Estàndard</em> (ex. 21.2, 21.3): incorpora Day.js per CDN, mostra la data d'avui en format <code>DD/MM/YYYY</code> i els dies fins al teu aniversari amb <code>diff</code>, i compara-ho amb l'exercici 20.2; mostra un preu en euros i en dòlars amb les opcions de <code>toLocaleString</code>.</li>
+                <li><em>Ampliació</em> (ex. 21.4): incorpora la llibreria canvas-confetti i llança confeti en fer clic en un botó.</li>
+            </vf-list>
+
+            <vf-title level="4">N11. Classes pròpies (lliçó 22, sessions 45-46) — CA4.1-CA4.5</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: classe <code>Student</code> (nom i array de notes) amb el mètode <code>average()</code>; crea'n tres i mostra-les.</li>
+                <li><strong>Estàndard</strong>: refés l'exercici 11.2 amb una classe <code>Product</code> (mètode <code>stockValue()</code>) i un array d'instàncies dibuixat com a targetes. Classe <code>BankAccount</code> amb <code>deposit()</code> i <code>withdraw()</code>, que llança un error si no hi ha saldo.</li>
+                <li><strong>Ampliació</strong>: mètode <code>toString()</code> en cada classe i un llistat que l'usa.</li>
+            </vf-list>
+
+            <vf-title level="4">N12. Visibilitat i mètodes estàtics (lliçó 23, sessió 47) — CA4.6, CA4.8</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: en <code>BankAccount</code>, el saldo passa a <code>#balance</code> amb un <code>get balance()</code>; comprova que <code>account.#balance</code> dona error fora de la classe.</li>
+                <li><strong>Estàndard</strong>: <code>set</code> que rebutja preus negatius en <code>Product</code>; mètode estàtic <code>Product.fromJSON(obj)</code> que torna una instància; desa l'array en <code>localStorage</code> i, en carregar, torna a crear les instàncies amb <code>map(Product.fromJSON)</code>.</li>
+                <li><strong>Ampliació</strong>: comptador estàtic d'instàncies creades.</li>
+            </vf-list>
+            <vf-text>Nota de gestió: <code>JSON.stringify</code> no guarda els camps <code>#privats</code>; cal un mètode <code>toJSON()</code> que torne un objecte amb les dades.</vf-text>
+
+            <vf-title level="4">N13. Herència (lliçó 24, sessió 48) — CA4.7, CA3.8</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: <code>Vehicle</code> (marca, model, <code>describe()</code>) i <code>Car extends Vehicle</code> amb el nombre de portes, usant <code>super</code>.</li>
+                <li><strong>Estàndard</strong>: <code>Motorbike</code> sobreescriu <code>describe()</code> reutilitzant <code>super.describe()</code>; <code>class InsufficientFundsError extends Error</code> que llança <code>BankAccount</code> i que el programa captura i distingix amb <code>instanceof</code>.</li>
+                <li><strong>Ampliació</strong>: array amb cotxes i motos, recorregut cridant <code>describe()</code> en tots.</li>
+            </vf-list>
+
+            <vf-title level="4">N14. Mòduls (lliçó 25, sessió 49) — CA4.9, CA4.5</vf-title>
+            <vf-list>
+                <li><strong>Bàsic</strong>: mou <code>Product</code> i <code>BankAccount</code> a <code>model.js</code> amb <code>export</code> i importa-les en <code>main.js</code> (<code>&lt;script type="module"&gt;</code>).</li>
+                <li><strong>Estàndard</strong>: <code>tests.js</code> que importa les classes del mòdul i les prova amb <code>console.assert</code>.</li>
+                <li><strong>Ampliació</strong>: <code>model.js</code> sense cap referència a la pàgina; una segona pàgina que reutilitza el mateix mòdul.</li>
+            </vf-list>
+            <vf-text>Nota de gestió: els mòduls no funcionen obrint l'arxiu amb doble clic; cal Live Server.</vf-text>
+
+            <vf-title level="3">Miniprojecte 1 — Caixa d'eines (sessions 18-19)</vf-title>
+            <vf-text>Una pàgina amb almenys vuit eines (lliçó 9): cada eina té un o dos camps, un botó i un lloc on apareix la resposta, i darrere de cada botó hi ha una funció que torna un valor. A més dels requisits de la lliçó: cada funció de càlcul té almenys dos <code>console.assert</code> que passen, i almenys una funció llança un error amb dades no vàlides que la interfície captura i mostra.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: cinc eines.</li>
+                <li><strong>Ampliació</strong>: comentaris JSDoc en totes les funcions.</li>
+            </vf-list>
+            <vf-text>Dinàmica d'aula: abans de lliurar, cada parella intercanvia l'ordinador i marca la llista de requisits de l'altre; el professor dona retroacció oral. Criteris treballats: CA3.4, CA3.5, CA3.6, CA3.9.</vf-text>
+
+            <vf-title level="3">Miniprojecte 2 — Una llista que funciona (sessions 35-36, ampliat en 39-40)</vf-title>
+            <vf-text>Els requisits de la lliçó 17. En les sessions 39-40 s'hi afig <code>localStorage</code> (exercici 19.3). És l'assaig de l'opció B del projecte.</vf-text>
+            <vf-text>Mateixa dinàmica de revisió en parelles. Criteris treballats: CA5.4, CA5.5, CA6.3, CA6.8.</vf-text>
+
+            <vf-title level="3">Proves</vf-title>
+            <vf-text>Totes són pràctiques, en l'ordinador, individuals i sense apunts, de 55 min, i es lliuren en zip.</vf-text>
+
+            <vf-title level="4">Prova RA1 (sessió 7)</vf-title>
+            <vf-list ordered>
+                <li>Crea en VS Code la carpeta <code>cognom-prova-ra1</code> amb <code>index.html</code> i <code>script.js</code> enllaçat i executa-la amb Live Server (5 min).</li>
+                <li>Programa donat: afig un comentari davant de cada bloc (dades, entrada, procés, eixida) i un comentari de bloc inicial amb el nom i la data (6 min).</li>
+                <li>Programa amb valors repetits: reescriu-lo amb variables i constants del tipus adequat (10 min).</li>
+                <li>Prediu el resultat de 8 expressions amb operadors i escriu 3 expressions per a condicions donades (p. ex. "és parell", "major d'edat i amb entrada") (14 min).</li>
+                <li>Prediu 4 conversions de tipus i corregix el programa que suma dos números de <code>prompt</code> i mostra <code>"35"</code> (10 min).</li>
+            </vf-list>
+
+            <vf-title level="4">Prova RA3 (sessió 20)</vf-title>
+            <vf-list ordered>
+                <li>"Notes del grup": funció que rep un array de notes, calcula la mitjana amb un bucle acumulador que s'atura en la primera nota negativa, i torna la qualificació (Suspens, Aprovat, Notable, Excel·lent); prova-la amb tres arrays donats (15 min).</li>
+                <li>Taula de traça de les quatre primeres voltes del bucle anterior amb un array donat (5 min).</li>
+                <li>Codi amb 5 errors: 3 de sintaxi i 2 de lògica (9 min).</li>
+                <li>Funció <code>readAge(text)</code> que llança errors propis si el text és buit, no és un número o està fora de 0-120; crida-la dins de <code>try/catch</code> i mostra el missatge en la pàgina (10 min).</li>
+                <li>Tres <code>console.assert</code> per a una funció donada; un ha de fallar: troba i corregix l'error (6 min).</li>
+                <li>Comentari JSDoc de la funció <code>readAge</code> (5 min).</li>
+            </vf-list>
+
+            <vf-title level="4">Prova RA6 (sessió 30)</vf-title>
+            <vf-list ordered>
+                <li>Matriu 3 × 3 donada: mostra-la com a taula i digues si una fila està completa (6 min).</li>
+                <li>Relaciona 5 necessitats amb <code>Array</code>, <code>Set</code>, <code>Map</code>, <code>String</code> o <code>RegExp</code> (4 min).</li>
+                <li>Llista de la compra (array d'objectes): afig un producte, elimina'n un pel nom i modifica la quantitat d'un altre (8 min).</li>
+                <li>Recorre la llista amb <code>for...of</code>, amb <code>forEach</code> mostrant la posició i un <code>Map</code> donat amb <code>entries()</code> (6 min).</li>
+                <li>Quatre situacions: tria <code>Array</code>, <code>Set</code>, <code>Map</code> o objecte i justifica-ho; compta paraules amb un <code>Map</code> (7 min).</li>
+                <li>Expressions regulars per a codi postal i DNI, provades amb quatre cadenes cada una (7 min).</li>
+                <li>Relaciona 3 necessitats amb <code>JSON.stringify</code>, <code>JSON.parse</code> i <code>DOMParser</code> (3 min).</li>
+                <li>Text JSON donat: convertix-lo, modifica un valor, afig un element i torna a convertir-lo a text sagnat (6 min).</li>
+                <li>Array d'alumnes: aprovats amb <code>filter</code>, noms en majúscules amb <code>map</code>, mitjana amb <code>reduce</code> i ordenació per nota amb <code>sort</code> (8 min).</li>
+            </vf-list>
+
+            <vf-title level="4">Prova RA5 (sessió 41)</vf-title>
+            <vf-list ordered>
+                <li>Programa per consola: demana nom i edat amb <code>prompt</code>, escriu una salutació amb <code>console.log</code> i mostra un array donat amb <code>console.table</code> (6 min).</li>
+                <li>Mostra en la pàgina un preu, un percentatge i una data amb format local (<code>1.234,50 €</code>, <code>21,5 %</code>, <code>20/05/2027</code>) (6 min).</li>
+                <li>Relaciona 7 necessitats amb <code>prompt</code>, <code>alert</code>, <code>confirm</code>, <code>console</code>, DOM, <code>localStorage</code> o <code>fetch</code> (5 min).</li>
+                <li>Amb l'HTML donat (formulari d'alta de productes i llista buida): en enviar, valida el nom (no buit) i el preu (major que 0) amb missatges en la pàgina; si és correcte, afig el producte a l'array i redibuixa la llista amb un botó d'eliminar en cada fila; un comptador de caràcters del nom s'actualitza mentre s'escriu (33 min).</li>
+            </vf-list>
+
+            <vf-title level="4">Prova RA2 (sessió 44)</vf-title>
+            <vf-list ordered>
+                <li>Quatre preguntes curtes: classe i objecte, instància, encapsulació, herència (6 min).</li>
+                <li>"Dies per a les vacances": programa complet que llig una data d'un camp, calcula els dies que falten i els mostra (10 min).</li>
+                <li>Crea amb <code>new</code> una data concreta (amb números i amb cadena) i un <code>Set</code> a partir d'un array donat, i usa'n els mètodes (8 min).</li>
+                <li>Sis operacions sobre un text i un array donats amb els seus mètodes i propietats (<code>length</code>, <code>toUpperCase</code>, <code>includes</code>, <code>split</code>, <code>push</code>, <code>indexOf</code>) (8 min).</li>
+                <li>Classifica 6 crides en estàtiques o d'instància i escriu-ne dues d'estàtiques (<code>Math.max</code>, <code>Number.isInteger</code>) (5 min).</li>
+                <li>Quatre crides amb els paràmetres adequats per a obtindre un resultat donat (<code>toFixed</code>, <code>slice</code>, <code>replace</code>, <code>toLocaleString</code>) (5 min).</li>
+                <li>Enllaça la llibreria Day.js (còpia local donada) i, amb les seues funcions, formata una data i calcula una diferència en dies (8 min).</li>
+            </vf-list>
+
+            <vf-title level="4">Prova RA4 (sessió 50)</vf-title>
+            <vf-list ordered>
+                <li>Classe donada (amb camp privat, mètode estàtic i classe filla): marca el constructor, una propietat, un mètode, el mètode estàtic, el camp privat i la classe filla (5 min).</li>
+                <li>Classe <code>Product</code> a partir d'una especificació: constructor amb tres paràmetres i valor per defecte, <code>#price</code> amb <code>get</code> i <code>set</code> que rebutja negatius, <code>total()</code>, <code>toString()</code> i <code>static fromObject(obj)</code> (22 min).</li>
+                <li><code>DigitalProduct extends Product</code> amb <code>super</code> i <code>toString()</code> sobreescrit (8 min).</li>
+                <li><code>model.js</code> que exporta les dues classes i <code>main.js</code> que les importa, crea un array amb tres productes (un digital) i mostra cada producte i el total (12 min).</li>
+            </vf-list>
+
+            <vf-title level="3">Projecte final — La meua primera aplicació (sessions 51-62)</vf-title>
+            <vf-text>Opció A (joc de preguntes) o opció B (llista de tasques) de la lliçó 26, amb els arxius HTML i CSS de partida. Tota la nota ve del JavaScript. Requisits mínims, que coincidixen amb el nivell Suficient de cada fila de la rúbrica:</vf-text>
+            <vf-list>
+                <li><strong>Estructura</strong>: <code>index.html</code>, <code>css/</code>, <code>js/main.js</code>, <code>js/model.js</code>, <code>js/tests.js</code>; noms en minúscules sense espais; s'obri amb Live Server.</li>
+                <li><strong>Funcionalitat</strong>: tots els requisits de l'opció triada en la lliçó 26; totes les decisions funcionen i els bucles acaben sempre.</li>
+                <li><strong>Classes</strong>: almenys 2 classes en <code>model.js</code> (p. ex. <code>Question</code> i <code>Quiz</code>, o <code>Task</code> i <code>TaskList</code>), exportades i importades en <code>main.js</code>; les dades són un array d'instàncies; un mètode estàtic usat (p. ex. <code>fromJSON</code>); el model llança un error amb missatge clar davant de dades no vàlides.</li>
+                <li><strong>Proves</strong>: <code>tests.js</code> amb almenys 6 <code>console.assert</code> sobre mètodes del model, tots en verd, i un resum en la consola. Cap error en la consola en un ús normal.</li>
+                <li><strong>Dades</strong>: <code>localStorage</code> amb <code>JSON</code> en desar i en carregar; <code>try/catch</code> en carregar i en les crides que poden fallar; almenys dues operacions agregades diferents; un camp validat amb expressió regular; recorreguts amb <code>for...of</code> o <code>forEach</code>.</li>
+                <li><strong>Interfície</strong>: almenys 3 <code>addEventListener</code> de 2 tipus diferents i cap <code>onclick</code> en l'HTML; <code>textContent</code> i <code>createElement</code> per a les dades de l'usuari; números amb format.</li>
+                <li><strong>Llenguatge</strong>: almenys 5 mètodes o propietats diferents de cadenes, arrays o elements; una llibreria externa per CDN.</li>
+                <li><strong>Documentació i lliurament</strong>: comentari damunt de cada funció i mètode; <code>cognom-nom-project.zip</code> amb <code>README.txt</code> (nom, opció, com s'usa, què ha costat més i què afegiria); presentació de 3 min: l'aplicació funcionant i una funció explicada línia a línia.</li>
+            </vf-list>
+            <vf-list>
+                <li><strong>Bàsic</strong>: els requisits mínims; plantilla de l'esbós de classes donada pel professor.</li>
+                <li><strong>Ampliació</strong>: herència en el model (p. ex. <code>TimedQuestion extends Question</code>), categories sense repetir amb un <code>Set</code>, ordenació triada per l'usuari, idea pròpia.</li>
+            </vf-list>
+            <vf-text>Si l'aplicació no s'obri o dona error en carregar, es torna per a corregir-la abans de qualificar-la.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: demostració en directe escrivint el codi (no diapositives amb codi fet); cada lliçó té codi i resultat costat a costat; full de referència ràpida de sintaxi en paper; glossari anglés-valencià; traductor del navegador permés per a llegir les lliçons; taules de traça en paper per a seguir els bucles.</li>
+                <li><strong>Acció i expressió</strong>: arxius de partida en els exercicis llargs, en les proves i en el projecte; esbós en paper abans de programar; tres nivells en cada lliçó i activitat; en les proves, temps addicional i full de referència per a qui tinga adaptació reconeguda; presentació final davant només del professor si l'alumne ho necessita; còpia local de la llibreria externa si falla la connexió.</li>
+                <li><strong>Implicació</strong>: tria entre dues aplicacions o idea pròpia; temes del joc de preguntes lliures; resultat visible des de la primera sessió; proves curtes i freqüents, una per RA; revisió en parelles dels miniprojectes; qui acaba abans ajuda un company sense tocar-li el teclat.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Moment</th>
+                            <th>Qui avalua</th>
+                            <th>Activitat on s'aplica</th>
+                            <th>Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rúbrica de la prova RA1</td>
+                            <td>Sessió 7</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova RA1</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica de la prova RA3</td>
+                            <td>Sessió 20</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova RA3</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica de la prova RA6</td>
+                            <td>Sessió 30</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova RA6</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica de la prova RA5</td>
+                            <td>Sessió 41</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova RA5</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica de la prova RA2</td>
+                            <td>Sessió 44</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova RA2</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica de la prova RA4</td>
+                            <td>Sessió 50</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova RA4</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica del projecte</td>
+                            <td>Lliurament (sessió 60) i presentacions (sessions 61-62)</td>
+                            <td>Heteroavaluació (l'alumnat la usa abans per a revisar la seua aplicació, sessió 59)</td>
+                            <td>Projecte final i presentació</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+            <vf-text>En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. Entre parèntesis, l'apartat de la prova. La columna "Pes" és el pes de l'indicador dins del seu criteri.</vf-text>
+
+            <vf-title level="3">Rúbrica de la prova RA1</vf-title>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P1.1. Projecte (1)</strong></td>
+                            <td>CA1.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>Falta algun arxiu o <code>script.js</code> no està enllaçat.</td>
+                            <td>Carpeta amb <code>index.html</code> i <code>script.js</code> enllaçat.</td>
+                            <td>A més, noms de carpeta i arxius com demana l'enunciat.</td>
+                            <td>A més, l'script es carrega al final del <code>body</code> o amb <code>defer</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.2. Entorn de desenrotllament (1)</strong></td>
+                            <td>CA1.3</td>
+                            <td>100&nbsp;%</td>
+                            <td>El programa no s'executa des de VS Code.</td>
+                            <td>S'executa amb Live Server.</td>
+                            <td>A més, usa la consola de DevTools per a veure l'eixida.</td>
+                            <td>A més, codi sagnat uniformement amb el format de l'editor.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.3. Blocs del programa (2)</strong></td>
+                            <td>CA1.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-1 blocs ben identificats de 4.</td>
+                            <td>2 blocs ben identificats.</td>
+                            <td>3 blocs ben identificats.</td>
+                            <td>Els 4 blocs i cap línia en un bloc equivocat.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.4. Comentaris (2)</strong></td>
+                            <td>CA1.9</td>
+                            <td>100&nbsp;%</td>
+                            <td>Cap comentari o algun que trenca el programa.</td>
+                            <td>Un comentari de línia correcte davant de cada bloc.</td>
+                            <td>A més, comentari de bloc inicial amb nom i data.</td>
+                            <td>A més, els comentaris expliquen la intenció, no repetixen el codi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.5. Tipus de dades (3)</strong></td>
+                            <td>CA1.4</td>
+                            <td>100&nbsp;%</td>
+                            <td>Menys de 3 dades de 6 amb el tipus adequat.</td>
+                            <td>3-4 dades amb el tipus adequat.</td>
+                            <td>5 dades amb el tipus adequat.</td>
+                            <td>Les 6, comprovades amb <code>typeof</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.6. Ús de variables (3)</strong></td>
+                            <td>CA1.5</td>
+                            <td>100&nbsp;%</td>
+                            <td>El programa modificat no funciona o queden més de 2 valors repetits.</td>
+                            <td>Funciona igual que l'original amb com a màxim 2 valors repetits.</td>
+                            <td>Cap valor repetit.</td>
+                            <td>A més, noms descriptius en camelCase.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.7. Constants i literals (3)</strong></td>
+                            <td>CA1.6</td>
+                            <td>100&nbsp;%</td>
+                            <td>2 o més errors: <code>let</code> per a valors fixos, decimals amb coma, cadenes sense cometes.</td>
+                            <td>Com a màxim un error.</td>
+                            <td><code>const</code> per a tots els valors fixos i <code>let</code> només per als que canvien; literals correctes.</td>
+                            <td>A més, el missatge final amb una plantilla de text.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.8. Operadors (4)</strong></td>
+                            <td>CA1.7</td>
+                            <td>100&nbsp;%</td>
+                            <td>Menys de 4 prediccions encertades de 8.</td>
+                            <td>4-5 prediccions i 1 expressió escrita correcta.</td>
+                            <td>6-7 prediccions i 2 expressions correctes.</td>
+                            <td>Les 8 prediccions i les 3 expressions correctes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1.9. Conversions (5)</strong></td>
+                            <td>CA1.8</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-1 prediccions encertades de 4, o la suma continua donant <code>"35"</code>.</td>
+                            <td>2 prediccions i la suma corregida.</td>
+                            <td>3 prediccions i la suma corregida.</td>
+                            <td>Les 4, la suma corregida i diu quines conversions són implícites i quines explícites.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica de la prova RA3</vf-title>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P3.1. Selecció (1)</strong></td>
+                            <td>CA3.1</td>
+                            <td>50&nbsp;%</td>
+                            <td>0-1 qualificacions correctes en 4 casos.</td>
+                            <td>2 correctes.</td>
+                            <td>3 correctes.</td>
+                            <td>Les 4, amb <code>else if</code> i sense condicions redundants.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.2. Repetició (1, 2)</strong></td>
+                            <td>CA3.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>El bucle no acaba o no acumula.</td>
+                            <td>Suma correcta, però mitjana o taula de traça amb errors.</td>
+                            <td>Suma i mitjana correctes i taula de traça amb un error com a màxim.</td>
+                            <td>Tot correcte.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.3. Salt (1)</strong></td>
+                            <td>CA3.3</td>
+                            <td>100&nbsp;%</td>
+                            <td>No s'atura en la primera nota negativa.</td>
+                            <td>S'atura, però la nota negativa entra en la mitjana.</td>
+                            <td>S'atura i la mitjana usa només les notes llegides.</td>
+                            <td>A més, explica en un comentari què faria <code>continue</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.4. Programa amb diverses estructures (1)</strong></td>
+                            <td>CA3.5</td>
+                            <td>30&nbsp;%</td>
+                            <td>La funció no s'executa o no torna cap resultat.</td>
+                            <td>S'executa i combina bucle i selecció, encara que falle en algun dels tres arrays.</td>
+                            <td>Correcta amb els tres arrays.</td>
+                            <td>A més, el càlcul i la presentació del resultat estan en funcions separades, sense codi repetit.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.5. Prova i depuració (3)</strong></td>
+                            <td>CA3.6</td>
+                            <td>30&nbsp;%</td>
+                            <td>0-1 errors corregits de 5.</td>
+                            <td>2-3 corregits.</td>
+                            <td>4 corregits.</td>
+                            <td>Els 5, amb la línia i el tipus d'error anotats, i on ha posat el punt d'interrupció o el <code>console.log</code> que ha delatat els de lògica.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.6. Creació d'excepcions (4)</strong></td>
+                            <td>CA3.8</td>
+                            <td>50&nbsp;%</td>
+                            <td>No llança cap error.</td>
+                            <td>Llança <code>new Error</code> amb un missatge clar en almenys un cas no vàlid.</td>
+                            <td>Un missatge diferent per a cada cas (buit, no número, fora de rang).</td>
+                            <td>A més, <code>name</code> propi (<code>"ValidationError"</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.7. Control d'excepcions (4)</strong></td>
+                            <td>CA3.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>Sense <code>try/catch</code> o el programa es trenca.</td>
+                            <td><code>try/catch</code> i el programa no es trenca.</td>
+                            <td>A més, mostra <code>error.message</code> en la pàgina.</td>
+                            <td>A més, en un cas correcte el missatge d'error anterior desapareix.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.8. Assercions (5)</strong></td>
+                            <td>CA3.9</td>
+                            <td>40&nbsp;%</td>
+                            <td>Menys de 3 <code>console.assert</code> correctes.</td>
+                            <td>3 <code>console.assert</code> correctes amb casos adequats.</td>
+                            <td>A més, troba l'error a partir de l'asserció que falla i corregix la funció.</td>
+                            <td>A més, un dels casos és un cas límit.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P3.9. Documentació (6)</strong></td>
+                            <td>CA3.7</td>
+                            <td>30&nbsp;%</td>
+                            <td>Cap comentari de la funció.</td>
+                            <td>Comentari que diu què fa la funció.</td>
+                            <td>Format JSDoc amb <code>@param</code> i <code>@returns</code>.</td>
+                            <td>A més, <code>@throws</code> amb els errors que llança.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica de la prova RA6</vf-title>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P6.1. Matriu (1)</strong></td>
+                            <td>CA6.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>No accedix a les cel·les amb <code>[fila][columna]</code>.</td>
+                            <td>Mostra la matriu amb bucles niats.</td>
+                            <td>A més, comprova la fila demanada.</td>
+                            <td>A més, una funció que comprova qualsevol fila.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.2. Classes de tipus avançats (2)</strong></td>
+                            <td>CA6.2</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-2 encerts de 5.</td>
+                            <td>3 encerts.</td>
+                            <td>4 encerts.</td>
+                            <td>Els 5.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.3. Llistes (3)</strong></td>
+                            <td>CA6.3</td>
+                            <td>30&nbsp;%</td>
+                            <td>Cap de les tres operacions funciona.</td>
+                            <td>Afig i elimina correctament.</td>
+                            <td>A més, modifica la quantitat buscant pel nom.</td>
+                            <td>A més, no falla si el producte no existix (<code>-1</code> controlat).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.4. Iteradors (4)</strong></td>
+                            <td>CA6.4</td>
+                            <td>50&nbsp;%</td>
+                            <td>Cap recorregut correcte.</td>
+                            <td>Recorregut amb <code>for...of</code> correcte.</td>
+                            <td>A més, <code>forEach</code> amb la posició.</td>
+                            <td>A més, el <code>Map</code> recorregut amb <code>entries()</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.5. Tria de col·lecció (5)</strong></td>
+                            <td>CA6.5</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-1 situacions ben resoltes de 4.</td>
+                            <td>2 ben resoltes.</td>
+                            <td>3 ben resoltes i el <code>Map</code> compta bé les paraules.</td>
+                            <td>Les 4 amb justificació correcta i el <code>Map</code> correcte.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.6. Expressions regulars (6)</strong></td>
+                            <td>CA6.6</td>
+                            <td>60&nbsp;%</td>
+                            <td>Cap patró correcte.</td>
+                            <td>Un patró classifica bé les 4 cadenes.</td>
+                            <td>Tots dos patrons classifiquen bé les 4 cadenes.</td>
+                            <td>A més, extrau la lletra del DNI amb <code>match</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.7. Classes per a formats d'intercanvi (7)</strong></td>
+                            <td>CA6.7</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-1 encerts de 3.</td>
+                            <td>2 encerts.</td>
+                            <td>Els 3.</td>
+                            <td>A més, diu quin format (JSON o XML) tracta cada una.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.8. JSON (8)</strong></td>
+                            <td>CA6.8</td>
+                            <td>40&nbsp;%</td>
+                            <td>No obté l'objecte amb <code>JSON.parse</code>.</td>
+                            <td>Obté l'objecte i llig un valor.</td>
+                            <td>A més, modifica el valor i afig l'element.</td>
+                            <td>A més, el torna a text sagnat i el resultat és JSON vàlid.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P6.9. Operacions agregades (9)</strong></td>
+                            <td>CA6.9</td>
+                            <td>50&nbsp;%</td>
+                            <td>0-1 operacions correctes de 4.</td>
+                            <td>2 correctes.</td>
+                            <td>3 correctes.</td>
+                            <td>Les 4, sense cap bucle <code>for</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica de la prova RA5</vf-title>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P5.1. Consola (1)</strong></td>
+                            <td>CA5.1</td>
+                            <td>60&nbsp;%</td>
+                            <td>No llig amb <code>prompt</code> o no escriu res en la consola.</td>
+                            <td>Llig les dues dades i escriu la salutació amb <code>console.log</code>.</td>
+                            <td>A més, mostra l'array amb <code>console.table</code>.</td>
+                            <td>A més, controla que l'usuari cancel·le o escriga una edat no numèrica.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P5.2. Formats (2)</strong></td>
+                            <td>CA5.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>0-1 valors amb el format demanat de 3.</td>
+                            <td>2 valors.</td>
+                            <td>Els 3.</td>
+                            <td>Els 3 amb <code>toLocaleString</code> o <code>Intl</code>, sense construir el format a mà.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P5.3. Possibilitats d'entrada i eixida (3)</strong></td>
+                            <td>CA5.3</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-3 encerts de 7.</td>
+                            <td>4-5 encerts.</td>
+                            <td>6 encerts.</td>
+                            <td>Els 7.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P5.4. Controladors d'esdeveniments (4)</strong></td>
+                            <td>CA5.4</td>
+                            <td>30&nbsp;%</td>
+                            <td>Ni l'enviament ni l'eliminació funcionen amb <code>addEventListener</code>.</td>
+                            <td>L'enviament (amb <code>preventDefault</code>) i el botó d'eliminar funcionen.</td>
+                            <td>A més, el comptador de caràcters s'actualitza amb l'esdeveniment <code>input</code>.</td>
+                            <td>A més, un sol controlador per a tots els botons d'eliminar, amb <code>event.target</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P5.5. Interfície per a entrada i eixida (4)</strong></td>
+                            <td>CA5.5</td>
+                            <td>30&nbsp;%</td>
+                            <td>No llig els camps o la llista no es mostra.</td>
+                            <td>Llig els camps, afig a l'array i redibuixa la llista amb <code>createElement</code> i <code>textContent</code>.</td>
+                            <td>A més, missatges d'error en la pàgina i camps buidats després d'afegir.</td>
+                            <td>A més, el camp incorrecte es marca amb una classe i hi torna el focus.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica de la prova RA2</vf-title>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P2.1. Fonaments de la POO (1)</strong></td>
+                            <td>CA2.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-1 respostes correctes de 4.</td>
+                            <td>2 correctes.</td>
+                            <td>3 correctes.</td>
+                            <td>Les 4, cada una amb un exemple propi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.2. Programa simple (2)</strong></td>
+                            <td>CA2.2</td>
+                            <td>100&nbsp;%</td>
+                            <td>No s'executa o li falta l'entrada, el procés o l'eixida.</td>
+                            <td>S'executa de principi a fi (llig, calcula i mostra).</td>
+                            <td>A més, el resultat és correcte.</td>
+                            <td>A més, amb el camp buit mostra un missatge en lloc d'un resultat erroni.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.3. Classes predefinides (3)</strong></td>
+                            <td>CA2.3</td>
+                            <td>100&nbsp;%</td>
+                            <td>No crea les instàncies amb <code>new</code> o no usa cap mètode.</td>
+                            <td>Crea la data i el <code>Set</code> amb <code>new</code> i usa un mètode de cada un.</td>
+                            <td>A més, els resultats són correctes.</td>
+                            <td>A més, usa <code>size</code> i <code>has</code> del <code>Set</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.4. Constructors (3)</strong></td>
+                            <td>CA2.8</td>
+                            <td>100&nbsp;%</td>
+                            <td>Cap constructor amb els paràmetres adequats.</td>
+                            <td>La data amb números (mes comptat des de 0) o el <code>Set</code> a partir de l'array, correctes.</td>
+                            <td>Tots dos correctes.</td>
+                            <td>A més, la data també amb cadena <code>"AAAA-MM-DD"</code> i comprova que són iguals.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.5. Mètodes i propietats (4)</strong></td>
+                            <td>CA2.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>0-2 operacions correctes de 6.</td>
+                            <td>3-4 correctes.</td>
+                            <td>5 correctes.</td>
+                            <td>Les 6.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.6. Mètodes estàtics (5)</strong></td>
+                            <td>CA2.5</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-2 crides ben classificades de 6.</td>
+                            <td>3-4 ben classificades.</td>
+                            <td>5-6 ben classificades i una crida estàtica escrita correcta.</td>
+                            <td>Les 6 i les dues crides correctes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.7. Paràmetres (6)</strong></td>
+                            <td>CA2.6</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-1 crides que donen el resultat demanat de 4.</td>
+                            <td>2 crides.</td>
+                            <td>3 crides.</td>
+                            <td>Les 4.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2.8. Llibreria (7)</strong></td>
+                            <td>CA2.7</td>
+                            <td>50&nbsp;%</td>
+                            <td>La llibreria no es carrega o la crida dona error.</td>
+                            <td>Carregada amb <code>script</code> i una funció cridada amb resultat correcte.</td>
+                            <td>Les dues operacions (format i diferència) correctes.</td>
+                            <td>A més, usa un patró de format diferent del de l'exemple de la documentació.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica de la prova RA4</vf-title>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P4.1. Components d'una classe (1)</strong></td>
+                            <td>CA4.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>0-2 components ben marcats de 6.</td>
+                            <td>3-4 ben marcats.</td>
+                            <td>5 ben marcats.</td>
+                            <td>Els 6.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.2. Definició de la classe (2)</strong></td>
+                            <td>CA4.2</td>
+                            <td>100&nbsp;%</td>
+                            <td>La classe dona error en carregar o en fer <code>new</code>.</td>
+                            <td>Es poden crear dos objectes de la classe.</td>
+                            <td>A més, nom en PascalCase i cap funció fora de la classe.</td>
+                            <td>A més, cap propietat creada fora del constructor.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.3. Propietats i mètodes (2)</strong></td>
+                            <td>CA4.3</td>
+                            <td>100&nbsp;%</td>
+                            <td>Ni <code>total()</code> ni <code>toString()</code> funcionen.</td>
+                            <td>Un dels dos funciona.</td>
+                            <td>Tots dos funcionen i usen <code>this</code>.</td>
+                            <td>A més, <code>toString()</code> reutilitza <code>total()</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.4. Constructor (2)</strong></td>
+                            <td>CA4.4</td>
+                            <td>100&nbsp;%</td>
+                            <td>Sense constructor o no assigna les propietats.</td>
+                            <td>Assigna les tres propietats.</td>
+                            <td>A més, valor per defecte en l'estoc.</td>
+                            <td>A més, el preu passa pel <code>set</code> des del constructor.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.5. Visibilitat (2)</strong></td>
+                            <td>CA4.6</td>
+                            <td>100&nbsp;%</td>
+                            <td><code>#price</code> no és privat o no hi ha <code>get</code>.</td>
+                            <td><code>#price</code> privat amb <code>get</code>.</td>
+                            <td>A més, <code>set</code> que rebutja negatius.</td>
+                            <td>A més, comprova que <code>#price</code> no és accessible fora de la classe.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.6. Mètode estàtic (2)</strong></td>
+                            <td>CA4.8</td>
+                            <td>50&nbsp;%</td>
+                            <td>No definix <code>static</code> o el crida sobre una instància.</td>
+                            <td><code>static fromObject</code> definit.</td>
+                            <td>A més, cridat sobre la classe, torna una instància que funciona.</td>
+                            <td>A més, usat amb <code>map</code> per a convertir un array d'objectes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.7. Herència (3)</strong></td>
+                            <td>CA4.7</td>
+                            <td>100&nbsp;%</td>
+                            <td>Falta <code>extends</code> o <code>super</code> i dona error.</td>
+                            <td><code>extends</code> i <code>super</code> correctes; la instància es crea.</td>
+                            <td>A més, <code>toString()</code> sobreescrit.</td>
+                            <td>A més, el mètode sobreescrit reutilitza <code>super.toString()</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.8. Llibreria de classes (4)</strong></td>
+                            <td>CA4.9</td>
+                            <td>40&nbsp;%</td>
+                            <td>Classes en <code>main.js</code> o error en importar.</td>
+                            <td><code>model.js</code> exporta les dues classes i <code>main.js</code> les importa.</td>
+                            <td>A més, <code>model.js</code> només conté definicions (cap codi que s'execute en importar-lo).</td>
+                            <td>A més, <code>model.js</code> no fa cap referència a la pàgina.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P4.9. Programa amb les classes creades (4)</strong></td>
+                            <td>CA4.5</td>
+                            <td>30&nbsp;%</td>
+                            <td>No crea cap instància de les seues classes.</td>
+                            <td>Array amb els tres productes (un digital) i cada un mostrat amb <code>toString()</code>.</td>
+                            <td>A més, total correcte calculat amb els mètodes de les classes.</td>
+                            <td>A més, els productes es creen a partir d'un array d'objectes amb <code>fromObject</code> i <code>map</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica del projecte</vf-title>
+            <vf-text>Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i errònies), executant <code>tests.js</code>, mirant la consola i el codi. El nivell Suficient de cada fila són els requisits mínims del projecte.</vf-text>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R1. Estructura del projecte</strong></td>
+                            <td>CA1.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>Falta algun arxiu de l'estructura o l'aplicació no s'obri.</td>
+                            <td><code>index.html</code>, <code>css/</code>, <code>js/main.js</code>, <code>js/model.js</code> i <code>js/tests.js</code>; noms en minúscules sense espais; s'obri amb Live Server.</td>
+                            <td>A més, cap ruta absoluta en els enllaços ni en els <code>import</code>.</td>
+                            <td>A més, cap arxiu sobrant (proves velles, còpies).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R2. Mètodes i propietats predefinits</strong></td>
+                            <td>CA2.4</td>
+                            <td>60&nbsp;%</td>
+                            <td>Menys de 5 mètodes o propietats diferents, o algun usat malament.</td>
+                            <td>Almenys 5 mètodes o propietats diferents de cadenes, arrays o elements, ben usats.</td>
+                            <td>A més, cap bucle que reimplemente un mètode existent (<code>includes</code>, <code>indexOf</code>).</td>
+                            <td>A més, <code>Date</code> o <code>toLocaleString</code> per a mostrar una data o un número.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R3. Llibreria externa</strong></td>
+                            <td>CA2.7</td>
+                            <td>50&nbsp;%</td>
+                            <td>Cap llibreria externa.</td>
+                            <td>Una llibreria carregada per CDN i cridada almenys una vegada amb efecte visible.</td>
+                            <td>A més, usa opcions de la llibreria i n'enllaça la documentació en el README.</td>
+                            <td>A més, l'aplicació funciona encara que la llibreria no carregue.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R4. Selecció</strong></td>
+                            <td>CA3.1</td>
+                            <td>50&nbsp;%</td>
+                            <td>Alguna decisió de l'aplicació falla (resposta correcta o incorrecta, camp buit, filtre, missatge final).</td>
+                            <td>Totes les decisions de l'opció funcionen.</td>
+                            <td>A més, sense condicions redundants ni <code>if</code> niats evitables.</td>
+                            <td>A més, retorn anticipat o ternari on simplifica el codi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R5. Repetició</strong></td>
+                            <td>CA3.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>Algun bucle no acaba o deixa elements sense tractar.</td>
+                            <td>Els bucles de dibuix i de càlcul recorren tots els elements i acaben sempre.</td>
+                            <td>A més, cap índex fora de rang ni variable de bucle innecessària.</td>
+                            <td>A més, la cerca s'atura quan troba l'element (<code>break</code>, <code>return</code> o <code>find</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R6. Control d'excepcions</strong></td>
+                            <td>CA3.4</td>
+                            <td>60&nbsp;%</td>
+                            <td><code>JSON.parse</code> de <code>localStorage</code> o crides que poden fallar sense protecció.</td>
+                            <td><code>try/catch</code> en llegir <code>localStorage</code> i en les crides al model que poden llançar errors; l'aplicació no es trenca.</td>
+                            <td>A més, missatge clar a l'usuari en la pàgina.</td>
+                            <td>A més, després d'un error la interfície queda coherent (redibuix o <code>finally</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R7. Programa complet</strong></td>
+                            <td>CA3.5</td>
+                            <td>70&nbsp;%</td>
+                            <td>Falta algun requisit de l'opció triada o no funciona.</td>
+                            <td>Tots els requisits de l'opció triada funcionen.</td>
+                            <td>A més, funcions d'una sola tasca, de 20 línies com a màxim, sense codi repetit.</td>
+                            <td>A més, en la presentació explica una funció línia a línia i respon bé la pregunta del professor.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R8. Prova i depuració</strong></td>
+                            <td>CA3.6</td>
+                            <td>70&nbsp;%</td>
+                            <td>Errors en la consola en un ús normal.</td>
+                            <td>Cap error en la consola en un ús normal.</td>
+                            <td>A més, cap error en els casos límit (camp buit, llista buida, <code>localStorage</code> corrupte).</td>
+                            <td>A més, README amb la llista de proves manuals fetes i el resultat.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R9. Comentaris i documentació</strong></td>
+                            <td>CA3.7</td>
+                            <td>70&nbsp;%</td>
+                            <td>Funcions sense comentari o README incomplet.</td>
+                            <td>Comentari damunt de cada funció i mètode; README complet.</td>
+                            <td>A més, comentaris en format JSDoc amb <code>@param</code> i <code>@returns</code>.</td>
+                            <td>A més, cap comentari desfasat respecte del codi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R10. Errors propis</strong></td>
+                            <td>CA3.8</td>
+                            <td>50&nbsp;%</td>
+                            <td>El model no llança cap error davant de dades no vàlides.</td>
+                            <td>El model llança <code>Error</code> amb un missatge clar davant de dades no vàlides (text buit, pregunta sense opcions).</td>
+                            <td>A més, una classe d'error pròpia (<code>extends Error</code>).</td>
+                            <td>A més, <code>main.js</code> la distingix amb <code>instanceof</code> i mostra un missatge diferent.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R11. Assercions</strong></td>
+                            <td>CA3.9</td>
+                            <td>60&nbsp;%</td>
+                            <td>Menys de 6 <code>console.assert</code> o algun falla.</td>
+                            <td><code>tests.js</code> amb almenys 6 <code>console.assert</code> sobre el model, tots en verd.</td>
+                            <td>A més, cobrixen tots els mètodes públics del model.</td>
+                            <td>A més, inclouen casos límit (llista buida, valor no vàlid, error llançat).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R12. Ús de les classes pròpies</strong></td>
+                            <td>CA4.5</td>
+                            <td>70&nbsp;%</td>
+                            <td>Les dades no són instàncies de les seues classes.</td>
+                            <td>Les dades són un array d'instàncies de les seues classes i l'aplicació usa els seus mètodes.</td>
+                            <td>A més, la lògica (puntuar, marcar, filtrar) està en mètodes del model, no en <code>main.js</code>.</td>
+                            <td>A més, una subclasse del model usada en l'aplicació.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R13. Mètodes estàtics</strong></td>
+                            <td>CA4.8</td>
+                            <td>50&nbsp;%</td>
+                            <td>Cap mètode estàtic en el model.</td>
+                            <td>Un mètode estàtic en el model, usat (p. ex. <code>fromJSON</code> per a tornar a crear les instàncies en carregar).</td>
+                            <td>A més, cridat sobre la classe dins d'un <code>map</code>.</td>
+                            <td>A més, un segon mètode estàtic amb sentit (validador, comptador).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R14. Llibreria de classes</strong></td>
+                            <td>CA4.9</td>
+                            <td>60&nbsp;%</td>
+                            <td>Classes en <code>main.js</code> o sense mòduls.</td>
+                            <td><code>model.js</code> amb almenys 2 classes exportades i importades en <code>main.js</code>.</td>
+                            <td>A més, <code>tests.js</code> importa les mateixes classes.</td>
+                            <td>A més, <code>model.js</code> no toca la pàgina (es podria reutilitzar amb una altra interfície).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R15. Consola</strong></td>
+                            <td>CA5.1</td>
+                            <td>40&nbsp;%</td>
+                            <td><code>tests.js</code> no mostra res en la consola.</td>
+                            <td>En executar <code>tests.js</code>, la consola mostra quines proves fallen i un resum amb <code>console.log</code>.</td>
+                            <td>A més, <code>console.table</code> per a mostrar l'estat del model.</td>
+                            <td>A més, cap <code>console.log</code> de depuració oblidat en <code>main.js</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R16. Formats</strong></td>
+                            <td>CA5.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>Números sense format (decimals llargs, percentatges sense símbol).</td>
+                            <td>Puntuació, comptadors i percentatges amb un format adequat.</td>
+                            <td>A més, <code>toLocaleString</code> o <code>Intl</code> per a números o dates.</td>
+                            <td>A més, singular i plural correctes ("1 tasca", "3 tasques").</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R17. Controladors d'esdeveniments</strong></td>
+                            <td>CA5.4</td>
+                            <td>70&nbsp;%</td>
+                            <td>Menys de 3 controladors, d'un sol tipus, o <code>onclick</code> en l'HTML.</td>
+                            <td>Almenys 3 <code>addEventListener</code> de 2 tipus diferents i cap <code>onclick</code> en l'HTML.</td>
+                            <td>A més, usa l'objecte <code>event</code> (<code>key</code>, <code>target</code>, <code>preventDefault</code>).</td>
+                            <td>A més, un sol controlador gestiona tots els botons d'una llista (delegació o <code>data-*</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R18. Entrada i eixida en la interfície</strong></td>
+                            <td>CA5.5</td>
+                            <td>70&nbsp;%</td>
+                            <td>La pàgina no reflectix les dades o usa <code>innerHTML</code> amb text de l'usuari.</td>
+                            <td>Llig els controls, mostra les dades amb <code>createElement</code> i <code>textContent</code>, i la pàgina sempre coincidix amb l'array (<code>draw()</code>).</td>
+                            <td>A més, missatges d'error i de confirmació en la pàgina, no amb <code>alert</code>.</td>
+                            <td>A més, el camp es buida i rep el focus després d'afegir, i els botons es deshabiliten quan no es poden usar.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R19. Llistes</strong></td>
+                            <td>CA6.3</td>
+                            <td>70&nbsp;%</td>
+                            <td>No hi ha array o la pàgina i l'array no coincidixen.</td>
+                            <td>Array d'instàncies en el qual s'afig, s'elimina i es modifica, i després es redibuixa.</td>
+                            <td>A més, elimina i modifica per identificador, no per posició en la pantalla.</td>
+                            <td>A més, l'usuari pot ordenar la llista per un criteri.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R20. Iteradors</strong></td>
+                            <td>CA6.4</td>
+                            <td>50&nbsp;%</td>
+                            <td>Recorreguts amb índexs erronis o que se n'ixen de l'array.</td>
+                            <td>Recorre la llista amb <code>for...of</code> o <code>forEach</code> en dibuixar i en desar.</td>
+                            <td>A més, <code>entries()</code> o l'índex de <code>forEach</code> quan necessita la posició.</td>
+                            <td>A més, recorre també un <code>Set</code> o un <code>Map</code> (p. ex. categories sense repetir).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R21. Expressions regulars</strong></td>
+                            <td>CA6.6</td>
+                            <td>40&nbsp;%</td>
+                            <td>Cap expressió regular.</td>
+                            <td>Un camp validat amb <code>test()</code> i missatge si no complix.</td>
+                            <td>A més, el patró usa <code>^</code>, <code>$</code> i classes de caràcters.</td>
+                            <td>A més, una segona expressió valida un altre camp o neteja el text amb <code>replace</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R22. JSON</strong></td>
+                            <td>CA6.8</td>
+                            <td>60&nbsp;%</td>
+                            <td>Desa sense JSON o es perden dades en recarregar.</td>
+                            <td><code>JSON.stringify</code> en desar i <code>JSON.parse</code> en carregar.</td>
+                            <td>A més, una única funció <code>save()</code> que desa tot l'estat en una sola clau.</td>
+                            <td>A més, <code>toJSON()</code> en les classes per a decidir què es guarda.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R23. Operacions agregades</strong></td>
+                            <td>CA6.9</td>
+                            <td>50&nbsp;%</td>
+                            <td>Cap operació agregada.</td>
+                            <td>Almenys 2 operacions agregades diferents amb resultat visible (comptador, filtre, puntuació).</td>
+                            <td><code>filter</code>, <code>map</code> i <code>reduce</code>.</td>
+                            <td>A més, encadenades en almenys un cas dins d'un mètode del model.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteri</th>
+                            <th>Pes dins del RA</th>
+                            <th>Activitat(s)</th>
+                            <th>Indicadors (instrument) i pes dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CA1.1</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 1</td>
+                            <td>P1.3 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.2</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 1, miniprojectes, projecte</td>
+                            <td>P1.1 (prova RA1) 50&nbsp;% · R1 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.3</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 1</td>
+                            <td>P1.2 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.4</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 2</td>
+                            <td>P1.5 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.5</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 2</td>
+                            <td>P1.6 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.6</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 2</td>
+                            <td>P1.7 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.7</td>
+                            <td>20&nbsp;%</td>
+                            <td>Lliçó 3</td>
+                            <td>P1.8 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.8</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 2</td>
+                            <td>P1.9 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.9</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 1</td>
+                            <td>P1.4 (prova RA1) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.1</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 20 (N9)</td>
+                            <td>P2.1 (prova RA2) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.2</td>
+                            <td>20&nbsp;%</td>
+                            <td>Lliçons 1-7 i 20 (N9)</td>
+                            <td>P2.2 (prova RA2) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.3</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçons 14 (N6) i 20 (N9)</td>
+                            <td>P2.3 (prova RA2) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.4</td>
+                            <td>20&nbsp;%</td>
+                            <td>Lliçons 4, 10, 17, 21 (N10), projecte</td>
+                            <td>P2.5 (prova RA2) 40&nbsp;% · R2 (projecte) 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.5</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçons 3 i 21 (N10)</td>
+                            <td>P2.6 (prova RA2) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.6</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçons 3, 7 i 21 (N10)</td>
+                            <td>P2.7 (prova RA2) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.7</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 21 (N10), projecte</td>
+                            <td>P2.8 (prova RA2) 50&nbsp;% · R3 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.8</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 20 (N9)</td>
+                            <td>P2.4 (prova RA2) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.1</td>
+                            <td>15&nbsp;%</td>
+                            <td>Lliçó 5, projecte</td>
+                            <td>P3.1 (prova RA3) 50&nbsp;% · R4 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.2</td>
+                            <td>20&nbsp;%</td>
+                            <td>Lliçó 6, projecte</td>
+                            <td>P3.2 (prova RA3) 50&nbsp;% · R5 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.3</td>
+                            <td>5&nbsp;%</td>
+                            <td>Lliçons 5-7</td>
+                            <td>P3.3 (prova RA3) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.4</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçons 9 (N2) i 19, miniprojecte 1, projecte</td>
+                            <td>P3.7 (prova RA3) 40&nbsp;% · R6 (projecte) 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.5</td>
+                            <td>15&nbsp;%</td>
+                            <td>Lliçó 7, miniprojecte 1, projecte</td>
+                            <td>P3.4 (prova RA3) 30&nbsp;% · R7 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.6</td>
+                            <td>15&nbsp;%</td>
+                            <td>Lliçons 1 i 8 (N1), miniprojecte 1, projecte</td>
+                            <td>P3.5 (prova RA3) 30&nbsp;% · R8 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.7</td>
+                            <td>5&nbsp;%</td>
+                            <td>Lliçó 8 (N1), projecte</td>
+                            <td>P3.9 (prova RA3) 30&nbsp;% · R9 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.8</td>
+                            <td>5&nbsp;%</td>
+                            <td>Lliçons 9 (N2) i 24 (N13), projecte</td>
+                            <td>P3.6 (prova RA3) 50&nbsp;% · R10 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA3.9</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçons 8 (N1) i 25 (N14), miniprojecte 1, projecte</td>
+                            <td>P3.8 (prova RA3) 40&nbsp;% · R11 (projecte) 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.1</td>
+                            <td>5&nbsp;%</td>
+                            <td>Lliçó 22 (N11)</td>
+                            <td>P4.1 (prova RA4) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.2</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 22 (N11)</td>
+                            <td>P4.2 (prova RA4) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.3</td>
+                            <td>15&nbsp;%</td>
+                            <td>Lliçó 22 (N11)</td>
+                            <td>P4.3 (prova RA4) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.4</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 22 (N11)</td>
+                            <td>P4.4 (prova RA4) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.5</td>
+                            <td>20&nbsp;%</td>
+                            <td>Lliçons 22 (N11) i 25 (N14), projecte</td>
+                            <td>P4.9 (prova RA4) 30&nbsp;% · R12 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.6</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 23 (N12)</td>
+                            <td>P4.5 (prova RA4) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.7</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 24 (N13)</td>
+                            <td>P4.7 (prova RA4) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.8</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 23 (N12), projecte</td>
+                            <td>P4.6 (prova RA4) 50&nbsp;% · R13 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA4.9</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçó 25 (N14), projecte</td>
+                            <td>P4.8 (prova RA4) 40&nbsp;% · R14 (projecte) 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.1</td>
+                            <td>8&nbsp;%</td>
+                            <td>Lliçons 1-2 i 19 (N8), projecte</td>
+                            <td>P5.1 (prova RA5) 60&nbsp;% · R15 (projecte) 40&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.2</td>
+                            <td>12&nbsp;%</td>
+                            <td>Lliçons 2-3 i 19 (N8), projecte</td>
+                            <td>P5.2 (prova RA5) 50&nbsp;% · R16 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.3</td>
+                            <td>4&nbsp;%</td>
+                            <td>Lliçó 19 (N8)</td>
+                            <td>P5.3 (prova RA5) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>Lliçons 4, 16, 18, miniprojecte 2, projecte</td>
+                            <td>P5.4 (prova RA5) 30&nbsp;% · R17 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA5.5</td>
+                            <td>36&nbsp;%</td>
+                            <td>Lliçons 4, 17, 18, miniprojecte 2, projecte</td>
+                            <td>P5.5 (prova RA5) 30&nbsp;% · R18 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.1</td>
+                            <td>8&nbsp;%</td>
+                            <td>Lliçó 10 (amb N3)</td>
+                            <td>P6.1 (prova RA6) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.2</td>
+                            <td>4&nbsp;%</td>
+                            <td>Lliçó 14 (N6)</td>
+                            <td>P6.2 (prova RA6) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.3</td>
+                            <td>16&nbsp;%</td>
+                            <td>Lliçons 10-11, miniprojecte 2, projecte</td>
+                            <td>P6.3 (prova RA6) 30&nbsp;% · R19 (projecte) 70&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.4</td>
+                            <td>8&nbsp;%</td>
+                            <td>Lliçons 10, 12 (N4), 14 (N6), projecte</td>
+                            <td>P6.4 (prova RA6) 50&nbsp;% · R20 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.5</td>
+                            <td>8&nbsp;%</td>
+                            <td>Lliçó 14 (N6)</td>
+                            <td>P6.5 (prova RA6) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.6</td>
+                            <td>12&nbsp;%</td>
+                            <td>Lliçons 13 (N5) i 18, projecte</td>
+                            <td>P6.6 (prova RA6) 60&nbsp;% · R21 (projecte) 40&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.7</td>
+                            <td>4&nbsp;%</td>
+                            <td>Lliçó 15 (N7)</td>
+                            <td>P6.7 (prova RA6) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.8</td>
+                            <td>16&nbsp;%</td>
+                            <td>Lliçons 15 (N7), 19 i 23 (N12), projecte</td>
+                            <td>P6.8 (prova RA6) 40&nbsp;% · R22 (projecte) 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA6.9</td>
+                            <td>24&nbsp;%</td>
+                            <td>Lliçó 12 (N4), projecte</td>
+                            <td>P6.9 (prova RA6) 50&nbsp;% · R23 (projecte) 50&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text><strong>Nota de cada criteri</strong> = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA3.6 = 0,30·P3.5 + 0,70·R8; CA1.1 = P1.3.</vf-text>
+            <vf-text><strong>Nota de RA1</strong> = 0,10·(CA1.1 + CA1.2 + CA1.3 + CA1.4 + CA1.5 + CA1.6 + CA1.8 + CA1.9) + 0,20·CA1.7</vf-text>
+            <vf-text><strong>Nota de RA2</strong> = 0,10·(CA2.1 + CA2.3 + CA2.5 + CA2.6 + CA2.7 + CA2.8) + 0,20·(CA2.2 + CA2.4)</vf-text>
+            <vf-text><strong>Nota de RA3</strong> = 0,15·(CA3.1 + CA3.5 + CA3.6) + 0,20·CA3.2 + 0,10·(CA3.4 + CA3.9) + 0,05·(CA3.3 + CA3.7 + CA3.8)</vf-text>
+            <vf-text><strong>Nota de RA4</strong> = 0,05·CA4.1 + 0,10·(CA4.2 + CA4.4 + CA4.6 + CA4.7 + CA4.8 + CA4.9) + 0,15·CA4.3 + 0,20·CA4.5</vf-text>
+            <vf-text><strong>Nota de RA5</strong> = 0,08·CA5.1 + 0,12·CA5.2 + 0,04·CA5.3 + 0,40·CA5.4 + 0,36·CA5.5</vf-text>
+            <vf-text><strong>Nota de RA6</strong> = 0,04·(CA6.2 + CA6.7) + 0,08·(CA6.1 + CA6.4 + CA6.5) + 0,12·CA6.6 + 0,16·(CA6.3 + CA6.8) + 0,24·CA6.9</vf-text>
+            <vf-text><strong>Nota de la SA</strong> = 0,10·RA1 + 0,10·RA2 + 0,20·RA3 + 0,10·RA4 + 0,25·RA5 + 0,25·RA6</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Equips amb VS Code (extensió Live Server i, opcionalment, Prettier), dos navegadors i accés a Internet.</li>
+                <li>Projector per a la demostració en directe.</li>
+                <li>Pàgines de les lliçons de la unitat, amb els arxius de partida dels exercicis i del projecte.</li>
+                <li>Arxius de partida de les activitats N1-N14: funció amb error per a depurar, catàleg en JSON i en XML, classes de l'activitat N13.</li>
+                <li>Llibreria Day.js per CDN i en còpia local (per a la prova RA2 i per si falla la connexió); canvas-confetti com a alternativa en el projecte.</li>
+                <li>MDN Web Docs com a referència.</li>
+                <li>Full de referència ràpida de JavaScript, glossari anglés-valencià i plantilles de taula de traça.</li>
+                <li>Llistes de requisits dels miniprojectes, plantilla d'esbós de pantalla i de classes del projecte.</li>
+                <li>Les sis proves, amb els seus arxius de partida, i les set rúbriques.</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

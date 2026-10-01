@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular expressions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Regular expressions
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">What a regular expression is</vf-title>
+        <vf-content>
+            <vf-text>
+                A *regular expression* (regex) is a pattern that describes a kind of text:
+                "five digits", "eight digits and a letter", "something, an @, something, a
+                dot, something". You use it to *check* a text, *find* parts inside it, or
+                *replace* them.
+            </vf-text>
+            <vf-code language="javascript">
+                const postcode = /^\d{5}$/;
+
+                postcode.test("46001");     // true
+                postcode.test("4600");      // false
+                postcode.test("46001A");    // false
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">The pieces</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr><th>Piece</th><th>Means</th><th>Example</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>\d</code></td><td>a digit</td><td><code>\d\d</code> → "42"</td></tr>
+                        <tr><td><code>\w</code></td><td>a letter, digit or <code>_</code></td><td></td></tr>
+                        <tr><td><code>\s</code></td><td>a space</td><td></td></tr>
+                        <tr><td><code>[A-Z]</code></td><td>one of these characters</td><td><code>[aeiou]</code> → a vowel</td></tr>
+                        <tr><td><code>[^0-9]</code></td><td>any character <em>except</em> these</td><td></td></tr>
+                        <tr><td><code>.</code></td><td>any character</td><td></td></tr>
+                        <tr><td><code>{5}</code></td><td>exactly 5 times</td><td><code>\d{5}</code></td></tr>
+                        <tr><td><code>{2,4}</code></td><td>from 2 to 4 times</td><td></td></tr>
+                        <tr><td><code>+</code></td><td>one or more</td><td><code>\d+</code></td></tr>
+                        <tr><td><code>*</code></td><td>zero or more</td><td></td></tr>
+                        <tr><td><code>?</code></td><td>optional</td><td><code>-?\d+</code> → "-3" or "3"</td></tr>
+                        <tr><td><code>^</code> and <code>$</code></td><td>start and end of the text</td><td></td></tr>
+                        <tr><td><code>\.</code></td><td>a real dot</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>
+                After the closing `/` you can add *flags*: `i` (ignore capitals), `g` (find
+                all, not only the first).
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Three methods</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                // test: does it match? -> true / false
+                /^\d{8}[A-Z]$/i.test("12345678z");          // true
+
+                // match: give me the parts that match
+                "Call 961 234 567 or 600 111 222".match(/\d+/g);   // ["961", "234", "567", "600", "111", "222"]
+
+                // replace: change what matches
+                "961-234-567".replace(/-/g, " ");           // "961 234 567"
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Patterns you will use</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const postcode = /^\d{5}$/;
+                const dni = /^\d{8}[A-Z]$/i;
+                const email = /^\S+@\S+\.\S+$/;       // simple: good enough for a form
+                const hasNumber = /\d/;
+                const hasCapital = /[A-Z]/;
+            </vf-code>
+            <vf-callout type="atencio">
+                Without `^` and `$`, the pattern only has to appear *somewhere*:
+                `/\d{5}/.test("abc123456789")` is `true`.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Forgetting `^` and `$`.</vf-text></li>
+                <li><vf-text>Writing the pattern in quotes: `"^\d{5}$"` is a string, not a regex.</vf-text></li>
+                <li><vf-text>Using `.` when you mean a real dot: write `\.`.</vf-text></li>
+                <li><vf-text>Trying to write the perfect email regex. A simple pattern plus a confirmation email is what real websites do.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 13.1.* Given an array of 8 strings, show next to each one whether
+                it is a valid postcode.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.2.* The same with a simple email pattern. Include tricky cases:
+                `"ana@"`, `"@mail.com"`, `"ana@mail"`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.3.* Redo the password check of exercise 5.3 with three regular
+                expressions: at least 8 characters, a number, a capital letter.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.4.* Validate a DNI (8 digits and a letter) and show the letter
+                alone, taken out with `match`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.5.* A phone written as `"961-23 45 67"`: remove every space and
+                dash with `replace`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 13.6.* Take all the numbers out of a sentence with `match` and the
+                flag `g`, and add them up.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/12-array-methods.html">
+                    &larr; Previous: Array methods: filter, map and reduce
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/14-collections.html">
+                    Next: Sets and maps &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

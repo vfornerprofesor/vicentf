@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private fields and static methods</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Private fields and static methods
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Protecting the data</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                account.balance = 1000000;   // nobody should be able to do this
+            </vf-code>
+            <vf-text>
+                If any part of the code can change a property, the class cannot guarantee
+                that the data is correct. *Encapsulation* means: the data is inside, and
+                you change it only through the methods.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Private fields: #</vf-title>
+        <vf-content>
+            <vf-text>
+                A property whose name starts with `#` can only be used *inside* the class:
+            </vf-text>
+            <vf-code language="javascript">
+                class BankAccount {
+                    #balance = 0;
+
+                    constructor(owner) {
+                        this.owner = owner;
+                    }
+
+                    deposit(amount) {
+                        this.#balance += amount;
+                    }
+
+                    get balance() {
+                        return this.#balance;
+                    }
+                }
+
+                const account = new BankAccount("Ana");
+                account.deposit(50);
+                account.balance;        // 50   (through the get)
+                account.#balance;       // SyntaxError: you cannot touch it from outside
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">get and set</vf-title>
+        <vf-content>
+            <vf-text>
+                `get` lets you *read* a private value as if it were a property. `set` lets
+                you *change* it, with a check first:
+            </vf-text>
+            <vf-code language="javascript">
+                class Product {
+                    #price;
+
+                    constructor(name, price) {
+                        this.name = name;
+                        this.price = price;          // goes through the set
+                    }
+
+                    get price() {
+                        return this.#price;
+                    }
+
+                    set price(value) {
+                        if (value &lt; 0) {
+                            throw new Error("The price cannot be negative");
+                        }
+                        this.#price = value;
+                    }
+                }
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Static methods in your classes</vf-title>
+        <vf-content>
+            <vf-text>
+                A static method belongs to the class, not to each object. Typical use:
+                creating an object from plain data.
+            </vf-text>
+            <vf-code language="javascript">
+                class Product {
+                    // ...
+                    static fromJSON(data) {
+                        return new Product(data.name, data.price);
+                    }
+                }
+
+                const p = Product.fromJSON({ name: "Mouse", price: 15 });
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Saving objects in localStorage</vf-title>
+        <vf-content>
+            <vf-text>
+                `JSON.stringify` saves the public data, but not the methods and not the
+                `#private` fields. When you read it back, you get plain objects, not
+                `Product`s. Two steps:
+            </vf-text>
+            <vf-code language="javascript">
+                class Product {
+                    // ...
+                    toJSON() {
+                        return { name: this.name, price: this.#price };
+                    }
+                }
+
+                // Save
+                localStorage.setItem("products", JSON.stringify(products));
+
+                // Load: plain data -> Product objects again
+                const data = JSON.parse(localStorage.getItem("products")) || [];
+                const products = data.map(d => Product.fromJSON(d));
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Forgetting the `#` in one of the uses inside the class.</vf-text></li>
+                <li><vf-text>Calling a static method on an object: `p.fromJSON(...)`. It is `Product.fromJSON(...)`.</vf-text></li>
+                <li><vf-text>After loading from `localStorage`, calling a method on a plain object: "p.total is not a function". You forgot `fromJSON`.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 23.1.* Change your `BankAccount` so that the balance is
+                `#balance`, with a `get balance()`. Try to read `account.#balance` from
+                outside and copy the error.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 23.2.* Add to `Product` a `set price` that throws an error with
+                negative prices. Check it with `try/catch`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 23.3.* Save an array of `Product` in `localStorage` and, when the
+                page loads, rebuild the objects with `Product.fromJSON`. Check that their
+                methods work after F5.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 23.4.* A static property `Product.count` that goes up every time a
+                product is created.
+            </vf-callout>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/22-classes.html">
+                    &larr; Previous: Your own classes
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/24-inheritance.html">
+                    Next: Inheritance &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

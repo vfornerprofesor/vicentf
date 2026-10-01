@@ -179,6 +179,9 @@
                 `isNaN(x)` returns `true` when `x` is not a number. Useful after a
                 `Number()` conversion.
             </vf-text>
+            <vf-text>
+                For postcodes, DNI or emails, use the regular expressions of lesson 13.
+            </vf-text>
         </vf-content>
 
         <vf-title level="2">Showing good error messages</vf-title>
@@ -284,41 +287,41 @@
                 together. It is much better than stopping at the first one and making the
                 user try five times.
             </vf-text>
-            <!-- <vf-img src="assets/unitats/programacio/web/javascript/12-forms/validation-errors.png" alt="Form submitted with wrong data: red error list and red fields"></vf-img> -->
-            <!-- [IMATGE: assets/unitats/programacio/web/javascript/12-forms/validation-errors.png — captura del formulari enviat amb dades incorrectes: la llista roja de tres errors davall i els tres camps amb la vora roja.] -->
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/18-forms/validation-errors.png" alt="Form submitted with wrong data: red error list and red fields"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/18-forms/validation-errors.png — captura del formulari enviat amb dades incorrectes: la llista roja de tres errors davall i els tres camps amb la vora roja.] -->
         </vf-content>
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 12.1.* Make the form of the example work, with the four checks
+                *Exercise 18.1.* Make the form of the example work, with the four checks
                 and the red borders.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 12.2.* Add a "repeat password" field and check that both are the
+                *Exercise 18.2.* Add a "repeat password" field and check that both are the
                 same.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 12.3.* Validate as the user types, not only when they send: use
+                *Exercise 18.3.* Validate as the user types, not only when they send: use
                 the `input` event to remove the red border as soon as the field becomes
-                correct.
+                correct. Use a regular expression for the email.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 12.4. Login.* User and password. If the user is `admin` and the
+                *Exercise 18.4. Login.* User and password. If the user is `admin` and the
                 password is `smx2027`, show "Welcome". If not, show "Wrong user or
                 password" and count the failed attempts. After 3, disable the button
                 (`button.disabled = true`).
             </vf-callout>
             <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/12-forms/ex4.html)
+                Download the starter file [here|download](unitats/programacio/web/javascript/exercises/18-forms/ex4.html)
             </vf-text>
             <vf-callout type="exercici">
-                *Exercise 12.5. Sign-up with a summary.* When all the data is correct, do
+                *Exercise 18.5. Sign-up with a summary.* When all the data is correct, do
                 not just say "welcome": draw a card with everything the user typed, and a
                 "Change data" button that brings the form back.
             </vf-callout>
 
-            <vf-details summary="Show the solution (12.4)">
+            <vf-details summary="Show the solution (18.4)">
                 <vf-code language="javascript">
                     const form = document.querySelector("#loginForm");
                     const button = form.querySelector("button");
@@ -355,19 +358,10 @@
             </vf-details>
         </vf-content>
 
-        <vf-title level="2">Test 2</vf-title>
-        <vf-content>
-            <vf-text>
-                Once you finish this lesson, you will have a written test (1 hour) about:
-                finding an element and changing its text and style, creating elements from
-                an array, writing a correct `addEventListener`, fixing 5 errors in a piece
-                of DOM/events code, and validating three fields of a form and marking them.
-            </vf-text>
-        </vf-content>
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/11-elements.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/17-elements.html">
                     &larr; Previous: Creating and removing elements
                 </vf-btn>
             </vf-col>
@@ -377,7 +371,7 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/13-localstorage.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/19-localstorage.html">
                     Next: Saving data with localStorage &rarr;
                 </vf-btn>
             </vf-col>

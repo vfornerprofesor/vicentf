@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - HTML i CSS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · HTML i CSS (document per al professorat)">La meua web personal</vf-title>
+
+        <div class="center">
+            <vf-badge>2n CFGM SMX</vf-badge>
+            <vf-badge>Aplicacions Web</vf-badge>
+            <vf-badge>62 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>Esta SA cobrix el mòdul sencer de segon curs. L'alumnat ja coneix l'entorn del cicle (equips, comptes, carpetes de treball), però la majoria no ha programat mai i els nivells són molt desiguals: alguns han tocat HTML en l'ESO o pel seu compte, la majoria no. El mòdul parteix de zero i acaba amb un lloc web de quatre pàgines que funciona en mòbil i en ordinador, un producte que l'alumnat pot ensenyar en la FCT o en una entrevista de treball.</vf-text>
+            <vf-text>Les lliçons de la web estan en anglés: els enunciats són curts i amb codi, però cal llegir-los en veu alta a classe les primeres setmanes. Treball individual en VS Code i navegador, amb una carpeta de treball per alumne que es conserva entre sessions.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>"Construïx la teua web personal."</strong> Un lloc de quatre pàgines (inici, sobre mi, projectes i contacte) que podries enviar amb una sol·licitud de pràctiques o usar com a portafoli en acabar el cicle.
+            </vf-callout>
+            <vf-text>Alternatives amb el permís del professor: un personatge inventat, un grup de música, una botiga o un xicotet negoci; o la maquetació del joc de preguntes (només la part visual).</vf-text>
+            <vf-text>Productes intermedis: miniprojecte 1 (pàgina d'un grup, només HTML) i miniprojecte 2 (la mateixa pàgina amb CSS extern).</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Resultats d'aprenentatge</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                            <th>Pes en la SA</th>
+                            <th>Justificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RA1</td>
+                            <td>Elabora pàgines web amb HTML, estructurant el document i el contingut (text, llistes, enllaços, imatges, taules i formularis) amb etiquetes semàntiques i codi vàlid segons el validador del W3C.</td>
+                            <td>40&nbsp;%</td>
+                            <td>Contingut de base i de dificultat més baixa.</td>
+                        </tr>
+                        <tr>
+                            <td>RA2</td>
+                            <td>Dona format i maqueta pàgines web amb fulls d'estil CSS externs, aplicant selectors, el model de caixa, flexbox i grid, adaptant el disseny a diferents pantalles i organitzant el codi amb variables i bones pràctiques.</td>
+                            <td>60&nbsp;%</td>
+                            <td>Conté els sabers més difícils (maquetació i disseny adaptable), més sessions i la major part del treball del projecte.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                            <th>Pes dins del RA</th>
+                            <th>Pes en la SA</th>
+                            <th>Justificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CA1.1</td>
+                            <td>Escriu documents HTML amb l'esquelet complet (doctype, <code>html</code> amb <code>lang</code>, <code>head</code> amb <code>charset</code> i <code>title</code>, <code>body</code>), etiquetes ben niades i tancades, codi sagnat, comentaris, encapçalaments en ordre jeràrquic i caràcters especials, i guarda els arxius amb noms correctes.</td>
+                            <td>25&nbsp;%</td>
+                            <td>10&nbsp;%</td>
+                            <td>Base de tot el que ve després.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.2</td>
+                            <td>Inserix llistes (ordenades, no ordenades i niades), enllaços relatius i absoluts que connecten les pàgines del lloc, imatges amb text <code>alt</code> descriptiu i rutes relatives, i taules amb capçalera i cel·les combinades.</td>
+                            <td>35&nbsp;%</td>
+                            <td>14&nbsp;%</td>
+                            <td>El bloc de contingut més ampli; els enllaços entre pàgines sostenen tot el lloc.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.3</td>
+                            <td>Construïx formularis amb <code>label</code> associada a cada camp, diferents tipus d'entrada (text, correu, contrasenya, data, ràdio, casella, <code>select</code>, <code>textarea</code>), validació bàsica amb <code>required</code> i camps agrupats amb <code>fieldset</code>.</td>
+                            <td>20&nbsp;%</td>
+                            <td>8&nbsp;%</td>
+                            <td>Molts elements nous, però en un sol tipus de producte.</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.4</td>
+                            <td>Organitza la pàgina amb etiquetes semàntiques (<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>) i corregix el codi fins a obtindre zero errors en el validador del W3C.</td>
+                            <td>20&nbsp;%</td>
+                            <td>8&nbsp;%</td>
+                            <td>Exigix entendre l'estructura global i revisar el propi codi.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA1</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>40&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA2.1</td>
+                            <td>Enllaça un full d'estil extern i aplica selectors d'etiqueta, classe, identificador, descendent i <code>:hover</code>, resolent conflictes entre regles, i dona format al text (fonts web, mides en <code>rem</code>, interlineat, colors, fons) amb bon contrast.</td>
+                            <td>25&nbsp;%</td>
+                            <td>15&nbsp;%</td>
+                            <td>Fonaments de CSS presents en totes les pàgines.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.2</td>
+                            <td>Aplica el model de caixa (<code>padding</code>, <code>border</code>, <code>margin</code>, <code>box-sizing</code>, elements de bloc i en línia, <code>border-radius</code>, <code>box-shadow</code>) i centra el contingut en un contenidor d'amplària màxima.</td>
+                            <td>20&nbsp;%</td>
+                            <td>12&nbsp;%</td>
+                            <td>Base de tota la maquetació posterior i font d'errors constants si no s'entén.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.3</td>
+                            <td>Maqueta components i pàgines amb flexbox (barra de navegació, files de targetes que s'ajusten) i amb grid (galeries, disposicions de dues columnes), triant la tècnica adequada per a cada cas.</td>
+                            <td>30&nbsp;%</td>
+                            <td>18&nbsp;%</td>
+                            <td>El contingut més difícil del mòdul i el que dona forma a les pàgines.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.4</td>
+                            <td>Adapta el disseny a mòbil, tauleta i ordinador amb l'etiqueta <code>viewport</code>, imatges flexibles i consultes de mitjans, seguint l'enfocament <em>mobile first</em>.</td>
+                            <td>20&nbsp;%</td>
+                            <td>12&nbsp;%</td>
+                            <td>Integra caixa i maquetació; imprescindible en una web real.</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.5</td>
+                            <td>Organitza el full d'estil amb variables CSS, seccions comentades i noms coherents, afig transicions, revisa el lloc amb una llista de comprovació abans del lliurament i explica les seues decisions en una presentació breu.</td>
+                            <td>5&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Bones pràctiques de dificultat baixa que milloren la qualitat del producte.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total RA2</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td><strong>60&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Funcionament d'una pàgina web: navegador, arxius, carpeta del lloc. Editor de codi i DevTools.</li>
+                <li>Estructura d'un document HTML: etiquetes, elements, atributs, <code>head</code> i <code>body</code>, niament, sagnat, comentaris.</li>
+                <li>Text: encapçalaments, paràgrafs, salts de línia, <code>strong</code>, <code>em</code>, entitats.</li>
+                <li>Llistes ordenades, no ordenades i niades. Enllaços relatius, absoluts, en pestanya nova, <code>mailto</code> i <code>tel</code>.</li>
+                <li>Imatges: <code>img</code>, <code>alt</code>, mida, formats, carpeta <code>images</code>, <code>figure</code> i <code>figcaption</code>. Àudio i vídeo.</li>
+                <li>Taules: <code>tr</code>, <code>th</code>, <code>td</code>, <code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>caption</code>, <code>colspan</code>, <code>rowspan</code>.</li>
+                <li>Formularis: <code>form</code>, <code>label</code>, tipus d'<code>input</code>, ràdio i casella, <code>select</code>, <code>textarea</code>, botons, <code>required</code>, <code>fieldset</code> i <code>legend</code>.</li>
+                <li>HTML semàntic, <code>div</code> i <code>span</code>, accessibilitat, validador del W3C.</li>
+                <li>CSS: formes d'incloure'l, sintaxi d'una regla, selectors, colors, cascada i especificitat.</li>
+                <li>Tipografia: famílies, Google Fonts, <code>px</code>, <code>rem</code> i <code>%</code>, pes, estil, interlineat, alineació, decoració, fons.</li>
+                <li>Model de caixa: <code>padding</code>, <code>border</code>, <code>margin</code>, <code>width</code>, <code>height</code>, <code>box-sizing</code>, bloc i en línia, cantons arredonits, ombres, centrar una caixa.</li>
+                <li>Flexbox: contenidor i elements, direcció, <code>justify-content</code>, <code>align-items</code>, <code>gap</code>, <code>flex-wrap</code>.</li>
+                <li>Grid: columnes i files, <code>repeat</code>, <code>fr</code>, <code>minmax</code>, <code>auto-fit</code>, <code>gap</code>, <code>object-fit</code>.</li>
+                <li>Disseny adaptable: <code>viewport</code>, imatges flexibles, consultes de mitjans, <em>mobile first</em>, proves en el mòbil.</li>
+                <li>Variables CSS, organització del full d'estil, noms, transicions, llista de comprovació de lliurament.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-text><strong>Estructura tipus d'una sessió de 55 min</strong>: 5 min d'arrencada (obrir VS Code i la carpeta de treball) · 10-15 min de demostració en directe, escrivint el codi davant de l'alumnat · 30-35 min d'exercicis · 5 min de tancament (desar i comprovar en el navegador). Les sessions de miniprojecte, prova i projecte no tenen demostració.</vf-text>
+            <vf-text>Després de cada prova hi ha una sessió de <strong>correcció i reforç</strong>: correcció comentada amb la rúbrica; qui ha tret Insuficient en alguna fila repetix exercicis bàsics d'eixe criteri amb ajuda del professor, i la resta fa exercicis d'ampliació.</vf-text>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 1 — HTML (sessions 1-19)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Lliçó</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1. La primera pàgina</td>
+                                    <td>Instal·lar o revisar VS Code, crear la carpeta de treball, primera pàgina. Ex. 1.1, 1.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>1-2. DevTools i estructura</td>
+                                    <td>Ex. 1.3. Etiquetes, elements i atributs. Ex. 2.1.</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>2. Estructura</td>
+                                    <td><code>head</code> i <code>body</code>, niament, comentaris. Ex. 2.2, 2.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>3. Text</td>
+                                    <td>Encapçalaments, paràgrafs. Ex. 3.1, 3.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>3. Text</td>
+                                    <td><code>br</code>, <code>hr</code>, <code>strong</code>, <code>em</code>, entitats. Ex. 3.3, 3.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>4. Llistes</td>
+                                    <td>Llistes ordenades, no ordenades i niades. Ex. 4.1, 4.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>4. Enllaços</td>
+                                    <td>Rutes relatives i absolutes. Ex. 4.3, 4.4 (primer lloc de 3 pàgines).</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>5. Imatges</td>
+                                    <td><code>alt</code>, carpeta <code>images</code>, <code>figure</code>. Ex. 5.1-5.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>6. Taules</td>
+                                    <td>Ex. 6.1-6.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>7. Formularis</td>
+                                    <td>Camps, <code>label</code>, tipus. Ex. 7.1, 7.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>7. Formularis</td>
+                                    <td><code>textarea</code>, <code>fieldset</code>. Ex. 7.3 i formulari d'alta de la imatge (més exercicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>Miniprojecte 1</td>
+                                    <td>Pàgina d'un grup, equip, joc o sèrie, només HTML: estructura i text.</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>Miniprojecte 1</td>
+                                    <td>Llistes, imatges, taula i enllaços.</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Miniprojecte 1</td>
+                                    <td>Formulari; revisió en parelles amb la llista de requisits; lliurament en zip.</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>8. Semàntica</td>
+                                    <td>Àrees de la pàgina, <code>div</code> i <code>span</code>, accessibilitat. Ex. 8.1, 8.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>8. Validació</td>
+                                    <td>Validador del W3C. Ex. 8.2 i pàgina dels mòduls de SMX (més exercicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>Repàs</td>
+                                    <td>Exercicis de repàs del format de la prova: esquelet de memòria, trobar errors, llista niada, taula, formulari, etiquetes semàntiques.</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>Prova d'HTML</td>
+                                    <td>Prova individual (55 min).</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>Correcció i reforç</td>
+                                    <td>Correcció comentada de la prova d'HTML i reforç.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 2 — CSS (sessions 20-46)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Lliçó</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20</td>
+                                    <td>9. Bases de CSS</td>
+                                    <td>Tres formes d'afegir CSS, sintaxi, selectors. Ex. 9.1, 9.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>9. Bases de CSS</td>
+                                    <td>Colors, cascada i especificitat. Ex. 9.3, 9.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>10. Text i colors</td>
+                                    <td>Fonts, Google Fonts, unitats, fons. Ex. 10.1-10.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>10. Text i colors</td>
+                                    <td>Pàgina personal i formulari d'alta amb estil (més exercicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>11. Model de caixa</td>
+                                    <td>Ex. 11.1-11.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>11. Model de caixa</td>
+                                    <td>Ex. 11.4, 11.5.</td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td>11. Model de caixa</td>
+                                    <td>Targeta de pel·lícula i invitació d'aniversari (més exercicis). Càlculs de mida real amb DevTools.</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td>Miniprojecte 2</td>
+                                    <td>Pàgina del grup amb CSS extern: fonts, colors, contenidor.</td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td>Miniprojecte 2</td>
+                                    <td>Menú com a botons, blocs amb ombra i cantons arredonits.</td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td>Miniprojecte 2</td>
+                                    <td>Acabar; revisió en parelles amb la llista de requisits; lliurament.</td>
+                                </tr>
+                                <tr>
+                                    <td>30</td>
+                                    <td>12. Flexbox</td>
+                                    <td>Contenidor, direcció, alineació, <code>gap</code>. Ex. 12.1-12.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>31</td>
+                                    <td>12. Flexbox</td>
+                                    <td>Barra de navegació. Ex. 12.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>32</td>
+                                    <td>12. Flexbox</td>
+                                    <td>Fila de targetes amb <code>flex-wrap</code>. Ex. 12.5.</td>
+                                </tr>
+                                <tr>
+                                    <td>33</td>
+                                    <td>12. Flexbox</td>
+                                    <td>Menú de navegació i països (més exercicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>34</td>
+                                    <td>12. Flexbox</td>
+                                    <td>Pàgina del grup (més exercicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>35</td>
+                                    <td>13. Grid</td>
+                                    <td>Columnes, <code>fr</code>, <code>gap</code>. Ex. 13.1, 13.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>36</td>
+                                    <td>13. Grid</td>
+                                    <td>Galeria d'imatges. Ex. 13.3.</td>
+                                </tr>
+                                <tr>
+                                    <td>37</td>
+                                    <td>13. Grid</td>
+                                    <td>Disposició de pàgina. Ex. 13.4 i tauler d'escacs (més exercicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>38</td>
+                                    <td>Repàs</td>
+                                    <td>Exercicis de repàs del format de la prova: selectors, càlcul de caixa, centrar, barra de navegació, galeria, trobar errors.</td>
+                                </tr>
+                                <tr>
+                                    <td>39</td>
+                                    <td>Prova de CSS</td>
+                                    <td>Prova individual (55 min).</td>
+                                </tr>
+                                <tr>
+                                    <td>40</td>
+                                    <td>Correcció i reforç</td>
+                                    <td>Correcció comentada de la prova de CSS i reforç.</td>
+                                </tr>
+                                <tr>
+                                    <td>41</td>
+                                    <td>14. Responsive</td>
+                                    <td><code>viewport</code>, imatges flexibles. Ex. 14.1.</td>
+                                </tr>
+                                <tr>
+                                    <td>42</td>
+                                    <td>14. Responsive</td>
+                                    <td>Consultes de mitjans i <em>mobile first</em>. Ex. 14.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>43</td>
+                                    <td>14. Responsive</td>
+                                    <td>Ex. 14.3, 14.4.</td>
+                                </tr>
+                                <tr>
+                                    <td>44</td>
+                                    <td>14. Responsive</td>
+                                    <td>Pàgina del grup adaptable (més exercicis). Prova en el mòbil propi.</td>
+                                </tr>
+                                <tr>
+                                    <td>45</td>
+                                    <td>15. Variables</td>
+                                    <td>Variables, sistema de disseny, transicions. Ex. 15.1, 15.2.</td>
+                                </tr>
+                                <tr>
+                                    <td>46</td>
+                                    <td>15. Bones pràctiques</td>
+                                    <td>Organització del CSS i llista de comprovació. Ex. 15.3, 15.4.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Bloc 3 — Projecte final (sessions 47-62)</vf-title>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sessió</th>
+                                    <th>Fase</th>
+                                    <th>Activitats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>47</td>
+                                    <td>Planificació</td>
+                                    <td>Presentació del repte i de la rúbrica. Esbós en paper de les quatre pàgines i estructura de carpetes. Recollida de textos i imatges lliures de drets.</td>
+                                </tr>
+                                <tr>
+                                    <td>48</td>
+                                    <td>Fase 1</td>
+                                    <td>Pàgines <code>index</code> i <code>about</code> amb contingut real.</td>
+                                </tr>
+                                <tr>
+                                    <td>49</td>
+                                    <td>Fase 1</td>
+                                    <td>Pàgines <code>projects</code> i <code>contact</code>; menú comú.</td>
+                                </tr>
+                                <tr>
+                                    <td>50</td>
+                                    <td>Fase 1</td>
+                                    <td>Formulari de contacte, taula i llista.</td>
+                                </tr>
+                                <tr>
+                                    <td>51</td>
+                                    <td>Fase 1</td>
+                                    <td>Validador en les quatre pàgines. <strong>Fita 1</strong>: el professor revisa que les quatre pàgines s'obrin i el menú funcione.</td>
+                                </tr>
+                                <tr>
+                                    <td>52</td>
+                                    <td>Fase 2</td>
+                                    <td>Full d'estil: variables, fonts i colors.</td>
+                                </tr>
+                                <tr>
+                                    <td>53</td>
+                                    <td>Fase 2</td>
+                                    <td>Barra de navegació amb flexbox; contenidor i espais.</td>
+                                </tr>
+                                <tr>
+                                    <td>54</td>
+                                    <td>Fase 2</td>
+                                    <td>Pàgina de projectes amb grid o flexbox.</td>
+                                </tr>
+                                <tr>
+                                    <td>55</td>
+                                    <td>Fase 2</td>
+                                    <td>Estil de la resta de pàgines i del formulari; <code>:hover</code> amb transició.</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Fase 2</td>
+                                    <td><strong>Fita 2</strong>: revisió ràpida del CSS de cada alumne; correccions.</td>
+                                </tr>
+                                <tr>
+                                    <td>57</td>
+                                    <td>Fase 3</td>
+                                    <td>Consultes de mitjans.</td>
+                                </tr>
+                                <tr>
+                                    <td>58</td>
+                                    <td>Fase 3</td>
+                                    <td>Proves a 375, 768 i 1200 px i en el mòbil propi.</td>
+                                </tr>
+                                <tr>
+                                    <td>59</td>
+                                    <td>Fase 3</td>
+                                    <td>Repàs del lloc amb la llista de comprovació de la lliçó 15 i amb la rúbrica. README i zip.</td>
+                                </tr>
+                                <tr>
+                                    <td>60</td>
+                                    <td>Lliurament</td>
+                                    <td>Marge per a acabar i lliurar; qui ja ha lliurat, opcions d'ampliació del projecte.</td>
+                                </tr>
+                                <tr>
+                                    <td>61</td>
+                                    <td>Presentacions</td>
+                                    <td>Presentacions de 3 min amb una pregunta del professor sobre el codi.</td>
+                                </tr>
+                                <tr>
+                                    <td>62</td>
+                                    <td>Presentacions</td>
+                                    <td>Resta de presentacions. Tancament del mòdul.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-text>Els enunciats complets estan en cada lliçó de la web. Nivells: <strong>bàsic</strong> = primers exercicis de la lliçó; <strong>estàndard</strong> = tots els exercicis de l'apartat <em>Exercises</em>; <strong>ampliació</strong> = apartat <em>More exercises</em>. Qui va endarrerit fa el bàsic i passa a la lliçó següent.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Lliçó</th>
+                            <th>Bàsic</th>
+                            <th>Estàndard</th>
+                            <th>Ampliació</th>
+                            <th>Criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. La primera pàgina</td>
+                            <td>1.1, 1.2</td>
+                            <td>+ 1.3</td>
+                            <td>—</td>
+                            <td>CA1.1</td>
+                        </tr>
+                        <tr>
+                            <td>2. Estructura</td>
+                            <td>2.1</td>
+                            <td>+ 2.2, 2.3</td>
+                            <td>—</td>
+                            <td>CA1.1</td>
+                        </tr>
+                        <tr>
+                            <td>3. Text</td>
+                            <td>3.1, 3.2</td>
+                            <td>+ 3.3, 3.4</td>
+                            <td>—</td>
+                            <td>CA1.1</td>
+                        </tr>
+                        <tr>
+                            <td>4. Llistes i enllaços</td>
+                            <td>4.1, 4.2</td>
+                            <td>+ 4.3, 4.4</td>
+                            <td>—</td>
+                            <td>CA1.2</td>
+                        </tr>
+                        <tr>
+                            <td>5. Imatges</td>
+                            <td>5.1</td>
+                            <td>+ 5.2-5.4</td>
+                            <td>—</td>
+                            <td>CA1.2</td>
+                        </tr>
+                        <tr>
+                            <td>6. Taules</td>
+                            <td>6.1</td>
+                            <td>+ 6.2, 6.3</td>
+                            <td>—</td>
+                            <td>CA1.2</td>
+                        </tr>
+                        <tr>
+                            <td>7. Formularis</td>
+                            <td>7.1</td>
+                            <td>+ 7.2, 7.3</td>
+                            <td>Formulari d'alta de la imatge</td>
+                            <td>CA1.3</td>
+                        </tr>
+                        <tr>
+                            <td>8. Semàntica</td>
+                            <td>8.1</td>
+                            <td>+ 8.2, 8.3</td>
+                            <td>Pàgina dels mòduls de SMX</td>
+                            <td>CA1.4</td>
+                        </tr>
+                        <tr>
+                            <td>9. Bases de CSS</td>
+                            <td>9.1, 9.2</td>
+                            <td>+ 9.3, 9.4</td>
+                            <td>—</td>
+                            <td>CA2.1</td>
+                        </tr>
+                        <tr>
+                            <td>10. Text i colors</td>
+                            <td>10.1, 10.2</td>
+                            <td>+ 10.3, 10.4</td>
+                            <td>Pàgina personal; formulari d'alta amb estil</td>
+                            <td>CA2.1</td>
+                        </tr>
+                        <tr>
+                            <td>11. Model de caixa</td>
+                            <td>11.1, 11.2</td>
+                            <td>+ 11.3-11.5</td>
+                            <td>Targeta de pel·lícula; invitació d'aniversari</td>
+                            <td>CA2.2</td>
+                        </tr>
+                        <tr>
+                            <td>12. Flexbox</td>
+                            <td>12.1, 12.3</td>
+                            <td>+ 12.2, 12.4, 12.5</td>
+                            <td>Menú; països; pàgina del grup</td>
+                            <td>CA2.3</td>
+                        </tr>
+                        <tr>
+                            <td>13. Grid</td>
+                            <td>13.1</td>
+                            <td>+ 13.2-13.4</td>
+                            <td>Tauler d'escacs</td>
+                            <td>CA2.3</td>
+                        </tr>
+                        <tr>
+                            <td>14. Responsive</td>
+                            <td>14.1</td>
+                            <td>+ 14.2-14.4</td>
+                            <td>Pàgina del grup adaptable</td>
+                            <td>CA2.4</td>
+                        </tr>
+                        <tr>
+                            <td>15. Variables</td>
+                            <td>15.1</td>
+                            <td>+ 15.2-15.4</td>
+                            <td>—</td>
+                            <td>CA2.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Miniprojecte 1 — Pàgina d'un grup (només HTML)</vf-title>
+            <vf-text>Pàgina sobre un grup de música, un equip, un joc o una sèrie amb: esquelet correcte, un <code>h1</code> i tres <code>h2</code>, cinc paràgrafs, una llista ordenada i una no ordenada, tres imatges amb <code>alt</code> en <code>images/</code>, una taula de tres files, un formulari "fes-te soci" de cinc camps amb <code>label</code> i dos enllaços externs en pestanya nova. Lliurament en zip.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: tots els requisits amb el mínim indicat.</li>
+                <li><strong>Ampliació</strong>: afegir una segona pàgina (discografia, plantilla o temporades) enllaçada en les dues direccions, amb una taula amb <code>thead</code>, <code>caption</code> i <code>colspan</code>.</li>
+            </vf-list>
+            <vf-text>Dinàmica d'aula: abans de lliurar, cada parella intercanvia l'ordinador i marca la llista de requisits de l'altre; el professor dona retroacció oral. Criteris treballats: CA1.1, CA1.2, CA1.3.</vf-text>
+
+            <vf-title level="3">Miniprojecte 2 — La pàgina del grup amb estil</vf-title>
+            <vf-text>La pàgina del miniprojecte 1 amb <code>css/style.css</code> extern i cap <code>style=</code> en l'HTML, <code>box-sizing: border-box</code>, una Google Font, un esquema de 3 o 4 colors, contenidor centrat d'amplària màxima, enllaços del menú com a botons amb <code>:hover</code>, un bloc amb <code>border-radius</code> i <code>box-shadow</code>, i interlineat d'almenys 1,5.</vf-text>
+            <vf-text>Mateixa dinàmica de revisió en parelles. Criteris treballats: CA2.1, CA2.2.</vf-text>
+
+            <vf-title level="3">Prova d'HTML (sessió 18)</vf-title>
+            <vf-text>Esquelet de memòria · corregir 8 errors en un codi donat · una llista niada · una taula amb <code>colspan</code> · un formulari de 4 camps amb <code>label</code> i <code>required</code> · triar l'etiqueta semàntica adequada en 6 casos.</vf-text>
+
+            <vf-title level="3">Prova de CSS (sessió 39)</vf-title>
+            <vf-text>Escriure una regla per a un selector donat · calcular la mida real d'una caixa · centrar una caixa amb flexbox · maquetar una barra de navegació · una galeria amb grid · trobar 5 errors en un CSS donat.</vf-text>
+
+            <vf-title level="3">Projecte final — La meua web personal (sessions 47-62)</vf-title>
+            <vf-text>Quatre pàgines (<code>index</code>, <code>about</code>, <code>projects</code>, <code>contact</code>) amb els requisits mínims de la lliçó 16, que coincidixen amb el nivell Suficient de cada fila de la rúbrica:</vf-text>
+            <vf-list>
+                <li><strong>HTML</strong>: esquelet complet i <code>title</code> propi en cada pàgina; <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> i <code>footer</code> en les quatre; el mateix menú en totes i tots els enllaços funcionant; almenys 5 imatges en <code>images/</code> amb <code>alt</code> descriptiu; almenys una taula i una llista; formulari de contacte de 6 camps, tots amb <code>label</code>, i <code>required</code> en els obligatoris; com a màxim 3 errors en el validador sumant les quatre pàgines.</li>
+                <li><strong>CSS</strong>: un únic full extern i cap <code>style=</code>; <code>box-sizing: border-box</code>; <code>:root</code> amb almenys 5 variables; una Google Font; flexbox en el menú; grid o flexbox en la pàgina de projectes; almenys un <code>:hover</code> amb <code>transition</code>; <code>viewport</code> i almenys una consulta de mitjans; sense desplaçament horitzontal ni contingut tallat a 375 px.</li>
+                <li><strong>Lliurament</strong>: <code>cognom-nom-project.zip</code> amb <code>README.txt</code> (nom, tema del lloc, origen de les imatges i un paràgraf sobre el que ha costat més) i presentació de 3 min amb una cosa de què està orgullós i una que milloraria.</li>
+            </vf-list>
+            <vf-list>
+                <li><strong>Bàsic</strong>: els requisits mínims; plantilla de l'esbós de les quatre pàgines donada pel professor.</li>
+                <li><strong>Ampliació</strong>: <em>mobile first</em>, <code>figure</code> i <code>figcaption</code>, galeria amb <code>auto-fit</code>, o l'opció del joc de preguntes.</li>
+            </vf-list>
+            <vf-text>Si el lloc no s'obri o el menú no funciona, es torna per a corregir-lo abans de qualificar-lo.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: demostració en directe escrivint el codi (no diapositives amb codi fet); cada lliçó té codi i vista prèvia costat a costat; full de referència ràpida d'etiquetes i propietats en paper; glossari anglés-valencià dels termes de les lliçons; traductor del navegador permés per a llegir les lliçons.</li>
+                <li><strong>Acció i expressió</strong>: arxius de partida per als exercicis d'ampliació; Emmet i Live Server en VS Code per a reduir errors de tecleig; tres nivells en cada lliçó; en les proves, temps addicional i full de referència per a qui tinga adaptació reconeguda; presentació final davant només del professor si l'alumne ho necessita.</li>
+                <li><strong>Implicació</strong>: tema del projecte de lliure elecció (o alternativa del joc de preguntes); el producte final servix com a portafoli real; revisió en parelles dels miniprojectes; qui acaba abans ajuda un company sense tocar-li el teclat.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Moment</th>
+                            <th>Qui avalua</th>
+                            <th>Activitat on s'aplica</th>
+                            <th>Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rúbrica de la prova d'HTML</td>
+                            <td>Sessió 18</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova d'HTML</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica de la prova de CSS</td>
+                            <td>Sessió 39</td>
+                            <td>Heteroavaluació</td>
+                            <td>Prova de CSS</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Rúbrica del projecte</td>
+                            <td>Lliurament (sessió 60) i presentacions (sessions 61-62)</td>
+                            <td>Heteroavaluació (l'alumnat la usa abans per a revisar el seu lloc, sessió 59)</td>
+                            <td>Projecte final i presentació</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+
+            <vf-title level="3">Rúbrica de la prova d'HTML</vf-title>
+            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient.</vf-text>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PH1. Esquelet i correcció d'errors</strong></td>
+                            <td>CA1.1</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>A l'esquelet li falten 2 o més elements (doctype, <code>html</code> amb <code>lang</code>, <code>head</code>, <code>meta charset</code>, <code>title</code>, <code>body</code>) o estan mal niats, o corregix menys de 4 dels 8 errors.</td>
+                            <td>Esquelet amb com a màxim un element absent o mal niat, i almenys 4 errors corregits.</td>
+                            <td>Esquelet complet i ben niat, i almenys 6 errors corregits.</td>
+                            <td>Esquelet complet, ben niat i sagnat, i els 8 errors corregits sense introduir-ne de nous.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PH2. Llista niada i taula</strong></td>
+                            <td>CA1.2</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>Ni la llista niada ni la taula es veuen en el navegador com demana l'enunciat.</td>
+                            <td>Almenys una de les dues es veu com demana l'enunciat.</td>
+                            <td>Totes dues es veuen com demana l'enunciat, amb com a màxim un defecte de codi (subllista fora del <code>li</code>, capçalera sense <code>th</code>, una etiqueta sense tancar).</td>
+                            <td>Totes dues sense cap defecte de codi; el <code>colspan</code> ocupa exactament les columnes demanades.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PH3. Formulari</strong></td>
+                            <td>CA1.3</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>Menys de 2 camps complets (<code>label</code> associada amb <code>for</code>/<code>id</code>, tipus adequat i <code>required</code> on el demana l'enunciat).</td>
+                            <td>2 camps complets.</td>
+                            <td>3 camps complets.</td>
+                            <td>Els 4 camps complets, dins d'un <code>form</code> amb botó d'enviament.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PH4. Etiquetes semàntiques</strong></td>
+                            <td>CA1.4</td>
+                            <td>25&nbsp;% del criteri</td>
+                            <td>0-2 casos encertats de 6.</td>
+                            <td>3 casos encertats.</td>
+                            <td>4 o 5 casos encertats.</td>
+                            <td>Els 6 casos encertats.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica de la prova de CSS</vf-title>
+            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA2 avaluat en la prova.</vf-text>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PC1. Selectors i errors de CSS</strong></td>
+                            <td>CA2.1</td>
+                            <td>40&nbsp;% del criteri</td>
+                            <td>El selector no tria els elements demanats, o corregix menys de 2 dels 5 errors.</td>
+                            <td>El selector tria els elements demanats (encara que la regla tinga algun error de sintaxi), i almenys 2 errors corregits.</td>
+                            <td>Selector i sintaxi correctes, i almenys 4 errors corregits.</td>
+                            <td>Selector i sintaxi correctes, i els 5 errors corregits.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PC2. Càlcul del model de caixa</strong></td>
+                            <td>CA2.2</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>No planteja el càlcul o suma valors que no formen part de la caixa.</td>
+                            <td>Planteja el càlcul sumant contingut, <code>padding</code> i <code>border</code>, encara que cap de les dues dimensions done el resultat correcte.</td>
+                            <td>Almenys una dimensió (amplària o altura) correcta.</td>
+                            <td>Les dues dimensions correctes, amb el càlcul escrit.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PC3. Flexbox i grid</strong></td>
+                            <td>CA2.3</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>Cap apartat (centrar amb flexbox, barra de navegació, galeria amb grid) funciona del tot i com a màxim un funciona amb defectes.</td>
+                            <td>Almenys un apartat funciona del tot, o almenys dos funcionen amb defectes (alineació, <code>gap</code>, nombre de columnes).</td>
+                            <td>Almenys dos apartats funcionen del tot.</td>
+                            <td>Els tres apartats funcionen sense defectes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Rúbrica del projecte</vf-title>
+            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1 i RA2. Es comprova obrint el lloc en el navegador a 375, 768 i 1200 px, passant el validador a les quatre pàgines i mirant el codi. El nivell Suficient de cada fila són els requisits mínims del projecte; cada nivell superior inclou l'anterior.</vf-text>
+            <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R1. Estructura i arxius</strong></td>
+                            <td>CA1.1</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>Falta alguna de les 4 pàgines, algun esquelet està incomplet (sense doctype, <code>lang</code>, <code>charset</code> o <code>title</code>) o alguna pàgina no té <code>title</code> propi.</td>
+                            <td>Les 4 pàgines amb esquelet complet i un <code>title</code> propi en cada una.</td>
+                            <td>A més, encapçalaments en ordre (un <code>h1</code> per pàgina, sense saltar nivells) i noms d'arxius i carpetes en minúscules, sense espais ni accents.</td>
+                            <td>A més, sagnat uniforme i comentaris que separen les parts de cada pàgina.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R2. Llistes, enllaços, imatges i taula</strong></td>
+                            <td>CA1.2</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>El menú no és igual o falla en alguna pàgina, hi ha menys de 5 imatges en <code>images/</code>, alguna imatge no té <code>alt</code> descriptiu, o falta la taula o la llista.</td>
+                            <td>El mateix menú en les 4 pàgines amb tots els enllaços funcionant; almenys 5 imatges en <code>images/</code> amb <code>alt</code> descriptiu; almenys una taula i una llista.</td>
+                            <td>A més, taula amb fila de capçalera en <code>th</code> i enllaços externs en pestanya nova.</td>
+                            <td>A més, <code>caption</code> en la taula o almenys una <code>figure</code> amb <code>figcaption</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R3. Formulari de contacte</strong></td>
+                            <td>CA1.3</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>Menys de 6 camps, algun camp sense <code>label</code> o cap camp obligatori amb <code>required</code>.</td>
+                            <td>6 camps, tots amb <code>label</code>, i <code>required</code> en els obligatoris.</td>
+                            <td>A més, <code>label</code> associada amb <code>for</code>/<code>id</code> i almenys 3 tipus d'entrada adequats al contingut (p. ex. <code>email</code>, <code>tel</code>, <code>select</code>, <code>textarea</code>).</td>
+                            <td>A més, camps agrupats amb <code>fieldset</code> i <code>legend</code> i validació coherent (<code>type</code>, <code>minlength</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R4. Semàntica i validació</strong></td>
+                            <td>CA1.4</td>
+                            <td>75&nbsp;% del criteri</td>
+                            <td>Falta alguna de les etiquetes <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> o <code>footer</code> en alguna pàgina, o el validador dona més de 3 errors sumant les 4 pàgines.</td>
+                            <td><code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> i <code>footer</code> en les 4 pàgines i com a màxim 3 errors en el validador sumant les 4 pàgines.</td>
+                            <td>A més, 0 errors en el validador i una <code>section</code> per a cada bloc de contingut, amb el seu encapçalament.</td>
+                            <td>A més, <code>article</code> per al contingut independent (p. ex. cada projecte) i <code>div</code> només per a maquetar.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R5. Selectors, text i colors</strong></td>
+                            <td>CA2.1</td>
+                            <td>60&nbsp;% del criteri</td>
+                            <td>Algun estil dins de l'HTML (<code>style=</code> o <code>&lt;style&gt;</code>), més d'un full d'estil o sense Google Font.</td>
+                            <td>Un únic full extern enllaçat des de les 4 pàgines, cap estil dins de l'HTML i una Google Font aplicada.</td>
+                            <td>A més, selectors de classe i descendent (no només d'etiqueta), interlineat ≥ 1,5 i text llegible sobre tots els fons.</td>
+                            <td>A més, un esquema de 3-4 colors aplicat igual en tot el lloc i sense regles repetides ni contradictòries.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R6. Model de caixa</strong></td>
+                            <td>CA2.2</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>Sense <code>box-sizing: border-box</code>, contingut enganxat a les vores o blocs que se superposen.</td>
+                            <td><code>box-sizing: border-box</code>; tot el contingut separat de les vores amb <code>padding</code> o <code>margin</code> i cap bloc superposat.</td>
+                            <td>A més, contenidor centrat d'amplària màxima i almenys un bloc amb <code>border-radius</code> i <code>box-shadow</code>.</td>
+                            <td>A més, els mateixos espais en elements equivalents de les 4 pàgines.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R7. Flexbox i grid</strong></td>
+                            <td>CA2.3</td>
+                            <td>50&nbsp;% del criteri</td>
+                            <td>El menú no usa flexbox o la pàgina de projectes no usa ni grid ni flexbox (p. ex. maquetada amb taules o espais).</td>
+                            <td>Menú amb flexbox i pàgina de projectes amb grid o flexbox, sense elements superposats.</td>
+                            <td>A més, menú alineat amb <code>justify-content</code>, <code>align-items</code> i <code>gap</code>, i targetes de projectes alineades amb imatges de la mateixa altura.</td>
+                            <td>A més, justifica en la presentació per què ha triat flexbox o grid en cada cas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R8. Disseny adaptable</strong></td>
+                            <td>CA2.4</td>
+                            <td>100&nbsp;% del criteri</td>
+                            <td>Sense <code>viewport</code>, sense cap consulta de mitjans, o a 375 px hi ha desplaçament horitzontal o contingut tallat.</td>
+                            <td><code>viewport</code>, almenys una consulta de mitjans i, a 375 px, cap desplaçament horitzontal ni contingut tallat.</td>
+                            <td>A més, correcte a 768 i 1200 px, i el menú i els projectes canvien de disposició segons l'amplària.</td>
+                            <td>A més, escrit en <em>mobile first</em> (<code>min-width</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R9. Bones pràctiques, lliurament i presentació</strong></td>
+                            <td>CA2.5</td>
+                            <td>100&nbsp;% del criteri</td>
+                            <td>Menys de 5 variables en <code>:root</code>, cap <code>:hover</code> amb <code>transition</code>, zip o README incomplets, lliurament fora de termini, o presentació sense la cosa de què està orgullós o la que milloraria.</td>
+                            <td><code>:root</code> amb almenys 5 variables; almenys un <code>:hover</code> amb <code>transition</code>; zip amb el nom correcte i README complet; presentació en 3 min amb una cosa de què està orgullós i una que milloraria.</td>
+                            <td>A més, tots els colors en variables i el CSS dividit en seccions comentades.</td>
+                            <td>A més, respon bé la pregunta del professor sobre el seu codi.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteri</th>
+                            <th>Pes dins del RA</th>
+                            <th>Pes en la SA</th>
+                            <th>Activitat(s)</th>
+                            <th>Indicadors (instrument) i pes dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CA1.1</td>
+                            <td>25&nbsp;%</td>
+                            <td>10&nbsp;%</td>
+                            <td>Lliçons 1-3, miniprojecte 1, projecte</td>
+                            <td>PH1 (prova d'HTML) 50&nbsp;% · R1 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.2</td>
+                            <td>35&nbsp;%</td>
+                            <td>14&nbsp;%</td>
+                            <td>Lliçons 4-6, miniprojecte 1, projecte</td>
+                            <td>PH2 (prova d'HTML) 50&nbsp;% · R2 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.3</td>
+                            <td>20&nbsp;%</td>
+                            <td>8&nbsp;%</td>
+                            <td>Lliçó 7, miniprojecte 1, projecte</td>
+                            <td>PH3 (prova d'HTML) 50&nbsp;% · R3 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA1.4</td>
+                            <td>20&nbsp;%</td>
+                            <td>8&nbsp;%</td>
+                            <td>Lliçó 8, projecte</td>
+                            <td>PH4 (prova d'HTML) 25&nbsp;% · R4 (projecte) 75&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.1</td>
+                            <td>25&nbsp;%</td>
+                            <td>15&nbsp;%</td>
+                            <td>Lliçons 9-10, miniprojecte 2, projecte</td>
+                            <td>PC1 (prova de CSS) 40&nbsp;% · R5 (projecte) 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.2</td>
+                            <td>20&nbsp;%</td>
+                            <td>12&nbsp;%</td>
+                            <td>Lliçó 11, miniprojecte 2, projecte</td>
+                            <td>PC2 (prova de CSS) 50&nbsp;% · R6 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.3</td>
+                            <td>30&nbsp;%</td>
+                            <td>18&nbsp;%</td>
+                            <td>Lliçons 12-13, projecte</td>
+                            <td>PC3 (prova de CSS) 50&nbsp;% · R7 (projecte) 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.4</td>
+                            <td>20&nbsp;%</td>
+                            <td>12&nbsp;%</td>
+                            <td>Lliçó 14, projecte</td>
+                            <td>R8 (projecte) 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CA2.5</td>
+                            <td>5&nbsp;%</td>
+                            <td>3&nbsp;%</td>
+                            <td>Lliçó 15, projecte i presentació</td>
+                            <td>R9 (projecte) 100&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text><strong>Nota de cada criteri</strong> = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA1.4 = 0,25·PH4 + 0,75·R4.</vf-text>
+            <vf-text><strong>Nota de RA1</strong> = 0,25·CA1.1 + 0,35·CA1.2 + 0,20·CA1.3 + 0,20·CA1.4</vf-text>
+            <vf-text><strong>Nota de RA2</strong> = 0,25·CA2.1 + 0,20·CA2.2 + 0,30·CA2.3 + 0,20·CA2.4 + 0,05·CA2.5</vf-text>
+            <vf-text><strong>Nota de la SA</strong> = 0,40·RA1 + 0,60·RA2</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Equips amb VS Code (extensions Live Server i, opcionalment, Prettier), dos navegadors i accés a Internet.</li>
+                <li>Projector per a la demostració en directe.</li>
+                <li>Pàgines de les lliçons 1-16 en la web, amb els arxius de partida dels exercicis d'ampliació i el projecte de referència.</li>
+                <li>Validador del W3C, Google Fonts, bancs d'imatges lliures (Unsplash, Pexels, Pixabay).</li>
+                <li>Mòbil de l'alumnat (o mode dispositiu de DevTools) per a provar el disseny adaptable.</li>
+                <li>Full de referència ràpida d'HTML i CSS i glossari anglés-valencià.</li>
+                <li>Llistes de requisits dels miniprojectes, llista de comprovació de la lliçó 15 i plantilla d'esbós de les quatre pàgines.</li>
+                <li>Proves d'HTML i de CSS, i les tres rúbriques.</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

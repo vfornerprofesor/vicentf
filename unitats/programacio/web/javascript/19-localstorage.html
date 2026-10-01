@@ -232,38 +232,91 @@
                 F12 → tab *Application* (Chrome) or *Storage* (Firefox) → *Local Storage*.
                 You can see everything you saved, and delete it while testing.
             </vf-text>
-            <!-- <vf-img src="assets/unitats/programacio/web/javascript/13-localstorage/devtools.png" alt="DevTools Application tab showing the tasks key"></vf-img> -->
-            <!-- [IMATGE: assets/unitats/programacio/web/javascript/13-localstorage/devtools.png — captura de la pestanya Application/Storage de DevTools amb la clau "tasks" i el seu valor JSON visible.] -->
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/19-localstorage/devtools.png" alt="DevTools Application tab showing the tasks key"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/19-localstorage/devtools.png — captura de la pestanya Application/Storage de DevTools amb la clau "tasks" i el seu valor JSON visible.] -->
+        </vf-content>
+
+        <vf-title level="2">All the ways in and out</vf-title>
+        <vf-content>
+            <vf-text>
+                By now you have used many ways to get information and to show it. This is
+                the complete list for a program in the browser:
+            </vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr><th>I want to…</th><th>I use</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ask something quickly (only for tests)</td><td><code>prompt</code></td></tr>
+                        <tr><td>tell something that blocks the page</td><td><code>alert</code></td></tr>
+                        <tr><td>ask yes or no</td><td><code>confirm</code></td></tr>
+                        <tr><td>see values while I program</td><td><code>console.log</code>, <code>console.table</code></td></tr>
+                        <tr><td>read what the user types, show results</td><td>the page (DOM): inputs, <code>textContent</code>, <code>createElement</code></td></tr>
+                        <tr><td>remember data after closing the browser</td><td><code>localStorage</code></td></tr>
+                        <tr><td>get data from a server</td><td><code>fetch</code> (next steps, lesson 27)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>
+                `console.table` shows an array of objects as a table in the console. Very
+                useful to check your data:
+            </vf-text>
+            <vf-code language="javascript">
+                console.table(tasks);
+            </vf-code>
+            <vf-text>
+                And to show numbers and dates as people expect them:
+            </vf-text>
+            <vf-code language="javascript">
+                (1234.5).toLocaleString("ca-ES", { minimumFractionDigits: 2 });     // "1.234,50"
+                (0.215).toLocaleString("ca-ES", { style: "percent", maximumFractionDigits: 1 });  // "21,5 %"
+                new Date().toLocaleDateString("ca-ES");                               // "20/5/2027"
+            </vf-code>
         </vf-content>
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 13.1.* Ask the user's name the first time and save it. The next
+                *Exercise 19.1.* Ask the user's name the first time and save it. The next
                 time the page loads, greet them directly, with no question. Add a "Forget
                 me" button.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 13.2.* A click counter that survives a reload.
+                *Exercise 19.2.* A click counter that survives a reload.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 13.3.* Add `localStorage` to your mini-project 2. This is the
+                *Exercise 19.3.* Add `localStorage` to your mini-project 2. This is the
                 important one: your list must still be there after F5.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 13.4.* Add a "Clear all" button that empties the array, saves and
+                *Exercise 19.4.* Add a "Clear all" button that empties the array, saves and
                 redraws.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 13.5.* Save an array of objects: products with name and price.
+                *Exercise 19.5.* Save an array of objects: products with name and price.
                 Draw them as cards and keep them after a reload.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 13.6. Dark mode.* A button that adds or removes the class `dark`
+                *Exercise 19.6. Dark mode.* A button that adds or removes the class `dark`
                 on `&lt;body&gt;`, and remembers the choice in `localStorage`.
             </vf-callout>
 
-            <vf-details summary="Show the solution (13.1)">
+            <vf-callout type="exercici">
+                *Exercise 19.7.* Make the table above your own: for each row, write one line
+                of code of your own work in this unit that uses it.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 19.8.* In your mini-project 2, show the array with `console.table`
+                every time it is saved, and in the page the number of items with
+                `toLocaleString`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 19.9.* Save the date of the last change and show it under the
+                list: "Last change: 20/5/2027".
+            </vf-callout>
+
+            <vf-details summary="Show the solution (19.1)">
                 <vf-code language="javascript">
                     const output = document.querySelector("#output");
                     const nameInput = document.querySelector("#nameInput");
@@ -296,10 +349,21 @@
                 </vf-code>
             </vf-details>
         </vf-content>
+
+        <vf-title level="2">RA5 test</vf-title>
+        <vf-content>
+            <vf-callout type="atencio">
+                *RA5 test.* Next session you have the test of this part: 55 minutes, on
+                the computer, alone and without notes. You deliver your folder in a zip.
+                It checks every skill of the list "RA5" in the [unit index](unitats/programacio/web/javascript).
+                <br>
+                What it covers: `prompt` and the console, formatting numbers and dates, the ways in and out, and a form that adds items to a list with events.
+            </vf-callout>
+        </vf-content>
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/12-forms.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/18-forms.html">
                     &larr; Previous: Forms and validation
                 </vf-btn>
             </vf-col>
@@ -309,8 +373,8 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/14-project.html">
-                    Next: Final project &rarr;
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/20-built-in-objects.html">
+                    Next: Objects and built-in classes &rarr;
                 </vf-btn>
             </vf-col>
         </vf-row>

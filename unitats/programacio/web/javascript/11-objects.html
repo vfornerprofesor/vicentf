@@ -169,14 +169,14 @@
                     return null;
                 }
             </vf-code>
-            <!-- <vf-img src="assets/unitats/programacio/web/javascript/09-objects/array-of-objects.png" alt="Array of three student objects with their properties"></vf-img> -->
-            <!-- [IMATGE: assets/unitats/programacio/web/javascript/09-objects/array-of-objects.png — diagrama: una llista de tres caixes (índex 0, 1, 2) i dins de cada caixa les tres propietats name/age/mark amb els seus valors.] -->
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/11-objects/array-of-objects.png" alt="Array of three student objects with their properties"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/11-objects/array-of-objects.png — diagrama: una llista de tres caixes (índex 0, 1, 2) i dins de cada caixa les tres propietats name/age/mark amb els seus valors.] -->
         </vf-content>
 
         <vf-title level="2">Drawing cards from an array of objects</vf-title>
         <vf-content>
             <vf-text>
-                The same pattern as lesson 8, but now each element has several properties,
+                The same pattern as lesson 10, but now each element has several properties,
                 so each one becomes a *card*:
             </vf-text>
             <vf-code language="javascript">
@@ -216,8 +216,8 @@
                     width: 150px;
                 }
             </vf-code>
-            <!-- <vf-img src="assets/unitats/programacio/web/javascript/09-objects/cards.png" alt="Three product cards, one with red stock 0"></vf-img> -->
-            <!-- [IMATGE: assets/unitats/programacio/web/javascript/09-objects/cards.png — captura de les tres targetes dibuixades, amb l'estoc 0 en roig.] -->
+            <!-- <vf-img src="assets/unitats/programacio/web/javascript/11-objects/cards.png" alt="Three product cards, one with red stock 0"></vf-img> -->
+            <!-- [IMATGE: assets/unitats/programacio/web/javascript/11-objects/cards.png — captura de les tres targetes dibuixades, amb l'estoc 0 en roig.] -->
         </vf-content>
 
         <vf-title level="2">Going through an object</vf-title>
@@ -239,37 +239,37 @@
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 9.1.* Create an object for your favourite video game: title,
+                *Exercise 11.1.* Create an object for your favourite video game: title,
                 studio, year, rating, and whether it is multiplayer. Draw it in the page as
                 a card.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 9.2.* Create an array with 5 products (name, price, stock) and
+                *Exercise 11.2.* Create an array with 5 products (name, price, stock) and
                 draw one card for each one.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 9.3.* Under the cards, show the total value of the stock (price ×
+                *Exercise 11.3.* Under the cards, show the total value of the stock (price ×
                 stock of each product, added up).
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 9.4.* Write a function `cheapest(products)` that returns the
+                *Exercise 11.4.* Write a function `cheapest(products)` that returns the
                 object of the cheapest product. Highlight that card with a coloured border.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 9.5.* Write a function `outOfStock(products)` that returns an
+                *Exercise 11.5.* Write a function `outOfStock(products)` that returns an
                 array with the names of the products with stock 0. Show them in a red list.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 9.6.* Two buttons: "Sort by price" and "Sort by name". Each one
+                *Exercise 11.6.* Two buttons: "Sort by price" and "Sort by name". Each one
                 sorts the array and redraws the cards.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 9.7. Class list.* An array of students with name, age and mark.
+                *Exercise 11.7. Class list.* An array of students with name, age and mark.
                 Draw a table. Marks under 5 appear in red. Under the table: average, best
                 student and how many passed.
             </vf-callout>
 
-            <vf-details summary="Show the solution (9.3, 9.4 and 9.6)">
+            <vf-details summary="Show the solution (11.3, 11.4 and 11.6)">
                 <vf-code language="javascript">
                     const products = [
                         { name: "Keyboard", price: 25, stock: 10 },
@@ -279,14 +279,14 @@
                         { name: "Webcam", price: 45, stock: 0 }
                     ];
 
-                    // 9.3
+                    // 11.3
                     let total = 0;
                     for (const p of products) {
                         total += p.price * p.stock;
                     }
                     output.textContent = `Total stock value: ${total} euros`;
 
-                    // 9.4
+                    // 11.4
                     function cheapest(list) {
                         let best = list[0];
                         for (const p of list) {
@@ -297,7 +297,7 @@
                         return best;
                     }
 
-                    // 9.6
+                    // 11.6
                     document.querySelector("#sortByPrice").addEventListener("click", function () {
                         products.sort((a, b) => a.price - b.price);
                         draw();
@@ -313,7 +313,7 @@
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/08-arrays.html">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/10-arrays.html">
                     &larr; Previous: Arrays
                 </vf-btn>
             </vf-col>
@@ -323,8 +323,8 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/10-events.html">
-                    Next: Events &rarr;
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/12-array-methods.html">
+                    Next: Array methods: filter, map and reduce &rarr;
                 </vf-btn>
             </vf-col>
         </vf-row>

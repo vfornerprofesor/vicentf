@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array methods: filter, map and reduce</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Array methods: filter, map and reduce
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">The same loops, again and again</vf-title>
+        <vf-content>
+            <vf-text>
+                Look at the loops you have written: most of them do one of four things.
+                *Find* one element. *Keep* some elements. *Transform* every element. *Add
+                up* all of them. Arrays have one method for each job. You give them a small
+                function that says what to do with *one* element, and they do the loop for
+                you.
+            </vf-text>
+            <vf-code language="javascript">
+                const products = [
+                    { name: "Mouse", price: 15, stock: 10 },
+                    { name: "Keyboard", price: 30, stock: 0 },
+                    { name: "Screen", price: 150, stock: 4 }
+                ];
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">forEach: do something with each one</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                products.forEach(function (product, index) {
+                    console.log(index, product.name);
+                });
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">find: the first one that matches</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const keyboard = products.find(p => p.name === "Keyboard");   // the object, or undefined
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">filter: keep the ones that match</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const available = products.filter(p => p.stock > 0);   // a NEW array with 2 products
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">map: transform each one</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const names = products.map(p => p.name);               // ["Mouse", "Keyboard", "Screen"]
+                const withVat = products.map(p => p.price * 1.21);     // [18.15, 36.3, 181.5]
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">reduce: turn the whole array into one value</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                const totalStock = products.reduce((total, p) => total + p.stock, 0);   // 14
+            </vf-code>
+            <vf-text>
+                `reduce` starts with the value at the end (`0`), and for each element it
+                runs the function with the total so far and the element. What the function
+                returns is the new total.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">some and every: yes or no</vf-title>
+        <vf-content>
+            <vf-code language="javascript">
+                products.some(p => p.stock === 0);     // true: at least one is out of stock
+                products.every(p => p.price &lt; 200);    // true: all of them are under 200
+            </vf-code>
+        </vf-content>
+
+        <vf-title level="2">Chaining</vf-title>
+        <vf-content>
+            <vf-text>
+                Each method returns an array, so you can join them:
+            </vf-text>
+            <vf-code language="javascript">
+                const cheapNames = products
+                    .filter(p => p.price &lt; 50)
+                    .map(p => p.name)
+                    .sort();
+            </vf-code>
+            <vf-text>
+                Read it like a sentence: "the products under 50, then their names, then
+                sorted".
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">Which one do I need?</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr><th>I want…</th><th>Method</th><th>It returns</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>to do something with each one</td><td><code>forEach</code></td><td>nothing</td></tr>
+                        <tr><td>the first one that matches</td><td><code>find</code></td><td>one element or <code>undefined</code></td></tr>
+                        <tr><td>only some of them</td><td><code>filter</code></td><td>a new, shorter array</td></tr>
+                        <tr><td>the same number, changed</td><td><code>map</code></td><td>a new array, same length</td></tr>
+                        <tr><td>one single value</td><td><code>reduce</code></td><td>one value</td></tr>
+                        <tr><td>to know if any / all match</td><td><code>some</code> / <code>every</code></td><td><code>true</code> or <code>false</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <vf-title level="2">Common mistakes</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Arrow function with braces and no `return`: `p => { p.price * 2 }` returns `undefined`. Either no braces, or write `return`.</vf-text></li>
+                <li><vf-text>Using `map` when you want `filter`: you get an array of `true` and `false`.</vf-text></li>
+                <li><vf-text>Forgetting the initial value of `reduce` (the `0`).</vf-text></li>
+                <li><vf-text>`sort` changes the original array. `filter` and `map` do not.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                *Exercise 12.1.* Redo exercise 11.3 (total value of the stock) with
+                `reduce`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.2.* Redo exercise 11.5 (names of the products out of stock)
+                with `filter` and `map`.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.3.* Redo exercise 11.7 (average, best student, how many
+                passed) with `reduce`, `find` and `filter`. No `for` loop allowed.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.4.* With `some` and `every`, show whether any product is out
+                of stock and whether all of them cost less than 50 €.
+            </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 12.5.* In one chain: the names of the products under 20 €, in
+                alphabetical order, joined with commas.
+            </vf-callout>
+
+            <vf-details summary="Show the solution (12.1)">
+                <vf-code language="javascript">
+                    // 12.1
+                    const stockValue = products.reduce((total, p) => total + p.price * p.stock, 0);
+                    output.textContent = `Total value of the stock: ${stockValue} euros`;
+                </vf-code>
+            </vf-details>
+        </vf-content>
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/11-objects.html">
+                    &larr; Previous: Objects
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/javascript">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/javascript/13-regex.html">
+                    Next: Regular expressions &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

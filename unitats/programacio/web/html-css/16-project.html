@@ -99,27 +99,34 @@
                 </tbody>
             </table>
 
+            <vf-text>
+                These are the *minimum requirements*. They are the Pass level (5-6) of every row in the
+                rubric below: if your site has all of them, you pass the project.
+            </vf-text>
+
             <vf-text>*HTML requirements*</vf-text>
             <vf-list>
-                <li><vf-text>Correct skeleton in every page, with a real <code>&lt;title&gt;</code> for each one.</vf-text></li>
-                <li><vf-text>Semantic tags: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code>.</vf-text></li>
+                <li><vf-text>A complete skeleton in every page, with its own <code>&lt;title&gt;</code> for each one.</vf-text></li>
+                <li><vf-text>Semantic tags in the four pages: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> and <code>footer</code>.</vf-text></li>
                 <li><vf-text>The same navigation menu in the four pages, and every link working.</vf-text></li>
-                <li><vf-text>At least 5 images, all with real <code>alt</code> texts, in an <code>images</code> folder.</vf-text></li>
+                <li><vf-text>At least 5 images in an <code>images</code> folder, all with a descriptive <code>alt</code> text.</vf-text></li>
                 <li><vf-text>At least one table and one ordered or unordered list.</vf-text></li>
-                <li><vf-text>A contact form with at least 6 fields, all with <code>label</code>, and <code>required</code> where it makes sense.</vf-text></li>
-                <li><vf-text>Zero errors in the W3C validator.</vf-text></li>
+                <li><vf-text>A contact form with 6 fields, all with <code>label</code>, and <code>required</code> in the compulsory ones.</vf-text></li>
+                <li><vf-text>At most 3 errors in the W3C validator, adding up the four pages.</vf-text></li>
             </vf-list>
 
             <vf-text>*CSS requirements*</vf-text>
             <vf-list>
                 <li><vf-text>One single external CSS file for the whole site.</vf-text></li>
                 <li><vf-text>No <code>style=</code> attributes in the HTML.</vf-text></li>
+                <li><vf-text><code>box-sizing: border-box</code>.</vf-text></li>
                 <li><vf-text>A <code>:root</code> block with at least 5 variables.</vf-text></li>
                 <li><vf-text>A Google Font.</vf-text></li>
                 <li><vf-text>Flexbox for the navigation bar.</vf-text></li>
                 <li><vf-text>Grid or flexbox for the projects page.</vf-text></li>
                 <li><vf-text>At least one <code>:hover</code> effect with a <code>transition</code>.</vf-text></li>
-                <li><vf-text>At least one media query. The site must work at 375px wide.</vf-text></li>
+                <li><vf-text>The <code>viewport</code> tag and at least one media query.</vf-text></li>
+                <li><vf-text>At 375px wide: no horizontal scroll and no content cut off.</vf-text></li>
             </vf-list>
 
             <vf-text>*Delivery*</vf-text>
@@ -208,36 +215,126 @@
 
         <vf-title level="2">Rubric</vf-title>
         <vf-content>
-            <vf-text>Weight of the final module grade:</vf-text>
-            <table class="table">
-                <thead>
-                    <tr><th>Element</th><th>Weight</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Class exercises (delivered and corrected)</td><td>20 %</td></tr>
-                    <tr><td>Mini-project 1 (HTML)</td><td>10 %</td></tr>
-                    <tr><td>Mini-project 2 (CSS)</td><td>10 %</td></tr>
-                    <tr><td>Test 1 (HTML)</td><td>15 %</td></tr>
-                    <tr><td>Test 2 (CSS)</td><td>15 %</td></tr>
-                    <tr><td>Final project</td><td>25 %</td></tr>
-                    <tr><td>Presentation and attitude</td><td>5 %</td></tr>
-                </tbody>
-            </table>
+            <vf-text>
+                *How your grade works.* Your module grade comes from the two learning outcomes (RA):
+                *RA1 (HTML) counts 40 %* and *RA2 (CSS) counts 60 %*. Each RA grade comes from its
+                criteria (the "I can…" points on the [unit page](unitats/programacio/web/html-css/index.html)),
+                and each criterion is assessed in the test of its RA, in the final project, or in both.
+                Class exercises and the two mini-projects are your practice for the tests and the project.
+            </vf-text>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr><th>RA</th><th>Criterion</th><th>Where it is assessed</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td rowspan="4"><strong>RA1 — HTML</strong> (40 %)</td><td>CA1.1 Skeleton, structure and files</td><td>HTML test · project (R1)</td></tr>
+                        <tr><td>CA1.2 Lists, links, images and tables</td><td>HTML test · project (R2)</td></tr>
+                        <tr><td>CA1.3 Forms</td><td>HTML test · project (R3)</td></tr>
+                        <tr><td>CA1.4 Semantic tags and validator</td><td>HTML test · project (R4)</td></tr>
+                        <tr><td rowspan="5"><strong>RA2 — CSS</strong> (60 %)</td><td>CA2.1 Selectors, text and colours</td><td>CSS test · project (R5)</td></tr>
+                        <tr><td>CA2.2 Box model</td><td>CSS test · project (R6)</td></tr>
+                        <tr><td>CA2.3 Flexbox and grid</td><td>CSS test · project (R7)</td></tr>
+                        <tr><td>CA2.4 Responsive design</td><td>Project (R8)</td></tr>
+                        <tr><td>CA2.5 Good practice, delivery and presentation</td><td>Project (R9)</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <vf-text>Final project rubric (25 % of the grade), out of 10 points:</vf-text>
-            <table class="table">
-                <thead>
-                    <tr><th>Criterion</th><th>0–1 (insufficient)</th><th>2 (correct)</th><th>3 (very good)</th><th>Points</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>HTML structure and validator</td><td>Missing pages or serious errors</td><td>4 pages, few errors</td><td>4 pages, 0 errors, correct semantics</td><td>/3</td></tr>
-                    <tr><td>Content (text, images, table, list, form)</td><td>Incomplete or filler</td><td>Everything present and coherent</td><td>Everything present, well written, real <code>alt</code> texts</td><td>/2</td></tr>
-                    <tr><td>CSS: variables, typography, colour</td><td>Inline styles or none</td><td>External file with basic styles</td><td>Variables, spacing scale, coherent design</td><td>/2</td></tr>
-                    <tr><td>Layout (flexbox/grid) and responsive</td><td>Does not adapt</td><td>Works on mobile with some issue</td><td>Flawless at 375, 768 and 1200 px</td><td>/2</td></tr>
-                    <tr><td>Delivery, README and presentation</td><td>Late or incomplete</td><td>Correct</td><td>Clear presentation, reasoned self-criticism</td><td>/1</td></tr>
-                    <tr><td colspan="4"><strong>Total</strong></td><td><strong>/10</strong></td></tr>
-                </tbody>
-            </table>
+            <vf-text>
+                Final project rubric. Each row is linked to one criterion and gets the highest level where you meet
+                *all* the conditions; each level includes the one before it. Insufficient means not reaching
+                Pass. We check it by opening your site in the browser at 375, 768 and 1200 px, running the
+                validator on the four pages and reading your code.
+            </vf-text>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Row</th>
+                            <th>Criterion</th>
+                            <th style="min-width: 180px;">Insufficient (1-4)</th>
+                            <th style="min-width: 180px;">Pass (5-6)</th>
+                            <th style="min-width: 180px;">Very good (7-8)</th>
+                            <th style="min-width: 180px;">Excellent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R1. Structure and files</strong></td>
+                            <td>CA1.1</td>
+                            <td>One of the 4 pages is missing, a skeleton is incomplete (no doctype, <code>lang</code>, <code>charset</code> or <code>title</code>) or a page does not have its own <code>title</code>.</td>
+                            <td>The 4 pages with a complete skeleton and their own <code>title</code> in each one.</td>
+                            <td>Also, headings in order (one <code>h1</code> per page, no skipped levels) and file and folder names in lower case, with no spaces or accents.</td>
+                            <td>Also, consistent indentation and comments that separate the parts of each page.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R2. Lists, links, images and table</strong></td>
+                            <td>CA1.2</td>
+                            <td>The menu is not the same or fails in some page, there are fewer than 5 images in <code>images/</code>, some image has no descriptive <code>alt</code>, or the table or the list is missing.</td>
+                            <td>The same menu in the 4 pages with every link working; at least 5 images in <code>images/</code> with a descriptive <code>alt</code>; at least one table and one list.</td>
+                            <td>Also, a table with a header row in <code>th</code> and external links that open in a new tab.</td>
+                            <td>Also, a <code>caption</code> in the table or at least one <code>figure</code> with <code>figcaption</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R3. Contact form</strong></td>
+                            <td>CA1.3</td>
+                            <td>Fewer than 6 fields, a field without <code>label</code>, or no compulsory field with <code>required</code>.</td>
+                            <td>6 fields, all with <code>label</code>, and <code>required</code> in the compulsory ones.</td>
+                            <td>Also, every <code>label</code> linked with <code>for</code>/<code>id</code> and at least 3 input types that fit the content (e.g. <code>email</code>, <code>tel</code>, <code>select</code>, <code>textarea</code>).</td>
+                            <td>Also, fields grouped with <code>fieldset</code> and <code>legend</code>, and consistent validation (<code>type</code>, <code>minlength</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R4. Semantics and validation</strong></td>
+                            <td>CA1.4</td>
+                            <td>One of the tags <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> or <code>footer</code> is missing in some page, or the validator gives more than 3 errors adding up the 4 pages.</td>
+                            <td><code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> and <code>footer</code> in the 4 pages, and at most 3 errors in the validator adding up the 4 pages.</td>
+                            <td>Also, 0 errors in the validator and one <code>section</code> for each block of content, with its own heading.</td>
+                            <td>Also, <code>article</code> for independent content (e.g. each project) and <code>div</code> only for layout.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R5. Selectors, text and colours</strong></td>
+                            <td>CA2.1</td>
+                            <td>Some style inside the HTML (<code>style=</code> or <code>&lt;style&gt;</code>), more than one style sheet, or no Google Font.</td>
+                            <td>One single external style sheet linked from the 4 pages, no style inside the HTML and a Google Font applied.</td>
+                            <td>Also, class and descendant selectors (not only tag selectors), line height of 1.5 or more and readable text on every background.</td>
+                            <td>Also, a scheme of 3-4 colours applied the same way in the whole site, with no repeated or contradictory rules.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R6. Box model</strong></td>
+                            <td>CA2.2</td>
+                            <td>No <code>box-sizing: border-box</code>, content stuck to the edges, or blocks that overlap.</td>
+                            <td><code>box-sizing: border-box</code>; all the content separated from the edges with <code>padding</code> or <code>margin</code>, and no overlapping blocks.</td>
+                            <td>Also, a centred container with a maximum width and at least one block with <code>border-radius</code> and <code>box-shadow</code>.</td>
+                            <td>Also, the same spacing in equivalent elements of the 4 pages.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R7. Flexbox and grid</strong></td>
+                            <td>CA2.3</td>
+                            <td>The menu does not use flexbox, or the projects page uses neither grid nor flexbox (e.g. it is laid out with tables or spaces).</td>
+                            <td>Menu with flexbox and projects page with grid or flexbox, with no overlapping elements.</td>
+                            <td>Also, the menu aligned with <code>justify-content</code>, <code>align-items</code> and <code>gap</code>, and the project cards aligned, with images of the same height.</td>
+                            <td>Also, in your presentation you explain why you chose flexbox or grid in each case.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R8. Responsive design</strong></td>
+                            <td>CA2.4</td>
+                            <td>No <code>viewport</code>, no media query, or at 375 px there is horizontal scroll or content cut off.</td>
+                            <td><code>viewport</code>, at least one media query and, at 375 px, no horizontal scroll and no content cut off.</td>
+                            <td>Also, correct at 768 and 1200 px, and the menu and the projects change their layout depending on the width.</td>
+                            <td>Also, written <em>mobile first</em> (<code>min-width</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R9. Good practice, delivery and presentation</strong></td>
+                            <td>CA2.5</td>
+                            <td>Fewer than 5 variables in <code>:root</code>, no <code>:hover</code> with <code>transition</code>, incomplete zip or README, late delivery, or a presentation without the thing you are proud of or the one you would improve.</td>
+                            <td><code>:root</code> with at least 5 variables; at least one <code>:hover</code> with <code>transition</code>; zip with the correct name and a complete README; a 3-minute presentation with one thing you are proud of and one you would improve.</td>
+                            <td>Also, all the colours in variables and the CSS divided into commented sections.</td>
+                            <td>Also, you answer well the teacher's question about your code.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <vf-callout type="atencio">
                 Note: if the site does not open, or the menu links do not work, the project is returned for
                 correction before it is graded.
