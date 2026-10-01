@@ -228,7 +228,7 @@
                 &lt;a href="https://www.mozilla.org"&gt;Mozilla&lt;/a&gt;
             </vf-code>
             <vf-text><code>..</code> means "the folder above". Every <code>../</code> climbs one level.</vf-text>
-            <!-- [IMATGE: assets/unitats/programacio/web/html-css/04-relative-paths.png — diagrama d'arbre de carpetes (my-site/ amb index.html, contact.html, i una subcarpeta pages/ amb photos.html) i fletxes que mostren a quin fitxer apunta cada href de l'exemple.] -->
+            <!-- [IMATGE: assets/unitats/programacio/web/html-css/04-relative-paths.png — diagrama d'arbre de carpetes (Web_Applications/ amb index.html, contact.html, i una subcarpeta pages/ amb photos.html) i fletxes que mostren a quin fitxer apunta cada href de l'exemple.] -->
         </vf-content>
 
         <vf-title level="2">Other kinds of links</vf-title>
@@ -265,24 +265,29 @@
                 each style.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 4.3.* Create two files in the same folder: <code>index.html</code> and <code>about.html</code>. Put a
-                link in each one that goes to the other. Test that you can go back and forth.
+                *Exercise 4.3.* Save the page of exercise 4.2 as <code>music.html</code>. In the same folder, create
+                another file, <code>films.html</code>, with a nested list of two kinds of films and two films inside
+                each kind. Add a link from <code>music.html</code> to <code>films.html</code>. Then add links to the
+                Wikipedia pages of three bands (in <code>music.html</code>) and of three films (in <code>films.html</code>).
+                The Wikipedia links must open in a new tab.
             </vf-callout>
             <vf-callout type="exercici">
-                *Exercise 4.4.* In <code>index.html</code>, add a list of three links to three websites you use, each
-                one opening in a new tab.
+                *Exercise 4.4.* In the same folder, create a home page, <code>index.html</code>, with a title with
+                your name and two links: one to <code>music.html</code> and one to <code>films.html</code>. From
+                <code>music.html</code> and <code>films.html</code> you must be able to go back to the home page.
             </vf-callout>
-            <vf-callout type="exercici">
-                *Exercise 4.5.* Create a folder <code>pages</code> with a file <code>hobbies.html</code> inside. Link to it from
-                <code>index.html</code>, and add a link back to the home page from <code>hobbies.html</code>.
-            </vf-callout>
-            <vf-details summary="Show the solution (Exercise 4.5)">
+            <vf-details summary="Show the solution (Exercise 4.4)">
                 <vf-code language="html">
                     &lt;!-- index.html --&gt;
-                    &lt;a href="pages/hobbies.html"&gt;My hobbies&lt;/a&gt;
+                    &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+                    &lt;a href="music.html"&gt;My music&lt;/a&gt;
+                    &lt;a href="films.html"&gt;My films&lt;/a&gt;
 
-                    &lt;!-- pages/hobbies.html --&gt;
-                    &lt;a href="../index.html"&gt;Back to home&lt;/a&gt;
+                    &lt;!-- music.html --&gt;
+                    &lt;a href="index.html"&gt;Back to home&lt;/a&gt;
+
+                    &lt;!-- films.html --&gt;
+                    &lt;a href="index.html"&gt;Back to home&lt;/a&gt;
                 </vf-code>
             </vf-details>
         </vf-content>
