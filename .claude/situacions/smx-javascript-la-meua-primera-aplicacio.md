@@ -84,18 +84,18 @@ Cada criteri s'avalua en la prova del seu RA i, quan es pot observar en l'aplica
 | CA5.1 | S'ha utilitzat la consola per a realitzar operacions d'entrada i eixida d'informació. | 8 % | 2 % | Primeres lliçons; base de la depuració i de les proves. |
 | CA5.2 | S'han aplicat formats en la visualització de la informació | 12 % | 3 % | Present en tots els resultats que es mostren. |
 | CA5.3 | S'han reconegut les possibilitats d'entrada/eixida del llenguatge i les llibreries associades. | 4 % | 1 % | Reconeixement. |
-| CA5.4 | S'han programat controladors d'esdeveniments. | 40 % | 10 % | El cor de les aplicacions interactives i el criteri amb més sessions. |
-| CA5.5 | S'han escrit programes que utilitzen interfícies gràfiques per a l'entrada i l'eixida d'informació. | 36 % | 9 % | Lectura de controls i dibuix de resultats en totes les aplicacions. |
+| CA5.7 | S'han programat controladors d'esdeveniments. | 40 % | 10 % | El cor de les aplicacions interactives i el criteri amb més sessions. |
+| CA5.8 | S'han escrit programes que utilitzen interfícies gràfiques per a l'entrada i l'eixida d'informació. | 36 % | 9 % | Lectura de controls i dibuix de resultats en totes les aplicacions. |
 | | **Total RA5** | **100 %** | **25 %** | |
 | CA6.1 | S'han escrit programes que utilitzen matrius (arrays). | 8 % | 2 % | Arrays d'una i dues dimensions. |
 | CA6.2 | S'han reconegut les llibreries de classes relacionades amb tipus de dades avançades. | 4 % | 1 % | Reconeixement. |
 | CA6.3 | S'han utilitzat llistes per a emmagatzemar i processar informació. | 16 % | 4 % | L'array d'objectes és l'estructura de totes les aplicacions del mòdul. |
 | CA6.4 | S'han utilitzat iteradors per a recórrer els elements de les llistes. | 8 % | 2 % | Recorregut amb `for...of` i `forEach`. |
 | CA6.5 | S'han reconegut les característiques i els avantatges de cada una de les col·leccions de dades disponibles. | 8 % | 2 % | Triar l'estructura adequada a cada problema. |
-| CA6.6 | S'han utilitzat expressions regulars en la busca de patrons en cadenes de text. | 12 % | 3 % | Validació de dades; sintaxi nova i exigent. |
-| CA6.7 | S'han identificat les classes relacionades amb el tractament de documents escrits en diferents llenguatges d'intercanvi de dades. | 4 % | 1 % | Reconeixement. |
-| CA6.8 | S'han realitzat programes que realitzen manipulacions sobre documents escrits en diferents llenguatges d'intercanvi de dades. | 16 % | 4 % | JSON en `localStorage`: imprescindible per a guardar les dades. |
-| CA6.9 | S'han utilitzat operacions agregades per al maneig d'informació emmagatzemada en col·leccions. | 24 % | 6 % | Substituïx la majoria de bucles de cerca, filtre i suma; dificultat alta. |
+| CA6.7 | S'han utilitzat expressions regulars en la busca de patrons en cadenes de text. | 12 % | 3 % | Validació de dades; sintaxi nova i exigent. |
+| CA6.8 | S'han identificat les classes relacionades amb el tractament de documents escrits en diferents llenguatges d'intercanvi de dades. | 4 % | 1 % | Reconeixement. |
+| CA6.9 | S'han realitzat programes que realitzen manipulacions sobre documents escrits en diferents llenguatges d'intercanvi de dades. | 16 % | 4 % | JSON en `localStorage`: imprescindible per a guardar les dades. |
+| CA6.10 | S'han utilitzat operacions agregades per al maneig d'informació emmagatzemada en col·leccions. | 24 % | 6 % | Substituïx la majoria de bucles de cerca, filtre i suma; dificultat alta. |
 | | **Total RA6** | **100 %** | **25 %** | |
 
 ## Sabers bàsics
@@ -118,7 +118,7 @@ Cada criteri s'avalua en la prova del seu RA i, quan es pot observar en l'aplica
 
 ## Seqüència de sessions
 
-Els blocs van per RA i cada un acaba amb la prova del seu RA. L'ordre és **RA1 → RA3 → RA6 → RA5 → RA2 → RA4**: primer el llenguatge i el control del flux, després les dades, a continuació la interfície que les mostra i les modifica, i finalment els objectes predefinits i les classes pròpies, que el projecte aplica immediatament. La lliçó 4 (el DOM) es fa en el bloc de RA3 com a eina per a veure els resultats en la pàgina; el que s'hi treballa s'avalua més avant: l'entrada i l'eixida en la pàgina (CA5.5) en la prova de RA5, i els mètodes i les propietats dels elements (CA2.4) en la prova de RA2, i tots dos també en el projecte.
+Els blocs van per RA i cada un acaba amb la prova del seu RA. L'ordre és **RA1 → RA3 → RA6 → RA5 → RA2 → RA4**: primer el llenguatge i el control del flux, després les dades, a continuació la interfície que les mostra i les modifica, i finalment els objectes predefinits i les classes pròpies, que el projecte aplica immediatament. La lliçó 4 (el DOM) es fa en el bloc de RA3 com a eina per a veure els resultats en la pàgina; el que s'hi treballa s'avalua més avant: l'entrada i l'eixida en la pàgina (CA5.8) en la prova de RA5, i els mètodes i les propietats dels elements (CA2.4) en la prova de RA2, i tots dos també en el projecte.
 
 **Estructura tipus d'una sessió de 55 min**: 5 min d'arrencada (obrir VS Code, la carpeta de treball i Live Server) · 10-15 min de demostració en directe, escrivint el codi davant de l'alumnat · 30-35 min d'exercicis · 5 min de tancament (desar i comprovar que no hi ha errors en la consola). Les sessions de miniprojecte, prova i projecte no tenen demostració.
 
@@ -230,7 +230,7 @@ Els enunciats de les lliçons estan en la web. Nivells: **bàsic** = primers exe
 | 1. El primer programa | 1.1, 1.2 | + 1.3-1.5 | — | CA1.1, CA1.2, CA1.3, CA1.9, CA5.1 |
 | 2. Variables | 2.1, 2.2 | + 2.3-2.7 | — | CA1.4, CA1.5, CA1.6, CA1.8 |
 | 3. Operadors | 3.1, 3.2 | + 3.3-3.6 | — | CA1.7, CA2.5, CA5.2 |
-| 4. El DOM | 4.1, 4.2 | + 4.3-4.7 | — | CA2.4, CA5.5 |
+| 4. El DOM | 4.1, 4.2 | + 4.3-4.7 | — | CA2.4, CA5.8 |
 | 5. Decisions | 5.1, 5.2 | + 5.3-5.7 | — | CA3.1 |
 | 6. Bucles | 6.1-6.3 | + 6.4, 6.7 | 6.5, 6.6 | CA3.2, CA3.3 |
 | 7. Funcions | 7.1-7.3 | + 7.4-7.6 | 7.7 | CA2.2, CA2.6, CA3.5 |
@@ -238,18 +238,18 @@ Els enunciats de les lliçons estan en la web. Nivells: **bàsic** = primers exe
 | 9. Errors i excepcions | 9.1 | + 9.2, 9.3 | 9.4 | CA3.4, CA3.8 |
 | 10. Arrays | 10.1, 10.2 | + 10.3-10.5, 10.8, 10.9 | 10.6, 10.7, 10.10 | CA6.1, CA6.3, CA6.4 |
 | 11. Objectes | 11.1, 11.2 | + 11.3-11.6 | 11.7 | CA6.3 |
-| 12. Mètodes d'arrays | 12.1 | + 12.2, 12.3 | 12.4, 12.5 | CA6.4, CA6.9 |
-| 13. Expressions regulars | 13.1, 13.2 | + 13.3, 13.4 | 13.5, 13.6 | CA6.6 |
+| 12. Mètodes d'arrays | 12.1 | + 12.2, 12.3 | 12.4, 12.5 | CA6.4, CA6.10 |
+| 13. Expressions regulars | 13.1, 13.2 | + 13.3, 13.4 | 13.5, 13.6 | CA6.7 |
 | 14. Col·leccions | 14.1 | + 14.2, 14.3 | 14.4 | CA6.2, CA6.4, CA6.5 |
-| 15. JSON i XML | 15.1 | + 15.2-15.4 | 15.5 | CA6.7, CA6.8 |
-| 16. Esdeveniments | 16.1, 16.2, 16.4 | + 16.3, 16.5, 16.6 | 16.7 | CA5.4 |
-| 17. Crear elements | 17.1, 17.2 | + 17.3-17.5 | 17.6 | CA5.5 |
-| 18. Formularis | 18.1 | + 18.2-18.4 | 18.5 | CA5.4, CA5.5, CA6.6 |
-| 19. localStorage | 19.1, 19.2 | + 19.3-19.5, 19.7, 19.8 | 19.6, 19.9 | CA3.4, CA5.1, CA5.2, CA5.3, CA6.8 |
+| 15. JSON i XML | 15.1 | + 15.2-15.4 | 15.5 | CA6.8, CA6.9 |
+| 16. Esdeveniments | 16.1, 16.2, 16.4 | + 16.3, 16.5, 16.6 | 16.7 | CA5.7 |
+| 17. Crear elements | 17.1, 17.2 | + 17.3-17.5 | 17.6 | CA5.8 |
+| 18. Formularis | 18.1 | + 18.2-18.4 | 18.5 | CA5.7, CA5.8, CA6.7 |
+| 19. localStorage | 19.1, 19.2 | + 19.3-19.5, 19.7, 19.8 | 19.6, 19.9 | CA3.4, CA5.1, CA5.2, CA5.3, CA6.9 |
 | 20. Objectes i classes predefinides | 20.1 | + 20.2, 20.3 | 20.4 | CA2.1, CA2.2, CA2.3, CA2.8 |
 | 21. Mètodes estàtics, paràmetres i llibreries | 21.1 | + 21.2, 21.3 | 21.4 | CA2.4, CA2.5, CA2.6, CA2.7 |
 | 22. Classes pròpies | 22.1, 22.5 | + 22.2, 22.3 | 22.4 | CA4.1-CA4.5 |
-| 23. Visibilitat i mètodes estàtics | 23.1 | + 23.2, 23.3 | 23.4 | CA4.6, CA4.8, CA6.8 |
+| 23. Visibilitat i mètodes estàtics | 23.1 | + 23.2, 23.3 | 23.4 | CA4.6, CA4.8, CA6.9 |
 | 24. Herència | 24.1 | + 24.2, 24.3 | 24.4 | CA4.7, CA3.8 |
 | 25. Mòduls | 25.1 | + 25.2 | 25.3 | CA4.9, CA4.5, CA3.9 |
 
@@ -273,13 +273,13 @@ Els enunciats de les lliçons estan en la web. Nivells: **bàsic** = primers exe
 - *Estàndard*: en fer clic en una casella buida, s'hi posa `X` o `O` per torns (canvia l'array i redibuixa) i la pàgina avisa si una fila està completa amb el mateix símbol.
 - *Ampliació*: comprova també columnes i diagonals i declara el guanyador.
 
-**N4. Operacions agregades (lliçó 12, sessió 26)** — CA6.9, CA6.4
+**N4. Operacions agregades (lliçó 12, sessió 26)** — CA6.10, CA6.4
 
 - *Bàsic*: refés l'exercici 11.3 (valor total de l'estoc) amb `reduce`.
 - *Estàndard*: refés l'exercici 11.5 amb `filter` i `map`, i l'11.7 (mitjana, millor alumne, aprovats) amb `reduce`, `find` i `filter`, sense cap bucle `for`.
 - *Ampliació*: amb `some` i `every`, digues si hi ha algun producte sense estoc i si tots costen menys de 50 €.
 
-**N5. Expressions regulars (lliçó 13, sessió 27)** — CA6.6
+**N5. Expressions regulars (lliçó 13, sessió 27)** — CA6.7
 
 - *Bàsic*: comprova amb `test()` si una llista de cadenes són codis postals (5 xifres) o correus senzills.
 - *Estàndard*: refés la comprovació de contrasenya de l'exercici 5.3 amb tres expressions regulars; valida un DNI (8 xifres i una lletra) i extrau-ne la lletra amb `match`.
@@ -291,7 +291,7 @@ Els enunciats de les lliçons estan en la web. Nivells: **bàsic** = primers exe
 - *Estàndard*: compta quantes vegades apareix cada paraula d'un text amb un `Map` i recorre'l amb `for...of` i `entries()`. Taula comparativa `Array` / `Set` / `Map` / objecte: ordre, repetits, accés per clau, mètodes principals.
 - *Ampliació*: per a cinc situacions donades, tria la col·lecció i justifica-ho en una línia.
 
-**N7. JSON i XML (lliçó 15, sessió 29)** — CA6.7, CA6.8
+**N7. JSON i XML (lliçó 15, sessió 29)** — CA6.8, CA6.9
 
 - *Bàsic*: convertix l'array de productes de l'exercici 11.2 a text amb `JSON.stringify`, mostra el text en la pàgina i torna'l a array amb `JSON.parse`.
 - *Estàndard*: a partir d'un text JSON donat (catàleg de llibres), modifica un preu, afig un llibre i torna'l a text. Llig la versió XML del mateix catàleg (cadena donada) amb `DOMParser` i mostra els títols.
@@ -356,7 +356,7 @@ Dinàmica d'aula: abans de lliurar, cada parella intercanvia l'ordinador i marca
 
 Els requisits de la lliçó 17. En les sessions 39-40 s'hi afig `localStorage` (exercici 19.3). És l'assaig de l'opció B del projecte.
 
-Mateixa dinàmica de revisió en parelles. Criteris treballats: CA5.4, CA5.5, CA6.3, CA6.8.
+Mateixa dinàmica de revisió en parelles. Criteris treballats: CA5.7, CA5.8, CA6.3, CA6.9.
 
 ### Proves
 
@@ -492,10 +492,10 @@ En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen 
 | P6.3. Llistes (3) | CA6.3 | 30 % | Cap de les tres operacions funciona. | Afig i elimina correctament. | A més, modifica la quantitat buscant pel nom. | A més, no falla si el producte no existix (`-1` controlat). |
 | P6.4. Iteradors (4) | CA6.4 | 50 % | Cap recorregut correcte. | Recorregut amb `for...of` correcte. | A més, `forEach` amb la posició. | A més, el `Map` recorregut amb `entries()`. |
 | P6.5. Tria de col·lecció (5) | CA6.5 | 100 % | 0-1 situacions ben resoltes de 4. | 2 ben resoltes. | 3 ben resoltes i el `Map` compta bé les paraules. | Les 4 amb justificació correcta i el `Map` correcte. |
-| P6.6. Expressions regulars (6) | CA6.6 | 60 % | Cap patró correcte. | Un patró classifica bé les 4 cadenes. | Tots dos patrons classifiquen bé les 4 cadenes. | A més, extrau la lletra del DNI amb `match`. |
-| P6.7. Classes per a formats d'intercanvi (7) | CA6.7 | 100 % | 0-1 encerts de 3. | 2 encerts. | Els 3. | A més, diu quin format (JSON o XML) tracta cada una. |
-| P6.8. JSON (8) | CA6.8 | 40 % | No obté l'objecte amb `JSON.parse`. | Obté l'objecte i llig un valor. | A més, modifica el valor i afig l'element. | A més, el torna a text sagnat i el resultat és JSON vàlid. |
-| P6.9. Operacions agregades (9) | CA6.9 | 50 % | 0-1 operacions correctes de 4. | 2 correctes. | 3 correctes. | Les 4, sense cap bucle `for`. |
+| P6.6. Expressions regulars (6) | CA6.7 | 60 % | Cap patró correcte. | Un patró classifica bé les 4 cadenes. | Tots dos patrons classifiquen bé les 4 cadenes. | A més, extrau la lletra del DNI amb `match`. |
+| P6.7. Classes per a formats d'intercanvi (7) | CA6.8 | 100 % | 0-1 encerts de 3. | 2 encerts. | Els 3. | A més, diu quin format (JSON o XML) tracta cada una. |
+| P6.8. JSON (8) | CA6.9 | 40 % | No obté l'objecte amb `JSON.parse`. | Obté l'objecte i llig un valor. | A més, modifica el valor i afig l'element. | A més, el torna a text sagnat i el resultat és JSON vàlid. |
+| P6.9. Operacions agregades (9) | CA6.10 | 50 % | 0-1 operacions correctes de 4. | 2 correctes. | 3 correctes. | Les 4, sense cap bucle `for`. |
 
 ### Rúbrica de la prova RA5
 
@@ -504,8 +504,8 @@ En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen 
 | P5.1. Consola (1) | CA5.1 | 60 % | No llig amb `prompt` o no escriu res en la consola. | Llig les dues dades i escriu la salutació amb `console.log`. | A més, mostra l'array amb `console.table`. | A més, controla que l'usuari cancel·le o escriga una edat no numèrica. |
 | P5.2. Formats (2) | CA5.2 | 50 % | 0-1 valors amb el format demanat de 3. | 2 valors. | Els 3. | Els 3 amb `toLocaleString` o `Intl`, sense construir el format a mà. |
 | P5.3. Possibilitats d'entrada i eixida (3) | CA5.3 | 100 % | 0-3 encerts de 7. | 4-5 encerts. | 6 encerts. | Els 7. |
-| P5.4. Controladors d'esdeveniments (4) | CA5.4 | 30 % | Ni l'enviament ni l'eliminació funcionen amb `addEventListener`. | L'enviament (amb `preventDefault`) i el botó d'eliminar funcionen. | A més, el comptador de caràcters s'actualitza amb l'esdeveniment `input`. | A més, un sol controlador per a tots els botons d'eliminar, amb `event.target`. |
-| P5.5. Interfície per a entrada i eixida (4) | CA5.5 | 30 % | No llig els camps o la llista no es mostra. | Llig els camps, afig a l'array i redibuixa la llista amb `createElement` i `textContent`. | A més, missatges d'error en la pàgina i camps buidats després d'afegir. | A més, el camp incorrecte es marca amb una classe i hi torna el focus. |
+| P5.4. Controladors d'esdeveniments (4) | CA5.7 | 30 % | Ni l'enviament ni l'eliminació funcionen amb `addEventListener`. | L'enviament (amb `preventDefault`) i el botó d'eliminar funcionen. | A més, el comptador de caràcters s'actualitza amb l'esdeveniment `input`. | A més, un sol controlador per a tots els botons d'eliminar, amb `event.target`. |
+| P5.5. Interfície per a entrada i eixida (4) | CA5.8 | 30 % | No llig els camps o la llista no es mostra. | Llig els camps, afig a l'array i redibuixa la llista amb `createElement` i `textContent`. | A més, missatges d'error en la pàgina i camps buidats després d'afegir. | A més, el camp incorrecte es marca amb una classe i hi torna el focus. |
 
 ### Rúbrica de la prova RA2
 
@@ -556,13 +556,13 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 | R14. Llibreria de classes | CA4.9 | 60 % | Classes en `main.js` o sense mòduls. | `model.js` amb almenys 2 classes exportades i importades en `main.js`. | A més, `tests.js` importa les mateixes classes. | A més, `model.js` no toca la pàgina (es podria reutilitzar amb una altra interfície). |
 | R15. Consola | CA5.1 | 40 % | `tests.js` no mostra res en la consola. | En executar `tests.js`, la consola mostra quines proves fallen i un resum amb `console.log`. | A més, `console.table` per a mostrar l'estat del model. | A més, cap `console.log` de depuració oblidat en `main.js`. |
 | R16. Formats | CA5.2 | 50 % | Números sense format (decimals llargs, percentatges sense símbol). | Puntuació, comptadors i percentatges amb un format adequat. | A més, `toLocaleString` o `Intl` per a números o dates. | A més, singular i plural correctes ("1 tasca", "3 tasques"). |
-| R17. Controladors d'esdeveniments | CA5.4 | 70 % | Menys de 3 controladors, d'un sol tipus, o `onclick` en l'HTML. | Almenys 3 `addEventListener` de 2 tipus diferents i cap `onclick` en l'HTML. | A més, usa l'objecte `event` (`key`, `target`, `preventDefault`). | A més, un sol controlador gestiona tots els botons d'una llista (delegació o `data-*`). |
-| R18. Entrada i eixida en la interfície | CA5.5 | 70 % | La pàgina no reflectix les dades o usa `innerHTML` amb text de l'usuari. | Llig els controls, mostra les dades amb `createElement` i `textContent`, i la pàgina sempre coincidix amb l'array (`draw()`). | A més, missatges d'error i de confirmació en la pàgina, no amb `alert`. | A més, el camp es buida i rep el focus després d'afegir, i els botons es deshabiliten quan no es poden usar. |
+| R17. Controladors d'esdeveniments | CA5.7 | 70 % | Menys de 3 controladors, d'un sol tipus, o `onclick` en l'HTML. | Almenys 3 `addEventListener` de 2 tipus diferents i cap `onclick` en l'HTML. | A més, usa l'objecte `event` (`key`, `target`, `preventDefault`). | A més, un sol controlador gestiona tots els botons d'una llista (delegació o `data-*`). |
+| R18. Entrada i eixida en la interfície | CA5.8 | 70 % | La pàgina no reflectix les dades o usa `innerHTML` amb text de l'usuari. | Llig els controls, mostra les dades amb `createElement` i `textContent`, i la pàgina sempre coincidix amb l'array (`draw()`). | A més, missatges d'error i de confirmació en la pàgina, no amb `alert`. | A més, el camp es buida i rep el focus després d'afegir, i els botons es deshabiliten quan no es poden usar. |
 | R19. Llistes | CA6.3 | 70 % | No hi ha array o la pàgina i l'array no coincidixen. | Array d'instàncies en el qual s'afig, s'elimina i es modifica, i després es redibuixa. | A més, elimina i modifica per identificador, no per posició en la pantalla. | A més, l'usuari pot ordenar la llista per un criteri. |
 | R20. Iteradors | CA6.4 | 50 % | Recorreguts amb índexs erronis o que se n'ixen de l'array. | Recorre la llista amb `for...of` o `forEach` en dibuixar i en desar. | A més, `entries()` o l'índex de `forEach` quan necessita la posició. | A més, recorre també un `Set` o un `Map` (p. ex. categories sense repetir). |
-| R21. Expressions regulars | CA6.6 | 40 % | Cap expressió regular. | Un camp validat amb `test()` i missatge si no complix. | A més, el patró usa `^`, `$` i classes de caràcters. | A més, una segona expressió valida un altre camp o neteja el text amb `replace`. |
-| R22. JSON | CA6.8 | 60 % | Desa sense JSON o es perden dades en recarregar. | `JSON.stringify` en desar i `JSON.parse` en carregar. | A més, una única funció `save()` que desa tot l'estat en una sola clau. | A més, `toJSON()` en les classes per a decidir què es guarda. |
-| R23. Operacions agregades | CA6.9 | 50 % | Cap operació agregada. | Almenys 2 operacions agregades diferents amb resultat visible (comptador, filtre, puntuació). | `filter`, `map` i `reduce`. | A més, encadenades en almenys un cas dins d'un mètode del model. |
+| R21. Expressions regulars | CA6.7 | 40 % | Cap expressió regular. | Un camp validat amb `test()` i missatge si no complix. | A més, el patró usa `^`, `$` i classes de caràcters. | A més, una segona expressió valida un altre camp o neteja el text amb `replace`. |
+| R22. JSON | CA6.9 | 60 % | Desa sense JSON o es perden dades en recarregar. | `JSON.stringify` en desar i `JSON.parse` en carregar. | A més, una única funció `save()` que desa tot l'estat en una sola clau. | A més, `toJSON()` en les classes per a decidir què es guarda. |
+| R23. Operacions agregades | CA6.10 | 50 % | Cap operació agregada. | Almenys 2 operacions agregades diferents amb resultat visible (comptador, filtre, puntuació). | `filter`, `map` i `reduce`. | A més, encadenades en almenys un cas dins d'un mètode del model. |
 
 ## Taula de traçabilitat i qualificació
 
@@ -606,17 +606,17 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 | CA5.1 | 8 % | Lliçons 1-2 i 19 (N8), projecte | P5.1 (prova RA5) 60 % · R15 (projecte) 40 % |
 | CA5.2 | 12 % | Lliçons 2-3 i 19 (N8), projecte | P5.2 (prova RA5) 50 % · R16 (projecte) 50 % |
 | CA5.3 | 4 % | Lliçó 19 (N8) | P5.3 (prova RA5) 100 % |
-| CA5.4 | 40 % | Lliçons 4, 16, 18, miniprojecte 2, projecte | P5.4 (prova RA5) 30 % · R17 (projecte) 70 % |
-| CA5.5 | 36 % | Lliçons 4, 17, 18, miniprojecte 2, projecte | P5.5 (prova RA5) 30 % · R18 (projecte) 70 % |
+| CA5.7 | 40 % | Lliçons 4, 16, 18, miniprojecte 2, projecte | P5.4 (prova RA5) 30 % · R17 (projecte) 70 % |
+| CA5.8 | 36 % | Lliçons 4, 17, 18, miniprojecte 2, projecte | P5.5 (prova RA5) 30 % · R18 (projecte) 70 % |
 | CA6.1 | 8 % | Lliçó 10 (amb N3) | P6.1 (prova RA6) 100 % |
 | CA6.2 | 4 % | Lliçó 14 (N6) | P6.2 (prova RA6) 100 % |
 | CA6.3 | 16 % | Lliçons 10-11, miniprojecte 2, projecte | P6.3 (prova RA6) 30 % · R19 (projecte) 70 % |
 | CA6.4 | 8 % | Lliçons 10, 12 (N4), 14 (N6), projecte | P6.4 (prova RA6) 50 % · R20 (projecte) 50 % |
 | CA6.5 | 8 % | Lliçó 14 (N6) | P6.5 (prova RA6) 100 % |
-| CA6.6 | 12 % | Lliçons 13 (N5) i 18, projecte | P6.6 (prova RA6) 60 % · R21 (projecte) 40 % |
-| CA6.7 | 4 % | Lliçó 15 (N7) | P6.7 (prova RA6) 100 % |
-| CA6.8 | 16 % | Lliçons 15 (N7), 19 i 23 (N12), projecte | P6.8 (prova RA6) 40 % · R22 (projecte) 60 % |
-| CA6.9 | 24 % | Lliçó 12 (N4), projecte | P6.9 (prova RA6) 50 % · R23 (projecte) 50 % |
+| CA6.7 | 12 % | Lliçons 13 (N5) i 18, projecte | P6.6 (prova RA6) 60 % · R21 (projecte) 40 % |
+| CA6.8 | 4 % | Lliçó 15 (N7) | P6.7 (prova RA6) 100 % |
+| CA6.9 | 16 % | Lliçons 15 (N7), 19 i 23 (N12), projecte | P6.8 (prova RA6) 40 % · R22 (projecte) 60 % |
+| CA6.10 | 24 % | Lliçó 12 (N4), projecte | P6.9 (prova RA6) 50 % · R23 (projecte) 50 % |
 
 **Nota de cada criteri** = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA3.6 = 0,30·P3.5 + 0,70·R8; CA1.1 = P1.3.
 
@@ -628,9 +628,9 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 
 **Nota de RA4** = 0,05·CA4.1 + 0,10·(CA4.2 + CA4.4 + CA4.6 + CA4.7 + CA4.8 + CA4.9) + 0,15·CA4.3 + 0,20·CA4.5
 
-**Nota de RA5** = 0,08·CA5.1 + 0,12·CA5.2 + 0,04·CA5.3 + 0,40·CA5.4 + 0,36·CA5.5
+**Nota de RA5** = 0,08·CA5.1 + 0,12·CA5.2 + 0,04·CA5.3 + 0,40·CA5.7 + 0,36·CA5.8
 
-**Nota de RA6** = 0,04·(CA6.2 + CA6.7) + 0,08·(CA6.1 + CA6.4 + CA6.5) + 0,12·CA6.6 + 0,16·(CA6.3 + CA6.8) + 0,24·CA6.9
+**Nota de RA6** = 0,04·(CA6.2 + CA6.8) + 0,08·(CA6.1 + CA6.4 + CA6.5) + 0,12·CA6.7 + 0,16·(CA6.3 + CA6.9) + 0,24·CA6.10
 
 **Nota de la SA** = 0,10·RA1 + 0,10·RA2 + 0,20·RA3 + 0,10·RA4 + 0,25·RA5 + 0,25·RA6
 
