@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Making decisions</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Making decisions</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../05-conditions.html">05-conditions.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 5.1</a></li>
+        <li><a href="#e2">Exercici 5.2</a></li>
+        <li><a href="#e3">Exercici 5.3</a></li>
+        <li><a href="#e4">Exercici 5.4</a></li>
+        <li><a href="#e5">Exercici 5.5</a></li>
+        <li><a href="#e6">Exercici 5.6</a></li>
+        <li><a href="#e7">Exercici 5.7</a></li>
+        <li><a href="#e8">Extra · ex6 (contact form)</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 5.1</h2>
+        <div class="enunciat"><strong>Exercise 5.1. Traffic light.</strong> Three buttons: Stop, Wait, Go. Each one paints the circle in the page with the right colour and writes the message under it.<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/05-conditions/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const circle = document.querySelector("#circle");
+const message = document.querySelector("#message");
+
+function show(colour, text) {
+    circle.style.backgroundColor = colour;
+    message.textContent = text;
+}
+
+document.querySelector("#stopButton").addEventListener("click", function () {
+    show("red", "Stop! Do not cross.");
+});
+
+document.querySelector("#waitButton").addEventListener("click", function () {
+    show("orange", "Wait. Get ready.");
+});
+
+document.querySelector("#goButton").addEventListener("click", function () {
+    show("green", "Go! You can cross.");
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex1.html">exercises/05-conditions/ex1.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Traffic light&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        #circle-container {
+            border: 5px solid #333;
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            background-color: #555;
+        }
+
+        #circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: grey;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.2s;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Interactive Traffic Light&lt;/h1&gt;
+
+    &lt;div id=&quot;circle-container&quot;&gt;
+        &lt;div id=&quot;circle&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;buttons&quot;&gt;
+        &lt;button id=&quot;stopButton&quot;&gt;Stop&lt;/button&gt;
+        &lt;button id=&quot;waitButton&quot;&gt;Wait&lt;/button&gt;
+        &lt;button id=&quot;goButton&quot;&gt;Go&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;const circle = document.querySelector(&quot;#circle&quot;);
+const message = document.querySelector(&quot;#message&quot;);
+
+function show(colour, text) {
+    circle.style.backgroundColor = colour;
+    message.textContent = text;
+}
+
+document.querySelector(&quot;#stopButton&quot;).addEventListener(&quot;click&quot;, function () {
+    show(&quot;red&quot;, &quot;Stop! Do not cross.&quot;);
+});
+
+document.querySelector(&quot;#waitButton&quot;).addEventListener(&quot;click&quot;, function () {
+    show(&quot;orange&quot;, &quot;Wait. Get ready.&quot;);
+});
+
+document.querySelector(&quot;#goButton&quot;).addEventListener(&quot;click&quot;, function () {
+    show(&quot;green&quot;, &quot;Go! You can cross.&quot;);
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 5.2</h2>
+        <div class="enunciat"><strong>Exercise 5.2. Age check.</strong> The user types their age. Show "Child", "Teenager", "Adult" or "Senior", each one in a different colour. If the number is negative or over 120, show an error message in red.<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/05-conditions/ex2.html">ex2.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const input = document.querySelector("#age");
+const result = document.querySelector("#result");
+
+document.querySelector("#checkButton").addEventListener("click", function () {
+    const age = Number(input.value);
+
+    if (input.value === "" || age &lt; 0 || age &gt; 120) {
+        result.textContent = "Error: type an age between 0 and 120.";
+        result.style.color = "red";
+    } else if (age &lt; 13) {
+        result.textContent = "Child";
+        result.style.color = "blue";
+    } else if (age &lt; 20) {
+        result.textContent = "Teenager";
+        result.style.color = "orange";
+    } else if (age &lt; 65) {
+        result.textContent = "Adult";
+        result.style.color = "green";
+    } else {
+        result.textContent = "Senior";
+        result.style.color = "purple";
+    }
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex2.html">exercises/05-conditions/ex2.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">L'ordre de les condicions importa: primer es descarten els valors impossibles i després es va de menor a major edat, de manera que cada <code>else if</code> ja sap que l'anterior era falsa.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Age check&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        input[type=&quot;number&quot;] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            min-height: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Age check&lt;/h1&gt;
+        &lt;p&gt;Type your age and the page will say if you are a child, a teenager, an adult or a senior.&lt;/p&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;age&quot; placeholder=&quot;Type your age&quot;&gt;
+
+        &lt;button id=&quot;checkButton&quot;&gt;Check&lt;/button&gt;
+
+        &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const input = document.querySelector(&quot;#age&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+document.querySelector(&quot;#checkButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const age = Number(input.value);
+
+    if (input.value === &quot;&quot; || age &lt; 0 || age &gt; 120) {
+        result.textContent = &quot;Error: type an age between 0 and 120.&quot;;
+        result.style.color = &quot;red&quot;;
+    } else if (age &lt; 13) {
+        result.textContent = &quot;Child&quot;;
+        result.style.color = &quot;blue&quot;;
+    } else if (age &lt; 20) {
+        result.textContent = &quot;Teenager&quot;;
+        result.style.color = &quot;orange&quot;;
+    } else if (age &lt; 65) {
+        result.textContent = &quot;Adult&quot;;
+        result.style.color = &quot;green&quot;;
+    } else {
+        result.textContent = &quot;Senior&quot;;
+        result.style.color = &quot;purple&quot;;
+    }
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 5.3</h2>
+        <div class="enunciat"><strong>Exercise 5.3. Password check.</strong> The user types a password. Show, one under the other, whether it has at least 8 characters, whether it has a number, and whether it has a capital letter. Green tick or red cross for each one.<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/05-conditions/ex3.html">ex3.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const input = document.querySelector("#password");
+const result = document.querySelector("#result");
+
+// Adds one line to the result: green tick or red cross
+function addLine(ok, text) {
+    const line = document.createElement("p");
+    line.className = ok ? "ok" : "ko";
+    line.textContent = (ok ? "\u2714 " : "\u2718 ") + text;
+    line.style.color = ok ? "green" : "red";
+    result.appendChild(line);
+}
+
+document.querySelector("#checkButton").addEventListener("click", function () {
+    const password = input.value;
+    result.textContent = "";   // clear the previous result
+
+    addLine(password.length &gt;= 8, "At least 8 characters");
+    addLine(/[0-9]/.test(password), "Has a number");
+    addLine(/[A-Z]/.test(password), "Has a capital letter");
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex3.html">exercises/05-conditions/ex3.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">Les expressions regulars <code>/[0-9]/</code> i <code>/[A-Z]/</code> comproven si hi ha algun número o alguna majúscula (es veuen millor en la lliçó 13). També es pot fer amb un bucle i <code>"0123456789".includes(letter)</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Password check&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e8f4f8;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            text-align: center;
+            border-top: 5px solid #007bff;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        input[type=&quot;text&quot;] {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        input[type=&quot;text&quot;]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e7e34;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 1.1em;
+            text-align: left;
+            min-height: 25px;
+            padding: 10px;
+        }
+
+        #result p {
+            margin: 4px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Password check&lt;/h1&gt;
+        &lt;p&gt;Type a password. The page will show, one under the other, whether it has at
+            least 8 characters, whether it has a number, and whether it has a capital
+            letter.&lt;/p&gt;
+
+        &lt;input type=&quot;text&quot; id=&quot;password&quot; placeholder=&quot;Type a password&quot;&gt;
+
+        &lt;button id=&quot;checkButton&quot;&gt;Check&lt;/button&gt;
+
+        &lt;div id=&quot;result&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const input = document.querySelector(&quot;#password&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+// Adds one line to the result: green tick or red cross
+function addLine(ok, text) {
+    const line = document.createElement(&quot;p&quot;);
+    line.className = ok ? &quot;ok&quot; : &quot;ko&quot;;
+    line.textContent = (ok ? &quot;\u2714 &quot; : &quot;\u2718 &quot;) + text;
+    line.style.color = ok ? &quot;green&quot; : &quot;red&quot;;
+    result.appendChild(line);
+}
+
+document.querySelector(&quot;#checkButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const password = input.value;
+    result.textContent = &quot;&quot;;   // clear the previous result
+
+    addLine(password.length &gt;= 8, &quot;At least 8 characters&quot;);
+    addLine(/[0-9]/.test(password), &quot;Has a number&quot;);
+    addLine(/[A-Z]/.test(password), &quot;Has a capital letter&quot;);
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 5.4</h2>
+        <div class="enunciat"><strong>Exercise 5.4. Leap year.</strong> The user types a year and the page says if it is a leap year. (A leap year is divisible by 4, but not by 100, unless it is also divisible by 400.)<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/05-conditions/ex4.html">ex4.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const input = document.querySelector("#year");
+const result = document.querySelector("#result");
+
+document.querySelector("#checkButton").addEventListener("click", function () {
+    const year = Number(input.value);
+
+    if ((year % 4 === 0 &amp;&amp; year % 100 !== 0) || year % 400 === 0) {
+        result.textContent = `${year} is a leap year.`;
+        result.style.color = "green";
+    } else {
+        result.textContent = `${year} is NOT a leap year.`;
+        result.style.color = "red";
+    }
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex4.html">exercises/05-conditions/ex4.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">Un any és de traspàs si és divisible per 4 i no per 100, <em>o</em> si és divisible per 400. 2024 sí, 1900 no, 2000 sí.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Leap year&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e8f5e9;
+            color: #333;
+        }
+
+        h1 {
+            color: #1b5e20;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        #year {
+            padding: 10px;
+            border: 2px solid #a5d6a7;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+            width: 150px;
+            outline: none;
+        }
+
+        #year:focus {
+            border-color: #4caf50;
+        }
+
+        #checkButton {
+            padding: 10px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        #checkButton:hover {
+            background-color: #388e3c;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            min-height: 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1b5e20;
+            text-align: center;
+            border: 1px dashed #a5d6a7;
+            border-radius: 5px;
+            width: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Leap year checker&lt;/h1&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;label for=&quot;year&quot;&gt;Type a year:&lt;/label&gt;
+        &lt;input type=&quot;number&quot; id=&quot;year&quot; placeholder=&quot;e.g. 2024&quot;&gt;
+
+        &lt;button id=&quot;checkButton&quot;&gt;Check&lt;/button&gt;
+
+        &lt;div id=&quot;result&quot;&gt;
+            Waiting for the check...
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const input = document.querySelector(&quot;#year&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+document.querySelector(&quot;#checkButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const year = Number(input.value);
+
+    if ((year % 4 === 0 &amp;&amp; year % 100 !== 0) || year % 400 === 0) {
+        result.textContent = `${year} is a leap year.`;
+        result.style.color = &quot;green&quot;;
+    } else {
+        result.textContent = `${year} is NOT a leap year.`;
+        result.style.color = &quot;red&quot;;
+    }
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 5.5</h2>
+        <div class="enunciat"><strong>Exercise 5.5. Calculator, first version.</strong> Two numbers, a <code>&lt;select&gt;</code> with <code>+ - * /</code>, and a button. Show the result. If the user divides by zero, show "You cannot divide by zero" in red.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/05-conditions/ex5.png" alt="Simple calculator with a select and a result"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/05-conditions/ex5.html">ex5.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const first = document.querySelector("#firstNumber");
+const second = document.querySelector("#secondNumber");
+const operation = document.querySelector("#operation");
+const result = document.querySelector("#result");
+
+document.querySelector("#calculateButton").addEventListener("click", function () {
+    const a = Number(first.value);
+    const b = Number(second.value);
+    result.style.color = "";
+
+    if (operation.value === "/" &amp;&amp; b === 0) {
+        result.textContent = "You cannot divide by zero";
+        result.style.color = "red";
+    } else if (operation.value === "+") {
+        result.textContent = a + b;
+    } else if (operation.value === "-") {
+        result.textContent = a - b;
+    } else if (operation.value === "*") {
+        result.textContent = a * b;
+    } else {
+        result.textContent = a / b;
+    }
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex5.html">exercises/05-conditions/ex5.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Simple calculator&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Verdana&#x27;, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 320px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        input,
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 20px;
+            font-weight: 700;
+            min-height: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Simple calculator&lt;/h1&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;firstNumber&quot; placeholder=&quot;First number&quot;&gt;
+
+        &lt;select id=&quot;operation&quot;&gt;
+            &lt;option value=&quot;+&quot;&gt;+&lt;/option&gt;
+            &lt;option value=&quot;-&quot;&gt;-&lt;/option&gt;
+            &lt;option value=&quot;*&quot;&gt;*&lt;/option&gt;
+            &lt;option value=&quot;/&quot;&gt;/&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;secondNumber&quot; placeholder=&quot;Second number&quot;&gt;
+
+        &lt;button id=&quot;calculateButton&quot;&gt;Calculate&lt;/button&gt;
+
+        &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const first = document.querySelector(&quot;#firstNumber&quot;);
+const second = document.querySelector(&quot;#secondNumber&quot;);
+const operation = document.querySelector(&quot;#operation&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+document.querySelector(&quot;#calculateButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const a = Number(first.value);
+    const b = Number(second.value);
+    result.style.color = &quot;&quot;;
+
+    if (operation.value === &quot;/&quot; &amp;&amp; b === 0) {
+        result.textContent = &quot;You cannot divide by zero&quot;;
+        result.style.color = &quot;red&quot;;
+    } else if (operation.value === &quot;+&quot;) {
+        result.textContent = a + b;
+    } else if (operation.value === &quot;-&quot;) {
+        result.textContent = a - b;
+    } else if (operation.value === &quot;*&quot;) {
+        result.textContent = a * b;
+    } else {
+        result.textContent = a / b;
+    }
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 5.6</h2>
+        <div class="enunciat"><strong>Exercise 5.6. Cinema ticket.</strong> A ticket costs 8 €. Under 14 and over 65 pay 5 €. On Wednesday everybody pays 5 €. The user types the age and chooses the day; the page shows the price.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Cinema ticket&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Cinema ticket&lt;/h1&gt;
+    &lt;label for="age"&gt;Age&lt;/label&gt;
+    &lt;input type="number" id="age" min="0"&gt;
+    &lt;label for="day"&gt;Day&lt;/label&gt;
+    &lt;select id="day"&gt;
+        &lt;option value="monday"&gt;Monday&lt;/option&gt;
+        &lt;option value="tuesday"&gt;Tuesday&lt;/option&gt;
+        &lt;option value="wednesday"&gt;Wednesday&lt;/option&gt;
+        &lt;option value="thursday"&gt;Thursday&lt;/option&gt;
+        &lt;option value="friday"&gt;Friday&lt;/option&gt;
+        &lt;option value="saturday"&gt;Saturday&lt;/option&gt;
+        &lt;option value="sunday"&gt;Sunday&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button id="price"&gt;Price&lt;/button&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector("#price").addEventListener("click", function () {
+            const age = Number(document.querySelector("#age").value);
+            const day = document.querySelector("#day").value;
+            let price = 8;
+
+            if (day === "wednesday" || age &lt; 14 || age &gt; 65) {
+                price = 5;
+            }
+
+            document.querySelector("#output").textContent = `Your ticket costs ${price} euros.`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Cinema ticket&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Cinema ticket&lt;/h1&gt;
+    &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+    &lt;input type=&quot;number&quot; id=&quot;age&quot; min=&quot;0&quot;&gt;
+    &lt;label for=&quot;day&quot;&gt;Day&lt;/label&gt;
+    &lt;select id=&quot;day&quot;&gt;
+        &lt;option value=&quot;monday&quot;&gt;Monday&lt;/option&gt;
+        &lt;option value=&quot;tuesday&quot;&gt;Tuesday&lt;/option&gt;
+        &lt;option value=&quot;wednesday&quot;&gt;Wednesday&lt;/option&gt;
+        &lt;option value=&quot;thursday&quot;&gt;Thursday&lt;/option&gt;
+        &lt;option value=&quot;friday&quot;&gt;Friday&lt;/option&gt;
+        &lt;option value=&quot;saturday&quot;&gt;Saturday&lt;/option&gt;
+        &lt;option value=&quot;sunday&quot;&gt;Sunday&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button id=&quot;price&quot;&gt;Price&lt;/button&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#price&quot;).addEventListener(&quot;click&quot;, function () {
+            const age = Number(document.querySelector(&quot;#age&quot;).value);
+            const day = document.querySelector(&quot;#day&quot;).value;
+            let price = 8;
+
+            if (day === &quot;wednesday&quot; || age &lt; 14 || age &gt; 65) {
+                price = 5;
+            }
+
+            document.querySelector(&quot;#output&quot;).textContent = `Your ticket costs ${price} euros.`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 5.7</h2>
+        <div class="enunciat"><strong>Exercise 5.7. Final mark.</strong> Three inputs with three marks. Show the average and, next to it, the word (Fail, Pass, Good, Excellent) with the right colour.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/05-conditions/ex7.png" alt="Final mark with the average and the word Excellent"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Final mark&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Final mark&lt;/h1&gt;
+    &lt;input type="number" id="mark1" placeholder="Mark 1" min="0" max="10"&gt;
+    &lt;input type="number" id="mark2" placeholder="Mark 2" min="0" max="10"&gt;
+    &lt;input type="number" id="mark3" placeholder="Mark 3" min="0" max="10"&gt;
+    &lt;button id="calculate"&gt;Calculate&lt;/button&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector("#calculate").addEventListener("click", function () {
+            const m1 = Number(document.querySelector("#mark1").value);
+            const m2 = Number(document.querySelector("#mark2").value);
+            const m3 = Number(document.querySelector("#mark3").value);
+            const average = (m1 + m2 + m3) / 3;
+
+            let word;
+            let colour;
+            if (average &lt; 5) {
+                word = "Fail";
+                colour = "red";
+            } else if (average &lt; 7) {
+                word = "Pass";
+                colour = "orange";
+            } else if (average &lt; 9) {
+                word = "Good";
+                colour = "blue";
+            } else {
+                word = "Excellent";
+                colour = "green";
+            }
+
+            const output = document.querySelector("#output");
+            output.textContent = `Average: ${average.toFixed(2)} - ${word}`;
+            output.style.color = colour;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 5.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Final mark&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Final mark&lt;/h1&gt;
+    &lt;input type=&quot;number&quot; id=&quot;mark1&quot; placeholder=&quot;Mark 1&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;mark2&quot; placeholder=&quot;Mark 2&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;mark3&quot; placeholder=&quot;Mark 3&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;
+    &lt;button id=&quot;calculate&quot;&gt;Calculate&lt;/button&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#calculate&quot;).addEventListener(&quot;click&quot;, function () {
+            const m1 = Number(document.querySelector(&quot;#mark1&quot;).value);
+            const m2 = Number(document.querySelector(&quot;#mark2&quot;).value);
+            const m3 = Number(document.querySelector(&quot;#mark3&quot;).value);
+            const average = (m1 + m2 + m3) / 3;
+
+            let word;
+            let colour;
+            if (average &lt; 5) {
+                word = &quot;Fail&quot;;
+                colour = &quot;red&quot;;
+            } else if (average &lt; 7) {
+                word = &quot;Pass&quot;;
+                colour = &quot;orange&quot;;
+            } else if (average &lt; 9) {
+                word = &quot;Good&quot;;
+                colour = &quot;blue&quot;;
+            } else {
+                word = &quot;Excellent&quot;;
+                colour = &quot;green&quot;;
+            }
+
+            const output = document.querySelector(&quot;#output&quot;);
+            output.textContent = `Average: ${average.toFixed(2)} - ${word}`;
+            output.style.color = colour;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e8">
+        <h2>Extra · ex6 (contact form)</h2>
+        <div class="enunciat"><strong>Contact form</strong> (fitxer <code>exercises/05-conditions/ex6.html</code>, que no està enllaçat en cap lliçó). Check that the <code>email</code> and <code>password</code> fields are <strong>not empty</strong>, using <code>&amp;&amp;</code>. Show the success or the error message in <code>#validationMessage</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+const message = document.querySelector("#validationMessage");
+
+document.querySelector("#sendButton").addEventListener("click", function () {
+    if (email.value !== "" &amp;&amp; password.value !== "") {
+        message.textContent = "Data sent correctly.";
+        message.style.color = "green";
+    } else {
+        message.textContent = "Error: both fields are required.";
+        message.style.color = "red";
+    }
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex6.html">exercises/05-conditions/ex6.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Extra · ex6 (contact form)" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Form validation&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        #contactForm {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input[type=&quot;email&quot;],
+        input[type=&quot;password&quot;] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type=&quot;email&quot;]:focus,
+        input[type=&quot;password&quot;]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        #sendButton {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #sendButton:hover {
+            background-color: #2980b9;
+        }
+
+        #validationMessage {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid transparent;
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .message.error {
+            background-color: #fcebeb;
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .message.success {
+            background-color: #ebf9eb;
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Contact form&lt;/h1&gt;
+
+    &lt;div id=&quot;contactForm&quot;&gt;
+        &lt;div class=&quot;field-group&quot;&gt;
+            &lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;user@example.com&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;field-group&quot;&gt;
+            &lt;label for=&quot;password&quot;&gt;Password:&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;At least 6 characters&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;button id=&quot;sendButton&quot;&gt;Send&lt;/button&gt;
+
+        &lt;div id=&quot;validationMessage&quot; class=&quot;message&quot;&gt;
+            Type your data.
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const email = document.querySelector(&quot;#email&quot;);
+const password = document.querySelector(&quot;#password&quot;);
+const message = document.querySelector(&quot;#validationMessage&quot;);
+
+document.querySelector(&quot;#sendButton&quot;).addEventListener(&quot;click&quot;, function () {
+    if (email.value !== &quot;&quot; &amp;&amp; password.value !== &quot;&quot;) {
+        message.textContent = &quot;Data sent correctly.&quot;;
+        message.style.color = &quot;green&quot;;
+    } else {
+        message.textContent = &quot;Error: both fields are required.&quot;;
+        message.style.color = &quot;red&quot;;
+    }
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+</body>
+
+</html>

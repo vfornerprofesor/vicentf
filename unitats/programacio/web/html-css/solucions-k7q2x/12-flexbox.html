@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Flexbox</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Flexbox</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../12-flexbox.html">12-flexbox.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 12.1</a></li>
+        <li><a href="#e2">Exercici 12.2</a></li>
+        <li><a href="#e3">Exercici 12.3</a></li>
+        <li><a href="#e4">Exercici 12.4</a></li>
+        <li><a href="#e5">Exercici 12.5</a></li>
+        <li><a href="#e6">Exercici 12.4</a></li>
+        <li><a href="#e7">Exercici 12.5</a></li>
+        <li><a href="#e8">Exercici 12.6</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 12.1</h2>
+        <div class="enunciat"><strong>Exercise 12.1.</strong> Put three coloured boxes in a row, centred, with a 20px gap.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="box"&gt;1&lt;/div&gt;
+        &lt;div class="box"&gt;2&lt;/div&gt;
+        &lt;div class="box"&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 12.2</h2>
+        <div class="enunciat"><strong>Exercise 12.2.</strong> Repeat with <code>space-between</code>, then with <code>column</code>. Write down the difference.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="box"&gt;1&lt;/div&gt;
+        &lt;div class="box"&gt;2&lt;/div&gt;
+        &lt;div class="box"&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>/* a) space-between */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* b) column: canvia "justify-content: space-between" per aquestes dues línies
+.container {
+    display: flex;
+    flex-direction: column;
+}
+*/
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}</code></pre>
+        <div class="note"><strong>Resposta:</strong> amb <code>space-between</code> la primera caixa va a l'extrem esquerre, l'última a l'extrem dret i l'espai que sobra es reparteix entre elles. Amb <code>flex-direction: column</code> l'eix principal passa a ser vertical: les caixes s'apilen una damunt de l'altra (i <code>justify-content</code> passa a actuar en vertical).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;/* a) space-between */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* b) column: canvia &quot;justify-content: space-between&quot; per aquestes dues línies
+.container {
+    display: flex;
+    flex-direction: column;
+}
+*/
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 12.3</h2>
+        <div class="enunciat"><strong>Exercise 12.3.</strong> Centre a single box in the middle of a 400px tall container, both horizontally and vertically.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Centre&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="box"&gt;Centre&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background-color: #eeeeee;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}</code></pre>
+        <div class="note"><code>justify-content</code> centra en l'eix principal (horitzontal) i <code>align-items</code> en l'eix transversal (vertical).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Centre&lt;/title&gt;
+    &lt;style&gt;.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background-color: #eeeeee;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;Centre&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 12.4</h2>
+        <div class="enunciat"><strong>Exercise 12.4.</strong> Build the nav bar of the example with your own colours.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Nav&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;a class="logo" href="index.html"&gt;Marc.dev&lt;/a&gt;
+        &lt;nav class="menu"&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+            &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #1f3c5a;
+}
+
+.logo {
+    color: #f2a541;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    gap: 8px;
+}
+
+.menu a {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.25s ease;
+}
+
+.menu a:hover {
+    background-color: #f2a541;
+    color: #1f3c5a;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Nav&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #1f3c5a;
+}
+
+.logo {
+    color: #f2a541;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    gap: 8px;
+}
+
+.menu a {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.25s ease;
+}
+
+.menu a:hover {
+    background-color: #f2a541;
+    color: #1f3c5a;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Marc.dev&lt;/a&gt;
+        &lt;nav class=&quot;menu&quot;&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+            &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 12.5</h2>
+        <div class="enunciat"><strong>Exercise 12.5.</strong> Build a row of 6 cards (image + title + text) that wraps to a second line when the window is narrow.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Places&lt;/h1&gt;
+    &lt;div class="cards"&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/c1.jpg" alt="Mountain at sunrise"&gt;
+            &lt;h2&gt;Mountain&lt;/h2&gt;
+            &lt;p&gt;Snow and silence at 2,000 metres.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/c2.jpg" alt="Empty beach"&gt;
+            &lt;h2&gt;Beach&lt;/h2&gt;
+            &lt;p&gt;Turquoise water and no people.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/c3.jpg" alt="City at night"&gt;
+            &lt;h2&gt;City&lt;/h2&gt;
+            &lt;p&gt;Lights, noise and good food.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/c4.jpg" alt="Forest path"&gt;
+            &lt;h2&gt;Forest&lt;/h2&gt;
+            &lt;p&gt;A path under very tall trees.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/c5.jpg" alt="Desert dunes"&gt;
+            &lt;h2&gt;Desert&lt;/h2&gt;
+            &lt;p&gt;Dunes as far as you can see.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/c6.jpg" alt="Lake with mountains"&gt;
+            &lt;h2&gt;Lake&lt;/h2&gt;
+            &lt;p&gt;A mirror between two mountains.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 250px;
+    max-width: 320px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}</code></pre>
+        <div class="note"><code>flex-wrap: wrap</code> passa les targetes a la línia següent quan no caben; <code>flex: 1 1 250px</code> les fa créixer i encongir-se a partir d'una base de 250 px.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 250px;
+    max-width: 320px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Places&lt;/h1&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Mountain at sunrise&quot;&gt;
+            &lt;h2&gt;Mountain&lt;/h2&gt;
+            &lt;p&gt;Snow and silence at 2,000 metres.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Empty beach&quot;&gt;
+            &lt;h2&gt;Beach&lt;/h2&gt;
+            &lt;p&gt;Turquoise water and no people.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;City at night&quot;&gt;
+            &lt;h2&gt;City&lt;/h2&gt;
+            &lt;p&gt;Lights, noise and good food.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Forest path&quot;&gt;
+            &lt;h2&gt;Forest&lt;/h2&gt;
+            &lt;p&gt;A path under very tall trees.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Desert dunes&quot;&gt;
+            &lt;h2&gt;Desert&lt;/h2&gt;
+            &lt;p&gt;Dunes as far as you can see.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Lake with mountains&quot;&gt;
+            &lt;h2&gt;Lake&lt;/h2&gt;
+            &lt;p&gt;A mirror between two mountains.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 12.4</h2>
+        <div class="enunciat"><strong>Exercise 12.4. Navigation menu.</strong> Reproduce the horizontal menu in the picture, with the hover effect.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A horizontal navigation menu with a hover effect on the links"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/12-flexbox/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/12-flexbox/ex1_solved.html">exercises/12-flexbox/ex1_solved.html</a></p>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 12.5</h2>
+        <div class="enunciat"><strong>Exercise 12.5. Countries.</strong> Reproduce the grid of country cards. They must wrap when the window gets narrow.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex2.png" alt="A grid of country cards that wraps to more than one line"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/12-flexbox/ex2.html">ex2.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/12-flexbox/ex2_solved.html">exercises/12-flexbox/ex2_solved.html</a></p>
+    </section>
+
+    <section class="ex" id="e8">
+        <h2>Exercici 12.6</h2>
+        <div class="enunciat"><strong>Exercise 12.6. Band page.</strong> Reproduce the page of the music group.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex3.png" alt="A music band page laid out with flexbox"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/12-flexbox/ex3.html">ex3.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/12-flexbox/ex3_solved.html">exercises/12-flexbox/ex3_solved.html</a></p>
+    </section>
+
+</body>
+
+</html>

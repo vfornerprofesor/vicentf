@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>CSS exam</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS exam</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>Create a folder called <code>surname-name-css</code> and copy inside it everything from the <code>starter</code> folder: <code>exam.html</code>, <code>style.css</code>, <code>errors.html</code> and <code>errors.css</code>.</li>
+        <li>You write your CSS in <code>style.css</code> (exercises 1, 3, 4 and 5) and in <code>errors.css</code> (exercise 6). <strong>Do not change the HTML files.</strong> The CSS under "Given styles" is already written: do not change it.</li>
+        <li>Exercise 2 is answered in a text file called <code>answers.txt</code>.</li>
+        <li>You can use VS Code, the browser and its developer tools. You cannot use notes, the lessons, the internet to search for answers, a mobile phone or any AI tool.</li>
+        <li>Save often. At the end, hand in the whole folder.</li>
+    </ul>
+
+    <!-- [IMATGE: css-exam-inicial.png — captura d'exam.html obert en el navegador SENSE cap regla afegida (l'estat de partida).] -->
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· Selectors · about 8 min</span></h2>
+        <p>In <code>style.css</code>, write these two rules:</p>
+        <ol>
+            <li>
+                <strong>Only the paragraphs with class <code>lead</code> that are inside the section with class <code>intro</code></strong>
+                must have: font size <code>1.25rem</code>, colour <code>#1f3c5a</code> and line height <code>1.6</code>.<br>
+                The paragraph <code>lead</code> of the news section <strong>must not change</strong>.
+            </li>
+            <li>
+                <strong>The title with the id <code>title</code></strong> must be centred and in uppercase.
+            </li>
+        </ol>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· Box model · about 8 min</span></h2>
+        <p>This is the CSS of a box in a web page:</p>
+<pre><code>.card {
+    width: 200px;
+    height: 120px;
+    padding: 15px 25px;
+    border: 4px solid #1f3c5a;
+    margin: 10px 30px;
+}</code></pre>
+        <p>In <code>answers.txt</code> answer these two questions. <strong>Write the calculation</strong>, not only the result.</p>
+        <ol type="A">
+            <li>With the default <code>box-sizing</code>, what is the real <strong>width and height</strong> of the visible box?</li>
+            <li>If we add <code>box-sizing: border-box</code> to the rule, what is the width and the height of the visible box, and what is the width and the height of the <strong>content area</strong>?</li>
+        </ol>
+    </section>
+
+    <!-- ===== EXERCISE 3 ===== -->
+    <section>
+        <h2>Exercise 3 <span class="time">· Centre with flexbox · about 6 min</span></h2>
+        <p>
+            In the section <em>Centre the box</em>, the dark box (<code>.box</code>) is stuck in the top left corner of
+            its light container (<code>.stage</code>). With <strong>flexbox</strong>, write the CSS that puts the box
+            in the <strong>exact centre</strong> of the container, horizontally and vertically.
+        </p>
+        <p class="tip"><strong>Note:</strong> do not change the size of the box or the container.</p>
+
+        <!-- [IMATGE: css-exercici3-resultat.png — captura de la caixa fosca centrada dins del contenidor clar.] -->
+    </section>
+
+    <!-- ===== EXERCISE 4 ===== -->
+    <section>
+        <h2>Exercise 4 <span class="time">· Navigation bar · about 10 min</span></h2>
+        <p>
+            Now the menu is a vertical list with bullets. Write the CSS to make a <strong>horizontal navigation bar</strong>
+            with <strong>flexbox</strong>:
+        </p>
+        <ul>
+            <li>The four links in one row, <strong>centred</strong> in the page, with a space of <code>1rem</code> between them.</li>
+            <li>No bullets in the list and no extra margin or padding.</li>
+            <li>Every link looks like a button: padding <code>0.5rem 1rem</code>, background <code>#1f3c5a</code>, white text, rounded corners of <code>6px</code> and no underline.</li>
+            <li>When the mouse is over a link: background <code>#f2a541</code> and text <code>#1f3c5a</code>.</li>
+        </ul>
+
+        <!-- [IMATGE: css-exercici4-resultat.png — captura de la barra de navegació acabada (quatre botons centrats). Opcional: un dels botons amb el :hover.] -->
+    </section>
+
+    <!-- ===== EXERCISE 5 ===== -->
+    <section>
+        <h2>Exercise 5 <span class="time">· Gallery with grid · about 8 min</span></h2>
+        <p>
+            Write the CSS to make the six photos (<code>.photo</code>) of the section <em>Gallery</em> a
+            <strong>grid of 3 columns of the same width</strong>, with a space of <code>1rem</code> between them.
+            The photos must be two rows of three.
+        </p>
+
+        <!-- [IMATGE: css-exercici5-resultat.png — captura de la galeria: dues files de tres caixes.] -->
+    </section>
+
+    <!-- ===== EXERCISE 6 ===== -->
+    <section>
+        <h2>Exercise 6 <span class="time">· Find the errors · about 12 min</span></h2>
+        <p>
+            Open <code>errors.html</code> in the browser. The CSS file <code>errors.css</code> has <strong>5 errors</strong>
+            and because of them the page does not look as it should. Fix them in <code>errors.css</code>.
+        </p>
+        <p>When all the errors are fixed, the page must look like this:</p>
+        <ul>
+            <li>The title is centred and its lines have a height of 1.5.</li>
+            <li>The page has a light grey background and no margin.</li>
+            <li>The two products are white boxes of <code>300px</code> of width, centred in the page, with a thin grey border, some padding and dark grey text.</li>
+        </ul>
+        <p class="tip"><strong>Tip:</strong> write a comment next to each error you fix. It helps you to count them.</p>
+
+        <!-- [IMATGE: css-errors-abans.png i css-errors-despres.png — captura d'errors.html amb els errors i amb la correcció feta.] -->
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Check that your folder has: <code>exam.html</code>, <code>style.css</code>, <code>errors.html</code>, <code>errors.css</code> and <code>answers.txt</code>.</li>
+        <li>Open both pages in the browser and check them one more time.</li>
+    </ul>
+
+</body>
+
+</html>

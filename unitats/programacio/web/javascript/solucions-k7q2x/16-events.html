@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Events</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Events</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../16-events.html">16-events.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 16.1</a></li>
+        <li><a href="#e2">Exercici 16.2</a></li>
+        <li><a href="#e3">Exercici 16.3</a></li>
+        <li><a href="#e4">Exercici 16.4</a></li>
+        <li><a href="#e5">Exercici 16.5</a></li>
+        <li><a href="#e6">Exercici 16.6</a></li>
+        <li><a href="#e7">Exercici 16.7</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 16.1</h2>
+        <div class="enunciat"><strong>Exercise 16.1.</strong> A live character counter: as the user types in a field, show "17 / 100 characters", and turn it red over 100.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Live counter&lt;/h1&gt;
+    &lt;textarea id="text" rows="4" cols="40"&gt;&lt;/textarea&gt;
+    &lt;p id="counter"&gt;0 / 100 characters&lt;/p&gt;
+
+    &lt;script&gt;
+        const text = document.querySelector("#text");
+        const counter = document.querySelector("#counter");
+
+        text.addEventListener("input", function () {
+            const length = text.value.length;
+            counter.textContent = `${length} / 100 characters`;
+            counter.style.color = length &gt; 100 ? "red" : "";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Live counter&lt;/h1&gt;
+    &lt;textarea id=&quot;text&quot; rows=&quot;4&quot; cols=&quot;40&quot;&gt;&lt;/textarea&gt;
+    &lt;p id=&quot;counter&quot;&gt;0 / 100 characters&lt;/p&gt;
+
+    &lt;script&gt;
+        const text = document.querySelector(&quot;#text&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+
+        text.addEventListener(&quot;input&quot;, function () {
+            const length = text.value.length;
+            counter.textContent = `${length} / 100 characters`;
+            counter.style.color = length &gt; 100 ? &quot;red&quot; : &quot;&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 16.2</h2>
+        <div class="enunciat"><strong>Exercise 16.2.</strong> An input where, as you type, the text appears in capital letters in <code>#output</code>. (<code>.toUpperCase()</code>)</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Capital letters&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Capital letters&lt;/h1&gt;
+    &lt;input type="text" id="input" placeholder="Type here"&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector("#input").addEventListener("input", function () {
+            document.querySelector("#output").textContent = this.value.toUpperCase();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Capital letters&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Capital letters&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;input&quot; placeholder=&quot;Type here&quot;&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#input&quot;).addEventListener(&quot;input&quot;, function () {
+            document.querySelector(&quot;#output&quot;).textContent = this.value.toUpperCase();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 16.3</h2>
+        <div class="enunciat"><strong>Exercise 16.3.</strong> Six colour buttons that change the background of the page, built with one loop and <code>data-colour</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Colour buttons&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Choose a colour&lt;/h1&gt;
+    &lt;div id="buttons"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const colours = ["tomato", "orange", "gold", "mediumseagreen", "dodgerblue", "orchid"];
+        const container = document.querySelector("#buttons");
+
+        // one loop creates the six buttons
+        for (const colour of colours) {
+            const button = document.createElement("button");
+            button.textContent = colour;
+            button.dataset.colour = colour;            // &lt;button data-colour="tomato"&gt;
+            container.appendChild(button);
+        }
+
+        container.addEventListener("click", function (event) {
+            if (event.target.dataset.colour) {
+                document.body.style.backgroundColor = event.target.dataset.colour;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Un sol escoltador en el contenidor (<em>event delegation</em>) serveix per als sis botons: <code>event.target</code> diu quin s'ha clicat i <code>dataset.colour</code> en dona el color.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Colour buttons&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Choose a colour&lt;/h1&gt;
+    &lt;div id=&quot;buttons&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const colours = [&quot;tomato&quot;, &quot;orange&quot;, &quot;gold&quot;, &quot;mediumseagreen&quot;, &quot;dodgerblue&quot;, &quot;orchid&quot;];
+        const container = document.querySelector(&quot;#buttons&quot;);
+
+        // one loop creates the six buttons
+        for (const colour of colours) {
+            const button = document.createElement(&quot;button&quot;);
+            button.textContent = colour;
+            button.dataset.colour = colour;            // &lt;button data-colour=&quot;tomato&quot;&gt;
+            container.appendChild(button);
+        }
+
+        container.addEventListener(&quot;click&quot;, function (event) {
+            if (event.target.dataset.colour) {
+                document.body.style.backgroundColor = event.target.dataset.colour;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 16.4</h2>
+        <div class="enunciat"><strong>Exercise 16.4.</strong> A field and an "Add" button: every click adds what you typed to the list, and clears the field. Pressing Enter in the field does the same. The empty field adds nothing.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Add items&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#nameInput");
+        const button = document.querySelector("#addButton");
+        const items = [];
+
+        function draw() {
+            let html = "&lt;ul&gt;";
+            for (const item of items) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            html += "&lt;/ul&gt;";
+            document.querySelector("#output").innerHTML = html;
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+
+            if (text === "") {
+                return;
+            }
+
+            items.push(text);
+            input.value = "";
+            input.focus();          // the cursor goes back to the field
+            draw();
+        }
+
+        button.addEventListener("click", addItem);
+
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addItem();
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La prova afig "Milk" amb Enter, fa un clic amb el camp buit (no afig res) i afig "Bread" amb el botó: queden 2 elements.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Add items&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#nameInput&quot;);
+        const button = document.querySelector(&quot;#addButton&quot;);
+        const items = [];
+
+        function draw() {
+            let html = &quot;&lt;ul&gt;&quot;;
+            for (const item of items) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            html += &quot;&lt;/ul&gt;&quot;;
+            document.querySelector(&quot;#output&quot;).innerHTML = html;
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+
+            if (text === &quot;&quot;) {
+                return;
+            }
+
+            items.push(text);
+            input.value = &quot;&quot;;
+            input.focus();          // the cursor goes back to the field
+            draw();
+        }
+
+        button.addEventListener(&quot;click&quot;, addItem);
+
+        input.addEventListener(&quot;keydown&quot;, function (event) {
+            if (event.key === &quot;Enter&quot;) {
+                addItem();
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 16.5</h2>
+        <div class="enunciat"><strong>Exercise 16.5.</strong> A <code>&lt;select&gt;</code> with three cities. When the user chooses one, the page shows a sentence about it (<code>change</code> event).</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Cities&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Choose a city&lt;/h1&gt;
+    &lt;select id="city"&gt;
+        &lt;option value=""&gt;-- choose one --&lt;/option&gt;
+        &lt;option value="valencia"&gt;Valencia&lt;/option&gt;
+        &lt;option value="alacant"&gt;Alacant&lt;/option&gt;
+        &lt;option value="castello"&gt;Castello&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const sentences = {
+            valencia: "Valencia is famous for the paella and the City of Arts and Sciences.",
+            alacant: "Alacant has the Santa Barbara castle and a very long beach.",
+            castello: "Castello has the Desert de les Palmes and the Magdalena festival."
+        };
+
+        document.querySelector("#city").addEventListener("change", function () {
+            document.querySelector("#output").textContent = sentences[this.value] || "";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Cities&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Choose a city&lt;/h1&gt;
+    &lt;select id=&quot;city&quot;&gt;
+        &lt;option value=&quot;&quot;&gt;-- choose one --&lt;/option&gt;
+        &lt;option value=&quot;valencia&quot;&gt;Valencia&lt;/option&gt;
+        &lt;option value=&quot;alacant&quot;&gt;Alacant&lt;/option&gt;
+        &lt;option value=&quot;castello&quot;&gt;Castello&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const sentences = {
+            valencia: &quot;Valencia is famous for the paella and the City of Arts and Sciences.&quot;,
+            alacant: &quot;Alacant has the Santa Barbara castle and a very long beach.&quot;,
+            castello: &quot;Castello has the Desert de les Palmes and the Magdalena festival.&quot;
+        };
+
+        document.querySelector(&quot;#city&quot;).addEventListener(&quot;change&quot;, function () {
+            document.querySelector(&quot;#output&quot;).textContent = sentences[this.value] || &quot;&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 16.6</h2>
+        <div class="enunciat"><strong>Exercise 16.6.</strong> An image that changes when the mouse is over it and goes back when it leaves.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Image&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Put the mouse over the image&lt;/h1&gt;
+    &lt;img id="picture" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='120'%3E%3Crect%20width='200'%20height='120'%20fill='%232d5a85'/%3E%3Ctext%20x='100'%20y='70'%20font-size='28'%20fill='white'%20text-anchor='middle'%3EMouse%20out%3C/text%3E%3C/svg%3E" alt="A blue box" width="200" height="120"&gt;
+
+    &lt;script&gt;
+        const picture = document.querySelector("#picture");
+        const normal = picture.src;
+        const over = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='120'%3E%3Crect%20width='200'%20height='120'%20fill='%23f2a541'/%3E%3Ctext%20x='100'%20y='70'%20font-size='28'%20fill='%231f3c5a'%20text-anchor='middle'%3EMouse%20over%3C/text%3E%3C/svg%3E";
+
+        picture.addEventListener("mouseover", function () {
+            picture.src = over;
+        });
+
+        picture.addEventListener("mouseout", function () {
+            picture.src = normal;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Dos esdeveniments: <code>mouseover</code> (el ratolí entra) i <code>mouseout</code> (ix). S'hi han posat imatges SVG en línia perquè l'exemple no necessite fitxers.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Image&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Put the mouse over the image&lt;/h1&gt;
+    &lt;img id=&quot;picture&quot; src=&quot;data:image/svg+xml,%3Csvg%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20width=&#x27;200&#x27;%20height=&#x27;120&#x27;%3E%3Crect%20width=&#x27;200&#x27;%20height=&#x27;120&#x27;%20fill=&#x27;%232d5a85&#x27;/%3E%3Ctext%20x=&#x27;100&#x27;%20y=&#x27;70&#x27;%20font-size=&#x27;28&#x27;%20fill=&#x27;white&#x27;%20text-anchor=&#x27;middle&#x27;%3EMouse%20out%3C/text%3E%3C/svg%3E&quot; alt=&quot;A blue box&quot; width=&quot;200&quot; height=&quot;120&quot;&gt;
+
+    &lt;script&gt;
+        const picture = document.querySelector(&quot;#picture&quot;);
+        const normal = picture.src;
+        const over = &quot;data:image/svg+xml,%3Csvg%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20width=&#x27;200&#x27;%20height=&#x27;120&#x27;%3E%3Crect%20width=&#x27;200&#x27;%20height=&#x27;120&#x27;%20fill=&#x27;%23f2a541&#x27;/%3E%3Ctext%20x=&#x27;100&#x27;%20y=&#x27;70&#x27;%20font-size=&#x27;28&#x27;%20fill=&#x27;%231f3c5a&#x27;%20text-anchor=&#x27;middle&#x27;%3EMouse%20over%3C/text%3E%3C/svg%3E&quot;;
+
+        picture.addEventListener(&quot;mouseover&quot;, function () {
+            picture.src = over;
+        });
+
+        picture.addEventListener(&quot;mouseout&quot;, function () {
+            picture.src = normal;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 16.7</h2>
+        <div class="enunciat"><strong>Exercise 16.7. Live search.</strong> An array of 10 names drawn as a list, and a search box. As the user types, only the matching names stay on the screen.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Live search&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Live search&lt;/h1&gt;
+    &lt;input type="text" id="search" placeholder="Type a name..."&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const names = ["Pere", "Joan", "Marta", "Nuria", "Laia", "Jordi", "Maria", "Pau", "Clara", "Marc"];
+
+        function draw(list) {
+            let html = "";
+            for (const name of list) {
+                html += `&lt;li&gt;${name}&lt;/li&gt;`;
+            }
+            document.querySelector("#list").innerHTML = html;
+        }
+
+        document.querySelector("#search").addEventListener("input", function () {
+            const text = this.value.toLowerCase();
+            draw(names.filter(name =&gt; name.toLowerCase().includes(text)));
+        });
+
+        draw(names);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Amb "mar" queden Marta, Maria i Marc.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 16.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Live search&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Live search&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;search&quot; placeholder=&quot;Type a name...&quot;&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const names = [&quot;Pere&quot;, &quot;Joan&quot;, &quot;Marta&quot;, &quot;Nuria&quot;, &quot;Laia&quot;, &quot;Jordi&quot;, &quot;Maria&quot;, &quot;Pau&quot;, &quot;Clara&quot;, &quot;Marc&quot;];
+
+        function draw(list) {
+            let html = &quot;&quot;;
+            for (const name of list) {
+                html += `&lt;li&gt;${name}&lt;/li&gt;`;
+            }
+            document.querySelector(&quot;#list&quot;).innerHTML = html;
+        }
+
+        document.querySelector(&quot;#search&quot;).addEventListener(&quot;input&quot;, function () {
+            const text = this.value.toLowerCase();
+            draw(names.filter(name =&gt; name.toLowerCase().includes(text)));
+        });
+
+        draw(names);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

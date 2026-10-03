@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Responsive design</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Responsive design</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../14-responsive.html">14-responsive.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 14.1</a></li>
+        <li><a href="#e2">Exercici 14.2</a></li>
+        <li><a href="#e3">Exercici 14.3</a></li>
+        <li><a href="#e4">Exercici 14.4</a></li>
+        <li><a href="#e5">Exercici 14.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 14.1</h2>
+        <div class="enunciat"><strong>Exercise 14.1.</strong> Add the viewport tag and <code>img { max-width: 100%; }</code> to all your pages. Compare the result on a narrow window before and after.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="cards"&gt;
+        &lt;div class="card"&gt;Card 1&lt;/div&gt;
+        &lt;div class="card"&gt;Card 2&lt;/div&gt;
+        &lt;div class="card"&gt;Card 3&lt;/div&gt;
+        &lt;div class="card"&gt;Card 4&lt;/div&gt;
+        &lt;div class="card"&gt;Card 5&lt;/div&gt;
+        &lt;div class="card"&gt;Card 6&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>img {
+    max-width: 100%;
+}</code></pre>
+        <div class="note"><strong>Resposta:</strong> sense el <code>viewport</code> el mòbil dibuixa la pàgina com si la pantalla fóra de ~980 px i la redueix (tot es veu xicotet); sense <code>max-width: 100%</code> les imatges grans surten de la pantalla i apareix scroll horitzontal. Amb les dues coses la pàgina s'adapta a l'ample.</div>
+        <div class="note">En cada pàgina cal posar <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> en el <code>head</code> i la regla <code>img { max-width: 100%; }</code> en el CSS.</div>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 14.2</h2>
+        <div class="enunciat"><strong>Exercise 14.2.</strong> Make your row of cards show 3 per line on a desktop, 2 on a tablet and 1 on a phone. Use mobile first.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="cards"&gt;
+        &lt;div class="card"&gt;Card 1&lt;/div&gt;
+        &lt;div class="card"&gt;Card 2&lt;/div&gt;
+        &lt;div class="card"&gt;Card 3&lt;/div&gt;
+        &lt;div class="card"&gt;Card 4&lt;/div&gt;
+        &lt;div class="card"&gt;Card 5&lt;/div&gt;
+        &lt;div class="card"&gt;Card 6&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+/* Mobile first: 1 per línia */
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.card {
+    padding: 40px 16px;
+    background-color: #2d5a85;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Tablet: 2 per línia */
+@media (min-width: 600px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Escriptori: 3 per línia */
+@media (min-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}</code></pre>
+        <div class="note">Mobile first: l'estil base és el del mòbil (1 columna) i els <code>@media (min-width)</code> van afegint columnes quan la pantalla creix.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+/* Mobile first: 1 per línia */
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.card {
+    padding: 40px 16px;
+    background-color: #2d5a85;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Tablet: 2 per línia */
+@media (min-width: 600px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Escriptori: 3 per línia */
+@media (min-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+        &lt;div class=&quot;card&quot;&gt;Card 1&lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;Card 2&lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;Card 3&lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;Card 4&lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;Card 5&lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;Card 6&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 14.3</h2>
+        <div class="enunciat"><strong>Exercise 14.3.</strong> Make your nav bar become a vertical column below 600px.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Nav&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;a class="logo" href="index.html"&gt;Marc.dev&lt;/a&gt;
+        &lt;nav class="menu"&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #1f3c5a;
+}
+
+.logo {
+    color: #f2a541;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    gap: 8px;
+}
+
+.menu a {
+    padding: 8px 14px;
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 8px;
+    }
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Nav&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #1f3c5a;
+}
+
+.logo {
+    color: #f2a541;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    gap: 8px;
+}
+
+.menu a {
+    padding: 8px 14px;
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 8px;
+    }
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Marc.dev&lt;/a&gt;
+        &lt;nav class=&quot;menu&quot;&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 14.4</h2>
+        <div class="enunciat"><strong>Exercise 14.4.</strong> Hide the sidebar (<code>aside</code>) on screens under 768px using <code>display: none</code>. Then think: is it a good idea to hide content on mobile? Write two lines with your opinion.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Sidebar&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="layout"&gt;
+        &lt;main&gt;
+            &lt;h1&gt;Content&lt;/h1&gt;
+            &lt;p&gt;The content is always visible.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h2&gt;Sidebar&lt;/h2&gt;
+            &lt;p&gt;Related links.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 20px;
+}
+
+aside {
+    padding: 16px;
+    background-color: #eeeeee;
+}
+
+@media (max-width: 767px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        display: none;
+    }
+}</code></pre>
+        <div class="note"><strong>Resposta:</strong> opinió (exemple): no és bona idea amagar contingut important en el mòbil, perquè una persona que entra des del telèfon també el necessita. Millor reordenar-lo o col·locar-lo davall del contingut principal; amagar només el que és decoratiu o repetit.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Sidebar&lt;/title&gt;
+    &lt;style&gt;.layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 20px;
+}
+
+aside {
+    padding: 16px;
+    background-color: #eeeeee;
+}
+
+@media (max-width: 767px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        display: none;
+    }
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;layout&quot;&gt;
+        &lt;main&gt;
+            &lt;h1&gt;Content&lt;/h1&gt;
+            &lt;p&gt;The content is always visible.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h2&gt;Sidebar&lt;/h2&gt;
+            &lt;p&gt;Related links.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 14.4</h2>
+        <div class="enunciat"><strong>Exercise 14.4.</strong> Take the band page of exercise 12.6 and make it work on a phone: one column under 600 px, two between 600 and 900, three above.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Buhos&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Buhos&lt;/h1&gt;
+    &lt;h2&gt;Gallery&lt;/h2&gt;
+    &lt;div id="galeria"&gt;
+        &lt;img src="images/buhos1.png" alt="Photo 1 of the band" class="img_galeria"&gt;
+        &lt;img src="images/buhos2.png" alt="Photo 2 of the band" class="img_galeria"&gt;
+        &lt;img src="images/buhos3.png" alt="Photo 3 of the band" class="img_galeria"&gt;
+        &lt;img src="images/buhos4.png" alt="Photo 4 of the band" class="img_galeria"&gt;
+        &lt;img src="images/buhos5.png" alt="Photo 5 of the band" class="img_galeria"&gt;
+        &lt;img src="images/buhos6.png" alt="Photo 6 of the band" class="img_galeria"&gt;
+        &lt;img src="images/buhos7.png" alt="Photo 7 of the band" class="img_galeria"&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background-color: #2a2a2a;
+    color: white;
+    font-family: sans-serif;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+/* Mobile first: una columna */
+#galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.img_galeria {
+    width: 100%;
+    height: auto;
+}
+
+/* Entre 600 i 899 px: dues columnes */
+@media (min-width: 600px) {
+    #galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* A partir de 900 px: tres columnes */
+@media (min-width: 900px) {
+    #galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}</code></pre>
+        <div class="note">Només es mostra la galeria; la resta de la pàgina de l'exercici 12.6 (menú, vídeos i lletres) segueix el mateix patró. Si hi ha més blocs en columnes (per exemple <code>#millors_cancons</code>), s'usa la mateixa tècnica: 1 columna per defecte i <code>repeat(2, 1fr)</code> a partir de 900 px.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Buhos&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background-color: #2a2a2a;
+    color: white;
+    font-family: sans-serif;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+/* Mobile first: una columna */
+#galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.img_galeria {
+    width: 100%;
+    height: auto;
+}
+
+/* Entre 600 i 899 px: dues columnes */
+@media (min-width: 600px) {
+    #galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* A partir de 900 px: tres columnes */
+@media (min-width: 900px) {
+    #galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Buhos&lt;/h1&gt;
+    &lt;h2&gt;Gallery&lt;/h2&gt;
+    &lt;div id=&quot;galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 1 of the band&quot; class=&quot;img_galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 2 of the band&quot; class=&quot;img_galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 3 of the band&quot; class=&quot;img_galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 4 of the band&quot; class=&quot;img_galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 5 of the band&quot; class=&quot;img_galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 6 of the band&quot; class=&quot;img_galeria&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 7 of the band&quot; class=&quot;img_galeria&quot;&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

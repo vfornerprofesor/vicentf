@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Private fields and static methods</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Private fields and static methods</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../23-private-static.html">23-private-static.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 23.1</a></li>
+        <li><a href="#e2">Exercici 23.2</a></li>
+        <li><a href="#e3">Exercici 23.3</a></li>
+        <li><a href="#e4">Exercici 23.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 23.1</h2>
+        <div class="enunciat"><strong>Exercise 23.1.</strong> Change your <code>BankAccount</code> so that the balance is <code>#balance</code>, with a <code>get balance()</code>. Try to read <code>account.#balance</code> from outside and copy the error.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Private balance&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Private balance&lt;/h1&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        class BankAccount {
+            #balance = 0;
+
+            constructor(owner) {
+                this.owner = owner;
+            }
+
+            deposit(amount) {
+                this.#balance += amount;
+            }
+
+            withdraw(amount) {
+                if (amount &gt; this.#balance) {
+                    throw new Error("There is not enough money in the account");
+                }
+                this.#balance -= amount;
+            }
+
+            get balance() {
+                return this.#balance;
+            }
+        }
+
+        const account = new BankAccount("Ana");
+        account.deposit(50);
+        document.querySelector("#output").textContent = `${account.owner}: ${account.balance} euros`;
+
+        // account.#balance;   // SyntaxError: Private field '#balance' must be declared in an enclosing class
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><strong>Resposta:</strong> si es posa <code>account.#balance</code> fora de la classe, el navegador ni executa el fitxer: <code>Uncaught SyntaxError: Private field '#balance' must be declared in an enclosing class</code>. Des de fora només es pot llegir amb el <code>get balance</code> (<code>account.balance</code>) i canviar-lo amb els mètodes <code>deposit</code> i <code>withdraw</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 23.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Private balance&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Private balance&lt;/h1&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        class BankAccount {
+            #balance = 0;
+
+            constructor(owner) {
+                this.owner = owner;
+            }
+
+            deposit(amount) {
+                this.#balance += amount;
+            }
+
+            withdraw(amount) {
+                if (amount &gt; this.#balance) {
+                    throw new Error(&quot;There is not enough money in the account&quot;);
+                }
+                this.#balance -= amount;
+            }
+
+            get balance() {
+                return this.#balance;
+            }
+        }
+
+        const account = new BankAccount(&quot;Ana&quot;);
+        account.deposit(50);
+        document.querySelector(&quot;#output&quot;).textContent = `${account.owner}: ${account.balance} euros`;
+
+        // account.#balance;   // SyntaxError: Private field &#x27;#balance&#x27; must be declared in an enclosing class
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 23.2</h2>
+        <div class="enunciat"><strong>Exercise 23.2.</strong> Add to <code>Product</code> a <code>set price</code> that throws an error with negative prices. Check it with <code>try/catch</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>class Product {
+    #price;
+
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;               // goes through the set
+    }
+
+    get price() {
+        return this.#price;
+    }
+
+    set price(value) {
+        if (value &lt; 0) {
+            throw new Error("The price cannot be negative");
+        }
+        this.#price = value;
+    }
+}
+
+const mouse = new Product("Mouse", 15);
+console.log("Price: " + mouse.price);
+
+try {
+    mouse.price = -5;                     // the set throws the error
+} catch (error) {
+    console.log("Error: " + error.message);
+}
+
+console.log("Price after the error: " + mouse.price);   // still 15</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 23.2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;class Product {
+    #price;
+
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;               // goes through the set
+    }
+
+    get price() {
+        return this.#price;
+    }
+
+    set price(value) {
+        if (value &lt; 0) {
+            throw new Error(&quot;The price cannot be negative&quot;);
+        }
+        this.#price = value;
+    }
+}
+
+const mouse = new Product(&quot;Mouse&quot;, 15);
+console.log(&quot;Price: &quot; + mouse.price);
+
+try {
+    mouse.price = -5;                     // the set throws the error
+} catch (error) {
+    console.log(&quot;Error: &quot; + error.message);
+}
+
+console.log(&quot;Price after the error: &quot; + mouse.price);   // still 15&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 23.3</h2>
+        <div class="enunciat"><strong>Exercise 23.3.</strong> Save an array of <code>Product</code> in <code>localStorage</code> and, when the page loads, rebuild the objects with <code>Product.fromJSON</code>. Check that their methods work after F5.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Saved products&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Saved products&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Name"&gt;
+    &lt;input type="number" id="priceInput" placeholder="Price"&gt;
+    &lt;input type="number" id="stockInput" placeholder="Stock"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Product {
+            #price;
+            static count = 0;                     // static property: belongs to the class
+
+            constructor(name, price, stock = 0) {
+                this.name = name;
+                this.price = price;               // goes through the set
+                this.stock = stock;
+                Product.count++;
+            }
+
+            get price() {
+                return this.#price;
+            }
+
+            set price(value) {
+                if (value &lt; 0) {
+                    throw new Error("The price cannot be negative");
+                }
+                this.#price = value;
+            }
+
+            stockValue() {
+                return this.price * this.stock;
+            }
+
+            // from plain data (JSON) to a Product again
+            static fromJSON(data) {
+                return new Product(data.name, data.price, data.stock);
+            }
+
+            // what is saved when we do JSON.stringify
+            toJSON() {
+                return { name: this.name, price: this.#price, stock: this.stock };
+            }
+        }
+
+        // Load: plain data -&gt; Product objects again (so the methods work after F5)
+        function load() {
+            try {
+                const data = JSON.parse(localStorage.getItem("products")) || [];
+                return data.map(d =&gt; Product.fromJSON(d));
+            } catch (error) {
+                return [];
+            }
+        }
+
+        let products = load();
+
+        function save() {
+            localStorage.setItem("products", JSON.stringify(products));   // uses toJSON of each one
+        }
+
+        function draw() {
+            const list = document.querySelector("#list");
+            list.textContent = "";
+
+            for (const p of products) {
+                const li = document.createElement("li");
+                li.textContent = `${p.name}: ${p.price} euros x ${p.stock} = ${p.stockValue()} euros`;
+                list.appendChild(li);
+            }
+        }
+
+        document.querySelector("#addButton").addEventListener("click", function () {
+            try {
+                const name = document.querySelector("#nameInput").value.trim();
+                const price = Number(document.querySelector("#priceInput").value);
+                const stock = Number(document.querySelector("#stockInput").value);
+                products.push(new Product(name, price, stock));
+                save();
+                draw();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Sense <code>fromJSON</code>, després de <code>JSON.parse</code> els elements serien objectes simples i <code>p.stockValue()</code> donaria error. Amb <code>Product.fromJSON</code> tornen a ser objectes <code>Product</code> amb tots els seus mètodes. En la previsualització el <code>localStorage</code> està simulat en memòria.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 23.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Saved products&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Saved products&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Name&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;priceInput&quot; placeholder=&quot;Price&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;stockInput&quot; placeholder=&quot;Stock&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Product {
+            #price;
+            static count = 0;                     // static property: belongs to the class
+
+            constructor(name, price, stock = 0) {
+                this.name = name;
+                this.price = price;               // goes through the set
+                this.stock = stock;
+                Product.count++;
+            }
+
+            get price() {
+                return this.#price;
+            }
+
+            set price(value) {
+                if (value &lt; 0) {
+                    throw new Error(&quot;The price cannot be negative&quot;);
+                }
+                this.#price = value;
+            }
+
+            stockValue() {
+                return this.price * this.stock;
+            }
+
+            // from plain data (JSON) to a Product again
+            static fromJSON(data) {
+                return new Product(data.name, data.price, data.stock);
+            }
+
+            // what is saved when we do JSON.stringify
+            toJSON() {
+                return { name: this.name, price: this.#price, stock: this.stock };
+            }
+        }
+
+        // Load: plain data -&gt; Product objects again (so the methods work after F5)
+        function load() {
+            try {
+                const data = JSON.parse(localStorage.getItem(&quot;products&quot;)) || [];
+                return data.map(d =&gt; Product.fromJSON(d));
+            } catch (error) {
+                return [];
+            }
+        }
+
+        let products = load();
+
+        function save() {
+            localStorage.setItem(&quot;products&quot;, JSON.stringify(products));   // uses toJSON of each one
+        }
+
+        function draw() {
+            const list = document.querySelector(&quot;#list&quot;);
+            list.textContent = &quot;&quot;;
+
+            for (const p of products) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = `${p.name}: ${p.price} euros x ${p.stock} = ${p.stockValue()} euros`;
+                list.appendChild(li);
+            }
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, function () {
+            try {
+                const name = document.querySelector(&quot;#nameInput&quot;).value.trim();
+                const price = Number(document.querySelector(&quot;#priceInput&quot;).value);
+                const stock = Number(document.querySelector(&quot;#stockInput&quot;).value);
+                products.push(new Product(name, price, stock));
+                save();
+                draw();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 23.4</h2>
+        <div class="enunciat"><strong>Exercise 23.4.</strong> A static property <code>Product.count</code> that goes up every time a product is created.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>class Product {
+    static count = 0;                     // belongs to the class, not to each product
+
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+        Product.count++;                  // goes up every time a product is created
+    }
+}
+
+console.log("Products: " + Product.count);       // 0
+new Product("Mouse", 15);
+new Product("Keyboard", 25);
+new Product("Cable", 5);
+console.log("Products: " + Product.count);       // 3</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 23.4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;class Product {
+    static count = 0;                     // belongs to the class, not to each product
+
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+        Product.count++;                  // goes up every time a product is created
+    }
+}
+
+console.log(&quot;Products: &quot; + Product.count);       // 0
+new Product(&quot;Mouse&quot;, 15);
+new Product(&quot;Keyboard&quot;, 25);
+new Product(&quot;Cable&quot;, 5);
+console.log(&quot;Products: &quot; + Product.count);       // 3&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

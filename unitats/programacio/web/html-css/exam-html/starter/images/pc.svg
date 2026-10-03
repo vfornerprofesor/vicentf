@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#1f3c5a"/>
+  <!-- case -->
+  <rect x="100" y="30" width="200" height="240" rx="12" fill="#2b3340" stroke="#8a99ab" stroke-width="4"/>
+  <!-- motherboard -->
+  <rect x="120" y="50" width="160" height="180" rx="4" fill="#2f6b4f"/>
+  <!-- cpu + cooler -->
+  <circle cx="175" cy="105" r="32" fill="#8a99ab"/>
+  <circle cx="175" cy="105" r="24" fill="#2b3340"/>
+  <path d="M175 81 L175 129 M151 105 L199 105 M158 88 L192 122 M192 88 L158 122" stroke="#8a99ab" stroke-width="3"/>
+  <!-- ram -->
+  <rect x="225" y="70" width="10" height="70" fill="#f2a541"/>
+  <rect x="242" y="70" width="10" height="70" fill="#f2a541"/>
+  <!-- gpu -->
+  <rect x="130" y="160" width="140" height="34" rx="4" fill="#23272f"/>
+  <circle cx="170" cy="177" r="12" fill="#3b4656"/>
+  <circle cx="230" cy="177" r="12" fill="#3b4656"/>
+  <rect x="130" y="194" width="140" height="4" fill="#f2a541"/>
+  <!-- psu -->
+  <rect x="120" y="236" width="160" height="26" rx="3" fill="#3b4656"/>
+  <!-- leds -->
+  <circle cx="110" cy="50" r="4" fill="#f2a541"/>
+  <circle cx="110" cy="66" r="4" fill="#6fd3ff"/>
+</svg>

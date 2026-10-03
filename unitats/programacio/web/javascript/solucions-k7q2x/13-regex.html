@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Regular expressions</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Regular expressions</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../13-regex.html">13-regex.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 13.1</a></li>
+        <li><a href="#e2">Exercici 13.2</a></li>
+        <li><a href="#e3">Exercici 13.3</a></li>
+        <li><a href="#e4">Exercici 13.4</a></li>
+        <li><a href="#e5">Exercici 13.5</a></li>
+        <li><a href="#e6">Exercici 13.6</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 13.1</h2>
+        <div class="enunciat"><strong>Exercise 13.1.</strong> Given an array of 8 strings, show next to each one whether it is a valid postcode.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function show(text) {
+    document.body.insertAdjacentHTML("beforeend", "&lt;p&gt;" + text + "&lt;/p&gt;");
+}
+
+const postcodes = ["46001", "4600", "46 001", "46001A", "08080", "12345", "ABCDE", "460011"];
+const pattern = /^[0-9]{5}$/;
+
+for (const text of postcodes) {
+    show(`${text} -&gt; ${pattern.test(text) ? "valid" : "NOT valid"}`);
+}</code></pre>
+        <div class="note"><code>^</code> i <code>$</code> obliguen que tot el text siga exactament 5 dígits (sense ells, "460011" també coincidiria).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function show(text) {
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;p&gt;&quot; + text + &quot;&lt;/p&gt;&quot;);
+}
+
+const postcodes = [&quot;46001&quot;, &quot;4600&quot;, &quot;46 001&quot;, &quot;46001A&quot;, &quot;08080&quot;, &quot;12345&quot;, &quot;ABCDE&quot;, &quot;460011&quot;];
+const pattern = /^[0-9]{5}$/;
+
+for (const text of postcodes) {
+    show(`${text} -&gt; ${pattern.test(text) ? &quot;valid&quot; : &quot;NOT valid&quot;}`);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 13.2</h2>
+        <div class="enunciat"><strong>Exercise 13.2.</strong> The same with a simple email pattern. Include tricky cases: <code>"ana@"</code>, <code>"@mail.com"</code>, <code>"ana@mail"</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function show(text) {
+    document.body.insertAdjacentHTML("beforeend", "&lt;p&gt;" + text + "&lt;/p&gt;");
+}
+
+const emails = ["ana@mail.com", "ana@", "@mail.com", "ana@mail", "ana.garcia@school.org", "ana @mail.com"];
+const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+for (const text of emails) {
+    show(`${text} -&gt; ${pattern.test(text) ? "valid" : "NOT valid"}`);
+}</code></pre>
+        <div class="note">El patró vol: text sense espais ni @, una @, més text, un punt i més text. Per això "ana@", "@mail.com" i "ana@mail" fallen.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function show(text) {
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;p&gt;&quot; + text + &quot;&lt;/p&gt;&quot;);
+}
+
+const emails = [&quot;ana@mail.com&quot;, &quot;ana@&quot;, &quot;@mail.com&quot;, &quot;ana@mail&quot;, &quot;ana.garcia@school.org&quot;, &quot;ana @mail.com&quot;];
+const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+for (const text of emails) {
+    show(`${text} -&gt; ${pattern.test(text) ? &quot;valid&quot; : &quot;NOT valid&quot;}`);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 13.3</h2>
+        <div class="enunciat"><strong>Exercise 13.3.</strong> Redo the password check of exercise 5.3 with three regular expressions: at least 8 characters, a number, a capital letter.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const input = document.querySelector("#password");
+const result = document.querySelector("#result");
+
+function addLine(ok, text) {
+    const line = document.createElement("p");
+    line.className = ok ? "ok" : "ko";
+    line.textContent = (ok ? "\u2714 " : "\u2718 ") + text;
+    line.style.color = ok ? "green" : "red";
+    result.appendChild(line);
+}
+
+document.querySelector("#checkButton").addEventListener("click", function () {
+    const password = input.value;
+    result.textContent = "";
+
+    addLine(/.{8,}/.test(password), "At least 8 characters");
+    addLine(/[0-9]/.test(password), "Has a number");
+    addLine(/[A-Z]/.test(password), "Has a capital letter");
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex3.html">exercises/05-conditions/ex3.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Password check&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e8f4f8;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            text-align: center;
+            border-top: 5px solid #007bff;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        input[type=&quot;text&quot;] {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        input[type=&quot;text&quot;]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e7e34;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 1.1em;
+            text-align: left;
+            min-height: 25px;
+            padding: 10px;
+        }
+
+        #result p {
+            margin: 4px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Password check&lt;/h1&gt;
+        &lt;p&gt;Type a password. The page will show, one under the other, whether it has at
+            least 8 characters, whether it has a number, and whether it has a capital
+            letter.&lt;/p&gt;
+
+        &lt;input type=&quot;text&quot; id=&quot;password&quot; placeholder=&quot;Type a password&quot;&gt;
+
+        &lt;button id=&quot;checkButton&quot;&gt;Check&lt;/button&gt;
+
+        &lt;div id=&quot;result&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const input = document.querySelector(&quot;#password&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+function addLine(ok, text) {
+    const line = document.createElement(&quot;p&quot;);
+    line.className = ok ? &quot;ok&quot; : &quot;ko&quot;;
+    line.textContent = (ok ? &quot;\u2714 &quot; : &quot;\u2718 &quot;) + text;
+    line.style.color = ok ? &quot;green&quot; : &quot;red&quot;;
+    result.appendChild(line);
+}
+
+document.querySelector(&quot;#checkButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const password = input.value;
+    result.textContent = &quot;&quot;;
+
+    addLine(/.{8,}/.test(password), &quot;At least 8 characters&quot;);
+    addLine(/[0-9]/.test(password), &quot;Has a number&quot;);
+    addLine(/[A-Z]/.test(password), &quot;Has a capital letter&quot;);
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 13.4</h2>
+        <div class="enunciat"><strong>Exercise 13.4.</strong> Validate a DNI (8 digits and a letter) and show the letter alone, taken out with <code>match</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function show(text) {
+    document.body.insertAdjacentHTML("beforeend", "&lt;p&gt;" + text + "&lt;/p&gt;");
+}
+
+const dnis = ["12345678Z", "1234567Z", "12345678", "12345678z", "ABCDEFGH1"];
+const pattern = /^[0-9]{8}[A-Za-z]$/;
+
+for (const dni of dnis) {
+    if (pattern.test(dni)) {
+        const letter = dni.match(/[A-Za-z]$/)[0];
+        show(`${dni} -&gt; valid, the letter is ${letter}`);
+    } else {
+        show(`${dni} -&gt; NOT valid`);
+    }
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function show(text) {
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;p&gt;&quot; + text + &quot;&lt;/p&gt;&quot;);
+}
+
+const dnis = [&quot;12345678Z&quot;, &quot;1234567Z&quot;, &quot;12345678&quot;, &quot;12345678z&quot;, &quot;ABCDEFGH1&quot;];
+const pattern = /^[0-9]{8}[A-Za-z]$/;
+
+for (const dni of dnis) {
+    if (pattern.test(dni)) {
+        const letter = dni.match(/[A-Za-z]$/)[0];
+        show(`${dni} -&gt; valid, the letter is ${letter}`);
+    } else {
+        show(`${dni} -&gt; NOT valid`);
+    }
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 13.5</h2>
+        <div class="enunciat"><strong>Exercise 13.5.</strong> A phone written as <code>"961-23 45 67"</code>: remove every space and dash with <code>replace</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function show(text) {
+    document.body.insertAdjacentHTML("beforeend", "&lt;p&gt;" + text + "&lt;/p&gt;");
+}
+
+const phone = "961-23 45 67";
+const clean = phone.replace(/[\s-]/g, "");   // g: all of them, not only the first
+
+show(`${phone} -&gt; ${clean}`);</code></pre>
+        <div class="note">La bandera <code>g</code> fa que es substituïsquen <em>tots</em> els espais i guionets, no només el primer.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.5" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function show(text) {
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;p&gt;&quot; + text + &quot;&lt;/p&gt;&quot;);
+}
+
+const phone = &quot;961-23 45 67&quot;;
+const clean = phone.replace(/[\s-]/g, &quot;&quot;);   // g: all of them, not only the first
+
+show(`${phone} -&gt; ${clean}`);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 13.6</h2>
+        <div class="enunciat"><strong>Exercise 13.6.</strong> Take all the numbers out of a sentence with <code>match</code> and the flag <code>g</code>, and add them up.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function show(text) {
+    document.body.insertAdjacentHTML("beforeend", "&lt;p&gt;" + text + "&lt;/p&gt;");
+}
+
+const sentence = "I bought 3 apples, 12 oranges and 5 bananas for 20 euros.";
+const numbers = sentence.match(/[0-9]+/g);        // ["3", "12", "5", "20"]
+
+let total = 0;
+for (const n of numbers) {
+    total += Number(n);
+}
+
+show(`Numbers found: ${numbers.join(", ")}`);
+show(`Sum: ${total}`);</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.6" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function show(text) {
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;p&gt;&quot; + text + &quot;&lt;/p&gt;&quot;);
+}
+
+const sentence = &quot;I bought 3 apples, 12 oranges and 5 bananas for 20 euros.&quot;;
+const numbers = sentence.match(/[0-9]+/g);        // [&quot;3&quot;, &quot;12&quot;, &quot;5&quot;, &quot;20&quot;]
+
+let total = 0;
+for (const n of numbers) {
+    total += Number(n);
+}
+
+show(`Numbers found: ${numbers.join(&quot;, &quot;)}`);
+show(`Sum: ${total}`);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

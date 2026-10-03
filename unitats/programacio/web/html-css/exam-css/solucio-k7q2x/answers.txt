@@ -1,0 +1,21 @@
+CSS EXAM - EXERCISE 2: BOX MODEL
+
+.card {
+    width: 200px;
+    height: 120px;
+    padding: 15px 25px;
+    border: 4px solid #1f3c5a;
+    margin: 10px 30px;
+}
+
+A) Default box-sizing (content-box). Visible box = content + padding + border.
+   The margin is outside the box: it is NOT counted.
+
+   Width  = 200 (content) + 25 + 25 (padding left and right) + 4 + 4 (border) = 258 px
+   Height = 120 (content) + 15 + 15 (padding top and bottom) + 4 + 4 (border) = 158 px
+
+B) With box-sizing: border-box. The width and height already include padding and border.
+
+   Visible box:  200 px wide and 120 px high.
+   Content area: width  = 200 - 25 - 25 - 4 - 4 = 142 px
+                 height = 120 - 15 - 15 - 4 - 4 = 82 px

@@ -1,0 +1,9 @@
+HTML EXAM - EXERCISE 5: SEMANTIC TAGS
+
+1. The group of links to Home, About, Projects and Contact.      -> nav
+2. The area at the bottom with the copyright and the email.       -> footer
+3. A news item that could be published alone in another website.  -> article
+4. The unique content of the page, not repeated in other pages.   -> main
+5. The top area with the logo and the title of the site.          -> header
+6. A photo together with the text that describes it.              -> figure
+   (the text itself goes in figcaption)

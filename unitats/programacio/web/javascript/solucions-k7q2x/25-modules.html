@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Modules</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Modules</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../25-modules.html">25-modules.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 25.1</a></li>
+        <li><a href="#e2">Exercici 25.2</a></li>
+        <li><a href="#e3">Exercici 25.3</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 25.1</h2>
+        <div class="enunciat"><strong>Exercise 25.1.</strong> Move <code>Product</code> and <code>BankAccount</code> to <code>js/model.js</code> with <code>export</code>, and import them in <code>js/main.js</code>. The page must work exactly as before.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Shop and bank&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;ul id="products"&gt;&lt;/ul&gt;
+
+    &lt;h1&gt;Bank account&lt;/h1&gt;
+    &lt;p id="account"&gt;&lt;/p&gt;
+    &lt;input type="number" id="amount" placeholder="Amount"&gt;
+    &lt;button id="deposit"&gt;Deposit&lt;/button&gt;
+    &lt;p id="message"&gt;&lt;/p&gt;
+
+    &lt;script type="module" src="js/main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">js/model.js</span>
+        <pre><code>/** A product of the shop. */
+export class Product {
+    #price;
+
+    constructor(name, price, stock = 0) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    get price() {
+        return this.#price;
+    }
+
+    set price(value) {
+        if (value &lt; 0) {
+            throw new Error("The price cannot be negative");
+        }
+        this.#price = value;
+    }
+
+    /** Value of the stock of this product. */
+    stockValue() {
+        return this.price * this.stock;
+    }
+
+    toString() {
+        return `${this.name}: ${this.price} euros, ${this.stock} in stock`;
+    }
+}
+
+/** A bank account. */
+export class BankAccount {
+    #balance = 0;
+
+    constructor(owner, balance = 0) {
+        this.owner = owner;
+        this.#balance = balance;
+    }
+
+    get balance() {
+        return this.#balance;
+    }
+
+    deposit(amount) {
+        if (amount &lt;= 0) {
+            throw new Error("The amount must be positive");
+        }
+        this.#balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount &gt; this.#balance) {
+            throw new Error("There is not enough money in the account");
+        }
+        this.#balance -= amount;
+    }
+
+    toString() {
+        return `${this.owner}: ${this.#balance.toFixed(2)} euros`;
+    }
+}</code></pre>
+        <span class="fname">js/main.js</span>
+        <pre><code>import { Product, BankAccount } from "./model.js";
+
+const products = [
+    new Product("Keyboard", 25, 10),
+    new Product("Monitor", 120, 3)
+];
+const account = new BankAccount("Ana", 100);
+
+// Draws the products as a list
+function drawProducts() {
+    const list = document.querySelector("#products");
+    for (const p of products) {
+        const li = document.createElement("li");
+        li.textContent = p.toString();
+        list.appendChild(li);
+    }
+}
+
+// Draws the account and the message
+function drawAccount() {
+    document.querySelector("#account").textContent = account.toString();
+}
+
+document.querySelector("#deposit").addEventListener("click", function () {
+    const message = document.querySelector("#message");
+    try {
+        account.deposit(Number(document.querySelector("#amount").value));
+        message.textContent = "";
+    } catch (error) {
+        message.textContent = error.message;
+    }
+    drawAccount();
+});
+
+drawProducts();
+drawAccount();</code></pre>
+        <div class="note">Les classes viuen en <code>js/model.js</code> amb <code>export</code> i es porten a <code>js/main.js</code> amb <code>import { Product, BankAccount } from "./model.js"</code>. Cal <code>type="module"</code> en el <code>&lt;script&gt;</code> i obrir la pàgina amb un servidor (Live Server); amb <code>file://</code> els mòduls no funcionen.</div>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 25.2</h2>
+        <div class="enunciat"><strong>Exercise 25.2.</strong> Create <code>tests.html</code> and <code>js/tests.js</code>. The tests import the same classes and check them with at least six <code>console.assert</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">tests.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Tests&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tests&lt;/h1&gt;
+    &lt;p&gt;Open the console (F12) to see the result of the tests.&lt;/p&gt;
+    &lt;script type="module" src="js/tests.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">js/model.js</span>
+        <pre><code>/** A product of the shop. */
+export class Product {
+    #price;
+
+    constructor(name, price, stock = 0) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    get price() {
+        return this.#price;
+    }
+
+    set price(value) {
+        if (value &lt; 0) {
+            throw new Error("The price cannot be negative");
+        }
+        this.#price = value;
+    }
+
+    /** Value of the stock of this product. */
+    stockValue() {
+        return this.price * this.stock;
+    }
+
+    toString() {
+        return `${this.name}: ${this.price} euros, ${this.stock} in stock`;
+    }
+}
+
+/** A bank account. */
+export class BankAccount {
+    #balance = 0;
+
+    constructor(owner, balance = 0) {
+        this.owner = owner;
+        this.#balance = balance;
+    }
+
+    get balance() {
+        return this.#balance;
+    }
+
+    deposit(amount) {
+        if (amount &lt;= 0) {
+            throw new Error("The amount must be positive");
+        }
+        this.#balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount &gt; this.#balance) {
+            throw new Error("There is not enough money in the account");
+        }
+        this.#balance -= amount;
+    }
+
+    toString() {
+        return `${this.owner}: ${this.#balance.toFixed(2)} euros`;
+    }
+}</code></pre>
+        <span class="fname">js/tests.js</span>
+        <pre><code>import { Product, BankAccount } from "./model.js";
+
+// ---- Product ----
+const mouse = new Product("Mouse", 15, 4);
+console.assert(mouse.stockValue() === 60, "stockValue: 15 x 4 = 60");
+console.assert(new Product("Cable", 5).stockValue() === 0, "a product with no stock is worth 0");
+console.assert(mouse.toString() === "Mouse: 15 euros, 4 in stock", "toString of Product");
+
+let error = null;
+try {
+    new Product("Bad", -1);
+} catch (e) {
+    error = e;
+}
+console.assert(error !== null &amp;&amp; error.message === "The price cannot be negative", "a negative price throws an error");
+
+// ---- BankAccount ----
+const account = new BankAccount("Ana", 100);
+account.deposit(50);
+console.assert(account.balance === 150, "deposit adds money");
+account.withdraw(30);
+console.assert(account.balance === 120, "withdraw takes money out");
+
+error = null;
+try {
+    account.withdraw(1000);
+} catch (e) {
+    error = e;
+}
+console.assert(error !== null, "withdraw throws an error if there is not enough money");
+console.assert(account.toString() === "Ana: 120.00 euros", "toString of BankAccount");
+
+console.log("Tests finished");</code></pre>
+        <div class="note">Els tests importen les mateixes classes que la pàgina i comproven els seus mètodes amb <code>console.assert</code> (en són huit). Si tot passa, la consola només mostra "Tests finished"; si una afirmació falla, mostra "Assertion failed" amb el missatge.</div>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 25.3</h2>
+        <div class="enunciat"><strong>Exercise 25.3.</strong> A second page that uses the same <code>model.js</code> with a different interface (for example, only a table).</div>
+        <h3>Solució</h3>
+        <span class="fname">table.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products table&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;table id="table"&gt;&lt;/table&gt;
+    &lt;script type="module" src="js/table.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">js/model.js</span>
+        <pre><code>/** A product of the shop. */
+export class Product {
+    #price;
+
+    constructor(name, price, stock = 0) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    get price() {
+        return this.#price;
+    }
+
+    set price(value) {
+        if (value &lt; 0) {
+            throw new Error("The price cannot be negative");
+        }
+        this.#price = value;
+    }
+
+    /** Value of the stock of this product. */
+    stockValue() {
+        return this.price * this.stock;
+    }
+
+    toString() {
+        return `${this.name}: ${this.price} euros, ${this.stock} in stock`;
+    }
+}
+
+/** A bank account. */
+export class BankAccount {
+    #balance = 0;
+
+    constructor(owner, balance = 0) {
+        this.owner = owner;
+        this.#balance = balance;
+    }
+
+    get balance() {
+        return this.#balance;
+    }
+
+    deposit(amount) {
+        if (amount &lt;= 0) {
+            throw new Error("The amount must be positive");
+        }
+        this.#balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount &gt; this.#balance) {
+            throw new Error("There is not enough money in the account");
+        }
+        this.#balance -= amount;
+    }
+
+    toString() {
+        return `${this.owner}: ${this.#balance.toFixed(2)} euros`;
+    }
+}</code></pre>
+        <span class="fname">js/table.js</span>
+        <pre><code>import { Product } from "./model.js";     // the same model.js as the first page
+
+const products = [
+    new Product("Keyboard", 25, 10),
+    new Product("Mouse", 15, 0),
+    new Product("Monitor", 120, 3)
+];
+
+const table = document.querySelector("#table");
+table.innerHTML = "&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Stock&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;/tr&gt;";
+
+for (const p of products) {
+    const tr = document.createElement("tr");
+
+    for (const text of [p.name, p.price, p.stock, p.stockValue()]) {
+        const td = document.createElement("td");
+        td.textContent = text;
+        tr.appendChild(td);
+    }
+
+    table.appendChild(tr);
+}</code></pre>
+        <div class="note">Una segona pàgina amb una interfície diferent (només una taula) que reutilitza el <em>mateix</em> <code>js/model.js</code>: la lògica està en un sol lloc i cada pàgina només canvia la manera de mostrar-la.</div>
+    </section>
+
+</body>
+
+</html>

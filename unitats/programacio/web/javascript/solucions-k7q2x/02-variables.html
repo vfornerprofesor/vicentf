@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Variables and data types</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Variables and data types</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../02-variables.html">02-variables.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 2.1</a></li>
+        <li><a href="#e2">Exercici 2.2</a></li>
+        <li><a href="#e3">Exercici 2.3</a></li>
+        <li><a href="#e4">Exercici 2.4</a></li>
+        <li><a href="#e5">Exercici 2.5</a></li>
+        <li><a href="#e6">Exercici 2.6</a></li>
+        <li><a href="#e7">Exercici 2.7</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 2.1</h2>
+        <div class="enunciat"><strong>Exercise 2.1.</strong> Declare variables for your name, age, height (with decimals) and whether you have a driving licence. Write each one in the page, with its <code>typeof</code> next to it.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const name = "Marc";
+const age = 16;
+const height = 1.72;
+const hasLicence = false;
+
+document.write(name + " - " + typeof name + "&lt;br&gt;");
+document.write(age + " - " + typeof age + "&lt;br&gt;");
+document.write(height + " - " + typeof height + "&lt;br&gt;");
+document.write(hasLicence + " - " + typeof hasLicence + "&lt;br&gt;");</code></pre>
+        <div class="note">Es suposa el mateix <code>index.html</code> de l'exercici 1.1 (amb <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> al final del <code>body</code>); només canvia el <code>script.js</code>. Tipus: <code>string</code>, <code>number</code>, <code>number</code> i <code>boolean</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 2.1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;const name = &quot;Marc&quot;;
+const age = 16;
+const height = 1.72;
+const hasLicence = false;
+
+document.write(name + &quot; - &quot; + typeof name + &quot;&lt;br&gt;&quot;);
+document.write(age + &quot; - &quot; + typeof age + &quot;&lt;br&gt;&quot;);
+document.write(height + &quot; - &quot; + typeof height + &quot;&lt;br&gt;&quot;);
+document.write(hasLicence + &quot; - &quot; + typeof hasLicence + &quot;&lt;br&gt;&quot;);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 2.2</h2>
+        <div class="enunciat"><strong>Exercise 2.2.</strong> Write a sentence in the page with all four values, using a template literal.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const name = "Marc";
+const age = 16;
+const height = 1.72;
+const hasLicence = false;
+
+document.write(`${name} is ${age} years old, is ${height} m tall and has a driving licence: ${hasLicence}.`);</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 2.2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;const name = &quot;Marc&quot;;
+const age = 16;
+const height = 1.72;
+const hasLicence = false;
+
+document.write(`${name} is ${age} years old, is ${height} m tall and has a driving licence: ${hasLicence}.`);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 2.3</h2>
+        <div class="enunciat"><strong>Exercise 2.3.</strong> Try to change a <code>const</code>. Open the console and copy the error you get.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const PI = 3.14;
+PI = 3;
+document.write(PI);</code></pre>
+        <div class="note"><strong>Resposta:</strong> <code>Uncaught TypeError: Assignment to constant variable.</code> Una <code>const</code> no es pot reassignar; si el valor ha de canviar cal declarar-la amb <code>let</code>.</div>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 2.4</h2>
+        <div class="enunciat"><strong>Exercise 2.4.</strong> Predict, without running it, what these show. Then run them and check: <pre><code>document.write("5" + 3 + "&lt;br&gt;");
+document.write(5 + 3 + "&lt;br&gt;");
+document.write("5" - 3 + "&lt;br&gt;");
+document.write(typeof (5 + "3") + "&lt;br&gt;");
+</code></pre></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>document.write("5" + 3 + "&lt;br&gt;");           // "53"  -&gt; + with a string joins text
+document.write(5 + 3 + "&lt;br&gt;");             // 8
+document.write("5" - 3 + "&lt;br&gt;");           // 2     -&gt; - only works with numbers
+document.write(typeof (5 + "3") + "&lt;br&gt;");  // "string"</code></pre>
+        <div class="note"><strong>Resposta:</strong> <code>53</code>, <code>8</code>, <code>2</code> i <code>string</code>. Amb un text, el <code>+</code> concatena; el <code>-</code> només sap restar números i converteix el text "5" a número.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 2.4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;document.write(&quot;5&quot; + 3 + &quot;&lt;br&gt;&quot;);           // &quot;53&quot;  -&gt; + with a string joins text
+document.write(5 + 3 + &quot;&lt;br&gt;&quot;);             // 8
+document.write(&quot;5&quot; - 3 + &quot;&lt;br&gt;&quot;);           // 2     -&gt; - only works with numbers
+document.write(typeof (5 + &quot;3&quot;) + &quot;&lt;br&gt;&quot;);  // &quot;string&quot;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 2.5</h2>
+        <div class="enunciat"><strong>Exercise 2.5.</strong> Ask the user for two numbers with <code>prompt</code>, add them, and write the result in the page. Make sure the result is 8 and not "35" when the user types 3 and 5.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const a = Number(prompt("First number?"));
+const b = Number(prompt("Second number?"));
+document.write(`${a} + ${b} = ${a + b}`);</code></pre>
+        <div class="note"><code>prompt</code> sempre torna text. Sense <code>Number()</code>, <code>"3" + "5"</code> donaria <code>"35"</code>; amb <code>Number()</code> el resultat és 8.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 2.5" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[&quot;3&quot;, &quot;5&quot;];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;const a = Number(prompt(&quot;First number?&quot;));
+const b = Number(prompt(&quot;Second number?&quot;));
+document.write(`${a} + ${b} = ${a + b}`);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+        <p class="note">Dades de prova usades en la previsualització: <code>3</code>, <code>5</code></p>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 2.6</h2>
+        <div class="enunciat"><strong>Exercise 2.6.</strong> Ask for a temperature in Celsius and write it in Fahrenheit. The formula is <code>F = C * 9 / 5 + 32</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const celsius = Number(prompt("Temperature in Celsius?"));
+const fahrenheit = celsius * 9 / 5 + 32;
+document.write(`${celsius} C = ${fahrenheit} F`);</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 2.6" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[&quot;25&quot;];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;const celsius = Number(prompt(&quot;Temperature in Celsius?&quot;));
+const fahrenheit = celsius * 9 / 5 + 32;
+document.write(`${celsius} C = ${fahrenheit} F`);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+        <p class="note">Dades de prova usades en la previsualització: <code>25</code></p>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 2.7</h2>
+        <div class="enunciat"><strong>Exercise 2.7.</strong> Ask for the price of a product and the quantity, and write an invoice line: name, quantity, price per unit and total.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const product = prompt("Name of the product?");
+const price = Number(prompt("Price of one unit?"));
+const quantity = Number(prompt("Quantity?"));
+
+const total = price * quantity;
+document.write(`${product}: ${quantity} x ${price} EUR = ${total} EUR`);</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 2.7" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[&quot;USB cable&quot;, &quot;3.5&quot;, &quot;4&quot;];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;const product = prompt(&quot;Name of the product?&quot;);
+const price = Number(prompt(&quot;Price of one unit?&quot;));
+const quantity = Number(prompt(&quot;Quantity?&quot;));
+
+const total = price * quantity;
+document.write(`${product}: ${quantity} x ${price} EUR = ${total} EUR`);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+        <p class="note">Dades de prova usades en la previsualització: <code>USB cable</code>, <code>3.5</code>, <code>4</code></p>
+    </section>
+
+</body>
+
+</html>

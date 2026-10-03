@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tech Club</title>
+</head>
+
+<body>
+    <h1>Tech Club</h1>
+
+    <!-- Error 3: the tags were crossed. Fixed: <i> closes before <b> -->
+    <p>Welcome to the <b><i>Tech Club</i></b> of our school.</p>
+
+    <!-- Error 2: h3 after h1 skipped a level. Fixed: h2 -->
+    <h2>What we do</h2>
+    <ul>
+        <li>Build computers</li>
+        <li>Learn networks</li>
+        <!-- Error 4: this li was outside the list. Fixed: inside the ul -->
+        <li>Play retro games</li>
+    </ul>
+
+    <h2>Our place</h2>
+    <!-- Error 1: the img had no alt. Fixed -->
+    <img src="images/club.svg" alt="A desk with a laptop, a plant and a screwdriver">
+
+    <h2>Our last project</h2>
+    <!-- Error 5: absolute path of the school computer. Fixed: relative path -->
+    <img src="images/pc.svg" alt="Open PC case with the motherboard and the fans">
+    <p id="info">We built a gaming PC with old parts.<br>It works very well.</p>
+
+    <h2>Contact</h2>
+    <!-- Error 8: id repeated. Fixed: different id -->
+    <p id="contact">Write to us:<br>techclub@example.com</p>
+    <!-- Error 7: </br> does not exist, it is <br>. Fixed above -->
+    <!-- Error 6: href without quotes and with a space. Fixed -->
+    <p>Do you want to know more? Visit <a href="our-page.html">our page</a>.</p>
+</body>
+
+</html>

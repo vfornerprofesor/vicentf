@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · CSS variables and good practice</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · CSS variables and good practice</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../15-variables.html">15-variables.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 15.1</a></li>
+        <li><a href="#e2">Exercici 15.2</a></li>
+        <li><a href="#e3">Exercici 15.3</a></li>
+        <li><a href="#e4">Exercici 15.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 15.1</h2>
+        <div class="enunciat"><strong>Exercise 15.1.</strong> Take your CSS file and move every colour to a <code>:root</code> block of variables. Then change your main colour and check that the whole page follows.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class="container"&gt;
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Project one&lt;/h2&gt;
+            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
+            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Project two&lt;/h2&gt;
+            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
+            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>:root {
+    --color-primary: #1f3c5a;
+    --color-accent: #f2a541;
+    --color-bg: #f6f5f0;
+    --color-text: #23272f;
+    --color-surface: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+.site-header {
+    padding: 16px 24px;
+    background-color: var(--color-primary);
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+.card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}</code></pre>
+        <div class="note">Per a comprovar que tot segueix el canvi, es modifica només <code>--color-primary</code> i es veu que la capçalera, la vora de les targetes i el color del botó canvien alhora.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;style&gt;:root {
+    --color-primary: #1f3c5a;
+    --color-accent: #f2a541;
+    --color-bg: #f6f5f0;
+    --color-text: #23272f;
+    --color-surface: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+.site-header {
+    padding: 16px 24px;
+    background-color: var(--color-primary);
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+.card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class=&quot;container&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h2&gt;Project one&lt;/h2&gt;
+            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h2&gt;Project two&lt;/h2&gt;
+            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 15.2</h2>
+        <div class="enunciat"><strong>Exercise 15.2.</strong> Add <code>--radius</code> and <code>--shadow</code> variables and use them in at least three places.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class="container"&gt;
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Project one&lt;/h2&gt;
+            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
+            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Project two&lt;/h2&gt;
+            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
+            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>:root {
+    --color-primary: #1f3c5a;
+    --color-accent: #f2a541;
+    --color-bg: #f6f5f0;
+    --color-text: #23272f;
+    --color-surface: #ffffff;
+
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+.site-header {
+    padding: 16px 24px;
+    background-color: var(--color-primary);
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}</code></pre>
+        <div class="note"><code>--radius</code> i <code>--shadow</code> s'usen en tres llocs (targetes i botons).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;style&gt;:root {
+    --color-primary: #1f3c5a;
+    --color-accent: #f2a541;
+    --color-bg: #f6f5f0;
+    --color-text: #23272f;
+    --color-surface: #ffffff;
+
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+.site-header {
+    padding: 16px 24px;
+    background-color: var(--color-primary);
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class=&quot;container&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h2&gt;Project one&lt;/h2&gt;
+            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h2&gt;Project two&lt;/h2&gt;
+            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 15.3</h2>
+        <div class="enunciat"><strong>Exercise 15.3.</strong> Add the section comments to your CSS file and reorder your rules.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class="container"&gt;
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Project one&lt;/h2&gt;
+            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
+            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Project two&lt;/h2&gt;
+            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
+            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>/* =========================================================
+   My website - styles
+   ========================================================= */
+
+/* ---------- 1. Variables ---------- */
+:root {
+    --color-primary: #1f3c5a;
+    --color-accent: #f2a541;
+    --color-bg: #f6f5f0;
+    --color-text: #23272f;
+    --color-surface: #ffffff;
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+}
+
+/* ---------- 2. Base ---------- */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* ---------- 3. Layout ---------- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.site-header {
+    padding: 16px 24px;
+    background-color: var(--color-primary);
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+/* ---------- 4. Components ---------- */
+.card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: var(--radius);
+}</code></pre>
+        <div class="note">El fitxer queda dividit en seccions comentades i les regles s'ordenen de general a específic: variables, base, layout i components.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;style&gt;/* =========================================================
+   My website - styles
+   ========================================================= */
+
+/* ---------- 1. Variables ---------- */
+:root {
+    --color-primary: #1f3c5a;
+    --color-accent: #f2a541;
+    --color-bg: #f6f5f0;
+    --color-text: #23272f;
+    --color-surface: #ffffff;
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+}
+
+/* ---------- 2. Base ---------- */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* ---------- 3. Layout ---------- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.site-header {
+    padding: 16px 24px;
+    background-color: var(--color-primary);
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+/* ---------- 4. Components ---------- */
+.card {
+    margin-bottom: 16px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: var(--radius);
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class=&quot;container&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h2&gt;Project one&lt;/h2&gt;
+            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h2&gt;Project two&lt;/h2&gt;
+            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 15.4</h2>
+        <div class="enunciat"><strong>Exercise 15.4.</strong> Go through the checklist and fix everything that fails.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> revisa la llista de comprovació de la lliçó (esquelet, <code>title</code>, <code>alt</code>, un sol full d'estils, <code>box-sizing</code>, variables, <code>:hover</code> amb <code>transition</code>, viewport i <code>media query</code>, 375 px sense scroll horitzontal i validador) i corregix cada punt que falle. La solució és el propi projecte final; es pot comprovar amb la rúbrica de <a href="../16-project.html">16-project.html</a>.</div>
+    </section>
+
+</body>
+
+</html>

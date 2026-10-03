@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Prova de CSS: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Prova de CSS · correcció (sessió 39)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> L'enunciat que lliures a l'alumnat és
+        <a href="../enunciat.html">enunciat.html</a> (i la carpeta <code>starter/</code>). Cada exercici alimenta un
+        indicador de la rúbrica de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="exam.html">exam.html (resolt)</a>
+        <a href="style.css">style.css</a>
+        <a href="answers.txt">answers.txt</a>
+        <a href="errors.html">errors.html (corregit)</a>
+        <a href="errors.css">errors.css</a>
+    </p>
+    <p>
+        <code>solucio-k7q2x/exam.html</code> és el mateix HTML que lliures; es veu resolt perquè porta el <code>style.css</code> de la solució.
+        Tots dos CSS passen el validador de CSS (W3C) amb 0 errors. El <code>starter/errors.css</code> en dona 4: el cinqué error (el punt que falta en <code>.card</code>) no és un error de sintaxi i només es veu en el navegador.
+    </p>
+
+    <h2>Quin exercici alimenta cada indicador</h2>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercici</th>
+                    <th>Indicador</th>
+                    <th>Criteri</th>
+                    <th>Pes en el criteri</th>
+                    <th>Temps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 (selectors) + 6 (5 errors)</td>
+                    <td>PC1. Selectors i errors de CSS</td>
+                    <td>CA2.1</td>
+                    <td>40 %</td>
+                    <td>8 + 12 min</td>
+                </tr>
+                <tr>
+                    <td>2 (càlcul de la caixa)</td>
+                    <td>PC2. Càlcul del model de caixa</td>
+                    <td>CA2.2</td>
+                    <td>50 %</td>
+                    <td>8 min</td>
+                </tr>
+                <tr>
+                    <td>3 (centrar) + 4 (barra) + 5 (galeria)</td>
+                    <td>PC3. Flexbox i grid</td>
+                    <td>CA2.3</td>
+                    <td>50 %</td>
+                    <td>6 + 10 + 8 min</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>La resta de cada criteri ve del projecte final (i del seu examen d'HTML en el cas de CA1.x). Els 3 minuts que queden fins als 55 són per a revisar.</p>
+
+    <!-- ===== PC1 ===== -->
+    <h2>PC1 · Exercicis 1 i 6 (CA2.1)</h2>
+
+    <h3>Exercici 1: selectors</h3>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Regla demanada</th>
+                    <th>Solució</th>
+                    <th>Acceptable</th>
+                    <th>No val</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.lead</code> només dins de <code>.intro</code></td>
+                    <td><code>.intro .lead</code> o <code>.intro p.lead</code></td>
+                    <td><code>section.intro .lead</code>, <code>.intro &gt; .lead</code></td>
+                    <td><code>.lead</code> sol o <code>p.lead</code>: canvien també el paràgraf de <em>News</em> (el selector no tria només els elements demanats)</td>
+                </tr>
+                <tr>
+                    <td>Títol amb id <code>title</code></td>
+                    <td><code>#title</code></td>
+                    <td><code>h1#title</code></td>
+                    <td><code>.title</code> (és una classe) o <code>h1</code> (funciona per casualitat, però no és el selector que es demanava)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Valors esperats: <code>font-size: 1.25rem</code>, <code>color: #1f3c5a</code>, <code>line-height: 1.6</code>, <code>text-align: center</code> i <code>text-transform: uppercase</code>. Si l'alumne ha escrit la regla bé però amb un error de sintaxi (una <code>;</code> o una <code>}</code>), compte com "selector correcte però amb algun error".</p>
+
+    <h3>Exercici 6: els 5 errors</h3>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Error en <code>starter/errors.css</code></th>
+                    <th>Correcció</th>
+                    <th>Com es detecta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><code>colour: #333333;</code></td>
+                    <td><code>color: #333333;</code> (la propietat és en anglés americà)</td>
+                    <td>Validador de CSS</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><code>background-color: #f5f5f5</code> sense <code>;</code></td>
+                    <td>Afegir el <code>;</code>. Perd també el <code>margin: 0</code> que ve darrere</td>
+                    <td>Validador de CSS</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><code>width: 300 px;</code></td>
+                    <td><code>width: 300px;</code> (número i unitat junts)</td>
+                    <td>Validador de CSS</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><code>card { … }</code>: li falta el punt de la classe</td>
+                    <td><code>.card { … }</code></td>
+                    <td>Només en el navegador: les caixes no tenen cap estil</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><code>line-height: 1,5;</code></td>
+                    <td><code>line-height: 1.5;</code> (decimals amb punt; error molt típic en castellà i valencià)</td>
+                    <td>Validador de CSS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Solució: <code>solucio-k7q2x/errors.css</code> (amb un comentari per cada error). Els errors 1 i 3 no es veuen fins que no es corregix el 4, perquè la regla no s'aplicava a cap element.</p>
+
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>El selector no tria els elements demanats, o corregix menys de 2 dels 5 errors.</td>
+                    <td>El selector tria els elements demanats (encara que la regla tinga algun error de sintaxi), i almenys 2 errors corregits.</td>
+                    <td>Selector i sintaxi correctes, i almenys 4 errors corregits.</td>
+                    <td>Selector i sintaxi correctes, i els 5 errors corregits.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== PC2 ===== -->
+    <h2>PC2 · Exercici 2 (CA2.2)</h2>
+    <p>Solució: <code>solucio-k7q2x/answers.txt</code>.</p>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Apartat</th>
+                    <th>Amplària</th>
+                    <th>Altura</th>
+                    <th>Càlcul</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A) <code>content-box</code>, caixa visible</td>
+                    <td><strong>258 px</strong></td>
+                    <td><strong>158 px</strong></td>
+                    <td>200 + 25 + 25 + 4 + 4 = 258 · 120 + 15 + 15 + 4 + 4 = 158</td>
+                </tr>
+                <tr>
+                    <td>B) <code>border-box</code>, caixa visible</td>
+                    <td>200 px</td>
+                    <td>120 px</td>
+                    <td>Ja inclouen padding i border</td>
+                </tr>
+                <tr>
+                    <td>B) <code>border-box</code>, àrea de contingut</td>
+                    <td>142 px</td>
+                    <td>82 px</td>
+                    <td>200 − 25 − 25 − 4 − 4 = 142 · 120 − 15 − 15 − 4 − 4 = 82</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <strong>Errors típics:</strong> sumar el <code>margin</code> (30 + 30 i 10 + 10: 318 × 178, ací és el valor "espai total ocupat", però l'enunciat demana la caixa visible); comptar el padding o el border una sola vegada (200 + 25 + 4 = 229); confondre l'ordre de <code>padding: 15px 25px</code> i posar 15 als costats (el primer valor és dalt/baix i el segon esquerra/dreta).
+    </p>
+    <p>
+        <strong>Com aplicar la rúbrica:</strong> es corregix amb l'apartat A. L'apartat B comprova que entén
+        <code>border-box</code>: si A és correcte i B demostra que no l'ha entés, no passes d'Excel·lent a Notable per això, però ho comentes en la correcció.
+    </p>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>No planteja el càlcul o suma valors que no formen part de la caixa.</td>
+                    <td>Planteja el càlcul sumant contingut, <code>padding</code> i <code>border</code>, encara que cap de les dues dimensions done el resultat correcte.</td>
+                    <td>Almenys una dimensió (amplària o altura) correcta.</td>
+                    <td>Les dues dimensions correctes, amb el càlcul escrit.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== PC3 ===== -->
+    <h2>PC3 · Exercicis 3, 4 i 5 (CA2.3)</h2>
+    <p>Es corregix obrint <code>exam.html</code> en el navegador. Solució: <code>solucio-k7q2x/style.css</code>. Cada apartat compta com a "funciona del tot" quan es veu com demana l'enunciat i no té defectes.</p>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Apartat</th>
+                    <th>Ha de fer</th>
+                    <th>Defectes típics (funciona "amb defectes")</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3. Centrar</td>
+                    <td><code>.stage</code> amb <code>display: flex</code>, <code>justify-content: center</code> i <code>align-items: center</code></td>
+                    <td>Només centrat en un eix; posar <code>display: flex</code> en <code>.box</code> en lloc de <code>.stage</code> (error molt freqüent: no centra la caixa); canviar la mida de la caixa o del contenidor.</td>
+                </tr>
+                <tr>
+                    <td>4. Barra de navegació</td>
+                    <td><code>nav ul</code> amb <code>display: flex</code>, <code>justify-content: center</code> i <code>gap: 1rem</code>; sense punts (<code>list-style: none</code>), sense <code>margin</code>/<code>padding</code>; enllaços amb padding, fons, text blanc, <code>border-radius: 6px</code>, sense subratllat; <code>nav a:hover</code> amb els colors demanats</td>
+                    <td>El flex en <code>nav</code> en lloc de <code>ul</code> (no posa els <code>li</code> en fila); espai amb <code>margin</code> en lloc de <code>gap</code>; falta algun detall de l'enllaç; falta el <code>:hover</code>; barra no centrada.</td>
+                </tr>
+                <tr>
+                    <td>5. Galeria</td>
+                    <td><code>.gallery</code> amb <code>display: grid</code>, <code>grid-template-columns: repeat(3, 1fr)</code> (o <code>1fr 1fr 1fr</code>) i <code>gap: 1rem</code></td>
+                    <td>Columnes de mida diferent (<code>auto</code>, <code>px</code>); 2 o 4 columnes; sense <code>gap</code>; <code>display: grid</code> en <code>.photo</code> en lloc de <code>.gallery</code>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cap apartat funciona del tot i com a màxim un funciona amb defectes.</td>
+                    <td>Almenys un apartat funciona del tot, o almenys dos funcionen amb defectes (alineació, <code>gap</code>, nombre de columnes).</td>
+                    <td>Almenys dos apartats funcionen del tot.</td>
+                    <td>Els tres apartats funcionen sense defectes.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Notes per a la sessió</h2>
+    <ul>
+        <li>Al maquetar l'enunciat falten les captures: busca els comentaris <code>[IMATGE: …]</code> en <code>enunciat.html</code>.</li>
+        <li>Les normes (què es pot usar durant la prova) estan a l'enunciat, en "Before you start". Canvia-les si vols una altra cosa.</li>
+        <li>L'alumnat no tocarà els fitxers HTML: si veus que un alumne ha canviat <code>exam.html</code>, compara'l amb <code>starter/exam.html</code>.</li>
+    </ul>
+
+</body>
+
+</html>

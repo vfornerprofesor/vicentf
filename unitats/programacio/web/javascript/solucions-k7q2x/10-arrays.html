@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Arrays</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Arrays</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../10-arrays.html">10-arrays.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 10.1</a></li>
+        <li><a href="#e2">Exercici 10.2</a></li>
+        <li><a href="#e3">Exercici 10.3</a></li>
+        <li><a href="#e4">Exercici 10.4</a></li>
+        <li><a href="#e5">Exercici 10.5</a></li>
+        <li><a href="#e6">Exercici 10.6</a></li>
+        <li><a href="#e7">Exercici 10.7</a></li>
+        <li><a href="#e8">Exercici 10.8</a></li>
+        <li><a href="#e9">Exercici 10.9</a></li>
+        <li><a href="#e10">Exercici 10.10</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 10.1</h2>
+        <div class="enunciat"><strong>Exercise 10.1.</strong> Create an array with the names of five classmates and draw it as a list in the page. Show the first, the last and the total number under it.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Classmates&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Classmates&lt;/h1&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="summary"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const classmates = ["Pere", "Joan", "Marta", "Nuria", "Laia"];
+
+        let html = "";
+        for (const name of classmates) {
+            html += `&lt;li&gt;${name}&lt;/li&gt;`;
+        }
+        document.querySelector("#list").innerHTML = html;
+
+        document.querySelector("#summary").textContent =
+            `First: ${classmates[0]} | Last: ${classmates[classmates.length - 1]} | Total: ${classmates.length}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Classmates&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Classmates&lt;/h1&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;summary&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const classmates = [&quot;Pere&quot;, &quot;Joan&quot;, &quot;Marta&quot;, &quot;Nuria&quot;, &quot;Laia&quot;];
+
+        let html = &quot;&quot;;
+        for (const name of classmates) {
+            html += `&lt;li&gt;${name}&lt;/li&gt;`;
+        }
+        document.querySelector(&quot;#list&quot;).innerHTML = html;
+
+        document.querySelector(&quot;#summary&quot;).textContent =
+            `First: ${classmates[0]} | Last: ${classmates[classmates.length - 1]} | Total: ${classmates.length}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 10.2</h2>
+        <div class="enunciat"><strong>Exercise 10.2. Shopping list.</strong> An input, an "Add" button and a list. Every click adds the text to the array and redraws the list. The empty field adds nothing.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/10-arrays/ex2.png" alt="Shopping list built from an array"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Shopping list&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Shopping list&lt;/h1&gt;
+    &lt;input type="text" id="item" placeholder="Something to buy"&gt;
+    &lt;button id="add"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const items = [];
+
+        function draw() {
+            let html = "";
+            for (const item of items) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            document.querySelector("#list").innerHTML = html;
+        }
+
+        document.querySelector("#add").addEventListener("click", function () {
+            const input = document.querySelector("#item");
+            const text = input.value.trim();
+
+            if (text !== "") {          // the empty field adds nothing
+                items.push(text);
+                draw();
+            }
+            input.value = "";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Cada clic afig el text a l'array i torna a dibuixar tota la llista. Si el camp està buit, no s'afig res (el segon clic de la prova).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Shopping list&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Shopping list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;item&quot; placeholder=&quot;Something to buy&quot;&gt;
+    &lt;button id=&quot;add&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const items = [];
+
+        function draw() {
+            let html = &quot;&quot;;
+            for (const item of items) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            document.querySelector(&quot;#list&quot;).innerHTML = html;
+        }
+
+        document.querySelector(&quot;#add&quot;).addEventListener(&quot;click&quot;, function () {
+            const input = document.querySelector(&quot;#item&quot;);
+            const text = input.value.trim();
+
+            if (text !== &quot;&quot;) {          // the empty field adds nothing
+                items.push(text);
+                draw();
+            }
+            input.value = &quot;&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 10.3</h2>
+        <div class="enunciat"><strong>Exercise 10.3.</strong> Add a "Remove last" button and a "Clear all" button to the previous exercise.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/10-arrays/ex3.png" alt="Shopping list with remove last and clear all buttons"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Shopping list&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Shopping list&lt;/h1&gt;
+    &lt;input type="text" id="item" placeholder="Something to buy"&gt;
+    &lt;button id="add"&gt;Add&lt;/button&gt;
+    &lt;button id="removeLast"&gt;Remove last&lt;/button&gt;
+    &lt;button id="clearAll"&gt;Clear all&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const items = [];
+
+        function draw() {
+            let html = "";
+            for (const item of items) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            document.querySelector("#list").innerHTML = html;
+        }
+
+        document.querySelector("#add").addEventListener("click", function () {
+            const input = document.querySelector("#item");
+            const text = input.value.trim();
+            if (text !== "") {
+                items.push(text);
+                draw();
+            }
+            input.value = "";
+        });
+
+        document.querySelector("#removeLast").addEventListener("click", function () {
+            items.pop();
+            draw();
+        });
+
+        document.querySelector("#clearAll").addEventListener("click", function () {
+            items.length = 0;      // empties the array
+            draw();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Shopping list&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Shopping list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;item&quot; placeholder=&quot;Something to buy&quot;&gt;
+    &lt;button id=&quot;add&quot;&gt;Add&lt;/button&gt;
+    &lt;button id=&quot;removeLast&quot;&gt;Remove last&lt;/button&gt;
+    &lt;button id=&quot;clearAll&quot;&gt;Clear all&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const items = [];
+
+        function draw() {
+            let html = &quot;&quot;;
+            for (const item of items) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            document.querySelector(&quot;#list&quot;).innerHTML = html;
+        }
+
+        document.querySelector(&quot;#add&quot;).addEventListener(&quot;click&quot;, function () {
+            const input = document.querySelector(&quot;#item&quot;);
+            const text = input.value.trim();
+            if (text !== &quot;&quot;) {
+                items.push(text);
+                draw();
+            }
+            input.value = &quot;&quot;;
+        });
+
+        document.querySelector(&quot;#removeLast&quot;).addEventListener(&quot;click&quot;, function () {
+            items.pop();
+            draw();
+        });
+
+        document.querySelector(&quot;#clearAll&quot;).addEventListener(&quot;click&quot;, function () {
+            items.length = 0;      // empties the array
+            draw();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 10.4</h2>
+        <div class="enunciat"><strong>Exercise 10.4.</strong> With an array of 8 marks: draw them as a list, and under it show the average, how many passed and how many failed. Failed marks appear in red.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/10-arrays/ex4.png" alt="List of 8 marks with average, passed and failed"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Marks&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Marks&lt;/h1&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="summary"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const marks = [4, 8, 6, 2, 9, 5, 7, 3.5];
+
+        let html = "";
+        let sum = 0;
+        let passed = 0;
+        let failed = 0;
+
+        for (const mark of marks) {
+            if (mark &gt;= 5) {
+                passed++;
+                html += `&lt;li&gt;${mark}&lt;/li&gt;`;
+            } else {
+                failed++;
+                html += `&lt;li style="color: red"&gt;${mark}&lt;/li&gt;`;
+            }
+            sum += mark;
+        }
+
+        document.querySelector("#list").innerHTML = html;
+        document.querySelector("#summary").textContent =
+            `Average: ${(sum / marks.length).toFixed(2)} | Passed: ${passed} | Failed: ${failed}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Marks&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Marks&lt;/h1&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;summary&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const marks = [4, 8, 6, 2, 9, 5, 7, 3.5];
+
+        let html = &quot;&quot;;
+        let sum = 0;
+        let passed = 0;
+        let failed = 0;
+
+        for (const mark of marks) {
+            if (mark &gt;= 5) {
+                passed++;
+                html += `&lt;li&gt;${mark}&lt;/li&gt;`;
+            } else {
+                failed++;
+                html += `&lt;li style=&quot;color: red&quot;&gt;${mark}&lt;/li&gt;`;
+            }
+            sum += mark;
+        }
+
+        document.querySelector(&quot;#list&quot;).innerHTML = html;
+        document.querySelector(&quot;#summary&quot;).textContent =
+            `Average: ${(sum / marks.length).toFixed(2)} | Passed: ${passed} | Failed: ${failed}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 10.5</h2>
+        <div class="enunciat"><strong>Exercise 10.5.</strong> Write a function <code>contains(list, value)</code> that returns <code>true</code> or <code>false</code>, without using <code>includes</code>. Use it to tell the user whether the name they typed is in the list.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Is it in the list?&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Is it in the list?&lt;/h1&gt;
+    &lt;input type="text" id="name" placeholder="A name"&gt;
+    &lt;button id="check"&gt;Check&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const names = ["Pere", "Joan", "Marta", "Nuria", "Laia"];
+
+        function contains(list, value) {
+            for (const item of list) {
+                if (item === value) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        document.querySelector("#check").addEventListener("click", function () {
+            const name = document.querySelector("#name").value;
+            const out = document.querySelector("#out");
+
+            if (contains(names, name)) {
+                out.textContent = `${name} is in the list.`;
+            } else {
+                out.textContent = `${name} is NOT in the list.`;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Is it in the list?&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Is it in the list?&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; placeholder=&quot;A name&quot;&gt;
+    &lt;button id=&quot;check&quot;&gt;Check&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const names = [&quot;Pere&quot;, &quot;Joan&quot;, &quot;Marta&quot;, &quot;Nuria&quot;, &quot;Laia&quot;];
+
+        function contains(list, value) {
+            for (const item of list) {
+                if (item === value) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        document.querySelector(&quot;#check&quot;).addEventListener(&quot;click&quot;, function () {
+            const name = document.querySelector(&quot;#name&quot;).value;
+            const out = document.querySelector(&quot;#out&quot;);
+
+            if (contains(names, name)) {
+                out.textContent = `${name} is in the list.`;
+            } else {
+                out.textContent = `${name} is NOT in the list.`;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 10.6</h2>
+        <div class="enunciat"><strong>Exercise 10.6.</strong> Write a function <code>noDuplicates(list)</code> that returns a new array with no repeated values. Show the original list and the clean one side by side.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;No duplicates&lt;/title&gt;
+    &lt;style&gt;
+        .columns {
+            display: flex;
+            gap: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;No duplicates&lt;/h1&gt;
+    &lt;div class="columns"&gt;
+        &lt;div&gt;
+            &lt;h2&gt;Original&lt;/h2&gt;
+            &lt;ul id="original"&gt;&lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h2&gt;Clean&lt;/h2&gt;
+            &lt;ul id="clean"&gt;&lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function noDuplicates(list) {
+            const result = [];
+            for (const item of list) {
+                if (!result.includes(item)) {
+                    result.push(item);
+                }
+            }
+            return result;
+        }
+
+        function draw(id, list) {
+            let html = "";
+            for (const item of list) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            document.querySelector(id).innerHTML = html;
+        }
+
+        const list = ["Pere", "Joan", "Pere", "Marta", "Joan", "Nuria"];
+        draw("#original", list);
+        draw("#clean", noDuplicates(list));
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;No duplicates&lt;/title&gt;
+    &lt;style&gt;
+        .columns {
+            display: flex;
+            gap: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;No duplicates&lt;/h1&gt;
+    &lt;div class=&quot;columns&quot;&gt;
+        &lt;div&gt;
+            &lt;h2&gt;Original&lt;/h2&gt;
+            &lt;ul id=&quot;original&quot;&gt;&lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h2&gt;Clean&lt;/h2&gt;
+            &lt;ul id=&quot;clean&quot;&gt;&lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function noDuplicates(list) {
+            const result = [];
+            for (const item of list) {
+                if (!result.includes(item)) {
+                    result.push(item);
+                }
+            }
+            return result;
+        }
+
+        function draw(id, list) {
+            let html = &quot;&quot;;
+            for (const item of list) {
+                html += `&lt;li&gt;${item}&lt;/li&gt;`;
+            }
+            document.querySelector(id).innerHTML = html;
+        }
+
+        const list = [&quot;Pere&quot;, &quot;Joan&quot;, &quot;Pere&quot;, &quot;Marta&quot;, &quot;Joan&quot;, &quot;Nuria&quot;];
+        draw(&quot;#original&quot;, list);
+        draw(&quot;#clean&quot;, noDuplicates(list));
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 10.7</h2>
+        <div class="enunciat"><strong>Exercise 10.7.</strong> A search box: as the user types, show only the names of the array that contain what they typed. (<code>.toLowerCase()</code> and <code>.includes()</code>)</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Search&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Search&lt;/h1&gt;
+    &lt;input type="text" id="search" placeholder="Type to filter..."&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const names = ["Pere", "Joan", "Marta", "Nuria", "Laia", "Jordi", "Maria"];
+
+        function draw(list) {
+            let html = "";
+            for (const name of list) {
+                html += `&lt;li&gt;${name}&lt;/li&gt;`;
+            }
+            document.querySelector("#list").innerHTML = html;
+        }
+
+        document.querySelector("#search").addEventListener("input", function () {
+            const text = this.value.toLowerCase();
+            const filtered = [];
+
+            for (const name of names) {
+                if (name.toLowerCase().includes(text)) {
+                    filtered.push(name);
+                }
+            }
+            draw(filtered);
+        });
+
+        draw(names);   // at the beginning, everyone is shown
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La prova escriu "mar" i queden Marta i Maria. S'usa <code>.toLowerCase()</code> en tots dos costats perquè no importe si hi ha majúscules.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Search&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Search&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;search&quot; placeholder=&quot;Type to filter...&quot;&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const names = [&quot;Pere&quot;, &quot;Joan&quot;, &quot;Marta&quot;, &quot;Nuria&quot;, &quot;Laia&quot;, &quot;Jordi&quot;, &quot;Maria&quot;];
+
+        function draw(list) {
+            let html = &quot;&quot;;
+            for (const name of list) {
+                html += `&lt;li&gt;${name}&lt;/li&gt;`;
+            }
+            document.querySelector(&quot;#list&quot;).innerHTML = html;
+        }
+
+        document.querySelector(&quot;#search&quot;).addEventListener(&quot;input&quot;, function () {
+            const text = this.value.toLowerCase();
+            const filtered = [];
+
+            for (const name of names) {
+                if (name.toLowerCase().includes(text)) {
+                    filtered.push(name);
+                }
+            }
+            draw(filtered);
+        });
+
+        draw(names);   // at the beginning, everyone is shown
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e8">
+        <h2>Exercici 10.8</h2>
+        <div class="enunciat"><strong>Exercise 10.8.</strong> Create the tic-tac-toe board as an array of three arrays, all empty, and draw it as a table with two loops.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Tic-tac-toe&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333333;
+            text-align: center;
+            font-size: 2rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tic-tac-toe&lt;/h1&gt;
+    &lt;table id="board"&gt;&lt;/table&gt;
+
+    &lt;script&gt;
+        // three arrays (rows) with three empty cells each
+        const board = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+
+        function draw() {
+            let html = "";
+            for (let row = 0; row &lt; 3; row++) {
+                html += "&lt;tr&gt;";
+                for (let column = 0; column &lt; 3; column++) {
+                    html += `&lt;td&gt;${board[row][column]}&lt;/td&gt;`;
+                }
+                html += "&lt;/tr&gt;";
+            }
+            document.querySelector("#board").innerHTML = html;
+        }
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.8" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Tic-tac-toe&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333333;
+            text-align: center;
+            font-size: 2rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tic-tac-toe&lt;/h1&gt;
+    &lt;table id=&quot;board&quot;&gt;&lt;/table&gt;
+
+    &lt;script&gt;
+        // three arrays (rows) with three empty cells each
+        const board = [
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;],
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;],
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;]
+        ];
+
+        function draw() {
+            let html = &quot;&quot;;
+            for (let row = 0; row &lt; 3; row++) {
+                html += &quot;&lt;tr&gt;&quot;;
+                for (let column = 0; column &lt; 3; column++) {
+                    html += `&lt;td&gt;${board[row][column]}&lt;/td&gt;`;
+                }
+                html += &quot;&lt;/tr&gt;&quot;;
+            }
+            document.querySelector(&quot;#board&quot;).innerHTML = html;
+        }
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e9">
+        <h2>Exercici 10.9</h2>
+        <div class="enunciat"><strong>Exercise 10.9.</strong> When the user clicks on an empty cell, put <code>X</code> or <code>O</code> in turns: change the array and redraw. Show a message when a row is full of the same symbol.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Tic-tac-toe&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333333;
+            text-align: center;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tic-tac-toe&lt;/h1&gt;
+    &lt;table id="board"&gt;&lt;/table&gt;
+    &lt;p id="message"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const board = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+        let turn = "X";
+        let finished = false;
+
+        function draw() {
+            let html = "";
+            for (let row = 0; row &lt; 3; row++) {
+                html += "&lt;tr&gt;";
+                for (let column = 0; column &lt; 3; column++) {
+                    html += `&lt;td data-row="${row}" data-col="${column}"&gt;${board[row][column]}&lt;/td&gt;`;
+                }
+                html += "&lt;/tr&gt;";
+            }
+            document.querySelector("#board").innerHTML = html;
+        }
+
+        // true if a row is full of the same symbol
+        function rowFull(row) {
+            return board[row][0] !== "" &amp;&amp; board[row][0] === board[row][1] &amp;&amp; board[row][1] === board[row][2];
+        }
+
+        document.querySelector("#board").addEventListener("click", function (event) {
+            const cell = event.target.closest("td");
+            if (!cell || finished) {
+                return;
+            }
+            const row = Number(cell.dataset.row);
+            const column = Number(cell.dataset.col);
+
+            if (board[row][column] !== "") {
+                return;                       // the cell is not empty
+            }
+
+            board[row][column] = turn;
+            draw();
+
+            if (rowFull(row)) {
+                document.querySelector("#message").textContent = `${turn} fills a row!`;
+                finished = true;
+            }
+            turn = turn === "X" ? "O" : "X";
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.9" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Tic-tac-toe&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333333;
+            text-align: center;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tic-tac-toe&lt;/h1&gt;
+    &lt;table id=&quot;board&quot;&gt;&lt;/table&gt;
+    &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const board = [
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;],
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;],
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;]
+        ];
+        let turn = &quot;X&quot;;
+        let finished = false;
+
+        function draw() {
+            let html = &quot;&quot;;
+            for (let row = 0; row &lt; 3; row++) {
+                html += &quot;&lt;tr&gt;&quot;;
+                for (let column = 0; column &lt; 3; column++) {
+                    html += `&lt;td data-row=&quot;${row}&quot; data-col=&quot;${column}&quot;&gt;${board[row][column]}&lt;/td&gt;`;
+                }
+                html += &quot;&lt;/tr&gt;&quot;;
+            }
+            document.querySelector(&quot;#board&quot;).innerHTML = html;
+        }
+
+        // true if a row is full of the same symbol
+        function rowFull(row) {
+            return board[row][0] !== &quot;&quot; &amp;&amp; board[row][0] === board[row][1] &amp;&amp; board[row][1] === board[row][2];
+        }
+
+        document.querySelector(&quot;#board&quot;).addEventListener(&quot;click&quot;, function (event) {
+            const cell = event.target.closest(&quot;td&quot;);
+            if (!cell || finished) {
+                return;
+            }
+            const row = Number(cell.dataset.row);
+            const column = Number(cell.dataset.col);
+
+            if (board[row][column] !== &quot;&quot;) {
+                return;                       // the cell is not empty
+            }
+
+            board[row][column] = turn;
+            draw();
+
+            if (rowFull(row)) {
+                document.querySelector(&quot;#message&quot;).textContent = `${turn} fills a row!`;
+                finished = true;
+            }
+            turn = turn === &quot;X&quot; ? &quot;O&quot; : &quot;X&quot;;
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e10">
+        <h2>Exercici 10.10</h2>
+        <div class="enunciat"><strong>Exercise 10.10.</strong> Check columns and diagonals too, and announce the winner.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Tic-tac-toe&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333333;
+            text-align: center;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tic-tac-toe&lt;/h1&gt;
+    &lt;table id="board"&gt;&lt;/table&gt;
+    &lt;p id="message"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const board = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+        let turn = "X";
+        let finished = false;
+
+        function draw() {
+            let html = "";
+            for (let row = 0; row &lt; 3; row++) {
+                html += "&lt;tr&gt;";
+                for (let column = 0; column &lt; 3; column++) {
+                    html += `&lt;td data-row="${row}" data-col="${column}"&gt;${board[row][column]}&lt;/td&gt;`;
+                }
+                html += "&lt;/tr&gt;";
+            }
+            document.querySelector("#board").innerHTML = html;
+        }
+
+        // Returns "X", "O" or "" (nobody has won yet)
+        function winner() {
+            // rows and columns
+            for (let i = 0; i &lt; 3; i++) {
+                if (board[i][0] !== "" &amp;&amp; board[i][0] === board[i][1] &amp;&amp; board[i][1] === board[i][2]) {
+                    return board[i][0];
+                }
+                if (board[0][i] !== "" &amp;&amp; board[0][i] === board[1][i] &amp;&amp; board[1][i] === board[2][i]) {
+                    return board[0][i];
+                }
+            }
+            // diagonals
+            if (board[1][1] !== "" &amp;&amp; board[0][0] === board[1][1] &amp;&amp; board[1][1] === board[2][2]) {
+                return board[1][1];
+            }
+            if (board[1][1] !== "" &amp;&amp; board[0][2] === board[1][1] &amp;&amp; board[1][1] === board[2][0]) {
+                return board[1][1];
+            }
+            return "";
+        }
+
+        document.querySelector("#board").addEventListener("click", function (event) {
+            const cell = event.target.closest("td");
+            if (!cell || finished) {
+                return;
+            }
+            const row = Number(cell.dataset.row);
+            const column = Number(cell.dataset.col);
+
+            if (board[row][column] !== "") {
+                return;
+            }
+
+            board[row][column] = turn;
+            draw();
+
+            const result = winner();
+            if (result !== "") {
+                document.querySelector("#message").textContent = `The winner is ${result}!`;
+                finished = true;
+            }
+            turn = turn === "X" ? "O" : "X";
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La prova guanya X per la diagonal (0,0), (1,1) i (2,2).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.10" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Tic-tac-toe&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333333;
+            text-align: center;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Tic-tac-toe&lt;/h1&gt;
+    &lt;table id=&quot;board&quot;&gt;&lt;/table&gt;
+    &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const board = [
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;],
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;],
+            [&quot;&quot;, &quot;&quot;, &quot;&quot;]
+        ];
+        let turn = &quot;X&quot;;
+        let finished = false;
+
+        function draw() {
+            let html = &quot;&quot;;
+            for (let row = 0; row &lt; 3; row++) {
+                html += &quot;&lt;tr&gt;&quot;;
+                for (let column = 0; column &lt; 3; column++) {
+                    html += `&lt;td data-row=&quot;${row}&quot; data-col=&quot;${column}&quot;&gt;${board[row][column]}&lt;/td&gt;`;
+                }
+                html += &quot;&lt;/tr&gt;&quot;;
+            }
+            document.querySelector(&quot;#board&quot;).innerHTML = html;
+        }
+
+        // Returns &quot;X&quot;, &quot;O&quot; or &quot;&quot; (nobody has won yet)
+        function winner() {
+            // rows and columns
+            for (let i = 0; i &lt; 3; i++) {
+                if (board[i][0] !== &quot;&quot; &amp;&amp; board[i][0] === board[i][1] &amp;&amp; board[i][1] === board[i][2]) {
+                    return board[i][0];
+                }
+                if (board[0][i] !== &quot;&quot; &amp;&amp; board[0][i] === board[1][i] &amp;&amp; board[1][i] === board[2][i]) {
+                    return board[0][i];
+                }
+            }
+            // diagonals
+            if (board[1][1] !== &quot;&quot; &amp;&amp; board[0][0] === board[1][1] &amp;&amp; board[1][1] === board[2][2]) {
+                return board[1][1];
+            }
+            if (board[1][1] !== &quot;&quot; &amp;&amp; board[0][2] === board[1][1] &amp;&amp; board[1][1] === board[2][0]) {
+                return board[1][1];
+            }
+            return &quot;&quot;;
+        }
+
+        document.querySelector(&quot;#board&quot;).addEventListener(&quot;click&quot;, function (event) {
+            const cell = event.target.closest(&quot;td&quot;);
+            if (!cell || finished) {
+                return;
+            }
+            const row = Number(cell.dataset.row);
+            const column = Number(cell.dataset.col);
+
+            if (board[row][column] !== &quot;&quot;) {
+                return;
+            }
+
+            board[row][column] = turn;
+            draw();
+
+            const result = winner();
+            if (result !== &quot;&quot;) {
+                document.querySelector(&quot;#message&quot;).textContent = `The winner is ${result}!`;
+                finished = true;
+            }
+            turn = turn === &quot;X&quot; ? &quot;O&quot; : &quot;X&quot;;
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

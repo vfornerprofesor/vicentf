@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#f6f5f0"/>
+  <rect x="0" y="0" width="400" height="200" fill="#e4ecf4"/>
+  <!-- window -->
+  <rect x="250" y="30" width="110" height="90" rx="6" fill="#bcd6ee" stroke="#1f3c5a" stroke-width="5"/>
+  <path d="M305 30 V120 M250 75 H360" stroke="#1f3c5a" stroke-width="4"/>
+  <!-- desk -->
+  <rect x="20" y="200" width="360" height="16" rx="4" fill="#9c6b45"/>
+  <rect x="40" y="216" width="14" height="84" fill="#7d5434"/>
+  <rect x="346" y="216" width="14" height="84" fill="#7d5434"/>
+  <!-- laptop -->
+  <rect x="110" y="110" width="140" height="88" rx="8" fill="#1f3c5a"/>
+  <rect x="120" y="120" width="120" height="68" rx="3" fill="#2d5a85"/>
+  <path d="M130 135 H190 M130 150 H220 M130 165 H175" stroke="#f2a541" stroke-width="5" stroke-linecap="round"/>
+  <path d="M95 198 H265 L255 206 H105 Z" fill="#8a99ab"/>
+  <!-- screwdriver -->
+  <rect x="285" y="186" width="34" height="11" rx="5" fill="#f2a541"/>
+  <rect x="319" y="190" width="30" height="3" fill="#8a99ab"/>
+  <!-- plant -->
+  <path d="M50 160 Q40 130 60 120 Q62 145 58 160 Z" fill="#4c9a6a"/>
+  <path d="M60 160 Q70 120 92 118 Q84 145 66 160 Z" fill="#3f8a5c"/>
+  <path d="M42 160 H82 L76 200 H48 Z" fill="#d96f4a"/>
+  <!-- mug -->
+  <rect x="270" y="160" width="26" height="30" rx="4" fill="#fff" stroke="#1f3c5a" stroke-width="3"/>
+  <path d="M296 168 q12 0 12 9 q0 9 -12 9" fill="none" stroke="#1f3c5a" stroke-width="3"/>
+</svg>

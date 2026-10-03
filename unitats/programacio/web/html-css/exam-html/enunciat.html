@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>HTML exam</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>HTML exam</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>Create a folder called <code>surname-name-html</code> and copy inside it everything from the <code>starter</code> folder (<code>errors.html</code> and the <code>images</code> folder).</li>
+        <li>Create each file of the exam <strong>inside that folder</strong>, with the name the exercise tells you.</li>
+        <li>You can use VS Code, the browser and the W3C validator. You cannot use notes, the lessons, the internet to search for answers, a mobile phone or any AI tool.</li>
+        <li>Save often. At the end, hand in the whole folder.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· Skeleton from memory · about 5 min</span></h2>
+        <p>
+            Create the file <code>skeleton.html</code> and write the <strong>complete skeleton</strong> of an HTML5
+            page. <strong>Do not copy it from any other file.</strong> It must have:
+        </p>
+        <ul>
+            <li>the doctype;</li>
+            <li>the <code>html</code> tag with the language set to English;</li>
+            <li>a <code>head</code> with the character encoding UTF-8 and the title <code>HTML exam</code>;</li>
+            <li>a <code>body</code> with an <code>h1</code> that says <code>HTML exam</code> and a paragraph with the text <code>This is my skeleton.</code></li>
+        </ul>
+        <p>Remember: every tag closed, well nested and the code indented.</p>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· Find the errors · about 15 min</span></h2>
+        <p>
+            Open the file <code>errors.html</code>. It is a small page about a school club, and it has
+            <strong>8 errors</strong>. Fix all of them.
+        </p>
+        <ul>
+            <li>Some errors are found by the W3C validator. Others you only see by reading the code or by opening the page in the browser.</li>
+            <li>The two images must show in the browser, and the validator must say that there are no errors.</li>
+            <li>Do not change anything else and do not add new errors: that also counts.</li>
+        </ul>
+        <p class="tip"><strong>Tip:</strong> write a comment next to each error you fix. It helps you to count them.</p>
+
+        <!-- [IMATGE: errors-html-navegador.png — captura de errors.html obert en el navegador SENSE corregir (una imatge es veu trencada). Opcional: captura del validador amb els errors.] -->
+    </section>
+
+    <!-- ===== EXERCISE 3 ===== -->
+    <section>
+        <h2>Exercise 3 <span class="time">· Nested list and table · about 15 min</span></h2>
+        <p>
+            Create the file <code>list-table.html</code> (with its complete skeleton and the title
+            <code>List and table</code>). Write in HTML what you see in the pictures.
+        </p>
+
+        <h3>A. A nested list</h3>
+        <p>An unordered list. The items <em>Frontend</em> and <em>Backend</em> each have an ordered sublist inside.</p>
+        <div class="expected">
+            <span class="label">What you must see in the browser</span>
+            <ul>
+                <li>Frontend
+                    <ol>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ol>
+                </li>
+                <li>Backend
+                    <ol>
+                        <li>PHP</li>
+                        <li>SQL</li>
+                    </ol>
+                </li>
+                <li>Tools</li>
+            </ul>
+        </div>
+
+        <h3>B. A table</h3>
+        <p>
+            A timetable. The first row is the <strong>header row</strong>. The row <em>Break</em> is a single cell
+            that takes <strong>all the columns</strong> of the table. The times (08:00 and 10:30) are headers of their row.
+        </p>
+        <div class="expected">
+            <span class="label">What you must see in the browser</span>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>08:00</th>
+                        <td>Web</td>
+                        <td>Networks</td>
+                        <td>Web</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Break</td>
+                    </tr>
+                    <tr>
+                        <th>10:30</th>
+                        <td>Hardware</td>
+                        <td>Web</td>
+                        <td>Hardware</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="tip"><strong>Note:</strong> the lines around the cells are not needed. Your table can have no borders.</p>
+
+        <!-- [IMATGE: list-table-resultat.png — captura de list-table.html resolt, amb la llista niada i la taula amb el colspan.] -->
+    </section>
+
+    <!-- ===== EXERCISE 4 ===== -->
+    <section>
+        <h2>Exercise 4 <span class="time">· Form · about 12 min</span></h2>
+        <p>
+            Create the file <code>form.html</code> (with its complete skeleton and the title
+            <code>Registration form</code>) with a <strong>form</strong> that has these 4 fields and a button:
+        </p>
+        <table class="fields">
+            <thead>
+                <tr>
+                    <th>Label text</th>
+                    <th>What the user writes</th>
+                    <th>Compulsory?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>A short text</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>An email address</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Date of birth</td>
+                    <td>A date</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td>One option from a list: SMX, ASIR or DAW</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>Every field must have its <code>label</code> <strong>linked</strong> to it.</li>
+            <li>Use the <strong>right type</strong> of field for each data.</li>
+            <li>Add the validation that the table asks for.</li>
+            <li>At the end of the form, a button that sends it with the text <code>Send</code>.</li>
+        </ul>
+
+        <!-- [IMATGE: form-resultat.png — captura del formulari resolt al navegador. Opcional: captura del missatge d'error quan s'envia amb un camp obligatori buit.] -->
+    </section>
+
+    <!-- ===== EXERCISE 5 ===== -->
+    <section>
+        <h2>Exercise 5 <span class="time">· Semantic tags · about 5 min</span></h2>
+        <p>
+            Create a text file called <code>answers.txt</code>. For each case, write <strong>the best HTML tag</strong>.
+            Choose from this list (you may not need all of them):
+        </p>
+        <p><code>header</code> · <code>nav</code> · <code>main</code> · <code>section</code> · <code>article</code> · <code>aside</code> · <code>footer</code> · <code>figure</code> · <code>div</code></p>
+        <ol>
+            <li>The group of links to Home, About, Projects and Contact.</li>
+            <li>The area at the bottom of the page with the copyright and the email.</li>
+            <li>A news item that could be published alone in another website.</li>
+            <li>The unique content of the page, the one that is not repeated in the other pages.</li>
+            <li>The area at the top of the page with the logo and the title of the site.</li>
+            <li>A photo together with the text that describes it.</li>
+        </ol>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Check that your folder has: <code>skeleton.html</code>, <code>errors.html</code>, <code>list-table.html</code>, <code>form.html</code>, <code>answers.txt</code> and the <code>images</code> folder.</li>
+        <li>Open each page in the browser and run the validator on them.</li>
+        <li>Use the last minutes to read your code again.</li>
+    </ul>
+
+</body>
+
+</html>

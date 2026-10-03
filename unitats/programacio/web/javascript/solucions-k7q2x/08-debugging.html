@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Testing and debugging</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Testing and debugging</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../08-debugging.html">08-debugging.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 8.1</a></li>
+        <li><a href="#e2">Exercici 8.2</a></li>
+        <li><a href="#e3">Exercici 8.3</a></li>
+        <li><a href="#e4">Exercici 8.4</a></li>
+        <li><a href="#e5">Exercici 8.5</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 8.1</h2>
+        <div class="enunciat"><strong>Exercise 8.1.</strong> Put a breakpoint inside your function <code>biggest</code> from exercise 7.3. Call it with 4, 9 and 2 and go line by line with F10. Write a table with the value of <code>max</code> after each line.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function biggest(a, b, c) {
+    let max = a;        // breakpoint here
+    if (b &gt; max) {
+        max = b;
+    }
+    if (c &gt; max) {
+        max = c;
+    }
+    return max;
+}
+
+biggest(4, 9, 2);</code></pre>
+        <div class="note"><strong>Resposta:</strong> cridant a <code>biggest(4, 9, 2)</code> i avançant amb F10, el valor de <code>max</code> és: <strong>abans de la primera línia</strong> <code>undefined</code> · després de <code>let max = a</code> → <strong>4</strong> · després de <code>if (b &gt; max) max = b</code> → <strong>9</strong> (9 &gt; 4) · després de <code>if (c &gt; max)</code> → <strong>9</strong> (2 no és major que 9) · retorna <strong>9</strong>.</div>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 8.2</h2>
+        <div class="enunciat"><strong>Exercise 8.2.</strong> Download the starter file <code>average.html</code>. The average is wrong. Find the bug <strong>with the debugger</strong> (not by reading the code) and fix it. Above the line you fixed, write a comment saying what was wrong.<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/08-debugging/average.html">average.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">average.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Average of marks&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;Average of marks&lt;/h1&gt;
+        &lt;input type="text" id="marks" placeholder="e.g. 5, 7, 9"&gt;
+        &lt;button id="averageButton"&gt;Calculate&lt;/button&gt;
+        &lt;p id="result"&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Returns the average of an array of numbers.
+        function average(marks) {
+            // BUG FIXED: the sum started at 1 and it must start at 0.
+            // With sum = 1 every result was 1 / length too high.
+            let sum = 0;
+            for (const mark of marks) {
+                sum = sum + mark;
+            }
+            return sum / marks.length;
+        }
+
+        // Reads the field, turns "5, 7, 9" into [5, 7, 9] and shows the average.
+        function showAverage() {
+            const text = document.querySelector("#marks").value;
+            const parts = text.split(",");
+            const marks = [];
+            for (const part of parts) {
+                marks.push(Number(part));
+            }
+            const result = average(marks);
+            document.querySelector("#result").textContent = `Average: ${result.toFixed(2)}`;
+        }
+
+        document.querySelector("#averageButton").addEventListener("click", showAverage);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">El bug: <code>let sum = 1</code> en lloc de <code>let sum = 0</code>. Amb un punt d'interrupció en el <code>return</code> es veu que <code>sum</code> val 22 en lloc de 21 per a [5, 7, 9]. Sense el bug, la mitjana de 5, 7 i 9 és 7.00 (amb el bug donava 7.33).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 8.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Average of marks&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Average of marks&lt;/h1&gt;
+        &lt;input type=&quot;text&quot; id=&quot;marks&quot; placeholder=&quot;e.g. 5, 7, 9&quot;&gt;
+        &lt;button id=&quot;averageButton&quot;&gt;Calculate&lt;/button&gt;
+        &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Returns the average of an array of numbers.
+        function average(marks) {
+            // BUG FIXED: the sum started at 1 and it must start at 0.
+            // With sum = 1 every result was 1 / length too high.
+            let sum = 0;
+            for (const mark of marks) {
+                sum = sum + mark;
+            }
+            return sum / marks.length;
+        }
+
+        // Reads the field, turns &quot;5, 7, 9&quot; into [5, 7, 9] and shows the average.
+        function showAverage() {
+            const text = document.querySelector(&quot;#marks&quot;).value;
+            const parts = text.split(&quot;,&quot;);
+            const marks = [];
+            for (const part of parts) {
+                marks.push(Number(part));
+            }
+            const result = average(marks);
+            document.querySelector(&quot;#result&quot;).textContent = `Average: ${result.toFixed(2)}`;
+        }
+
+        document.querySelector(&quot;#averageButton&quot;).addEventListener(&quot;click&quot;, showAverage);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 8.3</h2>
+        <div class="enunciat"><strong>Exercise 8.3.</strong> Write three <code>console.assert</code> (normal, edge and strange case) for each of your functions <code>square</code>, <code>isEven</code> and <code>biggest</code> of lesson 7.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>// square
+console.assert(square(4) === 16, "normal: 4 squared is 16");
+console.assert(square(0) === 0, "edge: 0 squared is 0");
+console.assert(square(-3) === 9, "strange: a negative number gives a positive result");
+
+// isEven
+console.assert(isEven(8) === true, "normal: 8 is even");
+console.assert(isEven(0) === true, "edge: 0 is even");
+console.assert(isEven(-3) === false, "strange: -3 is odd");
+
+// biggest
+console.assert(biggest(4, 9, 2) === 9, "normal: the biggest of 4, 9 and 2 is 9");
+console.assert(biggest(5, 5, 5) === 5, "edge: all equal");
+console.assert(biggest(-1, -8, -3) === -1, "strange: all negative");</code></pre>
+        <div class="note">Es posen al final del script, després de les funcions de la lliçó 7 (<code>square</code>, <code>isEven</code> i <code>biggest</code>). Si una afirmació és falsa, la consola mostra "Assertion failed: ..." amb el missatge; si tot és correcte, no mostra res.</div>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 8.4</h2>
+        <div class="enunciat"><strong>Exercise 8.4.</strong> Download <code>leap.html</code>. Write assertions for 2024, 2023, 2000 and 1900. One of them fails: use it to find the bug and fix the function.<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/08-debugging/leap.html">leap.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">leap.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Leap year&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Leap year&lt;/h1&gt;
+    &lt;p&gt;Open the console (F12) to see the result of the assertions.&lt;/p&gt;
+
+    &lt;script&gt;
+        // Returns true if the year is a leap year, false if it is not.
+        // BUG FIXED: it only checked the 4. A year divisible by 100 is NOT a leap
+        // year, unless it is also divisible by 400.
+        function isLeapYear(year) {
+            return (year % 4 === 0 &amp;&amp; year % 100 !== 0) || year % 400 === 0;
+        }
+
+        console.assert(isLeapYear(2024) === true, "2024 should be a leap year");
+        console.assert(isLeapYear(2023) === false, "2023 should NOT be a leap year");
+        console.assert(isLeapYear(2000) === true, "2000 should be a leap year");
+        console.assert(isLeapYear(1900) === false, "1900 should NOT be a leap year");
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><strong>Resposta:</strong> les afirmacions de 2024, 2023 i 2000 passen, però <strong>1900 falla</strong>: la funció original només comprovava si era divisible per 4, i 1900 ho és, però també és divisible per 100 i no per 400, així que <em>no</em> és de traspàs. La correcció afig les condicions dels 100 i 400.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 8.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Leap year&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Leap year&lt;/h1&gt;
+    &lt;p&gt;Open the console (F12) to see the result of the assertions.&lt;/p&gt;
+
+    &lt;script&gt;
+        // Returns true if the year is a leap year, false if it is not.
+        // BUG FIXED: it only checked the 4. A year divisible by 100 is NOT a leap
+        // year, unless it is also divisible by 400.
+        function isLeapYear(year) {
+            return (year % 4 === 0 &amp;&amp; year % 100 !== 0) || year % 400 === 0;
+        }
+
+        console.assert(isLeapYear(2024) === true, &quot;2024 should be a leap year&quot;);
+        console.assert(isLeapYear(2023) === false, &quot;2023 should NOT be a leap year&quot;);
+        console.assert(isLeapYear(2000) === true, &quot;2000 should be a leap year&quot;);
+        console.assert(isLeapYear(1900) === false, &quot;1900 should NOT be a leap year&quot;);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 8.5</h2>
+        <div class="enunciat"><strong>Exercise 8.5.</strong> Write the JSDoc comment of every function of your calculator (exercise 7.4) and check that VS Code shows it when you hover over a call.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>/**
+ * Adds two numbers.
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @returns {number} The sum of a and b.
+ */
+function add(a, b) {
+    return a + b;
+}
+
+/**
+ * Divides a by b.
+ * @param {number} a - The dividend.
+ * @param {number} b - The divisor.
+ * @returns {number|string} The result, or a message if b is 0.
+ */
+function divide(a, b) {
+    if (b === 0) {
+        return "You cannot divide by zero";
+    }
+    return a / b;
+}
+
+/**
+ * Reads the inputs of the calculator, calls the right operation
+ * and shows the result in the page.
+ * @returns {void}
+ */
+function calculate() {
+    // ...
+}</code></pre>
+        <div class="note">Es fa igual per a <code>subtract</code> i <code>multiply</code>. En VS Code, en passar el ratolí per damunt d'una crida a <code>add(</code> apareix el comentari JSDoc amb la descripció i els tipus dels paràmetres.</div>
+    </section>
+
+</body>
+
+</html>

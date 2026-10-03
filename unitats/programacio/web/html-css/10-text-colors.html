@@ -261,6 +261,46 @@
                 <code>:hover</code> is a *pseudo-class*: a rule that only applies in a certain situation. <code>a:hover</code>
                 means "a link, while the mouse is on top of it".
             </vf-text>
+            <vf-text>
+                A sister pseudo-class is <code>:focus</code>: it applies while an element is *selected to write in it*
+                (you clicked on it or you arrived with the Tab key). It is very useful in forms, to show clearly which
+                field is active.
+            </vf-text>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-code language="css">
+                        input {
+                            border: 2px solid gray;
+                        }
+
+                        input:focus {
+                            border-color: orange;       /* the active field changes colour */
+                            outline: 2px solid orange;  /* the line the browser draws around it */
+                        }
+                    </vf-code>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-preview>
+                        &lt;style&gt;
+                            input {
+                                border: 2px solid gray;
+                            }
+
+                            input:focus {
+                                border-color: orange;
+                                outline: 2px solid orange;
+                            }
+                        &lt;/style&gt;
+                        &lt;p&gt;&lt;label for="f1"&gt;Name&lt;/label&gt; &lt;input type="text" id="f1"&gt;&lt;/p&gt;
+                        &lt;p&gt;&lt;label for="f2"&gt;Email&lt;/label&gt; &lt;input type="email" id="f2"&gt;&lt;/p&gt;
+                        &lt;p&gt;Click on a field, or move with the Tab key.&lt;/p&gt;
+                    </vf-preview>
+                </vf-col>
+            </vf-row>
+            <vf-text>
+                Do not remove the focus line with <code>outline: none</code> unless you put another visible style
+                instead: people who use the keyboard need it to know where they are.
+            </vf-text>
         </vf-content>
 
         <vf-title level="2">Backgrounds</vf-title>

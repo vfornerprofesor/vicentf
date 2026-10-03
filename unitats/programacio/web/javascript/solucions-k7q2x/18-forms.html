@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Forms and validation</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Forms and validation</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../18-forms.html">18-forms.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 18.1</a></li>
+        <li><a href="#e2">Exercici 18.2</a></li>
+        <li><a href="#e3">Exercici 18.3</a></li>
+        <li><a href="#e4">Exercici 18.4</a></li>
+        <li><a href="#e5">Exercici 18.5</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 18.1</h2>
+        <div class="enunciat"><strong>Exercise 18.1.</strong> Make the form of the example work, with the four checks and the red borders.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id="signupForm"&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+            &lt;input type="text" id="email"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="age"&gt;Age&lt;/label&gt;
+            &lt;input type="text" id="age"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="password"&gt;
+        &lt;/p&gt;
+        &lt;button type="submit"&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id="messages"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        function clearMarks() {
+            for (const input of document.querySelectorAll("input")) {
+                input.classList.remove("wrong");
+            }
+        }
+
+        function mark(id) {
+            document.querySelector(id).classList.add("wrong");
+        }
+
+        const form = document.querySelector("#signupForm");
+        const messages = document.querySelector("#messages");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            clearMarks();
+
+            const name = document.querySelector("#name").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const age = Number(document.querySelector("#age").value);
+            const password = document.querySelector("#password").value;
+
+            const errors = [];
+
+            if (name.length &lt; 3) {
+                errors.push("The name must have at least 3 letters.");
+                mark("#name");
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                errors.push("The email must contain an @ and a dot.");
+                mark("#email");
+            }
+
+            if (isNaN(age) || age &lt; 16 || age &gt; 99) {
+                errors.push("The age must be a number between 16 and 99.");
+                mark("#age");
+            }
+
+            if (password.length &lt; 8) {
+                errors.push("The password must have at least 8 characters.");
+                mark("#password");
+            }
+
+            messages.innerHTML = "";
+
+            if (errors.length &gt; 0) {
+                const list = document.createElement("ul");
+
+                for (const error of errors) {
+                    const li = document.createElement("li");
+                    li.textContent = error;
+                    list.appendChild(li);
+                }
+
+                messages.appendChild(list);
+                messages.className = "error";
+            } else {
+                messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                messages.className = "ok";
+                form.reset();       // empties all the fields
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Les quatre comprovacions (nom, email, edat i contrasenya) afigixen una classe <code>wrong</code> (vora roja) al camp i un missatge a la llista d'errors. Amb <code>event.preventDefault()</code> es para l'enviament normal del formulari.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 18.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id=&quot;signupForm&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;age&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;
+        &lt;/p&gt;
+        &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id=&quot;messages&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        function clearMarks() {
+            for (const input of document.querySelectorAll(&quot;input&quot;)) {
+                input.classList.remove(&quot;wrong&quot;);
+            }
+        }
+
+        function mark(id) {
+            document.querySelector(id).classList.add(&quot;wrong&quot;);
+        }
+
+        const form = document.querySelector(&quot;#signupForm&quot;);
+        const messages = document.querySelector(&quot;#messages&quot;);
+
+        form.addEventListener(&quot;submit&quot;, function (event) {
+            event.preventDefault();
+            clearMarks();
+
+            const name = document.querySelector(&quot;#name&quot;).value.trim();
+            const email = document.querySelector(&quot;#email&quot;).value.trim();
+            const age = Number(document.querySelector(&quot;#age&quot;).value);
+            const password = document.querySelector(&quot;#password&quot;).value;
+
+            const errors = [];
+
+            if (name.length &lt; 3) {
+                errors.push(&quot;The name must have at least 3 letters.&quot;);
+                mark(&quot;#name&quot;);
+            }
+
+            if (!email.includes(&quot;@&quot;) || !email.includes(&quot;.&quot;)) {
+                errors.push(&quot;The email must contain an @ and a dot.&quot;);
+                mark(&quot;#email&quot;);
+            }
+
+            if (isNaN(age) || age &lt; 16 || age &gt; 99) {
+                errors.push(&quot;The age must be a number between 16 and 99.&quot;);
+                mark(&quot;#age&quot;);
+            }
+
+            if (password.length &lt; 8) {
+                errors.push(&quot;The password must have at least 8 characters.&quot;);
+                mark(&quot;#password&quot;);
+            }
+
+            messages.innerHTML = &quot;&quot;;
+
+            if (errors.length &gt; 0) {
+                const list = document.createElement(&quot;ul&quot;);
+
+                for (const error of errors) {
+                    const li = document.createElement(&quot;li&quot;);
+                    li.textContent = error;
+                    list.appendChild(li);
+                }
+
+                messages.appendChild(list);
+                messages.className = &quot;error&quot;;
+            } else {
+                messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                messages.className = &quot;ok&quot;;
+                form.reset();       // empties all the fields
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 18.2</h2>
+        <div class="enunciat"><strong>Exercise 18.2.</strong> Add a "repeat password" field and check that both are the same.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id="signupForm"&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+            &lt;input type="text" id="email"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="age"&gt;Age&lt;/label&gt;
+            &lt;input type="text" id="age"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="password"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="repeat"&gt;Repeat password&lt;/label&gt;
+            &lt;input type="password" id="repeat"&gt;
+        &lt;/p&gt;
+        &lt;button type="submit"&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id="messages"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        function clearMarks() {
+            for (const input of document.querySelectorAll("input")) {
+                input.classList.remove("wrong");
+            }
+        }
+
+        function mark(id) {
+            document.querySelector(id).classList.add("wrong");
+        }
+
+        const form = document.querySelector("#signupForm");
+        const messages = document.querySelector("#messages");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            clearMarks();
+
+            const name = document.querySelector("#name").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const age = Number(document.querySelector("#age").value);
+            const password = document.querySelector("#password").value;
+            const repeat = document.querySelector("#repeat").value;
+
+            const errors = [];
+
+            if (name.length &lt; 3) {
+                errors.push("The name must have at least 3 letters.");
+                mark("#name");
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                errors.push("The email must contain an @ and a dot.");
+                mark("#email");
+            }
+
+            if (isNaN(age) || age &lt; 16 || age &gt; 99) {
+                errors.push("The age must be a number between 16 and 99.");
+                mark("#age");
+            }
+
+            if (password.length &lt; 8) {
+                errors.push("The password must have at least 8 characters.");
+                mark("#password");
+            }
+
+            if (password !== repeat) {
+                errors.push("The two passwords must be the same.");
+                mark("#repeat");
+            }
+
+            messages.innerHTML = "";
+
+            if (errors.length &gt; 0) {
+                const list = document.createElement("ul");
+
+                for (const error of errors) {
+                    const li = document.createElement("li");
+                    li.textContent = error;
+                    list.appendChild(li);
+                }
+
+                messages.appendChild(list);
+                messages.className = "error";
+            } else {
+                messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                messages.className = "ok";
+                form.reset();       // empties all the fields
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 18.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id=&quot;signupForm&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;age&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;repeat&quot;&gt;Repeat password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;repeat&quot;&gt;
+        &lt;/p&gt;
+        &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id=&quot;messages&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        function clearMarks() {
+            for (const input of document.querySelectorAll(&quot;input&quot;)) {
+                input.classList.remove(&quot;wrong&quot;);
+            }
+        }
+
+        function mark(id) {
+            document.querySelector(id).classList.add(&quot;wrong&quot;);
+        }
+
+        const form = document.querySelector(&quot;#signupForm&quot;);
+        const messages = document.querySelector(&quot;#messages&quot;);
+
+        form.addEventListener(&quot;submit&quot;, function (event) {
+            event.preventDefault();
+            clearMarks();
+
+            const name = document.querySelector(&quot;#name&quot;).value.trim();
+            const email = document.querySelector(&quot;#email&quot;).value.trim();
+            const age = Number(document.querySelector(&quot;#age&quot;).value);
+            const password = document.querySelector(&quot;#password&quot;).value;
+            const repeat = document.querySelector(&quot;#repeat&quot;).value;
+
+            const errors = [];
+
+            if (name.length &lt; 3) {
+                errors.push(&quot;The name must have at least 3 letters.&quot;);
+                mark(&quot;#name&quot;);
+            }
+
+            if (!email.includes(&quot;@&quot;) || !email.includes(&quot;.&quot;)) {
+                errors.push(&quot;The email must contain an @ and a dot.&quot;);
+                mark(&quot;#email&quot;);
+            }
+
+            if (isNaN(age) || age &lt; 16 || age &gt; 99) {
+                errors.push(&quot;The age must be a number between 16 and 99.&quot;);
+                mark(&quot;#age&quot;);
+            }
+
+            if (password.length &lt; 8) {
+                errors.push(&quot;The password must have at least 8 characters.&quot;);
+                mark(&quot;#password&quot;);
+            }
+
+            if (password !== repeat) {
+                errors.push(&quot;The two passwords must be the same.&quot;);
+                mark(&quot;#repeat&quot;);
+            }
+
+            messages.innerHTML = &quot;&quot;;
+
+            if (errors.length &gt; 0) {
+                const list = document.createElement(&quot;ul&quot;);
+
+                for (const error of errors) {
+                    const li = document.createElement(&quot;li&quot;);
+                    li.textContent = error;
+                    list.appendChild(li);
+                }
+
+                messages.appendChild(list);
+                messages.className = &quot;error&quot;;
+            } else {
+                messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                messages.className = &quot;ok&quot;;
+                form.reset();       // empties all the fields
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 18.3</h2>
+        <div class="enunciat"><strong>Exercise 18.3.</strong> Validate as the user types, not only when they send: use the <code>input</code> event to remove the red border as soon as the field becomes correct. Use a regular expression for the email.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id="signupForm"&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+            &lt;input type="text" id="email"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="age"&gt;Age&lt;/label&gt;
+            &lt;input type="text" id="age"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="password"&gt;
+        &lt;/p&gt;
+        &lt;button type="submit"&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id="messages"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        function clearMarks() {
+            for (const input of document.querySelectorAll("input")) {
+                input.classList.remove("wrong");
+            }
+        }
+
+        function mark(id) {
+            document.querySelector(id).classList.add("wrong");
+        }
+
+        const form = document.querySelector("#signupForm");
+        const messages = document.querySelector("#messages");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            clearMarks();
+
+            const name = document.querySelector("#name").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const age = Number(document.querySelector("#age").value);
+            const password = document.querySelector("#password").value;
+
+            const errors = [];
+
+            if (name.length &lt; 3) {
+                errors.push("The name must have at least 3 letters.");
+                mark("#name");
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                errors.push("The email must contain an @ and a dot.");
+                mark("#email");
+            }
+
+            if (isNaN(age) || age &lt; 16 || age &gt; 99) {
+                errors.push("The age must be a number between 16 and 99.");
+                mark("#age");
+            }
+
+            if (password.length &lt; 8) {
+                errors.push("The password must have at least 8 characters.");
+                mark("#password");
+            }
+
+            messages.innerHTML = "";
+
+            if (errors.length &gt; 0) {
+                const list = document.createElement("ul");
+
+                for (const error of errors) {
+                    const li = document.createElement("li");
+                    li.textContent = error;
+                    list.appendChild(li);
+                }
+
+                messages.appendChild(list);
+                messages.className = "error";
+            } else {
+                messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                messages.className = "ok";
+                form.reset();       // empties all the fields
+            }
+        });
+
+        // ---- live validation: the red border disappears as soon as the field is correct ----
+        const rules = {
+            "#name": value =&gt; value.trim().length &gt;= 3,
+            "#email": value =&gt; /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
+            "#age": value =&gt; value.trim() !== "" &amp;&amp; Number(value) &gt;= 16 &amp;&amp; Number(value) &lt;= 99,
+            "#password": value =&gt; value.length &gt;= 8
+        };
+
+        for (const selector in rules) {
+            const field = document.querySelector(selector);
+            field.addEventListener("input", function () {
+                field.classList.toggle("wrong", !rules[selector](field.value));
+            });
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">L'esdeveniment <code>input</code> es dispara a cada tecla: <code>classList.toggle("wrong", condició)</code> posa la vora roja mentre el camp és incorrecte i la lleva quan passa a ser correcte. L'email es valida amb una expressió regular.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 18.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id=&quot;signupForm&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;age&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;
+        &lt;/p&gt;
+        &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id=&quot;messages&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        function clearMarks() {
+            for (const input of document.querySelectorAll(&quot;input&quot;)) {
+                input.classList.remove(&quot;wrong&quot;);
+            }
+        }
+
+        function mark(id) {
+            document.querySelector(id).classList.add(&quot;wrong&quot;);
+        }
+
+        const form = document.querySelector(&quot;#signupForm&quot;);
+        const messages = document.querySelector(&quot;#messages&quot;);
+
+        form.addEventListener(&quot;submit&quot;, function (event) {
+            event.preventDefault();
+            clearMarks();
+
+            const name = document.querySelector(&quot;#name&quot;).value.trim();
+            const email = document.querySelector(&quot;#email&quot;).value.trim();
+            const age = Number(document.querySelector(&quot;#age&quot;).value);
+            const password = document.querySelector(&quot;#password&quot;).value;
+
+            const errors = [];
+
+            if (name.length &lt; 3) {
+                errors.push(&quot;The name must have at least 3 letters.&quot;);
+                mark(&quot;#name&quot;);
+            }
+
+            if (!email.includes(&quot;@&quot;) || !email.includes(&quot;.&quot;)) {
+                errors.push(&quot;The email must contain an @ and a dot.&quot;);
+                mark(&quot;#email&quot;);
+            }
+
+            if (isNaN(age) || age &lt; 16 || age &gt; 99) {
+                errors.push(&quot;The age must be a number between 16 and 99.&quot;);
+                mark(&quot;#age&quot;);
+            }
+
+            if (password.length &lt; 8) {
+                errors.push(&quot;The password must have at least 8 characters.&quot;);
+                mark(&quot;#password&quot;);
+            }
+
+            messages.innerHTML = &quot;&quot;;
+
+            if (errors.length &gt; 0) {
+                const list = document.createElement(&quot;ul&quot;);
+
+                for (const error of errors) {
+                    const li = document.createElement(&quot;li&quot;);
+                    li.textContent = error;
+                    list.appendChild(li);
+                }
+
+                messages.appendChild(list);
+                messages.className = &quot;error&quot;;
+            } else {
+                messages.textContent = `Welcome, ${name}! Your account is ready.`;
+                messages.className = &quot;ok&quot;;
+                form.reset();       // empties all the fields
+            }
+        });
+
+        // ---- live validation: the red border disappears as soon as the field is correct ----
+        const rules = {
+            &quot;#name&quot;: value =&gt; value.trim().length &gt;= 3,
+            &quot;#email&quot;: value =&gt; /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
+            &quot;#age&quot;: value =&gt; value.trim() !== &quot;&quot; &amp;&amp; Number(value) &gt;= 16 &amp;&amp; Number(value) &lt;= 99,
+            &quot;#password&quot;: value =&gt; value.length &gt;= 8
+        };
+
+        for (const selector in rules) {
+            const field = document.querySelector(selector);
+            field.addEventListener(&quot;input&quot;, function () {
+                field.classList.toggle(&quot;wrong&quot;, !rules[selector](field.value));
+            });
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 18.4</h2>
+        <div class="enunciat"><strong>Exercise 18.4. Login.</strong> User and password. If the user is <code>admin</code> and the password is <code>smx2027</code>, show "Welcome". If not, show "Wrong user or password" and count the failed attempts. After 3, disable the button (<code>button.disabled = true</code>).<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/18-forms/ex4.html">ex4.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const form = document.querySelector("#loginForm");
+const button = form.querySelector("button");
+const messages = document.querySelector("#messages");
+let attempts = 0;
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const user = document.querySelector("#user").value.trim();
+    const pass = document.querySelector("#pass").value;
+
+    if (user === "admin" &amp;&amp; pass === "smx2027") {
+        messages.textContent = "Welcome!";
+        messages.className = "ok";
+        return;
+    }
+
+    attempts++;
+    messages.textContent = `Wrong user or password. Attempt ${attempts} of 3.`;
+    messages.className = "error";
+
+    if (attempts &gt;= 3) {
+        button.disabled = true;
+        messages.textContent = "Too many attempts. The form is blocked.";
+    }
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/18-forms/ex4.html">exercises/18-forms/ex4.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">Aquest login només és un exercici: mai es posa una contrasenya real en JavaScript, perquè qualsevol persona pot llegir-la amb F12.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 18.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        #loginForm {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #2980b9;
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #messages {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #messages.ok {
+            background-color: #ebf9eb;
+            color: #2ecc71;
+        }
+
+        #messages.error {
+            background-color: #fcebeb;
+            color: #e74c3c;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+
+    &lt;form id=&quot;loginForm&quot;&gt;
+        &lt;div class=&quot;field-group&quot;&gt;
+            &lt;label for=&quot;user&quot;&gt;User&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;user&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field-group&quot;&gt;
+            &lt;label for=&quot;pass&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;pass&quot;&gt;
+        &lt;/div&gt;
+        &lt;button type=&quot;submit&quot;&gt;Log in&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id=&quot;messages&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;const form = document.querySelector(&quot;#loginForm&quot;);
+const button = form.querySelector(&quot;button&quot;);
+const messages = document.querySelector(&quot;#messages&quot;);
+let attempts = 0;
+
+form.addEventListener(&quot;submit&quot;, function (event) {
+    event.preventDefault();
+
+    const user = document.querySelector(&quot;#user&quot;).value.trim();
+    const pass = document.querySelector(&quot;#pass&quot;).value;
+
+    if (user === &quot;admin&quot; &amp;&amp; pass === &quot;smx2027&quot;) {
+        messages.textContent = &quot;Welcome!&quot;;
+        messages.className = &quot;ok&quot;;
+        return;
+    }
+
+    attempts++;
+    messages.textContent = `Wrong user or password. Attempt ${attempts} of 3.`;
+    messages.className = &quot;error&quot;;
+
+    if (attempts &gt;= 3) {
+        button.disabled = true;
+        messages.textContent = &quot;Too many attempts. The form is blocked.&quot;;
+    }
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 18.5</h2>
+        <div class="enunciat"><strong>Exercise 18.5. Sign-up with a summary.</strong> When all the data is correct, do not just say "welcome": draw a card with everything the user typed, and a "Change data" button that brings the form back.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up with summary&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            padding: 16px 24px;
+            border: 2px solid green;
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id="signupForm"&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+            &lt;input type="text" id="email"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="age"&gt;Age&lt;/label&gt;
+            &lt;input type="text" id="age"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="password"&gt;
+        &lt;/p&gt;
+        &lt;button type="submit"&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id="messages"&gt;&lt;/div&gt;
+
+    &lt;div id="summary"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const form = document.querySelector("#signupForm");
+        const messages = document.querySelector("#messages");
+        const summary = document.querySelector("#summary");
+
+        function mark(id, wrong) {
+            document.querySelector(id).classList.toggle("wrong", wrong);
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.querySelector("#name").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const age = Number(document.querySelector("#age").value);
+            const password = document.querySelector("#password").value;
+
+            const wrongName = name.length &lt; 3;
+            const wrongEmail = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const wrongAge = isNaN(age) || age &lt; 16 || age &gt; 99;
+            const wrongPassword = password.length &lt; 8;
+
+            mark("#name", wrongName);
+            mark("#email", wrongEmail);
+            mark("#age", wrongAge);
+            mark("#password", wrongPassword);
+
+            if (wrongName || wrongEmail || wrongAge || wrongPassword) {
+                messages.textContent = "Please, correct the fields in red.";
+                messages.className = "error";
+                return;
+            }
+
+            // everything is correct: hide the form and draw a card with the data
+            messages.textContent = "";
+            form.style.display = "none";
+
+            summary.innerHTML = "";
+            const card = document.createElement("div");
+            card.className = "card";
+
+            const title = document.createElement("h2");
+            title.textContent = "Welcome, " + name + "!";
+            card.appendChild(title);
+
+            const data = { Name: name, Email: email, Age: age };
+            for (const label in data) {
+                const p = document.createElement("p");
+                p.textContent = label + ": " + data[label];
+                card.appendChild(p);
+            }
+
+            const change = document.createElement("button");
+            change.id = "change";
+            change.textContent = "Change data";
+            change.addEventListener("click", function () {
+                summary.innerHTML = "";
+                form.style.display = "";           // the form comes back, with its data
+            });
+            card.appendChild(change);
+
+            summary.appendChild(card);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Si tot és correcte s'amaga el formulari i es dibuixa una targeta amb les dades (creada amb <code>createElement</code>); el botó "Change data" torna a mostrar el formulari amb les dades que hi havia.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 18.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up with summary&lt;/title&gt;
+    &lt;style&gt;
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .ok {
+            color: green;
+        }
+    &lt;/style&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            padding: 16px 24px;
+            border: 2px solid green;
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form id=&quot;signupForm&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;age&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;
+        &lt;/p&gt;
+        &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div id=&quot;messages&quot;&gt;&lt;/div&gt;
+
+    &lt;div id=&quot;summary&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const form = document.querySelector(&quot;#signupForm&quot;);
+        const messages = document.querySelector(&quot;#messages&quot;);
+        const summary = document.querySelector(&quot;#summary&quot;);
+
+        function mark(id, wrong) {
+            document.querySelector(id).classList.toggle(&quot;wrong&quot;, wrong);
+        }
+
+        form.addEventListener(&quot;submit&quot;, function (event) {
+            event.preventDefault();
+
+            const name = document.querySelector(&quot;#name&quot;).value.trim();
+            const email = document.querySelector(&quot;#email&quot;).value.trim();
+            const age = Number(document.querySelector(&quot;#age&quot;).value);
+            const password = document.querySelector(&quot;#password&quot;).value;
+
+            const wrongName = name.length &lt; 3;
+            const wrongEmail = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const wrongAge = isNaN(age) || age &lt; 16 || age &gt; 99;
+            const wrongPassword = password.length &lt; 8;
+
+            mark(&quot;#name&quot;, wrongName);
+            mark(&quot;#email&quot;, wrongEmail);
+            mark(&quot;#age&quot;, wrongAge);
+            mark(&quot;#password&quot;, wrongPassword);
+
+            if (wrongName || wrongEmail || wrongAge || wrongPassword) {
+                messages.textContent = &quot;Please, correct the fields in red.&quot;;
+                messages.className = &quot;error&quot;;
+                return;
+            }
+
+            // everything is correct: hide the form and draw a card with the data
+            messages.textContent = &quot;&quot;;
+            form.style.display = &quot;none&quot;;
+
+            summary.innerHTML = &quot;&quot;;
+            const card = document.createElement(&quot;div&quot;);
+            card.className = &quot;card&quot;;
+
+            const title = document.createElement(&quot;h2&quot;);
+            title.textContent = &quot;Welcome, &quot; + name + &quot;!&quot;;
+            card.appendChild(title);
+
+            const data = { Name: name, Email: email, Age: age };
+            for (const label in data) {
+                const p = document.createElement(&quot;p&quot;);
+                p.textContent = label + &quot;: &quot; + data[label];
+                card.appendChild(p);
+            }
+
+            const change = document.createElement(&quot;button&quot;);
+            change.id = &quot;change&quot;;
+            change.textContent = &quot;Change data&quot;;
+            change.addEventListener(&quot;click&quot;, function () {
+                summary.innerHTML = &quot;&quot;;
+                form.style.display = &quot;&quot;;           // the form comes back, with its data
+            });
+            card.appendChild(change);
+
+            summary.appendChild(card);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Your own classes</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Your own classes</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../22-classes.html">22-classes.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 22.1</a></li>
+        <li><a href="#e2">Exercici 22.2</a></li>
+        <li><a href="#e3">Exercici 22.3</a></li>
+        <li><a href="#e4">Exercici 22.4</a></li>
+        <li><a href="#e5">Exercici 22.5</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 22.1</h2>
+        <div class="enunciat"><strong>Exercise 22.1.</strong> Write the class <code>Student</code> above, create three students and show them in the page with <code>toString()</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Students&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Students&lt;/h1&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Student {
+            constructor(name, marks) {
+                this.name = name;
+                this.marks = marks;
+            }
+
+            average() {
+                const total = this.marks.reduce((sum, m) =&gt; sum + m, 0);
+                return total / this.marks.length;
+            }
+
+            toString() {
+                return `${this.name}: ${this.average().toFixed(2)}`;
+            }
+        }
+
+        const students = [
+            new Student("Ana", [7, 8, 9]),
+            new Student("Luis", [4, 6, 5]),
+            new Student("Marta", [10, 9, 9])
+        ];
+
+        const list = document.querySelector("#list");
+
+        for (const student of students) {
+            const li = document.createElement("li");
+            li.textContent = student.toString();
+            list.appendChild(li);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 22.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Students&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Students&lt;/h1&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Student {
+            constructor(name, marks) {
+                this.name = name;
+                this.marks = marks;
+            }
+
+            average() {
+                const total = this.marks.reduce((sum, m) =&gt; sum + m, 0);
+                return total / this.marks.length;
+            }
+
+            toString() {
+                return `${this.name}: ${this.average().toFixed(2)}`;
+            }
+        }
+
+        const students = [
+            new Student(&quot;Ana&quot;, [7, 8, 9]),
+            new Student(&quot;Luis&quot;, [4, 6, 5]),
+            new Student(&quot;Marta&quot;, [10, 9, 9])
+        ];
+
+        const list = document.querySelector(&quot;#list&quot;);
+
+        for (const student of students) {
+            const li = document.createElement(&quot;li&quot;);
+            li.textContent = student.toString();
+            list.appendChild(li);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 22.2</h2>
+        <div class="enunciat"><strong>Exercise 22.2.</strong> Redo exercise 11.2 with a class <code>Product</code> (name, price, stock) and a method <code>stockValue()</code>. The array is now an array of <code>Product</code> objects, drawn as cards.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            width: 160px;
+            margin: 6px;
+            padding: 10px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        class Product {
+            constructor(name, price, stock) {
+                this.name = name;
+                this.price = price;
+                this.stock = stock;
+            }
+
+            // value of the stock of this product
+            stockValue() {
+                return this.price * this.stock;
+            }
+        }
+
+        const products = [
+            new Product("Keyboard", 25, 10),
+            new Product("Mouse", 15, 0),
+            new Product("Monitor", 120, 3),
+            new Product("Cable", 5, 40),
+            new Product("Webcam", 45, 0)
+        ];
+
+        let html = "";
+        for (const p of products) {
+            html += `&lt;div class="card"&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock value: ${p.stockValue()} euros&lt;/p&gt;&lt;/div&gt;`;
+        }
+        document.querySelector("#cards").innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 22.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            width: 160px;
+            margin: 6px;
+            padding: 10px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        class Product {
+            constructor(name, price, stock) {
+                this.name = name;
+                this.price = price;
+                this.stock = stock;
+            }
+
+            // value of the stock of this product
+            stockValue() {
+                return this.price * this.stock;
+            }
+        }
+
+        const products = [
+            new Product(&quot;Keyboard&quot;, 25, 10),
+            new Product(&quot;Mouse&quot;, 15, 0),
+            new Product(&quot;Monitor&quot;, 120, 3),
+            new Product(&quot;Cable&quot;, 5, 40),
+            new Product(&quot;Webcam&quot;, 45, 0)
+        ];
+
+        let html = &quot;&quot;;
+        for (const p of products) {
+            html += `&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock value: ${p.stockValue()} euros&lt;/p&gt;&lt;/div&gt;`;
+        }
+        document.querySelector(&quot;#cards&quot;).innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 22.3</h2>
+        <div class="enunciat"><strong>Exercise 22.3.</strong> A class <code>BankAccount</code> with owner and balance, and the methods <code>deposit(amount)</code> and <code>withdraw(amount)</code>. If there is not enough money, <code>withdraw</code> throws an error. A small page with two buttons uses it.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Bank account&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Bank account&lt;/h1&gt;
+    &lt;input type="number" id="amount" placeholder="Amount in euros"&gt;
+    &lt;button id="deposit"&gt;Deposit&lt;/button&gt;
+    &lt;button id="withdraw"&gt;Withdraw&lt;/button&gt;
+    &lt;p id="account"&gt;&lt;/p&gt;
+    &lt;p id="message"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        class BankAccount {
+            constructor(owner, balance) {
+                this.owner = owner;
+                this.balance = balance;
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+            }
+
+            // throws an error if there is not enough money
+            withdraw(amount) {
+                if (amount &gt; this.balance) {
+                    throw new Error("There is not enough money in the account");
+                }
+                this.balance -= amount;
+            }
+        }
+
+        const account = new BankAccount("Ana", 100);
+
+        function draw() {
+            document.querySelector("#account").textContent = `${account.owner}: ${account.balance.toFixed(2)} euros`;
+        }
+
+        document.querySelector("#deposit").addEventListener("click", function () {
+            account.deposit(Number(document.querySelector("#amount").value));
+            document.querySelector("#message").textContent = "";
+            draw();
+        });
+
+        document.querySelector("#withdraw").addEventListener("click", function () {
+            const message = document.querySelector("#message");
+            try {
+                account.withdraw(Number(document.querySelector("#amount").value));
+                message.textContent = "";
+            } catch (error) {
+                message.textContent = error.message;
+                message.style.color = "red";
+            }
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 22.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Bank account&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Bank account&lt;/h1&gt;
+    &lt;input type=&quot;number&quot; id=&quot;amount&quot; placeholder=&quot;Amount in euros&quot;&gt;
+    &lt;button id=&quot;deposit&quot;&gt;Deposit&lt;/button&gt;
+    &lt;button id=&quot;withdraw&quot;&gt;Withdraw&lt;/button&gt;
+    &lt;p id=&quot;account&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        class BankAccount {
+            constructor(owner, balance) {
+                this.owner = owner;
+                this.balance = balance;
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+            }
+
+            // throws an error if there is not enough money
+            withdraw(amount) {
+                if (amount &gt; this.balance) {
+                    throw new Error(&quot;There is not enough money in the account&quot;);
+                }
+                this.balance -= amount;
+            }
+        }
+
+        const account = new BankAccount(&quot;Ana&quot;, 100);
+
+        function draw() {
+            document.querySelector(&quot;#account&quot;).textContent = `${account.owner}: ${account.balance.toFixed(2)} euros`;
+        }
+
+        document.querySelector(&quot;#deposit&quot;).addEventListener(&quot;click&quot;, function () {
+            account.deposit(Number(document.querySelector(&quot;#amount&quot;).value));
+            document.querySelector(&quot;#message&quot;).textContent = &quot;&quot;;
+            draw();
+        });
+
+        document.querySelector(&quot;#withdraw&quot;).addEventListener(&quot;click&quot;, function () {
+            const message = document.querySelector(&quot;#message&quot;);
+            try {
+                account.withdraw(Number(document.querySelector(&quot;#amount&quot;).value));
+                message.textContent = &quot;&quot;;
+            } catch (error) {
+                message.textContent = error.message;
+                message.style.color = &quot;red&quot;;
+            }
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 22.4</h2>
+        <div class="enunciat"><strong>Exercise 22.4.</strong> Add <code>toString()</code> to <code>Product</code> and <code>BankAccount</code> and use it to show them.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products and account&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products and account&lt;/h1&gt;
+    &lt;p id="product"&gt;&lt;/p&gt;
+    &lt;p id="account"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        class Product {
+            constructor(name, price, stock) {
+                this.name = name;
+                this.price = price;
+                this.stock = stock;
+            }
+
+            // value of the stock of this product
+            stockValue() {
+                return this.price * this.stock;
+            }
+
+            toString() {
+                return `${this.name}: ${this.price} euros, ${this.stock} in stock`;
+            }
+        }
+
+        class BankAccount {
+            constructor(owner, balance) {
+                this.owner = owner;
+                this.balance = balance;
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+            }
+
+            // throws an error if there is not enough money
+            withdraw(amount) {
+                if (amount &gt; this.balance) {
+                    throw new Error("There is not enough money in the account");
+                }
+                this.balance -= amount;
+            }
+
+            toString() {
+                return `${this.owner}: ${this.balance.toFixed(2)} euros`;
+            }
+        }
+
+        const mouse = new Product("Mouse", 15, 4);
+        const account = new BankAccount("Ana", 100);
+
+        document.querySelector("#product").textContent = mouse.toString();
+        document.querySelector("#account").textContent = account.toString();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Quan es posa un objecte on es necessita un text (per exemple, en una plantilla <code>`${mouse}`</code>), JavaScript crida automàticament a <code>toString()</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 22.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products and account&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products and account&lt;/h1&gt;
+    &lt;p id=&quot;product&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;account&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        class Product {
+            constructor(name, price, stock) {
+                this.name = name;
+                this.price = price;
+                this.stock = stock;
+            }
+
+            // value of the stock of this product
+            stockValue() {
+                return this.price * this.stock;
+            }
+
+            toString() {
+                return `${this.name}: ${this.price} euros, ${this.stock} in stock`;
+            }
+        }
+
+        class BankAccount {
+            constructor(owner, balance) {
+                this.owner = owner;
+                this.balance = balance;
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+            }
+
+            // throws an error if there is not enough money
+            withdraw(amount) {
+                if (amount &gt; this.balance) {
+                    throw new Error(&quot;There is not enough money in the account&quot;);
+                }
+                this.balance -= amount;
+            }
+
+            toString() {
+                return `${this.owner}: ${this.balance.toFixed(2)} euros`;
+            }
+        }
+
+        const mouse = new Product(&quot;Mouse&quot;, 15, 4);
+        const account = new BankAccount(&quot;Ana&quot;, 100);
+
+        document.querySelector(&quot;#product&quot;).textContent = mouse.toString();
+        document.querySelector(&quot;#account&quot;).textContent = account.toString();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 22.5</h2>
+        <div class="enunciat"><strong>Exercise 22.5.</strong> In this code, mark the name, the constructor, each property and each method:</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> <ul><li><strong>Nom de la classe:</strong> <code>Song</code></li><li><strong>Constructor:</strong> <code>constructor(title, seconds) { ... }</code></li><li><strong>Propietats:</strong> <code>this.title</code> i <code>this.seconds</code> (es creen dins del constructor)</li><li><strong>Mètode:</strong> <code>minutes()</code>, que retorna <code>Math.floor(this.seconds / 60)</code></li></ul></div>
+    </section>
+
+</body>
+
+</html>

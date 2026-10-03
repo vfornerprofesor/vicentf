@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Text: headings and paragraphs</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Text: headings and paragraphs</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../03-text.html">03-text.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 3.1</a></li>
+        <li><a href="#e2">Exercici 3.2</a></li>
+        <li><a href="#e3">Exercici 3.3</a></li>
+        <li><a href="#e4">Exercici 3.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 3.1</h2>
+        <div class="enunciat"><strong>Exercise 3.1.</strong> Build a page about your favourite video game, with an <code>h1</code> (the name of the game), three <code>h2</code> sections (Story, How to play, Why I like it) and two paragraphs under each one.</div>
+        <h3>Solució</h3>
+        <span class="fname">game.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Minecraft&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Minecraft&lt;/h1&gt;
+
+    &lt;h2&gt;Story&lt;/h2&gt;
+    &lt;p&gt;You arrive in a world made of blocks, with no instructions and no map.&lt;/p&gt;
+    &lt;p&gt;Nobody tells you what to do: the story is the one you build.&lt;/p&gt;
+
+    &lt;h2&gt;How to play&lt;/h2&gt;
+    &lt;p&gt;You cut trees, you dig and you craft tools to survive the first night.&lt;/p&gt;
+    &lt;p&gt;You can play alone or with your friends in the same world.&lt;/p&gt;
+
+    &lt;h2&gt;Why I like it&lt;/h2&gt;
+    &lt;p&gt;I like it because there are no rules about what you must build.&lt;/p&gt;
+    &lt;p&gt;Every game is different, so I never get bored.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 3.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Minecraft&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Minecraft&lt;/h1&gt;
+
+    &lt;h2&gt;Story&lt;/h2&gt;
+    &lt;p&gt;You arrive in a world made of blocks, with no instructions and no map.&lt;/p&gt;
+    &lt;p&gt;Nobody tells you what to do: the story is the one you build.&lt;/p&gt;
+
+    &lt;h2&gt;How to play&lt;/h2&gt;
+    &lt;p&gt;You cut trees, you dig and you craft tools to survive the first night.&lt;/p&gt;
+    &lt;p&gt;You can play alone or with your friends in the same world.&lt;/p&gt;
+
+    &lt;h2&gt;Why I like it&lt;/h2&gt;
+    &lt;p&gt;I like it because there are no rules about what you must build.&lt;/p&gt;
+    &lt;p&gt;Every game is different, so I never get bored.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 3.2</h2>
+        <div class="enunciat"><strong>Exercise 3.2.</strong> Write your postal address in a single paragraph, using <code>&lt;br&gt;</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">address.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My address&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My address&lt;/h1&gt;
+    &lt;p&gt;
+        Marc Ferrer&lt;br&gt;
+        Carrer de la Mar, 12, 3r B&lt;br&gt;
+        46001 Valencia&lt;br&gt;
+        Spain
+    &lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 3.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My address&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My address&lt;/h1&gt;
+    &lt;p&gt;
+        Marc Ferrer&lt;br&gt;
+        Carrer de la Mar, 12, 3r B&lt;br&gt;
+        46001 Valencia&lt;br&gt;
+        Spain
+    &lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 3.3</h2>
+        <div class="enunciat"><strong>Exercise 3.3.</strong> Create a page with: a title (<code>h1</code>) with your name, a horizontal line (<code>hr</code>), a paragraph about your favourite music band, an image of the band, a paragraph about your favourite film and an image of the film. Remember the <code>&lt;img&gt;</code> tag from lesson 2: <code>&lt;img src="..." alt="..."&gt;</code>. Save the images in the same folder as the page.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Marc Ferrer&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;hr&gt;
+    &lt;p&gt;My favourite band is Muse. I like their guitars and the way they sound live.&lt;/p&gt;
+    &lt;img src="band.jpg" alt="Muse playing on a stage with blue lights" width="400"&gt;
+    &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+    &lt;img src="film.jpg" alt="Poster of Interstellar with an astronaut in front of a planet" width="400"&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Les imatges <code>band.jpg</code> i <code>film.jpg</code> han d'estar en la mateixa carpeta que la pàgina. En la previsualització es mostren com a marcador.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 3.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Marc Ferrer&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;hr&gt;
+    &lt;p&gt;My favourite band is Muse. I like their guitars and the way they sound live.&lt;/p&gt;
+    &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Muse playing on a stage with blue lights&quot; width=&quot;400&quot;&gt;
+    &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+    &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Poster of Interstellar with an astronaut in front of a planet&quot; width=&quot;400&quot;&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 3.4</h2>
+        <div class="enunciat"><strong>Exercise 3.4.</strong> Write a paragraph that shows this text in the browser, exactly: <code>The tag &lt;h1&gt; &amp; the tag &lt;p&gt; are different.</code></div>
+        <h3>Solució</h3>
+        <span class="fname">entities.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Entities&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p&gt;The tag &amp;lt;h1&amp;gt; &amp;amp; the tag &amp;lt;p&amp;gt; are different.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els símbols <code>&lt;</code> i <code>&amp;</code> s'escriuen com a entitats (<code>&amp;lt;</code> i <code>&amp;amp;</code>) perquè el navegador no els confonga amb una etiqueta.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 3.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Entities&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p&gt;The tag &amp;lt;h1&amp;gt; &amp;amp; the tag &amp;lt;p&amp;gt; are different.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

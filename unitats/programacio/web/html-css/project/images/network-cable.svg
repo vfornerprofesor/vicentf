@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#e4ecf4"/>
+  <!-- cable -->
+  <path d="M-10 230 C80 230 90 140 170 140" stroke="#2d5a85" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <!-- connector -->
+  <path d="M168 120 H240 V160 H168 Z" fill="#dbe7f3" stroke="#8a99ab" stroke-width="3" opacity=".95"/>
+  <g stroke-width="3">
+    <path d="M178 124 V156" stroke="#f2a541"/><path d="M186 124 V156" stroke="#d96f4a"/>
+    <path d="M194 124 V156" stroke="#3f8a5c"/><path d="M202 124 V156" stroke="#2d5a85"/>
+    <path d="M210 124 V156" stroke="#6fd3ff"/><path d="M218 124 V156" stroke="#4c9a6a"/>
+    <path d="M226 124 V156" stroke="#9c6b45"/><path d="M234 124 V156" stroke="#7d5434"/>
+  </g>
+  <path d="M190 160 L198 176 H214 L222 160" fill="#dbe7f3" stroke="#8a99ab" stroke-width="3"/>
+  <!-- crimping tool -->
+  <path d="M260 90 L370 40 L378 56 L280 110 Z" fill="#f2a541"/>
+  <path d="M260 110 L370 170 L362 186 L254 128 Z" fill="#f2a541"/>
+  <circle cx="262" cy="110" r="14" fill="#8a99ab"/>
+  <circle cx="262" cy="110" r="5" fill="#23272f"/>
+</svg>

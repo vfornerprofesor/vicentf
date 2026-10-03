@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Creating and removing elements</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Creating and removing elements</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../17-elements.html">17-elements.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 17.1</a></li>
+        <li><a href="#e2">Exercici 17.2</a></li>
+        <li><a href="#e3">Exercici 17.3</a></li>
+        <li><a href="#e4">Exercici 17.4</a></li>
+        <li><a href="#e5">Exercici 17.5</a></li>
+        <li><a href="#e6">Exercici 17.6</a></li>
+        <li><a href="#e7">Mini-projecte 2</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 17.1</h2>
+        <div class="enunciat"><strong>Exercise 17.1.</strong> Rewrite exercise 16.4 (the add-item list) using <code>createElement</code> instead of <code>innerHTML</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Add items&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#nameInput");
+        const list = document.querySelector("#list");
+        const items = [];
+
+        function draw() {
+            list.textContent = "";
+            for (const text of items) {
+                const li = document.createElement("li");
+                li.textContent = text;
+                list.appendChild(li);
+            }
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            input.focus();
+            draw();
+        }
+
+        document.querySelector("#addButton").addEventListener("click", addItem);
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addItem();
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 17.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Add items&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#nameInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const items = [];
+
+        function draw() {
+            list.textContent = &quot;&quot;;
+            for (const text of items) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;
+                list.appendChild(li);
+            }
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            input.focus();
+            draw();
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, addItem);
+        input.addEventListener(&quot;keydown&quot;, function (event) {
+            if (event.key === &quot;Enter&quot;) {
+                addItem();
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 17.2</h2>
+        <div class="enunciat"><strong>Exercise 17.2.</strong> Add a "Delete" button to every row, that removes that item from the array and redraws.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Delete items&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#nameInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+        const items = [];
+
+        function draw() {
+            list.textContent = "";                         // empty the list
+
+            items.forEach(function (text, index) {
+                const li = document.createElement("li");
+                li.textContent = text;                     // textContent: safe with any text
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    items.splice(index, 1);                // remove it from the array
+                    draw();                                // and redraw
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? " item" : " items");
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            draw();
+        }
+
+        document.querySelector("#addButton").addEventListener("click", addItem);
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addItem();
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">El <code>index</code> de cada fila es guarda en la funció del botó i <code>splice(index, 1)</code> lleva eixe element de l'array; després es redibuixa tot.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 17.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Delete items&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#nameInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+        const items = [];
+
+        function draw() {
+            list.textContent = &quot;&quot;;                         // empty the list
+
+            items.forEach(function (text, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;                     // textContent: safe with any text
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    items.splice(index, 1);                // remove it from the array
+                    draw();                                // and redraw
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? &quot; item&quot; : &quot; items&quot;);
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            draw();
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, addItem);
+        input.addEventListener(&quot;keydown&quot;, function (event) {
+            if (event.key === &quot;Enter&quot;) {
+                addItem();
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 17.3</h2>
+        <div class="enunciat"><strong>Exercise 17.3.</strong> Add a counter under the list: "4 items".</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#nameInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+        const items = [];
+
+        function draw() {
+            list.textContent = "";                         // empty the list
+
+            items.forEach(function (text, index) {
+                const li = document.createElement("li");
+                li.textContent = text;                     // textContent: safe with any text
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    items.splice(index, 1);                // remove it from the array
+                    draw();                                // and redraw
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? " item" : " items");
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            draw();
+        }
+
+        document.querySelector("#addButton").addEventListener("click", addItem);
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addItem();
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">És el mateix codi de 17.2: el comptador (<code>#counter</code>) s'actualitza dins de <code>draw()</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 17.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#nameInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+        const items = [];
+
+        function draw() {
+            list.textContent = &quot;&quot;;                         // empty the list
+
+            items.forEach(function (text, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;                     // textContent: safe with any text
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    items.splice(index, 1);                // remove it from the array
+                    draw();                                // and redraw
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? &quot; item&quot; : &quot; items&quot;);
+        }
+
+        function addItem() {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            draw();
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, addItem);
+        input.addEventListener(&quot;keydown&quot;, function (event) {
+            if (event.key === &quot;Enter&quot;) {
+                addItem();
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 17.4</h2>
+        <div class="enunciat"><strong>Exercise 17.4.</strong> A "Gallery" page: an array of 6 image URLs, and a loop that creates 6 <code>&lt;img&gt;</code> elements with <code>createElement</code>. Clicking on one makes it bigger.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Gallery&lt;/title&gt;
+    &lt;style&gt;
+        img {
+            width: 200px;
+            margin: 6px;
+            cursor: zoom-in;
+            transition: width 0.3s ease;
+        }
+
+        img.big {
+            width: 420px;
+            cursor: zoom-out;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Gallery&lt;/h1&gt;
+    &lt;div id="gallery"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const urls = [
+            "https://picsum.photos/seed/a/200/150",
+            "https://picsum.photos/seed/b/200/150",
+            "https://picsum.photos/seed/c/200/150",
+            "https://picsum.photos/seed/d/200/150",
+            "https://picsum.photos/seed/e/200/150",
+            "https://picsum.photos/seed/f/200/150"
+        ];
+
+        const gallery = document.querySelector("#gallery");
+
+        for (const url of urls) {
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = "A random photo";
+            img.addEventListener("click", function () {
+                img.classList.toggle("big");        // clicking again makes it small
+            });
+            gallery.appendChild(img);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Les imatges vénen de <code>picsum.photos</code>, per tant cal connexió a internet per a veure-les.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 17.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Gallery&lt;/title&gt;
+    &lt;style&gt;
+        img {
+            width: 200px;
+            margin: 6px;
+            cursor: zoom-in;
+            transition: width 0.3s ease;
+        }
+
+        img.big {
+            width: 420px;
+            cursor: zoom-out;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Gallery&lt;/h1&gt;
+    &lt;div id=&quot;gallery&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const urls = [
+            &quot;https://picsum.photos/seed/a/200/150&quot;,
+            &quot;https://picsum.photos/seed/b/200/150&quot;,
+            &quot;https://picsum.photos/seed/c/200/150&quot;,
+            &quot;https://picsum.photos/seed/d/200/150&quot;,
+            &quot;https://picsum.photos/seed/e/200/150&quot;,
+            &quot;https://picsum.photos/seed/f/200/150&quot;
+        ];
+
+        const gallery = document.querySelector(&quot;#gallery&quot;);
+
+        for (const url of urls) {
+            const img = document.createElement(&quot;img&quot;);
+            img.src = url;
+            img.alt = &quot;A random photo&quot;;
+            img.addEventListener(&quot;click&quot;, function () {
+                img.classList.toggle(&quot;big&quot;);        // clicking again makes it small
+            });
+            gallery.appendChild(img);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 17.5</h2>
+        <div class="enunciat"><strong>Exercise 17.5.</strong> A table of students created with <code>createElement</code>: one <code>&lt;tr&gt;</code> per student, one <code>&lt;td&gt;</code> per property.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Students table&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            padding: 4px 12px;
+            border: 1px solid #999999;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Students&lt;/h1&gt;
+    &lt;table id="table"&gt;&lt;/table&gt;
+
+    &lt;script&gt;
+        const students = [
+            { name: "Pere", age: 16, mark: 7 },
+            { name: "Joan", age: 17, mark: 4 },
+            { name: "Marta", age: 16, mark: 9 }
+        ];
+
+        const table = document.querySelector("#table");
+
+        for (const student of students) {
+            const tr = document.createElement("tr");
+
+            for (const key in student) {              // one td per property
+                const td = document.createElement("td");
+                td.textContent = student[key];
+                tr.appendChild(td);
+            }
+
+            table.appendChild(tr);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 17.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Students table&lt;/title&gt;
+    &lt;style&gt;
+        td {
+            padding: 4px 12px;
+            border: 1px solid #999999;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Students&lt;/h1&gt;
+    &lt;table id=&quot;table&quot;&gt;&lt;/table&gt;
+
+    &lt;script&gt;
+        const students = [
+            { name: &quot;Pere&quot;, age: 16, mark: 7 },
+            { name: &quot;Joan&quot;, age: 17, mark: 4 },
+            { name: &quot;Marta&quot;, age: 16, mark: 9 }
+        ];
+
+        const table = document.querySelector(&quot;#table&quot;);
+
+        for (const student of students) {
+            const tr = document.createElement(&quot;tr&quot;);
+
+            for (const key in student) {              // one td per property
+                const td = document.createElement(&quot;td&quot;);
+                td.textContent = student[key];
+                tr.appendChild(td);
+            }
+
+            table.appendChild(tr);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 17.6</h2>
+        <div class="enunciat"><strong>Exercise 17.6.</strong> A "message box": a function <code>showMessage(text, type)</code> that creates a <code>&lt;div&gt;</code> with the class <code>ok</code> or <code>error</code>, puts it at the top of the page, and removes it by itself after 3 seconds. (<code>setTimeout(function () { ... }, 3000)</code>)</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Message box&lt;/title&gt;
+    &lt;style&gt;
+        .message {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .ok {
+            background-color: #d4f5dd;
+            color: #146c2e;
+        }
+
+        .error {
+            background-color: #fde2e2;
+            color: #a11d1d;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id="ok"&gt;Ok message&lt;/button&gt;
+    &lt;button id="error"&gt;Error message&lt;/button&gt;
+
+    &lt;script&gt;
+        function showMessage(text, type) {
+            const box = document.createElement("div");
+            box.textContent = text;
+            box.classList.add("message", type);
+
+            document.body.prepend(box);
+
+            setTimeout(function () {
+                box.remove();
+            }, 3000);
+        }
+
+        document.querySelector("#ok").addEventListener("click", function () {
+            showMessage("Task added", "ok");
+        });
+
+        document.querySelector("#error").addEventListener("click", function () {
+            showMessage("Something went wrong", "error");
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La prova clica i espera 3,1 segons: el missatge s'ha llevat sol.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 17.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Message box&lt;/title&gt;
+    &lt;style&gt;
+        .message {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .ok {
+            background-color: #d4f5dd;
+            color: #146c2e;
+        }
+
+        .error {
+            background-color: #fde2e2;
+            color: #a11d1d;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id=&quot;ok&quot;&gt;Ok message&lt;/button&gt;
+    &lt;button id=&quot;error&quot;&gt;Error message&lt;/button&gt;
+
+    &lt;script&gt;
+        function showMessage(text, type) {
+            const box = document.createElement(&quot;div&quot;);
+            box.textContent = text;
+            box.classList.add(&quot;message&quot;, type);
+
+            document.body.prepend(box);
+
+            setTimeout(function () {
+                box.remove();
+            }, 3000);
+        }
+
+        document.querySelector(&quot;#ok&quot;).addEventListener(&quot;click&quot;, function () {
+            showMessage(&quot;Task added&quot;, &quot;ok&quot;);
+        });
+
+        document.querySelector(&quot;#error&quot;).addEventListener(&quot;click&quot;, function () {
+            showMessage(&quot;Something went wrong&quot;, &quot;error&quot;);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Mini-projecte 2</h2>
+        <div class="enunciat"><strong>Mini-project 2: A list that works</strong><p>
+                One page with a list of anything you like (films to watch, songs, shopping,
+                homework). It must:
+            </p>
+            <ul>
+                <li>keep the data in an <strong>array</strong>;</li>
+                <li>add an item with a button <strong>and</strong> with Enter;</li>
+                <li>refuse an empty item;</li>
+                <li>draw the list with <code>createElement</code>, never with <code>innerHTML</code> for the user's text;</li>
+                <li>have a Delete button on every row that changes the array and redraws;</li>
+                <li>show a counter of items;</li>
+                <li>have a "Clear all" button that asks for confirmation (<code>confirm("Are you sure?")</code>).</li>
+            </ul>
+            <p>
+                No <code>localStorage</code> yet: that comes in lesson 19, and then you will add it to
+                this same page.
+            </p></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;A list that works&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Films to watch&lt;/h1&gt;
+    &lt;input type="text" id="filmInput" placeholder="A film"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;button id="clearButton"&gt;Clear all&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const films = [];
+        const input = document.querySelector("#filmInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+
+        function draw() {
+            list.textContent = "";
+
+            films.forEach(function (film, index) {
+                const li = document.createElement("li");
+                li.textContent = film;                       // never innerHTML with the user's text
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    films.splice(index, 1);
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = films.length + (films.length === 1 ? " film" : " films");
+        }
+
+        function addFilm() {
+            const text = input.value.trim();
+            if (text === "") {
+                return;                                      // refuse an empty item
+            }
+            films.push(text);
+            input.value = "";
+            input.focus();
+            draw();
+        }
+
+        document.querySelector("#addButton").addEventListener("click", addFilm);
+
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addFilm();
+            }
+        });
+
+        document.querySelector("#clearButton").addEventListener("click", function () {
+            if (confirm("Are you sure?")) {
+                films.length = 0;
+                draw();
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Compleix tots els requisits: array, afegir amb botó i amb Enter, no accepta buit, <code>createElement</code>, botó Delete per fila que canvia l'array i redibuixa, comptador i "Clear all" amb <code>confirm</code>. (En la previsualització el <code>confirm</code> sempre respon que sí.)</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Mini-projecte 2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;A list that works&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Films to watch&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;filmInput&quot; placeholder=&quot;A film&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;button id=&quot;clearButton&quot;&gt;Clear all&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const films = [];
+        const input = document.querySelector(&quot;#filmInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+
+        function draw() {
+            list.textContent = &quot;&quot;;
+
+            films.forEach(function (film, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = film;                       // never innerHTML with the user&#x27;s text
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    films.splice(index, 1);
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = films.length + (films.length === 1 ? &quot; film&quot; : &quot; films&quot;);
+        }
+
+        function addFilm() {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;                                      // refuse an empty item
+            }
+            films.push(text);
+            input.value = &quot;&quot;;
+            input.focus();
+            draw();
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, addFilm);
+
+        input.addEventListener(&quot;keydown&quot;, function (event) {
+            if (event.key === &quot;Enter&quot;) {
+                addFilm();
+            }
+        });
+
+        document.querySelector(&quot;#clearButton&quot;).addEventListener(&quot;click&quot;, function () {
+            if (confirm(&quot;Are you sure?&quot;)) {
+                films.length = 0;
+                draw();
+            }
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

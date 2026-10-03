@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Text, fonts and colours</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Text, fonts and colours</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../10-text-colors.html">10-text-colors.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 10.1</a></li>
+        <li><a href="#e2">Exercici 10.2</a></li>
+        <li><a href="#e3">Exercici 10.3</a></li>
+        <li><a href="#e4">Exercici 10.4</a></li>
+        <li><a href="#e5">Exercici 10.5</a></li>
+        <li><a href="#e6">Exercici 10.6</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 10.1</h2>
+        <div class="enunciat"><strong>Exercise 10.1.</strong> Choose a Google Font for your headings and a different one for the body text. Apply them.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>body {
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+h1,
+h2 {
+    font-family: 'Poppins', Arial, sans-serif;
+}</code></pre>
+        <div class="note">Una font per als títols (Poppins) i una altra per al text (Lato). Totes dues porten una font genèrica de reserva (<code>sans-serif</code>).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;body {
+    font-family: &#x27;Lato&#x27;, Arial, sans-serif;
+}
+
+h1,
+h2 {
+    font-family: &#x27;Poppins&#x27;, Arial, sans-serif;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 10.2</h2>
+        <div class="enunciat"><strong>Exercise 10.2.</strong> Set the body font size to <code>1rem</code> and <code>line-height: 1.6</code>. Compare before and after.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>body {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1,
+h2 {
+    font-family: 'Poppins', Arial, sans-serif;
+}</code></pre>
+        <div class="note"><strong>Resposta:</strong> amb <code>line-height: 1.6</code> les línies tenen més aire entre elles i es llig millor; abans estaven més juntes.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;body {
+    font-family: &#x27;Lato&#x27;, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1,
+h2 {
+    font-family: &#x27;Poppins&#x27;, Arial, sans-serif;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 10.3</h2>
+        <div class="enunciat"><strong>Exercise 10.3.</strong> Make the links of your <code>nav</code> white, with no underline, and underlined on hover.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>header {
+    background-color: #222222;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}</code></pre>
+        <div class="note"><code>text-decoration: none</code> lleva el subratllat normal i <code>:hover</code> el torna a posar quan el ratolí està damunt.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;header {
+    background-color: #222222;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 10.4</h2>
+        <div class="enunciat"><strong>Exercise 10.4.</strong> Put a background image in your <code>header</code>, with <code>cover</code>, and white text on top. Make sure you can still read the text.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>header {
+    background-image: url("../images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+nav a {
+    color: white;
+}</code></pre>
+        <div class="note">La imatge <code>images/hero.jpg</code> ha d'existir. L'ombra del text (<code>text-shadow</code>) és el truc perquè el text blanc es lligca sobre qualsevol foto.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;header {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+nav a {
+    color: white;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About me&lt;/h2&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
+            I have seen it four times and I always see something new.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 10.5</h2>
+        <div class="enunciat"><strong>Exercise 10.5. Personal page.</strong> Reproduce the page in the picture: fonts, sizes, colours and text alignment. The HTML is given.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/10-text-colors/ex1.png" alt="A personal page styled with a chosen font, colours and text alignment"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/10-text-colors/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ca"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Pàgina personal&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="photo"&gt;
+            &lt;img src="images/bike.jpg" alt="Un ciclista amb una bicicleta de muntanya entre arbres" width="400"&gt;
+        &lt;/div&gt;
+        &lt;div class="info"&gt;
+            &lt;h1&gt;Pere Franch&lt;/h1&gt;
+            &lt;p&gt;Vaig nàixer el 3 de Setembre de 2006 i tinc 17 anys&lt;/p&gt;
+            &lt;h2&gt;Interessos&lt;/h2&gt;
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Bicicleta&lt;/td&gt;
+                    &lt;td&gt;Motos&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Llegir&lt;/td&gt;
+                    &lt;td&gt;Videojocs&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Eixir amb els amics&lt;/td&gt;
+                    &lt;td&gt;Música&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;p&gt;
+                &lt;a class="button" href="#"&gt;INSTAGRAM&lt;/a&gt;
+                &lt;a class="button" href="#"&gt;TWITTER&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>body {
+    margin: 0;
+    padding: 40px 0;
+    background-color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 860px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ed695b;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.photo img {
+    display: block;
+    width: 400px;
+    max-width: 100%;
+}
+
+.info {
+    flex: 1;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+td {
+    padding: 4px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 20px;
+    background-color: #f5f0be;
+    color: #111111;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #ffffff;
+}</code></pre>
+        <div class="note">Estructura: un <code>div.card</code> principal (amplària i marges) amb dos fills: la foto a l'esquerra i la informació a la dreta, col·locats amb flexbox. La taula ocupa tota l'amplada (<code>width: 100%</code>) i els botons canvien de color amb <code>:hover</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ca&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Pàgina personal&lt;/title&gt;
+    &lt;style&gt;body {
+    margin: 0;
+    padding: 40px 0;
+    background-color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 860px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ed695b;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.photo img {
+    display: block;
+    width: 400px;
+    max-width: 100%;
+}
+
+.info {
+    flex: 1;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+td {
+    padding: 4px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 20px;
+    background-color: #f5f0be;
+    color: #111111;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #ffffff;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;div class=&quot;photo&quot;&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Un ciclista amb una bicicleta de muntanya entre arbres&quot; width=&quot;400&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;info&quot;&gt;
+            &lt;h1&gt;Pere Franch&lt;/h1&gt;
+            &lt;p&gt;Vaig nàixer el 3 de Setembre de 2006 i tinc 17 anys&lt;/p&gt;
+            &lt;h2&gt;Interessos&lt;/h2&gt;
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Bicicleta&lt;/td&gt;
+                    &lt;td&gt;Motos&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Llegir&lt;/td&gt;
+                    &lt;td&gt;Videojocs&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Eixir amb els amics&lt;/td&gt;
+                    &lt;td&gt;Música&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;p&gt;
+                &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;INSTAGRAM&lt;/a&gt;
+                &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;TWITTER&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 10.6</h2>
+        <div class="enunciat"><strong>Exercise 10.6. Sign-up form.</strong> Style the form you built in lesson 7: fields, labels, button, focus state.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/10-text-colors/ex2.png" alt="A sign-up form styled with colours, spacing and a focus state"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form action="#" method="post"&gt;
+        &lt;h1&gt;Sign up&lt;/h1&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name" name="name" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="mail"&gt;Email&lt;/label&gt;
+            &lt;input type="email" id="mail" name="mail" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="pass"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;button type="submit"&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f8;
+}
+
+form {
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #6d5fb3;
+    outline: 2px solid #6d5fb3;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6d5fb3;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #53469a;
+}</code></pre>
+        <div class="note">L'estat <code>:focus</code> marca el camp actiu amb un color diferent i una línia al voltant.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;style&gt;body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f8;
+}
+
+form {
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #6d5fb3;
+    outline: 2px solid #6d5fb3;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6d5fb3;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #53469a;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;h1&gt;Sign up&lt;/h1&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;mail&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;mail&quot; name=&quot;mail&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;pass&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; required minlength=&quot;8&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

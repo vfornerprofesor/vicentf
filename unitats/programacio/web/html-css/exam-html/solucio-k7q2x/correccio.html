@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Prova d'HTML: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Prova d'HTML · correcció (sessió 18)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> L'enunciat que lliures a l'alumnat és
+        <a href="../enunciat.html">enunciat.html</a>
+        (i la carpeta <code>starter/</code>). Cada exercici alimenta un indicador de la rúbrica de la
+        <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="skeleton.html">skeleton.html</a>
+        <a href="errors.html">errors.html (corregit)</a>
+        <a href="list-table.html">list-table.html</a>
+        <a href="form.html">form.html</a>
+        <a href="answers.txt">answers.txt</a>
+    </p>
+    <p>Tots passen el validador W3C amb 0 errors. El fitxer de partida <code>starter/errors.html</code> en dona 8.</p>
+
+    <h2>Quin exercici alimenta cada indicador</h2>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercici</th>
+                    <th>Indicador</th>
+                    <th>Criteri</th>
+                    <th>Pes en el criteri</th>
+                    <th>Temps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 (esquelet) + 2 (8 errors)</td>
+                    <td>PH1. Esquelet i correcció d'errors</td>
+                    <td>CA1.1</td>
+                    <td>50 %</td>
+                    <td>5 + 15 min</td>
+                </tr>
+                <tr>
+                    <td>3 (llista niada i taula)</td>
+                    <td>PH2. Llista niada i taula</td>
+                    <td>CA1.2</td>
+                    <td>50 %</td>
+                    <td>15 min</td>
+                </tr>
+                <tr>
+                    <td>4 (formulari)</td>
+                    <td>PH3. Formulari</td>
+                    <td>CA1.3</td>
+                    <td>50 %</td>
+                    <td>12 min</td>
+                </tr>
+                <tr>
+                    <td>5 (etiquetes semàntiques)</td>
+                    <td>PH4. Etiquetes semàntiques</td>
+                    <td>CA1.4</td>
+                    <td>25 %</td>
+                    <td>5 min</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>La resta de cada criteri ve del projecte final. Els 3 minuts que queden fins als 55 són per a revisar.</p>
+
+    <!-- ===== PH1 ===== -->
+    <h2>PH1 · Exercicis 1 i 2 (CA1.1)</h2>
+
+    <h3>Esquelet (exercici 1)</h3>
+    <p>
+        Sis elements: <code>&lt;!DOCTYPE html&gt;</code>, <code>html lang="en"</code>, <code>head</code>,
+        <code>meta charset="UTF-8"</code>, <code>title</code> amb el text <code>HTML exam</code> i <code>body</code>
+        amb <code>h1</code> i <code>p</code>. Mira també el niat i el sagnat. Solució: <code>solucio-k7q2x/skeleton.html</code>.
+    </p>
+
+    <h3>Els 8 errors (exercici 2)</h3>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Error en <code>starter/errors.html</code></th>
+                    <th>Correcció</th>
+                    <th>Com es detecta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><code>&lt;img src="images/club.svg"&gt;</code> sense <code>alt</code></td>
+                    <td>Afegir un <code>alt</code> descriptiu (no val <code>alt=""</code> ni "imatge")</td>
+                    <td>Validador</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><code>h3</code> després de <code>h1</code>: s'ha saltat el nivell</td>
+                    <td>Canviar-lo a <code>h2</code></td>
+                    <td>Validador (avís) i lectura</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><code>&lt;b&gt;&lt;i&gt;…&lt;/b&gt;&lt;/i&gt;</code>: etiquetes mal niades</td>
+                    <td><code>&lt;b&gt;&lt;i&gt;…&lt;/i&gt;&lt;/b&gt;</code></td>
+                    <td>Validador (dues línies, és 1 error)</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><code>li</code> "Play retro games" fora de la llista, directament en <code>body</code></td>
+                    <td>Moure'l dins del <code>ul</code></td>
+                    <td>Validador</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><code>src="C:\Users\student\Desktop\pc.svg"</code>: ruta absoluta de l'ordinador</td>
+                    <td><code>src="images/pc.svg"</code> (ruta relativa)</td>
+                    <td>Navegador (la imatge no es veu) i validador</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><code>&lt;a href=our page.html&gt;</code>: sense cometes i amb un espai</td>
+                    <td><code>href="our-page.html"</code> (cometes i sense espais)</td>
+                    <td>Validador</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><code>&lt;/br&gt;</code> no existix</td>
+                    <td><code>&lt;br&gt;</code></td>
+                    <td>Validador</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><code>id="info"</code> repetit en dos paràgrafs</td>
+                    <td>Un <code>id</code> diferent en un dels dos</td>
+                    <td>Validador</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <strong>Errors nous:</strong> si l'alumne canvia una cosa que estava bé o en trenca una altra, no pot
+        arribar a Excel·lent. Molt freqüent: corregir el 3 esborrant el <code>&lt;b&gt;</code>, o posar el mateix
+        <code>alt</code> buit.
+    </p>
+
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A l'esquelet li falten 2 o més elements o estan mal niats, o corregix menys de 4 errors.</td>
+                    <td>Esquelet amb com a màxim un element absent o mal niat, i almenys 4 errors corregits.</td>
+                    <td>Esquelet complet i ben niat, i almenys 6 errors corregits.</td>
+                    <td>Esquelet complet, ben niat i sagnat, i els 8 errors corregits sense introduir-ne de nous.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== PH2 ===== -->
+    <h2>PH2 · Exercici 3 (CA1.2)</h2>
+    <p>Solució: <code>solucio-k7q2x/list-table.html</code>. Es corregix obrint-lo en el navegador i mirant el codi.</p>
+    <ul>
+        <li><strong>Llista:</strong> <code>ul</code> amb 3 <code>li</code>; <em>Frontend</em> i <em>Backend</em> contenen un <code>ol</code> de 2 <code>li</code>. La sublista ha d'anar <strong>dins</strong> del <code>li</code>, no després de tancar-lo.</li>
+        <li><strong>Taula:</strong> fila de capçalera amb <code>th</code> (4 columnes), files amb <code>th</code> per a l'hora i <code>td</code> per a la resta, i la fila <em>Break</em> amb una sola cel·la <code>colspan="4"</code> (ni 3 ni 5).</li>
+        <li><strong>Defectes de codi</strong> (compten per a Notable): subllista fora del <code>li</code>, capçalera amb <code>td</code> en lloc de <code>th</code>, etiqueta sense tancar.</li>
+    </ul>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ni la llista niada ni la taula es veuen com demana l'enunciat.</td>
+                    <td>Almenys una de les dues es veu com demana.</td>
+                    <td>Totes dues es veuen com demana, amb com a màxim un defecte de codi.</td>
+                    <td>Totes dues sense cap defecte de codi; el <code>colspan</code> ocupa exactament les columnes demanades.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== PH3 ===== -->
+    <h2>PH3 · Exercici 4 (CA1.3)</h2>
+    <p>Solució: <code>solucio-k7q2x/form.html</code>. Un camp és <strong>complet</strong> quan té les tres coses:</p>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Camp</th>
+                    <th><code>label</code> associada (<code>for</code> = <code>id</code>)</th>
+                    <th>Tipus adequat</th>
+                    <th><code>required</code></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>Sí</td>
+                    <td><code>type="text"</code></td>
+                    <td>Sí</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>Sí</td>
+                    <td><code>type="email"</code></td>
+                    <td>Sí</td>
+                </tr>
+                <tr>
+                    <td>Date of birth</td>
+                    <td>Sí</td>
+                    <td><code>type="date"</code></td>
+                    <td><strong>No</strong> (si el posa, no és un defecte greu però no és el que demana l'enunciat)</td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td>Sí</td>
+                    <td><code>select</code> amb 3 <code>option</code> (SMX, ASIR, DAW)</td>
+                    <td>Sí</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        Per a Excel·lent, els 4 camps han d'anar dins d'un <code>form</code> i amb un botó
+        <code>&lt;button type="submit"&gt;Send&lt;/button&gt;</code> (o <code>input type="submit"</code>).
+        Error típic: <code>label</code> amb <code>for</code> però l'<code>input</code> sense <code>id</code>
+        (o amb <code>name</code> en lloc d'<code>id</code>).
+    </p>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Menys de 2 camps complets.</td>
+                    <td>2 camps complets.</td>
+                    <td>3 camps complets.</td>
+                    <td>Els 4 camps complets, dins d'un <code>form</code> amb botó d'enviament.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== PH4 ===== -->
+    <h2>PH4 · Exercici 5 (CA1.4)</h2>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cas</th>
+                    <th>Etiqueta</th>
+                    <th>També s'accepta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Grup d'enllaços del menú</td>
+                    <td><code>nav</code></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Peu amb copyright i email</td>
+                    <td><code>footer</code></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Notícia que es pot publicar sola</td>
+                    <td><code>article</code></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Contingut únic de la pàgina</td>
+                    <td><code>main</code></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Zona alta amb logo i títol</td>
+                    <td><code>header</code></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Foto amb la seua descripció</td>
+                    <td><code>figure</code></td>
+                    <td><code>figure</code> + <code>figcaption</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Distractors de la llista: <code>section</code>, <code>aside</code> i <code>div</code> (cap cas els demana). Solució: <code>solucio-k7q2x/answers.txt</code>.</p>
+    <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Insuficient (1-4)</th>
+                    <th>Suficient-Bé (5-6)</th>
+                    <th>Notable (7-8)</th>
+                    <th>Excel·lent (9-10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0-2 casos encertats de 6.</td>
+                    <td>3 casos encertats.</td>
+                    <td>4 o 5 casos encertats.</td>
+                    <td>Els 6 casos encertats.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Notes per a la sessió</h2>
+    <ul>
+        <li>Al maquetar l'enunciat falten les captures: busca els comentaris <code>[IMATGE: …]</code> en <code>enunciat.html</code>.</li>
+        <li>Les normes (què es pot usar durant la prova) estan a l'enunciat, en "Before you start". Canvia-les si vols una altra cosa.</li>
+        <li>Perquè els alumnes puguen comprovar que el validador diu 0 errors, deixa'ls obrir <a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org</a>.</li>
+    </ul>
+
+</body>
+
+</html>

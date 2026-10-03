@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Saving data with localStorage</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Saving data with localStorage</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../19-localstorage.html">19-localstorage.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 19.1</a></li>
+        <li><a href="#e2">Exercici 19.2</a></li>
+        <li><a href="#e3">Exercici 19.3</a></li>
+        <li><a href="#e4">Exercici 19.4</a></li>
+        <li><a href="#e5">Exercici 19.5</a></li>
+        <li><a href="#e6">Exercici 19.6</a></li>
+        <li><a href="#e7">Exercici 19.7</a></li>
+        <li><a href="#e8">Exercici 19.8</a></li>
+        <li><a href="#e9">Exercici 19.9</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 19.1</h2>
+        <div class="enunciat"><strong>Exercise 19.1.</strong> Ask the user's name the first time and save it. The next time the page loads, greet them directly, with no question. Add a "Forget me" button.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Hello again&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id="output"&gt;Hello!&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Your name"&gt;
+    &lt;button id="saveButton"&gt;Save&lt;/button&gt;
+    &lt;button id="forgetButton"&gt;Forget me&lt;/button&gt;
+
+    &lt;script&gt;
+        const output = document.querySelector("#output");
+        const nameInput = document.querySelector("#nameInput");
+        const saveButton = document.querySelector("#saveButton");
+        const forgetButton = document.querySelector("#forgetButton");
+
+        const name = localStorage.getItem("username");
+
+        if (name === null) {
+            output.textContent = "Hello! What is your name?";
+        } else {
+            output.textContent = `Welcome back, ${name}!`;
+        }
+
+        saveButton.addEventListener("click", function () {
+            const value = nameInput.value.trim();
+
+            if (value === "") {
+                return;
+            }
+
+            localStorage.setItem("username", value);
+            output.textContent = `Nice to meet you, ${value}!`;
+        });
+
+        forgetButton.addEventListener("click", function () {
+            localStorage.removeItem("username");
+            output.textContent = "I have forgotten you. Reload the page.";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">En la previsualització el <code>localStorage</code> està simulat en memòria, així que no s'ensenya la persistència en recarregar; en un fitxer real les dades queden guardades en el navegador.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Hello again&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id=&quot;output&quot;&gt;Hello!&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Your name&quot;&gt;
+    &lt;button id=&quot;saveButton&quot;&gt;Save&lt;/button&gt;
+    &lt;button id=&quot;forgetButton&quot;&gt;Forget me&lt;/button&gt;
+
+    &lt;script&gt;
+        const output = document.querySelector(&quot;#output&quot;);
+        const nameInput = document.querySelector(&quot;#nameInput&quot;);
+        const saveButton = document.querySelector(&quot;#saveButton&quot;);
+        const forgetButton = document.querySelector(&quot;#forgetButton&quot;);
+
+        const name = localStorage.getItem(&quot;username&quot;);
+
+        if (name === null) {
+            output.textContent = &quot;Hello! What is your name?&quot;;
+        } else {
+            output.textContent = `Welcome back, ${name}!`;
+        }
+
+        saveButton.addEventListener(&quot;click&quot;, function () {
+            const value = nameInput.value.trim();
+
+            if (value === &quot;&quot;) {
+                return;
+            }
+
+            localStorage.setItem(&quot;username&quot;, value);
+            output.textContent = `Nice to meet you, ${value}!`;
+        });
+
+        forgetButton.addEventListener(&quot;click&quot;, function () {
+            localStorage.removeItem(&quot;username&quot;);
+            output.textContent = &quot;I have forgotten you. Reload the page.&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 19.2</h2>
+        <div class="enunciat"><strong>Exercise 19.2.</strong> A click counter that survives a reload.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Click counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Click counter&lt;/h1&gt;
+    &lt;button id="click"&gt;Click me&lt;/button&gt;
+    &lt;p id="count"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        let clicks = Number(localStorage.getItem("clicks")) || 0;     // 0 the first time
+        const count = document.querySelector("#count");
+
+        function show() {
+            count.textContent = `Clicks: ${clicks}`;
+        }
+
+        document.querySelector("#click").addEventListener("click", function () {
+            clicks++;
+            localStorage.setItem("clicks", clicks);
+            show();
+        });
+
+        show();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">En la previsualització el <code>localStorage</code> està simulat en memòria, així que no s'ensenya la persistència en recarregar; en un fitxer real les dades queden guardades en el navegador.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Click counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Click counter&lt;/h1&gt;
+    &lt;button id=&quot;click&quot;&gt;Click me&lt;/button&gt;
+    &lt;p id=&quot;count&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        let clicks = Number(localStorage.getItem(&quot;clicks&quot;)) || 0;     // 0 the first time
+        const count = document.querySelector(&quot;#count&quot;);
+
+        function show() {
+            count.textContent = `Clicks: ${clicks}`;
+        }
+
+        document.querySelector(&quot;#click&quot;).addEventListener(&quot;click&quot;, function () {
+            clicks++;
+            localStorage.setItem(&quot;clicks&quot;, clicks);
+            show();
+        });
+
+        show();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 19.3</h2>
+        <div class="enunciat"><strong>Exercise 19.3.</strong> Add <code>localStorage</code> to your mini-project 2. This is the important one: your list must still be there after F5.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="itemInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#itemInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem("items")) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array
+        function save() {
+            localStorage.setItem("items", JSON.stringify(items));
+        }
+
+        function draw() {
+            list.textContent = "";
+
+            items.forEach(function (text, index) {
+                const li = document.createElement("li");
+                li.textContent = text;
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? " item" : " items");
+        }
+
+        document.querySelector("#addButton").addEventListener("click", function () {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            save();
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La clau és la funció <code>load()</code> (llig amb <code>JSON.parse</code> i, si no hi ha res, torna un array buit) i la funció <code>save()</code> (guarda amb <code>JSON.stringify</code>), cridada cada vegada que l'array canvia. En obrir la pàgina es fa <code>let items = load()</code> abans de dibuixar. En la previsualització el <code>localStorage</code> està simulat en memòria, així que no s'ensenya la persistència en recarregar; en un fitxer real les dades queden guardades en el navegador.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;itemInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#itemInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem(&quot;items&quot;)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array
+        function save() {
+            localStorage.setItem(&quot;items&quot;, JSON.stringify(items));
+        }
+
+        function draw() {
+            list.textContent = &quot;&quot;;
+
+            items.forEach(function (text, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? &quot; item&quot; : &quot; items&quot;);
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, function () {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            save();
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 19.4</h2>
+        <div class="enunciat"><strong>Exercise 19.4.</strong> Add a "Clear all" button that empties the array, saves and redraws.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="itemInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;button id="clearButton"&gt;Clear all&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#itemInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem("items")) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array
+        function save() {
+            localStorage.setItem("items", JSON.stringify(items));
+        }
+
+        function draw() {
+            list.textContent = "";
+
+            items.forEach(function (text, index) {
+                const li = document.createElement("li");
+                li.textContent = text;
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? " item" : " items");
+        }
+
+        document.querySelector("#addButton").addEventListener("click", function () {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            save();
+            draw();
+        });
+
+        document.querySelector("#clearButton").addEventListener("click", function () {
+            items = [];        // empties the array
+            save();            // saves the empty array
+            draw();            // and redraws
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;itemInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;button id=&quot;clearButton&quot;&gt;Clear all&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#itemInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem(&quot;items&quot;)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array
+        function save() {
+            localStorage.setItem(&quot;items&quot;, JSON.stringify(items));
+        }
+
+        function draw() {
+            list.textContent = &quot;&quot;;
+
+            items.forEach(function (text, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? &quot; item&quot; : &quot; items&quot;);
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, function () {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            save();
+            draw();
+        });
+
+        document.querySelector(&quot;#clearButton&quot;).addEventListener(&quot;click&quot;, function () {
+            items = [];        // empties the array
+            save();            // saves the empty array
+            draw();            // and redraws
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 19.5</h2>
+        <div class="enunciat"><strong>Exercise 19.5.</strong> Save an array of objects: products with name and price. Draw them as cards and keep them after a reload.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            margin: 6px;
+            padding: 10px 16px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Name"&gt;
+    &lt;input type="number" id="priceInput" placeholder="Price"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        let products = load();
+
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem("products")) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function draw() {
+            const cards = document.querySelector("#cards");
+            cards.textContent = "";
+
+            for (const p of products) {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                const title = document.createElement("h3");
+                title.textContent = p.name;
+                const price = document.createElement("p");
+                price.textContent = p.price + " euros";
+
+                card.append(title, price);
+                cards.appendChild(card);
+            }
+        }
+
+        document.querySelector("#addButton").addEventListener("click", function () {
+            const name = document.querySelector("#nameInput").value.trim();
+            const price = Number(document.querySelector("#priceInput").value);
+
+            if (name === "" || isNaN(price)) {
+                return;
+            }
+
+            products.push({ name: name, price: price });     // an array of objects
+            localStorage.setItem("products", JSON.stringify(products));
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">En la previsualització el <code>localStorage</code> està simulat en memòria, així que no s'ensenya la persistència en recarregar; en un fitxer real les dades queden guardades en el navegador.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            margin: 6px;
+            padding: 10px 16px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Name&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;priceInput&quot; placeholder=&quot;Price&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        let products = load();
+
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem(&quot;products&quot;)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function draw() {
+            const cards = document.querySelector(&quot;#cards&quot;);
+            cards.textContent = &quot;&quot;;
+
+            for (const p of products) {
+                const card = document.createElement(&quot;div&quot;);
+                card.className = &quot;card&quot;;
+
+                const title = document.createElement(&quot;h3&quot;);
+                title.textContent = p.name;
+                const price = document.createElement(&quot;p&quot;);
+                price.textContent = p.price + &quot; euros&quot;;
+
+                card.append(title, price);
+                cards.appendChild(card);
+            }
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, function () {
+            const name = document.querySelector(&quot;#nameInput&quot;).value.trim();
+            const price = Number(document.querySelector(&quot;#priceInput&quot;).value);
+
+            if (name === &quot;&quot; || isNaN(price)) {
+                return;
+            }
+
+            products.push({ name: name, price: price });     // an array of objects
+            localStorage.setItem(&quot;products&quot;, JSON.stringify(products));
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 19.6</h2>
+        <div class="enunciat"><strong>Exercise 19.6. Dark mode.</strong> A button that adds or removes the class <code>dark</code> on <code>&lt;body&gt;</code>, and remembers the choice in <code>localStorage</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Dark mode&lt;/title&gt;
+    &lt;style&gt;
+        body.dark {
+            background-color: #222222;
+            color: #eeeeee;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Dark mode&lt;/h1&gt;
+    &lt;p&gt;This page remembers your choice.&lt;/p&gt;
+    &lt;button id="toggle"&gt;Change mode&lt;/button&gt;
+
+    &lt;script&gt;
+        // at the beginning: apply the saved choice
+        if (localStorage.getItem("dark") === "yes") {
+            document.body.classList.add("dark");
+        }
+
+        document.querySelector("#toggle").addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+            const isDark = document.body.classList.contains("dark");
+            localStorage.setItem("dark", isDark ? "yes" : "no");
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">En la previsualització el <code>localStorage</code> està simulat en memòria, així que no s'ensenya la persistència en recarregar; en un fitxer real les dades queden guardades en el navegador.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Dark mode&lt;/title&gt;
+    &lt;style&gt;
+        body.dark {
+            background-color: #222222;
+            color: #eeeeee;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Dark mode&lt;/h1&gt;
+    &lt;p&gt;This page remembers your choice.&lt;/p&gt;
+    &lt;button id=&quot;toggle&quot;&gt;Change mode&lt;/button&gt;
+
+    &lt;script&gt;
+        // at the beginning: apply the saved choice
+        if (localStorage.getItem(&quot;dark&quot;) === &quot;yes&quot;) {
+            document.body.classList.add(&quot;dark&quot;);
+        }
+
+        document.querySelector(&quot;#toggle&quot;).addEventListener(&quot;click&quot;, function () {
+            document.body.classList.toggle(&quot;dark&quot;);
+            const isDark = document.body.classList.contains(&quot;dark&quot;);
+            localStorage.setItem(&quot;dark&quot;, isDark ? &quot;yes&quot; : &quot;no&quot;);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 19.7</h2>
+        <div class="enunciat"><strong>Exercise 19.7.</strong> Make the table above your own: for each row, write one line of code of your own work in this unit that uses it.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> <ul><li><em>ask something quickly</em> → <code>const age = prompt("Age?");</code></li><li><em>tell something that blocks</em> → <code>alert("Saved!");</code></li><li><em>ask yes or no</em> → <code>if (confirm("Delete it?")) { items.pop(); }</code></li><li><em>see values</em> → <code>console.table(products);</code></li><li><em>read what the user types / show results</em> → <code>output.textContent = input.value.toUpperCase();</code></li><li><em>remember data</em> → <code>localStorage.setItem("items", JSON.stringify(items));</code></li><li><em>get data from a server</em> → (lesson 27) <code>fetch("books.json").then(r =&gt; r.json());</code></li></ul>Cada alumne escriu la seua línia a partir del seu treball de la unitat.</div>
+    </section>
+
+    <section class="ex" id="e8">
+        <h2>Exercici 19.8</h2>
+        <div class="enunciat"><strong>Exercise 19.8.</strong> In your mini-project 2, show the array with <code>console.table</code> every time it is saved, and in the page the number of items with <code>toLocaleString</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="itemInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#itemInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem("items")) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array and writes it in the console as a table
+        function save() {
+            localStorage.setItem("items", JSON.stringify(items));
+            console.table(items.map(text =&gt; ({ item: text })));
+        }
+
+        function draw() {
+            list.textContent = "";
+
+            items.forEach(function (text, index) {
+                const li = document.createElement("li");
+                li.textContent = text;
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = "Items: " + items.length.toLocaleString("es-ES");
+        }
+
+        document.querySelector("#addButton").addEventListener("click", function () {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            save();
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><code>console.table</code> mostra l'array com una taula en la consola cada vegada que es guarda; <code>toLocaleString("es-ES")</code> dona el número amb el format de la llengua (per exemple 1.250 amb punt de milers).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.8" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;itemInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#itemInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem(&quot;items&quot;)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array and writes it in the console as a table
+        function save() {
+            localStorage.setItem(&quot;items&quot;, JSON.stringify(items));
+            console.table(items.map(text =&gt; ({ item: text })));
+        }
+
+        function draw() {
+            list.textContent = &quot;&quot;;
+
+            items.forEach(function (text, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = &quot;Items: &quot; + items.length.toLocaleString(&quot;es-ES&quot;);
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, function () {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            save();
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e9">
+        <h2>Exercici 19.9</h2>
+        <div class="enunciat"><strong>Exercise 19.9.</strong> Save the date of the last change and show it under the list: "Last change: 20/5/2027".</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type="text" id="itemInput" placeholder="Something"&gt;
+    &lt;button id="addButton"&gt;Add&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;p id="counter"&gt;&lt;/p&gt;
+    &lt;p id="lastChange"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#itemInput");
+        const list = document.querySelector("#list");
+        const counter = document.querySelector("#counter");
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem("items")) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array
+        function save() {
+            localStorage.setItem("items", JSON.stringify(items));
+            localStorage.setItem("lastChange", new Date().toISOString());
+        }
+
+        function draw() {
+            list.textContent = "";
+
+            items.forEach(function (text, index) {
+                const li = document.createElement("li");
+                li.textContent = text;
+
+                const remove = document.createElement("button");
+                remove.textContent = "Delete";
+                remove.addEventListener("click", function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? " item" : " items");
+
+            const last = localStorage.getItem("lastChange");
+            document.querySelector("#lastChange").textContent =
+                last ? "Last change: " + new Date(last).toLocaleDateString("es-ES") : "";
+        }
+
+        document.querySelector("#addButton").addEventListener("click", function () {
+            const text = input.value.trim();
+            if (text === "") {
+                return;
+            }
+            items.push(text);
+            input.value = "";
+            save();
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La data es guarda amb <code>new Date().toISOString()</code> i es mostra amb <code>toLocaleDateString("es-ES")</code>, que dona el format <code>20/5/2027</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 19.9" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){function S(){var d={};return {getItem:function(k){return k in d?d[k]:null},setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}try{Object.defineProperty(window,&quot;localStorage&quot;,{value:S(),configurable:true});Object.defineProperty(window,&quot;sessionStorage&quot;,{value:S(),configurable:true});}catch(e){}})();&lt;/script&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;A list that is saved&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My list&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;itemInput&quot; placeholder=&quot;Something&quot;&gt;
+    &lt;button id=&quot;addButton&quot;&gt;Add&lt;/button&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;counter&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;lastChange&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#itemInput&quot;);
+        const list = document.querySelector(&quot;#list&quot;);
+        const counter = document.querySelector(&quot;#counter&quot;);
+        let items = load();
+
+        // Reads the array from localStorage (an empty array if there is nothing or it is broken)
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem(&quot;items&quot;)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Saves the array
+        function save() {
+            localStorage.setItem(&quot;items&quot;, JSON.stringify(items));
+            localStorage.setItem(&quot;lastChange&quot;, new Date().toISOString());
+        }
+
+        function draw() {
+            list.textContent = &quot;&quot;;
+
+            items.forEach(function (text, index) {
+                const li = document.createElement(&quot;li&quot;);
+                li.textContent = text;
+
+                const remove = document.createElement(&quot;button&quot;);
+                remove.textContent = &quot;Delete&quot;;
+                remove.addEventListener(&quot;click&quot;, function () {
+                    items.splice(index, 1);
+                    save();
+                    draw();
+                });
+
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+
+            counter.textContent = items.length + (items.length === 1 ? &quot; item&quot; : &quot; items&quot;);
+
+            const last = localStorage.getItem(&quot;lastChange&quot;);
+            document.querySelector(&quot;#lastChange&quot;).textContent =
+                last ? &quot;Last change: &quot; + new Date(last).toLocaleDateString(&quot;es-ES&quot;) : &quot;&quot;;
+        }
+
+        document.querySelector(&quot;#addButton&quot;).addEventListener(&quot;click&quot;, function () {
+            const text = input.value.trim();
+            if (text === &quot;&quot;) {
+                return;
+            }
+            items.push(text);
+            input.value = &quot;&quot;;
+            save();
+            draw();
+        });
+
+        draw();
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

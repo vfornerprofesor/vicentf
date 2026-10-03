@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Sets and maps</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Sets and maps</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../14-collections.html">14-collections.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 14.1</a></li>
+        <li><a href="#e2">Exercici 14.2</a></li>
+        <li><a href="#e3">Exercici 14.3</a></li>
+        <li><a href="#e4">Exercici 14.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 14.1</h2>
+        <div class="enunciat"><strong>Exercise 14.1.</strong> Redo exercise 10.6 (no duplicates) with a <code>Set</code>, in one line.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function noDuplicates(list) {
+    return [...new Set(list)];
+}
+
+console.log(noDuplicates([1, 2, 2, 3, 1, 4]));   // [1,2,3,4]</code></pre>
+        <div class="note">Un <code>Set</code> no admet repetits; <code>[...set]</code> el torna a convertir en array.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function noDuplicates(list) {
+    return [...new Set(list)];
+}
+
+console.log(noDuplicates([1, 2, 2, 3, 1, 4]));   // [1,2,3,4]&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 14.2</h2>
+        <div class="enunciat"><strong>Exercise 14.2.</strong> The user types a text; show how many times each word appears, using a <code>Map</code>. Show the result as a list, from the most repeated word to the least.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Word counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;How many times does each word appear?&lt;/h1&gt;
+    &lt;textarea id="text" rows="3" cols="50"&gt;&lt;/textarea&gt;
+    &lt;button id="count"&gt;Count&lt;/button&gt;
+    &lt;ol id="result"&gt;&lt;/ol&gt;
+
+    &lt;script&gt;
+        document.querySelector("#count").addEventListener("click", function () {
+            const text = document.querySelector("#text").value.toLowerCase();
+            const words = text.match(/[a-zà-ú]+/g) || [];
+
+            const counts = new Map();
+            for (const word of words) {
+                counts.set(word, (counts.get(word) || 0) + 1);
+            }
+
+            // from the most repeated word to the least
+            const sorted = [...counts].sort((a, b) =&gt; b[1] - a[1]);
+
+            let html = "";
+            for (const [word, times] of sorted) {
+                html += `&lt;li&gt;${word}: ${times}&lt;/li&gt;`;
+            }
+            document.querySelector("#result").innerHTML = html;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Word counter&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;How many times does each word appear?&lt;/h1&gt;
+    &lt;textarea id=&quot;text&quot; rows=&quot;3&quot; cols=&quot;50&quot;&gt;&lt;/textarea&gt;
+    &lt;button id=&quot;count&quot;&gt;Count&lt;/button&gt;
+    &lt;ol id=&quot;result&quot;&gt;&lt;/ol&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#count&quot;).addEventListener(&quot;click&quot;, function () {
+            const text = document.querySelector(&quot;#text&quot;).value.toLowerCase();
+            const words = text.match(/[a-zà-ú]+/g) || [];
+
+            const counts = new Map();
+            for (const word of words) {
+                counts.set(word, (counts.get(word) || 0) + 1);
+            }
+
+            // from the most repeated word to the least
+            const sorted = [...counts].sort((a, b) =&gt; b[1] - a[1]);
+
+            let html = &quot;&quot;;
+            for (const [word, times] of sorted) {
+                html += `&lt;li&gt;${word}: ${times}&lt;/li&gt;`;
+            }
+            document.querySelector(&quot;#result&quot;).innerHTML = html;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 14.3</h2>
+        <div class="enunciat"><strong>Exercise 14.3.</strong> Copy the comparison table above into your notebook and add one example of your own in each column.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> cada columna amb un exemple propi: <strong>Array</strong> → <code>["Pere", "Joan", "Pere"]</code> (llista de noms, es poden repetir); <strong>Set</strong> → <code>new Set(["valencia", "alacant", "valencia"])</code> (ciutats úniques: queden 2); <strong>Map</strong> → <code>new Map([["Pere", "600111222"], ["Joan", "600333444"]])</code> (agenda: es busca per clau amb <code>get</code>); <strong>Object</strong> → <code>{ title: "Dune", year: 1965 }</code> (una cosa amb les seues propietats, <code>.title</code>).</div>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 14.4</h2>
+        <div class="enunciat"><strong>Exercise 14.4.</strong> For each situation, choose Array, Set, Map or object, and write why in one line: the students of a class in the order of the list; the different countries the visitors of a web come from; the phone number of each friend; a film with title, year and director; the marks of an exam to calculate the average.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> <ul><li>Alumnes d'una classe en l'ordre de la llista → <strong>Array</strong>: manté l'ordre i es pot repetir.</li><li>Països diferents d'on venen els visitants → <strong>Set</strong>: només valors únics.</li><li>Telèfon de cada amic → <strong>Map</strong> (o objecte): es busca pel nom (la clau).</li><li>Una pel·lícula amb títol, any i director → <strong>Objecte</strong>: una sola cosa amb propietats.</li><li>Notes d'un examen per a calcular la mitjana → <strong>Array</strong>: llista de números que es recorre amb <code>reduce</code>.</li></ul></div>
+    </section>
+
+</body>
+
+</html>

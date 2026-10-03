@@ -1,0 +1,91 @@
+/* CSS exam - SOLUTION */
+
+/* ---------- Given styles: do not change them ---------- */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #23272f;
+}
+
+header,
+main section {
+    padding: 1rem;
+}
+
+.stage {
+    height: 240px;
+    background-color: #e4ecf4;
+}
+
+.box {
+    width: 120px;
+    height: 60px;
+    background-color: #1f3c5a;
+    color: #ffffff;
+}
+
+.photo {
+    height: 120px;
+    background-color: #2d5a85;
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+/* ---------- Exercise 1 ---------- */
+/* Descendant + class selector: only the .lead inside .intro.
+   ".lead" alone would also change the paragraph in .news (wrong). */
+.intro .lead {
+    font-size: 1.25rem;
+    color: #1f3c5a;
+    line-height: 1.6;
+}
+
+/* Id selector */
+#title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+/* ---------- Exercise 3 ---------- */
+.stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ---------- Exercise 4 ---------- */
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background-color: #1f3c5a;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #f2a541;
+    color: #1f3c5a;
+}
+
+
+/* ---------- Exercise 5 ---------- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}

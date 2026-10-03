@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Inheritance</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Inheritance</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../24-inheritance.html">24-inheritance.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 24.1</a></li>
+        <li><a href="#e2">Exercici 24.2</a></li>
+        <li><a href="#e3">Exercici 24.3</a></li>
+        <li><a href="#e4">Exercici 24.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 24.1</h2>
+        <div class="enunciat"><strong>Exercise 24.1.</strong> Write <code>Vehicle</code> and <code>Car</code> as above, create two cars and show their description.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Cars&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Cars&lt;/h1&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Vehicle {
+            constructor(brand, model) {
+                this.brand = brand;
+                this.model = model;
+            }
+
+            describe() {
+                return `${this.brand} ${this.model}`;
+            }
+        }
+
+        class Car extends Vehicle {
+            constructor(brand, model, doors) {
+                super(brand, model);         // first: the constructor of Vehicle
+                this.doors = doors;
+            }
+
+            describe() {
+                return `${super.describe()}, ${this.doors} doors`;
+            }
+        }
+
+        const cars = [
+            new Car("Seat", "Ibiza", 5),
+            new Car("Mini", "Cooper", 3)
+        ];
+
+        for (const car of cars) {
+            const li = document.createElement("li");
+            li.textContent = car.describe();
+            document.querySelector("#list").appendChild(li);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 24.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Cars&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Cars&lt;/h1&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Vehicle {
+            constructor(brand, model) {
+                this.brand = brand;
+                this.model = model;
+            }
+
+            describe() {
+                return `${this.brand} ${this.model}`;
+            }
+        }
+
+        class Car extends Vehicle {
+            constructor(brand, model, doors) {
+                super(brand, model);         // first: the constructor of Vehicle
+                this.doors = doors;
+            }
+
+            describe() {
+                return `${super.describe()}, ${this.doors} doors`;
+            }
+        }
+
+        const cars = [
+            new Car(&quot;Seat&quot;, &quot;Ibiza&quot;, 5),
+            new Car(&quot;Mini&quot;, &quot;Cooper&quot;, 3)
+        ];
+
+        for (const car of cars) {
+            const li = document.createElement(&quot;li&quot;);
+            li.textContent = car.describe();
+            document.querySelector(&quot;#list&quot;).appendChild(li);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 24.2</h2>
+        <div class="enunciat"><strong>Exercise 24.2.</strong> Add <code>Motorbike extends Vehicle</code> with the engine size, and override <code>describe()</code> using <code>super.describe()</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>class Vehicle {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    describe() {
+        return `${this.brand} ${this.model}`;
+    }
+}
+
+class Car extends Vehicle {
+    constructor(brand, model, doors) {
+        super(brand, model);         // first: the constructor of Vehicle
+        this.doors = doors;
+    }
+
+    describe() {
+        return `${super.describe()}, ${this.doors} doors`;
+    }
+}
+
+class Motorbike extends Vehicle {
+    constructor(brand, model, engineSize) {
+        super(brand, model);
+        this.engineSize = engineSize;
+    }
+
+    describe() {
+        return `${super.describe()}, ${this.engineSize} cc`;
+    }
+}
+
+const bike = new Motorbike("Yamaha", "MT-07", 689);
+console.log(bike.describe());           // Yamaha MT-07, 689 cc</code></pre>
+        <div class="note"><code>super.describe()</code> crida al mètode del pare i després la classe filla afig el que li és propi (la cilindrada).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 24.2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;class Vehicle {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    describe() {
+        return `${this.brand} ${this.model}`;
+    }
+}
+
+class Car extends Vehicle {
+    constructor(brand, model, doors) {
+        super(brand, model);         // first: the constructor of Vehicle
+        this.doors = doors;
+    }
+
+    describe() {
+        return `${super.describe()}, ${this.doors} doors`;
+    }
+}
+
+class Motorbike extends Vehicle {
+    constructor(brand, model, engineSize) {
+        super(brand, model);
+        this.engineSize = engineSize;
+    }
+
+    describe() {
+        return `${super.describe()}, ${this.engineSize} cc`;
+    }
+}
+
+const bike = new Motorbike(&quot;Yamaha&quot;, &quot;MT-07&quot;, 689);
+console.log(bike.describe());           // Yamaha MT-07, 689 cc&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 24.3</h2>
+        <div class="enunciat"><strong>Exercise 24.3.</strong> Starting from <code>bank.html</code>, create <code>InsufficientFundsError</code>, throw it from <code>withdraw</code>, and show a different message for it in the <code>catch</code>.<p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/24-inheritance/bank.html">bank.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>// The class of lesson 22, already finished.
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    // Adds money to the account.
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+    // Takes money out. Throws an InsufficientFundsError if there is not enough.
+    withdraw(amount) {
+        if (amount &gt; this.balance) {
+            throw new InsufficientFundsError("There is not enough money in the account");
+        }
+        this.balance -= amount;
+    }
+
+    // Returns the account as a text, ready to show.
+    toString() {
+        return `${this.owner}: ${this.balance.toFixed(2)} €`;
+    }
+}
+
+// Exercise 24.3: our own kind of error
+class InsufficientFundsError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "InsufficientFundsError";
+    }
+}
+
+const account = new BankAccount("Ana", 100);
+const accountOutput = document.querySelector("#account");
+const message = document.querySelector("#message");
+
+// Draws the account in the page.
+function draw() {
+    accountOutput.textContent = account.toString();
+}
+
+document.querySelector("#depositButton").addEventListener("click", function () {
+    const amount = Number(document.querySelector("#amount").value);
+    account.deposit(amount);
+    message.textContent = "";
+    draw();
+});
+
+document.querySelector("#withdrawButton").addEventListener("click", function () {
+    const amount = Number(document.querySelector("#amount").value);
+    try {
+        account.withdraw(amount);
+        message.textContent = "";
+        message.className = "";
+    } catch (error) {
+        if (error instanceof InsufficientFundsError) {
+            message.textContent = "Not enough money. Try with a smaller amount.";
+        } else {
+            message.textContent = "Something unexpected happened.";
+        }
+        message.className = "error";
+    }
+    draw();
+});
+
+draw();</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/24-inheritance/bank.html">exercises/24-inheritance/bank.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note"><code>InsufficientFundsError extends Error</code> és un error propi; <code>withdraw</code> el llança i en el <code>catch</code> es distingix amb <code>instanceof</code> d'un error inesperat. Cal definir la classe d'error <em>abans</em> d'usar-la.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 24.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Bank account&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Verdana&#x27;, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 360px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 25px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #account {
+            font-size: 1.3em;
+            color: #333;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        #message {
+            min-height: 24px;
+        }
+
+        .error {
+            color: #c62828;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Bank account&lt;/h1&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;amount&quot; placeholder=&quot;Amount in euros&quot;&gt;
+
+        &lt;button id=&quot;depositButton&quot;&gt;Deposit&lt;/button&gt;
+        &lt;button id=&quot;withdrawButton&quot;&gt;Withdraw&lt;/button&gt;
+
+        &lt;p id=&quot;account&quot;&gt;&lt;/p&gt;
+        &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;// The class of lesson 22, already finished.
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    // Adds money to the account.
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+    // Takes money out. Throws an InsufficientFundsError if there is not enough.
+    withdraw(amount) {
+        if (amount &gt; this.balance) {
+            throw new InsufficientFundsError(&quot;There is not enough money in the account&quot;);
+        }
+        this.balance -= amount;
+    }
+
+    // Returns the account as a text, ready to show.
+    toString() {
+        return `${this.owner}: ${this.balance.toFixed(2)} €`;
+    }
+}
+
+// Exercise 24.3: our own kind of error
+class InsufficientFundsError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = &quot;InsufficientFundsError&quot;;
+    }
+}
+
+const account = new BankAccount(&quot;Ana&quot;, 100);
+const accountOutput = document.querySelector(&quot;#account&quot;);
+const message = document.querySelector(&quot;#message&quot;);
+
+// Draws the account in the page.
+function draw() {
+    accountOutput.textContent = account.toString();
+}
+
+document.querySelector(&quot;#depositButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const amount = Number(document.querySelector(&quot;#amount&quot;).value);
+    account.deposit(amount);
+    message.textContent = &quot;&quot;;
+    draw();
+});
+
+document.querySelector(&quot;#withdrawButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const amount = Number(document.querySelector(&quot;#amount&quot;).value);
+    try {
+        account.withdraw(amount);
+        message.textContent = &quot;&quot;;
+        message.className = &quot;&quot;;
+    } catch (error) {
+        if (error instanceof InsufficientFundsError) {
+            message.textContent = &quot;Not enough money. Try with a smaller amount.&quot;;
+        } else {
+            message.textContent = &quot;Something unexpected happened.&quot;;
+        }
+        message.className = &quot;error&quot;;
+    }
+    draw();
+});
+
+draw();&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 24.4</h2>
+        <div class="enunciat"><strong>Exercise 24.4.</strong> An array with cars and motorbikes mixed: go through it calling <code>describe()</code> on each one. Why does each one use its own version?</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Vehicles&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Vehicles&lt;/h1&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Vehicle {
+            constructor(brand, model) {
+                this.brand = brand;
+                this.model = model;
+            }
+
+            describe() {
+                return `${this.brand} ${this.model}`;
+            }
+        }
+
+        class Car extends Vehicle {
+            constructor(brand, model, doors) {
+                super(brand, model);         // first: the constructor of Vehicle
+                this.doors = doors;
+            }
+
+            describe() {
+                return `${super.describe()}, ${this.doors} doors`;
+            }
+        }
+
+        class Motorbike extends Vehicle {
+            constructor(brand, model, engineSize) {
+                super(brand, model);
+                this.engineSize = engineSize;
+            }
+
+            describe() {
+                return `${super.describe()}, ${this.engineSize} cc`;
+            }
+        }
+
+        const vehicles = [
+            new Car("Seat", "Ibiza", 5),
+            new Motorbike("Yamaha", "MT-07", 689),
+            new Car("Mini", "Cooper", 3),
+            new Motorbike("Honda", "CBR", 600)
+        ];
+
+        for (const vehicle of vehicles) {
+            const li = document.createElement("li");
+            li.textContent = vehicle.describe();       // each one uses its own describe()
+            document.querySelector("#list").appendChild(li);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><strong>Resposta:</strong> cada objecte usa la seua pròpia versió de <code>describe()</code> perquè JavaScript busca el mètode primer en la classe de l'objecte (<code>Car</code> o <code>Motorbike</code>) i només puja a <code>Vehicle</code> si no el troba. Això es diu <strong>polimorfisme</strong>: el mateix codi (<code>vehicle.describe()</code>) es comporta diferent segons el tipus real de l'objecte.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 24.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Vehicles&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Vehicles&lt;/h1&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        class Vehicle {
+            constructor(brand, model) {
+                this.brand = brand;
+                this.model = model;
+            }
+
+            describe() {
+                return `${this.brand} ${this.model}`;
+            }
+        }
+
+        class Car extends Vehicle {
+            constructor(brand, model, doors) {
+                super(brand, model);         // first: the constructor of Vehicle
+                this.doors = doors;
+            }
+
+            describe() {
+                return `${super.describe()}, ${this.doors} doors`;
+            }
+        }
+
+        class Motorbike extends Vehicle {
+            constructor(brand, model, engineSize) {
+                super(brand, model);
+                this.engineSize = engineSize;
+            }
+
+            describe() {
+                return `${super.describe()}, ${this.engineSize} cc`;
+            }
+        }
+
+        const vehicles = [
+            new Car(&quot;Seat&quot;, &quot;Ibiza&quot;, 5),
+            new Motorbike(&quot;Yamaha&quot;, &quot;MT-07&quot;, 689),
+            new Car(&quot;Mini&quot;, &quot;Cooper&quot;, 3),
+            new Motorbike(&quot;Honda&quot;, &quot;CBR&quot;, 600)
+        ];
+
+        for (const vehicle of vehicles) {
+            const li = document.createElement(&quot;li&quot;);
+            li.textContent = vehicle.describe();       // each one uses its own describe()
+            document.querySelector(&quot;#list&quot;).appendChild(li);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · The DOM: changing the page</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · The DOM: changing the page</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../04-dom.html">04-dom.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 4.1</a></li>
+        <li><a href="#e2">Exercici 4.2</a></li>
+        <li><a href="#e3">Exercici 4.3</a></li>
+        <li><a href="#e4">Exercici 4.4</a></li>
+        <li><a href="#e5">Exercici 4.5</a></li>
+        <li><a href="#e6">Exercici 4.6</a></li>
+        <li><a href="#e7">Exercici 4.7</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 4.1</h2>
+        <div class="enunciat"><strong>Exercise 4.1.</strong> Reproduce the page below with the names of four classmates. When you click on one of them, that name changes size and colour, and the other three go back to their original size and colour.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/04-dom/ex1.png" alt="Four classmate names, click changes size and colour"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/04-dom/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const names = document.querySelectorAll("p");
+
+for (const name of names) {
+    name.addEventListener("click", function () {
+        // first, every name goes back to the original style
+        for (const other of names) {
+            other.style.fontSize = "";
+            other.style.color = "";
+        }
+        // then the clicked one grows and changes colour
+        name.style.fontSize = "48px";
+        name.style.color = "crimson";
+    });
+}</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/04-dom/ex1.html">exercises/04-dom/ex1.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Classmates&lt;/title&gt;
+    &lt;style&gt;
+        p {
+            font-size: 24px;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Classmates&lt;/h1&gt;
+    &lt;p id=&quot;pere&quot;&gt;Pere&lt;/p&gt;
+    &lt;p id=&quot;joan&quot;&gt;Joan&lt;/p&gt;
+    &lt;p id=&quot;marta&quot;&gt;Marta&lt;/p&gt;
+    &lt;p id=&quot;nuria&quot;&gt;Nuria&lt;/p&gt;
+
+    &lt;!--
+        Write your JavaScript in script.js:
+        - when you click on one name, it grows and changes colour
+        - the other three go back to their original size and colour
+    --&gt;
+    &lt;script&gt;const names = document.querySelectorAll(&quot;p&quot;);
+
+for (const name of names) {
+    name.addEventListener(&quot;click&quot;, function () {
+        // first, every name goes back to the original style
+        for (const other of names) {
+            other.style.fontSize = &quot;&quot;;
+            other.style.color = &quot;&quot;;
+        }
+        // then the clicked one grows and changes colour
+        name.style.fontSize = &quot;48px&quot;;
+        name.style.color = &quot;crimson&quot;;
+    });
+}&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 4.2</h2>
+        <div class="enunciat"><strong>Exercise 4.2.</strong> Make the paragraph's border grow by 1 px every time you click on it.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/04-dom/ex2-1.png" alt="Paragraph before clicking"><img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/04-dom/ex2-2.png" alt="Paragraph after several clicks, border thicker"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/04-dom/ex2.html">ex2.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>let size = 1;
+const paragraph = document.querySelector("#p");
+
+paragraph.addEventListener("click", function () {
+    // 1. Make a variable with the new size: the size plus 1
+    const newSize = size + 1;
+    // 2. Change the border of the paragraph using the new size
+    paragraph.style.border = newSize + "px solid coral";
+    // 3. Store the new size back in the variable size
+    size = newSize;
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/04-dom/ex2.html">exercises/04-dom/ex2.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">Després de dos clics la vora és de 3 px: comença en 1 px i cada clic suma 1.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Growing border&lt;/title&gt;
+    &lt;style&gt;
+        p {
+            border: 1px solid coral;
+            text-align: center;
+            border-radius: 10px;
+            width: fit-content;
+            padding: 5px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p id=&quot;p&quot;&gt;CLICK HERE!&lt;/p&gt;
+
+    &lt;script&gt;let size = 1;
+const paragraph = document.querySelector(&quot;#p&quot;);
+
+paragraph.addEventListener(&quot;click&quot;, function () {
+    // 1. Make a variable with the new size: the size plus 1
+    const newSize = size + 1;
+    // 2. Change the border of the paragraph using the new size
+    paragraph.style.border = newSize + &quot;px solid coral&quot;;
+    // 3. Store the new size back in the variable size
+    size = newSize;
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 4.3</h2>
+        <div class="enunciat"><strong>Exercise 4.3.</strong> The code below is broken: the colours do not match the boxes. Fix it so that clicking on a box paints it with its own colour and clears the other three.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/04-dom/ex3.png" alt="Four coloured boxes, red, blue, green and yellow"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/04-dom/ex3.html">ex3.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Colours&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id="box"&gt;
+        &lt;div id="green" onclick="clickGreen()"&gt;Green&lt;/div&gt;
+        &lt;div id="red" onclick="clickRed()"&gt;Red&lt;/div&gt;
+        &lt;div id="blue" onclick="clickBlue()"&gt;Blue&lt;/div&gt;
+        &lt;div id="yellow" onclick="clickYellow()"&gt;Yellow&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Cleans the four boxes and paints only the one that was clicked
+        function paint(id, colour) {
+            for (const box of document.querySelectorAll("#box div")) {
+                box.style.backgroundColor = "";
+            }
+            document.getElementById(id).style.backgroundColor = colour;
+        }
+
+        function clickGreen() {
+            paint("green", "green");
+        }
+
+        function clickRed() {
+            paint("red", "red");
+        }
+
+        function clickBlue() {
+            paint("blue", "blue");
+        }
+
+        function clickYellow() {
+            paint("yellow", "yellow");
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els tres errors: <strong>1)</strong> l'<code>id="blue"</code> estava repetit; <strong>2)</strong> els <code>id</code> no coincidien amb el text de la caixa (la caixa "Green" tenia <code>id="red"</code>, etc.); <strong>3)</strong> les funcions pintaven un element que no era el seu (<code>clickGreen</code> pintava <code>#yellow</code> de blau...). La solució usa una sola funció <code>paint</code> que neteja les quatre caixes i pinta la clicada: no es repeteix codi.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Colours&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;box&quot;&gt;
+        &lt;div id=&quot;green&quot; onclick=&quot;clickGreen()&quot;&gt;Green&lt;/div&gt;
+        &lt;div id=&quot;red&quot; onclick=&quot;clickRed()&quot;&gt;Red&lt;/div&gt;
+        &lt;div id=&quot;blue&quot; onclick=&quot;clickBlue()&quot;&gt;Blue&lt;/div&gt;
+        &lt;div id=&quot;yellow&quot; onclick=&quot;clickYellow()&quot;&gt;Yellow&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Cleans the four boxes and paints only the one that was clicked
+        function paint(id, colour) {
+            for (const box of document.querySelectorAll(&quot;#box div&quot;)) {
+                box.style.backgroundColor = &quot;&quot;;
+            }
+            document.getElementById(id).style.backgroundColor = colour;
+        }
+
+        function clickGreen() {
+            paint(&quot;green&quot;, &quot;green&quot;);
+        }
+
+        function clickRed() {
+            paint(&quot;red&quot;, &quot;red&quot;);
+        }
+
+        function clickBlue() {
+            paint(&quot;blue&quot;, &quot;blue&quot;);
+        }
+
+        function clickYellow() {
+            paint(&quot;yellow&quot;, &quot;yellow&quot;);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 4.4</h2>
+        <div class="enunciat"><strong>Exercise 4.4.</strong> Build the form below. When the user clicks the button, all the data they typed appears under it.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/04-dom/ex4.png" alt="Form with personal data and the result shown below"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/04-dom/ex4.html">ex4.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const button = document.querySelector("#sendButton");
+const result = document.querySelector("#result");
+
+button.addEventListener("click", function () {
+    const name = document.querySelector("#name").value;
+    const surname = document.querySelector("#surname").value;
+    const birth = document.querySelector("#birth").value;
+    const colour = document.querySelector("#colour").value;
+
+    result.textContent = `Name: ${name} | Surname: ${surname} | Date of birth: ${birth} | Favourite colour: ${colour}`;
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/04-dom/ex4.html">exercises/04-dom/ex4.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">S'usa <code>textContent</code> (no <code>innerHTML</code>) perquè el text escrit per l'usuari no es tracte com a HTML.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Personal data&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Personal data&lt;/h1&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;
+    &lt;br&gt;
+    &lt;label for=&quot;surname&quot;&gt;Surname&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;surname&quot;&gt;
+    &lt;br&gt;
+    &lt;label for=&quot;birth&quot;&gt;Date of birth&lt;/label&gt;
+    &lt;input type=&quot;date&quot; id=&quot;birth&quot;&gt;
+    &lt;br&gt;
+    &lt;label for=&quot;colour&quot;&gt;Favourite colour&lt;/label&gt;
+    &lt;input type=&quot;color&quot; id=&quot;colour&quot;&gt;
+    &lt;br&gt;
+    &lt;button id=&quot;sendButton&quot;&gt;Send&lt;/button&gt;
+    &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+
+    &lt;!--
+        Write your JavaScript in script.js: when the user clicks the button,
+        show all the data they typed inside #result.
+    --&gt;
+    &lt;script&gt;const button = document.querySelector(&quot;#sendButton&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+button.addEventListener(&quot;click&quot;, function () {
+    const name = document.querySelector(&quot;#name&quot;).value;
+    const surname = document.querySelector(&quot;#surname&quot;).value;
+    const birth = document.querySelector(&quot;#birth&quot;).value;
+    const colour = document.querySelector(&quot;#colour&quot;).value;
+
+    result.textContent = `Name: ${name} | Surname: ${surname} | Date of birth: ${birth} | Favourite colour: ${colour}`;
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 4.5</h2>
+        <div class="enunciat"><strong>Exercise 4.5.</strong> One input and one button. When you click, the <code>h1</code> says <code>Hello, NAME!</code> with the name the user typed, and the field is emptied.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Greeting&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Hello!&lt;/h1&gt;
+    &lt;input type="text" id="nameInput" placeholder="Your name"&gt;
+    &lt;button id="myButton"&gt;Greet&lt;/button&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector("#nameInput");
+        const button = document.querySelector("#myButton");
+        const title = document.querySelector("#title");
+
+        button.addEventListener("click", function () {
+            const name = input.value;
+            title.textContent = `Hello, ${name}!`;
+            input.value = "";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Greeting&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id=&quot;title&quot;&gt;Hello!&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nameInput&quot; placeholder=&quot;Your name&quot;&gt;
+    &lt;button id=&quot;myButton&quot;&gt;Greet&lt;/button&gt;
+
+    &lt;script&gt;
+        const input = document.querySelector(&quot;#nameInput&quot;);
+        const button = document.querySelector(&quot;#myButton&quot;);
+        const title = document.querySelector(&quot;#title&quot;);
+
+        button.addEventListener(&quot;click&quot;, function () {
+            const name = input.value;
+            title.textContent = `Hello, ${name}!`;
+            input.value = &quot;&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 4.6</h2>
+        <div class="enunciat"><strong>Exercise 4.6.</strong> Three buttons: red, green and blue. Each one changes the background colour of the whole page. (<code>document.body.style.backgroundColor</code>)</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Colours&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Change the background&lt;/h1&gt;
+    &lt;button id="red"&gt;Red&lt;/button&gt;
+    &lt;button id="green"&gt;Green&lt;/button&gt;
+    &lt;button id="blue"&gt;Blue&lt;/button&gt;
+
+    &lt;script&gt;
+        document.querySelector("#red").addEventListener("click", function () {
+            document.body.style.backgroundColor = "red";
+        });
+
+        document.querySelector("#green").addEventListener("click", function () {
+            document.body.style.backgroundColor = "green";
+        });
+
+        document.querySelector("#blue").addEventListener("click", function () {
+            document.body.style.backgroundColor = "blue";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Colours&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Change the background&lt;/h1&gt;
+    &lt;button id=&quot;red&quot;&gt;Red&lt;/button&gt;
+    &lt;button id=&quot;green&quot;&gt;Green&lt;/button&gt;
+    &lt;button id=&quot;blue&quot;&gt;Blue&lt;/button&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#red&quot;).addEventListener(&quot;click&quot;, function () {
+            document.body.style.backgroundColor = &quot;red&quot;;
+        });
+
+        document.querySelector(&quot;#green&quot;).addEventListener(&quot;click&quot;, function () {
+            document.body.style.backgroundColor = &quot;green&quot;;
+        });
+
+        document.querySelector(&quot;#blue&quot;).addEventListener(&quot;click&quot;, function () {
+            document.body.style.backgroundColor = &quot;blue&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 4.7</h2>
+        <div class="enunciat"><strong>Exercise 4.7.</strong> A "Show / hide" button that makes a paragraph appear and disappear using <code>classList.toggle</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Show / hide&lt;/title&gt;
+    &lt;style&gt;
+        .hidden {
+            display: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id="toggleButton"&gt;Show / hide&lt;/button&gt;
+    &lt;p class="text"&gt;This paragraph appears and disappears.&lt;/p&gt;
+
+    &lt;script&gt;
+        const paragraph = document.querySelector(".text");
+        const toggleButton = document.querySelector("#toggleButton");
+
+        toggleButton.addEventListener("click", function () {
+            paragraph.classList.toggle("hidden");
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><code>classList.toggle("hidden")</code> posa la classe si no hi és i la lleva si hi és; la classe <code>.hidden</code> del CSS fa <code>display: none</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Show / hide&lt;/title&gt;
+    &lt;style&gt;
+        .hidden {
+            display: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id=&quot;toggleButton&quot;&gt;Show / hide&lt;/button&gt;
+    &lt;p class=&quot;text&quot;&gt;This paragraph appears and disappears.&lt;/p&gt;
+
+    &lt;script&gt;
+        const paragraph = document.querySelector(&quot;.text&quot;);
+        const toggleButton = document.querySelector(&quot;#toggleButton&quot;);
+
+        toggleButton.addEventListener(&quot;click&quot;, function () {
+            paragraph.classList.toggle(&quot;hidden&quot;);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

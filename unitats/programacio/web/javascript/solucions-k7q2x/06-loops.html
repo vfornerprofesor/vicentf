@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Loops</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Loops</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../06-loops.html">06-loops.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 6.1</a></li>
+        <li><a href="#e2">Exercici 6.2</a></li>
+        <li><a href="#e3">Exercici 6.3</a></li>
+        <li><a href="#e4">Exercici 6.4</a></li>
+        <li><a href="#e5">Exercici 6.5</a></li>
+        <li><a href="#e6">Exercici 6.6</a></li>
+        <li><a href="#e7">Exercici 6.7</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 6.1</h2>
+        <div class="enunciat"><strong>Exercise 6.1.</strong> Show the numbers from 1 to 20 in the page, one per line. Do it with <code>while</code> and then with <code>for</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>// with while
+let i = 1;
+while (i &lt;= 20) {
+    document.write(i + "&lt;br&gt;");
+    i++;
+}
+
+// with for
+document.write("&lt;hr&gt;");
+for (let n = 1; n &lt;= 20; n++) {
+    document.write(n + "&lt;br&gt;");
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;// with while
+let i = 1;
+while (i &lt;= 20) {
+    document.write(i + &quot;&lt;br&gt;&quot;);
+    i++;
+}
+
+// with for
+document.write(&quot;&lt;hr&gt;&quot;);
+for (let n = 1; n &lt;= 20; n++) {
+    document.write(n + &quot;&lt;br&gt;&quot;);
+}&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 6.2</h2>
+        <div class="enunciat"><strong>Exercise 6.2.</strong> Show the even numbers from 0 to 50, separated by commas.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>let text = "";
+
+for (let n = 0; n &lt;= 50; n += 2) {
+    text += n;
+    if (n &lt; 50) {
+        text += ", ";
+    }
+}
+
+document.write(text);</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;let text = &quot;&quot;;
+
+for (let n = 0; n &lt;= 50; n += 2) {
+    text += n;
+    if (n &lt; 50) {
+        text += &quot;, &quot;;
+    }
+}
+
+document.write(text);&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 6.3</h2>
+        <div class="enunciat"><strong>Exercise 6.3.</strong> The user types a number and the page draws its multiplication table as an HTML table.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/06-loops/ex1-1.png" alt="Numbers from 1 to 20, one per line"><img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/06-loops/ex1-2.png" alt="Multiplication table drawn as an HTML table"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Multiplication table&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="number" id="value" placeholder="A number"&gt;
+    &lt;button id="draw"&gt;Draw&lt;/button&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        document.querySelector("#draw").addEventListener("click", function () {
+            const number = Number(document.querySelector("#value").value);
+            let rows = "";
+
+            for (let i = 1; i &lt;= 10; i++) {
+                rows += `&lt;tr&gt;&lt;td&gt;${number} x ${i}&lt;/td&gt;&lt;td&gt;${number * i}&lt;/td&gt;&lt;/tr&gt;`;
+            }
+
+            document.querySelector("#output").innerHTML = "&lt;table&gt;" + rows + "&lt;/table&gt;";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Multiplication table&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;value&quot; placeholder=&quot;A number&quot;&gt;
+    &lt;button id=&quot;draw&quot;&gt;Draw&lt;/button&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#draw&quot;).addEventListener(&quot;click&quot;, function () {
+            const number = Number(document.querySelector(&quot;#value&quot;).value);
+            let rows = &quot;&quot;;
+
+            for (let i = 1; i &lt;= 10; i++) {
+                rows += `&lt;tr&gt;&lt;td&gt;${number} x ${i}&lt;/td&gt;&lt;td&gt;${number * i}&lt;/td&gt;&lt;/tr&gt;`;
+            }
+
+            document.querySelector(&quot;#output&quot;).innerHTML = &quot;&lt;table&gt;&quot; + rows + &quot;&lt;/table&gt;&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 6.4</h2>
+        <div class="enunciat"><strong>Exercise 6.4.</strong> Draw a triangle of stars of the height the user asks for, inside a <code>&lt;pre&gt;</code> so the spaces are respected: <pre><code>*
+**
+***
+****
+*****
+</code></pre><img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/06-loops/ex2.png" alt="Triangle of stars drawn with a loop"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Triangle of stars&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="number" id="value" placeholder="Height"&gt;
+    &lt;button id="draw"&gt;Draw&lt;/button&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        document.querySelector("#draw").addEventListener("click", function () {
+            const height = Number(document.querySelector("#value").value);
+            let text = "";
+
+            for (let row = 1; row &lt;= height; row++) {
+                for (let i = 1; i &lt;= row; i++) {
+                    text += "*";
+                }
+                text += "\n";
+            }
+
+            document.querySelector("#output").innerHTML = "&lt;pre&gt;" + text + "&lt;/pre&gt;";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Triangle of stars&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;value&quot; placeholder=&quot;Height&quot;&gt;
+    &lt;button id=&quot;draw&quot;&gt;Draw&lt;/button&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#draw&quot;).addEventListener(&quot;click&quot;, function () {
+            const height = Number(document.querySelector(&quot;#value&quot;).value);
+            let text = &quot;&quot;;
+
+            for (let row = 1; row &lt;= height; row++) {
+                for (let i = 1; i &lt;= row; i++) {
+                    text += &quot;*&quot;;
+                }
+                text += &quot;\n&quot;;
+            }
+
+            document.querySelector(&quot;#output&quot;).innerHTML = &quot;&lt;pre&gt;&quot; + text + &quot;&lt;/pre&gt;&quot;;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 6.5</h2>
+        <div class="enunciat"><strong>Exercise 6.5. Chessboard.</strong> Draw an 8 × 8 board of <code>&lt;div&gt;</code>s, alternating black and white. Two loops, one inside the other. The trick for the colour: <code>(row + column) % 2 === 0</code>.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/06-loops/ex5.png" alt="8x8 chessboard drawn with two nested loops"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Chessboard&lt;/title&gt;
+    &lt;style&gt;
+        .row {
+            display: flex;
+        }
+
+        .square {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #888888;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        let html = "";
+
+        for (let row = 0; row &lt; 8; row++) {
+            html += "&lt;div class='row'&gt;";
+            for (let column = 0; column &lt; 8; column++) {
+                const colour = (row + column) % 2 === 0 ? "white" : "black";
+                html += `&lt;div class="square" style="background: ${colour}"&gt;&lt;/div&gt;`;
+            }
+            html += "&lt;/div&gt;";
+        }
+
+        document.querySelector("#output").innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">El truc del color: <code>(row + column) % 2 === 0</code> és cert en les caselles d'un color i fals en les de l'altre.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Chessboard&lt;/title&gt;
+    &lt;style&gt;
+        .row {
+            display: flex;
+        }
+
+        .square {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #888888;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        let html = &quot;&quot;;
+
+        for (let row = 0; row &lt; 8; row++) {
+            html += &quot;&lt;div class=&#x27;row&#x27;&gt;&quot;;
+            for (let column = 0; column &lt; 8; column++) {
+                const colour = (row + column) % 2 === 0 ? &quot;white&quot; : &quot;black&quot;;
+                html += `&lt;div class=&quot;square&quot; style=&quot;background: ${colour}&quot;&gt;&lt;/div&gt;`;
+            }
+            html += &quot;&lt;/div&gt;&quot;;
+        }
+
+        document.querySelector(&quot;#output&quot;).innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 6.6</h2>
+        <div class="enunciat"><strong>Exercise 6.6. Colour ramp.</strong> Draw 20 boxes in a row, each one a little darker than the one before. (<code>backgroundColor = 'rgb(' + v + ',' + v + ',' + v + ')'</code>)<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/06-loops/ex3.png" alt="Row of 20 boxes, each one darker"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Colour ramp&lt;/title&gt;
+    &lt;style&gt;
+        #output {
+            display: flex;
+        }
+
+        .box {
+            width: 30px;
+            height: 60px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        let html = "";
+
+        for (let i = 0; i &lt; 20; i++) {
+            const v = 255 - i * 12;   // every box is a little darker
+            html += `&lt;div class="box" style="background-color: rgb(${v}, ${v}, ${v})"&gt;&lt;/div&gt;`;
+        }
+
+        document.querySelector("#output").innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Colour ramp&lt;/title&gt;
+    &lt;style&gt;
+        #output {
+            display: flex;
+        }
+
+        .box {
+            width: 30px;
+            height: 60px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        let html = &quot;&quot;;
+
+        for (let i = 0; i &lt; 20; i++) {
+            const v = 255 - i * 12;   // every box is a little darker
+            html += `&lt;div class=&quot;box&quot; style=&quot;background-color: rgb(${v}, ${v}, ${v})&quot;&gt;&lt;/div&gt;`;
+        }
+
+        document.querySelector(&quot;#output&quot;).innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 6.7</h2>
+        <div class="enunciat"><strong>Exercise 6.7.</strong> Given <code>const marks = [4, 8, 6, 2, 9, 5];</code>, show the highest mark, the lowest mark and the average. Do not use <code>Math.max</code>: find it with a loop.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/06-loops/ex7.png" alt="Highest, lowest and average of an array of marks"></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Marks&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const marks = [4, 8, 6, 2, 9, 5];
+        let highest = marks[0];
+        let lowest = marks[0];
+        let total = 0;
+
+        for (const mark of marks) {
+            if (mark &gt; highest) {
+                highest = mark;
+            }
+            if (mark &lt; lowest) {
+                lowest = mark;
+            }
+            total += mark;
+        }
+
+        document.querySelector("#output").innerHTML = `Highest: ${highest}&lt;br&gt;Lowest: ${lowest}&lt;br&gt;Average: ${total / marks.length}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Es comença amb el <em>primer element</em> de l'array, no amb 0: si es comença amb 0, cap nota negativa seria mai la mínima.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Marks&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const marks = [4, 8, 6, 2, 9, 5];
+        let highest = marks[0];
+        let lowest = marks[0];
+        let total = 0;
+
+        for (const mark of marks) {
+            if (mark &gt; highest) {
+                highest = mark;
+            }
+            if (mark &lt; lowest) {
+                lowest = mark;
+            }
+            total += mark;
+        }
+
+        document.querySelector(&quot;#output&quot;).innerHTML = `Highest: ${highest}&lt;br&gt;Lowest: ${lowest}&lt;br&gt;Average: ${total / marks.length}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

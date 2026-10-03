@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Errors and exceptions</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Errors and exceptions</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../09-errors.html">09-errors.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 9.1</a></li>
+        <li><a href="#e2">Exercici 9.2</a></li>
+        <li><a href="#e3">Exercici 9.3</a></li>
+        <li><a href="#e4">Exercici 9.4</a></li>
+        <li><a href="#e5">Mini-projecte 1</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 9.1</h2>
+        <div class="enunciat"><strong>Exercise 9.1.</strong> In your calculator of exercise 5.5, the division throws an error when the second number is 0. The button catches it and shows the message in red.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const first = document.querySelector("#firstNumber");
+const second = document.querySelector("#secondNumber");
+const operation = document.querySelector("#operation");
+const result = document.querySelector("#result");
+
+function divide(a, b) {
+    if (b === 0) {
+        throw new Error("You cannot divide by zero");
+    }
+    return a / b;
+}
+
+document.querySelector("#calculateButton").addEventListener("click", function () {
+    const a = Number(first.value);
+    const b = Number(second.value);
+    result.style.color = "";
+
+    try {
+        if (operation.value === "+") {
+            result.textContent = a + b;
+        } else if (operation.value === "-") {
+            result.textContent = a - b;
+        } else if (operation.value === "*") {
+            result.textContent = a * b;
+        } else {
+            result.textContent = divide(a, b);   // can throw an error
+        }
+    } catch (error) {
+        result.textContent = error.message;
+        result.style.color = "red";
+    }
+});</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/05-conditions/ex5.html">exercises/05-conditions/ex5.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">Ara <code>divide</code> <em>llança</em> l'error amb <code>throw</code> en lloc de tornar un text, i el botó el <em>captura</em> amb <code>try/catch</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Simple calculator&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Verdana&#x27;, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 320px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        input,
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 20px;
+            font-weight: 700;
+            min-height: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Simple calculator&lt;/h1&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;firstNumber&quot; placeholder=&quot;First number&quot;&gt;
+
+        &lt;select id=&quot;operation&quot;&gt;
+            &lt;option value=&quot;+&quot;&gt;+&lt;/option&gt;
+            &lt;option value=&quot;-&quot;&gt;-&lt;/option&gt;
+            &lt;option value=&quot;*&quot;&gt;*&lt;/option&gt;
+            &lt;option value=&quot;/&quot;&gt;/&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;secondNumber&quot; placeholder=&quot;Second number&quot;&gt;
+
+        &lt;button id=&quot;calculateButton&quot;&gt;Calculate&lt;/button&gt;
+
+        &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;const first = document.querySelector(&quot;#firstNumber&quot;);
+const second = document.querySelector(&quot;#secondNumber&quot;);
+const operation = document.querySelector(&quot;#operation&quot;);
+const result = document.querySelector(&quot;#result&quot;);
+
+function divide(a, b) {
+    if (b === 0) {
+        throw new Error(&quot;You cannot divide by zero&quot;);
+    }
+    return a / b;
+}
+
+document.querySelector(&quot;#calculateButton&quot;).addEventListener(&quot;click&quot;, function () {
+    const a = Number(first.value);
+    const b = Number(second.value);
+    result.style.color = &quot;&quot;;
+
+    try {
+        if (operation.value === &quot;+&quot;) {
+            result.textContent = a + b;
+        } else if (operation.value === &quot;-&quot;) {
+            result.textContent = a - b;
+        } else if (operation.value === &quot;*&quot;) {
+            result.textContent = a * b;
+        } else {
+            result.textContent = divide(a, b);   // can throw an error
+        }
+    } catch (error) {
+        result.textContent = error.message;
+        result.style.color = &quot;red&quot;;
+    }
+});&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 9.2</h2>
+        <div class="enunciat"><strong>Exercise 9.2.</strong> Write <code>readNumber(input)</code>: it returns the number in the field, or throws an error with name <code>"ValidationError"</code> and a different message when the field is empty, when it is not a number, or when it is outside a range you choose. Use it in exercises 7.1, 7.2 and 7.3.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Square with validation&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="text" id="n" placeholder="A number (0-1000)"&gt;
+    &lt;button id="go"&gt;Square&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        /**
+         * Reads the number of a field.
+         * @param {HTMLInputElement} input - The field.
+         * @returns {number} The number typed by the user.
+         * @throws {Error} ValidationError if it is empty, not a number or out of 0-1000.
+         */
+        function readNumber(input) {
+            const text = input.value.trim();
+            let error;
+
+            if (text === "") {
+                error = new Error("The field is empty.");
+            } else if (isNaN(Number(text))) {
+                error = new Error("It is not a number.");
+            } else if (Number(text) &lt; 0 || Number(text) &gt; 1000) {
+                error = new Error("The number must be between 0 and 1000.");
+            }
+
+            if (error) {
+                error.name = "ValidationError";
+                throw error;
+            }
+            return Number(text);
+        }
+
+        function square(n) {
+            return n * n;
+        }
+
+        document.querySelector("#go").addEventListener("click", function () {
+            const out = document.querySelector("#out");
+            out.style.color = "";
+            try {
+                const n = readNumber(document.querySelector("#n"));
+                out.textContent = `${n} squared is ${square(n)}`;
+            } catch (error) {
+                out.textContent = error.message;
+                out.style.color = "red";
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><code>readNumber</code> llança un error amb <code>name = "ValidationError"</code> i un missatge diferent per a cada cas (buit, no és número, fora de rang). Es fa servir igual en 7.1, 7.2 i 7.3: només canvia la funció de càlcul.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Square with validation&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;text&quot; id=&quot;n&quot; placeholder=&quot;A number (0-1000)&quot;&gt;
+    &lt;button id=&quot;go&quot;&gt;Square&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        /**
+         * Reads the number of a field.
+         * @param {HTMLInputElement} input - The field.
+         * @returns {number} The number typed by the user.
+         * @throws {Error} ValidationError if it is empty, not a number or out of 0-1000.
+         */
+        function readNumber(input) {
+            const text = input.value.trim();
+            let error;
+
+            if (text === &quot;&quot;) {
+                error = new Error(&quot;The field is empty.&quot;);
+            } else if (isNaN(Number(text))) {
+                error = new Error(&quot;It is not a number.&quot;);
+            } else if (Number(text) &lt; 0 || Number(text) &gt; 1000) {
+                error = new Error(&quot;The number must be between 0 and 1000.&quot;);
+            }
+
+            if (error) {
+                error.name = &quot;ValidationError&quot;;
+                throw error;
+            }
+            return Number(text);
+        }
+
+        function square(n) {
+            return n * n;
+        }
+
+        document.querySelector(&quot;#go&quot;).addEventListener(&quot;click&quot;, function () {
+            const out = document.querySelector(&quot;#out&quot;);
+            out.style.color = &quot;&quot;;
+            try {
+                const n = readNumber(document.querySelector(&quot;#n&quot;));
+                out.textContent = `${n} squared is ${square(n)}`;
+            } catch (error) {
+                out.textContent = error.message;
+                out.style.color = &quot;red&quot;;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 9.3</h2>
+        <div class="enunciat"><strong>Exercise 9.3.</strong> Add <code>finally</code> to exercise 9.2 so that the field is always emptied.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Square with finally&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="text" id="n" placeholder="A number (0-1000)"&gt;
+    &lt;button id="go"&gt;Square&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        /**
+         * Reads the number of a field.
+         * @param {HTMLInputElement} input - The field.
+         * @returns {number} The number typed by the user.
+         * @throws {Error} ValidationError if it is empty, not a number or out of 0-1000.
+         */
+        function readNumber(input) {
+            const text = input.value.trim();
+            let error;
+
+            if (text === "") {
+                error = new Error("The field is empty.");
+            } else if (isNaN(Number(text))) {
+                error = new Error("It is not a number.");
+            } else if (Number(text) &lt; 0 || Number(text) &gt; 1000) {
+                error = new Error("The number must be between 0 and 1000.");
+            }
+
+            if (error) {
+                error.name = "ValidationError";
+                throw error;
+            }
+            return Number(text);
+        }
+
+        function square(n) {
+            return n * n;
+        }
+
+        document.querySelector("#go").addEventListener("click", function () {
+            const input = document.querySelector("#n");
+            const out = document.querySelector("#out");
+            out.style.color = "";
+            try {
+                const n = readNumber(input);
+                out.textContent = `${n} squared is ${square(n)}`;
+            } catch (error) {
+                out.textContent = error.message;
+                out.style.color = "red";
+            } finally {
+                input.value = "";   // always empty, with or without error
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">El <code>finally</code> s'executa sempre, tant si ha anat bé com si hi ha hagut un error: el camp queda buit en tots dos casos.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Square with finally&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;text&quot; id=&quot;n&quot; placeholder=&quot;A number (0-1000)&quot;&gt;
+    &lt;button id=&quot;go&quot;&gt;Square&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        /**
+         * Reads the number of a field.
+         * @param {HTMLInputElement} input - The field.
+         * @returns {number} The number typed by the user.
+         * @throws {Error} ValidationError if it is empty, not a number or out of 0-1000.
+         */
+        function readNumber(input) {
+            const text = input.value.trim();
+            let error;
+
+            if (text === &quot;&quot;) {
+                error = new Error(&quot;The field is empty.&quot;);
+            } else if (isNaN(Number(text))) {
+                error = new Error(&quot;It is not a number.&quot;);
+            } else if (Number(text) &lt; 0 || Number(text) &gt; 1000) {
+                error = new Error(&quot;The number must be between 0 and 1000.&quot;);
+            }
+
+            if (error) {
+                error.name = &quot;ValidationError&quot;;
+                throw error;
+            }
+            return Number(text);
+        }
+
+        function square(n) {
+            return n * n;
+        }
+
+        document.querySelector(&quot;#go&quot;).addEventListener(&quot;click&quot;, function () {
+            const input = document.querySelector(&quot;#n&quot;);
+            const out = document.querySelector(&quot;#out&quot;);
+            out.style.color = &quot;&quot;;
+            try {
+                const n = readNumber(input);
+                out.textContent = `${n} squared is ${square(n)}`;
+            } catch (error) {
+                out.textContent = error.message;
+                out.style.color = &quot;red&quot;;
+            } finally {
+                input.value = &quot;&quot;;   // always empty, with or without error
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 9.4</h2>
+        <div class="enunciat"><strong>Exercise 9.4.</strong> Call a function that does not exist inside a <code>try</code>. In the <code>catch</code>, show a different message for your own errors (<code>error.name === "ValidationError"</code>) and for the browser's errors.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Two kinds of error&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id="own"&gt;Own error&lt;/button&gt;
+    &lt;button id="browser"&gt;Browser error&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const out = document.querySelector("#out");
+
+        function show(action) {
+            try {
+                action();
+            } catch (error) {
+                if (error.name === "ValidationError") {
+                    out.textContent = "My own error: " + error.message;
+                } else {
+                    out.textContent = "Browser error (" + error.name + "): " + error.message;
+                }
+            }
+        }
+
+        document.querySelector("#own").addEventListener("click", function () {
+            show(function () {
+                const error = new Error("The age cannot be negative.");
+                error.name = "ValidationError";
+                throw error;
+            });
+        });
+
+        document.querySelector("#browser").addEventListener("click", function () {
+            show(function () {
+                thisFunctionDoesNotExist();   // ReferenceError
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Two kinds of error&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id=&quot;own&quot;&gt;Own error&lt;/button&gt;
+    &lt;button id=&quot;browser&quot;&gt;Browser error&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const out = document.querySelector(&quot;#out&quot;);
+
+        function show(action) {
+            try {
+                action();
+            } catch (error) {
+                if (error.name === &quot;ValidationError&quot;) {
+                    out.textContent = &quot;My own error: &quot; + error.message;
+                } else {
+                    out.textContent = &quot;Browser error (&quot; + error.name + &quot;): &quot; + error.message;
+                }
+            }
+        }
+
+        document.querySelector(&quot;#own&quot;).addEventListener(&quot;click&quot;, function () {
+            show(function () {
+                const error = new Error(&quot;The age cannot be negative.&quot;);
+                error.name = &quot;ValidationError&quot;;
+                throw error;
+            });
+        });
+
+        document.querySelector(&quot;#browser&quot;).addEventListener(&quot;click&quot;, function () {
+            show(function () {
+                thisFunctionDoesNotExist();   // ReferenceError
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Mini-projecte 1</h2>
+        <div class="enunciat"><strong>Mini-project 1: My toolbox page</strong><p>
+                One page with <strong>at least eight small tools</strong>. Each tool is one input (or
+                two), one button, and one place where the answer appears. Behind each
+                button there is <strong>one function that returns a value</strong>.
+            </p>
+            <p>
+                Ideas: convert units, calculate a mark average, check if a word is a
+                palindrome, count the words in a sentence, calculate a price with VAT and
+                discount, give a random number between two values, say if a year is a leap
+                year, draw a row of N stars, calculate how many days until a date.
+            </p>
+            <p>
+                Rules:
+            </p>
+            <ul>
+                <li>every calculation must be a function that uses <code>return</code> (not one that writes in the page);</li>
+                <li>one separate function reads the inputs and shows the answer;</li>
+                <li>every function needs a comment above it saying what it does and what it returns;</li>
+                <li>clear names in camelCase, 4-space indentation;</li>
+                <li><strong>no errors in the console</strong> when you use the page normally;</li>
+                <li>every calculation function has at least two <code>console.assert</code> that pass;</li>
+                <li>at least one function throws an error when the data is not valid, and the page catches it and shows the message.</li>
+            </ul></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My toolbox&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My toolbox&lt;/h1&gt;
+
+    &lt;h2&gt;1. Kilometres to miles&lt;/h2&gt;
+    &lt;input type="text" id="km" placeholder="Kilometres"&gt;
+    &lt;button id="kmButton"&gt;Convert&lt;/button&gt;
+    &lt;p id="kmOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;2. Average of marks&lt;/h2&gt;
+    &lt;input type="text" id="marks" placeholder="e.g. 5, 7, 9"&gt;
+    &lt;button id="marksButton"&gt;Average&lt;/button&gt;
+    &lt;p id="marksOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;3. Palindrome&lt;/h2&gt;
+    &lt;input type="text" id="word" placeholder="A word"&gt;
+    &lt;button id="wordButton"&gt;Check&lt;/button&gt;
+    &lt;p id="wordOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;4. Count words&lt;/h2&gt;
+    &lt;input type="text" id="sentence" placeholder="A sentence"&gt;
+    &lt;button id="sentenceButton"&gt;Count&lt;/button&gt;
+    &lt;p id="sentenceOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;5. Price with VAT and discount&lt;/h2&gt;
+    &lt;input type="text" id="price" placeholder="Price"&gt;
+    &lt;input type="text" id="discount" placeholder="Discount %"&gt;
+    &lt;button id="priceButton"&gt;Calculate&lt;/button&gt;
+    &lt;p id="priceOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;6. Random number&lt;/h2&gt;
+    &lt;input type="text" id="min" placeholder="Minimum"&gt;
+    &lt;input type="text" id="max" placeholder="Maximum"&gt;
+    &lt;button id="randomButton"&gt;Draw&lt;/button&gt;
+    &lt;p id="randomOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;7. Leap year&lt;/h2&gt;
+    &lt;input type="text" id="year" placeholder="A year"&gt;
+    &lt;button id="yearButton"&gt;Check&lt;/button&gt;
+    &lt;p id="yearOut"&gt;&lt;/p&gt;
+
+    &lt;h2&gt;8. Row of stars&lt;/h2&gt;
+    &lt;input type="text" id="stars" placeholder="How many?"&gt;
+    &lt;button id="starsButton"&gt;Draw&lt;/button&gt;
+    &lt;p id="starsOut"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        /* ---------- Calculation functions: they only return a value ---------- */
+
+        /** Converts kilometres to miles. Returns a number. */
+        function kmToMiles(km) {
+            return km * 0.621371;
+        }
+
+        /** Average of an array of numbers. Returns a number. */
+        function average(list) {
+            let sum = 0;
+            for (const n of list) {
+                sum += n;
+            }
+            return sum / list.length;
+        }
+
+        /** True if the word reads the same backwards. Returns a boolean. */
+        function isPalindrome(word) {
+            const clean = word.toLowerCase();
+            return clean === clean.split("").reverse().join("");
+        }
+
+        /** Counts the words of a sentence. Returns a number. */
+        function countWords(sentence) {
+            const text = sentence.trim();
+            return text === "" ? 0 : text.split(/\s+/).length;
+        }
+
+        /** Price with a discount (in %) and 21 % VAT. Returns a number. */
+        function finalPrice(price, discount) {
+            return price * (1 - discount / 100) * 1.21;
+        }
+
+        /** Random whole number between min and max (both included). Throws if min &gt; max. */
+        function randomBetween(min, max) {
+            if (min &gt; max) {
+                throw new Error("The minimum cannot be bigger than the maximum.");
+            }
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        /** True if the year is a leap year. Returns a boolean. */
+        function isLeapYear(year) {
+            return (year % 4 === 0 &amp;&amp; year % 100 !== 0) || year % 400 === 0;
+        }
+
+        /** A row with n stars. Throws if n is not between 1 and 50. */
+        function starsRow(n) {
+            if (n &lt; 1 || n &gt; 50) {
+                throw new Error("Choose a number between 1 and 50.");
+            }
+            return "*".repeat(n);
+        }
+
+        /* ---------- Reading and validation ---------- */
+
+        /** Reads a number from a field. Throws a ValidationError if it is not valid. */
+        function readNumber(id) {
+            const text = document.querySelector("#" + id).value.trim().replace(",", ".");
+            if (text === "" || isNaN(Number(text))) {
+                const error = new Error("Type a valid number.");
+                error.name = "ValidationError";
+                throw error;
+            }
+            return Number(text);
+        }
+
+        /** Runs one tool: calls the function and shows the answer (or the error). */
+        function runTool(buttonId, outId, tool) {
+            document.querySelector("#" + buttonId).addEventListener("click", function () {
+                const out = document.querySelector("#" + outId);
+                out.style.color = "";
+                try {
+                    out.textContent = tool();
+                } catch (error) {
+                    out.textContent = error.message;
+                    out.style.color = "red";
+                }
+            });
+        }
+
+        runTool("kmButton", "kmOut", function () {
+            return readNumber("km") + " km = " + kmToMiles(readNumber("km")).toFixed(2) + " miles";
+        });
+
+        runTool("marksButton", "marksOut", function () {
+            const list = document.querySelector("#marks").value.split(",").map(Number);
+            if (list.some(isNaN)) {
+                throw new Error("Type numbers separated by commas.");
+            }
+            return "Average: " + average(list).toFixed(2);
+        });
+
+        runTool("wordButton", "wordOut", function () {
+            const word = document.querySelector("#word").value;
+            return isPalindrome(word) ? "Yes, it is a palindrome." : "No, it is not.";
+        });
+
+        runTool("sentenceButton", "sentenceOut", function () {
+            return "Words: " + countWords(document.querySelector("#sentence").value);
+        });
+
+        runTool("priceButton", "priceOut", function () {
+            return "Final price: " + finalPrice(readNumber("price"), readNumber("discount")).toFixed(2) + " EUR";
+        });
+
+        runTool("randomButton", "randomOut", function () {
+            return "Your number: " + randomBetween(readNumber("min"), readNumber("max"));
+        });
+
+        runTool("yearButton", "yearOut", function () {
+            return isLeapYear(readNumber("year")) ? "Leap year." : "Not a leap year.";
+        });
+
+        runTool("starsButton", "starsOut", function () {
+            return starsRow(readNumber("stars"));
+        });
+
+        /* ---------- Tests: at least two console.assert per function ---------- */
+        console.assert(Math.abs(kmToMiles(10) - 6.21371) &lt; 0.0001, "kmToMiles 10");
+        console.assert(kmToMiles(0) === 0, "kmToMiles 0");
+        console.assert(average([5, 7, 9]) === 7, "average 5,7,9");
+        console.assert(average([10]) === 10, "average of one");
+        console.assert(isPalindrome("Level") === true, "palindrome Level");
+        console.assert(isPalindrome("house") === false, "palindrome house");
+        console.assert(countWords("one two  three") === 3, "countWords 3");
+        console.assert(countWords("   ") === 0, "countWords empty");
+        console.assert(Math.abs(finalPrice(100, 0) - 121) &lt; 0.001, "finalPrice no discount");
+        console.assert(Math.abs(finalPrice(100, 50) - 60.5) &lt; 0.001, "finalPrice 50 %");
+        console.assert(randomBetween(3, 3) === 3, "random 3,3");
+        console.assert(randomBetween(1, 6) &gt;= 1 &amp;&amp; randomBetween(1, 6) &lt;= 6, "random 1-6");
+        console.assert(isLeapYear(2024) === true, "leap 2024");
+        console.assert(isLeapYear(1900) === false, "leap 1900");
+        console.assert(starsRow(3) === "***", "stars 3");
+        console.assert(starsRow(1) === "*", "stars 1");
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Vuit eines; cada càlcul és una funció amb <code>return</code> i un comentari; <code>readNumber</code> llança un <code>ValidationError</code> i <code>runTool</code> el captura i el mostra en roig; cada funció té almenys dos <code>console.assert</code> que passen (la consola queda sense errors).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Mini-projecte 1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My toolbox&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My toolbox&lt;/h1&gt;
+
+    &lt;h2&gt;1. Kilometres to miles&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;km&quot; placeholder=&quot;Kilometres&quot;&gt;
+    &lt;button id=&quot;kmButton&quot;&gt;Convert&lt;/button&gt;
+    &lt;p id=&quot;kmOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;2. Average of marks&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;marks&quot; placeholder=&quot;e.g. 5, 7, 9&quot;&gt;
+    &lt;button id=&quot;marksButton&quot;&gt;Average&lt;/button&gt;
+    &lt;p id=&quot;marksOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;3. Palindrome&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;word&quot; placeholder=&quot;A word&quot;&gt;
+    &lt;button id=&quot;wordButton&quot;&gt;Check&lt;/button&gt;
+    &lt;p id=&quot;wordOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;4. Count words&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;sentence&quot; placeholder=&quot;A sentence&quot;&gt;
+    &lt;button id=&quot;sentenceButton&quot;&gt;Count&lt;/button&gt;
+    &lt;p id=&quot;sentenceOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;5. Price with VAT and discount&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;price&quot; placeholder=&quot;Price&quot;&gt;
+    &lt;input type=&quot;text&quot; id=&quot;discount&quot; placeholder=&quot;Discount %&quot;&gt;
+    &lt;button id=&quot;priceButton&quot;&gt;Calculate&lt;/button&gt;
+    &lt;p id=&quot;priceOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;6. Random number&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;min&quot; placeholder=&quot;Minimum&quot;&gt;
+    &lt;input type=&quot;text&quot; id=&quot;max&quot; placeholder=&quot;Maximum&quot;&gt;
+    &lt;button id=&quot;randomButton&quot;&gt;Draw&lt;/button&gt;
+    &lt;p id=&quot;randomOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;7. Leap year&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;year&quot; placeholder=&quot;A year&quot;&gt;
+    &lt;button id=&quot;yearButton&quot;&gt;Check&lt;/button&gt;
+    &lt;p id=&quot;yearOut&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;8. Row of stars&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;stars&quot; placeholder=&quot;How many?&quot;&gt;
+    &lt;button id=&quot;starsButton&quot;&gt;Draw&lt;/button&gt;
+    &lt;p id=&quot;starsOut&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        /* ---------- Calculation functions: they only return a value ---------- */
+
+        /** Converts kilometres to miles. Returns a number. */
+        function kmToMiles(km) {
+            return km * 0.621371;
+        }
+
+        /** Average of an array of numbers. Returns a number. */
+        function average(list) {
+            let sum = 0;
+            for (const n of list) {
+                sum += n;
+            }
+            return sum / list.length;
+        }
+
+        /** True if the word reads the same backwards. Returns a boolean. */
+        function isPalindrome(word) {
+            const clean = word.toLowerCase();
+            return clean === clean.split(&quot;&quot;).reverse().join(&quot;&quot;);
+        }
+
+        /** Counts the words of a sentence. Returns a number. */
+        function countWords(sentence) {
+            const text = sentence.trim();
+            return text === &quot;&quot; ? 0 : text.split(/\s+/).length;
+        }
+
+        /** Price with a discount (in %) and 21 % VAT. Returns a number. */
+        function finalPrice(price, discount) {
+            return price * (1 - discount / 100) * 1.21;
+        }
+
+        /** Random whole number between min and max (both included). Throws if min &gt; max. */
+        function randomBetween(min, max) {
+            if (min &gt; max) {
+                throw new Error(&quot;The minimum cannot be bigger than the maximum.&quot;);
+            }
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        /** True if the year is a leap year. Returns a boolean. */
+        function isLeapYear(year) {
+            return (year % 4 === 0 &amp;&amp; year % 100 !== 0) || year % 400 === 0;
+        }
+
+        /** A row with n stars. Throws if n is not between 1 and 50. */
+        function starsRow(n) {
+            if (n &lt; 1 || n &gt; 50) {
+                throw new Error(&quot;Choose a number between 1 and 50.&quot;);
+            }
+            return &quot;*&quot;.repeat(n);
+        }
+
+        /* ---------- Reading and validation ---------- */
+
+        /** Reads a number from a field. Throws a ValidationError if it is not valid. */
+        function readNumber(id) {
+            const text = document.querySelector(&quot;#&quot; + id).value.trim().replace(&quot;,&quot;, &quot;.&quot;);
+            if (text === &quot;&quot; || isNaN(Number(text))) {
+                const error = new Error(&quot;Type a valid number.&quot;);
+                error.name = &quot;ValidationError&quot;;
+                throw error;
+            }
+            return Number(text);
+        }
+
+        /** Runs one tool: calls the function and shows the answer (or the error). */
+        function runTool(buttonId, outId, tool) {
+            document.querySelector(&quot;#&quot; + buttonId).addEventListener(&quot;click&quot;, function () {
+                const out = document.querySelector(&quot;#&quot; + outId);
+                out.style.color = &quot;&quot;;
+                try {
+                    out.textContent = tool();
+                } catch (error) {
+                    out.textContent = error.message;
+                    out.style.color = &quot;red&quot;;
+                }
+            });
+        }
+
+        runTool(&quot;kmButton&quot;, &quot;kmOut&quot;, function () {
+            return readNumber(&quot;km&quot;) + &quot; km = &quot; + kmToMiles(readNumber(&quot;km&quot;)).toFixed(2) + &quot; miles&quot;;
+        });
+
+        runTool(&quot;marksButton&quot;, &quot;marksOut&quot;, function () {
+            const list = document.querySelector(&quot;#marks&quot;).value.split(&quot;,&quot;).map(Number);
+            if (list.some(isNaN)) {
+                throw new Error(&quot;Type numbers separated by commas.&quot;);
+            }
+            return &quot;Average: &quot; + average(list).toFixed(2);
+        });
+
+        runTool(&quot;wordButton&quot;, &quot;wordOut&quot;, function () {
+            const word = document.querySelector(&quot;#word&quot;).value;
+            return isPalindrome(word) ? &quot;Yes, it is a palindrome.&quot; : &quot;No, it is not.&quot;;
+        });
+
+        runTool(&quot;sentenceButton&quot;, &quot;sentenceOut&quot;, function () {
+            return &quot;Words: &quot; + countWords(document.querySelector(&quot;#sentence&quot;).value);
+        });
+
+        runTool(&quot;priceButton&quot;, &quot;priceOut&quot;, function () {
+            return &quot;Final price: &quot; + finalPrice(readNumber(&quot;price&quot;), readNumber(&quot;discount&quot;)).toFixed(2) + &quot; EUR&quot;;
+        });
+
+        runTool(&quot;randomButton&quot;, &quot;randomOut&quot;, function () {
+            return &quot;Your number: &quot; + randomBetween(readNumber(&quot;min&quot;), readNumber(&quot;max&quot;));
+        });
+
+        runTool(&quot;yearButton&quot;, &quot;yearOut&quot;, function () {
+            return isLeapYear(readNumber(&quot;year&quot;)) ? &quot;Leap year.&quot; : &quot;Not a leap year.&quot;;
+        });
+
+        runTool(&quot;starsButton&quot;, &quot;starsOut&quot;, function () {
+            return starsRow(readNumber(&quot;stars&quot;));
+        });
+
+        /* ---------- Tests: at least two console.assert per function ---------- */
+        console.assert(Math.abs(kmToMiles(10) - 6.21371) &lt; 0.0001, &quot;kmToMiles 10&quot;);
+        console.assert(kmToMiles(0) === 0, &quot;kmToMiles 0&quot;);
+        console.assert(average([5, 7, 9]) === 7, &quot;average 5,7,9&quot;);
+        console.assert(average([10]) === 10, &quot;average of one&quot;);
+        console.assert(isPalindrome(&quot;Level&quot;) === true, &quot;palindrome Level&quot;);
+        console.assert(isPalindrome(&quot;house&quot;) === false, &quot;palindrome house&quot;);
+        console.assert(countWords(&quot;one two  three&quot;) === 3, &quot;countWords 3&quot;);
+        console.assert(countWords(&quot;   &quot;) === 0, &quot;countWords empty&quot;);
+        console.assert(Math.abs(finalPrice(100, 0) - 121) &lt; 0.001, &quot;finalPrice no discount&quot;);
+        console.assert(Math.abs(finalPrice(100, 50) - 60.5) &lt; 0.001, &quot;finalPrice 50 %&quot;);
+        console.assert(randomBetween(3, 3) === 3, &quot;random 3,3&quot;);
+        console.assert(randomBetween(1, 6) &gt;= 1 &amp;&amp; randomBetween(1, 6) &lt;= 6, &quot;random 1-6&quot;);
+        console.assert(isLeapYear(2024) === true, &quot;leap 2024&quot;);
+        console.assert(isLeapYear(1900) === false, &quot;leap 1900&quot;);
+        console.assert(starsRow(3) === &quot;***&quot;, &quot;stars 3&quot;);
+        console.assert(starsRow(1) === &quot;*&quot;, &quot;stars 1&quot;);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Functions</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Functions</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../07-functions.html">07-functions.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 7.1</a></li>
+        <li><a href="#e2">Exercici 7.2</a></li>
+        <li><a href="#e3">Exercici 7.3</a></li>
+        <li><a href="#e4">Exercici 7.4</a></li>
+        <li><a href="#e5">Exercici 7.5</a></li>
+        <li><a href="#e6">Exercici 7.6</a></li>
+        <li><a href="#e7">Exercici 7.7</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 7.1</h2>
+        <div class="enunciat"><strong>Exercise 7.1.</strong> Write a function <code>square(n)</code> that returns <code>n * n</code>. Add an input and a button so the user can test it with any number.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Square&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="number" id="n" placeholder="A number"&gt;
+    &lt;button id="go"&gt;Square&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function square(n) {
+            return n * n;
+        }
+
+        document.querySelector("#go").addEventListener("click", function () {
+            const n = Number(document.querySelector("#n").value);
+            document.querySelector("#out").textContent = `${n} squared is ${square(n)}`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Square&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;n&quot; placeholder=&quot;A number&quot;&gt;
+    &lt;button id=&quot;go&quot;&gt;Square&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function square(n) {
+            return n * n;
+        }
+
+        document.querySelector(&quot;#go&quot;).addEventListener(&quot;click&quot;, function () {
+            const n = Number(document.querySelector(&quot;#n&quot;).value);
+            document.querySelector(&quot;#out&quot;).textContent = `${n} squared is ${square(n)}`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 7.2</h2>
+        <div class="enunciat"><strong>Exercise 7.2.</strong> Write a function <code>isEven(n)</code> that returns <code>true</code> or <code>false</code>. Show the answer in the page as "Even" in green or "Odd" in orange.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Even or odd&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="number" id="n" placeholder="A number"&gt;
+    &lt;button id="go"&gt;Check&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function isEven(n) {
+            return n % 2 === 0;
+        }
+
+        document.querySelector("#go").addEventListener("click", function () {
+            const n = Number(document.querySelector("#n").value);
+            const out = document.querySelector("#out");
+
+            if (isEven(n)) {
+                out.textContent = "Even";
+                out.style.color = "green";
+            } else {
+                out.textContent = "Odd";
+                out.style.color = "orange";
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Even or odd&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;n&quot; placeholder=&quot;A number&quot;&gt;
+    &lt;button id=&quot;go&quot;&gt;Check&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function isEven(n) {
+            return n % 2 === 0;
+        }
+
+        document.querySelector(&quot;#go&quot;).addEventListener(&quot;click&quot;, function () {
+            const n = Number(document.querySelector(&quot;#n&quot;).value);
+            const out = document.querySelector(&quot;#out&quot;);
+
+            if (isEven(n)) {
+                out.textContent = &quot;Even&quot;;
+                out.style.color = &quot;green&quot;;
+            } else {
+                out.textContent = &quot;Odd&quot;;
+                out.style.color = &quot;orange&quot;;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 7.3</h2>
+        <div class="enunciat"><strong>Exercise 7.3.</strong> Write a function <code>biggest(a, b, c)</code> that returns the biggest of three numbers. Three inputs, one button.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Biggest&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="number" id="a" placeholder="A"&gt;
+    &lt;input type="number" id="b" placeholder="B"&gt;
+    &lt;input type="number" id="c" placeholder="C"&gt;
+    &lt;button id="go"&gt;Biggest&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function biggest(a, b, c) {
+            let max = a;
+            if (b &gt; max) {
+                max = b;
+            }
+            if (c &gt; max) {
+                max = c;
+            }
+            return max;
+        }
+
+        document.querySelector("#go").addEventListener("click", function () {
+            const a = Number(document.querySelector("#a").value);
+            const b = Number(document.querySelector("#b").value);
+            const c = Number(document.querySelector("#c").value);
+            document.querySelector("#out").textContent = `The biggest is ${biggest(a, b, c)}`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Biggest&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;a&quot; placeholder=&quot;A&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;b&quot; placeholder=&quot;B&quot;&gt;
+    &lt;input type=&quot;number&quot; id=&quot;c&quot; placeholder=&quot;C&quot;&gt;
+    &lt;button id=&quot;go&quot;&gt;Biggest&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function biggest(a, b, c) {
+            let max = a;
+            if (b &gt; max) {
+                max = b;
+            }
+            if (c &gt; max) {
+                max = c;
+            }
+            return max;
+        }
+
+        document.querySelector(&quot;#go&quot;).addEventListener(&quot;click&quot;, function () {
+            const a = Number(document.querySelector(&quot;#a&quot;).value);
+            const b = Number(document.querySelector(&quot;#b&quot;).value);
+            const c = Number(document.querySelector(&quot;#c&quot;).value);
+            document.querySelector(&quot;#out&quot;).textContent = `The biggest is ${biggest(a, b, c)}`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 7.4</h2>
+        <div class="enunciat"><strong>Exercise 7.4. Calculator.</strong> Build the calculator below. One function per operation, all of them returning a value, plus one function that reads the inputs and shows the result. No repeated code.<img class="shot" src="../../../../../assets/unitats/programacio/web/javascript/07-functions/ex4.png" alt="Calculator with one function per operation"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/javascript/exercises/07-functions/ex4.html">ex4.html</a></p></div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        return "You cannot divide by zero";
+    }
+    return a / b;
+}
+
+// ONE function that reads the inputs and shows the result
+function calculate() {
+    const a = Number(document.querySelector("#firstNumber").value);
+    const b = Number(document.querySelector("#secondNumber").value);
+    const operation = document.querySelector("#operation").value;
+    let result;
+
+    if (operation === "+") {
+        result = add(a, b);
+    } else if (operation === "-") {
+        result = subtract(a, b);
+    } else if (operation === "*") {
+        result = multiply(a, b);
+    } else {
+        result = divide(a, b);
+    }
+
+    document.querySelector("#result").textContent = result;
+}
+
+document.querySelector("#calculateButton").addEventListener("click", calculate);</code></pre>
+        <p class="note">Fitxer de partida: <a href="../exercises/07-functions/ex4.html">exercises/07-functions/ex4.html</a> (el codi de dalt va en el <code>script.js</code> o dins del <code>&lt;script&gt;</code> d'este fitxer).</p>
+        <div class="note">Cada operació és una funció que <em>retorna</em> un valor; <code>calculate</code> només llig, crida a la funció que toca i mostra. No es repeteix cap càlcul.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Calculator&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Verdana&#x27;, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 320px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        input,
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 20px;
+            font-weight: 700;
+            min-height: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Calculator&lt;/h1&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;firstNumber&quot; placeholder=&quot;First number&quot;&gt;
+
+        &lt;select id=&quot;operation&quot;&gt;
+            &lt;option value=&quot;+&quot;&gt;+&lt;/option&gt;
+            &lt;option value=&quot;-&quot;&gt;-&lt;/option&gt;
+            &lt;option value=&quot;*&quot;&gt;*&lt;/option&gt;
+            &lt;option value=&quot;/&quot;&gt;/&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;input type=&quot;number&quot; id=&quot;secondNumber&quot; placeholder=&quot;Second number&quot;&gt;
+
+        &lt;button id=&quot;calculateButton&quot;&gt;Calculate&lt;/button&gt;
+
+        &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        return &quot;You cannot divide by zero&quot;;
+    }
+    return a / b;
+}
+
+// ONE function that reads the inputs and shows the result
+function calculate() {
+    const a = Number(document.querySelector(&quot;#firstNumber&quot;).value);
+    const b = Number(document.querySelector(&quot;#secondNumber&quot;).value);
+    const operation = document.querySelector(&quot;#operation&quot;).value;
+    let result;
+
+    if (operation === &quot;+&quot;) {
+        result = add(a, b);
+    } else if (operation === &quot;-&quot;) {
+        result = subtract(a, b);
+    } else if (operation === &quot;*&quot;) {
+        result = multiply(a, b);
+    } else {
+        result = divide(a, b);
+    }
+
+    document.querySelector(&quot;#result&quot;).textContent = result;
+}
+
+document.querySelector(&quot;#calculateButton&quot;).addEventListener(&quot;click&quot;, calculate);&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 7.5</h2>
+        <div class="enunciat"><strong>Exercise 7.5.</strong> Write <code>celsiusToFahrenheit(c)</code> and <code>fahrenheitToCelsius(f)</code>. One page with two converters, side by side. Check that one undoes the other.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Temperature converters&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;input type="number" id="c" placeholder="Celsius"&gt;
+        &lt;button id="toF"&gt;To Fahrenheit&lt;/button&gt;
+        &lt;span id="outF"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type="number" id="f" placeholder="Fahrenheit"&gt;
+        &lt;button id="toC"&gt;To Celsius&lt;/button&gt;
+        &lt;span id="outC"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+
+    &lt;script&gt;
+        function celsiusToFahrenheit(c) {
+            return c * 9 / 5 + 32;
+        }
+
+        function fahrenheitToCelsius(f) {
+            return (f - 32) * 5 / 9;
+        }
+
+        document.querySelector("#toF").addEventListener("click", function () {
+            const c = Number(document.querySelector("#c").value);
+            document.querySelector("#outF").textContent = celsiusToFahrenheit(c) + " F";
+        });
+
+        document.querySelector("#toC").addEventListener("click", function () {
+            const f = Number(document.querySelector("#f").value);
+            document.querySelector("#outC").textContent = fahrenheitToCelsius(f) + " C";
+        });
+
+        // one undoes the other: 25 -&gt; 77 -&gt; 25
+        console.log(fahrenheitToCelsius(celsiusToFahrenheit(25)));
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La línia final comprova que una funció desfà l'altra: <code>fahrenheitToCelsius(celsiusToFahrenheit(25))</code> torna 25.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Temperature converters&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;number&quot; id=&quot;c&quot; placeholder=&quot;Celsius&quot;&gt;
+        &lt;button id=&quot;toF&quot;&gt;To Fahrenheit&lt;/button&gt;
+        &lt;span id=&quot;outF&quot;&gt;&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;number&quot; id=&quot;f&quot; placeholder=&quot;Fahrenheit&quot;&gt;
+        &lt;button id=&quot;toC&quot;&gt;To Celsius&lt;/button&gt;
+        &lt;span id=&quot;outC&quot;&gt;&lt;/span&gt;
+    &lt;/p&gt;
+
+    &lt;script&gt;
+        function celsiusToFahrenheit(c) {
+            return c * 9 / 5 + 32;
+        }
+
+        function fahrenheitToCelsius(f) {
+            return (f - 32) * 5 / 9;
+        }
+
+        document.querySelector(&quot;#toF&quot;).addEventListener(&quot;click&quot;, function () {
+            const c = Number(document.querySelector(&quot;#c&quot;).value);
+            document.querySelector(&quot;#outF&quot;).textContent = celsiusToFahrenheit(c) + &quot; F&quot;;
+        });
+
+        document.querySelector(&quot;#toC&quot;).addEventListener(&quot;click&quot;, function () {
+            const f = Number(document.querySelector(&quot;#f&quot;).value);
+            document.querySelector(&quot;#outC&quot;).textContent = fahrenheitToCelsius(f) + &quot; C&quot;;
+        });
+
+        // one undoes the other: 25 -&gt; 77 -&gt; 25
+        console.log(fahrenheitToCelsius(celsiusToFahrenheit(25)));
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 7.6</h2>
+        <div class="enunciat"><strong>Exercise 7.6.</strong> Write a function <code>finalPrice(price, discount)</code> that returns the price with the discount applied. If no discount is given, it should be 0. (Look up "default parameter".)</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>function finalPrice(price, discount = 0) {
+    return price - (price * discount / 100);
+}
+
+console.log(finalPrice(100, 20));   // 80
+console.log(finalPrice(100));       // 100  (no discount: the default value 0 is used)</code></pre>
+        <div class="note">El valor per defecte (<code>discount = 0</code>) s'usa quan la funció es crida sense eixe paràmetre.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.6" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;function finalPrice(price, discount = 0) {
+    return price - (price * discount / 100);
+}
+
+console.log(finalPrice(100, 20));   // 80
+console.log(finalPrice(100));       // 100  (no discount: the default value 0 is used)&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 7.7</h2>
+        <div class="enunciat"><strong>Exercise 7.7.</strong> Write a function <code>countVowels(text)</code> that returns how many vowels a text has. The user types a sentence in an input and the page shows the count as they click the button.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Count vowels&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type="text" id="text" placeholder="Write a sentence"&gt;
+    &lt;button id="go"&gt;Count&lt;/button&gt;
+    &lt;p id="out"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function countVowels(text) {
+            const vowels = "aeiou";
+            let count = 0;
+
+            for (const letter of text.toLowerCase()) {
+                if (vowels.includes(letter)) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        document.querySelector("#go").addEventListener("click", function () {
+            const text = document.querySelector("#text").value;
+            document.querySelector("#out").textContent = `The text has ${countVowels(text)} vowels.`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Count vowels&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;input type=&quot;text&quot; id=&quot;text&quot; placeholder=&quot;Write a sentence&quot;&gt;
+    &lt;button id=&quot;go&quot;&gt;Count&lt;/button&gt;
+    &lt;p id=&quot;out&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function countVowels(text) {
+            const vowels = &quot;aeiou&quot;;
+            let count = 0;
+
+            for (const letter of text.toLowerCase()) {
+                if (vowels.includes(letter)) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        document.querySelector(&quot;#go&quot;).addEventListener(&quot;click&quot;, function () {
+            const text = document.querySelector(&quot;#text&quot;).value;
+            document.querySelector(&quot;#out&quot;).textContent = `The text has ${countVowels(text)} vowels.`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

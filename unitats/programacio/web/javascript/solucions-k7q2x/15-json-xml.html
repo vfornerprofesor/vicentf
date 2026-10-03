@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · JSON and XML</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · JSON and XML</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../15-json-xml.html">15-json-xml.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 15.1</a></li>
+        <li><a href="#e2">Exercici 15.2</a></li>
+        <li><a href="#e3">Exercici 15.3</a></li>
+        <li><a href="#e4">Exercici 15.4</a></li>
+        <li><a href="#e5">Exercici 15.5</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 15.1</h2>
+        <div class="enunciat"><strong>Exercise 15.1.</strong> Turn the products array of exercise 11.2 into JSON text, show the text in a <code>&lt;pre&gt;</code>, and turn it back into an array.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products as JSON&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products as JSON&lt;/h1&gt;
+    &lt;pre id="json"&gt;&lt;/pre&gt;
+    &lt;p id="back"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: "Keyboard", price: 25, stock: 10 },
+            { name: "Mouse", price: 15, stock: 0 },
+            { name: "Monitor", price: 120, stock: 3 },
+            { name: "Cable", price: 5, stock: 40 },
+            { name: "Webcam", price: 45, stock: 0 }
+        ];
+
+        const text = JSON.stringify(products, null, 2);          // array -&gt; JSON text
+        document.querySelector("#json").textContent = text;
+
+        const again = JSON.parse(text);                          // JSON text -&gt; array
+        document.querySelector("#back").textContent =
+            `Back to an array: ${again.length} products, the first one is ${again[0].name}.`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products as JSON&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products as JSON&lt;/h1&gt;
+    &lt;pre id=&quot;json&quot;&gt;&lt;/pre&gt;
+    &lt;p id=&quot;back&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: &quot;Keyboard&quot;, price: 25, stock: 10 },
+            { name: &quot;Mouse&quot;, price: 15, stock: 0 },
+            { name: &quot;Monitor&quot;, price: 120, stock: 3 },
+            { name: &quot;Cable&quot;, price: 5, stock: 40 },
+            { name: &quot;Webcam&quot;, price: 45, stock: 0 }
+        ];
+
+        const text = JSON.stringify(products, null, 2);          // array -&gt; JSON text
+        document.querySelector(&quot;#json&quot;).textContent = text;
+
+        const again = JSON.parse(text);                          // JSON text -&gt; array
+        document.querySelector(&quot;#back&quot;).textContent =
+            `Back to an array: ${again.length} products, the first one is ${again[0].name}.`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 15.2</h2>
+        <div class="enunciat"><strong>Exercise 15.2.</strong> Copy the content of <code>books.json</code> into a string. Parse it, change the price of one book, add a new book and show the result as indented JSON.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Books&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Books&lt;/h1&gt;
+    &lt;pre id="output"&gt;&lt;/pre&gt;
+
+    &lt;script&gt;
+        const text = `[
+            { "title": "Dune", "author": "Frank Herbert", "year": 1965, "price": 12.95 },
+            { "title": "Matilda", "author": "Roald Dahl", "year": 1988, "price": 8.5 },
+            { "title": "The Hobbit", "author": "J. R. R. Tolkien", "year": 1937, "price": 10.9 },
+            { "title": "Wonder", "author": "R. J. Palacio", "year": 2012, "price": 9.99 }
+        ]`;
+
+        const books = JSON.parse(text);
+
+        books[0].price = 14.5;                                   // change the price of one book
+        books.push({ title: "The Little Prince", author: "Antoine de Saint-Exupery", year: 1943, price: 7.95 });
+
+        document.querySelector("#output").textContent = JSON.stringify(books, null, 2);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Es copia el contingut de <code>books.json</code> en una cadena (entre accents greus), es converteix amb <code>JSON.parse</code>, es modifica l'array i es mostra amb <code>JSON.stringify(books, null, 2)</code> (el <code>2</code> és el sagnat).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Books&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Books&lt;/h1&gt;
+    &lt;pre id=&quot;output&quot;&gt;&lt;/pre&gt;
+
+    &lt;script&gt;
+        const text = `[
+            { &quot;title&quot;: &quot;Dune&quot;, &quot;author&quot;: &quot;Frank Herbert&quot;, &quot;year&quot;: 1965, &quot;price&quot;: 12.95 },
+            { &quot;title&quot;: &quot;Matilda&quot;, &quot;author&quot;: &quot;Roald Dahl&quot;, &quot;year&quot;: 1988, &quot;price&quot;: 8.5 },
+            { &quot;title&quot;: &quot;The Hobbit&quot;, &quot;author&quot;: &quot;J. R. R. Tolkien&quot;, &quot;year&quot;: 1937, &quot;price&quot;: 10.9 },
+            { &quot;title&quot;: &quot;Wonder&quot;, &quot;author&quot;: &quot;R. J. Palacio&quot;, &quot;year&quot;: 2012, &quot;price&quot;: 9.99 }
+        ]`;
+
+        const books = JSON.parse(text);
+
+        books[0].price = 14.5;                                   // change the price of one book
+        books.push({ title: &quot;The Little Prince&quot;, author: &quot;Antoine de Saint-Exupery&quot;, year: 1943, price: 7.95 });
+
+        document.querySelector(&quot;#output&quot;).textContent = JSON.stringify(books, null, 2);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 15.3</h2>
+        <div class="enunciat"><strong>Exercise 15.3.</strong> Remove one quote from the JSON of 15.2 and show a clear message instead of a broken page.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Broken JSON&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Broken JSON&lt;/h1&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        // one quote is missing after "Dune
+        const text = '[{ "title": "Dune, "author": "Frank Herbert" }]';
+
+        try {
+            const books = JSON.parse(text);
+            document.querySelector("#output").textContent = "Books: " + books.length;
+        } catch (error) {
+            document.querySelector("#output").textContent =
+                "The JSON has an error and it cannot be read (" + error.name + ").";
+            document.querySelector("#output").style.color = "red";
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><code>JSON.parse</code> llança un <code>SyntaxError</code> si el text no és JSON vàlid; amb <code>try/catch</code> es mostra un missatge clar en lloc d'una pàgina trencada.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Broken JSON&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Broken JSON&lt;/h1&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        // one quote is missing after &quot;Dune
+        const text = &#x27;[{ &quot;title&quot;: &quot;Dune, &quot;author&quot;: &quot;Frank Herbert&quot; }]&#x27;;
+
+        try {
+            const books = JSON.parse(text);
+            document.querySelector(&quot;#output&quot;).textContent = &quot;Books: &quot; + books.length;
+        } catch (error) {
+            document.querySelector(&quot;#output&quot;).textContent =
+                &quot;The JSON has an error and it cannot be read (&quot; + error.name + &quot;).&quot;;
+            document.querySelector(&quot;#output&quot;).style.color = &quot;red&quot;;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 15.4</h2>
+        <div class="enunciat"><strong>Exercise 15.4.</strong> Copy the content of <code>books.xml</code> into a string and show the list of titles using <code>DOMParser</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Titles from XML&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Titles&lt;/h1&gt;
+    &lt;ul id="titles"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const text = `&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        &lt;catalog&gt;
+            &lt;book&gt;&lt;title&gt;Dune&lt;/title&gt;&lt;author&gt;Frank Herbert&lt;/author&gt;&lt;year&gt;1965&lt;/year&gt;&lt;price&gt;12.95&lt;/price&gt;&lt;/book&gt;
+            &lt;book&gt;&lt;title&gt;Matilda&lt;/title&gt;&lt;author&gt;Roald Dahl&lt;/author&gt;&lt;year&gt;1988&lt;/year&gt;&lt;price&gt;8.5&lt;/price&gt;&lt;/book&gt;
+            &lt;book&gt;&lt;title&gt;The Hobbit&lt;/title&gt;&lt;author&gt;J. R. R. Tolkien&lt;/author&gt;&lt;year&gt;1937&lt;/year&gt;&lt;price&gt;10.9&lt;/price&gt;&lt;/book&gt;
+            &lt;book&gt;&lt;title&gt;Wonder&lt;/title&gt;&lt;author&gt;R. J. Palacio&lt;/author&gt;&lt;year&gt;2012&lt;/year&gt;&lt;price&gt;9.99&lt;/price&gt;&lt;/book&gt;
+        &lt;/catalog&gt;`;
+
+        const doc = new DOMParser().parseFromString(text, "application/xml");
+        const titles = doc.querySelectorAll("title");
+
+        let html = "";
+        for (const title of titles) {
+            html += `&lt;li&gt;${title.textContent}&lt;/li&gt;`;
+        }
+        document.querySelector("#titles").innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Titles from XML&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Titles&lt;/h1&gt;
+    &lt;ul id=&quot;titles&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const text = `&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        &lt;catalog&gt;
+            &lt;book&gt;&lt;title&gt;Dune&lt;/title&gt;&lt;author&gt;Frank Herbert&lt;/author&gt;&lt;year&gt;1965&lt;/year&gt;&lt;price&gt;12.95&lt;/price&gt;&lt;/book&gt;
+            &lt;book&gt;&lt;title&gt;Matilda&lt;/title&gt;&lt;author&gt;Roald Dahl&lt;/author&gt;&lt;year&gt;1988&lt;/year&gt;&lt;price&gt;8.5&lt;/price&gt;&lt;/book&gt;
+            &lt;book&gt;&lt;title&gt;The Hobbit&lt;/title&gt;&lt;author&gt;J. R. R. Tolkien&lt;/author&gt;&lt;year&gt;1937&lt;/year&gt;&lt;price&gt;10.9&lt;/price&gt;&lt;/book&gt;
+            &lt;book&gt;&lt;title&gt;Wonder&lt;/title&gt;&lt;author&gt;R. J. Palacio&lt;/author&gt;&lt;year&gt;2012&lt;/year&gt;&lt;price&gt;9.99&lt;/price&gt;&lt;/book&gt;
+        &lt;/catalog&gt;`;
+
+        const doc = new DOMParser().parseFromString(text, &quot;application/xml&quot;);
+        const titles = doc.querySelectorAll(&quot;title&quot;);
+
+        let html = &quot;&quot;;
+        for (const title of titles) {
+            html += `&lt;li&gt;${title.textContent}&lt;/li&gt;`;
+        }
+        document.querySelector(&quot;#titles&quot;).innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 15.5</h2>
+        <div class="enunciat"><strong>Exercise 15.5.</strong> Use the second parameter of <code>JSON.stringify</code> to keep only the title and the year.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Only title and year&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Only title and year&lt;/h1&gt;
+    &lt;pre id="output"&gt;&lt;/pre&gt;
+
+    &lt;script&gt;
+        const books = [
+            { "title": "Dune", "author": "Frank Herbert", "year": 1965, "price": 12.95 },
+            { "title": "Matilda", "author": "Roald Dahl", "year": 1988, "price": 8.5 },
+            { "title": "The Hobbit", "author": "J. R. R. Tolkien", "year": 1937, "price": 10.9 },
+            { "title": "Wonder", "author": "R. J. Palacio", "year": 2012, "price": 9.99 }
+        ];
+
+        // the second parameter is an array with the properties to keep
+        document.querySelector("#output").textContent = JSON.stringify(books, ["title", "year"], 2);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Only title and year&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Only title and year&lt;/h1&gt;
+    &lt;pre id=&quot;output&quot;&gt;&lt;/pre&gt;
+
+    &lt;script&gt;
+        const books = [
+            { &quot;title&quot;: &quot;Dune&quot;, &quot;author&quot;: &quot;Frank Herbert&quot;, &quot;year&quot;: 1965, &quot;price&quot;: 12.95 },
+            { &quot;title&quot;: &quot;Matilda&quot;, &quot;author&quot;: &quot;Roald Dahl&quot;, &quot;year&quot;: 1988, &quot;price&quot;: 8.5 },
+            { &quot;title&quot;: &quot;The Hobbit&quot;, &quot;author&quot;: &quot;J. R. R. Tolkien&quot;, &quot;year&quot;: 1937, &quot;price&quot;: 10.9 },
+            { &quot;title&quot;: &quot;Wonder&quot;, &quot;author&quot;: &quot;R. J. Palacio&quot;, &quot;year&quot;: 2012, &quot;price&quot;: 9.99 }
+        ];
+
+        // the second parameter is an array with the properties to keep
+        document.querySelector(&quot;#output&quot;).textContent = JSON.stringify(books, [&quot;title&quot;, &quot;year&quot;], 2);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

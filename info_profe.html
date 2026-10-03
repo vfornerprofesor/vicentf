@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Àrea del professor</title>
+    <style>
+        /* Pàgina independent: no carrega header/menu del lloc perquè
+           no aparega enllaçada enlloc. Per a afegir material, copia un
+           bloc <article class="caixa seccio"> o un <div class="item">. */
+        :root {
+            --primari: #6d5fb3;
+            --primari-fosc: #4f4391;
+            --fons: #f4f3fa;
+            --superficie: #ffffff;
+            --text: #23232f;
+            --text-suau: #61607a;
+            --vora: #dddbeb;
+            --error: #c0392b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background: var(--fons);
+        }
+
+        .capcalera {
+            padding: 1rem;
+            background: var(--primari);
+            color: #fff;
+        }
+
+        .capcalera h1 {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.4rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+
+        .caixa {
+            padding: 1.5rem;
+            background: var(--superficie);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+        }
+
+        /* Accés */
+        #acces {
+            max-width: 360px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        #acces input {
+            width: 100%;
+            margin: .75rem 0;
+            padding: .6rem;
+            border: 1px solid var(--vora);
+            border-radius: 8px;
+            font-size: 1.3rem;
+            letter-spacing: .3em;
+            text-align: center;
+        }
+
+        button {
+            padding: .6rem 1.4rem;
+            border: 0;
+            border-radius: 8px;
+            background: var(--primari);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--primari-fosc);
+        }
+
+        #missatge {
+            min-height: 1.5em;
+            margin: .75rem 0 0;
+            color: var(--error);
+        }
+
+        /* Contingut */
+        #contingut[hidden],
+        #acces[hidden] {
+            display: none;
+        }
+
+        .barra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .barra button {
+            padding: .4rem 1rem;
+            font-size: .9rem;
+        }
+
+        /* Categories (details niats) */
+        .botons {
+            display: flex;
+            gap: .5rem;
+        }
+
+        .cat {
+            margin-bottom: .6rem;
+            background: var(--superficie);
+            border: 1px solid var(--vora);
+            border-radius: 10px;
+        }
+
+        .cat > summary {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .6rem .9rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primari-fosc);
+            list-style: none;
+        }
+
+        .cat > summary::before {
+            content: "\25B8";
+            display: inline-block;
+            width: 1em;
+            transition: transform .15s ease;
+        }
+
+        .cat[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        .cat > summary:hover {
+            background: var(--fons);
+        }
+
+        .cat .num {
+            padding: 0 .55rem;
+            border-radius: 999px;
+            background: var(--primari);
+            color: #fff;
+            font-size: .75rem;
+            font-weight: normal;
+        }
+
+        .nivell1 > summary {
+            font-size: 1.15rem;
+        }
+
+        .dins {
+            padding: .2rem .9rem .8rem 1.4rem;
+        }
+
+        .dins > .cat {
+            margin-top: .5rem;
+            background: var(--fons);
+        }
+
+        .dins > .cat > .dins > .cat {
+            background: var(--superficie);
+        }
+
+        .item {
+            padding: .75rem 0;
+            border-top: 1px solid var(--vora);
+        }
+
+        .item a {
+            font-weight: 600;
+            color: var(--primari-fosc);
+        }
+
+        .item a + p,
+        .item p {
+            margin: .25rem 0 0;
+            color: var(--text-suau);
+            font-size: .95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="capcalera">
+        <h1>Àrea del professor</h1>
+    </header>
+
+    <main>
+        <form id="acces" class="caixa" autocomplete="off">
+            <label for="pass">Contrasenya</label>
+            <input type="password" id="pass" inputmode="numeric" required autofocus>
+            <button type="submit" id="entrar">Entrar</button>
+            <p id="missatge" role="alert"></p>
+        </form>
+
+        <div id="contingut" hidden>
+            <div class="barra">
+                <span>Material no enllaçat al lloc públic.</span>
+                <span class="botons">
+                    <button type="button" id="obri">Obrir tot</button>
+                    <button type="button" id="tanca">Tancar tot</button>
+                    <button type="button" id="eixir">Eixir</button>
+                </span>
+            </div>
+
+            <!-- Cada categoria és un <details>. Per a afegir un enllaç, copia un <div class="item">
+                 dins de la categoria que toque. Per a una categoria nova, copia un <details> sencer. -->
+            <details class="cat nivell1" open>
+                <summary>Unitats <span class="num">97</span></summary>
+                <div class="dins">
+                    <details class="cat nivell2" open>
+                        <summary>Programació <span class="num">92</span></summary>
+                        <div class="dins">
+                            <details class="cat nivell3" open>
+                                <summary>Web <span class="num">92</span></summary>
+                                <div class="dins">
+                                    <details class="cat nivell4" open>
+                                        <summary>HTML i CSS <span class="num">33</span></summary>
+                                        <div class="dins">
+                                            <details class="cat nivell4" open>
+                                                <summary>Projecte <span class="num">3</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/project/index.html" target="_blank" rel="noopener">Exemple de projecte de 10: My personal website</a>
+                                                        <p>Web de Laia Martí (alumna inventada de 1r SMX). Compleix el nivell Excel·lent de les 9 files de la rúbrica.</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/project/README.txt" target="_blank" rel="noopener">README.txt de l&#x27;exemple</a>
+                                                        <p>Llista de comprovació i notes de la presentació (flexbox o grid, orgull i millora).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/16-project/project.html" target="_blank" rel="noopener">Projecte de referència antic (login, registre i pàgines)</a>
+                                                        <p>El que es descarregava abans des de la lliçó 16.</p>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                            <details class="cat nivell4" open>
+                                                <summary>Exàmens <span class="num">7</span></summary>
+                                                <div class="dins">
+                                                    <details class="cat nivell4" open>
+                                                        <summary>Prova d&#x27;HTML (sessió 18) <span class="num">3</span></summary>
+                                                        <div class="dins">
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-html/solucio-k7q2x/correccio.html" target="_blank" rel="noopener">Guia de correcció i solució</a>
+                                                                <p>Errors, rúbrica per indicador (PH1-PH4) i fitxers resolts.</p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-html/enunciat.html" target="_blank" rel="noopener">Enunciat per a l&#x27;alumnat</a>
+                                                                <p>Va amb la carpeta exam-html/starter/. Té marcats els llocs de les captures.</p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-html/starter/errors.html" target="_blank" rel="noopener">Fitxer de partida: errors.html</a>
+                                                            </div>
+                                                        </div>
+                                                    </details>
+                                                    <details class="cat nivell4" open>
+                                                        <summary>Prova de CSS (sessió 39) <span class="num">4</span></summary>
+                                                        <div class="dins">
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-css/solucio-k7q2x/correccio.html" target="_blank" rel="noopener">Guia de correcció i solució</a>
+                                                                <p>Errors, rúbrica per indicador (PC1-PC3) i fitxers resolts.</p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-css/enunciat.html" target="_blank" rel="noopener">Enunciat per a l&#x27;alumnat</a>
+                                                                <p>Va amb la carpeta exam-css/starter/. Té marcats els llocs de les captures.</p>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-css/starter/exam.html" target="_blank" rel="noopener">Fitxer de partida: exam.html</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/html-css/exam-css/starter/errors.html" target="_blank" rel="noopener">Fitxer de partida: errors.html</a>
+                                                            </div>
+                                                        </div>
+                                                    </details>
+                                                </div>
+                                            </details>
+                                            <details class="cat nivell4">
+                                                <summary>Solucions dels exercicis de les lliçons <span class="num">15</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/01-first-page.html" target="_blank" rel="noopener">01 · Your first web page</a>
+                                                        <p>3 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/02-structure.html" target="_blank" rel="noopener">02 · The structure of an HTML page</a>
+                                                        <p>3 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/03-text.html" target="_blank" rel="noopener">03 · Text: headings and paragraphs</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/04-lists-links.html" target="_blank" rel="noopener">04 · Lists and links</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/05-images.html" target="_blank" rel="noopener">05 · Images and media</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/06-tables.html" target="_blank" rel="noopener">06 · Tables</a>
+                                                        <p>3 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/07-forms.html" target="_blank" rel="noopener">07 · Forms</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/08-semantic.html" target="_blank" rel="noopener">08 · Semantic HTML</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/09-css-basics.html" target="_blank" rel="noopener">09 · CSS basics</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/10-text-colors.html" target="_blank" rel="noopener">10 · Text, fonts and colours</a>
+                                                        <p>6 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/11-box-model.html" target="_blank" rel="noopener">11 · The box model</a>
+                                                        <p>8 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/12-flexbox.html" target="_blank" rel="noopener">12 · Flexbox</a>
+                                                        <p>8 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/13-grid.html" target="_blank" rel="noopener">13 · CSS Grid</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/14-responsive.html" target="_blank" rel="noopener">14 · Responsive design</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/solucions-k7q2x/15-variables.html" target="_blank" rel="noopener">15 · CSS variables and good practice</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                            <details class="cat nivell4">
+                                                <summary>Exercicis resolts <span class="num">8</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/07-forms/ex2_solved.html" target="_blank" rel="noopener">07 Formularis · ex2_solved</a>
+                                                        <p>Computerize - Sign Up</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/08-semantic/ex1_solved.html" target="_blank" rel="noopener">08 Semàntica · ex1_solved</a>
+                                                        <p>SMX</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/11-box-model/ex1_solved.html" target="_blank" rel="noopener">11 Model de caixa · ex1_solved</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/11-box-model/ex2_solved.html" target="_blank" rel="noopener">11 Model de caixa · ex2_solved</a>
+                                                        <p>Feliz Cumpleaños</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/12-flexbox/ex1_solved.html" target="_blank" rel="noopener">12 Flexbox · ex1_solved</a>
+                                                        <p>Menú del Bar</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/12-flexbox/ex2_solved.html" target="_blank" rel="noopener">12 Flexbox · ex2_solved</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/12-flexbox/ex3_solved.html" target="_blank" rel="noopener">12 Flexbox · ex3_solved</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/html-css/exercises/13-grid/ex1_solved.html" target="_blank" rel="noopener">13 Grid · ex1_solved</a>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </details>
+                                    <details class="cat nivell4">
+                                        <summary>CSS <span class="num">9</span></summary>
+                                        <div class="dins">
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/aniversari_solved.html" target="_blank" rel="noopener">Aniversari (resolt)</a>
+                                                <p>Feliz Cumpleaños</p>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/escacs_solved.html" target="_blank" rel="noopener">Escacs (resolt)</a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/grup_musica_solved.html" target="_blank" rel="noopener">Grup de música (resolt)</a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/inputs_solved.html" target="_blank" rel="noopener">Inputs (resolt)</a>
+                                                <p>Computerize - Sign Up</p>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/menu_solved.html" target="_blank" rel="noopener">Menú del bar (resolt)</a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/paisos_solved.html" target="_blank" rel="noopener">Països (resolt)</a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/pelicula_solved.html" target="_blank" rel="noopener">Pel·lícula (resolt)</a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/smx_solved.html" target="_blank" rel="noopener">SMX (resolt)</a>
+                                            </div>
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/css/media-queries-sample.html" target="_blank" rel="noopener">Exemple de media queries</a>
+                                            </div>
+                                        </div>
+                                    </details>
+                                    <details class="cat nivell4">
+                                        <summary>HTML <span class="num">1</span></summary>
+                                        <div class="dins">
+                                            <div class="item">
+                                                <a href="unitats/programacio/web/html/exercicis.html" target="_blank" rel="noopener">Exercicis</a>
+                                            </div>
+                                        </div>
+                                    </details>
+                                    <details class="cat nivell4">
+                                        <summary>JavaScript <span class="num">26</span></summary>
+                                        <div class="dins">
+                                            <details class="cat nivell4">
+                                                <summary>Solucions dels exercicis de les lliçons <span class="num">25</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/01-first-program.html" target="_blank" rel="noopener">01 · Your first program</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/02-variables.html" target="_blank" rel="noopener">02 · Variables and data types</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/03-operators.html" target="_blank" rel="noopener">03 · Operators</a>
+                                                        <p>6 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/04-dom.html" target="_blank" rel="noopener">04 · The DOM: changing the page</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/05-conditions.html" target="_blank" rel="noopener">05 · Making decisions</a>
+                                                        <p>8 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/06-loops.html" target="_blank" rel="noopener">06 · Loops</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/07-functions.html" target="_blank" rel="noopener">07 · Functions</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/08-debugging.html" target="_blank" rel="noopener">08 · Testing and debugging</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/09-errors.html" target="_blank" rel="noopener">09 · Errors and exceptions</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/10-arrays.html" target="_blank" rel="noopener">10 · Arrays</a>
+                                                        <p>10 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/11-objects.html" target="_blank" rel="noopener">11 · Objects</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/12-array-methods.html" target="_blank" rel="noopener">12 · Array methods: filter, map and reduce</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/13-regex.html" target="_blank" rel="noopener">13 · Regular expressions</a>
+                                                        <p>6 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/14-collections.html" target="_blank" rel="noopener">14 · Sets and maps</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/15-json-xml.html" target="_blank" rel="noopener">15 · JSON and XML</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/16-events.html" target="_blank" rel="noopener">16 · Events</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/17-elements.html" target="_blank" rel="noopener">17 · Creating and removing elements</a>
+                                                        <p>7 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/18-forms.html" target="_blank" rel="noopener">18 · Forms and validation</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/19-localstorage.html" target="_blank" rel="noopener">19 · Saving data with localStorage</a>
+                                                        <p>9 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/20-built-in-objects.html" target="_blank" rel="noopener">20 · Objects and built-in classes</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/21-static-libraries.html" target="_blank" rel="noopener">21 · Static methods, parameters and libraries</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/22-classes.html" target="_blank" rel="noopener">22 · Your own classes</a>
+                                                        <p>5 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/23-private-static.html" target="_blank" rel="noopener">23 · Private fields and static methods</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/24-inheritance.html" target="_blank" rel="noopener">24 · Inheritance</a>
+                                                        <p>4 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/solucions-k7q2x/25-modules.html" target="_blank" rel="noopener">25 · Modules</a>
+                                                        <p>3 exercicis resolts (enunciat, codi i resultat).</p>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                            <details class="cat nivell4">
+                                                <summary>Fitxers d&#x27;exercicis <span class="num">1</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/javascript/exercises/05-conditions/ex6.html" target="_blank" rel="noopener">05 Condicions · ex6 (Form validation)</a>
+                                                        <p>Fitxer que no està enllaçat en cap lliçó; la solució està en la pàgina 05 com a exercici extra.</p>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </details>
+                                    <details class="cat nivell4">
+                                        <summary>JavaScript antic (js i js_html) <span class="num">8</span></summary>
+                                        <div class="dins">
+                                            <details class="cat nivell4">
+                                                <summary>Unitat js_html <span class="num">7</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/index.html" target="_blank" rel="noopener">Índex de Javascript</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/01-js-basic.html" target="_blank" rel="noopener">01 · Conceptes bàsics de JS</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/02-variables.html" target="_blank" rel="noopener">02 · Variables</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/03-operadors.html" target="_blank" rel="noopener">03 · Operadors</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/04-dom.html" target="_blank" rel="noopener">04 · DOM</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/05-control-execucio.html" target="_blank" rel="noopener">05 · Control de l&#x27;execució</a>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js_html/06-repeticions.html" target="_blank" rel="noopener">06 · Repeticions</a>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                            <details class="cat nivell4">
+                                                <summary>Projecte final <span class="num">1</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/js/final-01-04.html" target="_blank" rel="noopener">Projecte final UF1</a>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </details>
+                                    <details class="cat nivell4">
+                                        <summary>PHP <span class="num">15</span></summary>
+                                        <div class="dins">
+                                            <details class="cat nivell4">
+                                                <summary>Exàmens <span class="num">1</span></summary>
+                                                <div class="dins">
+                                                    <div class="item">
+                                                        <a href="unitats/programacio/web/php/exams/exam01.html" target="_blank" rel="noopener">Exam 01</a>
+                                                    </div>
+                                                </div>
+                                            </details>
+                                            <details class="cat nivell4">
+                                                <summary>Exercicis <span class="num">14</span></summary>
+                                                <div class="dins">
+                                                    <details class="cat nivell4">
+                                                        <summary>02 Variables <span class="num">4</span></summary>
+                                                        <div class="dins">
+                                                            <div class="item">
+                                                                Exercici 1: <a href="unitats/programacio/web/php/exercises/02-variables/ex1.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/02-variables/ex1_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 2: <a href="unitats/programacio/web/php/exercises/02-variables/ex2.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/02-variables/ex2_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 3: <a href="unitats/programacio/web/php/exercises/02-variables/ex3.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/02-variables/ex3_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 4: <a href="unitats/programacio/web/php/exercises/02-variables/ex4.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/02-variables/ex4_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                        </div>
+                                                    </details>
+                                                    <details class="cat nivell4">
+                                                        <summary>03-04 Operadors i control <span class="num">9</span></summary>
+                                                        <div class="dins">
+                                                            <div class="item">
+                                                                Exercici 1: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex1.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex1_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 2: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex2.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex2_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 3: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex3.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex3_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 4: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex4.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex4_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 5: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex5.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex5_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 6: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex6.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex6_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                Exercici 7: <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex7.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/03-04-operators-control/ex7_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/php/exercises/03-04-operators-control/calendar.php" target="_blank" rel="noopener">calendar.php</a>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="unitats/programacio/web/php/exercises/03-04-operators-control/marvel.php" target="_blank" rel="noopener">marvel.php</a>
+                                                            </div>
+                                                        </div>
+                                                    </details>
+                                                    <details class="cat nivell4">
+                                                        <summary>05 Formularis <span class="num">1</span></summary>
+                                                        <div class="dins">
+                                                            <div class="item">
+                                                                Exercici 1: <a href="unitats/programacio/web/php/exercises/05-forms/ex1.php" target="_blank" rel="noopener">Enunciat</a> · <a href="unitats/programacio/web/php/exercises/05-forms/ex1_solved.php" target="_blank" rel="noopener">Solució</a>
+                                                            </div>
+                                                        </div>
+                                                    </details>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </details>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+                    <details class="cat nivell2">
+                        <summary>Ordinadors <span class="num">4</span></summary>
+                        <div class="dins">
+                            <details class="cat nivell3">
+                                <summary>Arquitectura d&#x27;equips <span class="num">1</span></summary>
+                                <div class="dins">
+                                    <div class="item">
+                                        <a href="unitats/ordinadors/arquitectura-equips/installar-so.html" target="_blank" rel="noopener">Activitat 4 · Instal·lar un sistema operatiu</a>
+                                    </div>
+                                </div>
+                            </details>
+                            <details class="cat nivell3">
+                                <summary>Arquitectura d&#x27;equips 2 <span class="num">2</span></summary>
+                                <div class="dins">
+                                    <div class="item">
+                                        <a href="unitats/ordinadors/arquitectura-equips2/mapa-mental-so.html" target="_blank" rel="noopener">Activitat 2 · Mapa mental · Sistemes operatius</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="unitats/ordinadors/arquitectura-equips2/pressupost.html" target="_blank" rel="noopener">Activitat 2 · Pressupost</a>
+                                    </div>
+                                </div>
+                            </details>
+                            <details class="cat nivell3">
+                                <summary>Xarxes <span class="num">1</span></summary>
+                                <div class="dins">
+                                    <div class="item">
+                                        <a href="unitats/ordinadors/xarxes/index.html" target="_blank" rel="noopener">Xarxes (índex)</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+                    <details class="cat nivell2">
+                        <summary>Intel·ligència artificial <span class="num">1</span></summary>
+                        <div class="dins">
+                            <div class="item">
+                                <a href="assets/unitats/inteligencia-artificial/inteligencia-artificial/IA%20-%20qu%C3%A8%20%C3%A9s.pdf" target="_blank" rel="noopener">IA · què és (PDF)</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+            <details class="cat nivell1">
+                <summary>Projectes <span class="num">2</span></summary>
+                <div class="dins">
+                    <div class="item">
+                        <a href="projectes/index.html" target="_blank" rel="noopener">Índex de projectes</a>
+                    </div>
+                    <details class="cat nivell2">
+                        <summary>Aplicació web <span class="num">1</span></summary>
+                        <div class="dins">
+                            <div class="item">
+                                <a href="projectes/aplicacio-web/codi.zip" target="_blank" rel="noopener">Codi de l&#x27;aplicació (zip)</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+            <details class="cat nivell1">
+                <summary>Pàgines personals i proves <span class="num">7</span></summary>
+                <div class="dins">
+                    <div class="item">
+                        <a href="cv.html" target="_blank" rel="noopener">Currículum</a>
+                    </div>
+                    <div class="item">
+                        <a href="cv_pdf.html" target="_blank" rel="noopener">Currículum (versió PDF)</a>
+                    </div>
+                    <div class="item">
+                        <a href="horari.html" target="_blank" rel="noopener">Horari</a>
+                    </div>
+                    <div class="item">
+                        <a href="maia/index.html" target="_blank" rel="noopener">Maia</a>
+                    </div>
+                    <div class="item">
+                        <a href="examples.html" target="_blank" rel="noopener">Exemples</a>
+                    </div>
+                    <div class="item">
+                        <a href="html-helper.html" target="_blank" rel="noopener">HTML helper</a>
+                    </div>
+                    <div class="item">
+                        <a href="components/test.html" target="_blank" rel="noopener">Prova de components</a>
+                    </div>
+                </div>
+            </details>
+            <details class="cat nivell1">
+                <summary>Notes de millora <span class="num">9</span></summary>
+                <div class="dins">
+                    <div class="item">
+                        <a href="notes.txt" target="_blank" rel="noopener">notes.txt (idees de projectes)</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_02_mejoras_componentes.md" target="_blank" rel="noopener">2026-09-02 · Millores de components</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_02_mejoras_proyecto_comic.md" target="_blank" rel="noopener">2026-09-02 · Millores del projecte còmic (md)</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_02_mejoras_proyecto_comic.txt" target="_blank" rel="noopener">2026-09-02 · Millores del projecte còmic (txt)</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_02_mejoras_unidades.md" target="_blank" rel="noopener">2026-09-02 · Millores d&#x27;unitats (md)</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_02_mejoras_unidades.txt" target="_blank" rel="noopener">2026-09-02 · Millores d&#x27;unitats (txt)</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_03_canvis_projecte_comic.txt" target="_blank" rel="noopener">2026-09-03 · Canvis del projecte còmic</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_03_mejoras_esteticas.md" target="_blank" rel="noopener">2026-09-03 · Millores estètiques</a>
+                    </div>
+                    <div class="item">
+                        <a href="mejoras/2026_09_07_unitats_html_css_js.md" target="_blank" rel="noopener">2026-09-07 · Unitats HTML, CSS i JS</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </main>
+
+    <script>
+        // Contrasenya per a entrar (canvia-la ací si vols)
+        var CONTRASENYA = '2684';
+        var CLAU_SESSIO = 'info_profe_ok';
+
+        function mostra() {
+            document.getElementById('acces').hidden = true;
+            document.getElementById('contingut').hidden = false;
+        }
+
+        document.getElementById('acces').addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            if (document.getElementById('pass').value === CONTRASENYA) {
+                try { sessionStorage.setItem(CLAU_SESSIO, '1'); } catch (e) { }
+                mostra();
+            } else {
+                document.getElementById('missatge').textContent = 'Contrasenya incorrecta.';
+            }
+        });
+
+        function canviaTot(obert) {
+            document.querySelectorAll('#contingut details').forEach(function (d) { d.open = obert; });
+        }
+        document.getElementById('obri').addEventListener('click', function () { canviaTot(true); });
+        document.getElementById('tanca').addEventListener('click', function () { canviaTot(false); });
+
+        document.getElementById('eixir').addEventListener('click', function () {
+            try { sessionStorage.removeItem(CLAU_SESSIO); } catch (e) { }
+            location.reload();
+        });
+
+        // Si ja s'ha entrat en esta pestanya, no torna a demanar la contrasenya
+        try {
+            if (sessionStorage.getItem(CLAU_SESSIO)) { mostra(); }
+        } catch (e) { }
+    </script>
+</body>
+
+</html>

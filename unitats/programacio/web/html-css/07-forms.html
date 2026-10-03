@@ -146,6 +146,7 @@
                         &lt;input type="email" id="mail" name="mail"&gt;
                         &lt;input type="password" id="pass" name="pass"&gt;
                         &lt;input type="number" id="age" name="age" min="16" max="99"&gt;
+                        &lt;input type="tel" id="phone" name="phone"&gt;
                         &lt;input type="date" id="birth" name="birth"&gt;
                         &lt;input type="color" id="fav" name="fav"&gt;
                         &lt;input type="range" id="volume" name="volume" min="0" max="10"&gt;
@@ -157,6 +158,7 @@
                         &lt;input type="email" id="mail" name="mail"&gt;
                         &lt;input type="password" id="pass" name="pass"&gt;
                         &lt;input type="number" id="age" name="age" min="16" max="99"&gt;
+                        &lt;input type="tel" id="phone" name="phone"&gt;
                         &lt;input type="date" id="birth" name="birth"&gt;
                         &lt;input type="color" id="fav" name="fav"&gt;
                         &lt;input type="range" id="volume" name="volume" min="0" max="10"&gt;
@@ -167,6 +169,11 @@
             <vf-text>
                 The <code>type</code> changes the keyboard on a phone, the little widget the browser shows, and the
                 automatic checks. <code>type="email"</code> will not accept a text without <code>@</code>.
+            </vf-text>
+            <vf-text>
+                <code>type="tel"</code> is for phone numbers: on a phone it opens the *number keyboard*. Be careful, it
+                does not check anything by itself (every country writes phones differently). To check the format, add a
+                <code>pattern</code>, as you will see in *Simple validation*.
             </vf-text>
             <vf-text>Reused screenshot: a form showing several input types.</vf-text>
             <vf-img src="assets/unitats/programacio/web/html-css/07-forms/ex2.png" alt="A form showing several HTML input types, one under the other, each with its label"></vf-img>
@@ -288,12 +295,34 @@
                 &lt;input type="email" id="mail" name="mail" required&gt;
                 &lt;input type="text" id="user" name="user" required minlength="3" maxlength="12"&gt;
                 &lt;input type="number" id="age" name="age" required min="16" max="99"&gt;
+                &lt;input type="tel" id="phone" name="phone" pattern="[0-9]{9}" placeholder="600123456"&gt;
             </vf-code>
             <vf-list>
                 <li><vf-text><code>required</code>: the form will not be sent if it is empty.</vf-text></li>
                 <li><vf-text><code>minlength</code> / <code>maxlength</code>: minimum and maximum number of characters.</vf-text></li>
                 <li><vf-text><code>min</code> / <code>max</code>: minimum and maximum value for numbers and dates.</vf-text></li>
+                <li><vf-text><code>pattern</code>: the exact shape the text must have.</vf-text></li>
             </vf-list>
+            <vf-text>
+                <code>pattern="[0-9]{9}"</code> reads like this: <code>[0-9]</code> means "one digit from 0 to 9" and
+                <code>{9}</code> means "exactly 9 times". So it only accepts 9 digits, like a Spanish phone number. Two
+                more patterns you can copy:
+            </vf-text>
+            <vf-list>
+                <li><vf-text><code>pattern="[0-9]{5}"</code>: a postcode (5 digits).</vf-text></li>
+                <li><vf-text><code>pattern="[0-9]{8}[A-Z]"</code>: a DNI (8 digits and a capital letter).</vf-text></li>
+            </vf-list>
+            <vf-code language="html">
+                &lt;form&gt;
+                    &lt;label for="tel1"&gt;Phone (9 digits)&lt;/label&gt;
+                    &lt;input type="tel" id="tel1" name="tel1" pattern="[0-9]{9}" required&gt;
+                    &lt;button type="submit"&gt;Send&lt;/button&gt;
+                &lt;/form&gt;
+            </vf-code>
+            <vf-text>
+                Copy it into a file of your own and try it: write "12345" and press *Send*, the browser will tell you
+                the format is wrong. With "600123456" it lets you send it.
+            </vf-text>
             <!-- [IMATGE: assets/unitats/programacio/web/html-css/07-validation.png — captura del missatge groc/roig que trau el navegador quan s'intenta enviar un formulari amb un camp required buit.] -->
         </vf-content>
 

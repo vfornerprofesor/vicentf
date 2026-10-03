@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Semantic HTML</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Semantic HTML</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../08-semantic.html">08-semantic.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 8.1</a></li>
+        <li><a href="#e2">Exercici 8.2</a></li>
+        <li><a href="#e3">Exercici 8.3</a></li>
+        <li><a href="#e4">Exercici 8.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 8.1</h2>
+        <div class="enunciat"><strong>Exercise 8.1.</strong> Take your mini-project 1 page and rewrite it with semantic tags: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">band.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Muse&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Muse&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#band"&gt;The band&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#albums"&gt;Albums&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#songs"&gt;Songs&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#club"&gt;Fan club&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section id="band"&gt;
+            &lt;h2&gt;The band&lt;/h2&gt;
+            &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
+            &lt;p&gt;The three members are Matt Bellamy, Chris Wolstenholme and Dominic Howard.&lt;/p&gt;
+            &lt;figure&gt;
+                &lt;img src="images/band.jpg" alt="The three members of Muse on a stage with blue lights" width="400"&gt;
+                &lt;figcaption&gt;Muse in concert.&lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/section&gt;
+
+        &lt;section id="albums"&gt;
+            &lt;h2&gt;Albums&lt;/h2&gt;
+            &lt;table&gt;
+                &lt;caption&gt;Some of their albums&lt;/caption&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Album&lt;/th&gt;
+                        &lt;th&gt;Year&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Origin of Symmetry&lt;/td&gt;
+                        &lt;td&gt;2001&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Absolution&lt;/td&gt;
+                        &lt;td&gt;2003&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;The Resistance&lt;/td&gt;
+                        &lt;td&gt;2009&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/section&gt;
+
+        &lt;section id="songs"&gt;
+            &lt;h2&gt;My favourite songs&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Hysteria&lt;/h3&gt;
+                &lt;p&gt;A bass line that everybody recognises.&lt;/p&gt;
+            &lt;/article&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Starlight&lt;/h3&gt;
+                &lt;p&gt;The song I listen to when I am tired.&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+
+        &lt;section id="club"&gt;
+            &lt;h2&gt;Join the fan club&lt;/h2&gt;
+            &lt;form action="#" method="post"&gt;
+                &lt;p&gt;
+                    &lt;label for="fname"&gt;Name&lt;/label&gt;
+                    &lt;input type="text" id="fname" name="fname" required&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;label for="fmail"&gt;Email&lt;/label&gt;
+                    &lt;input type="email" id="fmail" name="fmail" required&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;button type="submit"&gt;Join&lt;/button&gt;
+                &lt;/p&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Marc Ferrer. A fan page, not official.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els <code>div</code> genèrics s'han canviat per etiquetes amb significat: <code>header</code> (títol i menú), <code>nav</code>, <code>main</code> amb una <code>section</code> per cada bloc, <code>article</code> per a cada cançó (contingut independent) i <code>footer</code>. El resultat visual és el mateix.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 8.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Muse&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Muse&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;#band&quot;&gt;The band&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#albums&quot;&gt;Albums&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#songs&quot;&gt;Songs&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#club&quot;&gt;Fan club&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section id=&quot;band&quot;&gt;
+            &lt;h2&gt;The band&lt;/h2&gt;
+            &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
+            &lt;p&gt;The three members are Matt Bellamy, Chris Wolstenholme and Dominic Howard.&lt;/p&gt;
+            &lt;figure&gt;
+                &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;The three members of Muse on a stage with blue lights&quot; width=&quot;400&quot;&gt;
+                &lt;figcaption&gt;Muse in concert.&lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;albums&quot;&gt;
+            &lt;h2&gt;Albums&lt;/h2&gt;
+            &lt;table&gt;
+                &lt;caption&gt;Some of their albums&lt;/caption&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Album&lt;/th&gt;
+                        &lt;th&gt;Year&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Origin of Symmetry&lt;/td&gt;
+                        &lt;td&gt;2001&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Absolution&lt;/td&gt;
+                        &lt;td&gt;2003&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;The Resistance&lt;/td&gt;
+                        &lt;td&gt;2009&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;songs&quot;&gt;
+            &lt;h2&gt;My favourite songs&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Hysteria&lt;/h3&gt;
+                &lt;p&gt;A bass line that everybody recognises.&lt;/p&gt;
+            &lt;/article&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Starlight&lt;/h3&gt;
+                &lt;p&gt;The song I listen to when I am tired.&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;club&quot;&gt;
+            &lt;h2&gt;Join the fan club&lt;/h2&gt;
+            &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+                &lt;p&gt;
+                    &lt;label for=&quot;fname&quot;&gt;Name&lt;/label&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot; required&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;label for=&quot;fmail&quot;&gt;Email&lt;/label&gt;
+                    &lt;input type=&quot;email&quot; id=&quot;fmail&quot; name=&quot;fmail&quot; required&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;button type=&quot;submit&quot;&gt;Join&lt;/button&gt;
+                &lt;/p&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Marc Ferrer. A fan page, not official.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 8.2</h2>
+        <div class="enunciat"><strong>Exercise 8.2.</strong> Validate it. Fix every error until you get the green message.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> s'obri <a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org</a>, es puja el fitxer i es corregix cada error (un <code>alt</code> que falta, una etiqueta sense tancar, un <code>id</code> repetit...) fins que apareix el missatge verd "Document checking completed. No errors or warnings to show". La pàgina de l'exercici 8.1 passa el validador sense errors.</div>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 8.3</h2>
+        <div class="enunciat"><strong>Exercise 8.3.</strong> Open a real website (a newspaper, a shop) with DevTools and find its <code>header</code>, <code>nav</code>, <code>main</code> and <code>footer</code>. Write down which ones you found and which ones are missing.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> exemple en una web de notícies: <code>header</code> (logo i secció de capçalera), <code>nav</code> (menú de seccions), <code>main</code> (notícies) i <code>footer</code> (contacte i avís legal) trobats; <code>section</code> i <code>article</code> per a cada notícia també hi eren. Les que falten solen ser <code>aside</code>, perquè moltes webs usen <code>div</code> amb classes. Es compta amb DevTools (Elements) i buscant les etiquetes. Anota't els resultats de la web concreta que trie cada alumne.</div>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 8.4</h2>
+        <div class="enunciat"><strong>Exercise 8.4.</strong> Here is a complete page. Rewrite it using semantic tags: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>. The result must look the same.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/08-semantic/ex1.png" alt="A complete non-semantic page about the SMX modules"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/08-semantic/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/08-semantic/ex1_solved.html">exercises/08-semantic/ex1_solved.html</a></p>
+    </section>
+
+</body>
+
+</html>

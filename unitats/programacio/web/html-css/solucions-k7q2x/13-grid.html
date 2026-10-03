@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · CSS Grid</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · CSS Grid</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../13-grid.html">13-grid.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 13.1</a></li>
+        <li><a href="#e2">Exercici 13.2</a></li>
+        <li><a href="#e3">Exercici 13.3</a></li>
+        <li><a href="#e4">Exercici 13.4</a></li>
+        <li><a href="#e5">Exercici 13.3</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 13.1</h2>
+        <div class="enunciat"><strong>Exercise 13.1.</strong> Build a grid of 9 coloured squares, 3 columns, with a 10px gap.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Grid&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="grid"&gt;
+        &lt;div class="square"&gt;1&lt;/div&gt;
+        &lt;div class="square"&gt;2&lt;/div&gt;
+        &lt;div class="square"&gt;3&lt;/div&gt;
+        &lt;div class="square"&gt;4&lt;/div&gt;
+        &lt;div class="square"&gt;5&lt;/div&gt;
+        &lt;div class="square"&gt;6&lt;/div&gt;
+        &lt;div class="square"&gt;7&lt;/div&gt;
+        &lt;div class="square"&gt;8&lt;/div&gt;
+        &lt;div class="square"&gt;9&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.square {
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Grid&lt;/title&gt;
+    &lt;style&gt;.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.square {
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;grid&quot;&gt;
+        &lt;div class=&quot;square&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;3&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;4&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;5&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;6&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;7&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;8&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;9&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 13.2</h2>
+        <div class="enunciat"><strong>Exercise 13.2.</strong> Turn it into <code>repeat(auto-fit, minmax(150px, 1fr))</code> and resize the window. Describe what happens.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Grid&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="grid"&gt;
+        &lt;div class="square"&gt;1&lt;/div&gt;
+        &lt;div class="square"&gt;2&lt;/div&gt;
+        &lt;div class="square"&gt;3&lt;/div&gt;
+        &lt;div class="square"&gt;4&lt;/div&gt;
+        &lt;div class="square"&gt;5&lt;/div&gt;
+        &lt;div class="square"&gt;6&lt;/div&gt;
+        &lt;div class="square"&gt;7&lt;/div&gt;
+        &lt;div class="square"&gt;8&lt;/div&gt;
+        &lt;div class="square"&gt;9&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.square {
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}</code></pre>
+        <div class="note"><strong>Resposta:</strong> el nombre de columnes depén de l'ample de la finestra: caben tantes columnes de com a mínim 150 px com siga possible, i les columnes s'estiren (<code>1fr</code>) per a omplir la fila. En una finestra ampla hi ha moltes columnes i, en estrényer-la, es van passant quadrats a la fila següent sense necessitat de cap <code>media query</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Grid&lt;/title&gt;
+    &lt;style&gt;.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.square {
+    height: 100px;
+    background-color: #2d5a85;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;grid&quot;&gt;
+        &lt;div class=&quot;square&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;3&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;4&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;5&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;6&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;7&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;8&lt;/div&gt;
+        &lt;div class=&quot;square&quot;&gt;9&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 13.3</h2>
+        <div class="enunciat"><strong>Exercise 13.3.</strong> Build an image gallery of 8 photos, all the same height, with <code>object-fit: cover</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Gallery&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="gallery"&gt;
+        &lt;img src="images/p1.jpg" alt="Photo 1 of the trip"&gt;
+        &lt;img src="images/p2.jpg" alt="Photo 2 of the trip"&gt;
+        &lt;img src="images/p3.jpg" alt="Photo 3 of the trip"&gt;
+        &lt;img src="images/p4.jpg" alt="Photo 4 of the trip"&gt;
+        &lt;img src="images/p5.jpg" alt="Photo 5 of the trip"&gt;
+        &lt;img src="images/p6.jpg" alt="Photo 6 of the trip"&gt;
+        &lt;img src="images/p7.jpg" alt="Photo 7 of the trip"&gt;
+        &lt;img src="images/p8.jpg" alt="Photo 8 of the trip"&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}</code></pre>
+        <div class="note">Totes les fotos tenen la mateixa altura (180 px); <code>object-fit: cover</code> retalla la imatge en lloc de deformar-la.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Gallery&lt;/title&gt;
+    &lt;style&gt;.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;gallery&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 1 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 2 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 3 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 4 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 5 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 6 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 7 of the trip&quot;&gt;
+        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 8 of the trip&quot;&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 13.4</h2>
+        <div class="enunciat"><strong>Exercise 13.4.</strong> Build a two-column layout: content on the left, sidebar of 280px on the right.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Layout&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="layout"&gt;
+        &lt;main&gt;
+            &lt;h1&gt;Content&lt;/h1&gt;
+            &lt;p&gt;The main content goes in the first column. It uses all the space that is left.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h2&gt;Sidebar&lt;/h2&gt;
+            &lt;p&gt;Always 280 pixels wide.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 20px;
+}
+
+aside {
+    padding: 16px;
+    background-color: #eeeeee;
+}</code></pre>
+        <div class="note">La primera columna (<code>1fr</code>) agafa tot l'espai que queda; la segona és fixa de 280 px.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 13.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Layout&lt;/title&gt;
+    &lt;style&gt;.layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 20px;
+}
+
+aside {
+    padding: 16px;
+    background-color: #eeeeee;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;layout&quot;&gt;
+        &lt;main&gt;
+            &lt;h1&gt;Content&lt;/h1&gt;
+            &lt;p&gt;The main content goes in the first column. It uses all the space that is left.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h2&gt;Sidebar&lt;/h2&gt;
+            &lt;p&gt;Always 280 pixels wide.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 13.3</h2>
+        <div class="enunciat"><strong>Exercise 13.3. Chessboard.</strong> Draw an 8 × 8 chessboard with CSS Grid. All 64 squares are in the HTML; you write the CSS.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/13-grid/ex1.png" alt="An 8 by 8 chessboard laid out with CSS Grid"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/13-grid/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/13-grid/ex1_solved.html">exercises/13-grid/ex1_solved.html</a></p>
+    </section>
+
+</body>
+
+</html>

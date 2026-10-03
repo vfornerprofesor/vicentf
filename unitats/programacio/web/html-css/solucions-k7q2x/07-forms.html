@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Forms</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Forms</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../07-forms.html">07-forms.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 7.1</a></li>
+        <li><a href="#e2">Exercici 7.2</a></li>
+        <li><a href="#e3">Exercici 7.3</a></li>
+        <li><a href="#e4">Exercici 7.4</a></li>
+        <li><a href="#e5">Mini-projecte 1</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 7.1</h2>
+        <div class="enunciat"><strong>Exercise 7.1.</strong> Build a sign-up form with: name, email, password, date of birth and a Send button. Every field must have its label.</div>
+        <h3>Solució</h3>
+        <span class="fname">form.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Sign up&lt;/h1&gt;
+    &lt;form action="#" method="post"&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name" name="name" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="mail"&gt;Email&lt;/label&gt;
+            &lt;input type="email" id="mail" name="mail" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="pass"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="birth"&gt;Date of birth&lt;/label&gt;
+            &lt;input type="date" id="birth" name="birth" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;button type="submit"&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Sign up&lt;/h1&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;mail&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;mail&quot; name=&quot;mail&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;pass&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; required minlength=&quot;8&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;birth&quot;&gt;Date of birth&lt;/label&gt;
+            &lt;input type=&quot;date&quot; id=&quot;birth&quot; name=&quot;birth&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 7.2</h2>
+        <div class="enunciat"><strong>Exercise 7.2.</strong> Add to that form: a radio group to choose a T-shirt size (S, M, L), a checkbox "I accept the rules" that is <code>required</code>, and a <code>select</code> with three countries.</div>
+        <h3>Solució</h3>
+        <span class="fname">form.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Sign up&lt;/h1&gt;
+    &lt;form action="#" method="post"&gt;
+        &lt;p&gt;
+            &lt;label for="name"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="name" name="name" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="mail"&gt;Email&lt;/label&gt;
+            &lt;input type="email" id="mail" name="mail" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="pass"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="birth"&gt;Date of birth&lt;/label&gt;
+            &lt;input type="date" id="birth" name="birth" required&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;T-shirt size:&lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type="radio" id="size-s" name="size" value="s"&gt;
+            &lt;label for="size-s"&gt;S&lt;/label&gt;
+            &lt;input type="radio" id="size-m" name="size" value="m"&gt;
+            &lt;label for="size-m"&gt;M&lt;/label&gt;
+            &lt;input type="radio" id="size-l" name="size" value="l"&gt;
+            &lt;label for="size-l"&gt;L&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for="country"&gt;Country&lt;/label&gt;
+            &lt;select id="country" name="country"&gt;
+                &lt;option value=""&gt;-- choose one --&lt;/option&gt;
+                &lt;option value="es"&gt;Spain&lt;/option&gt;
+                &lt;option value="fr"&gt;France&lt;/option&gt;
+                &lt;option value="it"&gt;Italy&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;input type="checkbox" id="rules" name="rules" required&gt;
+            &lt;label for="rules"&gt;I accept the rules&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;button type="submit"&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els tres <code>radio</code> comparteixen el mateix <code>name="size"</code> perquè només se'n puga triar un; cadascun té un <code>id</code> diferent. El <code>checkbox</code> porta <code>required</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Sign up&lt;/h1&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;mail&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;mail&quot; name=&quot;mail&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;pass&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; required minlength=&quot;8&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;birth&quot;&gt;Date of birth&lt;/label&gt;
+            &lt;input type=&quot;date&quot; id=&quot;birth&quot; name=&quot;birth&quot; required&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;T-shirt size:&lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;size-s&quot; name=&quot;size&quot; value=&quot;s&quot;&gt;
+            &lt;label for=&quot;size-s&quot;&gt;S&lt;/label&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;size-m&quot; name=&quot;size&quot; value=&quot;m&quot;&gt;
+            &lt;label for=&quot;size-m&quot;&gt;M&lt;/label&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;size-l&quot; name=&quot;size&quot; value=&quot;l&quot;&gt;
+            &lt;label for=&quot;size-l&quot;&gt;L&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for=&quot;country&quot;&gt;Country&lt;/label&gt;
+            &lt;select id=&quot;country&quot; name=&quot;country&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;-- choose one --&lt;/option&gt;
+                &lt;option value=&quot;es&quot;&gt;Spain&lt;/option&gt;
+                &lt;option value=&quot;fr&quot;&gt;France&lt;/option&gt;
+                &lt;option value=&quot;it&quot;&gt;Italy&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;rules&quot; name=&quot;rules&quot; required&gt;
+            &lt;label for=&quot;rules&quot;&gt;I accept the rules&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 7.3</h2>
+        <div class="enunciat"><strong>Exercise 7.3.</strong> Add a <code>textarea</code> for a comment and put all the personal fields inside a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">form.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Sign up&lt;/h1&gt;
+    &lt;form action="#" method="post"&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;Personal data&lt;/legend&gt;
+            &lt;p&gt;
+                &lt;label for="name"&gt;Name&lt;/label&gt;
+                &lt;input type="text" id="name" name="name" required&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;label for="mail"&gt;Email&lt;/label&gt;
+                &lt;input type="email" id="mail" name="mail" required&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;label for="pass"&gt;Password&lt;/label&gt;
+                &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;label for="birth"&gt;Date of birth&lt;/label&gt;
+                &lt;input type="date" id="birth" name="birth" required&gt;
+            &lt;/p&gt;
+        &lt;/fieldset&gt;
+
+        &lt;p&gt;T-shirt size:&lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type="radio" id="size-s" name="size" value="s"&gt;
+            &lt;label for="size-s"&gt;S&lt;/label&gt;
+            &lt;input type="radio" id="size-m" name="size" value="m"&gt;
+            &lt;label for="size-m"&gt;M&lt;/label&gt;
+            &lt;input type="radio" id="size-l" name="size" value="l"&gt;
+            &lt;label for="size-l"&gt;L&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for="country"&gt;Country&lt;/label&gt;
+            &lt;select id="country" name="country"&gt;
+                &lt;option value=""&gt;-- choose one --&lt;/option&gt;
+                &lt;option value="es"&gt;Spain&lt;/option&gt;
+                &lt;option value="fr"&gt;France&lt;/option&gt;
+                &lt;option value="it"&gt;Italy&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for="comment"&gt;Comment&lt;/label&gt;&lt;br&gt;
+            &lt;textarea id="comment" name="comment" rows="4" cols="40"&gt;&lt;/textarea&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;input type="checkbox" id="rules" name="rules" required&gt;
+            &lt;label for="rules"&gt;I accept the rules&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;button type="submit"&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 7.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Sign up&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Sign up&lt;/h1&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;Personal data&lt;/legend&gt;
+            &lt;p&gt;
+                &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;label for=&quot;mail&quot;&gt;Email&lt;/label&gt;
+                &lt;input type=&quot;email&quot; id=&quot;mail&quot; name=&quot;mail&quot; required&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;label for=&quot;pass&quot;&gt;Password&lt;/label&gt;
+                &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; required minlength=&quot;8&quot;&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;label for=&quot;birth&quot;&gt;Date of birth&lt;/label&gt;
+                &lt;input type=&quot;date&quot; id=&quot;birth&quot; name=&quot;birth&quot; required&gt;
+            &lt;/p&gt;
+        &lt;/fieldset&gt;
+
+        &lt;p&gt;T-shirt size:&lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;size-s&quot; name=&quot;size&quot; value=&quot;s&quot;&gt;
+            &lt;label for=&quot;size-s&quot;&gt;S&lt;/label&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;size-m&quot; name=&quot;size&quot; value=&quot;m&quot;&gt;
+            &lt;label for=&quot;size-m&quot;&gt;M&lt;/label&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;size-l&quot; name=&quot;size&quot; value=&quot;l&quot;&gt;
+            &lt;label for=&quot;size-l&quot;&gt;L&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for=&quot;country&quot;&gt;Country&lt;/label&gt;
+            &lt;select id=&quot;country&quot; name=&quot;country&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;-- choose one --&lt;/option&gt;
+                &lt;option value=&quot;es&quot;&gt;Spain&lt;/option&gt;
+                &lt;option value=&quot;fr&quot;&gt;France&lt;/option&gt;
+                &lt;option value=&quot;it&quot;&gt;Italy&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for=&quot;comment&quot;&gt;Comment&lt;/label&gt;&lt;br&gt;
+            &lt;textarea id=&quot;comment&quot; name=&quot;comment&quot; rows=&quot;4&quot; cols=&quot;40&quot;&gt;&lt;/textarea&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;rules&quot; name=&quot;rules&quot; required&gt;
+            &lt;label for=&quot;rules&quot;&gt;I accept the rules&lt;/label&gt;
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 7.4</h2>
+        <div class="enunciat"><strong>Exercise 7.4.</strong> Build the sign-up form of the picture. You only write the HTML here; you will style it in lesson 10.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/07-forms/ex2.png" alt="A sign-up form with several styled input types"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/07-forms/ex2.html">ex2.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/07-forms/ex2_solved.html">exercises/07-forms/ex2_solved.html</a></p>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Mini-projecte 1</h2>
+        <div class="enunciat"><strong>Mini-project 1: My band page (HTML only)</strong><p>
+                Build a page about a band, a football team, a game or a series you like. No CSS yet.
+            </p>
+            <p>It must have:</p>
+            <ul>
+                <li>a correct skeleton with a <code>&lt;title&gt;</code> and <code>charset</code>;</li>
+                <li>one <code>h1</code> and at least three <code>h2</code> sections;</li>
+                <li>at least five paragraphs;</li>
+                <li>one ordered list and one unordered list;</li>
+                <li>at least three images with real <code>alt</code> texts, in an <code>images</code> folder;</li>
+                <li>a table with at least three rows (for example, the albums and their year);</li>
+                <li>a "join the fan club" form with at least five fields and their labels;</li>
+                <li>links to two other websites, opening in a new tab.</li>
+            </ul>
+            <p>
+                Deliver a zip file with the folder of the project. The page must open with no errors.
+            </p></div>
+        <h3>Solució</h3>
+        <span class="fname">band.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Muse&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Muse&lt;/h1&gt;
+
+    &lt;h2&gt;The band&lt;/h2&gt;
+    &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
+    &lt;p&gt;The three members are Matt Bellamy, Chris Wolstenholme and Dominic Howard.&lt;/p&gt;
+    &lt;img src="images/band.jpg" alt="The three members of Muse on a stage with blue lights" width="400"&gt;
+    &lt;p&gt;Their music mixes rock, electronic sounds and classical piano.&lt;/p&gt;
+
+    &lt;h2&gt;Albums&lt;/h2&gt;
+    &lt;table&gt;
+        &lt;caption&gt;Some of their albums&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Album&lt;/th&gt;
+                &lt;th&gt;Year&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Origin of Symmetry&lt;/td&gt;
+                &lt;td&gt;2001&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Absolution&lt;/td&gt;
+                &lt;td&gt;2003&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Black Holes and Revelations&lt;/td&gt;
+                &lt;td&gt;2006&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;The Resistance&lt;/td&gt;
+                &lt;td&gt;2009&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;img src="images/album.jpg" alt="Cover of the album Absolution, a dark sky with a red light" width="250"&gt;
+
+    &lt;h2&gt;My favourite songs&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Hysteria&lt;/li&gt;
+        &lt;li&gt;Starlight&lt;/li&gt;
+        &lt;li&gt;Time Is Running Out&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;p&gt;And other things I like about them:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;The guitar solos.&lt;/li&gt;
+        &lt;li&gt;The live shows.&lt;/li&gt;
+        &lt;li&gt;The videos with robots.&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;img src="images/concert.jpg" alt="A crowd with their hands up in a big concert" width="400"&gt;
+
+    &lt;h2&gt;Join the fan club&lt;/h2&gt;
+    &lt;form action="#" method="post"&gt;
+        &lt;p&gt;
+            &lt;label for="fname"&gt;Name&lt;/label&gt;
+            &lt;input type="text" id="fname" name="fname" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="fmail"&gt;Email&lt;/label&gt;
+            &lt;input type="email" id="fmail" name="fmail" required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="fbirth"&gt;Date of birth&lt;/label&gt;
+            &lt;input type="date" id="fbirth" name="fbirth"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="fsong"&gt;Favourite song&lt;/label&gt;
+            &lt;select id="fsong" name="fsong"&gt;
+                &lt;option value="hysteria"&gt;Hysteria&lt;/option&gt;
+                &lt;option value="starlight"&gt;Starlight&lt;/option&gt;
+                &lt;option value="time"&gt;Time Is Running Out&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="fmsg"&gt;Why do you like them?&lt;/label&gt;&lt;br&gt;
+            &lt;textarea id="fmsg" name="fmsg" rows="3" cols="40"&gt;&lt;/textarea&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;button type="submit"&gt;Join&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;h2&gt;Links&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="https://www.muse.mu" target="_blank" rel="noopener"&gt;Official website&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Muse_(band)" target="_blank" rel="noopener"&gt;Muse on Wikipedia&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Complix tots els requisits: esquelet amb <code>title</code> i <code>charset</code>, un <code>h1</code> i quatre <code>h2</code>, més de cinc paràgrafs, una llista ordenada i una altra sense ordenar, tres imatges amb <code>alt</code> real en <code>images/</code>, taula amb quatre files, formulari amb cinc camps i dos enllaços en pestanya nova.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Mini-projecte 1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Muse&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Muse&lt;/h1&gt;
+
+    &lt;h2&gt;The band&lt;/h2&gt;
+    &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
+    &lt;p&gt;The three members are Matt Bellamy, Chris Wolstenholme and Dominic Howard.&lt;/p&gt;
+    &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;The three members of Muse on a stage with blue lights&quot; width=&quot;400&quot;&gt;
+    &lt;p&gt;Their music mixes rock, electronic sounds and classical piano.&lt;/p&gt;
+
+    &lt;h2&gt;Albums&lt;/h2&gt;
+    &lt;table&gt;
+        &lt;caption&gt;Some of their albums&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Album&lt;/th&gt;
+                &lt;th&gt;Year&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Origin of Symmetry&lt;/td&gt;
+                &lt;td&gt;2001&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Absolution&lt;/td&gt;
+                &lt;td&gt;2003&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Black Holes and Revelations&lt;/td&gt;
+                &lt;td&gt;2006&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;The Resistance&lt;/td&gt;
+                &lt;td&gt;2009&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Cover of the album Absolution, a dark sky with a red light&quot; width=&quot;250&quot;&gt;
+
+    &lt;h2&gt;My favourite songs&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Hysteria&lt;/li&gt;
+        &lt;li&gt;Starlight&lt;/li&gt;
+        &lt;li&gt;Time Is Running Out&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;p&gt;And other things I like about them:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;The guitar solos.&lt;/li&gt;
+        &lt;li&gt;The live shows.&lt;/li&gt;
+        &lt;li&gt;The videos with robots.&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;A crowd with their hands up in a big concert&quot; width=&quot;400&quot;&gt;
+
+    &lt;h2&gt;Join the fan club&lt;/h2&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;fname&quot;&gt;Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;fmail&quot;&gt;Email&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;fmail&quot; name=&quot;fmail&quot; required&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;fbirth&quot;&gt;Date of birth&lt;/label&gt;
+            &lt;input type=&quot;date&quot; id=&quot;fbirth&quot; name=&quot;fbirth&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;fsong&quot;&gt;Favourite song&lt;/label&gt;
+            &lt;select id=&quot;fsong&quot; name=&quot;fsong&quot;&gt;
+                &lt;option value=&quot;hysteria&quot;&gt;Hysteria&lt;/option&gt;
+                &lt;option value=&quot;starlight&quot;&gt;Starlight&lt;/option&gt;
+                &lt;option value=&quot;time&quot;&gt;Time Is Running Out&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;fmsg&quot;&gt;Why do you like them?&lt;/label&gt;&lt;br&gt;
+            &lt;textarea id=&quot;fmsg&quot; name=&quot;fmsg&quot; rows=&quot;3&quot; cols=&quot;40&quot;&gt;&lt;/textarea&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;button type=&quot;submit&quot;&gt;Join&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;h2&gt;Links&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;https://www.muse.mu&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Official website&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Muse_(band)&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Muse on Wikipedia&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · CSS basics</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · CSS basics</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../09-css-basics.html">09-css-basics.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 9.1</a></li>
+        <li><a href="#e2">Exercici 9.2</a></li>
+        <li><a href="#e3">Exercici 9.3</a></li>
+        <li><a href="#e4">Exercici 9.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 9.1</h2>
+        <div class="enunciat"><strong>Exercise 9.1.</strong> Create <code>css/style.css</code>, link it from your page, and make all the paragraphs dark grey.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href="index.html"&gt;Home&lt;/a&gt;
+        &lt;a href="music.html"&gt;Music&lt;/a&gt;
+        &lt;a href="films.html"&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>p {
+    color: #333333;
+}</code></pre>
+        <div class="note">El fitxer es guarda com <code>css/style.css</code> i s'enllaça des del <code>head</code> amb <code>&lt;link rel="stylesheet" href="css/style.css"&gt;</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;style&gt;p {
+    color: #333333;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 9.2</h2>
+        <div class="enunciat"><strong>Exercise 9.2.</strong> Give the class <code>highlight</code> to two paragraphs, and make that class yellow background and bold text.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href="index.html"&gt;Home&lt;/a&gt;
+        &lt;a href="music.html"&gt;Music&lt;/a&gt;
+        &lt;a href="films.html"&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p class="highlight"&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p class="highlight"&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>p {
+    color: #333333;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;style&gt;p {
+    color: #333333;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p class=&quot;highlight&quot;&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p class=&quot;highlight&quot;&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 9.3</h2>
+        <div class="enunciat"><strong>Exercise 9.3.</strong> Give an <code>id</code> to your main title and make it a different colour from the other headings.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href="index.html"&gt;Home&lt;/a&gt;
+        &lt;a href="music.html"&gt;Music&lt;/a&gt;
+        &lt;a href="films.html"&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p class="highlight"&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p class="highlight"&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>p {
+    color: #333333;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+#title {
+    color: crimson;
+}</code></pre>
+        <div class="note">Un <code>id</code> només es pot usar una vegada per pàgina. El selector d'<code>id</code> porta <code>#</code>; el de classe, <code>.</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;style&gt;p {
+    color: #333333;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+#title {
+    color: crimson;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p class=&quot;highlight&quot;&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p class=&quot;highlight&quot;&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 9.4</h2>
+        <div class="enunciat"><strong>Exercise 9.4.</strong> Write a rule that only affects the links that are inside the <code>nav</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href="index.html"&gt;Home&lt;/a&gt;
+        &lt;a href="music.html"&gt;Music&lt;/a&gt;
+        &lt;a href="films.html"&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p class="highlight"&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p class="highlight"&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>nav {
+    background-color: #222222;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}</code></pre>
+        <div class="note">El selector descendent <code>nav a</code> només afecta els enllaços que estan dins de <code>nav</code>. (El fons fosc i el padding no formen part de l'exercici: només es veu bé l'enllaç blanc.)</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+    &lt;style&gt;nav {
+    background-color: #222222;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+    &lt;p class=&quot;highlight&quot;&gt;My favourite film is Interstellar.&lt;/p&gt;
+    &lt;p class=&quot;highlight&quot;&gt;I have seen it four times.&lt;/p&gt;
+    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

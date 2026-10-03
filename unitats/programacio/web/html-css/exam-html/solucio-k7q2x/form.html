@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+</head>
+
+<body>
+    <h1>Registration form</h1>
+
+    <form action="#" method="post">
+        <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </p>
+        <p>
+            <label for="birth">Date of birth</label>
+            <input type="date" id="birth" name="birth">
+        </p>
+        <p>
+            <label for="course">Course</label>
+            <select id="course" name="course" required>
+                <option value="">-- choose one --</option>
+                <option value="smx">SMX</option>
+                <option value="asir">ASIR</option>
+                <option value="daw">DAW</option>
+            </select>
+        </p>
+        <button type="submit">Send</button>
+    </form>
+</body>
+
+</html>

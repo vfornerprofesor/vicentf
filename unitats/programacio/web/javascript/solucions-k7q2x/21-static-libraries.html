@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Static methods, parameters and libraries</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Static methods, parameters and libraries</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../21-static-libraries.html">21-static-libraries.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 21.1</a></li>
+        <li><a href="#e2">Exercici 21.2</a></li>
+        <li><a href="#e3">Exercici 21.3</a></li>
+        <li><a href="#e4">Exercici 21.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 21.1</h2>
+        <div class="enunciat"><strong>Exercise 21.1.</strong> Classify these 10 calls into "method of an object" and "static": <code>Math.max(3, 8)</code>, <code>"hi".includes("h")</code>, <code>JSON.stringify(a)</code>, <code>list.indexOf(3)</code>, <code>Number.parseFloat("2.5")</code>, <code>today.getFullYear()</code>, <code>Math.random()</code>, <code>text.split(",")</code>, <code>Array.isArray(list)</code>, <code>(5).toFixed(1)</code>.</div>
+        <h3>Solució</h3>
+        <div class="note"><strong>Resposta:</strong> <table><thead><tr><th>Crida</th><th>Tipus</th></tr></thead><tbody><tr><td><code>Math.max(3, 8)</code></td><td>static</td></tr><tr><td><code>"hi".includes("h")</code></td><td>mètode d'objecte</td></tr><tr><td><code>JSON.stringify(a)</code></td><td>static</td></tr><tr><td><code>list.indexOf(3)</code></td><td>mètode d'objecte</td></tr><tr><td><code>Number.parseFloat("2.5")</code></td><td>static</td></tr><tr><td><code>today.getFullYear()</code></td><td>mètode d'objecte</td></tr><tr><td><code>Math.random()</code></td><td>static</td></tr><tr><td><code>text.split(",")</code></td><td>mètode d'objecte</td></tr><tr><td><code>Array.isArray(list)</code></td><td>static</td></tr><tr><td><code>(5).toFixed(1)</code></td><td>mètode d'objecte</td></tr></tbody></table>Regla: si abans del punt hi ha el <em>nom d'una classe</em> (<code>Math</code>, <code>JSON</code>, <code>Number</code>, <code>Array</code>) és static; si hi ha una <em>variable o un valor</em>, és mètode d'un objecte.</div>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 21.2</h2>
+        <div class="enunciat"><strong>Exercise 21.2.</strong> Add Day.js to a page. Show today's date as <code>DD/MM/YYYY</code> and the days until your birthday with <code>diff</code>. Compare it with your result of exercise 20.2.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Day.js&lt;/title&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Day.js&lt;/h1&gt;
+    &lt;p id="today"&gt;&lt;/p&gt;
+    &lt;p id="birthday"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector("#today").textContent = "Today: " + dayjs().format("DD/MM/YYYY");
+
+        // days until 24 June (this year or next)
+        let birthday = dayjs(dayjs().year() + "-06-24");
+        if (birthday.isBefore(dayjs(), "day")) {
+            birthday = birthday.add(1, "year");
+        }
+        document.querySelector("#birthday").textContent =
+            "Days until my birthday: " + birthday.diff(dayjs().startOf("day"), "day");
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La biblioteca s'afig <em>abans</em> del teu script (si no, "dayjs is not defined"). El resultat de <code>diff</code> coincidix amb el de l'exercici 20.2.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 21.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Day.js&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Day.js&lt;/h1&gt;
+    &lt;p id=&quot;today&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;birthday&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#today&quot;).textContent = &quot;Today: &quot; + dayjs().format(&quot;DD/MM/YYYY&quot;);
+
+        // days until 24 June (this year or next)
+        let birthday = dayjs(dayjs().year() + &quot;-06-24&quot;);
+        if (birthday.isBefore(dayjs(), &quot;day&quot;)) {
+            birthday = birthday.add(1, &quot;year&quot;);
+        }
+        document.querySelector(&quot;#birthday&quot;).textContent =
+            &quot;Days until my birthday: &quot; + birthday.diff(dayjs().startOf(&quot;day&quot;), &quot;day&quot;);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 21.3</h2>
+        <div class="enunciat"><strong>Exercise 21.3.</strong> A price field: show the price in euros and in dollars with the options of <code>toLocaleString</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Price&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Price&lt;/h1&gt;
+    &lt;input type="number" id="price" placeholder="Price in euros" step="0.01"&gt;
+    &lt;button id="show"&gt;Show&lt;/button&gt;
+    &lt;p id="euros"&gt;&lt;/p&gt;
+    &lt;p id="dollars"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const RATE = 1.08;    // dollars for one euro (an example value)
+
+        document.querySelector("#show").addEventListener("click", function () {
+            const price = Number(document.querySelector("#price").value);
+
+            document.querySelector("#euros").textContent =
+                price.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
+
+            document.querySelector("#dollars").textContent =
+                (price * RATE).toLocaleString("en-US", { style: "currency", currency: "USD" });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Amb <code>style: "currency"</code> i <code>currency</code>, <code>toLocaleString</code> posa el símbol i el format de cada llengua (12,50 € en espanyol, $13.50 en anglés). La taxa de canvi és un valor d'exemple.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 21.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Price&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Price&lt;/h1&gt;
+    &lt;input type=&quot;number&quot; id=&quot;price&quot; placeholder=&quot;Price in euros&quot; step=&quot;0.01&quot;&gt;
+    &lt;button id=&quot;show&quot;&gt;Show&lt;/button&gt;
+    &lt;p id=&quot;euros&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;dollars&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const RATE = 1.08;    // dollars for one euro (an example value)
+
+        document.querySelector(&quot;#show&quot;).addEventListener(&quot;click&quot;, function () {
+            const price = Number(document.querySelector(&quot;#price&quot;).value);
+
+            document.querySelector(&quot;#euros&quot;).textContent =
+                price.toLocaleString(&quot;es-ES&quot;, { style: &quot;currency&quot;, currency: &quot;EUR&quot; });
+
+            document.querySelector(&quot;#dollars&quot;).textContent =
+                (price * RATE).toLocaleString(&quot;en-US&quot;, { style: &quot;currency&quot;, currency: &quot;USD&quot; });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 21.4</h2>
+        <div class="enunciat"><strong>Exercise 21.4.</strong> Find the library canvas-confetti, add it, and launch confetti when a button is clicked.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Confetti&lt;/title&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.browser.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Party time&lt;/h1&gt;
+    &lt;button id="party"&gt;Launch confetti&lt;/button&gt;
+
+    &lt;script&gt;
+        document.querySelector("#party").addEventListener("click", function () {
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.7 } });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Biblioteca: <a href="https://github.com/catdad/canvas-confetti" target="_blank" rel="noopener">canvas-confetti</a>. S'afig amb un <code>&lt;script&gt;</code> i, en fer clic, es crida a la funció global <code>confetti()</code>. Necessita connexió a internet.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 21.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Confetti&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.browser.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Party time&lt;/h1&gt;
+    &lt;button id=&quot;party&quot;&gt;Launch confetti&lt;/button&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#party&quot;).addEventListener(&quot;click&quot;, function () {
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.7 } });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

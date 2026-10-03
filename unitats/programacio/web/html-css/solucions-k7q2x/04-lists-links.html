@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Lists and links</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Lists and links</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../04-lists-links.html">04-lists-links.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 4.1</a></li>
+        <li><a href="#e2">Exercici 4.2</a></li>
+        <li><a href="#e3">Exercici 4.3</a></li>
+        <li><a href="#e4">Exercici 4.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 4.1</h2>
+        <div class="enunciat"><strong>Exercise 4.1.</strong> Make an ordered list with the five steps of your morning routine.</div>
+        <h3>Solució</h3>
+        <span class="fname">routine.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My morning routine&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My morning routine&lt;/h1&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Wake up at 7:00.&lt;/li&gt;
+        &lt;li&gt;Have a shower.&lt;/li&gt;
+        &lt;li&gt;Eat breakfast.&lt;/li&gt;
+        &lt;li&gt;Brush my teeth.&lt;/li&gt;
+        &lt;li&gt;Take the bus to school.&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My morning routine&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My morning routine&lt;/h1&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Wake up at 7:00.&lt;/li&gt;
+        &lt;li&gt;Have a shower.&lt;/li&gt;
+        &lt;li&gt;Eat breakfast.&lt;/li&gt;
+        &lt;li&gt;Brush my teeth.&lt;/li&gt;
+        &lt;li&gt;Take the bus to school.&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 4.2</h2>
+        <div class="enunciat"><strong>Exercise 4.2.</strong> Make a nested list with three music styles you like, and two bands inside each style.</div>
+        <h3>Solució</h3>
+        <span class="fname">music.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My music&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My music&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Rock
+            &lt;ul&gt;
+                &lt;li&gt;Muse&lt;/li&gt;
+                &lt;li&gt;Queen&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Pop
+            &lt;ul&gt;
+                &lt;li&gt;Dua Lipa&lt;/li&gt;
+                &lt;li&gt;Coldplay&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Rap
+            &lt;ul&gt;
+                &lt;li&gt;Rels B&lt;/li&gt;
+                &lt;li&gt;Kase.O&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My music&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My music&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Rock
+            &lt;ul&gt;
+                &lt;li&gt;Muse&lt;/li&gt;
+                &lt;li&gt;Queen&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Pop
+            &lt;ul&gt;
+                &lt;li&gt;Dua Lipa&lt;/li&gt;
+                &lt;li&gt;Coldplay&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Rap
+            &lt;ul&gt;
+                &lt;li&gt;Rels B&lt;/li&gt;
+                &lt;li&gt;Kase.O&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 4.3</h2>
+        <div class="enunciat"><strong>Exercise 4.3.</strong> Save the page of exercise 4.2 as <code>music.html</code>. In the same folder, create another file, <code>films.html</code>, with a nested list of two kinds of films and two films inside each kind. Add a link from <code>music.html</code> to <code>films.html</code>. Then add links to the Wikipedia pages of three bands (in <code>music.html</code>) and of three films (in <code>films.html</code>). The Wikipedia links must open in a new tab.</div>
+        <h3>Solució</h3>
+        <span class="fname">music.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My music&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My music&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Rock
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Muse_(band)" target="_blank" rel="noopener"&gt;Muse&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Queen_(band)" target="_blank" rel="noopener"&gt;Queen&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Pop
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Coldplay" target="_blank" rel="noopener"&gt;Coldplay&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;Dua Lipa&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;&lt;a href="films.html"&gt;See my films&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">films.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My films&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My films&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Science fiction
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Interstellar_(film)" target="_blank" rel="noopener"&gt;Interstellar&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Blade_Runner_2049" target="_blank" rel="noopener"&gt;Blade Runner 2049&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Comedy
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Superbad" target="_blank" rel="noopener"&gt;Superbad&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;Airplane!&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;&lt;a href="music.html"&gt;See my music&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els enllaços a Wikipedia porten <code>target="_blank"</code> (i <code>rel="noopener"</code>) per a obrir-se en una pestanya nova. Cal posar els tres de cada pàgina; ací se'n mostren dos o tres per brevetat.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My music&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My music&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Rock
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Muse_(band)&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Muse&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Queen_(band)&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Queen&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Pop
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Coldplay&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Coldplay&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;Dua Lipa&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;&lt;a href=&quot;films.html&quot;&gt;See my films&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 4.4</h2>
+        <div class="enunciat"><strong>Exercise 4.4.</strong> In the same folder, create a home page, <code>index.html</code>, with a title with your name and two links: one to <code>music.html</code> and one to <code>films.html</code>. From <code>music.html</code> and <code>films.html</code> you must be able to go back to the home page.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Marc Ferrer&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+    &lt;p&gt;&lt;a href="music.html"&gt;My music&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="films.html"&gt;My films&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">music.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My music&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My music&lt;/h1&gt;
+    &lt;p&gt;&lt;a href="index.html"&gt;Back to home&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">films.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My films&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My films&lt;/h1&gt;
+    &lt;p&gt;&lt;a href="index.html"&gt;Back to home&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els tres fitxers estan en la mateixa carpeta, per això els enllaços són només el nom del fitxer.</div>
+    </section>
+
+</body>
+
+</html>

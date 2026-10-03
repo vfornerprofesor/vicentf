@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Objects</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Objects</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../11-objects.html">11-objects.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 11.1</a></li>
+        <li><a href="#e2">Exercici 11.2</a></li>
+        <li><a href="#e3">Exercici 11.3</a></li>
+        <li><a href="#e4">Exercici 11.4</a></li>
+        <li><a href="#e5">Exercici 11.5</a></li>
+        <li><a href="#e6">Exercici 11.6</a></li>
+        <li><a href="#e7">Exercici 11.7</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 11.1</h2>
+        <div class="enunciat"><strong>Exercise 11.1.</strong> Create an object for your favourite video game: title, studio, year, rating, and whether it is multiplayer. Draw it in the page as a card.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My favourite game&lt;/title&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 2px solid #1f3c5a;
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My favourite game&lt;/h1&gt;
+    &lt;div id="card"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const game = {
+            title: "Minecraft",
+            studio: "Mojang",
+            year: 2011,
+            rating: 9.5,
+            multiplayer: true
+        };
+
+        document.querySelector("#card").innerHTML = `
+            &lt;div class="card"&gt;
+                &lt;h2&gt;${game.title}&lt;/h2&gt;
+                &lt;p&gt;Studio: ${game.studio}&lt;/p&gt;
+                &lt;p&gt;Year: ${game.year}&lt;/p&gt;
+                &lt;p&gt;Rating: ${game.rating}&lt;/p&gt;
+                &lt;p&gt;Multiplayer: ${game.multiplayer ? "yes" : "no"}&lt;/p&gt;
+            &lt;/div&gt;`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My favourite game&lt;/title&gt;
+    &lt;style&gt;
+        .card {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 2px solid #1f3c5a;
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My favourite game&lt;/h1&gt;
+    &lt;div id=&quot;card&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const game = {
+            title: &quot;Minecraft&quot;,
+            studio: &quot;Mojang&quot;,
+            year: 2011,
+            rating: 9.5,
+            multiplayer: true
+        };
+
+        document.querySelector(&quot;#card&quot;).innerHTML = `
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h2&gt;${game.title}&lt;/h2&gt;
+                &lt;p&gt;Studio: ${game.studio}&lt;/p&gt;
+                &lt;p&gt;Year: ${game.year}&lt;/p&gt;
+                &lt;p&gt;Rating: ${game.rating}&lt;/p&gt;
+                &lt;p&gt;Multiplayer: ${game.multiplayer ? &quot;yes&quot; : &quot;no&quot;}&lt;/p&gt;
+            &lt;/div&gt;`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 11.2</h2>
+        <div class="enunciat"><strong>Exercise 11.2.</strong> Create an array with 5 products (name, price, stock) and draw one card for each one.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: "Keyboard", price: 25, stock: 10 },
+            { name: "Mouse", price: 15, stock: 0 },
+            { name: "Monitor", price: 120, stock: 3 },
+            { name: "Cable", price: 5, stock: 40 },
+            { name: "Webcam", price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = "";
+            for (const p of list) {
+                html += `&lt;div class="card"&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector("#cards").innerHTML = html;
+        }
+
+        draw(products);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: &quot;Keyboard&quot;, price: 25, stock: 10 },
+            { name: &quot;Mouse&quot;, price: 15, stock: 0 },
+            { name: &quot;Monitor&quot;, price: 120, stock: 3 },
+            { name: &quot;Cable&quot;, price: 5, stock: 40 },
+            { name: &quot;Webcam&quot;, price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = &quot;&quot;;
+            for (const p of list) {
+                html += `&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector(&quot;#cards&quot;).innerHTML = html;
+        }
+
+        draw(products);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 11.3</h2>
+        <div class="enunciat"><strong>Exercise 11.3.</strong> Under the cards, show the total value of the stock (price × stock of each product, added up).</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+    &lt;p id="total"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: "Keyboard", price: 25, stock: 10 },
+            { name: "Mouse", price: 15, stock: 0 },
+            { name: "Monitor", price: 120, stock: 3 },
+            { name: "Cable", price: 5, stock: 40 },
+            { name: "Webcam", price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = "";
+            for (const p of list) {
+                html += `&lt;div class="card"&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector("#cards").innerHTML = html;
+        }
+
+        draw(products);
+
+        let total = 0;
+        for (const p of products) {
+            total += p.price * p.stock;
+        }
+        document.querySelector("#total").textContent = `Total stock value: ${total} euros`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Càlcul: 25·10 + 15·0 + 120·3 + 5·40 + 45·0 = 250 + 0 + 360 + 200 + 0 = <strong>810</strong>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+    &lt;p id=&quot;total&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: &quot;Keyboard&quot;, price: 25, stock: 10 },
+            { name: &quot;Mouse&quot;, price: 15, stock: 0 },
+            { name: &quot;Monitor&quot;, price: 120, stock: 3 },
+            { name: &quot;Cable&quot;, price: 5, stock: 40 },
+            { name: &quot;Webcam&quot;, price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = &quot;&quot;;
+            for (const p of list) {
+                html += `&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector(&quot;#cards&quot;).innerHTML = html;
+        }
+
+        draw(products);
+
+        let total = 0;
+        for (const p of products) {
+            total += p.price * p.stock;
+        }
+        document.querySelector(&quot;#total&quot;).textContent = `Total stock value: ${total} euros`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 11.4</h2>
+        <div class="enunciat"><strong>Exercise 11.4.</strong> Write a function <code>cheapest(products)</code> that returns the object of the cheapest product. Highlight that card with a coloured border.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: "Keyboard", price: 25, stock: 10 },
+            { name: "Mouse", price: 15, stock: 0 },
+            { name: "Monitor", price: 120, stock: 3 },
+            { name: "Cable", price: 5, stock: 40 },
+            { name: "Webcam", price: 45, stock: 0 }
+        ];
+
+        function cheapest(list) {
+            let best = list[0];
+            for (const p of list) {
+                if (p.price &lt; best.price) {
+                    best = p;
+                }
+            }
+            return best;
+        }
+
+        function draw(list) {
+            const cheap = cheapest(list);
+            let html = "";
+            for (const p of list) {
+                const extra = p === cheap ? " cheapest" : "";
+                html += `&lt;div class="card${extra}"&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector("#cards").innerHTML = html;
+        }
+
+        draw(products);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: &quot;Keyboard&quot;, price: 25, stock: 10 },
+            { name: &quot;Mouse&quot;, price: 15, stock: 0 },
+            { name: &quot;Monitor&quot;, price: 120, stock: 3 },
+            { name: &quot;Cable&quot;, price: 5, stock: 40 },
+            { name: &quot;Webcam&quot;, price: 45, stock: 0 }
+        ];
+
+        function cheapest(list) {
+            let best = list[0];
+            for (const p of list) {
+                if (p.price &lt; best.price) {
+                    best = p;
+                }
+            }
+            return best;
+        }
+
+        function draw(list) {
+            const cheap = cheapest(list);
+            let html = &quot;&quot;;
+            for (const p of list) {
+                const extra = p === cheap ? &quot; cheapest&quot; : &quot;&quot;;
+                html += `&lt;div class=&quot;card${extra}&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector(&quot;#cards&quot;).innerHTML = html;
+        }
+
+        draw(products);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 11.5</h2>
+        <div class="enunciat"><strong>Exercise 11.5.</strong> Write a function <code>outOfStock(products)</code> that returns an array with the names of the products with stock 0. Show them in a red list.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+    &lt;h2&gt;Out of stock&lt;/h2&gt;
+    &lt;ul id="out"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: "Keyboard", price: 25, stock: 10 },
+            { name: "Mouse", price: 15, stock: 0 },
+            { name: "Monitor", price: 120, stock: 3 },
+            { name: "Cable", price: 5, stock: 40 },
+            { name: "Webcam", price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = "";
+            for (const p of list) {
+                html += `&lt;div class="card"&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector("#cards").innerHTML = html;
+        }
+
+        function outOfStock(list) {
+            const names = [];
+            for (const p of list) {
+                if (p.stock === 0) {
+                    names.push(p.name);
+                }
+            }
+            return names;
+        }
+
+        draw(products);
+
+        let html = "";
+        for (const name of outOfStock(products)) {
+            html += `&lt;li style="color: red"&gt;${name}&lt;/li&gt;`;
+        }
+        document.querySelector("#out").innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+    &lt;h2&gt;Out of stock&lt;/h2&gt;
+    &lt;ul id=&quot;out&quot;&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: &quot;Keyboard&quot;, price: 25, stock: 10 },
+            { name: &quot;Mouse&quot;, price: 15, stock: 0 },
+            { name: &quot;Monitor&quot;, price: 120, stock: 3 },
+            { name: &quot;Cable&quot;, price: 5, stock: 40 },
+            { name: &quot;Webcam&quot;, price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = &quot;&quot;;
+            for (const p of list) {
+                html += `&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector(&quot;#cards&quot;).innerHTML = html;
+        }
+
+        function outOfStock(list) {
+            const names = [];
+            for (const p of list) {
+                if (p.stock === 0) {
+                    names.push(p.name);
+                }
+            }
+            return names;
+        }
+
+        draw(products);
+
+        let html = &quot;&quot;;
+        for (const name of outOfStock(products)) {
+            html += `&lt;li style=&quot;color: red&quot;&gt;${name}&lt;/li&gt;`;
+        }
+        document.querySelector(&quot;#out&quot;).innerHTML = html;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 11.6</h2>
+        <div class="enunciat"><strong>Exercise 11.6.</strong> Two buttons: "Sort by price" and "Sort by name". Each one sorts the array and redraws the cards.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;button id="sortByPrice"&gt;Sort by price&lt;/button&gt;
+    &lt;button id="sortByName"&gt;Sort by name&lt;/button&gt;
+    &lt;div id="cards"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: "Keyboard", price: 25, stock: 10 },
+            { name: "Mouse", price: 15, stock: 0 },
+            { name: "Monitor", price: 120, stock: 3 },
+            { name: "Cable", price: 5, stock: 40 },
+            { name: "Webcam", price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = "";
+            for (const p of list) {
+                html += `&lt;div class="card"&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector("#cards").innerHTML = html;
+        }
+
+        document.querySelector("#sortByPrice").addEventListener("click", function () {
+            products.sort((a, b) =&gt; a.price - b.price);
+            draw(products);
+        });
+
+        document.querySelector("#sortByName").addEventListener("click", function () {
+            products.sort((a, b) =&gt; a.name.localeCompare(b.name));
+            draw(products);
+        });
+
+        draw(products);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><code>sort</code> modifica l'array original; per ordenar números cal una funció de comparació (<code>a.price - b.price</code>) i per al text, <code>localeCompare</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Products&lt;/title&gt;
+    &lt;style&gt;
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card {
+            width: 160px;
+            padding: 12px;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .cheapest {
+            border-color: gold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;button id=&quot;sortByPrice&quot;&gt;Sort by price&lt;/button&gt;
+    &lt;button id=&quot;sortByName&quot;&gt;Sort by name&lt;/button&gt;
+    &lt;div id=&quot;cards&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        const products = [
+            { name: &quot;Keyboard&quot;, price: 25, stock: 10 },
+            { name: &quot;Mouse&quot;, price: 15, stock: 0 },
+            { name: &quot;Monitor&quot;, price: 120, stock: 3 },
+            { name: &quot;Cable&quot;, price: 5, stock: 40 },
+            { name: &quot;Webcam&quot;, price: 45, stock: 0 }
+        ];
+
+        function draw(list) {
+            let html = &quot;&quot;;
+            for (const p of list) {
+                html += `&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;p&gt;${p.price} euros&lt;/p&gt;&lt;p&gt;Stock: ${p.stock}&lt;/p&gt;&lt;/div&gt;`;
+            }
+            document.querySelector(&quot;#cards&quot;).innerHTML = html;
+        }
+
+        document.querySelector(&quot;#sortByPrice&quot;).addEventListener(&quot;click&quot;, function () {
+            products.sort((a, b) =&gt; a.price - b.price);
+            draw(products);
+        });
+
+        document.querySelector(&quot;#sortByName&quot;).addEventListener(&quot;click&quot;, function () {
+            products.sort((a, b) =&gt; a.name.localeCompare(b.name));
+            draw(products);
+        });
+
+        draw(products);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 11.7</h2>
+        <div class="enunciat"><strong>Exercise 11.7. Class list.</strong> An array of students with name, age and mark. Draw a table. Marks under 5 appear in red. Under the table: average, best student and how many passed.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Class list&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Class list&lt;/h1&gt;
+    &lt;table id="table"&gt;&lt;/table&gt;
+    &lt;p id="summary"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const students = [
+            { name: "Pere", age: 16, mark: 7 },
+            { name: "Joan", age: 17, mark: 4 },
+            { name: "Marta", age: 16, mark: 9 },
+            { name: "Nuria", age: 18, mark: 3.5 },
+            { name: "Laia", age: 16, mark: 6 }
+        ];
+
+        let html = "&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;th&gt;Mark&lt;/th&gt;&lt;/tr&gt;";
+        let sum = 0;
+        let passed = 0;
+        let best = students[0];
+
+        for (const s of students) {
+            const colour = s.mark &lt; 5 ? "red" : "black";
+            html += `&lt;tr&gt;&lt;td&gt;${s.name}&lt;/td&gt;&lt;td&gt;${s.age}&lt;/td&gt;&lt;td style="color: ${colour}"&gt;${s.mark}&lt;/td&gt;&lt;/tr&gt;`;
+            sum += s.mark;
+            if (s.mark &gt;= 5) {
+                passed++;
+            }
+            if (s.mark &gt; best.mark) {
+                best = s;
+            }
+        }
+
+        document.querySelector("#table").innerHTML = html;
+        document.querySelector("#summary").textContent =
+            `Average: ${(sum / students.length).toFixed(2)} | Best student: ${best.name} | Passed: ${passed}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Class list&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Class list&lt;/h1&gt;
+    &lt;table id=&quot;table&quot;&gt;&lt;/table&gt;
+    &lt;p id=&quot;summary&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const students = [
+            { name: &quot;Pere&quot;, age: 16, mark: 7 },
+            { name: &quot;Joan&quot;, age: 17, mark: 4 },
+            { name: &quot;Marta&quot;, age: 16, mark: 9 },
+            { name: &quot;Nuria&quot;, age: 18, mark: 3.5 },
+            { name: &quot;Laia&quot;, age: 16, mark: 6 }
+        ];
+
+        let html = &quot;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;th&gt;Mark&lt;/th&gt;&lt;/tr&gt;&quot;;
+        let sum = 0;
+        let passed = 0;
+        let best = students[0];
+
+        for (const s of students) {
+            const colour = s.mark &lt; 5 ? &quot;red&quot; : &quot;black&quot;;
+            html += `&lt;tr&gt;&lt;td&gt;${s.name}&lt;/td&gt;&lt;td&gt;${s.age}&lt;/td&gt;&lt;td style=&quot;color: ${colour}&quot;&gt;${s.mark}&lt;/td&gt;&lt;/tr&gt;`;
+            sum += s.mark;
+            if (s.mark &gt;= 5) {
+                passed++;
+            }
+            if (s.mark &gt; best.mark) {
+                best = s;
+            }
+        }
+
+        document.querySelector(&quot;#table&quot;).innerHTML = html;
+        document.querySelector(&quot;#summary&quot;).textContent =
+            `Average: ${(sum / students.length).toFixed(2)} | Best student: ${best.name} | Passed: ${passed}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

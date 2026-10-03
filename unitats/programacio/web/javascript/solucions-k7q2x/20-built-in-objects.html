@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Objects and built-in classes</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Objects and built-in classes</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../20-built-in-objects.html">20-built-in-objects.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 20.1</a></li>
+        <li><a href="#e2">Exercici 20.2</a></li>
+        <li><a href="#e3">Exercici 20.3</a></li>
+        <li><a href="#e4">Exercici 20.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 20.1</h2>
+        <div class="enunciat"><strong>Exercise 20.1.</strong> Show today's date and time in the page in local format.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Today&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Today&lt;/h1&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const now = new Date();
+        document.querySelector("#output").textContent = now.toLocaleString("es-ES");
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note"><code>toLocaleString("es-ES")</code> dona la data i l'hora en format local (per exemple <code>20/5/2027, 10:30:15</code>).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 20.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Today&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Today&lt;/h1&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const now = new Date();
+        document.querySelector(&quot;#output&quot;).textContent = now.toLocaleString(&quot;es-ES&quot;);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 20.2</h2>
+        <div class="enunciat"><strong>Exercise 20.2.</strong> Calculate how many days are left until your birthday. If it has already passed this year, count until next year.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Birthday&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My birthday is on 24 June&lt;/h1&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);                                // ignore the hour
+
+        let birthday = new Date(today.getFullYear(), 5, 24);       // the months start at 0: June is 5
+        if (birthday &lt; today) {
+            birthday.setFullYear(today.getFullYear() + 1);         // it has passed: next year
+        }
+
+        const milliseconds = birthday - today;
+        const days = Math.round(milliseconds / (1000 * 60 * 60 * 24));
+
+        document.querySelector("#output").textContent = `Days until my birthday: ${days}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Els mesos de <code>Date</code> comencen en 0 (juny és el 5). La diferència entre dues dates són mil·lisegons: es divideix per 1000 · 60 · 60 · 24 per a tenir dies.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 20.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Birthday&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My birthday is on 24 June&lt;/h1&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);                                // ignore the hour
+
+        let birthday = new Date(today.getFullYear(), 5, 24);       // the months start at 0: June is 5
+        if (birthday &lt; today) {
+            birthday.setFullYear(today.getFullYear() + 1);         // it has passed: next year
+        }
+
+        const milliseconds = birthday - today;
+        const days = Math.round(milliseconds / (1000 * 60 * 60 * 24));
+
+        document.querySelector(&quot;#output&quot;).textContent = `Days until my birthday: ${days}`;
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 20.3</h2>
+        <div class="enunciat"><strong>Exercise 20.3.</strong> An <code>&lt;input type="date"&gt;</code> for the date of birth: show the exact age in years.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Age&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;How old are you?&lt;/h1&gt;
+    &lt;label for="birth"&gt;Date of birth&lt;/label&gt;
+    &lt;input type="date" id="birth"&gt;
+    &lt;button id="calculate"&gt;Calculate&lt;/button&gt;
+    &lt;p id="output"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector("#calculate").addEventListener("click", function () {
+            const birth = new Date(document.querySelector("#birth").value);
+            const today = new Date();
+
+            let age = today.getFullYear() - birth.getFullYear();
+
+            // if the birthday has not arrived yet this year, subtract one
+            const monthDifference = today.getMonth() - birth.getMonth();
+            if (monthDifference &lt; 0 || (monthDifference === 0 &amp;&amp; today.getDate() &lt; birth.getDate())) {
+                age--;
+            }
+
+            document.querySelector("#output").textContent = `You are ${age} years old.`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">No basta restar els anys: si encara no ha arribat l'aniversari d'enguany cal restar-ne un.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 20.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Age&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;How old are you?&lt;/h1&gt;
+    &lt;label for=&quot;birth&quot;&gt;Date of birth&lt;/label&gt;
+    &lt;input type=&quot;date&quot; id=&quot;birth&quot;&gt;
+    &lt;button id=&quot;calculate&quot;&gt;Calculate&lt;/button&gt;
+    &lt;p id=&quot;output&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.querySelector(&quot;#calculate&quot;).addEventListener(&quot;click&quot;, function () {
+            const birth = new Date(document.querySelector(&quot;#birth&quot;).value);
+            const today = new Date();
+
+            let age = today.getFullYear() - birth.getFullYear();
+
+            // if the birthday has not arrived yet this year, subtract one
+            const monthDifference = today.getMonth() - birth.getMonth();
+            if (monthDifference &lt; 0 || (monthDifference === 0 &amp;&amp; today.getDate() &lt; birth.getDate())) {
+                age--;
+            }
+
+            document.querySelector(&quot;#output&quot;).textContent = `You are ${age} years old.`;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 20.4</h2>
+        <div class="enunciat"><strong>Exercise 20.4.</strong> Create the same date in three ways (numbers, text, milliseconds) and check that their <code>getTime()</code> is equal.</div>
+        <h3>Solució</h3>
+        <span class="fname">script.js</span>
+        <pre><code>const a = new Date(2027, 4, 20);                 // with numbers (the month 4 is May)
+const b = new Date("2027-05-20T00:00:00");       // with text (with the hour, so it is local time)
+const c = new Date(a.getTime());                 // with milliseconds
+
+console.log(a.getTime() === b.getTime());        // true
+console.log(a.getTime() === c.getTime());        // true</code></pre>
+        <div class="note">Pregunta típica: sense l'hora, <code>new Date("2027-05-20")</code> es considera en UTC i pot no coincidir amb la data local; per això s'afig <code>T00:00:00</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 20.4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;const a = new Date(2027, 4, 20);                 // with numbers (the month 4 is May)
+const b = new Date(&quot;2027-05-20T00:00:00&quot;);       // with text (with the hour, so it is local time)
+const c = new Date(a.getTime());                 // with milliseconds
+
+console.log(a.getTime() === b.getTime());        // true
+console.log(a.getTime() === c.getTime());        // true&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

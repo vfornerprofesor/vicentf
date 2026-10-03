@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · The box model</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · The box model</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../11-box-model.html">11-box-model.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 11.1</a></li>
+        <li><a href="#e2">Exercici 11.2</a></li>
+        <li><a href="#e3">Exercici 11.3</a></li>
+        <li><a href="#e4">Exercici 11.4</a></li>
+        <li><a href="#e5">Exercici 11.5</a></li>
+        <li><a href="#e6">Exercici 11.4</a></li>
+        <li><a href="#e7">Exercici 11.5</a></li>
+        <li><a href="#e8">Mini-projecte 2</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 11.1</h2>
+        <div class="enunciat"><strong>Exercise 11.1.</strong> Create a <code>div</code> with the class <code>card</code>, with 20px padding, a 1px grey border, 20px margin and a width of 300px. Put a heading and a paragraph inside.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Card&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="card"&gt;
+        &lt;h1&gt;Interstellar&lt;/h1&gt;
+        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #999999;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Card&lt;/title&gt;
+    &lt;style&gt;.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #999999;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h1&gt;Interstellar&lt;/h1&gt;
+        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 11.2</h2>
+        <div class="enunciat"><strong>Exercise 11.2.</strong> Add <code>* { box-sizing: border-box; }</code> to your CSS and measure the card in DevTools before and after. Write down the two widths.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Card&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="card"&gt;
+        &lt;h1&gt;Interstellar&lt;/h1&gt;
+        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #999999;
+}</code></pre>
+        <div class="note"><strong>Resposta:</strong> sense <code>border-box</code> la targeta mesura 300 + 20 + 20 + 1 + 1 = <strong>342 px</strong>; amb <code>box-sizing: border-box</code> mesura <strong>300 px</strong> (el padding i la vora ja van dins de l'amplària).</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Card&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #999999;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h1&gt;Interstellar&lt;/h1&gt;
+        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 11.3</h2>
+        <div class="enunciat"><strong>Exercise 11.3.</strong> Give the card rounded corners and a soft shadow. Make the shadow bigger on <code>:hover</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Card&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="card"&gt;
+        &lt;h1&gt;Interstellar&lt;/h1&gt;
+        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Card&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h1&gt;Interstellar&lt;/h1&gt;
+        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 11.4</h2>
+        <div class="enunciat"><strong>Exercise 11.4.</strong> Turn the links of your nav into buttons: <code>inline-block</code>, padding, background colour, rounded corners, no underline.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Box model&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #1f3c5a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #2d5a85;
+}</code></pre>
+        <div class="note"><code>inline-block</code> permet que els enllaços (en línia) accepten <code>padding</code> vertical i continuen en la mateixa línia.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Box model&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #1f3c5a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #2d5a85;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 11.5</h2>
+        <div class="enunciat"><strong>Exercise 11.5.</strong> Centre the whole content of your page in a container of maximum 1000px.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Box model&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html"&gt;Home&lt;/a&gt;
+            &lt;a href="music.html"&gt;Music&lt;/a&gt;
+            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header,
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #1f3c5a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}</code></pre>
+        <div class="note"><code>max-width: 1000px</code> amb <code>margin: 0 auto</code> centra el contingut i, en pantalles més xicotetes, el deixa ocupar tot l'ample.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Box model&lt;/title&gt;
+    &lt;style&gt;* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header,
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #1f3c5a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
+            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
+        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
+        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e6">
+        <h2>Exercici 11.4</h2>
+        <div class="enunciat"><strong>Exercise 11.4. Film card.</strong> Reproduce the card in the picture. Watch the padding, the border and the shadow.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/11-box-model/ex1.png" alt="A film information card with padding, a border and a soft shadow"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/11-box-model/ex1.html">ex1.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/11-box-model/ex1_solved.html">exercises/11-box-model/ex1_solved.html</a></p>
+    </section>
+
+    <section class="ex" id="e7">
+        <h2>Exercici 11.5</h2>
+        <div class="enunciat"><strong>Exercise 11.5. Birthday invitation.</strong> Reproduce the invitation in the picture.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/11-box-model/ex2.png" alt="A birthday invitation card styled with the box model"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/11-box-model/ex2.html">ex2.html</a></p></div>
+        <h3>Solució</h3>
+        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/11-box-model/ex2_solved.html">exercises/11-box-model/ex2_solved.html</a></p>
+    </section>
+
+    <section class="ex" id="e8">
+        <h2>Mini-projecte 2</h2>
+        <div class="enunciat"><strong>Mini-project 2: Styled band page</strong><p>Take your page from mini-project 1 and give it a design with an <strong>external</strong> CSS file.</p>
+            <p>It must have:</p>
+            <ul>
+                <li><code>css/style.css</code> linked from the HTML, and no <code>style=</code> attributes in the HTML;</li>
+                <li><code>* { box-sizing: border-box; }</code>;</li>
+                <li>a Google Font;</li>
+                <li>a colour scheme of 3 or 4 colours, used consistently;</li>
+                <li>a centred container with a maximum width;</li>
+                <li>the nav links styled as buttons, with a <code>:hover</code> effect;</li>
+                <li>at least one block with <code>border-radius</code> and <code>box-shadow</code>;</li>
+                <li>readable text: <code>line-height</code> of at least 1.5 and good contrast.</li>
+            </ul></div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Muse&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Muse&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#band"&gt;The band&lt;/a&gt;
+            &lt;a href="#albums"&gt;Albums&lt;/a&gt;
+            &lt;a href="#club"&gt;Fan club&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main class="container"&gt;
+        &lt;section id="band" class="block"&gt;
+            &lt;h2&gt;The band&lt;/h2&gt;
+            &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
+            &lt;p&gt;Their music mixes rock, electronic sounds and classical piano.&lt;/p&gt;
+            &lt;img src="images/band.jpg" alt="The three members of Muse on a stage with blue lights" width="400"&gt;
+        &lt;/section&gt;
+
+        &lt;section id="albums" class="block"&gt;
+            &lt;h2&gt;Albums&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Origin of Symmetry (2001)&lt;/li&gt;
+                &lt;li&gt;Absolution (2003)&lt;/li&gt;
+                &lt;li&gt;The Resistance (2009)&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+
+        &lt;section id="club" class="block"&gt;
+            &lt;h2&gt;Join the fan club&lt;/h2&gt;
+            &lt;p&gt;Write to us and we will send you the news about the next concert.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Marc Ferrer. A fan page, not official.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>/* ---------- Reset ---------- */
+* {
+    box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+body {
+    margin: 0;
+    font-family: 'Nunito', Arial, sans-serif;
+    line-height: 1.6;
+    color: #23272f;
+    background-color: #f6f5f0;
+}
+
+h1,
+h2 {
+    color: #1f3c5a;
+}
+
+/* ---------- Layout ---------- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    padding: 20px;
+    background-color: #1f3c5a;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 12px;
+    color: white;
+}
+
+footer {
+    padding: 20px;
+    background-color: #1f3c5a;
+    color: white;
+    text-align: center;
+}
+
+/* ---------- Menu ---------- */
+nav a {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 16px;
+    background-color: #f2a541;
+    color: #1f3c5a;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+}
+
+nav a:hover {
+    background-color: #ffffff;
+}
+
+/* ---------- Blocks ---------- */
+.block {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+}
+
+.block img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}</code></pre>
+        <div class="note">Esquema de 3 colors (blau, taronja i blanc) usat sempre igual; fitxer extern sense cap atribut <code>style</code>; <code>box-sizing: border-box</code>; Google Font Nunito; contenidor centrat amb <code>max-width</code>; menú com a botons amb <code>:hover</code>; blocs amb <code>border-radius</code> i <code>box-shadow</code>; <code>line-height</code> 1.6.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Mini-projecte 2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Muse&lt;/title&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;/* ---------- Reset ---------- */
+* {
+    box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+body {
+    margin: 0;
+    font-family: &#x27;Nunito&#x27;, Arial, sans-serif;
+    line-height: 1.6;
+    color: #23272f;
+    background-color: #f6f5f0;
+}
+
+h1,
+h2 {
+    color: #1f3c5a;
+}
+
+/* ---------- Layout ---------- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    padding: 20px;
+    background-color: #1f3c5a;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 12px;
+    color: white;
+}
+
+footer {
+    padding: 20px;
+    background-color: #1f3c5a;
+    color: white;
+    text-align: center;
+}
+
+/* ---------- Menu ---------- */
+nav a {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 16px;
+    background-color: #f2a541;
+    color: #1f3c5a;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+}
+
+nav a:hover {
+    background-color: #ffffff;
+}
+
+/* ---------- Blocks ---------- */
+.block {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+}
+
+.block img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Muse&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;#band&quot;&gt;The band&lt;/a&gt;
+            &lt;a href=&quot;#albums&quot;&gt;Albums&lt;/a&gt;
+            &lt;a href=&quot;#club&quot;&gt;Fan club&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main class=&quot;container&quot;&gt;
+        &lt;section id=&quot;band&quot; class=&quot;block&quot;&gt;
+            &lt;h2&gt;The band&lt;/h2&gt;
+            &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
+            &lt;p&gt;Their music mixes rock, electronic sounds and classical piano.&lt;/p&gt;
+            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;The three members of Muse on a stage with blue lights&quot; width=&quot;400&quot;&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;albums&quot; class=&quot;block&quot;&gt;
+            &lt;h2&gt;Albums&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Origin of Symmetry (2001)&lt;/li&gt;
+                &lt;li&gt;Absolution (2003)&lt;/li&gt;
+                &lt;li&gt;The Resistance (2009)&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;club&quot; class=&quot;block&quot;&gt;
+            &lt;h2&gt;Join the fan club&lt;/h2&gt;
+            &lt;p&gt;Write to us and we will send you the news about the next concert.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Marc Ferrer. A fan page, not official.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

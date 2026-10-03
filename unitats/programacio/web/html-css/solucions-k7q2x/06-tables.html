@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Tables</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Tables</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../06-tables.html">06-tables.html</a>. 
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 6.1</a></li>
+        <li><a href="#e2">Exercici 6.2</a></li>
+        <li><a href="#e3">Exercici 6.3</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 6.1</h2>
+        <div class="enunciat"><strong>Exercise 6.1.</strong> Build a table with your school timetable: one column per day, one row per hour.</div>
+        <h3>Solució</h3>
+        <span class="fname">timetable.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My timetable&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My timetable&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Hour&lt;/th&gt;
+            &lt;th&gt;Monday&lt;/th&gt;
+            &lt;th&gt;Tuesday&lt;/th&gt;
+            &lt;th&gt;Wednesday&lt;/th&gt;
+            &lt;th&gt;Thursday&lt;/th&gt;
+            &lt;th&gt;Friday&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;8:00&lt;/td&gt;
+            &lt;td&gt;Web&lt;/td&gt;
+            &lt;td&gt;Networks&lt;/td&gt;
+            &lt;td&gt;Web&lt;/td&gt;
+            &lt;td&gt;Hardware&lt;/td&gt;
+            &lt;td&gt;Office&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;9:00&lt;/td&gt;
+            &lt;td&gt;Web&lt;/td&gt;
+            &lt;td&gt;Networks&lt;/td&gt;
+            &lt;td&gt;Hardware&lt;/td&gt;
+            &lt;td&gt;Hardware&lt;/td&gt;
+            &lt;td&gt;Office&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10:00&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+            &lt;td&gt;Maths&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+            &lt;td&gt;Networks&lt;/td&gt;
+            &lt;td&gt;Tutoring&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">La taula no porta vores perquè encara no hi ha CSS; en la previsualització se li afig una vora només per a vore-la.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My timetable&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My timetable&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Hour&lt;/th&gt;
+            &lt;th&gt;Monday&lt;/th&gt;
+            &lt;th&gt;Tuesday&lt;/th&gt;
+            &lt;th&gt;Wednesday&lt;/th&gt;
+            &lt;th&gt;Thursday&lt;/th&gt;
+            &lt;th&gt;Friday&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;8:00&lt;/td&gt;
+            &lt;td&gt;Web&lt;/td&gt;
+            &lt;td&gt;Networks&lt;/td&gt;
+            &lt;td&gt;Web&lt;/td&gt;
+            &lt;td&gt;Hardware&lt;/td&gt;
+            &lt;td&gt;Office&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;9:00&lt;/td&gt;
+            &lt;td&gt;Web&lt;/td&gt;
+            &lt;td&gt;Networks&lt;/td&gt;
+            &lt;td&gt;Hardware&lt;/td&gt;
+            &lt;td&gt;Hardware&lt;/td&gt;
+            &lt;td&gt;Office&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10:00&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+            &lt;td&gt;Maths&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+            &lt;td&gt;Networks&lt;/td&gt;
+            &lt;td&gt;Tutoring&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 6.2</h2>
+        <div class="enunciat"><strong>Exercise 6.2.</strong> Build a table with the parts of a computer you would buy with 800 €: component, model, price. Add a last row with the total, using <code>colspan</code> so the words "TOTAL" take two columns.</div>
+        <h3>Solució</h3>
+        <span class="fname">computer.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My computer&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;The computer I would buy (800 &amp;euro;)&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Component&lt;/th&gt;
+            &lt;th&gt;Model&lt;/th&gt;
+            &lt;th&gt;Price&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Processor&lt;/td&gt;
+            &lt;td&gt;AMD Ryzen 5 5600&lt;/td&gt;
+            &lt;td&gt;130 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Motherboard&lt;/td&gt;
+            &lt;td&gt;MSI B550 Pro&lt;/td&gt;
+            &lt;td&gt;110 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Graphics card&lt;/td&gt;
+            &lt;td&gt;RTX 4060&lt;/td&gt;
+            &lt;td&gt;300 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;RAM and SSD&lt;/td&gt;
+            &lt;td&gt;16 GB DDR4 + 1 TB&lt;/td&gt;
+            &lt;td&gt;140 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Case and power supply&lt;/td&gt;
+            &lt;td&gt;Mid tower + 650 W&lt;/td&gt;
+            &lt;td&gt;115 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;&lt;strong&gt;TOTAL&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;795 &amp;euro;&lt;/strong&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">L'última fila usa <code>colspan="2"</code>: la cel·la "TOTAL" ocupa dues columnes i el preu va en la tercera.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My computer&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;The computer I would buy (800 &amp;euro;)&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Component&lt;/th&gt;
+            &lt;th&gt;Model&lt;/th&gt;
+            &lt;th&gt;Price&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Processor&lt;/td&gt;
+            &lt;td&gt;AMD Ryzen 5 5600&lt;/td&gt;
+            &lt;td&gt;130 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Motherboard&lt;/td&gt;
+            &lt;td&gt;MSI B550 Pro&lt;/td&gt;
+            &lt;td&gt;110 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Graphics card&lt;/td&gt;
+            &lt;td&gt;RTX 4060&lt;/td&gt;
+            &lt;td&gt;300 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;RAM and SSD&lt;/td&gt;
+            &lt;td&gt;16 GB DDR4 + 1 TB&lt;/td&gt;
+            &lt;td&gt;140 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Case and power supply&lt;/td&gt;
+            &lt;td&gt;Mid tower + 650 W&lt;/td&gt;
+            &lt;td&gt;115 &amp;euro;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan=&quot;2&quot;&gt;&lt;strong&gt;TOTAL&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;795 &amp;euro;&lt;/strong&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 6.3</h2>
+        <div class="enunciat"><strong>Exercise 6.3.</strong> Rewrite the table of exercise 6.1 using <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and <code>&lt;caption&gt;</code>.</div>
+        <h3>Solució</h3>
+        <span class="fname">timetable.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My timetable&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My timetable&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;caption&gt;Timetable of the first term&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Hour&lt;/th&gt;
+                &lt;th&gt;Monday&lt;/th&gt;
+                &lt;th&gt;Tuesday&lt;/th&gt;
+                &lt;th&gt;Wednesday&lt;/th&gt;
+                &lt;th&gt;Thursday&lt;/th&gt;
+                &lt;th&gt;Friday&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;8:00&lt;/td&gt;
+                &lt;td&gt;Web&lt;/td&gt;
+                &lt;td&gt;Networks&lt;/td&gt;
+                &lt;td&gt;Web&lt;/td&gt;
+                &lt;td&gt;Hardware&lt;/td&gt;
+                &lt;td&gt;Office&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;9:00&lt;/td&gt;
+                &lt;td&gt;Web&lt;/td&gt;
+                &lt;td&gt;Networks&lt;/td&gt;
+                &lt;td&gt;Hardware&lt;/td&gt;
+                &lt;td&gt;Hardware&lt;/td&gt;
+                &lt;td&gt;Office&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;10:00&lt;/td&gt;
+                &lt;td&gt;English&lt;/td&gt;
+                &lt;td&gt;Maths&lt;/td&gt;
+                &lt;td&gt;English&lt;/td&gt;
+                &lt;td&gt;Networks&lt;/td&gt;
+                &lt;td&gt;Tutoring&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 6.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;My timetable&lt;/title&gt;
+&lt;style&gt;table,th,td{border:1px solid #999;border-collapse:collapse;padding:.25rem .6rem}&lt;/style&gt;&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My timetable&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;caption&gt;Timetable of the first term&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Hour&lt;/th&gt;
+                &lt;th&gt;Monday&lt;/th&gt;
+                &lt;th&gt;Tuesday&lt;/th&gt;
+                &lt;th&gt;Wednesday&lt;/th&gt;
+                &lt;th&gt;Thursday&lt;/th&gt;
+                &lt;th&gt;Friday&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;8:00&lt;/td&gt;
+                &lt;td&gt;Web&lt;/td&gt;
+                &lt;td&gt;Networks&lt;/td&gt;
+                &lt;td&gt;Web&lt;/td&gt;
+                &lt;td&gt;Hardware&lt;/td&gt;
+                &lt;td&gt;Office&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;9:00&lt;/td&gt;
+                &lt;td&gt;Web&lt;/td&gt;
+                &lt;td&gt;Networks&lt;/td&gt;
+                &lt;td&gt;Hardware&lt;/td&gt;
+                &lt;td&gt;Hardware&lt;/td&gt;
+                &lt;td&gt;Office&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;10:00&lt;/td&gt;
+                &lt;td&gt;English&lt;/td&gt;
+                &lt;td&gt;Maths&lt;/td&gt;
+                &lt;td&gt;English&lt;/td&gt;
+                &lt;td&gt;Networks&lt;/td&gt;
+                &lt;td&gt;Tutoring&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

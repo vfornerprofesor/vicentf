@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#f2a541"/>
+  <!-- browser -->
+  <rect x="40" y="35" width="320" height="230" rx="10" fill="#fff" stroke="#1f3c5a" stroke-width="4"/>
+  <path d="M40 65 H360" stroke="#1f3c5a" stroke-width="4"/>
+  <circle cx="58" cy="50" r="5" fill="#d96f4a"/><circle cx="74" cy="50" r="5" fill="#f2a541"/><circle cx="90" cy="50" r="5" fill="#3f8a5c"/>
+  <rect x="110" y="43" width="200" height="14" rx="7" fill="#e4ecf4"/>
+  <!-- page header -->
+  <rect x="56" y="78" width="288" height="30" rx="4" fill="#1f3c5a"/>
+  <g fill="#f6f5f0"><rect x="230" y="89" width="22" height="8" rx="2"/><rect x="258" y="89" width="22" height="8" rx="2"/><rect x="286" y="89" width="22" height="8" rx="2"/></g>
+  <rect x="66" y="88" width="40" height="10" rx="2" fill="#f2a541"/>
+  <!-- three columns -->
+  <g fill="#e4ecf4"><rect x="56" y="120" width="88" height="70" rx="6"/><rect x="156" y="120" width="88" height="70" rx="6"/><rect x="256" y="120" width="88" height="70" rx="6"/></g>
+  <g fill="#2d5a85"><rect x="64" y="200" width="70" height="6" rx="3"/><rect x="164" y="200" width="70" height="6" rx="3"/><rect x="264" y="200" width="70" height="6" rx="3"/></g>
+  <g fill="#8a99ab"><rect x="64" y="214" width="56" height="5" rx="2"/><rect x="164" y="214" width="56" height="5" rx="2"/><rect x="264" y="214" width="56" height="5" rx="2"/></g>
+  <!-- code tag -->
+  <text x="200" y="250" font-family="monospace" font-size="18" font-weight="bold" fill="#1f3c5a" text-anchor="middle">&lt;html&gt; + css</text>
+</svg>

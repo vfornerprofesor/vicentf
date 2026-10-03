@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact form and links of Laia Martí Ferrer.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Laia Martí | Contact</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&amp;display=swap" rel="stylesheet">
+
+    <!-- My style sheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="container">
+            <p class="logo"><a href="index.html">Laia<span>.dev</span></a></p>
+
+            <nav aria-label="Main menu">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container">
+
+        <h1 class="page-title">Contact me</h1>
+
+        <div class="contact-columns">
+
+            <!-- Contact form -->
+            <section class="section">
+                <h2>Send me a message</h2>
+                <p class="form-hint">The fields with * are compulsory.</p>
+
+                <form class="contact-form" action="#" method="post">
+
+                    <fieldset>
+                        <legend>About you</legend>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" minlength="2" maxlength="40" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="surname">Surname</label>
+                                <input type="text" id="surname" name="surname" minlength="2" maxlength="60">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" placeholder="600123456">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Your message</legend>
+
+                        <div class="form-field">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">-- Choose one --</option>
+                                <option value="repair">I need a computer repair</option>
+                                <option value="network">Help with a network</option>
+                                <option value="web">A web page</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="date">When do you need it?</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" minlength="20" maxlength="500" required></textarea>
+                            <p class="form-hint">Between 20 and 500 characters.</p>
+                        </div>
+
+                        <div class="form-field form-check">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I accept that my data is used only to answer me *</label>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="button">Send message</button>
+                </form>
+            </section>
+
+            <!-- Other ways to contact -->
+            <section class="section">
+                <h2>Other ways</h2>
+                <ul class="links-list">
+                    <li><strong>Email:</strong> <a href="mailto:laia.marti@example.com">laia.marti@example.com</a></li>
+                    <li><strong>Phone:</strong> <a href="tel:+34600123456">600 123 456</a></li>
+                    <li><strong>School:</strong> IES Districte Marítim, Valencia</li>
+                </ul>
+                <p>
+                    I usually answer in one or two days. If it is urgent,
+                    please call me in the afternoon.
+                </p>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Laia Martí Ferrer &middot; Made with HTML and CSS</p>
+            <p><a href="mailto:laia.marti@example.com">laia.marti@example.com</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
