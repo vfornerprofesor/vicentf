@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Guia del professorat - El nàufrag de l'illa</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Document privat per al professorat. No publicar ni enllaçar des de la unitat.">Guia del professorat: El nàufrag de l'illa</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Editor de textos</vf-badge>
+            <vf-badge>18 sessions de 55 min</vf-badge>
+        </div>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Compte de correu de l'informàtic</vf-title>
+        <vf-content>
+            <vf-text><strong>Adreça</strong></vf-text>
+            <vf-code language="plaintext">informatic.naufrag@gmail.com</vf-code>
+            <vf-text><strong>Contrasenya</strong></vf-text>
+            <vf-code language="plaintext">infonaufrag</vf-code>
+            <vf-text><strong>Assumpte de la prova 1</strong> (cos: el nom de l'alumne/a)</vf-text>
+            <vf-code language="plaintext">VULL AJUDAR-TE</vf-code>
+            <vf-text><strong>Assumpte de les proves 2 a 8</strong>: DOCUMENT 1, DOCUMENT 2&hellip; DOCUMENT 7</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula per prova</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 60px;">Prova</th>
+                            <th style="min-width: 120px;">Assumpte</th>
+                            <th style="min-width: 200px;">Habilitats</th>
+                            <th style="min-width: 230px;">Codi / resultat esperat</th>
+                            <th style="min-width: 200px;">PDF que s'envia en superar-la</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>VULL AJUDAR-TE</td>
+                            <td>Correu (assumpte i nom en el cos)</td>
+                            <td>Correu amb assumpte exacte i nom</td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/1%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 1 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>DOCUMENT 1</td>
+                            <td>Moure paràgrafs; eliminar paraules</td>
+                            <td><vf-code language="plaintext">ELNAUFRAGESTAATRAPAT</vf-code></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/2%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 2 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>DOCUMENT 2</td>
+                            <td>Buscar; tipus i tamany de lletra; negreta, cursiva, subratllat, tachat; superíndex i subíndex</td>
+                            <td><vf-code language="plaintext">1065511911</vf-code><br>10 roig, 6 verd, 55 negreta, 11 ratllat i cursiva, 9 vocal, 11 consonant</td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/3%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 3 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>DOCUMENT 3</td>
+                            <td>Títols i subtítols</td>
+                            <td><vf-code language="plaintext">661</vf-code></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/4%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 4 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>DOCUMENT 4</td>
+                            <td>Format de títols; índex; salt de pàgina</td>
+                            <td><vf-code language="plaintext">252200</vf-code></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/5%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 5 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>DOCUMENT 5</td>
+                            <td>Llistes numerades i no numerades; sagnat i interliniat</td>
+                            <td><vf-code language="plaintext">BNMEHFTQZMSQNANS</vf-code>&rarr;<vf-code language="plaintext">CONFIGURANTROBOT</vf-code></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/6%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 6 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>DOCUMENT 6</td>
+                            <td>Taules; imatges (ordenar i caràtules)</td>
+                            <td>(f7,c7)=6; (f4,c9)=3; (f8,c5)=2 &rarr;<vf-code language="plaintext">632</vf-code></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/7%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 7 - INSTRUCCIONS.pdf</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>DOCUMENT 7</td>
+                            <td>PDF; encapçalament; peu de pàgina; enllaç</td>
+                            <td><vf-code language="plaintext">38°47'30.6"N 15°11'52.0"E</vf-code>&rarr;<vf-code language="plaintext">STROMBOLI</vf-code></td>
+                            <td>Missatge final de l'informàtic (<a href="unitats/ofimatica/editor-textos/guia-professorat.html#missatge-final-de-l-informatic">veure més avall</a>)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text><strong>Cadena d'instruccions</strong>: el correu VULL AJUDAR-TE (prova 1) fa que l'informàtic envie les instruccions 1 (1 - INSTRUCCIONS.pdf). Després, en superar cada prova s'envia el PDF següent: DOCUMENT 1 vàlid &rarr; PDF 2; DOCUMENT 2 vàlid &rarr; PDF 3; &hellip; DOCUMENT 6 vàlid &rarr; PDF 7. En superar DOCUMENT 7 no hi ha PDF: es respon amb el missatge final.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Fitxers d'instruccions</vf-title>
+        <vf-content>
+            <vf-text>Ruta: <code>assets/unitats/ofimatica/editor-textos/</code></vf-text>
+            <vf-list>
+                <li><a href="assets/unitats/ofimatica/editor-textos/1%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 1 - INSTRUCCIONS.pdf</a></li>
+                <li><a href="assets/unitats/ofimatica/editor-textos/2%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 2 - INSTRUCCIONS.pdf</a></li>
+                <li><a href="assets/unitats/ofimatica/editor-textos/3%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 3 - INSTRUCCIONS.pdf</a></li>
+                <li><a href="assets/unitats/ofimatica/editor-textos/4%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 4 - INSTRUCCIONS.pdf</a></li>
+                <li><a href="assets/unitats/ofimatica/editor-textos/5%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 5 - INSTRUCCIONS.pdf</a></li>
+                <li><a href="assets/unitats/ofimatica/editor-textos/6%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 6 - INSTRUCCIONS.pdf</a></li>
+                <li><a href="assets/unitats/ofimatica/editor-textos/7%20-%20INSTRUCCIONS.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> 7 - INSTRUCCIONS.pdf</a></li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Desxifrat del DOCUMENT 5</vf-title>
+        <vf-content>
+            <vf-text>Xifrat Cèsar +1: per desxifrar, cada lletra s'avança una posició (B &rarr; C, N &rarr; O, M &rarr; N).</vf-text>
+            <vf-text><strong>Text xifrat</strong>:</vf-text>
+            <vf-code language="plaintext">BNMEHFTQZMSQNANS</vf-code>
+            <vf-text><strong>Missatge original</strong> (C-O-N-F-I-G-U-R-A-N-T-R-O-B-O-T):</vf-text>
+            <vf-code language="plaintext">CONFIGURANTROBOT</vf-code>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Missatge final de l'informàtic</vf-title>
+        <vf-content>
+            <vf-text>Es respon amb aquest missatge en superar DOCUMENT 7 (la localització STROMBOLI és el rescat):</vf-text>
+            <vf-quote>ENHORABONA!! HAS ACONSEGUIT SALVAR-ME A MI I AL MÓN!!! Mira-ho! Moltes gràcies!!!</vf-quote>
+            <vf-text>Es llig i es comenta en gran grup a la sessió 16. Qui el rep abans ho guarda sense comentar-ho fins a eixa sessió (mantenir la ficció i no avançar el final).</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sessions i documents</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 90px;">Sessions</th>
+                            <th style="min-width: 200px;">Contingut</th>
+                            <th style="min-width: 300px;">Eines de Writer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S1</td>
+                            <td>Història, correu, entorn i Prova 1</td>
+                            <td>Obrir, escriure, guardar i adjuntar arxiu</td>
+                        </tr>
+                        <tr>
+                            <td>S2</td>
+                            <td>DOCUMENT 1</td>
+                            <td>Seleccionar, tallar, enganxar, moure paràgrafs, suprimir</td>
+                        </tr>
+                        <tr>
+                            <td>S3-S4</td>
+                            <td>DOCUMENT 2</td>
+                            <td>Cerca i substitueix; tipus i tamany de lletra; negreta, cursiva, subratllat, tachat; superíndex i subíndex</td>
+                        </tr>
+                        <tr>
+                            <td>S5-S6</td>
+                            <td>DOCUMENT 3</td>
+                            <td>Estils de títol i subtítol; navegador de l'estructura</td>
+                        </tr>
+                        <tr>
+                            <td>S7-S8</td>
+                            <td>DOCUMENT 4</td>
+                            <td>Modificar estils; salt de pàgina; índex de contingut i actualització</td>
+                        </tr>
+                        <tr>
+                            <td>S9-S10</td>
+                            <td>DOCUMENT 5</td>
+                            <td>Llistes numerades i no numerades amb nivells; sagnat i interliniat</td>
+                        </tr>
+                        <tr>
+                            <td>S11-S12</td>
+                            <td>DOCUMENT 6</td>
+                            <td>Taules; imatges, ordre i llegendes (caràtules)</td>
+                        </tr>
+                        <tr>
+                            <td>S13-S14</td>
+                            <td>DOCUMENT 7</td>
+                            <td>Encapçalament; peu amb numeració; hipervincle; exportar a PDF</td>
+                        </tr>
+                        <tr>
+                            <td>S15</td>
+                            <td>Reforç, reenviaments i proves pendents</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S16</td>
+                            <td>Missatge final i rescat</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S17</td>
+                            <td>Reflexió, autoavaluació i coavaluació</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S18</td>
+                            <td>Tancament i revisió de la rúbrica</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text>Cada document: la primera sessió és demostració i pràctica guiada; la segona, prova, reforç i ampliació. Al final de cada parella de sessions hauria d'haver-se enviat el document corresponent.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Gestió del correu (resposta ràpida)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Obriu el compte en una pestanya fixa del navegador del professorat i activeu les notificacions d'escriptori.</li>
+                <li>Creeu <strong>etiquetes</strong>: «Pendent», «Validat», «Reenviar», una per prova si cal.</li>
+                <li>Prepareu les <strong>respostes automàtiques</strong> (plantilles de Gmail) amb el PDF adjunt de cada prova i el text «Document vàlid, continua amb les instruccions adjuntes». Tindreu una plantilla per a cada prova, una per al missatge final i una per a «no vàlid».</li>
+                <li>Deixeu els 7 PDF en una carpeta fàcil d'arrossegar.</li>
+                <li>Ordeneu la safata d'entrada per assumpte (DOCUMENT N) per revisar tots els documents d'una mateixa prova seguits.</li>
+                <li>Comproveu primer el codi o resultat esperat (taula superior), que és la via ràpida de validar; en cas de dubte, obriu el document.</li>
+                <li>Avaluació: apunteu la nota de la rúbrica en el moment de la validació (sense esperar al final).</li>
+                <li>Si hi ha cua, designeu alumnat ajudant per revisar o l'alumne que ja ha superat la prova passa a ajudar altres.</li>
+                <li>Una persona del professorat pot respondre amb el mòbil per no perdre temps (sessió iniciada en el telèfon).</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Errors típics per document</vf-title>
+        <vf-content>
+            <vf-callout type="atencio">A revisar contra els PDFs reals.</vf-callout>
+            <vf-list>
+                <li><strong>DOCUMENT 1</strong>: moure el paràgraf però deixar el text duplicat; esborrar una paraula equivocada; deixar espais dobles.</li>
+                <li><strong>DOCUMENT 2</strong>: confondre colors (roig/verd), comptar en majúscules o minúscules, aplicar el format a tota la línia en lloc de només el fragment, canviar el tamany però no el tipus, confondre superíndex amb subíndex.</li>
+                <li><strong>DOCUMENT 3</strong>: posar negreta i tamany gran manualment sense usar estils; confondre el nivell de títol i subtítol.</li>
+                <li><strong>DOCUMENT 4</strong>: fer l'índex a mà; no actualitzar l'índex després de canviar els títols; modificar cada títol per separat en lloc de l'estil; usar Intro repetit en lloc del salt de pàgina.</li>
+                <li><strong>DOCUMENT 5</strong>: escriure els números o els guions a mà; barrejar llista numerada i no numerada; sagnar amb espais; interliniat no aplicat al paràgraf correcte.</li>
+                <li><strong>DOCUMENT 6</strong>: files i columnes comptades malament (f=fila, c=columna); taula amb cel·les fusionades quan no toca; imatges en ordre equivocat; caràtules sense numeració automàtica.</li>
+                <li><strong>DOCUMENT 7</strong>: enviar el document en format de Writer en comptes de PDF; encapçalament només a la primera pàgina; peu sense numeració; enllaç que sembla enllaç però no és actiu; coordenades transcrites amb error.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Si un document no és vàlid</vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li>Responeu amb l'etiqueta «Reenviar» i un missatge curt: «Document no vàlid. Revisa el punt X i reenvia'l amb el mateix assumpte».</li>
+                <li>No doneu la solució: indiqueu només la zona o l'habilitat (per exemple, «revisa els títols»).</li>
+                <li>Registreu a la rúbrica que ha calgut reenviar (impacta en el nivell Suficient/Molt bé).</li>
+                <li>Si l'alumne/a repeteix la mateixa errada dues vegades, passeu a una pista visual o a una demostració curta en pantalla.</li>
+                <li>Si un alumne es bloqueja més d'una sessió, permeteu que continue amb la prova següent mentre rep suport (la rúbrica registra l'habilitat pendent).</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Consells d'aula</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Sessió 1: reserveu temps per a l'accés al correu; hi haurà alumnat que no recorda la contrasenya.</li>
+                <li>Insistiu en l'assumpte exacte: és el primer filtre de correcció.</li>
+                <li>Deixeu clar que només l'informàtic respon: no contesteu «com a professor» davant de l'alumnat; mantingueu la ficció.</li>
+                <li>Feu una projecció de «l'estat del rescat» (proves superades per grup) per motivar sense posar noms.</li>
+                <li>Amb dues sessions per document, aprofiteu la primera per a la pràctica guiada i reserveu la segona per a la prova; qui va ràpid passa a ampliació o ajuda.</li>
+                <li>A les sessions 17 i 18, deixeu una estona perquè l'alumnat revise la seua rúbrica abans de tancar la nota.</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

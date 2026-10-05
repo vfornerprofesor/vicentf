@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - El que publiques et defineix</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · El que publiques et defineix (document per al professorat)">El que publiques et defineix</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Taller de Relacions Digitals Responsables</vf-badge>
+            <vf-badge>10 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/ordinadors/el-que-publiques-et-defineix/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>L'alumnat de 1r ESO ja és usuari de xarxes, missatgeria i vídeo en línia, però poques vegades es pregunta qui li creu, què deixa de rastre o què pot provocar el que comparteix. En esta SA investiguen en parelles o grups de tres un tema que els afecta directament i el converteixen en un producte que ells mateixos consumirien: un vídeo curt per a companys i companyes de la seua edat.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>Crear un vídeo informatiu/educatiu de 2 a 3&nbsp;minuts</strong> dirigit a altres adolescents sobre una d'estes temàtiques:
+            </vf-callout>
+            <vf-list ordered>
+                <li>Com detectar una notícia falsa.</li>
+                <li>Com protegir la teua identitat digital.</li>
+                <li>Què és la petjada digital i per què importa.</li>
+                <li>Com evitar difondre discursos d'odi a internet.</li>
+                <li>Com crear un perfil digital segur i responsable.</li>
+            </vf-list>
+            <vf-text>El vídeo ha de tindre guió previ, informació contrastada de fonts fiables, contingut visual atractiu amb recursos de llicència lliure i un missatge clar. Els vídeos es projecten en el visionat final.</vf-text>
+            <vf-text><strong>Agrupament</strong>: parelles o grups de tres, amb rols rotatius (portaveu, documentalista, editor/a) que es repeteixen en la recerca, la gravació i l'edició. La classe no pot repetir tema més de dues vegades.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Competència específica</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 90px;">Codi</th>
+                            <th>Descripció</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE2</td>
+                            <td>Buscar i seleccionar críticament informació digital de diferents fonts, interpretar-la, organitzar-la en l'entorn personal d'aprenentatge i crear continguts digitals.</td>
+                        </tr>
+                        <tr>
+                            <td>CE3</td>
+                            <td>Construir una identitat digital adequada i aplicar estratègies bàsiques per a cuidar-la i protegir-la.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 80px;">Codi</th>
+                            <th style="min-width: 260px;">Descripció</th>
+                            <th style="min-width: 70px;">Pes %</th>
+                            <th style="min-width: 220px;">Justificació del pes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE2.1</td>
+                            <td>Buscar, seleccionar i interpretar informació d'acord amb les necessitats a partir de diverses fonts amb sentit crític, contrastant-ne la veracitat.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Nucli de la recerca i base del rigor de tot el vídeo.</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.2</td>
+                            <td>Reconéixer la importància de les notícies falses en la desinformació de la societat.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Un únic tema entre cinc; es treballa amb tota la classe al circuit.</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.3</td>
+                            <td>Detectar els discursos d'odi i reconéixer les seues implicacions en el desenvolupament de la societat.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Igual que l'anterior; contingut sensible que cal reconéixer, no dominar.</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.6</td>
+                            <td>Crear, integrar i editar continguts digitals amb sentit estètic de manera creativa i respectant els drets d'autoria.</td>
+                            <td>30&nbsp;%</td>
+                            <td>Criteri més complex i procedimental: ocupa la major part de les sessions (guió, gravació, edició).</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.1</td>
+                            <td>Identificar i valorar diferents maneres de representar la identitat en Internet i la petjada digital que deixen.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Concepte base de la identitat digital.</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.3</td>
+                            <td>Reconéixer les implicacions de la publicació de dades personals en la xarxa.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Conceptual; es comprova amb casos.</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.4</td>
+                            <td>Adoptar conductes bàsiques que protegisquen la identitat digital i les dades personals.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Implica actuar i comprometre's; es comprova en el circuit, en la privacitat del vídeo i en els compromisos de la reflexió.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Selecció d'informació en mitjans digitals a través de cercadors web tot contrastant-ne la veracitat.</li>
+                <li>Lectura i interpretació d'informació de mitjans digitals.</li>
+                <li>Detecció de notícies falses, boles i discursos d'odi. Implicacions socials.</li>
+                <li>Propietat intel·lectual i drets d'autoria.</li>
+                <li>Creació bàsica de continguts amb eines digitals. Estètica i llenguatge audiovisual.</li>
+                <li>La identitat personal a Internet. Alies i avatars.</li>
+                <li>Exposició personal en la xarxa. La petjada digital.</li>
+                <li>Conductes i hàbits per a cuidar la identitat digital.</li>
+                <li>La privacitat en la xarxa. La protecció de les dades de caràcter personal. Informació i consentiment.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Descriptors del perfil d'eixida</vf-title>
+        <vf-content>
+            <vf-text>CCL3, CD1, CD2, CD4, CPSAA3, CPSAA4, CC3, CCEC3.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 1 — Presa de contacte i tria de tema (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: entendre el repte i formar els grups.<br>
+<strong>Activitats</strong>: arrancada d'equips (5&nbsp;min); pregunta d'entrada «Què diria de tu un desconegut si només veiera les teues publicacions?» en parelles i posada en comú (10&nbsp;min); visionat dels dos vídeos de la unitat sobre identitat/petjada digital i notícies falses (15&nbsp;min); presentació del repte, les 4 condicions del vídeo i la rúbrica (10&nbsp;min); formació de grups, rols i tria de tema (10&nbsp;min); anotació del tema en el full de grup (5&nbsp;min).<br>
+<strong>Agrupament</strong>: gran grup i parelles/trios.<br>
+<strong>Material</strong>: ordinadors, projector, rúbrica impresa o en pantalla.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 2 — Circuit de cinc estacions (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: que tot l'alumnat conega les cinc temàtiques i complete el Passaport digital i la fitxa de grup del circuit.<br>
+<strong>Activitats</strong>: instruccions (5&nbsp;min); cinc estacions de 9&nbsp;min (una per temàtica): lectura del cas i 2 preguntes individuals al Passaport digital (5&nbsp;min) i resposta consensuada del grup a la fitxa de grup (4&nbsp;min); tancament (5&nbsp;min).<br>
+<strong>Agrupament</strong>: els grups del repte rotants; treball individual i posada en comú dins del grup.<br>
+<strong>Material</strong>: fitxes d'estació, Passaport digital individual, fitxa de grup del circuit.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 3 — Recerca i fitxa de fonts (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: localitzar i contrastar fonts sobre el tema triat.<br>
+<strong>Activitats</strong>: mini-demostració del professorat de com contrastar una dada en dues fonts (10&nbsp;min); recerca guiada amb els punts «Informació que ha d'aparéixer al vídeo» i les fonts recomanades de la pàgina del tema (35&nbsp;min); omplir la fitxa de fonts (10&nbsp;min).<br>
+<strong>Material</strong>: pàgina de la temàtica, fitxa de fonts.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 4 — De la informació al guió (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: transformar la recerca en un guió propi.<br>
+<strong>Activitats</strong>: model de guió (inici, desenvolupament, tancament, 1&nbsp;min ≈ 130 paraules) (10&nbsp;min); redacció del guió per escenes amb qui parla i què es veu (35&nbsp;min); lectura en veu alta i cronometrada (10&nbsp;min).<br>
+<strong>Material</strong>: plantilla de guió/storyboard.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 5 — Validació del guió i material visual (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: tindre un guió validat i els recursos reunits amb autoria clara.<br>
+<strong>Activitats</strong>: mini-lliçó sobre drets d'autoria i llicències lliures (10&nbsp;min): què és l'autoria, què permet una llicència Creative Commons o el domini públic, què cal citar (autor, títol, llicència, enllaç) i per què «ho he trobat en Google» no és permís; revisió del guió amb el professorat per grups (35&nbsp;min, mentre la resta descarrega imatges, música i efectes de llicència lliure en una carpeta «recursos» del grup i els anota amb font); llista de recursos amb autor, títol, llicència i enllaç (10&nbsp;min).<br>
+<strong>Condició</strong>: sense guió validat no es grava.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 6 — Gravació (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: obtindre tot el material gravat.<br>
+<strong>Activitats</strong>: normes de gravació (llum, so, enquadrament, privacitat de les persones que apareguen) (5&nbsp;min); gravació per escenes seguint el guió, amb veu en off gravada en un lloc sense soroll (45&nbsp;min); còpia dels arxius a la carpeta del grup, amb subcarpetes «clips», «veu», «imatges» i «música», i noms descriptius (p. ex. <code>escena3-veu.mp3</code>) (5&nbsp;min).<br>
+<strong>Nota</strong>: respecte a la imatge: només apareix qui ho accepta; es pot fer sense cares (veu en off, animació, captures).<br>
+<strong>Material</strong>: càmeres o mòbils del centre, auriculars, ordinadors amb Kdenlive instal·lat i provat prèviament.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 7 — Edició I amb Kdenlive (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: muntar el vídeo en la línia de temps.<br>
+<strong>Activitats</strong>: demostració de Kdenlive (10&nbsp;min): crear un projecte nou, importar clips, imatges i àudio al contenidor del projecte, arrossegar-los a la línia de temps, tallar un clip i eliminar el sobrant, moure i ordenar clips, ajustar el volum d'una pista d'àudio; muntatge de clips, imatges i veu en off seguint el guió escena per escena (40&nbsp;min); control de la durada total (5&nbsp;min).<br>
+<strong>Rols</strong>: l'editor/a maneja el ratolí, el portaveu comprova que el muntatge segueix el guió i el documentalista té la llista de recursos oberta. Es canvia de rol a mitja sessió.<br>
+<strong>Pautes</strong>: desar el projecte sovint, i mantindre l'arxiu del projecte i la carpeta de recursos junts en la carpeta del grup.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 8 — Edició II i exportació (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: acabar amb text en pantalla, so, crèdits i exportar.<br>
+<strong>Activitats</strong>: breu demostració dels títols i les transicions (5&nbsp;min): afegir un clip de títol i escriure el text, i posar una transició senzilla (fosa) entre dos clips; finalització del muntatge: títols i text en pantalla llegibles, transicions bàsiques, música de fons més baixa que la veu (30&nbsp;min); crèdits finals amb autor, títol, llicència i font de cada recurs, com a clip de títol al final del vídeo (10&nbsp;min); exportació del vídeo en format MP4 amb l'opció de renderitzar del programa, visionat complet del fitxer exportat i lliurament en la carpeta indicada (10&nbsp;min).<br>
+<strong>Comprovació abans de lliurar</strong>: durada de 2 a 3&nbsp;min, so audible i equilibrat, text llegible, tots els recursos externs citats en els crèdits.</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 9 — Revisió entre iguals (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: millorar el producte amb opinió d'un altre grup.<br>
+<strong>Activitats</strong>: cada grup visiona el vídeo d'un altre i completa la llista de coavaluació (20&nbsp;min); lectura del feedback i decisió de canvis (10&nbsp;min); correccions i reexportació (25&nbsp;min).</vf-text>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 10 — Visionat i reflexió (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: presentar els vídeos i reflexionar sobre el propi perfil.<br>
+<strong>Activitats</strong>: visionat de les versions finals i comentari de 1&nbsp;min per vídeo (35&nbsp;min); reflexió individual «El meu perfil digital» (15&nbsp;min); autoavaluació del grup (5&nbsp;min).<br>
+<strong>Nota</strong>: si hi ha més de 8 grups, el visionat pot iniciar-se en la sessió 9 mentre altres grups reexporten.</vf-text>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-title level="3">A1. Què diu de mi el que publique? (sessió 1)</vf-title>
+            <vf-text>En parelles, escriviu tres coses que una persona desconeguda podria deduir de les vostres publicacions.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: ho feu amb un perfil imaginari.</li>
+                <li><strong>Ampliació</strong>: ho feu amb un perfil real d'una persona famosa.</li>
+            </vf-list>
+            <vf-title level="3">A2. Circuit de cinc estacions (sessió 2)</vf-title>
+            <vf-text>A cada estació hi ha un cas i dues preguntes. Primer contesteu individualment al Passaport digital i després el grup posa en comú i escriu una resposta consensuada a la fitxa de grup:</vf-text>
+            <vf-list ordered>
+                <li><strong>Notícies falses</strong>: una notícia dubtosa; trobeu tres senyals i digueu on la verificaríeu.</li>
+                <li><strong>Discursos d'odi</strong>: tres missatges, un d'ells disfressat de broma; decidiu quin és i per què fa mal.</li>
+                <li><strong>Petjada digital</strong>: una llista d'accions (like, cerca, comentari, ubicació); classifiqueu petjada activa i passiva i expliqueu una conseqüència futura.</li>
+                <li><strong>Dades personals i privacitat</strong>: una publicació d'un adolescent amb dades; identifiqueu quines no hauria de mostrar i per què.</li>
+                <li><strong>Protegir identitat i perfil</strong>: un perfil mal configurat; proposeu tres canvis (nom d'usuari, foto, privacitat, contrasenya).</li>
+            </vf-list>
+            <vf-list>
+                <li><strong>Bàsic</strong>: preguntes amb pistes.</li>
+                <li><strong>Ampliació</strong>: reescriviu el cas perquè siga segur.</li>
+            </vf-list>
+            <vf-title level="3">A3. Fitxa de fonts (sessió 3)</vf-title>
+            <vf-text>Per a cada font: nom, enllaç, qui l'escriu, data, una dada extreta amb paraules pròpies i una segona font que la confirme.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: mínim 3 fonts fiables.</li>
+                <li><strong>Ampliació</strong>: 4 o més amb una de contrast contrària o matisada.</li>
+            </vf-list>
+            <vf-title level="3">A4. Guió del vídeo (sessions 4-5)</vf-title>
+            <vf-text>Taula amb escena, text, imatge/so, durada i font de la dada. Ha d'incloure els punts de «Informació que ha d'aparéixer al vídeo» de la temàtica i una frase final dirigida a adolescents.</vf-text>
+            <vf-title level="3">A5. Vídeo de 2-3&nbsp;min (sessions 6-8)</vf-title>
+            <vf-text>Gravació i edició amb Kdenlive: text en pantalla, so equilibrat, transicions bàsiques i crèdits, exportat en MP4. Tots els recursos externs són de llicència lliure i citats.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: veu en off sobre imatges.</li>
+                <li><strong>Ampliació</strong>: entrevistes breus o animació.</li>
+            </vf-list>
+            <vf-title level="3">A6. Revisió entre iguals (sessió 9)</vf-title>
+            <vf-text>Visioneu el vídeo d'un altre grup i completeu la llista de coavaluació: dues coses que funcionen i una que cal millorar.</vf-text>
+            <vf-title level="3">A7. El meu perfil digital (sessió 10)</vf-title>
+            <vf-text>Individual, text curt: (1) com et representes ara a Internet i quina petjada deixes; (2) tres compromisos concrets per cuidar-la.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: vídeos de suport i fonts amb text, imatge i àudio; guions amb frases model; guies visuals de cada sessió; subtítols en el vídeo final.</li>
+                <li><strong>Acció i expressió</strong>: es pot narrar en off, aparéixer en càmera, usar captures o animació; el rol dins del grup s'adapta (documentalista, portaveu, editor/a); plantilla de guió amb frases iniciades per a qui necessite suport.</li>
+                <li><strong>Implicació</strong>: tria de tema i d'estil; audiència real (companys); no es grava ningú que no vullga aparéixer; casos treballats sense exposar dades reals de l'alumnat.</li>
+                <li><strong>Mesures concretes</strong>: agrupament que combine nivells; temps extra de recerca i fitxa de fonts simplificada amb tres columnes; enunciats curts i visuals; vocabulari clau en pissarra; ampliacions (A3, A5) per a l'alumnat avançat.</li>
+                <li><strong>Sensibilitat</strong>: el tema d'odi es treballa amb exemples controlats pel professorat; es mostra l'efecte en la víctima i no la reproducció del missatge.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <vf-text>Dins de cada criteri, els indicadors <strong>grupals</strong> sumen el 80&nbsp;% i els <strong>individuals</strong> el 20&nbsp;%. La nota d'un alumne en cada criteri és: <strong>nota del criteri = 0,8 × nota grupal + 0,2 × nota individual</strong> (la grupal és la mateixa per a tot el grup; la individual és pròpia de cada alumne/a).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 180px;">Instrument</th>
+                            <th style="min-width: 90px;">Àmbit</th>
+                            <th style="min-width: 90px;">Moment</th>
+                            <th style="min-width: 170px;">Qui avalua</th>
+                            <th style="min-width: 90px;">Activitat</th>
+                            <th style="min-width: 200px;">Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fitxa de grup del circuit</strong></td>
+                            <td>Grupal</td>
+                            <td>S2</td>
+                            <td>Heteroavaluació</td>
+                            <td>A2</td>
+                            <td>Nota única 0-10 per estació</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fitxa de fonts</strong></td>
+                            <td>Grupal</td>
+                            <td>S3</td>
+                            <td>Heteroavaluació</td>
+                            <td>A3</td>
+                            <td>Fet/no fet (10/0)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rúbrica del vídeo i el procés</strong></td>
+                            <td>Grupal</td>
+                            <td>S5-S8, S10</td>
+                            <td>Heteroavaluació (auto i coavaluació formatives)</td>
+                            <td>A3-A5</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Passaport digital (resposta individual al circuit)</strong></td>
+                            <td>Individual</td>
+                            <td>S2</td>
+                            <td>Heteroavaluació</td>
+                            <td>A2</td>
+                            <td>Nota única 0-10 per bloc</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Llista d'observació individual</strong></td>
+                            <td>Individual</td>
+                            <td>S3-S9</td>
+                            <td>Heteroavaluació</td>
+                            <td>A3, A5, A6</td>
+                            <td>Escala de 3 nivells (Malament 0 · Bé 5 · Molt bé 10)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reflexió individual «El meu perfil digital»</strong></td>
+                            <td>Individual</td>
+                            <td>S10</td>
+                            <td>Heteroavaluació</td>
+                            <td>A7</td>
+                            <td>Escala de 3 nivells (Malament 0 · Bé 5 · Molt bé 10)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Llista de control del treball en grup</strong></td>
+                            <td>Grupal</td>
+                            <td>S9 i S10</td>
+                            <td>Co i auto (formativa, no qualifica)</td>
+                            <td>A6</td>
+                            <td>Fet/no fet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+            <vf-title level="3">Fitxa de grup del circuit (grupal)</vf-title>
+            <vf-text><strong>Tipus</strong>: nota única 0-10 per estació (2 preguntes, 5 punts cadascuna; resposta raonada = 5, parcial = 2,5-3, sense resposta o errònia = 0). Una fitxa per grup amb la resposta consensuada.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 80px;">Pes</th>
+                            <th style="min-width: 320px;">Com es posa la nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Estació 1: notícies falses</strong></td>
+                            <td>CE2.2</td>
+                            <td>80&nbsp;%</td>
+                            <td>Identifica 3 senyals i explica l'efecte de la desinformació sobre la societat.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estació 2: discursos d'odi</strong></td>
+                            <td>CE2.3</td>
+                            <td>80&nbsp;%</td>
+                            <td>Detecta el missatge d'odi, justifica el dany i les conseqüències socials.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estació 3: petjada digital</strong></td>
+                            <td>CE3.1</td>
+                            <td>80&nbsp;%</td>
+                            <td>Classifica petjada activa/passiva i indica una conseqüència futura.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estació 4: dades personals</strong></td>
+                            <td>CE3.3</td>
+                            <td>80&nbsp;%</td>
+                            <td>Identifica les dades que no cal publicar i explica el risc.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estació 5: perfil i protecció</strong></td>
+                            <td>CE3.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>Proposa almenys 3 mesures de protecció adequades i les justifica.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">Fitxa de fonts (grupal)</vf-title>
+            <vf-text><strong>Tipus</strong>: fet/no fet (10/0).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 130px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 80px;">Pes</th>
+                            <th style="min-width: 300px;">Fet (10)</th>
+                            <th style="min-width: 200px;">No fet (0)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fitxa completa</strong></td>
+                            <td>CE2.1</td>
+                            <td>20&nbsp;%</td>
+                            <td>Mínim 3 fonts fiables amb enllaç, autoria i data, una dada en paraules pròpies per font i una dada contrastada en 2 fonts.</td>
+                            <td>Falten fonts, dades o el contrast.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">Rúbrica del vídeo i el procés (grupal)</vf-title>
+            <vf-text><strong>Tipus</strong>: rúbrica de 4 nivells (Insuficient 1-4 / Suficient-Bé 5-6 / Notable 7-8 / Excel·lent 9-10), una nota per a tot el grup.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fonts i contrast</strong></td>
+                            <td>CE2.1</td>
+                            <td>20&nbsp;%</td>
+                            <td>Una font o no fiable; no se cita.</td>
+                            <td>2-3 fonts fiables citades però sense contrast.</td>
+                            <td>3 o més fonts fiables citades en els crèdits, dada confirmada en 2 fonts.</td>
+                            <td>4 o més fonts, distingeix dada d'opinió i explica per què les fonts són fiables.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rigor i contingut</strong></td>
+                            <td>CE2.1</td>
+                            <td>20&nbsp;%</td>
+                            <td>Menys de 3 dels 5 punts de la temàtica o amb errors.</td>
+                            <td>3-4 punts, sense errors greus.</td>
+                            <td>Els 5 punts correctes, amb un exemple.</td>
+                            <td>Els 5 punts amb dades concretes i exemple propi adaptat a adolescents.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guió</strong></td>
+                            <td>CE2.1</td>
+                            <td>20&nbsp;%</td>
+                            <td>No hi ha guió o és una còpia de la font.</td>
+                            <td>Guió amb escenes però desajustat de durada.</td>
+                            <td>Guió estructurat (inici, desenvolupament, tancament), paraules pròpies i durada 2-3&nbsp;min.</td>
+                            <td>A més, llenguatge proper i crida final clara i memorable.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estètica i llenguatge audiovisual</strong></td>
+                            <td>CE2.6</td>
+                            <td>30&nbsp;%</td>
+                            <td>Imatges i text poc llegibles; so confús.</td>
+                            <td>Imatges i text llegibles, ritme irregular.</td>
+                            <td>Composició cuidada, text llegible, so clar i ritme coherent.</td>
+                            <td>A més, recursos creatius (transicions, ritme, recursos visuals) que reforcen el missatge.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drets d'autoria</strong></td>
+                            <td>CE2.6</td>
+                            <td>30&nbsp;%</td>
+                            <td>Imatges o música sense citar ni llicència clara.</td>
+                            <td>Part dels recursos citats.</td>
+                            <td>Tots els recursos externs són de llicència lliure i citats.</td>
+                            <td>A més, indica llicència concreta de cada recurs i crea part del material propi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Producte final</strong></td>
+                            <td>CE2.6</td>
+                            <td>20&nbsp;%</td>
+                            <td>Durada fora de 2-3&nbsp;min o no s'entrega.</td>
+                            <td>Dins la durada amb problemes tècnics lleus.</td>
+                            <td>Dins la durada, bon so, entrega correcta.</td>
+                            <td>A més, subtítols o format accessible.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Privacitat i consentiment en el vídeo</strong></td>
+                            <td>CE3.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>Apareix algú sense permís o es mostren dades personals.</td>
+                            <td>Ningú apareix sense permís però queda alguna dada personal visible o sense revisar.</td>
+                            <td>Tot el material respecta el consentiment i no mostra dades personals.</td>
+                            <td>A més, el vídeo modela una bona pràctica de privacitat (àlies, avatar, captures sense dades).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">Passaport digital (individual)</vf-title>
+            <vf-text><strong>Tipus</strong>: nota única 0-10 per bloc (2 preguntes, 5 punts cadascuna; resposta raonada = 5, parcial = 2,5-3, sense resposta o errònia = 0). Resposta personal de cada alumne/a abans de la posada en comú.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 80px;">Pes</th>
+                            <th style="min-width: 320px;">Com es posa la nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bloc A: notícies falses</strong></td>
+                            <td>CE2.2</td>
+                            <td>20&nbsp;%</td>
+                            <td>Identifica 3 senyals i explica l'efecte de la desinformació sobre la societat.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloc B: discursos d'odi</strong></td>
+                            <td>CE2.3</td>
+                            <td>20&nbsp;%</td>
+                            <td>Detecta el missatge d'odi, justifica el dany i les conseqüències socials.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloc C: petjada digital</strong></td>
+                            <td>CE3.1</td>
+                            <td>10&nbsp;%</td>
+                            <td>Classifica petjada activa/passiva i indica una conseqüència futura.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloc D: dades personals</strong></td>
+                            <td>CE3.3</td>
+                            <td>20&nbsp;%</td>
+                            <td>Identifica les dades que no cal publicar i explica el risc.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloc E: perfil i protecció</strong></td>
+                            <td>CE3.4</td>
+                            <td>10&nbsp;%</td>
+                            <td>Proposa almenys 3 mesures de protecció adequades.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">Reflexió individual «El meu perfil digital» (individual)</vf-title>
+            <vf-text><strong>Tipus</strong>: escala de 3 nivells: Malament = 0 · Bé = 5 · Molt bé = 10.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes</th>
+                            <th style="min-width: 200px;">Malament</th>
+                            <th style="min-width: 200px;">Bé</th>
+                            <th style="min-width: 220px;">Molt bé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Representació i petjada pròpies</strong></td>
+                            <td>CE3.1</td>
+                            <td>10&nbsp;%</td>
+                            <td>No descriu com es representa ni quina petjada deixa.</td>
+                            <td>Descriu una de les dues.</td>
+                            <td>Descriu amb exemples reals com es representa i quina petjada deixa.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compromisos de protecció</strong></td>
+                            <td>CE3.4</td>
+                            <td>10&nbsp;%</td>
+                            <td>Cap compromís o massa vagues.</td>
+                            <td>1-2 compromisos concrets.</td>
+                            <td>3 compromisos concrets i realistes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">Llista d'observació individual (individual)</vf-title>
+            <vf-text><strong>Tipus</strong>: escala de 3 nivells: Malament = 0 · Bé = 5 · Molt bé = 10. Omplida pel professorat durant les sessions de recerca (S3), gravació i edició (S6-S8) i revisió (S9).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes</th>
+                            <th style="min-width: 200px;">Malament</th>
+                            <th style="min-width: 200px;">Bé</th>
+                            <th style="min-width: 220px;">Molt bé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Participació en la recerca</strong></td>
+                            <td>CE2.1</td>
+                            <td>20&nbsp;%</td>
+                            <td>No busca ni aporta fonts; depén dels companys.</td>
+                            <td>Busca i aporta alguna font amb ajuda.</td>
+                            <td>Busca, compara i aporta fonts de forma autònoma i contrasta una dada.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compliment del rol en gravació i edició</strong></td>
+                            <td>CE2.6</td>
+                            <td>10&nbsp;%</td>
+                            <td>No assumeix el rol o l'abandona.</td>
+                            <td>Fa el rol amb recordatoris.</td>
+                            <td>Fa el seu rol amb autonomia i el canvia quan toca.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aplicació del feedback en la revisió</strong></td>
+                            <td>CE2.6</td>
+                            <td>10&nbsp;%</td>
+                            <td>No incorpora cap canvi suggerit.</td>
+                            <td>Incorpora algun canvi amb ajuda.</td>
+                            <td>Proposa i fa canvis a partir del feedback rebut.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">Llista de control del treball en grup (grupal, formativa)</vf-title>
+            <vf-text><strong>Tipus</strong>: fet/no fet (10/0). Formativa; no entra en la nota. Ítems:</vf-text>
+            <vf-list>
+                <li>El grup ha repartit rols.</li>
+                <li>Tots han participat en la recerca.</li>
+                <li>S'han respectat torns i opinions.</li>
+                <li>El feedback rebut s'ha aplicat.</li>
+                <li>El vídeo s'ha acabat en temps.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <vf-text>G = indicador grupal; I = indicador individual. El pes entre parèntesis és el % en la nota de la SA (pes de l'indicador × pes del criteri).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes %</th>
+                            <th style="min-width: 110px;">Activitat(s)</th>
+                            <th style="min-width: 330px;">Instrument(s) i indicadors</th>
+                            <th style="min-width: 200px;">Pes de cada indicador dins del criteri (% en la SA)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CE2.1</strong></td>
+                            <td>20&nbsp;%</td>
+                            <td>A3, A4, A5</td>
+                            <td>G Fitxa de fonts: Fitxa completa; G Rúbrica: Fonts i contrast / Rigor i contingut / Guió; I Observació: Participació en la recerca</td>
+                            <td>20 (4) / 20 (4) / 20 (4) / 20 (4) / 20 (4). Grup 80 · Individual 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CE2.2</strong></td>
+                            <td>10&nbsp;%</td>
+                            <td>A2</td>
+                            <td>G Fitxa de grup del circuit: Estació 1; I Passaport: Bloc A</td>
+                            <td>80 (8) / 20 (2). Grup 80 · Individual 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CE2.3</strong></td>
+                            <td>10&nbsp;%</td>
+                            <td>A2</td>
+                            <td>G Fitxa de grup del circuit: Estació 2; I Passaport: Bloc B</td>
+                            <td>80 (8) / 20 (2). Grup 80 · Individual 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CE2.6</strong></td>
+                            <td>30&nbsp;%</td>
+                            <td>A5, A6</td>
+                            <td>G Rúbrica: Estètica / Drets d'autoria / Producte final; I Observació: Compliment del rol / Aplicació del feedback</td>
+                            <td>30 (9) / 30 (9) / 20 (6) / 10 (3) / 10 (3). Grup 80 · Individual 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CE3.1</strong></td>
+                            <td>10&nbsp;%</td>
+                            <td>A1, A2, A7</td>
+                            <td>G Fitxa de grup del circuit: Estació 3; I Passaport: Bloc C; I Reflexió: Representació i petjada</td>
+                            <td>80 (8) / 10 (1) / 10 (1). Grup 80 · Individual 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CE3.3</strong></td>
+                            <td>10&nbsp;%</td>
+                            <td>A2</td>
+                            <td>G Fitxa de grup del circuit: Estació 4; I Passaport: Bloc D</td>
+                            <td>80 (8) / 20 (2). Grup 80 · Individual 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CE3.4</strong></td>
+                            <td>10&nbsp;%</td>
+                            <td>A2, A5, A7</td>
+                            <td>G Fitxa de grup del circuit: Estació 5; G Rúbrica: Privacitat i consentiment; I Passaport: Bloc E; I Reflexió: Compromisos</td>
+                            <td>40 (4) / 40 (4) / 10 (1) / 10 (1). Grup 80 · Individual 20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text><strong>Nota del criteri per a cada alumne/a = 0,8 × nota grupal + 0,2 × nota individual</strong>, on cada nota és la suma de nota de l'indicador × pes dins del grup (grupal) o dins de la part individual. <strong>Nota de la SA = Σ nota del criteri × pes del criteri.</strong></vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><a href="unitats/ordinadors/el-que-publiques-et-defineix/index.html">Pàgines de la unitat</a>: les cinc temàtiques amb la informació que ha d'aparéixer, consells de cerca i fonts recomanades; vídeos de suport de la unitat.</li>
+                <li>Verificació: Maldita.es, Verificat, Newtral, Internet Segura for Kids.</li>
+                <li>Identitat i privacitat: Pantallas Amigas, INCIBE.</li>
+                <li>Discursos d'odi: pàgina de les Nacions Unides sobre discurs d'odi.</li>
+                <li>Banc d'imatges i música de llicència lliure.</li>
+                <li>Kdenlive (editor de vídeo lliure); càmeres o mòbils del centre.</li>
+                <li>Plantilles de guió, fitxa de fonts, Passaport digital, fitxa de grup del circuit i llista d'observació individual (fitxer de materials).</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

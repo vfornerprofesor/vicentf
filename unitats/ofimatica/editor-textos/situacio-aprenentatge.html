@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - Editor de textos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · Editor de textos (document per al professorat)">El nàufrag de l'illa</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Taller de Relacions Digitals Responsables</vf-badge>
+            <vf-badge>18 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/ofimatica/editor-textos/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>Un informàtic espanyol ha sigut segrestat i abandonat nàufrag en una illa deserta. Només disposa d'un robot i d'un compte de correu electrònic. El robot només entén documents de text ben formatats, i l'alumnat és l'única esperança de l'informàtic: si els documents són correctes, el robot li donarà noves instruccions i, al final, la ubicació per ser rescatat.</vf-text>
+
+            <vf-text>L'editor de textos (LibreOffice Writer) es treballa així com una eina amb sentit: cada habilitat (moure, buscar, donar format, crear índexs, llistes, taules, imatges, PDF, encapçalaments, enllaços) és necessària per superar una prova. El correu electrònic és el canal real de comunicació, la qual cosa permet practicar també l'etiqueta digital i la comunicació responsable.</vf-text>
+
+            <vf-text>Aula de 1r ESO: consignes curtes i visuals, ritme individual dins d'una progressió comuna, ajuda entre iguals. Cada document es treballa en dues sessions: una de demostració i pràctica guiada i una altra per a la prova, el reforç i l'ampliació.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>Superar les 8 proves</strong> de l'escape room per correu electrònic i salvar l'informàtic.
+            </vf-callout>
+
+            <vf-text><strong>Funcionament</strong>:</vf-text>
+            <vf-list>
+                <li>L'alumnat escriu a l'adreça de l'informàtic.</li>
+                <li>Cada document acabat es guarda en format de Writer i s'envia adjunt amb l'assumpte <strong>DOCUMENT 1</strong>, <strong>DOCUMENT 2</strong>… (fins al 7).</li>
+                <li>Si el document és vàlid, l'informàtic respon amb les instruccions de la prova següent.</li>
+                <li>Si no ho és, cal corregir-lo i reenviar-lo.</li>
+                <li>En superar el DOCUMENT 7, l'informàtic envia un missatge final amb el desenllaç de la història.</li>
+            </vf-list>
+
+            <vf-text><strong>Les proves</strong>:</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 120px;">Prova</th>
+                            <th style="min-width: 200px;">Què cal fer</th>
+                            <th style="min-width: 220px;">Habilitats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Prova 1. Primer contacte</td>
+                            <td>Enviar un correu amb l'assumpte VULL AJUDAR-TE i el nom de l'alumne/a al cos</td>
+                            <td>Redactar i enviar un correu amb assumpte i cos adequats</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 2. DOCUMENT 1</td>
+                            <td>Ordenar un text</td>
+                            <td>Moure paràgrafs; eliminar paraules</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 3. DOCUMENT 2</td>
+                            <td>Donar format al text</td>
+                            <td>Buscar paraules; tipus i tamany de lletra; negreta, cursiva, subratllat i tachat; superíndex i subíndex</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 4. DOCUMENT 3</td>
+                            <td>Estructurar un document</td>
+                            <td>Aplicar títols i subtítols</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 5. DOCUMENT 4</td>
+                            <td>Donar aspecte professional al document</td>
+                            <td>Canviar el format dels títols; crear l'índex; inserir salts de pàgina</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 6. DOCUMENT 5</td>
+                            <td>Organitzar la informació</td>
+                            <td>Llistes numerades i no numerades; sagnat i interliniat</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 7. DOCUMENT 6</td>
+                            <td>Completar un informe visual</td>
+                            <td>Taules; imatges (ordenar-les i afegir les caràtules)</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 8. DOCUMENT 7</td>
+                            <td>Preparar el document final per a enviar</td>
+                            <td>Passar a PDF; encapçalament; peu de pàgina; enllaç</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Competència específica</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 70px;">Codi</th>
+                            <th style="min-width: 300px;">Descripció</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1</td>
+                            <td>Crear, editar i donar format a documents de text amb un editor de textos, de manera autònoma, ordenada i amb sentit estètic, i enviar-los per correu electrònic complint les normes bàsiques de comunicació digital.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 70px;">Codi</th>
+                            <th style="min-width: 220px;">Descripció</th>
+                            <th style="min-width: 70px;">Pes %</th>
+                            <th style="min-width: 220px;">Justificació del pes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>Redactar i enviar correus electrònics amb destinatari, assumpte i cos adequats i adjuntar els documents demanats.</td>
+                            <td>6</td>
+                            <td>Es practica en les 8 proves i és la base de tota la comunicació.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.2</td>
+                            <td>Moure paràgrafs dins d'un document per reorganitzar-ne el contingut.</td>
+                            <td>4</td>
+                            <td>Habilitat bàsica i de poca dificultat.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.3</td>
+                            <td>Eliminar paraules i fragments de text sense alterar la resta del document.</td>
+                            <td>3</td>
+                            <td>Habilitat molt simple.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>Buscar paraules en un document amb l'eina de cerca per localitzar-les i comptar-les.</td>
+                            <td>4</td>
+                            <td>Eina senzilla però necessària per a altres proves.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>Canviar el tipus i el tamany de lletra de fragments concrets.</td>
+                            <td>4</td>
+                            <td>Format bàsic de caràcter.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.6</td>
+                            <td>Aplicar negreta, cursiva, subratllat i tachat segons les indicacions.</td>
+                            <td>6</td>
+                            <td>Reuneix quatre formats i exigeix precisió.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.7</td>
+                            <td>Aplicar superíndex i subíndex en els fragments indicats.</td>
+                            <td>4</td>
+                            <td>Format específic de menor ús.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.8</td>
+                            <td>Aplicar els estils de títol i subtítol per estructurar un document.</td>
+                            <td>7</td>
+                            <td>Base de l'estructura; sense ella no es poden fer l'índex ni la navegació.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.9</td>
+                            <td>Modificar el format dels estils de títol (tipus, tamany, color) de manera coherent en tot el document.</td>
+                            <td>6</td>
+                            <td>Exigeix entendre que els estils es canvien d'una sola vegada.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.10</td>
+                            <td>Crear un índex automàtic a partir dels títols i actualitzar-lo.</td>
+                            <td>7</td>
+                            <td>Habilitat nuclear i de més dificultat de l'estructura.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.11</td>
+                            <td>Inserir salts de pàgina per separar apartats.</td>
+                            <td>5</td>
+                            <td>Habilitat de maquetació senzilla però fàcil d'errar.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.12</td>
+                            <td>Crear llistes numerades i no numerades, incloent-hi diversos nivells.</td>
+                            <td>7</td>
+                            <td>Organitza la informació i admet diversos nivells.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.13</td>
+                            <td>Ajustar el sagnat i l'interliniat dels paràgrafs segons les indicacions.</td>
+                            <td>5</td>
+                            <td>Format de paràgraf amb diversos paràmetres.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.14</td>
+                            <td>Inserir taules, introduir-hi dades i ajustar-ne l'estructura.</td>
+                            <td>7</td>
+                            <td>Habilitat complexa que combina estructura i contingut.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.15</td>
+                            <td>Inserir imatges, ordenar-les i afegir-hi caràtules (llegendes).</td>
+                            <td>7</td>
+                            <td>Habilitat complexa que combina contingut i referències.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.16</td>
+                            <td>Exportar un document a PDF.</td>
+                            <td>4</td>
+                            <td>Procediment curt i molt guiat.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.17</td>
+                            <td>Crear un encapçalament en el document.</td>
+                            <td>5</td>
+                            <td>Habilitat de maquetació de pàgina.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.18</td>
+                            <td>Crear un peu de pàgina amb numeració.</td>
+                            <td>5</td>
+                            <td>Habilitat de maquetació de pàgina.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.19</td>
+                            <td>Inserir un enllaç a un recurs extern o a un lloc del mateix document.</td>
+                            <td>4</td>
+                            <td>Habilitat curta i molt guiada.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Organització de la informació. Operacions bàsiques amb arxius i carpetes.</li>
+                <li>Personalització de l'entorn de treball.</li>
+                <li>Creació bàsica de continguts amb eines digitals.</li>
+                <li>Estètica i llenguatge audiovisual.</li>
+                <li>Estratègies per a una ciberconvivència segura i respectuosa. Etiqueta digital.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Descriptors del perfil d'eixida</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>CD2</strong>: crea, integra i reelabora continguts digitals en diferents formats.</li>
+                <li><strong>CD3</strong>: es comunica i comparteix informació mitjançant eines digitals de manera responsable.</li>
+                <li><strong>CD5</strong>: resol problemes tècnics senzills en l'ús de les eines digitals.</li>
+                <li><strong>CPSAA4</strong>: reflexiona sobre el procés d'aprenentatge i aprén dels errors.</li>
+                <li><strong>CPSAA5</strong>: persevera en les tasques fins a completar-les.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-text>Les sessions són de 55 min. Cada document ocupa dues sessions: la primera, de demostració i pràctica guiada; la segona, per a la prova (el document de l'informàtic), el reforç i l'ampliació. El ritme és individual: cada alumne/a avança segons els documents que va superant. Les sessions marquen el punt orientatiu on hauria d'estar el grup.</vf-text>
+
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 1 — La història, el correu i Writer (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: entendre el repte, accedir al correu, conèixer Writer i superar la Prova 1.<br>
+                        <strong>Agrupament</strong>: individual, amb parelles d'ajuda.<br>
+                        <strong>Material</strong>: ordinador, compte de correu, Writer.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Presentació de la història.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Arrencada d'equips, inici de sessió i accés al correu.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Primera volta per Writer: obrir, escriure, guardar i adjuntar un arxiu en un correu.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td><strong>Prova 1</strong>: correu amb assumpte i nom.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Qui acaba ajuda la parella.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 2 — DOCUMENT 1: moure i eliminar (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: reorganitzar un text movent paràgrafs i eliminant paraules.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de seleccionar, tallar, enganxar i moure paràgrafs.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Pràctica guiada.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>Prova 2 (DOCUMENT 1)</strong> i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: repetir la pràctica.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Ampliació: reordenar un text més llarg i detectar espais sobrants.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 3 — DOCUMENT 2 (I): buscar i tipus de lletra (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: localitzar i comptar paraules amb Cerca i substitueix i canviar el tipus i el tamany de lletra.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de Cerca i substitueix.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Pràctica guiada: comptar paraules.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Demostració i pràctica del tipus i del tamany de lletra.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: cerca amb pistes de la parella.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Ampliació: comptar una paraula distingint majúscules i minúscules.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 4 — DOCUMENT 2 (II): formats de caràcter (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: aplicar negreta, cursiva, subratllat, tachat, superíndex i subíndex.<br>
+                        <strong>Agrupament</strong>: individual.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració dels formats.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Pràctica guiada de superíndex i subíndex.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>Prova 3 (DOCUMENT 2)</strong> i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Ampliació: ajudar un company.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Escriure fórmules químiques i potències.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 5 — DOCUMENT 3 (I): els estils de títol i subtítol (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: entendre què és un estil i aplicar títols i subtítols.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració: títol «fet a mà» enfront d'un estil.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Pràctica guiada.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Reconèixer l'estructura d'un document amb el navegador.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: parelles d'ajuda.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Ampliació: afegir un tercer nivell de títol.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 6 — DOCUMENT 3 (II): prova i consolidació (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: estructurar un document i consolidar-ne el treball.<br>
+                        <strong>Agrupament</strong>: individual i parelles.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Repàs ràpid de l'estil i del nivell correcte.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>Prova 4 (DOCUMENT 3)</strong> i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Reenviaments i reforç dels documents 1 a 3.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Coavaluació: es revisen els títols d'un company.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 7 — DOCUMENT 4 (I): format dels estils i salts de pàgina (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: modificar els estils de títol d'una sola vegada i separar apartats amb salts de pàgina.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de modificar un estil.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Pràctica guiada: canviar tipus, tamany i color dels títols.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Demostració i pràctica del salt de pàgina enfront de l'Intro repetit.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: pistes visuals.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Ampliació: crear una portada separada.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 8 — DOCUMENT 4 (II): índex i prova (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: crear i actualitzar un índex automàtic.<br>
+                        <strong>Agrupament</strong>: individual.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de l'índex i de com s'actualitza.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Pràctica guiada.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>Prova 5 (DOCUMENT 4)</strong> i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Ampliació: ajudar un company i comprovar que l'índex s'actualitza en canviar un títol.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 9 — DOCUMENT 5 (I): llistes (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: crear llistes numerades i no numerades amb diversos nivells.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de llistes i de pujar i baixar de nivell.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Pràctica guiada de llistes.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: llista d'un sol nivell.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td>Ampliació: llistes de tres nivells combinant tipus.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 10 — DOCUMENT 5 (II): sagnat, interliniat i prova (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: ajustar el sagnat i l'interliniat dels paràgrafs.<br>
+                        <strong>Agrupament</strong>: individual.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de l'ajust de paràgraf.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Pràctica guiada.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>Prova 6 (DOCUMENT 5)</strong> i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Reforç i ampliació: ajudar un company a revisar els nivells.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 11 — DOCUMENT 6 (I): taules (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: inserir i omplir taules i ajustar-ne l'estructura.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració d'inserir una taula, afegir i eliminar files i columnes.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Pràctica guiada de taules.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Localitzar cel·les per fila i columna.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: taula petita amb dades donades.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Ampliació: taula amb capçalera i cel·les combinades.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 12 — DOCUMENT 6 (II): imatges, caràtules i prova (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: inserir imatges, ordenar-les i afegir-hi caràtules amb numeració.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració d'inserir una imatge, ajustar-ne la mida i la posició i afegir-hi la caràtula.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Pràctica guiada.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>Prova 7 (DOCUMENT 6)</strong> i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Ampliació: ajudar un company.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 13 — DOCUMENT 7 (I): encapçalament i peu de pàgina (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: crear encapçalament i peu de pàgina amb numeració automàtica.<br>
+                        <strong>Agrupament</strong>: individual, parelles d'ajuda.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració d'encapçalament, peu i número de pàgina.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Pràctica guiada.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Comprovar que apareixen en totes les pàgines.</td>
+                                </tr>
+                                <tr>
+                                    <td>&mdash;</td>
+                                    <td>Reforç: pistes visuals.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Ampliació: encapçalament amb el nom i la data.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 14 — DOCUMENT 7 (II): enllaç, PDF i prova (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: inserir un enllaç, exportar a PDF i enviar el document final.<br>
+                        <strong>Agrupament</strong>: individual.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració de l'enllaç i de l'exportació a PDF.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Pràctica guiada: enllaç a una web i a un lloc del mateix document.</td>
+                                </tr>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td><strong>Prova 8 (DOCUMENT 7)</strong>: document final en PDF i enviament.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Ampliació: un segon enllaç.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 15 — Reforç i proves pendents (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: tancar les proves pendents i corregir els documents no vàlids.<br>
+                        <strong>Agrupament</strong>: individual i parelles.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>40&nbsp;min</td>
+                                    <td>Reenviar documents corregits i completar proves pendents.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>L'alumnat que ha acabat actua com a ajudant o fa reptes d'ampliació.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Estat del rescat del grup.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 16 — El missatge final i el rescat (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: llegir el desenllaç de la història i comprovar el rescat.<br>
+                        <strong>Agrupament</strong>: gran grup i individual.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Lectura del <strong>missatge final de l'informàtic</strong> i comentari.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Rescat de l'informàtic.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Reenviaments finals de qui encara no ha acabat.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 17 — Reflexió i autoavaluació (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: reflexionar sobre l'aprenentatge i valorar el propi treball.<br>
+                        <strong>Agrupament</strong>: individual i parelles.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Autoavaluació de les habilitats treballades amb la rúbrica.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td>Coavaluació per parelles d'un document.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Reflexió escrita: què he après, què m'ha costat i què faria diferent.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 18 — Tancament (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: revisar els resultats i tancar la qualificació.<br>
+                        <strong>Agrupament</strong>: individual i gran grup.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td>Revisió conjunta de la rúbrica amb cada alumne/a.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Posada en comú de bones pràctiques de correu i de documents.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Reenviaments de darrera hora.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-text>Totes les activitats es realitzen amb Writer i el correu electrònic. Cada prova té tres nivells de suport:</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: ajuda de la parella o del professorat amb una pista.</li>
+                <li><strong>Estàndard</strong>: la prova com es planteja.</li>
+                <li><strong>Ampliació</strong>: ajuda a un company i prova una variant (p. ex. més nivells de llista, una taula amb una estructura més complexa, un segon enllaç).</li>
+            </vf-list>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 80px;">Activitat</th>
+                            <th style="min-width: 260px;">Enunciat per a l'alumnat</th>
+                            <th style="min-width: 180px;">Habilitats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Prova 1</td>
+                            <td>Escriu a l'adreça de l'informàtic amb l'assumpte VULL AJUDAR-TE i el teu nom en el cos del missatge.</td>
+                            <td>Correu electrònic</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 2</td>
+                            <td>Obri el DOCUMENT 1 i ordena el text movent paràgrafs i eliminant les paraules que et demane. Envia'l amb l'assumpte DOCUMENT 1.</td>
+                            <td>Moure paràgrafs; eliminar paraules</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 3</td>
+                            <td>Segueix les instruccions del DOCUMENT 2: cerca paraules, canvia el tipus i tamany de lletra i aplica els formats. Envia'l amb l'assumpte DOCUMENT 2.</td>
+                            <td>Cerca; tipus i tamany; negreta, cursiva, subratllat, tachat; superíndex i subíndex</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 4</td>
+                            <td>Segueix les instruccions del DOCUMENT 3: aplica els títols i els subtítols. Envia'l amb l'assumpte DOCUMENT 3.</td>
+                            <td>Títols i subtítols</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 5</td>
+                            <td>Segueix les instruccions del DOCUMENT 4: canvia el format dels títols, crea l'índex i separa els apartats. Envia'l amb l'assumpte DOCUMENT 4.</td>
+                            <td>Format de títols; índex; salt de pàgina</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 6</td>
+                            <td>Segueix les instruccions del DOCUMENT 5: crea les llistes i ajusta el sagnat i l'interliniat. Envia'l amb l'assumpte DOCUMENT 5.</td>
+                            <td>Llistes; sagnat i interliniat</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 7</td>
+                            <td>Segueix les instruccions del DOCUMENT 6: crea les taules, afegeix les imatges, ordena-les i posa-hi les caràtules. Envia'l amb l'assumpte DOCUMENT 6.</td>
+                            <td>Taules; imatges i caràtules</td>
+                        </tr>
+                        <tr>
+                            <td>Prova 8</td>
+                            <td>Segueix les instruccions del DOCUMENT 7: afegeix encapçalament, peu de pàgina i enllaç, i passa'l a PDF. Envia'l amb l'assumpte DOCUMENT 7.</td>
+                            <td>PDF; encapçalament; peu de pàgina; enllaç</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text>Si un document no és vàlid, l'alumnat el corregeix i el reenvia amb el mateix assumpte.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: instruccions de cada prova en PDF amb passos numerats i captures; demostració del professorat en pantalla projectada; es pot ampliar el text i usar lectors de pantalla.</li>
+                <li><strong>Acció i expressió</strong>: es pot treballar amb menús o amb dreceres de teclat; es pot fer la prova en més d'una sessió; el doble de temps per document permet repetir la pràctica guiada.</li>
+                <li><strong>Implicació</strong>: la història, el missatge final i el rescat donen sentit al treball; el ritme individual evita comparacions; l'alumnat avançat actua com a ajudant.</li>
+                <li><strong>Mesures concretes</strong>: parelles d'ajuda heterogènies; pistes escalonades (primer una pregunta, després una captura); l'alumnat amb dificultats de lectoescriptura té el temps ampliat i les instruccions en lletra gran; pràctica de reforç més curta; ampliació per a qui acaba abans (ajudar un company, variants de les proves).</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Instrument</th>
+                            <th style="min-width: 170px;">Moment</th>
+                            <th style="min-width: 150px;">Qui avalua</th>
+                            <th style="min-width: 140px;">Activitat on s'aplica</th>
+                            <th style="min-width: 120px;">Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rúbrica de l'editor de textos</td>
+                            <td>Durant tota la SA, a mesura que s'envien els documents; autoavaluació i coavaluació a la sessió 17; tancament a la sessió 18</td>
+                            <td>Heteroavaluació (professorat), amb autoavaluació i coavaluació de l'alumnat i revisió conjunta</td>
+                            <td>Proves 1 a 8</td>
+                            <td>Escala de 3 nivells</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+            <vf-title level="3">Rúbrica de l'editor de textos</vf-title>
+            <vf-text><strong>Escala de 3 nivells</strong>: Malament = 0, Suficient = 5, Molt bé = 10. Cada criteri té un únic indicador amb pes 100&nbsp;% dins del seu criteri; entre parèntesis, el pes en la nota de la SA.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 110px;">Pes</th>
+                            <th style="min-width: 200px;">Malament (0)</th>
+                            <th style="min-width: 200px;">Suficient (5)</th>
+                            <th style="min-width: 200px;">Molt bé (10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Envia correus correctes</td>
+                            <td>CE1.1</td>
+                            <td>100&nbsp;% (6&nbsp;%)</td>
+                            <td>El correu no té assumpte, o l'assumpte no és el demanat, o no inclou el nom.</td>
+                            <td>Envia el correu o els documents amb alguna errada (assumpte incomplet, sense nom) que corregeix després d'un avís.</td>
+                            <td>Tots els correus tenen destinatari, assumpte exacte i cos adequat, i adjunta el document sense avisos.</td>
+                        </tr>
+                        <tr>
+                            <td>Mou paràgrafs</td>
+                            <td>CE1.2</td>
+                            <td>100&nbsp;% (4&nbsp;%)</td>
+                            <td>El text no queda en l'ordre demanat.</td>
+                            <td>Queda en l'ordre demanat després de corregir-ho una vegada.</td>
+                            <td>Reordena tots els paràgrafs correctament sense duplicar ni perdre text.</td>
+                        </tr>
+                        <tr>
+                            <td>Elimina paraules</td>
+                            <td>CE1.3</td>
+                            <td>100&nbsp;% (3&nbsp;%)</td>
+                            <td>Deixa paraules sense eliminar o elimina text que no tocava.</td>
+                            <td>Elimina les paraules demanades però en deixa alguna per revisar o hi ha espais sobrants.</td>
+                            <td>Elimina exactament les paraules demanades i el text queda net.</td>
+                        </tr>
+                        <tr>
+                            <td>Busca paraules</td>
+                            <td>CE1.4</td>
+                            <td>100&nbsp;% (4&nbsp;%)</td>
+                            <td>No usa l'eina de cerca o no localitza les paraules.</td>
+                            <td>Usa l'eina de cerca però cal ajuda per comptar o localitzar totes les aparicions.</td>
+                            <td>Localitza i compta les aparicions amb l'eina de cerca de manera autònoma.</td>
+                        </tr>
+                        <tr>
+                            <td>Canvia tipus i tamany de lletra</td>
+                            <td>CE1.5</td>
+                            <td>100&nbsp;% (4&nbsp;%)</td>
+                            <td>No canvia el tipus o el tamany als fragments demanats.</td>
+                            <td>Canvia el tipus o el tamany, però en algun fragment no és el demanat.</td>
+                            <td>Tots els fragments tenen el tipus i el tamany demanats.</td>
+                        </tr>
+                        <tr>
+                            <td>Aplica negreta, cursiva, subratllat i tachat</td>
+                            <td>CE1.6</td>
+                            <td>100&nbsp;% (6&nbsp;%)</td>
+                            <td>Aplica menys de la meitat dels formats demanats o en llocs equivocats.</td>
+                            <td>Aplica tots els formats però en algun fragment hi ha error o format de més.</td>
+                            <td>Aplica els quatre formats exactament en els fragments demanats.</td>
+                        </tr>
+                        <tr>
+                            <td>Aplica superíndex i subíndex</td>
+                            <td>CE1.7</td>
+                            <td>100&nbsp;% (4&nbsp;%)</td>
+                            <td>No aplica cap dels dos formats o els confon.</td>
+                            <td>Aplica un dels dos correctament, o tots dos amb alguna errada.</td>
+                            <td>Aplica superíndex i subíndex als caràcters indicats sense errors.</td>
+                        </tr>
+                        <tr>
+                            <td>Aplica títols i subtítols</td>
+                            <td>CE1.8</td>
+                            <td>100&nbsp;% (7&nbsp;%)</td>
+                            <td>Dona format als títols manualment (només negreta i tamany) en comptes d'usar estils.</td>
+                            <td>Usa els estils però en algun lloc el nivell no és el correcte.</td>
+                            <td>Usa els estils de títol i subtítol amb els nivells correctes en tot el document.</td>
+                        </tr>
+                        <tr>
+                            <td>Canvia el format dels títols</td>
+                            <td>CE1.9</td>
+                            <td>100&nbsp;% (6&nbsp;%)</td>
+                            <td>Només canvia el format d'un títol manualment.</td>
+                            <td>Modifica els estils però algun títol no queda amb el format demanat.</td>
+                            <td>Modifica els estils una sola vegada i tots els títols queden amb el format demanat.</td>
+                        </tr>
+                        <tr>
+                            <td>Crea l'índex</td>
+                            <td>CE1.10</td>
+                            <td>100&nbsp;% (7&nbsp;%)</td>
+                            <td>No hi ha índex, o està escrit a mà.</td>
+                            <td>Hi ha índex automàtic però no està actualitzat o li falten apartats.</td>
+                            <td>L'índex és automàtic, està actualitzat i inclou tots els apartats amb la numeració de pàgina correcta.</td>
+                        </tr>
+                        <tr>
+                            <td>Insereix salts de pàgina</td>
+                            <td>CE1.11</td>
+                            <td>100&nbsp;% (5&nbsp;%)</td>
+                            <td>Separa els apartats amb salts de línia (Intro repetit) o no els separa.</td>
+                            <td>Usa salts de pàgina però algun apartat no comença en pàgina nova o en sobra algun.</td>
+                            <td>Cada apartat demanat comença en una pàgina nova amb un salt de pàgina.</td>
+                        </tr>
+                        <tr>
+                            <td>Crea llistes</td>
+                            <td>CE1.12</td>
+                            <td>100&nbsp;% (7&nbsp;%)</td>
+                            <td>Escriu els números o els guions a mà o no distingeix els tipus de llista.</td>
+                            <td>Crea les llistes però alguna té el tipus o el nivell equivocat.</td>
+                            <td>Crea totes les llistes amb l'eina corresponent, amb el tipus i els nivells correctes.</td>
+                        </tr>
+                        <tr>
+                            <td>Ajusta sagnat i interliniat</td>
+                            <td>CE1.13</td>
+                            <td>100&nbsp;% (5&nbsp;%)</td>
+                            <td>Usa espais o tabuladors per a sagnar i no ajusta l'interliniat.</td>
+                            <td>Ajusta sagnat i interliniat però alguna mesura no és la demanada.</td>
+                            <td>Aplica el sagnat i l'interliniat demanats en tots els paràgrafs indicats amb l'eina de paràgraf.</td>
+                        </tr>
+                        <tr>
+                            <td>Insereix taules</td>
+                            <td>CE1.14</td>
+                            <td>100&nbsp;% (7&nbsp;%)</td>
+                            <td>No insereix la taula o no té les files i columnes demanades.</td>
+                            <td>La taula té l'estructura demanada però hi falten dades o algun error en el contingut.</td>
+                            <td>Les taules tenen l'estructura demanada i totes les dades correctes.</td>
+                        </tr>
+                        <tr>
+                            <td>Insereix imatges i caràtules</td>
+                            <td>CE1.15</td>
+                            <td>100&nbsp;% (7&nbsp;%)</td>
+                            <td>No insereix les imatges o no les ordena.</td>
+                            <td>Insereix i ordena les imatges però no totes tenen caràtula o alguna no és la correcta.</td>
+                            <td>Totes les imatges estan inserides, ordenades i amb la caràtula correcta.</td>
+                        </tr>
+                        <tr>
+                            <td>Exporta a PDF</td>
+                            <td>CE1.16</td>
+                            <td>100&nbsp;% (4&nbsp;%)</td>
+                            <td>Envia el document en el format de Writer, no en PDF.</td>
+                            <td>Envia un PDF però amb alguna errada (nom incorrecte, pàgines que sobren).</td>
+                            <td>Envia un PDF correcte del document final.</td>
+                        </tr>
+                        <tr>
+                            <td>Crea l'encapçalament</td>
+                            <td>CE1.17</td>
+                            <td>100&nbsp;% (5&nbsp;%)</td>
+                            <td>No hi ha encapçalament.</td>
+                            <td>Hi ha encapçalament però no té el contingut demanat o no apareix en totes les pàgines.</td>
+                            <td>L'encapçalament té el contingut demanat i apareix en totes les pàgines.</td>
+                        </tr>
+                        <tr>
+                            <td>Crea el peu de pàgina</td>
+                            <td>CE1.18</td>
+                            <td>100&nbsp;% (5&nbsp;%)</td>
+                            <td>No hi ha peu de pàgina.</td>
+                            <td>Hi ha peu però sense numeració o amb numeració incorrecta.</td>
+                            <td>El peu de pàgina té el contingut i la numeració automàtica correctes en totes les pàgines.</td>
+                        </tr>
+                        <tr>
+                            <td>Insereix un enllaç</td>
+                            <td>CE1.19</td>
+                            <td>100&nbsp;% (4&nbsp;%)</td>
+                            <td>No hi ha cap enllaç o és text sense enllaç actiu.</td>
+                            <td>L'enllaç existeix però no porta al destí demanat.</td>
+                            <td>L'enllaç és actiu i porta al destí demanat.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 70px;">Criteri</th>
+                            <th style="min-width: 60px;">Pes %</th>
+                            <th style="min-width: 200px;">Activitat(s)</th>
+                            <th style="min-width: 220px;">Instrument i indicador</th>
+                            <th style="min-width: 120px;">Pes de l'indicador dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>6</td>
+                            <td>Proves 1 a 8 (S1, S2, S4, S6, S8, S10, S12, S14)</td>
+                            <td>Rúbrica: Envia correus correctes</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.2</td>
+                            <td>4</td>
+                            <td>Prova 2 (S2)</td>
+                            <td>Rúbrica: Mou paràgrafs</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.3</td>
+                            <td>3</td>
+                            <td>Prova 2 (S2)</td>
+                            <td>Rúbrica: Elimina paraules</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>4</td>
+                            <td>Prova 3 (S3-S4)</td>
+                            <td>Rúbrica: Busca paraules</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>4</td>
+                            <td>Prova 3 (S3-S4)</td>
+                            <td>Rúbrica: Canvia tipus i tamany de lletra</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.6</td>
+                            <td>6</td>
+                            <td>Prova 3 (S4)</td>
+                            <td>Rúbrica: Aplica negreta, cursiva, subratllat i tachat</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.7</td>
+                            <td>4</td>
+                            <td>Prova 3 (S4)</td>
+                            <td>Rúbrica: Aplica superíndex i subíndex</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.8</td>
+                            <td>7</td>
+                            <td>Prova 4 (S5-S6)</td>
+                            <td>Rúbrica: Aplica títols i subtítols</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.9</td>
+                            <td>6</td>
+                            <td>Prova 5 (S7-S8)</td>
+                            <td>Rúbrica: Canvia el format dels títols</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.10</td>
+                            <td>7</td>
+                            <td>Prova 5 (S8)</td>
+                            <td>Rúbrica: Crea l'índex</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.11</td>
+                            <td>5</td>
+                            <td>Prova 5 (S7-S8)</td>
+                            <td>Rúbrica: Insereix salts de pàgina</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.12</td>
+                            <td>7</td>
+                            <td>Prova 6 (S9-S10)</td>
+                            <td>Rúbrica: Crea llistes</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.13</td>
+                            <td>5</td>
+                            <td>Prova 6 (S10)</td>
+                            <td>Rúbrica: Ajusta sagnat i interliniat</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.14</td>
+                            <td>7</td>
+                            <td>Prova 7 (S11-S12)</td>
+                            <td>Rúbrica: Insereix taules</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.15</td>
+                            <td>7</td>
+                            <td>Prova 7 (S12)</td>
+                            <td>Rúbrica: Insereix imatges i caràtules</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.16</td>
+                            <td>4</td>
+                            <td>Prova 8 (S14)</td>
+                            <td>Rúbrica: Exporta a PDF</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.17</td>
+                            <td>5</td>
+                            <td>Prova 8 (S13-S14)</td>
+                            <td>Rúbrica: Crea l'encapçalament</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.18</td>
+                            <td>5</td>
+                            <td>Prova 8 (S13-S14)</td>
+                            <td>Rúbrica: Crea el peu de pàgina</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.19</td>
+                            <td>4</td>
+                            <td>Prova 8 (S14)</td>
+                            <td>Rúbrica: Insereix un enllaç</td>
+                            <td>100&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text><strong>Nota de la SA = Σ nota de cada criteri × pes del criteri.</strong> Nota del criteri = nota de l'indicador (0, 5 o 10) × 100 %.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Ordinadors amb LibreOffice Writer i accés a Internet.</li>
+                <li>Compte de correu electrònic de l'alumnat.</li>
+                <li><a href="unitats/ofimatica/editor-textos/index.html">Pàgina de la unitat</a> «Editor de textos» amb la història i l'inici del repte.</li>
+                <li>Projector per a les demostracions.</li>
+                <li>Instruccions de cada prova (PDF que l'informàtic envia en superar la prova anterior).</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

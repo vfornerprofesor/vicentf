@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - Correu electrònic</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · Correu electrònic (document per al professorat)">Ens comuniquem per correu</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Taller de Relacions Digitals Responsables</vf-badge>
+            <vf-badge>4 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/ofimatica/correu-electronic/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>El correu electrònic és la via oficial de comunicació amb el professorat i el centre, i serà imprescindible per a registrar-se en serveis, enviar treballs i rebre avisos. L'alumnat el coneix poc o l'associa a "coses de grans". Esta SA el posa en pràctica entre companys de classe, en un entorn controlat: escriure missatges clars i educats, enviar-los a les persones adequades, adjuntar arxius, ordenar la safata d'entrada i respondre sense generar caos.</vf-text>
+
+            <vf-text>El treball transcorre amb el compte educatiu de cada alumne. L'alumnat només escriu a companys de la classe indicats pel professor.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>"Deixa la teua safata d'entrada ordenada i comunica't amb la classe com una persona competent."</strong> Envia correus ben redactats, organitza els que rebs en carpetes per assignatura i participa en una cadena de resposta a tota la classe amb la teua signatura.
+            </vf-callout>
+
+            <vf-text><strong>Productes</strong>: correu de la reunió de jocs de taula amb adjunts, cinc carpetes amb els correus classificats, signatura configurada i resposta a la cadena de la classe.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Competència específica</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1</td>
+                            <td>Comunicar-se mitjançant el correu electrònic de manera clara, respectuosa i segura, redactant i enviant missatges als destinataris adequats, adjuntant arxius, organitzant la safata d'entrada i responent o reenviant amb criteri.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                            <th>Pes %</th>
+                            <th>Justificació del pes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>Triar els destinataris adequats (A, CC, CCO), escrivint correctament les adreces i comprovant-les abans d'enviar.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Base de la seguretat i la privacitat; l'error més greu i habitual és enviar a qui no toca.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.2</td>
+                            <td>Redactar el missatge amb assumpte breu i informatiu, salutació, cos clar i comiat, amb la signatura personalitzada configurada.</td>
+                            <td>25&nbsp;%</td>
+                            <td>Nucli comunicatiu de la unitat; integra expressió escrita i normes de cortesia digital.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.3</td>
+                            <td>Adjuntar al missatge els arxius requerits i comprovar que arriben.</td>
+                            <td>15&nbsp;%</td>
+                            <td>Destresa concreta de dificultat baixa, ja treballada a la gestió d'arxius.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>Organitzar la safata d'entrada creant carpetes i classificant-hi els correus rebuts.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Destresa nova, sistemàtica i amb molts passos; essencial per a l'ús real del correu.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>Respondre i reenviar de manera adequada (respondre o respondre a tots, reenviar) i actuar amb prudència: no obrir enllaços o adjunts estranys i no difondre adreces alienes.</td>
+                            <td>20&nbsp;%</td>
+                            <td>Integra tot l'après en una situació real de comunicació i incorpora l'ús responsable.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Què és el correu electrònic i les parts del missatge: destinatari, assumpte, cos.</li>
+                <li>Tipus de destinatari: A, CC (còpia) i CCO (còpia oculta); privacitat de les adreces.</li>
+                <li>Assumpte, salutació, cos i comiat; normes de cortesia digital.</li>
+                <li>Adjuntar fitxers (imatges i documents).</li>
+                <li>Carpetes: crear, moure correus i classificar.</li>
+                <li>Respondre, respondre a tots i reenviar.</li>
+                <li>Signatura personalitzada.</li>
+                <li>Ús segur: comprovar adreces, no obrir enllaços ni adjunts desconeguts.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Descriptors del perfil d'eixida</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Descriptor</th>
+                            <th>Relació amb la SA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CD3</td>
+                            <td>Es comunica per mitjans digitals de manera adequada, respectant les normes de cortesia.</td>
+                        </tr>
+                        <tr>
+                            <td>CD4</td>
+                            <td>Protegix la privacitat: CCO, adreces correctes, prudència amb enllaços i adjunts.</td>
+                        </tr>
+                        <tr>
+                            <td>CCL1</td>
+                            <td>Redacta missatges escrits coherents amb salutació, cos i comiat.</td>
+                        </tr>
+                        <tr>
+                            <td>CPSAA4</td>
+                            <td>Es responsabilitza d'un ús ordenat i respectuós dels espais digitals compartits.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 1 — El meu primer correu (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: conéixer les parts del correu i enviar un missatge amb adjunts.<br>
+                        <strong>Agrupament</strong>: gran grup i individual.<br>
+                        <strong>Material</strong>: projector, compte educatiu.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Arrencada, inici de sessió i accés al correu.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Activació: "Quan envieu un missatge pel mòbil, qui el veu?" Explicació de les parts del correu, A / CC / CCO i assumpte. Exemple projectat.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Adjuntar fitxers (demostració).</td>
+                                </tr>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td><strong>A1. Enviar un correu electrònic.</strong> Cada alumne tria els dos jocs de taula i busca les imatges.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 2 — Carpetes (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: acabar A1 i crear les carpetes.<br>
+                        <strong>Agrupament</strong>: individual.<br>
+                        <strong>Material</strong>: projector.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Acabar <strong>A1</strong> i pujar la captura <code>correu_electronic</code>. Revisió: qui apareix a "A", "CC" i "CCO"?</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Demostració: crear carpeta i moure un correu.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A2 (part 1)</strong>: crear les 5 carpetes i pujar la captura <code>carpetes</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td><strong>A2 (part 2)</strong>: el professor indica els correus que s'han d'enviar (destinatari, assumpte i cos). L'alumnat els envia.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 3 — Ordenem la safata (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: classificar els correus rebuts.<br>
+                        <strong>Agrupament</strong>: individual, ajuda entre iguals.<br>
+                        <strong>Material</strong>: projector.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Revisió dels correus enviats: assumpte, salutació i comiat. Els alumnes que no han rebut correus ho avisen.</td>
+                                </tr>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td><strong>A2 (part 3)</strong>: moure els correus rebuts a la carpeta de l'assignatura corresponent i pujar una captura de cada carpeta (nom = nom de la carpeta).</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Autoavaluació ràpida amb la llista de comprovació i dubtes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 4 — Respondre, reenviar i signar (55&nbsp;min)</vf-title>
+                    <vf-text><strong>Objectiu</strong>: respondre amb criteri i configurar la signatura.<br>
+                        <strong>Agrupament</strong>: gran grup i individual.<br>
+                        <strong>Material</strong>: projector.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Temps</th>
+                                    <th>Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Explicació: respondre / respondre a tots / reenviar; exemple de la reunió amb canvi d'horari. Consells de seguretat: no obrir enllaços ni adjunts estranys, comprovar l'adreça.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Configurar la signatura "Salutacions, Nom Cognoms, Alumne de 1r d'ESO X de l'IES Betxí".</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A3. Cadena de missatges.</strong> El professor envia el correu; per ordre d'asseguda, cada alumne respon a tots. Captura <code>cadena</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Tancament: ronda "una cosa que faré diferent en els meus correus" i coavaluació per parelles de la signatura i la cadena.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-title level="3">A1. Enviar un correu electrònic (sessions 1-2)</vf-title>
+            <vf-text>"Envia un correu amb destinatari (el company de la dreta; l'últim, el de més a l'esquerra), còpia (un altre company) i còpia oculta (un altre company). Tracta de la reunió per a quedar els divendres de vesprada i jugar a jocs de taula. Adjunta almenys dues imatges de dos jocs de taula. Puja la captura a Aules amb el nom <code>correu_electronic</code>."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: assumpte i cos a partir d'un model amb salutació i comiat; dos adjunts.</li>
+                <li><strong>Estàndard</strong>: assumpte i cos propis, amb salutació, descripció de la reunió i comiat.</li>
+                <li><strong>Ampliació</strong>: proposa dia, hora i lloc i demana confirmació; adjunta una tercera imatge.</li>
+            </vf-list>
+
+            <vf-title level="3">A2. Organitzar en carpetes (sessions 2-3)</vf-title>
+            <vf-text>"Crea les carpetes Informàtica, Matemàtiques, Valencià, Biologia i Educació Física (captura <code>carpetes</code>). Envia els correus que s'indiquen. Classifica els que has rebut i puja una captura de cada carpeta amb el nom de la carpeta."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: classificar amb l'ajuda de la imatge de la unitat.</li>
+                <li><strong>Estàndard</strong>: autònom, comprovant que cada carpeta conté el seu correu.</li>
+                <li><strong>Ampliació</strong>: classifica també els correus enviats i ajuda un company.</li>
+            </vf-list>
+
+            <vf-title level="3">A3. Cadena de missatges (sessió 4)</vf-title>
+            <vf-text>"El professor envia un correu a tota la classe. Per ordre d'asseguda, respon a tots amb 'Hola, sóc Nom Cognoms' i la signatura configurada. Puja la captura amb el nom <code>cadena</code>."</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: amb el model de la signatura a la vista.</li>
+                <li><strong>Estàndard</strong>: autònom, amb signatura personalitzada.</li>
+                <li><strong>Ampliació</strong>: reenvia el correu del professor a un company i explica en una frase per què has triat "respondre a tots" o "reenviar".</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: captures dels passos (crear carpeta, moure, signatura) ja presents a la unitat; targeta amb A/CC/CCO i exemple; vídeo curt de la demostració a Aules; models de correu per a l'alumnat que necessite suport.</li>
+                <li><strong>Acció i expressió</strong>: ratolí o teclat, indistintament; text del correu amb dictat de veu si cal; nivells bàsic / estàndard / ampliació en cada activitat; possibilitat de lliurar les captures una a una durant la sessió.</li>
+                <li><strong>Implicació</strong>: temàtica de lliure elecció (jocs de taula, amb possibilitat de canviar-los per música o esports); rol de "tècnic de suport" per a qui acaba abans; la signatura i les carpetes s'usaran la resta del curs.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Moment</th>
+                            <th>Qui avalua</th>
+                            <th>Activitat on s'aplica</th>
+                            <th>Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rúbrica de la SA (únic instrument amb indicadors)</td>
+                            <td>Final de la sessió 4</td>
+                            <td>Heteroavaluació</td>
+                            <td>A1-A3</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>Captures lliurades a Aules (<code>correu_electronic</code>, <code>carpetes</code>, una per carpeta, <code>cadena</code>)</td>
+                            <td>Sessions 2-4</td>
+                            <td>Evidència per a la rúbrica</td>
+                            <td>A1-A3</td>
+                            <td>Sense qualificació pròpia</td>
+                        </tr>
+                        <tr>
+                            <td>Llista de comprovació i coavaluació per parelles (formativa)</td>
+                            <td>Sessions 3-4</td>
+                            <td>Auto i coavaluació</td>
+                            <td>A1-A3</td>
+                            <td>Sense qualificació; orienta la millora</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+            <vf-title level="3">Rúbrica de la SA</vf-title>
+            <vf-text><strong>Rúbrica de 4 nivells.</strong> Una fila per criteri. Els descriptors són observables a partir de les captures i de la safata de l'alumne.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 150px;">Indicador</th>
+                            <th>Criteri</th>
+                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 170px;">Evidència</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R1. Destinataris</strong></td>
+                            <td>CE1.1</td>
+                            <td>100&nbsp;% del criteri (20&nbsp;% de la SA)</td>
+                            <td>Captura <code>correu_electronic</code> i correus enviats</td>
+                            <td>Destinataris equivocats o adreces incorrectes; no usa CC o CCO.</td>
+                            <td>Usa A, CC i CCO, però n'intercanvia algun o confon la funció d'alguna.</td>
+                            <td>Usa A, CC i CCO correctament, amb les adreces ben escrites.</td>
+                            <td>Com Notable, i explica la diferència entre CC i CCO i quan convé cada una.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R2. Redacció i signatura</strong></td>
+                            <td>CE1.2</td>
+                            <td>100&nbsp;% del criteri (25&nbsp;% de la SA)</td>
+                            <td>Captura <code>correu_electronic</code>, correus enviats i <code>cadena</code></td>
+                            <td>Assumpte buit o genèric; sense salutació ni comiat; sense signatura.</td>
+                            <td>Assumpte present; salutació o comiat incomplets; signatura incompleta.</td>
+                            <td>Assumpte informatiu, salutació, cos amb la informació i comiat; signatura amb nom, curs i centre.</td>
+                            <td>Com Notable, amb un cos ben organitzat i sense faltes que dificulten la lectura; signatura automàtica configurada.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R3. Adjunts</strong></td>
+                            <td>CE1.3</td>
+                            <td>100&nbsp;% del criteri (15&nbsp;% de la SA)</td>
+                            <td>Captura <code>correu_electronic</code></td>
+                            <td>Cap adjunt visible.</td>
+                            <td>Un adjunt que s'obri, o dos amb algun problema.</td>
+                            <td>Dos imatges adjuntes i visibles de dos jocs diferents.</td>
+                            <td>Com Notable, amb noms d'arxiu descriptius i una tercera imatge o un comentari a l'adjunt.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R4. Carpetes</strong></td>
+                            <td>CE1.4</td>
+                            <td>100&nbsp;% del criteri (20&nbsp;% de la SA)</td>
+                            <td>Captures <code>carpetes</code> i de cada carpeta</td>
+                            <td>Menys de 3 carpetes creades o correus sense classificar.</td>
+                            <td>5 carpetes; classificats 3 dels correus rebuts.</td>
+                            <td>5 carpetes amb noms exactes i tots els correus rebuts a la carpeta correcta.</td>
+                            <td>Com Notable, de manera autònoma i amb la captura de cada carpeta ben nomenada.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R5. Resposta i prudència</strong></td>
+                            <td>CE1.5</td>
+                            <td>100&nbsp;% del criteri (20&nbsp;% de la SA)</td>
+                            <td>Captura <code>cadena</code> i observació a l'aula</td>
+                            <td>No respon a tots, o respon només a un; obri enllaços o adjunts estranys quan es proposa.</td>
+                            <td>Respon a tots amb el text demanat; dubta en triar entre respondre i reenviar.</td>
+                            <td>Respon a tots amb el text i la signatura i tria bé entre respondre i reenviar.</td>
+                            <td>Com Notable, i justifica l'elecció i comprova les adreces abans d'enviar, avisant d'un correu sospitós.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteri</th>
+                            <th>Pes %</th>
+                            <th>Activitat(s)</th>
+                            <th>Instrument i indicador</th>
+                            <th>Pes de l'indicador dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>20&nbsp;%</td>
+                            <td>A1, A2</td>
+                            <td>Rúbrica, R1</td>
+                            <td>R1 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.2</td>
+                            <td>25&nbsp;%</td>
+                            <td>A1, A2, A3</td>
+                            <td>Rúbrica, R2</td>
+                            <td>R2 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.3</td>
+                            <td>15&nbsp;%</td>
+                            <td>A1</td>
+                            <td>Rúbrica, R3</td>
+                            <td>R3 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>20&nbsp;%</td>
+                            <td>A2</td>
+                            <td>Rúbrica, R4</td>
+                            <td>R4 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>20&nbsp;%</td>
+                            <td>A3</td>
+                            <td>Rúbrica, R5</td>
+                            <td>R5 100&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text><strong>Nota de la SA = 0,20·R1 + 0,25·R2 + 0,15·R3 + 0,20·R4 + 0,20·R5</strong></vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Equips amb accés al compte educatiu i al correu; credencials en paper.</li>
+                <li>Projector.</li>
+                <li><a href="unitats/ofimatica/correu-electronic/index.html">Pàgina de la unitat</a> amb les explicacions i les tres activitats.</li>
+                <li>Imatges de jocs de taula (cerca de l'alumnat).</li>
+                <li>Llista de classe amb l'ordre d'asseguda i els correus de la classe.</li>
+                <li>Aules per al lliurament de les captures.</li>
+                <li>Rúbrica de la SA.</li>
+            </vf-list>
+
+            <vf-title level="3">Material a preparar</vf-title>
+            <vf-callout type="recorda">
+                Recordatori per al professor: material que la seqüència dona per fet i que cal tindre a punt abans de la sessió corresponent.
+            </vf-callout>
+            <vf-list>
+                <li><strong>Targeta de suport A / CC / CCO</strong> (sessió 1): una per alumne, amb la funció de cada tipus de destinatari i un exemple.</li>
+                <li><strong>Models de correu</strong> (A1 i A3): model d'assumpte, salutació, cos i comiat per a A1, i model de signatura per a A3, per a l'alumnat que necessite suport.</li>
+                <li><strong>Imatge de la unitat per a A2</strong> (sessió 3): la que usa el nivell bàsic per a classificar els correus per carpeta.</li>
+                <li><strong>Taula amb els correus que s'envien en A2</strong> (sessió 2): per a cada carpeta, destinatari, assumpte i cos, perquè l'alumnat puga enviar-los i tots en reba.</li>
+                <li><strong>Llista de correus de la classe</strong> per a A3, amb l'ordre d'asseguda (sessió 4).</li>
+                <li><strong>Grup de la signatura</strong> (la «X» de «1r d'ESO X»): confirmar-lo per a cada grup abans de configurar la signatura.</li>
+                <li><strong>Correu de la cadena</strong> (A3): el que el professor envia a tota la classe, preparat abans de la sessió 4.</li>
+                <li><strong>Vídeo curt de la demostració</strong> a Aules (DUA).</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

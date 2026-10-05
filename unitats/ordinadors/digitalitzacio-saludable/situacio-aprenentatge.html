@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Les taules de cada sessió viuen dins de .vf-step-body (flex):
+           sense min-width:0 empenyen l'amplada i la pàgina desborda en
+           mòbil en lloc de fer scroll dins de .table-responsive. */
+        .vf-step-body {
+            min-width: 0;
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - Digitalització saludable</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · El meu pla digital saludable (document per al professorat)">Digitalització saludable</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Taller de Relacions Digitals Responsables</vf-badge>
+            <vf-badge>12 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="unitats/ordinadors/digitalitzacio-saludable/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la unitat</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>L'alumnat de 1r ESO ja viu connectat: mòbil, consola, xats de joc, xarxes. Però usa els dispositius sense criteri sobre el seu impacte, cerca i comparteix informació sense contrastar-la, deixa petjada sense saber-ho i té pocs recursos davant situacions de conflicte en línia. La SA recorre les quatre dimensions de la unitat (dispositius, informació, identitat, relacions) amb 3 sessions per part, alternant activitats breus, jocs i un producte per part.</vf-text>
+            <vf-text>Les sessions són de 55&nbsp;min. En cada sessió s'han descomptat 5-8&nbsp;min d'arrencada i inici de sessió.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>"Cuida la teua vida digital."</strong> Al final de la unitat cada alumne té el seu pla digital saludable: coneix i cuida els seus dispositius, sap contrastar el que llig, protegeix el que publica i té pautes per a conviure bé en línia.
+            </vf-callout>
+            <vf-text>Productes: pòster de dispositius (Canva), infografia de grup sobre salut i medi ambient, dossier de contrast de fonts, microcontingut verificat, informe del cas de petjada digital i cartell/meme positiu amb decàleg de ciberconvivència. Evidències menors: contrasenya, escape room, ajustos de privacitat, joc de rol, registre de temps de pantalla i qüestionaris.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Competència específica</vf-title>
+        <vf-content>
+            <vf-text>Es treballen les quatre competències de la matèria, una per part, amb el mateix pes (25&nbsp;% cadascuna).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 80px;">Codi</th>
+                            <th style="min-width: 300px;">Descripció</th>
+                            <th style="min-width: 90px;">Pes en la SA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1</td>
+                            <td>Utilitzar dispositius digitals d'ús personal en l'entorn domèstic i educatiu de manera saludable, segura i sostenible.</td>
+                            <td>25&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE2</td>
+                            <td>Buscar i seleccionar críticament informació digital de diferents fonts, interpretar-la, organitzar-la en l'entorn personal d'aprenentatge i crear continguts digitals.</td>
+                            <td>25&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE3</td>
+                            <td>Construir una identitat digital adequada i aplicar estratègies bàsiques per a cuidar-la i protegir-la.</td>
+                            <td>25&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE4</td>
+                            <td>Mostrar hàbits bàsics que fomenten el benestar en les relacions a través d'entorns digitals.</td>
+                            <td>25&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 260px;">Descripció</th>
+                            <th style="min-width: 70px;">Pes %</th>
+                            <th style="min-width: 220px;">Justificació del pes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>Identificar característiques bàsiques dels dispositius digitals d'ús personal en l'entorn domèstic i educatiu.</td>
+                            <td>8&nbsp;%</td>
+                            <td>Coneixement de base, dificultat baixa.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>Reconéixer les implicacions de l'ús i consum de tecnologia sobre la salut i el medi ambient.</td>
+                            <td>9&nbsp;%</td>
+                            <td>Exigeix investigar, argumentar i debatre.</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>Mostrar hàbits bàsics de seguretat per a protegir els dispositius.</td>
+                            <td>8&nbsp;%</td>
+                            <td>Destresa concreta i observable.</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.1</td>
+                            <td>Buscar, seleccionar i interpretar informació d'acord amb les necessitats a partir de diverses fonts amb sentit crític, contrastant-ne la veracitat.</td>
+                            <td>10&nbsp;%</td>
+                            <td>Nucli de la part 2: integra cerca, selecció i contrast.</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.2</td>
+                            <td>Reconéixer la importància de les notícies falses en la desinformació de la societat.</td>
+                            <td>7&nbsp;%</td>
+                            <td>Conceptual; es comprova amb joc i anàlisi breu.</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.6</td>
+                            <td>Crear, integrar i editar continguts digitals amb sentit estètic de manera creativa i respectant els drets d'autoria.</td>
+                            <td>8&nbsp;%</td>
+                            <td>Producte creatiu amb eina nova i criteris estètics i legals.</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.1</td>
+                            <td>Identificar i valorar diferents maneres de representar la identitat en Internet i la petjada digital que deixen.</td>
+                            <td>7&nbsp;%</td>
+                            <td>Anàlisi de cas; base de la part 3.</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.3</td>
+                            <td>Reconéixer les implicacions de la publicació de dades personals en la xarxa.</td>
+                            <td>8&nbsp;%</td>
+                            <td>Qüestió clau de seguretat; exigeix vincular dada i risc.</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.4</td>
+                            <td>Adoptar conductes bàsiques que protegisquen la identitat digital i les dades personals.</td>
+                            <td>10&nbsp;%</td>
+                            <td>És el nucli actitudinal: allò que de veres canvia el comportament.</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.1</td>
+                            <td>Analitzar el funcionament de plataformes d'interacció social i joc en xarxa.</td>
+                            <td>6&nbsp;%</td>
+                            <td>Anàlisi guiada de baixa-mitjana dificultat.</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.2</td>
+                            <td>Adoptar conductes bàsiques que fomenten relacions personals respectuoses i enriquidores.</td>
+                            <td>5&nbsp;%</td>
+                            <td>Producte col·lectiu; també es treballa en tota la part.</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.4</td>
+                            <td>Identificar i saber reaccionar de manera bàsica davant situacions que representen comportaments abusius o amenaces a través de dispositius digitals tot valorant el benestar personal i col·lectiu.</td>
+                            <td>8&nbsp;%</td>
+                            <td>Màxima rellevància: saber actuar davant del ciberassetjament.</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.5</td>
+                            <td>Prendre mesures bàsiques de prevenció davant l'ús continuat de dispositius digitals.</td>
+                            <td>6&nbsp;%</td>
+                            <td>Hàbit personal verificable amb registre.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>100&nbsp;%</strong></td>
+                            <td>CE1 25&nbsp;% · CE2 25&nbsp;% · CE3 25&nbsp;% · CE4 25&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Bloc 1:</strong> dispositius digitals d'ús domèstic i educatiu i les seues característiques; hàbits bàsics de seguretat per a protegir-los; implicacions per a la salut, la sostenibilitat i el medi ambient; obsolescència.</li>
+                <li><strong>Bloc 2:</strong> buscadors i filtres; selecció d'informació contrastant la veracitat; detecció de notícies falses i bulos; propietat intel·lectual i drets d'autoria; creació bàsica de continguts amb eines digitals; estètica i llenguatge audiovisual.</li>
+                <li><strong>Bloc 3:</strong> identitat personal a Internet, àlies i avatars; autoconcepte i percepció externa; exposició personal i petjada digital; conductes per a cuidar la identitat; privacitat i protecció de dades personals.</li>
+                <li><strong>Bloc 4:</strong> entorns digitals d'intercanvi social i jocs en línia; ciberconvivència i etiqueta digital; ciberassetjament i fraus; tecnoaddicció i nomofòbia.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Descriptors del perfil d'eixida</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 120px;">Competència clau</th>
+                            <th style="min-width: 320px;">Relació amb la SA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>STEM</td>
+                            <td>Característiques tècniques dels dispositius; impacte ambiental i obsolescència.</td>
+                        </tr>
+                        <tr>
+                            <td>CD</td>
+                            <td>Cerca i contrast, creació de contingut, protecció de dispositius i dades, interacció en entorns digitals.</td>
+                        </tr>
+                        <tr>
+                            <td>CCL</td>
+                            <td>Interpretació de textos digitals i explicació per escrit i oralment dels resultats.</td>
+                        </tr>
+                        <tr>
+                            <td>CP</td>
+                            <td>Lectura de fonts en diverses llengües i comunicació d'un missatge propi.</td>
+                        </tr>
+                        <tr>
+                            <td>CPSAA</td>
+                            <td>Cura de la salut digital, autoconcepte en línia, empatia i treball cooperatiu.</td>
+                        </tr>
+                        <tr>
+                            <td>CC</td>
+                            <td>Ciberconvivència respectuosa, rebuig dels discursos d'odi i actuació davant de l'abús.</td>
+                        </tr>
+                        <tr>
+                            <td>CCEC</td>
+                            <td>Estètica i creativitat en el contingut digital.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 1 — Els meus dispositius (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 1 · Dispositius digitals</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: identificar els dispositius i les característiques bàsiques<br>
+<strong>Agrupament</strong>: gran grup i individual<br>
+<strong>Material</strong>: projector, Canva, mòbil o notes de casa.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Arrencada i inici de sessió.</td>
+                                </tr>
+                                <tr>
+                                    <td>12&nbsp;min</td>
+                                    <td>Explicació interactiva: dispositius digitals i IoT (exemples dels propis alumnes). Com mirar processador i RAM en un ordinador i un mòbil.</td>
+                                </tr>
+                                <tr>
+                                    <td>35&nbsp;min</td>
+                                    <td><strong>A1. Pòster de dispositius</strong> en Canva.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 2 — Obsolescència i contrasenyes (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 1 · Dispositius digitals</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: reconéixer l'obsolescència programada i protegir els dispositius amb contrasenyes fortes<br>
+<strong>Agrupament</strong>: individual<br>
+<strong>Material</strong>: vídeo, qüestionari en línia, verificador de contrasenyes, Aules.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Arrencada. Cinc minuts per a acabar l'A1 (entrega en Aules).</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A2. Vídeo i qüestionari</strong> d'obsolescència.</td>
+                                </tr>
+                                <tr>
+                                    <td>22&nbsp;min</td>
+                                    <td><strong>A3. Contrasenya segura</strong>, amb els dos mètodes.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Entrega en Aules i preguntes flash.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 3 — Tecnologia, salut i planeta (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 1 · Dispositius digitals</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: argumentar l'impacte de la tecnologia en la salut i el medi ambient<br>
+<strong>Agrupament</strong>: individual, grups de 5 i grups de 10<br>
+<strong>Material</strong>: dispositius amb accés a Internet, Canva.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td><strong>A4</strong>, pas 1: recerca individual i notes.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td><strong>A4</strong>, pas 2: grups de 5 posen en comú.</td>
+                                </tr>
+                                <tr>
+                                    <td>7&nbsp;min</td>
+                                    <td><strong>A4</strong>, pas 3: grups de 10 (intercalats).</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>A4</strong>, pas 4: infografia de grup en Canva.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 4 — Detectius de fonts (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 2 · Recerca d'informació i creació de contingut</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: cercar i contrastar informació amb sentit crític<br>
+<strong>Agrupament</strong>: equips de 3<br>
+<strong>Material</strong>: dispositius, plantilla del dossier, fitxa "semàfor de fonts".</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>7&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Mini-lliçó: filtres del buscador, operadors bàsics i el semàfor de fonts (autor, data, fonts que cita, domini, to).</td>
+                                </tr>
+                                <tr>
+                                    <td>35&nbsp;min</td>
+                                    <td><strong>A5. Detectius de fonts</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td>3&nbsp;min</td>
+                                    <td>Tancament: cada equip diu quina afirmació és falsa, quina és enganyosa i quina depén, amb una raó.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 5 — Bulos, a la paperera (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 2 · Recerca d'informació i creació de contingut</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: reconéixer notícies falses i les estratègies de difusió<br>
+<strong>Agrupament</strong>: gran grup i parelles<br>
+<strong>Material</strong>: Kahoot, fitxes de bulos, Canva.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td><strong>A6</strong>, part 1: Kahoot "Bulo o veritat?".</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td><strong>A6</strong>, part 2: cada parella desmunta un bulo assignat.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A7. Microcontingut verificat</strong>: planificació (guió, imatges amb llicència) i primera versió.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 6 — Creem i compartim (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 2 · Recerca d'informació i creació de contingut</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: editar un contingut digital amb criteri estètic i respectant l'autoria<br>
+<strong>Agrupament</strong>: individual, galeria final per parelles<br>
+<strong>Material</strong>: Canva, bancs d'imatges amb llicència lliure.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td><strong>A7</strong>: edició, revisió d'estètica i citació de l'autoria.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td>Galeria de la classe: cada alumne comenta dos continguts amb la fitxa de coavaluació.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Entrega en Aules.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 7 — Escape room "Fort Knox digital" (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 3 · Identitat digital</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: aplicar conductes que protegisquen les dades<br>
+<strong>Agrupament</strong>: equips de 4<br>
+<strong>Material</strong>: formulari amb seccions bloquejades per codi (o sobres amb candau de codi), dispositius.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>7&nbsp;min</td>
+                                    <td>Arrencada i història: "El Fort Knox digital s'ha tancat; teniu 35 minuts per a eixir".</td>
+                                </tr>
+                                <tr>
+                                    <td>35&nbsp;min</td>
+                                    <td><strong>A8. Escape room</strong> (4 reptes).</td>
+                                </tr>
+                                <tr>
+                                    <td>13&nbsp;min</td>
+                                    <td>Debriefing: què ha fallat i per què; "una cosa que canviaré en els meus comptes".</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 8 — Detectius de petjada (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 3 · Identitat digital</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: reconstruir una identitat a partir de les seues pistes en línia<br>
+<strong>Agrupament</strong>: equips de 4<br>
+<strong>Material</strong>: dossier del cas "Noa_Gamer" (pistes impreses o en carpeta compartida), plantilla d'informe.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Presentació del cas i dels rols (cap d'equip, arxivista, analista, portaveu).</td>
+                                </tr>
+                                <tr>
+                                    <td>30&nbsp;min</td>
+                                    <td><strong>A9. Detectius de petjada</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td>12&nbsp;min</td>
+                                    <td>Posada en comú: quins equips han trobat més dades i quines són les més perilloses.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 9 — Remodela el perfil (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 3 · Identitat digital</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: protegir un perfil i reconéixer què no es publica<br>
+<strong>Agrupament</strong>: individual i gran grup<br>
+<strong>Material</strong>: perfil simulat de Noa, Kahoot, full del repte de desconnexió.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td><strong>A10. Kahoot de privacitat</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td>25&nbsp;min</td>
+                                    <td><strong>A11. Remodela el perfil de Noa</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Es presenta l'<strong>A14. Repte de desconnexió</strong>: comença el registre de 5 dies.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 10 — Dins del xat de joc (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 4 · Hàbits per a les relacions digitals</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: analitzar una plataforma de joc en xarxa i detectar senyals de risc<br>
+<strong>Agrupament</strong>: equips de 4<br>
+<strong>Material</strong>: simulació impresa o digital del xat de "Galaxy Clash", fitxa d'anàlisi.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada. Recordatori del registre de l'A14.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Debat inicial: "Qui juga en línia? Amb qui? Què us ha passat alguna vegada?". Normes del debat (cap nom propi, sense judicis).</td>
+                                </tr>
+                                <tr>
+                                    <td>35&nbsp;min</td>
+                                    <td><strong>A12. Dins del xat de joc</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Resum de les funcions clau (reportar, bloquejar, mode privat, control de compres).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 11 — Què faries? (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 4 · Hàbits per a les relacions digitals</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: reaccionar davant d'abusos en línia i fomentar la ciberconvivència respectuosa<br>
+<strong>Agrupament</strong>: equips de 4 i gran grup<br>
+<strong>Material</strong>: targetes de cas, targetes de protocol, Kahoot, Canva.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>8&nbsp;min</td>
+                                    <td>Presentació del protocol <strong>Para · Bloqueja · Guarda · Conta</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A13</strong>, part 1: joc de rol "Què faries?" (3 casos per equip, rotant papers).</td>
+                                </tr>
+                                <tr>
+                                    <td>12&nbsp;min</td>
+                                    <td><strong>A13</strong>, part 2: Kahoot de dilemes.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td><strong>A15</strong>: inici del decàleg i del cartell/meme positiu.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">Sessió 12 — El meu pla i el nostre decàleg (55&nbsp;min)</vf-title>
+                    <div><vf-badge>Part 4 · Hàbits per a les relacions digitals</vf-badge></div>
+                    <vf-text><strong>Objectiu</strong>: prendre mesures personals de prevenció i fixar pautes col·lectives<br>
+<strong>Agrupament</strong>: individual i grup classe<br>
+<strong>Material</strong>: registre de l'A14, Canva, diana d'autoavaluació.</vf-text>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 100px; width: 100px;">Temps</th>
+                                    <th style="min-width: 320px;">Activitat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Arrencada.</td>
+                                </tr>
+                                <tr>
+                                    <td>20&nbsp;min</td>
+                                    <td><strong>A14</strong>: anàlisi del registre i pla personal de 3 mesures.</td>
+                                </tr>
+                                <tr>
+                                    <td>15&nbsp;min</td>
+                                    <td><strong>A15</strong>: finalització del cartell/meme i votació del decàleg de la classe.</td>
+                                </tr>
+                                <tr>
+                                    <td>10&nbsp;min</td>
+                                    <td>Galeria i coavaluació del cartell.</td>
+                                </tr>
+                                <tr>
+                                    <td>5&nbsp;min</td>
+                                    <td>Autoavaluació amb la diana final.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-title level="3">A1. Pòster de dispositius (S1)</vf-title>
+            <vf-text>Crea en Canva un pòster/diagrama amb: llistat de dispositius digitals de casa; classificació per ús (entreteniment, relacionar-se, jugar, classes, personal…); temps mitjà diari d'ús; top 3 amb característiques tècniques (processador, RAM, emmagatzematge); i una breu explicació de per què són importants per a tu.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: llistat, classificació i temps; top 3 només amb el nom i una característica. Pòster d'exemple a la pàgina.</li>
+                <li><strong>Estàndard</strong>: l'enunciat complet.</li>
+                <li><strong>Ampliació</strong>: afig una comparativa entre dos dispositius (quin és millor per a què) i un dispositiu IoT.</li>
+            </vf-list>
+            <vf-title level="3">A2. Obsolescència programada (S2)</vf-title>
+            <vf-text>Mira el vídeo i respon el qüestionari de 10 preguntes amb l'assistent d'IA. Avisa el professor quan tingues la qualificació.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: pots tornar a veure el vídeo amb subtítols i demanar ajuda a l'amic digital.</li>
+                <li><strong>Ampliació</strong>: busca un cas real d'obsolescència programada i descriu-lo en 3 línies.</li>
+            </vf-list>
+            <vf-title level="3">A3. Contrasenya segura (S2)</vf-title>
+            <vf-text>Crea una contrasenya amb el mètode "Mix de paraules" i una altra amb el mètode "Frase". Comprova en cada pas la seua fortalesa amb el verificador. Escriu en la tasca <em>Contrasenya Segura</em> de les Aules la contrasenya final i una frase que explique per què és forta.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: només un mètode, guiat pel professor.</li>
+                <li><strong>Estàndard</strong>: els dos mètodes i la justificació.</li>
+                <li><strong>Ampliació</strong>: explica per què no s'ha de reutilitzar una contrasenya i proposa un truc per recordar-la sense escriure-la.</li>
+            </vf-list>
+            <vf-title level="3">A4. Debat sobre tecnologia, salut i medi ambient (S3)</vf-title>
+            <vf-text>Individual (recerca i notes), grups de 5 i grups de 10 per a posar en comú, i infografia de grup en Canva amb els punts acordats (salut: son, vista, postura, ansietat; medi: residus electrònics, mines, energia).</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: llista de recerca preparada amb 3 enllaços ja seleccionats.</li>
+                <li><strong>Ampliació</strong>: afig 3 mesures que pot prendre la classe (reciclar, ampliar vida útil, reparar).</li>
+            </vf-list>
+            <vf-title level="3">A5. Detectius de fonts (S4)</vf-title>
+            <vf-text>Cada equip rep <strong>3 afirmacions virals</strong> (p. ex. "Cal carregar el mòbil només fins al 80&nbsp;%", "Els mòbils escolten les converses per a mostrar anuncis", "Les apps de netejar la RAM acceleren el mòbil"). Per a cadascuna: cerca amb almenys dos buscadors diferents, troba <strong>3 fonts</strong>, valora cada font amb el semàfor (autor, data, fonts que cita, domini, to) i decideix: <strong>cert / fals / enganyosa / depén</strong>. Entrega un dossier (document compartit) amb URL, data de consulta i conclusió.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: una sola afirmació, amb una cerca guiada pas a pas.</li>
+                <li><strong>Estàndard</strong>: les tres afirmacions.</li>
+                <li><strong>Ampliació</strong>: afig una afirmació pròpia i fes la cerca en una altra llengua.</li>
+            </vf-list>
+            <vf-title level="3">A6. Bulos, a la paperera (S5)</vf-title>
+            <vf-text>(1) participa al Kahoot "Bulo o veritat?" (titulars, captures, imatges manipulades). (2) En parelles, rep un bulo i anota <strong>2 senyals de falsedat</strong> (urgència, to emocional, falta de font, imatge reutilitzada…), la <strong>estratègia</strong> que fa que es difonga i, si cal, si inclou algun missatge d'odi cap a un col·lectiu.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: llista de senyals per a marcar.</li>
+                <li><strong>Ampliació</strong>: busca el desmentit en un verificador (Maldita, Newtral…) i compara.</li>
+            </vf-list>
+            <vf-title level="3">A7. Microcontingut verificat (S5-S6)</vf-title>
+            <vf-text>Tria una de les afirmacions de l'A5 i crea en Canva un <strong>story de 3-5 pantalles</strong> (format vertical, no vídeo) que explique la veritat. Requisits: títol clar, paleta de colors coherent, ≤ 30 paraules per pantalla, imatges amb llicència lliure i <strong>citació de l'autoria</strong> en l'última pantalla.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: plantilla de Canva prèvia amb l'estructura.</li>
+                <li><strong>Ampliació</strong>: afig un codi QR cap a la font principal i adapta-ho a un altre format.</li>
+            </vf-list>
+            <vf-title level="3">A8. Escape room "Fort Knox digital" (S7)</vf-title>
+            <vf-text>Els equips han de superar 4 reptes (cada un dona un codi per al següent):</vf-text>
+            <vf-list ordered>
+                <li><strong>Phishing</strong>: 5 missatges, marca els 3 falsos i justifica per què.</li>
+                <li><strong>Públic o privat?</strong>: classifica 12 dades personals (nom, telèfon, foto amb uniforme, ubicació en directe, malnom de joc…).</li>
+                <li><strong>Detecta l'engany</strong>: un perfil de "amic" que demana dades; indica què no faries.</li>
+                <li><strong>Configura</strong>: ordena els passos d'ajust de privacitat d'un compte.</li>
+            </vf-list>
+            <vf-list>
+                <li><strong>Bàsic</strong>: pistes extra per a un equip (el professor pot donar 2 pistes).</li>
+                <li><strong>Ampliació</strong>: dissenya un cinqué repte per a un altre equip.</li>
+            </vf-list>
+            <vf-title level="3">A9. Detectius de petjada: el cas de Noa_Gamer (S8)</vf-title>
+            <vf-text>Noa és un personatge fictici de 13 anys. El dossier conté pistes: captura del seu perfil de xarxa, comentaris en un fòrum de joc, una foto amb la camiseta de l'institut, un vídeo antic i el seu àlies. Reconstruïx en l'<strong>informe d'investigació</strong>: (1) formes d'identitat que usa (àlies, avatar, nom real); (2) la petjada que deixa (activa i passiva); (3) les dades personals que es poden deduir (nom, centre, rutines, ubicació); (4) riscos concrets; (5) la imatge que dona de si mateixa i com la veuria un desconegut o un futur empresari.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: informe amb una taula prefixada.</li>
+                <li><strong>Ampliació</strong>: calcula quanta informació trobaria algú en 10 minuts de cerca i què faria amb ella.</li>
+            </vf-list>
+            <vf-title level="3">A10. Kahoot de privacitat (S9)</vf-title>
+            <vf-text>Kahoot individual de 15 preguntes sobre dades personals, consentiment, petjada i fraus. La nota és la del propi Kahoot (0-10).</vf-text>
+            <vf-title level="3">A11. Remodela el perfil de Noa (S9)</vf-title>
+            <vf-text>Amb un perfil simulat, aplica <strong>5 ajustos de privacitat</strong> (compte privat, qui veu les fotos, desactivar ubicació, etiquetatge, filtre de missatges de desconeguts), canvia l'àlies i l'avatar per uns més segurs i fes captures abans i després.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: una llista de verificació dels ajustos.</li>
+                <li><strong>Ampliació</strong>: repeteix els ajustos al teu propi compte (si en tens) i comenta'ls amb la família.</li>
+            </vf-list>
+            <vf-title level="3">A12. Dins del xat de joc (S10)</vf-title>
+            <vf-text>Llig la transcripció del xat de la partida de "Galaxy Clash" (jugadors, un insult, una oferta de "skins gratis" amb enllaç, un desconegut que demana el telèfon, una compra en l'aplicació). Per equips: (1) completa la fitxa de la plataforma (qui pot parlar amb qui, xat de veu, compres, edat mínima/PEGI, com reportar i bloquejar, moderació); (2) marca <strong>almenys 3 senyals de risc</strong> del xat; (3) escriu què faries en cada cas.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: la fitxa ja té les preguntes numerades i els senyals en colors a retallar.</li>
+                <li><strong>Ampliació</strong>: investiga els controls parentals d'una plataforma real.</li>
+            </vf-list>
+            <vf-title level="3">A13. Què faries? (S11)</vf-title>
+            <vf-text>Part 1, <strong>joc de rol</strong> en equips de 4 (víctima, agressor/a, testimoni, mediador/a) amb 3 casos: grup de WhatsApp que es burla d'una persona, foto compartida sense permís, exclusió d'una partida. Cada equip representa el cas i apliquen el protocol <strong>Para · Bloqueja · Guarda · Conta</strong>. Els testimonis analitzen amb una pauta d'observació. Part 2: Kahoot de dilemes (nota única 0-10).</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: targetes amb les frases que poden dir.</li>
+                <li><strong>Ampliació</strong>: afig un final alternatiu: què canvia si el testimoni intervé?</li>
+            </vf-list>
+            <vf-title level="3">A14. Repte de desconnexió (S9-S12)</vf-title>
+            <vf-text>Durant 5 dies registra en una taula (full impres o Canva) el temps d'ús del mòbil/consola i com et sents; un dia (a triar) fes un repte de 2 h sense pantalles. En l'S12 analitza el teu registre i escriu <strong>3 mesures personals</strong> (horaris, notificacions, mode nit, no dormir amb el mòbil...).</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: taula amb franges ja preparades.</li>
+                <li><strong>Ampliació</strong>: calcula el teu total setmanal i compara-ho amb les recomanacions de salut.</li>
+            </vf-list>
+            <vf-title level="3">A15. Decàleg i cartell positiu (S11-S12)</vf-title>
+            <vf-text>Per parelles, creeu en Canva un <strong>cartell o meme positiu</strong> que promoga una pauta de ciberconvivència (respecte, consentiment, no compartir sense permís, no riure's de ningú, ajudar). La classe vota les 10 pautes que formaran el decàleg i es penja a l'aula i al grup de classe.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: plantilla i banc de frases.</li>
+                <li><strong>Ampliació</strong>: afig un eslògan en dues llengües.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Representació</strong>: instruccions en pantalla i en paper amb pictogrames; vídeo amb subtítols; glossari visual (petjada, bulo, phishing); Kahoot amb temps ampliat.</li>
+                <li><strong>Acció i expressió</strong>: es pot respondre per escrit, en Canva, en àudio o dibuixant; el rol del joc de rol es tria (qui no vol actuar pot ser observador/a o mediador/a).</li>
+                <li><strong>Implicació</strong>: elecció de l'afirmació de l'A5 i del tema del cartell; casos propers i sense noms reals; es respecta qui no vol compartir la seua experiència (cap cas real de l'aula).</li>
+                <li><strong>Suports</strong>: equips heterogenis amb rols fixos; versió bàsica de cada activitat; pistes graduades; temps addicional; alumnat amb poca competència lingüística: plantilles amb frases model i traductor.</li>
+                <li><strong>Gestió emocional</strong>: ciberassetjament i identitat poden remoure experiències; acordar normes del debat, tindre preparat el contacte d'orientació, i que el professor puga atendre en privat.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 180px;">Instrument</th>
+                            <th style="min-width: 100px;">Moment</th>
+                            <th style="min-width: 170px;">Qui avalua</th>
+                            <th style="min-width: 160px;">Activitat on s'aplica</th>
+                            <th style="min-width: 180px;">Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>I1. Rúbrica de productes</strong></td>
+                            <td>Entrega dels productes</td>
+                            <td>Hetero (coavaluació formativa en A7 i A15)</td>
+                            <td>A1, A4, A5, A7, A9, A15</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td><strong>I2. Llista de control</strong></td>
+                            <td>Durant i en acabar l'activitat</td>
+                            <td>Hetero (observació i revisió)</td>
+                            <td>A3, A5, A6, A7, A8, A11, A12, A13, A14</td>
+                            <td>Fet / no fet (10/0)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>I3. Qüestionaris en línia</strong></td>
+                            <td>Final de cada activitat</td>
+                            <td>Automàtica i hetero</td>
+                            <td>A2, A6, A10, A13</td>
+                            <td>Nota única 0-10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>I4. Diana d'autoavaluació i coavaluació</strong></td>
+                            <td>S6, S12</td>
+                            <td>Auto i co</td>
+                            <td>Tota la SA</td>
+                            <td>Formativa, no qualifica</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+            <vf-title level="3">I1. Rúbrica de productes</vf-title>
+            <vf-text><strong>Tipus de qualificació</strong>: rúbrica de 4 nivells: Insuficient (1-4) · Suficient-Bé (5-6) · Notable (7-8) · Excel·lent (9-10).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes</th>
+                            <th style="min-width: 190px;">Insuficient (1-4)</th>
+                            <th style="min-width: 190px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 190px;">Notable (7-8)</th>
+                            <th style="min-width: 190px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R1. Pòster de dispositius (A1)</td>
+                            <td>CE1.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>Llista incompleta o sense característiques.</td>
+                            <td>Llista i classificació, amb característiques d'un sol dispositiu del top 3.</td>
+                            <td>Llista, classificació, temps i característiques tècniques correctes dels 3 dispositius.</td>
+                            <td>A més, explica amb precisió per què els necessita i compara característiques.</td>
+                        </tr>
+                        <tr>
+                            <td>R2. Infografia de grup (A4)</td>
+                            <td>CE1.4</td>
+                            <td>60&nbsp;%</td>
+                            <td>Menciona un efecte sense explicar-lo.</td>
+                            <td>Recull almenys 2 efectes (salut i medi) amb una explicació breu.</td>
+                            <td>Recull 3 o més efectes de salut i medi ambient amb causa i conseqüència.</td>
+                            <td>A més, inclou mesures concretes i dades procedents de fonts citades.</td>
+                        </tr>
+                        <tr>
+                            <td>R3. Dossier de contrast (A5)</td>
+                            <td>CE2.1</td>
+                            <td>70&nbsp;%</td>
+                            <td>Cerca amb una sola font o sense valorar-la.</td>
+                            <td>Per a cada afirmació usa 2 fonts i les valora amb el semàfor.</td>
+                            <td>Per a cada afirmació usa 3 fonts diferents, justifica la valoració i conclou.</td>
+                            <td>A més, discrimina entre fonts primàries i secundàries i matisa les conclusions.</td>
+                        </tr>
+                        <tr>
+                            <td>R4. Microcontingut (A7)</td>
+                            <td>CE2.6</td>
+                            <td>75&nbsp;%</td>
+                            <td>Desordenat, text excessiu o imatges poc llegibles.</td>
+                            <td>Estructura clara però estètica poc cuidada.</td>
+                            <td>Estructura, paleta i tipografia coherents; missatge clar en ≤ 30 paraules per pantalla.</td>
+                            <td>A més, original i creatiu, i adaptat al públic de 12-13 anys.</td>
+                        </tr>
+                        <tr>
+                            <td>R5. Informe de petjada (A9)</td>
+                            <td>CE3.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>Descriu una forma d'identitat o una pista.</td>
+                            <td>Identifica identitat i petjada en part, amb alguna pista.</td>
+                            <td>Distingix petjada activa i passiva, i la imatge que dona el personatge.</td>
+                            <td>A més, valora la imatge des de diversos punts de vista (amic, desconegut, futur empresari).</td>
+                        </tr>
+                        <tr>
+                            <td>R6. Informe de petjada (A9)</td>
+                            <td>CE3.3</td>
+                            <td>50&nbsp;%</td>
+                            <td>Cita dades sense explicar-ne el risc.</td>
+                            <td>Identifica 3 dades personals i un risc.</td>
+                            <td>Identifica 5 o més dades (directes i deduïdes) i els riscos associats.</td>
+                            <td>A més, ordena les dades per perillositat i explica com es pot combinar la informació.</td>
+                        </tr>
+                        <tr>
+                            <td>R7. Cartell / meme positiu (A15)</td>
+                            <td>CE4.2</td>
+                            <td>100&nbsp;%</td>
+                            <td>Missatge poc clar o poc respectuós.</td>
+                            <td>Missatge entenedor, amb disseny bàsic.</td>
+                            <td>Missatge clar, respectuós i enriquidor, amb disseny cuidat.</td>
+                            <td>A més, original, inclusiu i amb una crida a l'acció concreta.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">I2. Llista de control</vf-title>
+            <vf-text><strong>Tipus de qualificació</strong>: fet/no fet (10/0).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 190px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes</th>
+                            <th style="min-width: 300px;">Compta com "fet" (10)</th>
+                            <th style="min-width: 200px;">No fet (0)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>F1. Contrasenya segura (A3)</td>
+                            <td>CE1.5</td>
+                            <td>60&nbsp;%</td>
+                            <td>≥ 12 caràcters, majúscules, minúscules, números i símbols, sense dades personals i verificada.</td>
+                            <td>No arriba a algun requisit.</td>
+                        </tr>
+                        <tr>
+                            <td>F2. Justificació de la contrasenya (A3)</td>
+                            <td>CE1.5</td>
+                            <td>40&nbsp;%</td>
+                            <td>Explica en una frase què la fa forta i per què no s'ha de reutilitzar.</td>
+                            <td>No ho explica o és incorrecte.</td>
+                        </tr>
+                        <tr>
+                            <td>F3. Tres fonts citades (A5)</td>
+                            <td>CE2.1</td>
+                            <td>30&nbsp;%</td>
+                            <td>Cada afirmació té 3 fonts amb URL i data de consulta.</td>
+                            <td>Falten fonts o dades de cita.</td>
+                        </tr>
+                        <tr>
+                            <td>F4. Senyals de falsedat (A6)</td>
+                            <td>CE2.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>Identifica 2 senyals de falsedat i l'estratègia de difusió del bulo.</td>
+                            <td>Menys de 2 o sense estratègia.</td>
+                        </tr>
+                        <tr>
+                            <td>F5. Autoria i llicència (A7)</td>
+                            <td>CE2.6</td>
+                            <td>25&nbsp;%</td>
+                            <td>Cita l'autor i la font de totes les imatges i usa llicències lliures.</td>
+                            <td>Falta alguna citació o usa imatges sense permís.</td>
+                        </tr>
+                        <tr>
+                            <td>F6. Escape room (A8)</td>
+                            <td>CE3.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>L'equip supera ≥ 3 dels 4 reptes i el membre participa en la resolució.</td>
+                            <td>Menys de 3 reptes o no participa.</td>
+                        </tr>
+                        <tr>
+                            <td>F7. Ajustos de privacitat (A11)</td>
+                            <td>CE3.4</td>
+                            <td>60&nbsp;%</td>
+                            <td>Aplica 5 ajustos, aporta captures abans/després i canvia àlies i avatar.</td>
+                            <td>Menys de 5 ajustos o sense captures.</td>
+                        </tr>
+                        <tr>
+                            <td>F8. Fitxa del xat de joc (A12)</td>
+                            <td>CE4.1</td>
+                            <td>100&nbsp;%</td>
+                            <td>Completa la fitxa de la plataforma i marca ≥ 3 senyals de risc amb la reacció adequada.</td>
+                            <td>Fitxa incompleta o menys de 3 senyals.</td>
+                        </tr>
+                        <tr>
+                            <td>F9. Protocol en el joc de rol (A13)</td>
+                            <td>CE4.4</td>
+                            <td>50&nbsp;%</td>
+                            <td>En l'únic cas d'avaluació assignat a l'equip (un dels 3 del joc de rol) aplica els 4 passos del protocol amb arguments.</td>
+                            <td>Omet algun pas clau.</td>
+                        </tr>
+                        <tr>
+                            <td>F10. Registre de 5 dies (A14)</td>
+                            <td>CE4.5</td>
+                            <td>50&nbsp;%</td>
+                            <td>Registre complet (5 dies) i reflexió sobre com se sent.</td>
+                            <td>Registre incomplet.</td>
+                        </tr>
+                        <tr>
+                            <td>F11. Pla de 3 mesures (A14)</td>
+                            <td>CE4.5</td>
+                            <td>50&nbsp;%</td>
+                            <td>Escriu 3 mesures concretes, realistes i relacionades amb el registre.</td>
+                            <td>Menys de 3 o genèriques.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">I3. Qüestionaris en línia</vf-title>
+            <vf-text><strong>Tipus de qualificació</strong>: nota única 0-10 (la que dona cada qüestionari o Kahoot, ajustada a escala 0-10).</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 230px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes</th>
+                            <th style="min-width: 280px;">Com es posa la nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q1. Qüestionari d'obsolescència (A2)</td>
+                            <td>CE1.4</td>
+                            <td>40&nbsp;%</td>
+                            <td>Nota del qüestionari de 10 preguntes (1 punt per pregunta).</td>
+                        </tr>
+                        <tr>
+                            <td>Q2. Kahoot "Bulo o veritat?" (A6)</td>
+                            <td>CE2.2</td>
+                            <td>50&nbsp;%</td>
+                            <td>Percentatge d'encerts sobre 10.</td>
+                        </tr>
+                        <tr>
+                            <td>Q3. Kahoot de privacitat (A10)</td>
+                            <td>CE3.3</td>
+                            <td>50&nbsp;%</td>
+                            <td>Percentatge d'encerts sobre 15 (nota = encerts × 10 / 15).</td>
+                        </tr>
+                        <tr>
+                            <td>Q4. Kahoot de dilemes (A13)</td>
+                            <td>CE4.4</td>
+                            <td>50&nbsp;%</td>
+                            <td>Percentatge d'encerts sobre 10.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-title level="3">I4. Diana d'autoavaluació i coavaluació</vf-title>
+            <vf-text>Formativa, sense qualificació: diana de 4 sectors (Participe, Cuide el que publique, Contraste el que llig, Respecte en línia) i fitxa de coavaluació amb dos aspectes positius i un de millora.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 70px;">Pes %</th>
+                            <th style="min-width: 110px;">Activitat(s)</th>
+                            <th style="min-width: 200px;">Instrument(s) i indicadors</th>
+                            <th style="min-width: 330px;">Pes de cada indicador dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE1.1</td>
+                            <td>8&nbsp;%</td>
+                            <td>A1</td>
+                            <td>I1: R1</td>
+                            <td>R1 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.4</td>
+                            <td>9&nbsp;%</td>
+                            <td>A2, A4</td>
+                            <td>I1: R2; I3: Q1</td>
+                            <td>R2 60&nbsp;% · Q1 40&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE1.5</td>
+                            <td>8&nbsp;%</td>
+                            <td>A3</td>
+                            <td>I2: F1, F2</td>
+                            <td>F1 60&nbsp;% · F2 40&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.1</td>
+                            <td>10&nbsp;%</td>
+                            <td>A5</td>
+                            <td>I1: R3; I2: F3</td>
+                            <td>R3 70&nbsp;% · F3 30&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.2</td>
+                            <td>7&nbsp;%</td>
+                            <td>A6</td>
+                            <td>I3: Q2; I2: F4</td>
+                            <td>Q2 50&nbsp;% · F4 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE2.6</td>
+                            <td>8&nbsp;%</td>
+                            <td>A7</td>
+                            <td>I1: R4; I2: F5</td>
+                            <td>R4 75&nbsp;% · F5 25&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.1</td>
+                            <td>7&nbsp;%</td>
+                            <td>A9</td>
+                            <td>I1: R5</td>
+                            <td>R5 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.3</td>
+                            <td>8&nbsp;%</td>
+                            <td>A9, A10</td>
+                            <td>I1: R6; I3: Q3</td>
+                            <td>R6 50&nbsp;% · Q3 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE3.4</td>
+                            <td>10&nbsp;%</td>
+                            <td>A8, A11</td>
+                            <td>I2: F6, F7</td>
+                            <td>F6 40&nbsp;% · F7 60&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.1</td>
+                            <td>6&nbsp;%</td>
+                            <td>A12</td>
+                            <td>I2: F8</td>
+                            <td>F8 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.2</td>
+                            <td>5&nbsp;%</td>
+                            <td>A15</td>
+                            <td>I1: R7</td>
+                            <td>R7 100&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.4</td>
+                            <td>8&nbsp;%</td>
+                            <td>A13</td>
+                            <td>I2: F9; I3: Q4</td>
+                            <td>F9 50&nbsp;% · Q4 50&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE4.5</td>
+                            <td>6&nbsp;%</td>
+                            <td>A14</td>
+                            <td>I2: F10, F11</td>
+                            <td>F10 50&nbsp;% · F11 50&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text><strong>Nota del criteri = Σ nota de l'indicador × pes dins del criteri. Nota de la CE = Σ nota dels seus criteris × pes dins de la CE (CE1: 8/9/8; CE2: 10/7/8; CE3: 7/8/10; CE4: 6/5/8/6, sobre 25). Nota de la SA = Σ nota de cada CE × 25&nbsp;%.</strong></vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Canva (compte d'aula), Aules, formularis en línia, Kahoot.</li>
+                <li>Verificador de contrasenyes i quadre de paraules de l'A3.</li>
+                <li>Dossier del cas "Noa_Gamer", transcripció del xat de "Galaxy Clash" i casos de joc de rol (material fictici, elaborat pel professor).</li>
+                <li>Fitxa "semàfor de fonts", plantilla del dossier de l'A5, fitxes de bulos.</li>
+                <li>Targetes del protocol Para · Bloqueja · Guarda · Conta.</li>
+                <li>Bancs d'imatges amb llicència lliure (Wikimedia Commons, Pixabay, Unsplash).</li>
+                <li>Full de registre del temps de pantalla (A14).</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>
