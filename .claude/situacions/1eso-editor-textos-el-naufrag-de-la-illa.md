@@ -45,31 +45,31 @@ Funcionament:
 
 | Codi | Descripció |
 |---|---|
-| CE1 | Crear, editar i donar format a documents de text amb un editor de textos, de manera autònoma, ordenada i amb sentit estètic, i enviar-los per correu electrònic complint les normes bàsiques de comunicació digital. |
+| CE7 | Crear, editar i donar format a documents de text amb un editor de textos, de manera autònoma, ordenada i amb sentit estètic, i enviar-los per correu electrònic complint les normes bàsiques de comunicació digital. |
 
 ## Criteris d'avaluació
 
 | Codi | Descripció | Pes % | Justificació del pes |
 |---|---|---|---|
-| CE1.1 | Redactar i enviar correus electrònics amb destinatari, assumpte i cos adequats i adjuntar els documents demanats. | 6 | Es practica en les 8 proves i és la base de tota la comunicació. |
-| CE1.2 | Moure paràgrafs dins d'un document per reorganitzar-ne el contingut. | 4 | Habilitat bàsica i de poca dificultat. |
-| CE1.3 | Eliminar paraules i fragments de text sense alterar la resta del document. | 3 | Habilitat molt simple. |
-| CE1.4 | Buscar paraules en un document amb l'eina de cerca per localitzar-les i comptar-les. | 4 | Eina senzilla però necessària per a altres proves. |
-| CE1.5 | Canviar el tipus i el tamany de lletra de fragments concrets. | 4 | Format bàsic de caràcter. |
-| CE1.6 | Aplicar negreta, cursiva, subratllat i tachat segons les indicacions. | 6 | Reuneix quatre formats i exigeix precisió. |
-| CE1.7 | Aplicar superíndex i subíndex en els fragments indicats. | 4 | Format específic de menor ús. |
-| CE1.8 | Aplicar els estils de títol i subtítol per estructurar un document. | 7 | Base de l'estructura; sense ella no es poden fer l'índex ni la navegació. |
-| CE1.9 | Modificar el format dels estils de títol (tipus, tamany, color) de manera coherent en tot el document. | 6 | Exigeix entendre que els estils es canvien d'una sola vegada. |
-| CE1.10 | Crear un índex automàtic a partir dels títols i actualitzar-lo. | 7 | Habilitat nuclear i de més dificultat de l'estructura. |
-| CE1.11 | Inserir salts de pàgina per separar apartats. | 5 | Habilitat de maquetació senzilla però fàcil d'errar. |
-| CE1.12 | Crear llistes numerades i no numerades, incloent-hi diversos nivells. | 7 | Organitza la informació i admet diversos nivells. |
-| CE1.13 | Ajustar el sagnat i l'interliniat dels paràgrafs segons les indicacions. | 5 | Format de paràgraf amb diversos paràmetres. |
-| CE1.14 | Inserir taules, introduir-hi dades i ajustar-ne l'estructura. | 7 | Habilitat complexa que combina estructura i contingut. |
-| CE1.15 | Inserir imatges, ordenar-les i afegir-hi caràtules (llegendes). | 7 | Habilitat complexa que combina contingut i referències. |
-| CE1.16 | Exportar un document a PDF. | 4 | Procediment curt i molt guiat. |
-| CE1.17 | Crear un encapçalament en el document. | 5 | Habilitat de maquetació de pàgina. |
-| CE1.18 | Crear un peu de pàgina amb numeració. | 5 | Habilitat de maquetació de pàgina. |
-| CE1.19 | Inserir un enllaç a un recurs extern o a un lloc del mateix document. | 4 | Habilitat curta i molt guiada. |
+| CE7.1 | Redactar i enviar correus electrònics amb destinatari, assumpte i cos adequats i adjuntar els documents demanats. | 6 | Es practica en les 8 proves i és la base de tota la comunicació. |
+| CE7.2 | Moure paràgrafs dins d'un document per reorganitzar-ne el contingut. | 4 | Habilitat bàsica i de poca dificultat. |
+| CE7.3 | Eliminar paraules i fragments de text sense alterar la resta del document. | 3 | Habilitat molt simple. |
+| CE7.4 | Buscar paraules en un document amb l'eina de cerca per localitzar-les i comptar-les. | 4 | Eina senzilla però necessària per a altres proves. |
+| CE7.5 | Canviar el tipus i el tamany de lletra de fragments concrets. | 4 | Format bàsic de caràcter. |
+| CE7.6 | Aplicar negreta, cursiva, subratllat i tachat segons les indicacions. | 6 | Reuneix quatre formats i exigeix precisió. |
+| CE7.7 | Aplicar superíndex i subíndex en els fragments indicats. | 4 | Format específic de menor ús. |
+| CE7.8 | Aplicar els estils de títol i subtítol per estructurar un document. | 7 | Base de l'estructura; sense ella no es poden fer l'índex ni la navegació. |
+| CE7.9 | Modificar el format dels estils de títol (tipus, tamany, color) de manera coherent en tot el document. | 6 | Exigeix entendre que els estils es canvien d'una sola vegada. |
+| CE7.10 | Crear un índex automàtic a partir dels títols i actualitzar-lo. | 7 | Habilitat nuclear i de més dificultat de l'estructura. |
+| CE7.11 | Inserir salts de pàgina per separar apartats. | 5 | Habilitat de maquetació senzilla però fàcil d'errar. |
+| CE7.12 | Crear llistes numerades i no numerades, incloent-hi diversos nivells. | 7 | Organitza la informació i admet diversos nivells. |
+| CE7.13 | Ajustar el sagnat i l'interliniat dels paràgrafs segons les indicacions. | 5 | Format de paràgraf amb diversos paràmetres. |
+| CE7.14 | Inserir taules, introduir-hi dades i ajustar-ne l'estructura. | 7 | Habilitat complexa que combina estructura i contingut. |
+| CE7.15 | Inserir imatges, ordenar-les i afegir-hi caràtules (llegendes). | 7 | Habilitat complexa que combina contingut i referències. |
+| CE7.16 | Exportar un document a PDF. | 4 | Procediment curt i molt guiat. |
+| CE7.17 | Crear un encapçalament en el document. | 5 | Habilitat de maquetació de pàgina. |
+| CE7.18 | Crear un peu de pàgina amb numeració. | 5 | Habilitat de maquetació de pàgina. |
+| CE7.19 | Inserir un enllaç a un recurs extern o a un lloc del mateix document. | 4 | Habilitat curta i molt guiada. |
 | | **Total** | **100** | |
 
 ## Sabers bàsics
@@ -231,49 +231,49 @@ Cada criteri té un únic indicador amb pes 100 % dins del seu criteri; entre pa
 
 | Indicador | Criteri | Pes | Malament (0) | Suficient (5) | Molt bé (10) |
 |---|---|---|---|---|---|
-| Envia correus correctes | CE1.1 | 100 % (6 %) | El correu no té assumpte, o l'assumpte no és el demanat, o no inclou el nom. | Envia el correu o els documents amb alguna errada (assumpte incomplet, sense nom) que corregeix després d'un avís. | Tots els correus tenen destinatari, assumpte exacte i cos adequat, i adjunta el document sense avisos. |
-| Mou paràgrafs | CE1.2 | 100 % (4 %) | El text no queda en l'ordre demanat. | Queda en l'ordre demanat després de corregir-ho una vegada. | Reordena tots els paràgrafs correctament sense duplicar ni perdre text. |
-| Elimina paraules | CE1.3 | 100 % (3 %) | Deixa paraules sense eliminar o elimina text que no tocava. | Elimina les paraules demanades però en deixa alguna per revisar o hi ha espais sobrants. | Elimina exactament les paraules demanades i el text queda net. |
-| Busca paraules | CE1.4 | 100 % (4 %) | No usa l'eina de cerca o no localitza les paraules. | Usa l'eina de cerca però cal ajuda per comptar o localitzar totes les aparicions. | Localitza i compta les aparicions amb l'eina de cerca de manera autònoma. |
-| Canvia tipus i tamany de lletra | CE1.5 | 100 % (4 %) | No canvia el tipus o el tamany als fragments demanats. | Canvia el tipus o el tamany, però en algun fragment no és el demanat. | Tots els fragments tenen el tipus i el tamany demanats. |
-| Aplica negreta, cursiva, subratllat i tachat | CE1.6 | 100 % (6 %) | Aplica menys de la meitat dels formats demanats o en llocs equivocats. | Aplica tots els formats però en algun fragment hi ha error o format de més. | Aplica els quatre formats exactament en els fragments demanats. |
-| Aplica superíndex i subíndex | CE1.7 | 100 % (4 %) | No aplica cap dels dos formats o els confon. | Aplica un dels dos correctament, o tots dos amb alguna errada. | Aplica superíndex i subíndex als caràcters indicats sense errors. |
-| Aplica títols i subtítols | CE1.8 | 100 % (7 %) | Dona format als títols manualment (només negreta i tamany) en comptes d'usar estils. | Usa els estils però en algun lloc el nivell no és el correcte. | Usa els estils de títol i subtítol amb els nivells correctes en tot el document. |
-| Canvia el format dels títols | CE1.9 | 100 % (6 %) | Només canvia el format d'un títol manualment. | Modifica els estils però algun títol no queda amb el format demanat. | Modifica els estils una sola vegada i tots els títols queden amb el format demanat. |
-| Crea l'índex | CE1.10 | 100 % (7 %) | No hi ha índex, o està escrit a mà. | Hi ha índex automàtic però no està actualitzat o li falten apartats. | L'índex és automàtic, està actualitzat i inclou tots els apartats amb la numeració de pàgina correcta. |
-| Insereix salts de pàgina | CE1.11 | 100 % (5 %) | Separa els apartats amb salts de línia (Intro repetit) o no els separa. | Usa salts de pàgina però algun apartat no comença en pàgina nova o en sobra algun. | Cada apartat demanat comença en una pàgina nova amb un salt de pàgina. |
-| Crea llistes | CE1.12 | 100 % (7 %) | Escriu els números o els guions a mà o no distingeix els tipus de llista. | Crea les llistes però alguna té el tipus o el nivell equivocat. | Crea totes les llistes amb l'eina corresponent, amb el tipus i els nivells correctes. |
-| Ajusta sagnat i interliniat | CE1.13 | 100 % (5 %) | Usa espais o tabuladors per a sagnar i no ajusta l'interliniat. | Ajusta sagnat i interliniat però alguna mesura no és la demanada. | Aplica el sagnat i l'interliniat demanats en tots els paràgrafs indicats amb l'eina de paràgraf. |
-| Insereix taules | CE1.14 | 100 % (7 %) | No insereix la taula o no té les files i columnes demanades. | La taula té l'estructura demanada però hi falten dades o algun error en el contingut. | Les taules tenen l'estructura demanada i totes les dades correctes. |
-| Insereix imatges i caràtules | CE1.15 | 100 % (7 %) | No insereix les imatges o no les ordena. | Insereix i ordena les imatges però no totes tenen caràtula o alguna no és la correcta. | Totes les imatges estan inserides, ordenades i amb la caràtula correcta. |
-| Exporta a PDF | CE1.16 | 100 % (4 %) | Envia el document en el format de Writer, no en PDF. | Envia un PDF però amb alguna errada (nom incorrecte, pàgines que sobren). | Envia un PDF correcte del document final. |
-| Crea l'encapçalament | CE1.17 | 100 % (5 %) | No hi ha encapçalament. | Hi ha encapçalament però no té el contingut demanat o no apareix en totes les pàgines. | L'encapçalament té el contingut demanat i apareix en totes les pàgines. |
-| Crea el peu de pàgina | CE1.18 | 100 % (5 %) | No hi ha peu de pàgina. | Hi ha peu però sense numeració o amb numeració incorrecta. | El peu de pàgina té el contingut i la numeració automàtica correctes en totes les pàgines. |
-| Insereix un enllaç | CE1.19 | 100 % (4 %) | No hi ha cap enllaç o és text sense enllaç actiu. | L'enllaç existeix però no porta al destí demanat. | L'enllaç és actiu i porta al destí demanat. |
+| Envia correus correctes | CE7.1 | 100 % (6 %) | El correu no té assumpte, o l'assumpte no és el demanat, o no inclou el nom. | Envia el correu o els documents amb alguna errada (assumpte incomplet, sense nom) que corregeix després d'un avís. | Tots els correus tenen destinatari, assumpte exacte i cos adequat, i adjunta el document sense avisos. |
+| Mou paràgrafs | CE7.2 | 100 % (4 %) | El text no queda en l'ordre demanat. | Queda en l'ordre demanat després de corregir-ho una vegada. | Reordena tots els paràgrafs correctament sense duplicar ni perdre text. |
+| Elimina paraules | CE7.3 | 100 % (3 %) | Deixa paraules sense eliminar o elimina text que no tocava. | Elimina les paraules demanades però en deixa alguna per revisar o hi ha espais sobrants. | Elimina exactament les paraules demanades i el text queda net. |
+| Busca paraules | CE7.4 | 100 % (4 %) | No usa l'eina de cerca o no localitza les paraules. | Usa l'eina de cerca però cal ajuda per comptar o localitzar totes les aparicions. | Localitza i compta les aparicions amb l'eina de cerca de manera autònoma. |
+| Canvia tipus i tamany de lletra | CE7.5 | 100 % (4 %) | No canvia el tipus o el tamany als fragments demanats. | Canvia el tipus o el tamany, però en algun fragment no és el demanat. | Tots els fragments tenen el tipus i el tamany demanats. |
+| Aplica negreta, cursiva, subratllat i tachat | CE7.6 | 100 % (6 %) | Aplica menys de la meitat dels formats demanats o en llocs equivocats. | Aplica tots els formats però en algun fragment hi ha error o format de més. | Aplica els quatre formats exactament en els fragments demanats. |
+| Aplica superíndex i subíndex | CE7.7 | 100 % (4 %) | No aplica cap dels dos formats o els confon. | Aplica un dels dos correctament, o tots dos amb alguna errada. | Aplica superíndex i subíndex als caràcters indicats sense errors. |
+| Aplica títols i subtítols | CE7.8 | 100 % (7 %) | Dona format als títols manualment (només negreta i tamany) en comptes d'usar estils. | Usa els estils però en algun lloc el nivell no és el correcte. | Usa els estils de títol i subtítol amb els nivells correctes en tot el document. |
+| Canvia el format dels títols | CE7.9 | 100 % (6 %) | Només canvia el format d'un títol manualment. | Modifica els estils però algun títol no queda amb el format demanat. | Modifica els estils una sola vegada i tots els títols queden amb el format demanat. |
+| Crea l'índex | CE7.10 | 100 % (7 %) | No hi ha índex, o està escrit a mà. | Hi ha índex automàtic però no està actualitzat o li falten apartats. | L'índex és automàtic, està actualitzat i inclou tots els apartats amb la numeració de pàgina correcta. |
+| Insereix salts de pàgina | CE7.11 | 100 % (5 %) | Separa els apartats amb salts de línia (Intro repetit) o no els separa. | Usa salts de pàgina però algun apartat no comença en pàgina nova o en sobra algun. | Cada apartat demanat comença en una pàgina nova amb un salt de pàgina. |
+| Crea llistes | CE7.12 | 100 % (7 %) | Escriu els números o els guions a mà o no distingeix els tipus de llista. | Crea les llistes però alguna té el tipus o el nivell equivocat. | Crea totes les llistes amb l'eina corresponent, amb el tipus i els nivells correctes. |
+| Ajusta sagnat i interliniat | CE7.13 | 100 % (5 %) | Usa espais o tabuladors per a sagnar i no ajusta l'interliniat. | Ajusta sagnat i interliniat però alguna mesura no és la demanada. | Aplica el sagnat i l'interliniat demanats en tots els paràgrafs indicats amb l'eina de paràgraf. |
+| Insereix taules | CE7.14 | 100 % (7 %) | No insereix la taula o no té les files i columnes demanades. | La taula té l'estructura demanada però hi falten dades o algun error en el contingut. | Les taules tenen l'estructura demanada i totes les dades correctes. |
+| Insereix imatges i caràtules | CE7.15 | 100 % (7 %) | No insereix les imatges o no les ordena. | Insereix i ordena les imatges però no totes tenen caràtula o alguna no és la correcta. | Totes les imatges estan inserides, ordenades i amb la caràtula correcta. |
+| Exporta a PDF | CE7.16 | 100 % (4 %) | Envia el document en el format de Writer, no en PDF. | Envia un PDF però amb alguna errada (nom incorrecte, pàgines que sobren). | Envia un PDF correcte del document final. |
+| Crea l'encapçalament | CE7.17 | 100 % (5 %) | No hi ha encapçalament. | Hi ha encapçalament però no té el contingut demanat o no apareix en totes les pàgines. | L'encapçalament té el contingut demanat i apareix en totes les pàgines. |
+| Crea el peu de pàgina | CE7.18 | 100 % (5 %) | No hi ha peu de pàgina. | Hi ha peu però sense numeració o amb numeració incorrecta. | El peu de pàgina té el contingut i la numeració automàtica correctes en totes les pàgines. |
+| Insereix un enllaç | CE7.19 | 100 % (4 %) | No hi ha cap enllaç o és text sense enllaç actiu. | L'enllaç existeix però no porta al destí demanat. | L'enllaç és actiu i porta al destí demanat. |
 
 ## Taula de traçabilitat i qualificació
 
 | Criteri | Pes % | Activitat(s) | Instrument i indicador | Pes de l'indicador dins del criteri |
 |---|---|---|---|---|
-| CE1.1 | 6 | Proves 1 a 8 (S1, S2, S4, S6, S8, S10, S12, S14) | Rúbrica: Envia correus correctes | 100 % |
-| CE1.2 | 4 | Prova 2 (S2) | Rúbrica: Mou paràgrafs | 100 % |
-| CE1.3 | 3 | Prova 2 (S2) | Rúbrica: Elimina paraules | 100 % |
-| CE1.4 | 4 | Prova 3 (S3-S4) | Rúbrica: Busca paraules | 100 % |
-| CE1.5 | 4 | Prova 3 (S3-S4) | Rúbrica: Canvia tipus i tamany de lletra | 100 % |
-| CE1.6 | 6 | Prova 3 (S4) | Rúbrica: Aplica negreta, cursiva, subratllat i tachat | 100 % |
-| CE1.7 | 4 | Prova 3 (S4) | Rúbrica: Aplica superíndex i subíndex | 100 % |
-| CE1.8 | 7 | Prova 4 (S5-S6) | Rúbrica: Aplica títols i subtítols | 100 % |
-| CE1.9 | 6 | Prova 5 (S7-S8) | Rúbrica: Canvia el format dels títols | 100 % |
-| CE1.10 | 7 | Prova 5 (S8) | Rúbrica: Crea l'índex | 100 % |
-| CE1.11 | 5 | Prova 5 (S7-S8) | Rúbrica: Insereix salts de pàgina | 100 % |
-| CE1.12 | 7 | Prova 6 (S9-S10) | Rúbrica: Crea llistes | 100 % |
-| CE1.13 | 5 | Prova 6 (S10) | Rúbrica: Ajusta sagnat i interliniat | 100 % |
-| CE1.14 | 7 | Prova 7 (S11-S12) | Rúbrica: Insereix taules | 100 % |
-| CE1.15 | 7 | Prova 7 (S12) | Rúbrica: Insereix imatges i caràtules | 100 % |
-| CE1.16 | 4 | Prova 8 (S14) | Rúbrica: Exporta a PDF | 100 % |
-| CE1.17 | 5 | Prova 8 (S13-S14) | Rúbrica: Crea l'encapçalament | 100 % |
-| CE1.18 | 5 | Prova 8 (S13-S14) | Rúbrica: Crea el peu de pàgina | 100 % |
-| CE1.19 | 4 | Prova 8 (S14) | Rúbrica: Insereix un enllaç | 100 % |
+| CE7.1 | 6 | Proves 1 a 8 (S1, S2, S4, S6, S8, S10, S12, S14) | Rúbrica: Envia correus correctes | 100 % |
+| CE7.2 | 4 | Prova 2 (S2) | Rúbrica: Mou paràgrafs | 100 % |
+| CE7.3 | 3 | Prova 2 (S2) | Rúbrica: Elimina paraules | 100 % |
+| CE7.4 | 4 | Prova 3 (S3-S4) | Rúbrica: Busca paraules | 100 % |
+| CE7.5 | 4 | Prova 3 (S3-S4) | Rúbrica: Canvia tipus i tamany de lletra | 100 % |
+| CE7.6 | 6 | Prova 3 (S4) | Rúbrica: Aplica negreta, cursiva, subratllat i tachat | 100 % |
+| CE7.7 | 4 | Prova 3 (S4) | Rúbrica: Aplica superíndex i subíndex | 100 % |
+| CE7.8 | 7 | Prova 4 (S5-S6) | Rúbrica: Aplica títols i subtítols | 100 % |
+| CE7.9 | 6 | Prova 5 (S7-S8) | Rúbrica: Canvia el format dels títols | 100 % |
+| CE7.10 | 7 | Prova 5 (S8) | Rúbrica: Crea l'índex | 100 % |
+| CE7.11 | 5 | Prova 5 (S7-S8) | Rúbrica: Insereix salts de pàgina | 100 % |
+| CE7.12 | 7 | Prova 6 (S9-S10) | Rúbrica: Crea llistes | 100 % |
+| CE7.13 | 5 | Prova 6 (S10) | Rúbrica: Ajusta sagnat i interliniat | 100 % |
+| CE7.14 | 7 | Prova 7 (S11-S12) | Rúbrica: Insereix taules | 100 % |
+| CE7.15 | 7 | Prova 7 (S12) | Rúbrica: Insereix imatges i caràtules | 100 % |
+| CE7.16 | 4 | Prova 8 (S14) | Rúbrica: Exporta a PDF | 100 % |
+| CE7.17 | 5 | Prova 8 (S13-S14) | Rúbrica: Crea l'encapçalament | 100 % |
+| CE7.18 | 5 | Prova 8 (S13-S14) | Rúbrica: Crea el peu de pàgina | 100 % |
+| CE7.19 | 4 | Prova 8 (S14) | Rúbrica: Insereix un enllaç | 100 % |
 
 - Nota del criteri = nota de l'indicador (0, 5 o 10) × 100 %.
 - Nota de la SA = Σ nota de cada criteri × pes del criteri.

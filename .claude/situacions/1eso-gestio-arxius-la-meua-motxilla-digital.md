@@ -26,17 +26,17 @@ Productes: estructures locals Països i Pokémon; estructura d'assignatures al n
 
 | Codi | Descripció |
 |---|---|
-| CE1 | Gestionar de manera ordenada i responsable els arxius personals i acadèmics, en l'equip local i al núvol, creant estructures jeràrquiques de carpetes, aplicant les operacions bàsiques sobre arxius i explicant el procés seguit, per a localitzar, conservar i compartir la informació de manera eficient i segura. |
+| CE5 | Gestionar de manera ordenada i responsable els arxius personals i acadèmics, en l'equip local i al núvol, creant estructures jeràrquiques de carpetes, aplicant les operacions bàsiques sobre arxius i explicant el procés seguit, per a localitzar, conservar i compartir la informació de manera eficient i segura. |
 
 ## Criteris d'avaluació
 
 | Codi | Descripció | Pes % | Justificació del pes |
 |---|---|---|---|
-| CE1.1 | Identificar les carpetes principals de l'usuari, expressar la ruta d'un arxiu i reconéixer el tipus d'arxiu per l'extensió. | 10 % | Coneixement de base i de dificultat baixa. |
-| CE1.2 | Aplicar les operacions bàsiques sobre arxius (descarregar, reanomenar, copiar, moure, capturar la pantalla) triant bé entre copiar i moure i mantenint Baixades i l'Escriptori nets. | 20 % | Destresa clau i font dels errors més habituals. |
-| CE1.3 | Construir en l'equip local estructures jeràrquiques de carpetes d'almenys tres nivells a partir d'un esquema, amb noms descriptius i cada arxiu al seu lloc. | 30 % | Nucli de la unitat; integra CE1.1 i CE1.2. |
-| CE1.4 | Organitzar arxius al núvol (crear carpetes, pujar, crear documents en línia) i compartir-los amb qui cal i amb el permís adequat. | 20 % | Entorn nou i dimensió responsable de compartir. |
-| CE1.5 | Explicar el que s'ha aprés i mostrar el procés seguit mitjançant un document de text i una presentació amb captures, valorant els hàbits d'ordre digital. | 20 % | Comunicació i reflexió; exigeix eines noves (editor en línia, presentació, captures). |
+| CE5.1 | Identificar les carpetes principals de l'usuari, expressar la ruta d'un arxiu i reconéixer el tipus d'arxiu per l'extensió. | 10 % | Coneixement de base i de dificultat baixa. |
+| CE5.2 | Aplicar les operacions bàsiques sobre arxius (descarregar, reanomenar, copiar, moure, capturar la pantalla) triant bé entre copiar i moure i mantenint Baixades i l'Escriptori nets. | 20 % | Destresa clau i font dels errors més habituals. |
+| CE5.3 | Construir en l'equip local estructures jeràrquiques de carpetes d'almenys tres nivells a partir d'un esquema, amb noms descriptius i cada arxiu al seu lloc. | 30 % | Nucli de la unitat; integra CE5.1 i CE5.2. |
+| CE5.4 | Organitzar arxius al núvol (crear carpetes, pujar, crear documents en línia) i compartir-los amb qui cal i amb el permís adequat. | 20 % | Entorn nou i dimensió responsable de compartir. |
+| CE5.5 | Explicar el que s'ha aprés i mostrar el procés seguit mitjançant un document de text i una presentació amb captures, valorant els hàbits d'ordre digital. | 20 % | Comunicació i reflexió; exigeix eines noves (editor en línia, presentació, captures). |
 | | **Total** | **100 %** | |
 
 ## Sabers bàsics
@@ -210,11 +210,11 @@ Notes per al professorat: moure és canviar de calaix, copiar és fer una fotoc�
 
 | Indicador | Criteri | Pes | Evidència | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|---|
-| R1. Carpetes, rutes i extensions | CE1.1 | 100 % del criteri (10 % de la SA) | Observació a l'aula, sessions 1-3 (DB1, DB2, DB3, DB5) | Demostra sense ajuda 0-1 de les 4 destreses. | En demostra 2. | En demostra 3. | Demostra les 4 sense ajuda. |
-| R2. Operacions bàsiques | CE1.2 | 100 % del criteri (20 % de la SA) | Observació a l'aula, sessions 1-3 (DB4, DB6, DB7, DB8), i Baixades en l'activitat Pokémon | Fa sense ajuda 0-1 de les 4 operacions (descarregar, capturar, reanomenar, copiar/moure) o deixa Baixades plena. | En fa 2-3; queden restes a Baixades o a l'Escriptori. | Fa les 4; queda alguna resta a Baixades o a l'Escriptori. | Fa les 4 i deixa Baixades i l'Escriptori nets. |
-| R3. Estructura jeràrquica local | CE1.3 | 100 % del criteri (30 % de la SA) | Activitat Pokémon | Menys de 4 tipus, carpetes fora de lloc o molts noms genèrics (`Nova carpeta`, `descarrega (n)`). | 4 tipus amb almenys 2 Pokémon ben ubicats; alguna carpeta sense imatge o `.txt` o algun nom genèric. | 4 tipus amb 3 Pokémon, cada carpeta amb imatge i `.txt`; noms descriptius. | Com Notable, amb el mateix format de noms en tota l'estructura i fet en autonomia. |
-| R4. Organització al núvol | CE1.4 | 100 % del criteri (20 % de la SA) | Activitat núvol | No hi ha `1r ESO`, els arxius estan a l'arrel o no comparteix. | `1r ESO` amb almenys 3 assignatures i les subcarpetes d'Informàtica; compartit amb un permís inadequat (edició o enllaç públic). | Totes les assignatures; captures i documents a `1. GESTIÓ ARXIUS`; compartit només amb el professor. | Com Notable, en només lectura, i sap explicar per què. |
-| R5. Explicació del procés | CE1.5 | 100 % del criteri (20 % de la SA) | Activitat núvol (document de text) i activitat presentació | Menys de 3 respostes o errors de concepte; presentació amb menys de 2 captures llegibles. | Respon les 5 preguntes sense exemples; presentació amb 2 captures o sense títols. | Respostes amb exemples propis; presentació amb les 5 diapositives, captures llegibles i títols. | Com Notable, amb un hàbit concret i justificat i un consell clar a la presentació. |
+| R1. Carpetes, rutes i extensions | CE5.1 | 100 % del criteri (10 % de la SA) | Observació a l'aula, sessions 1-3 (DB1, DB2, DB3, DB5) | Demostra sense ajuda 0-1 de les 4 destreses. | En demostra 2. | En demostra 3. | Demostra les 4 sense ajuda. |
+| R2. Operacions bàsiques | CE5.2 | 100 % del criteri (20 % de la SA) | Observació a l'aula, sessions 1-3 (DB4, DB6, DB7, DB8), i Baixades en l'activitat Pokémon | Fa sense ajuda 0-1 de les 4 operacions (descarregar, capturar, reanomenar, copiar/moure) o deixa Baixades plena. | En fa 2-3; queden restes a Baixades o a l'Escriptori. | Fa les 4; queda alguna resta a Baixades o a l'Escriptori. | Fa les 4 i deixa Baixades i l'Escriptori nets. |
+| R3. Estructura jeràrquica local | CE5.3 | 100 % del criteri (30 % de la SA) | Activitat Pokémon | Menys de 4 tipus, carpetes fora de lloc o molts noms genèrics (`Nova carpeta`, `descarrega (n)`). | 4 tipus amb almenys 2 Pokémon ben ubicats; alguna carpeta sense imatge o `.txt` o algun nom genèric. | 4 tipus amb 3 Pokémon, cada carpeta amb imatge i `.txt`; noms descriptius. | Com Notable, amb el mateix format de noms en tota l'estructura i fet en autonomia. |
+| R4. Organització al núvol | CE5.4 | 100 % del criteri (20 % de la SA) | Activitat núvol | No hi ha `1r ESO`, els arxius estan a l'arrel o no comparteix. | `1r ESO` amb almenys 3 assignatures i les subcarpetes d'Informàtica; compartit amb un permís inadequat (edició o enllaç públic). | Totes les assignatures; captures i documents a `1. GESTIÓ ARXIUS`; compartit només amb el professor. | Com Notable, en només lectura, i sap explicar per què. |
+| R5. Explicació del procés | CE5.5 | 100 % del criteri (20 % de la SA) | Activitat núvol (document de text) i activitat presentació | Menys de 3 respostes o errors de concepte; presentació amb menys de 2 captures llegibles. | Respon les 5 preguntes sense exemples; presentació amb 2 captures o sense títols. | Respostes amb exemples propis; presentació amb les 5 diapositives, captures llegibles i títols. | Com Notable, amb un hàbit concret i justificat i un consell clar a la presentació. |
 
 ### Full d'observació de destreses bàsiques (suport)
 
@@ -222,24 +222,24 @@ Notes per al professorat: moure és canviar de calaix, copiar és fer una fotoc�
 
 | Destresa | Fila de la rúbrica | Fet |
 |---|---|---|
-| DB1. Localitza Documents, Baixades, Escriptori i Imatges | R1 (CE1.1) | Les obri sense ajuda. |
-| DB2. Diu la ruta d'un arxiu | R1 (CE1.1) | Diu la ruta completa i en ordre d'un arxiu seu. |
-| DB3. Sap què són les extensions | R1 (CE1.1) | Ho explica i identifica almenys 4 de 5 tipus preguntats. |
-| DB5. Troba a Baixades el que ha descarregat | R1 (CE1.1) | Obri Baixades i hi troba l'arxiu sense ajuda. |
-| DB4. Descarrega arxius d'Internet | R2 (CE1.2) | Descarrega una imatge a mida completa en un format que s'obri. |
-| DB6. Fa captures de pantalla | R2 (CE1.2) | Fa una captura i la guarda com a arxiu o l'apega en un document. |
-| DB7. Reanomena fitxers | R2 (CE1.2) | Canvia el nom per un de descriptiu i conserva l'extensió. |
-| DB8. Tria entre copiar i moure | R2 (CE1.2) | Executa bé tres ordres seguides (moure, copiar, moure). |
+| DB1. Localitza Documents, Baixades, Escriptori i Imatges | R1 (CE5.1) | Les obri sense ajuda. |
+| DB2. Diu la ruta d'un arxiu | R1 (CE5.1) | Diu la ruta completa i en ordre d'un arxiu seu. |
+| DB3. Sap què són les extensions | R1 (CE5.1) | Ho explica i identifica almenys 4 de 5 tipus preguntats. |
+| DB5. Troba a Baixades el que ha descarregat | R1 (CE5.1) | Obri Baixades i hi troba l'arxiu sense ajuda. |
+| DB4. Descarrega arxius d'Internet | R2 (CE5.2) | Descarrega una imatge a mida completa en un format que s'obri. |
+| DB6. Fa captures de pantalla | R2 (CE5.2) | Fa una captura i la guarda com a arxiu o l'apega en un document. |
+| DB7. Reanomena fitxers | R2 (CE5.2) | Canvia el nom per un de descriptiu i conserva l'extensió. |
+| DB8. Tria entre copiar i moure | R2 (CE5.2) | Executa bé tres ordres seguides (moure, copiar, moure). |
 
 ## Taula de traçabilitat i qualificació
 
 | Criteri | Pes % | Activitat(s) | Instrument i indicador | Pes de l'indicador dins del criteri |
 |---|---|---|---|---|
-| CE1.1 | 10 % | A0, A1, A2 | Rúbrica, R1 (amb el full d'observació) | R1 100 % |
-| CE1.2 | 20 % | A0, A1, A2, A3 | Rúbrica, R2 (amb el full d'observació) | R2 100 % |
-| CE1.3 | 30 % | A2, A3 | Rúbrica, R3 | R3 100 % |
-| CE1.4 | 20 % | A4 | Rúbrica, R4 | R4 100 % |
-| CE1.5 | 20 % | A4, A5 | Rúbrica, R5 | R5 100 % |
+| CE5.1 | 10 % | A0, A1, A2 | Rúbrica, R1 (amb el full d'observació) | R1 100 % |
+| CE5.2 | 20 % | A0, A1, A2, A3 | Rúbrica, R2 (amb el full d'observació) | R2 100 % |
+| CE5.3 | 30 % | A2, A3 | Rúbrica, R3 | R3 100 % |
+| CE5.4 | 20 % | A4 | Rúbrica, R4 | R4 100 % |
+| CE5.5 | 20 % | A4, A5 | Rúbrica, R5 | R5 100 % |
 
 **Nota de la SA = 0,10·R1 + 0,20·R2 + 0,30·R3 + 0,20·R4 + 0,20·R5**
 

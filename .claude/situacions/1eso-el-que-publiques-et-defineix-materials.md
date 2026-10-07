@@ -166,6 +166,7 @@ Criteri per posar la nota de cada pregunta (només professorat):
 - 2,5-3 punts: resposta parcial o sense raonar.
 - 0 punts: sense resposta o errònia.
 - Nota del bloc = pregunta 1 + pregunta 2.
+- Els blocs A i B es corregeixen i es retornen com a feedback, però no entren en la nota.
 
 Observacions del professorat: ______________________________________________
 
@@ -191,7 +192,7 @@ Grup: ______________________  Tema del grup: ______________________  Data: _____
 
 ## 4. Fitxa de fonts
 
-Una fitxa per grup. Tipus: fet/no fet (10/0). És «fet» si la fitxa està completa.
+Una fitxa per grup. Tipus: fet/no fet (10/0). És un requisit per a validar el guió i no entra en la nota. És «fet» si la fitxa està completa.
 
 Grup: ______________________  Tema: ______________________  Data: ____________
 
@@ -220,7 +221,7 @@ Dada d'opinió diferent d'un fet (ampliació): _________________________________
 Versió simplificada (tres columnes, per a qui ho necessite): Nom i enllaç | Qui l'escriu i data | Què explica, amb les meues paraules.
 
 Criteri de «fet» (10): mínim 3 fonts fiables amb enllaç, autoria i data; una dada en paraules pròpies per font; una dada contrastada en 2 fonts.
-Criteri de «no fet» (0): falten fonts, dades o el contrast.
+Criteri de «no fet» (0): falten fonts, dades o el contrast. El grup la completa abans de la S5.
 
 ---
 
@@ -232,16 +233,25 @@ Títol del vídeo: ______________________  Tema: ______________________
 Grup: ______________________  Rols: portaveu ____________ documentalista ____________ editor/a ____________
 Públic: adolescents de 12-14 anys
 
+Com ens presentem (marca i explica):
+- [ ] Cara  [ ] Només veu  [ ] Àlies  [ ] Avatar o dibuix  [ ] Altres: ____________
+- Per què hem triat esta manera de presentar-nos: ______________________________________________
+- Quina imatge volem que s'enduga l'espectador de nosaltres: ______________________________________________
+
 Estructura recomanada:
 - Inici (15-20 s): una pregunta o un cas que enganxe.
-- Desenvolupament (1:30-2:20): els punts clau del tema, un per escena.
+- Desenvolupament (1:30-2:20): els punts clau del tema, un per escena, i l'escena obligatòria «Què diu de tu publicar o compartir això».
 - Tancament (15-20 s): una frase final dirigida a adolescents, clara i fàcil de recordar.
+
+Escena obligatòria «Què diu de tu publicar o compartir això»: explica, amb un exemple, quina petjada deixa o quina imatge dona de qui publica o comparteix allò del vostre tema (p. ex. compartir una notícia falsa, un comentari d'odi, una dada personal o un perfil obert). Si podeu, distingiu petjada activa i passiva o mostreu una conseqüència a llarg termini.
 
 Frases per a qui necessite suport:
 - «Alguna vegada t'has preguntat si…?»
 - «Perquè…, és important…»
 - «Una dada: … (font: …).»
 - «Per això, recorda: …»
+- «Quan publiques o comparteixes…, la gent pensa que tu…»
+- «Això deixa petjada perquè…»
 
 | Escena | Text (qui parla i què diu) | Imatge / so (què es veu i què se sent) | Durada | Font de la dada | Recurs i llicència |
 |---|---|---|---|---|---|
@@ -249,20 +259,25 @@ Frases per a qui necessite suport:
 | 2 | | | | | |
 | 3 | | | | | |
 | 4 | | | | | |
-| 5 | | | | | |
+| 5. Què diu de tu publicar o compartir això (obligatòria) | | | | | |
 | 6. Tancament | | | | | |
-| Crèdits | Autors, títols, llicències i enllaços de tots els recursos externs | Text sobre fons simple | 10 s | | |
+| Crèdits | Autors, títols, llicències i enllaços de tots els recursos externs; autoria del grup amb nom de pila o àlies (sense cognoms ni curs) | Text sobre fons simple | 10 s | | |
+
+L'escena obligatòria pot anar en qualsevol posició del desenvolupament; la 5 és només una proposta.
 
 Comprovació abans de validar (professorat):
 
 | Comprovació | Sí / no |
 |---|---|
 | Inclou tots els punts d'«Informació que ha d'aparéixer al vídeo» del tema | |
+| Té l'escena «Què diu de tu publicar o compartir això» amb un exemple | |
+| Ha decidit i justificat com es presenta el grup (cara, veu, àlies, avatar) | |
 | Cada dada té una font de la fitxa de fonts | |
 | Està redactat amb paraules pròpies | |
 | Dura entre 2 i 3 minuts (llegit en veu alta i cronometrat) | |
 | Tots els recursos externs tenen llicència lliure i autoria | |
 | Ningú apareix sense haver-ho acceptat | |
+| No es mostra cap dada personal (uniforme, nom del centre, carrer, pantalles amb noms) | |
 | Acaba amb una frase final dirigida a adolescents | |
 
 Guió validat per: ______________  Data: ____________
@@ -271,7 +286,7 @@ Guió validat per: ______________  Data: ____________
 
 ## 6. Llista d'observació individual
 
-Full del professorat (instrument individual). Una fila per alumne/a, omplida durant les sessions de recerca (S3), gravació i edició (S6-S8) i revisió (S9). Es pot imprimir una taula per grup.
+Full del professorat (instrument individual). Una fila per alumne/a, omplida durant la gravació (S6) i la revisió entre iguals (S9). Es pot imprimir una taula per grup.
 
 Tipus de qualificació: escala de 3 nivells.
 
@@ -281,22 +296,21 @@ Tipus de qualificació: escala de 3 nivells.
 | Bé | 5 |
 | Molt bé | 10 |
 
-Indicadors, criteri i pes dins del criteri (cada indicador avalua un únic criteri; l'observació forma part del 20 % individual del seu criteri):
+Indicadors, criteri i pes dins del criteri (cada indicador avalua un únic criteri):
 
 | Indicador | Criteri | Pes | Malament (0) | Bé (5) | Molt bé (10) |
 |---|---|---|---|---|---|
-| 1. Participació en la recerca (S3) | CE2.1 | 20 % | No busca ni aporta fonts; depén dels companys. | Busca i aporta alguna font amb ajuda. | Busca, compara i aporta fonts de forma autònoma i contrasta una dada. |
-| 2. Compliment del rol en gravació i edició (S6-S8) | CE2.6 | 10 % | No assumeix el rol o l'abandona. | Fa el rol amb recordatoris. | Fa el seu rol amb autonomia i el canvia quan toca. |
-| 3. Aplicació del feedback en la revisió (S9) | CE2.6 | 10 % | No incorpora cap canvi suggerit. | Incorpora algun canvi amb ajuda. | Proposa i fa canvis a partir del feedback rebut. |
+| O1. Consentiment i privacitat en la gravació (S6) | CE3.4 | 10 % | Grava o mostra algú sense demanar-li permís, o deixa dades visibles. | Respecta les normes amb recordatoris. | Demana permís, revisa l'enquadrament i evita dades visibles per iniciativa pròpia. |
+| O2. Detecció de riscos en la revisió (S9) | CE3.3 | 20 % | No revisa la privacitat del vídeo de l'altre grup. | Marca la comprovació però sense concretar. | Assenyala dades o riscos concrets (o confirma raonadament que no n'hi ha). |
 
 Full de registre
 
 Grup: ______________________  Tema: ______________________
 
-| Alumne/a | 1. Recerca (0 / 5 / 10) | 2. Rol (0 / 5 / 10) | 3. Feedback (0 / 5 / 10) | Observacions |
-|---|---|---|---|---|
-| | | | | |
-| | | | | |
-| | | | | |
+| Alumne/a | O1. Consentiment i privacitat, S6 (0 / 5 / 10) | O2. Detecció de riscos, S9 (0 / 5 / 10) | Observacions |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
 
 Suggeriment d'ús: anota amb una marca breu quan veges l'evidència i posa el nivell definitiu en acabar la sessió corresponent. Si no has pogut observar un indicador, deixa'l en blanc i valora'l en la sessió següent.

@@ -37,6 +37,8 @@ Muchas situaciones de aprendizaje **no salen del currículum**: el profesor las 
 
 **Currículum oficial: numeración y orden intocables.** Los RA/CE y los criterios oficiales **conservan su número y orden originales** (la letra `a, b, c…` del criterio = su número: a = 1, b = 2…). Si un RA o un criterio no se usa, **se omite y el hueco queda** (p. ej. si falta el criterio d de RA5, el e sería `CA5.5` y no se renumera; nunca se "compacta"). Ejemplo: RA5 sin d, e, f → CA5.1, CA5.2, CA5.3, CA5.7, CA5.8. Los códigos propios (SA inventadas) sí son consecutivos.
 
+**Competencias propias del docente en una materia con currículum oficial**: su numeración **continúa tras la última CE oficial de la materia** (p. ej. en 1r ESO TRDR, con CE1–CE4 oficiales, la primera propia es `CE5`, la siguiente `CE6`…), y sus criterios `CE5.1`, `CE5.2`… Nunca reutilices un código oficial. Consulta qué CE propias existen ya en `.claude/situacions/<curs>-*.md` antes de crear una nueva, para no repetir número.
+
 **Evaluación competencial (siempre, ESO y FP)**: la nota sale de abajo arriba: **indicador → criterio → RA/CE → SA**. Nota del criterio = Σ nota del indicador × peso del indicador dentro del criterio; nota del RA/CE = Σ nota del criterio × peso dentro del RA/CE; nota de la SA = Σ nota del RA/CE × su peso. **Los instrumentos no tienen peso propio** (una prueba o un proyecto no "valen" un %): no fuerces ni muestres pesos por instrumento. Lo que importa y siempre se muestra es el **peso de cada indicador dentro de su criterio** (los indicadores de un criterio suman 100 %), elegido por la calidad de la evidencia (p. ej. el proyecto pesa más que la prueba si el criterio se demuestra mejor en un producto real), con números redondos.
 
 Si el encargo no dice cuál es el caso, **no lo decidas tú**: lee las actividades de la unidad, haz una propuesta razonada ("las actividades de la unidad encajan con la CE X de la materia Y" o "no encajan con nada del currículum, propongo inventarlas") y **termina tu respuesta con la pregunta** para que el usuario confirme. No redactes la situación de aprendizaje completa hasta tener la respuesta.
@@ -82,6 +84,13 @@ estat: <esborrany | revisat>
 
 ## Justificació i context
 ## Repte / producte final
+## Fitxa de programació
+(llista breu, la usa vf-documentacio per a la programació d'aula:
+ - **Context**: Personal / Educatiu / Social / Professional (els que apliquen)
+ - **Problema**: què resol la SA, una frase
+ - **Producte intermedi i/o final**
+ - **Reptes del s. XXI i ODS**: número i nom de l'ODS + una frase de relació
+ - **Competències clau**: CCL, CD, CPSAA…)
 ## Competència específica
 (normalment una; taula: codi | descripció)
 ## Criteris d'avaluació
@@ -94,6 +103,7 @@ estat: <esborrany | revisat>
 ## Activitats
 (per a cada activitat: enunciat per a l'alumnat, nivell bàsic/estàndard/ampliació, solució per al professorat)
 ## Atenció a la diversitat (DUA)
+(incloure mesures de resposta I-II (metodologia/agrupament, recursos) i III-IV (genèriques, Decret 104/2018), i accessibilitat física, sensorial, cognitiva i emocional)
 ## Instruments d'avaluació
 (taula resum: instrument | moment | qui avalua (hetero/auto/co) | activitat on s'aplica | tipus de qualificació)
 (tipus de qualificació, un per instrument: nota única 0-10 | fet/no fet (10/0) | escala de N nivells (N = nombre de categories, cadascuna amb nom i valor) | rúbrica de 4 nivells)

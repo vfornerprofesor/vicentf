@@ -20,37 +20,46 @@ L'evidència de progrés és el **progrés de cada alumne/a a la plataforma**, q
 
 **«Completa els quatre tutorials i demostra que domines els conceptes»**: l'alumnat arriba al final del trimestre havent dibuixat amb Artista, creat el seu joc amb Flappy Bird i superat els dos reptes de Minecraft, i sap explicar què fa un algorisme, un esdeveniment, un bucle, un condicional i una funció.
 
+## Fitxa de programació
+
+- **Context**: Educatiu i personal.
+- **Problema**: com donar instruccions precises a un ordinador per a resoldre un problema i crear un joc propi.
+- **Producte intermedi i/o final**: dibuix amb Artista, joc propi amb Flappy Bird, reptes de Minecraft superats i diari de reflexió.
+- **Reptes del s. XXI i ODS**: ODS 4 Educació de qualitat (aprendre a programar de manera inclusiva); ODS 9 Indústria, innovació i infraestructures (introducció a la creació tecnològica).
+- **Competències clau**: STEM, CD, CPSAA, CC.
+
 ## Competència específica
 
 | Codi | Descripció |
 |---|---|
-| CE1 | Utilitzar dispositius digitals d'ús personal en l'entorn domèstic i educatiu de manera saludable, segura i sostenible. |
-| CE2 | Buscar i seleccionar críticament informació digital de diferents fonts, interpretar-la, organitzar-la en l'entorn personal d'aprenentatge i crear continguts digitals. |
-| CE4 | Mostrar hàbits bàsics que fomenten el benestar en les relacions a través d'entorns digitals. |
+| CE8 | Resoldre problemes senzills aplicant el pensament computacional en entorns de programació per blocs, dissenyant algorismes, depurant-los i creant programes i jocs propis, treballant en parella i usant la plataforma de manera segura i responsable. |
 
 ## Criteris d'avaluació
 
 | Criteri | Descripció | Pes % | Justificació del pes |
 |---|---|---|---|
-| CE2.6 | Crear, integrar i editar continguts digitals amb sentit estètic de manera creativa i respectant els drets d'autoria. | 55 | Nucli de la SA: tot el que l'alumnat programa i crea als quatre tutorials i les activitats de conceptes. |
-| CE2.5 | Organitzar i gestionar l'entorn personal d'aprenentatge mitjançant la integració de recursos digitals. | 15 | Gestió del compte, del propi progrés i del diari de reflexió. |
-| CE4.6 | Mostrar empatia envers els membres del grup, reconeixent les seues aportacions i establint un diàleg igualitari i inclusiu per a resoldre conflictes i discrepàncies. | 20 | La programació en parella és la forma de treball de tot el trimestre. |
-| CE1.5 | Mostrar hàbits bàsics de seguretat per a protegir els dispositius. | 10 | Hàbit curt i concret (credencials, tancar sessió); evidència senzilla. |
+| CE8.1 | Dissenyar algorismes que resolen un problema mitjançant seqüències d'instruccions i bucles, en activitats desconnectades i en blocs. | 15 | Base del pensament computacional; dificultat baixa. |
+| CE8.2 | Crear programes interactius i jocs que reaccionen a esdeveniments i prenen decisions amb condicionals, personalitzant-los de manera creativa. | 25 | Nucli creatiu de la SA: Flappy Bird i Aventurero Minecraft; dificultat mitjana. |
+| CE8.3 | Estructurar i reutilitzar el codi mitjançant funcions, combinant diversos conceptes en un mateix programa. | 15 | Concepte més abstracte i integrador; es treballa al tram final. |
+| CE8.4 | Detectar, explicar i corregir errors en programes, i reflexionar sobre el procés d'aprenentatge propi. | 15 | Depuració i metacognició travessen tots els tutorials. |
+| CE8.5 | Col·laborar en parella en la resolució de problemes de programació, repartint rols, reconeixent les aportacions de l'altre i resolvent les discrepàncies amb diàleg. | 20 | La parella és la forma de treball de tot el trimestre. |
+| CE8.6 | Usar la plataforma de programació de manera segura i autònoma, protegint el compte, gestionant el propi progrés i reconeixent l'autoria dels recursos. | 10 | Hàbits curts i concrets amb evidència senzilla. |
 
 ## Sabers bàsics
 
-- Bloc 2: Creació bàsica de continguts amb eines digitals.
-- Bloc 2: Propietat intel·lectual i drets d'autoria.
-- Bloc 2: Organització de la informació. Operacions bàsiques amb arxius i carpetes.
-- Bloc 2: Personalització de l'entorn de treball.
-- Bloc 1: Hàbits bàsics de seguretat per a protegir els dispositius.
-- Bloc 4: Estratègies per a una ciberconvivència igualitària, segura i saludable. Etiqueta digital.
+- Algorismes: descripció pas a pas, seqüències d'instruccions i programació desconnectada.
+- Programació per blocs: esdeveniments, bucles, condicionals i funcions.
+- Depuració: detecció, explicació i correcció d'errors.
+- Creació i personalització de programes i jocs propis.
+- Treball cooperatiu en parella: rols de pilot i copilot, diàleg i consens.
+- Seguretat del compte i de les credencials; tancament de sessió en equips compartits.
+- Autoria i crèdits dels recursos utilitzats.
 
 ## Descriptors del perfil d'eixida
 
-- CD2, CD3 (crear i editar contingut digital; programació).
-- CD4 (seguretat dels dispositius i les dades).
 - STEM1, STEM3 (resolució de problemes, algorismes, depuració).
+- CD2, CD3 (creació de contingut digital; programació).
+- CD4 (seguretat dels dispositius i les dades).
 - CPSAA3, CC2 (treball cooperatiu i diàleg).
 
 ## Seqüència de sessions
@@ -188,28 +197,30 @@ Tipus de qualificació: rúbrica de 4 nivells (Insuficient 1-4 / Suficient-Bé 5
 
 | Indicador | Criteri | Pes | Insuficient | Suficient-Bé | Notable | Excel·lent |
 |---|---|---|---|---|---|---|
-| I1. Seqüències i bucles: Artista, A1, A3 | CE2.6 | 20 % (11 %) | Completa menys del 50 % dels nivells d'Artista. | Completa el 50-79 %; usa «repeteix» simple. | Completa el 80-99 %; usa bucles niuats. | Completa el 100 % i en A3 simplifica una solució amb bucles. |
-| I2. Esdeveniments: Flappy Bird, A6 | CE2.6 | 20 % (11 %) | Completa menys del 50 % dels nivells de Flappy Bird. | Completa el 50-79 %; relaciona esdeveniment i acció amb ajuda. | Completa el 80-99 % i personalitza el joc (aspecte, velocitat o puntuació). | Completa el 100 %, personalitza el joc amb criteri estètic i n'inventa 5 esdeveniments a A6. |
-| I3. Condicionals: Aventurero Minecraft, A5 | CE2.6 | 20 % (11 %) | Completa menys del 50 % dels nivells. | Completa el 50-79 %; usa if/else amb ajuda. | Completa el 80-99 %; combina condicionals i bucles. | Completa el 100 % i redacta 3 condicionals propis a A5. |
-| I4. Funcions i combinació de conceptes: Héroe Minecraft, A7 | CE2.6 | 25 % (14 %) | Completa menys del 50 % dels nivells; no completa A7. | Completa el 50-79 %; completa A7 (bàsic). | Completa el 80-99 %; reutilitza una funció diverses vegades. | Completa el 100 % i justifica per què usa una funció. |
-| I5. Depuració: A4 i correcció d'errors als tutorials | CE2.6 | 10 % (5,5 %) | Necessita que li diguen on és l'error. | Troba i corregeix errors amb pistes. | Troba i corregeix sol els errors. | A més, explica què fallava i per què, o crea errors per a altra parella (A4). |
-| I6. Autoria dels recursos: A9 i entrades del diari | CE2.6 | 5 % (2,75 %) | No completa el full d'A9. | Distingeix amb ajuda el que és propi del que és de tercers. | Distingeix el que és propi del que és de tercers i ho reflecteix al diari. | A més, redacta una línia de crèdits correcta. |
-| I7. Gestió del compte i del progrés: A2 i progrés a la plataforma | CE2.5 | 60 % (9 %) | Només accedeix amb ajuda; deixa nivells pendents sense recuperar. | Accedeix sola/sol i avança de manera regular. | A més, recupera els nivells pendents a les sessions de reforç. | A més, planifica quins nivells farà a cada sessió. |
-| I8. Diari de reflexió: A8 | CE2.5 | 40 % (6 %) | Menys de 2 entrades de 4. | 2-3 entrades. | 4 entrades amb què ha aprés. | 4 entrades amb què ha aprés, què li ha costat i com ho ha resolt. |
-| I9. Programació en parella: rols | CE4.6 | 50 % (10 %) | Monopolitza el teclat o no participa. | Rotegen els rols amb recordatoris del professor. | Rotegen els rols per iniciativa pròpia. | A més, ajuda la parella perquè entenga el codi, sense fer-li-ho. |
-| I10. Diàleg i resolució de discrepàncies | CE4.6 | 50 % (10 %) | No escolta les propostes o hi ha conflictes sense resoldre. | Escolta i accepta propostes quan el professor ho recorda. | Reconeix les aportacions de la parella i decideix de forma consensuada. | A més, redacta a la coavaluació què ha aportat cada membre i com han resolt les discrepàncies. |
-| I11. Hàbits de seguretat: A2 i totes les sessions | CE1.5 | 100 % (10 %) | Comparteix la contrasenya o deixa la sessió oberta més de 2 vegades. | Compleix les normes amb recordatoris. | Compleix totes les normes sense recordatoris. | A més, recorda les normes als companys. |
+| I1. Seqüències i bucles: Artista, A1, A3 | CE8.1 | 100 % (15 %) | Completa menys del 50 % dels nivells d'Artista. | Completa el 50-79 %; usa «repeteix» simple. | Completa el 80-99 %; usa bucles niuats. | Completa el 100 % i en A3 simplifica una solució amb bucles. |
+| I2. Esdeveniments: Flappy Bird, A6 | CE8.2 | 50 % (12,5 %) | Completa menys del 50 % dels nivells de Flappy Bird. | Completa el 50-79 %; relaciona esdeveniment i acció amb ajuda. | Completa el 80-99 % i personalitza el joc (aspecte, velocitat o puntuació). | Completa el 100 %, personalitza el joc amb criteri estètic i n'inventa 5 esdeveniments a A6. |
+| I3. Condicionals: Aventurero Minecraft, A5 | CE8.2 | 50 % (12,5 %) | Completa menys del 50 % dels nivells. | Completa el 50-79 %; usa if/else amb ajuda. | Completa el 80-99 %; combina condicionals i bucles. | Completa el 100 % i redacta 3 condicionals propis a A5. |
+| I4. Funcions i combinació de conceptes: Héroe Minecraft, A7 | CE8.3 | 100 % (15 %) | Completa menys del 50 % dels nivells; no completa A7. | Completa el 50-79 %; completa A7 (bàsic). | Completa el 80-99 %; reutilitza una funció diverses vegades. | Completa el 100 % i justifica per què usa una funció. |
+| I5. Depuració: A4 i correcció d'errors als tutorials | CE8.4 | 60 % (9 %) | Necessita que li diguen on és l'error. | Troba i corregeix errors amb pistes. | Troba i corregeix sol els errors. | A més, explica què fallava i per què, o crea errors per a altra parella (A4). |
+| I6. Autoria dels recursos: A9 i entrades del diari | CE8.6 | 15 % (1,5 %) | No completa el full d'A9. | Distingeix amb ajuda el que és propi del que és de tercers. | Distingeix el que és propi del que és de tercers i ho reflecteix al diari. | A més, redacta una línia de crèdits correcta. |
+| I7. Gestió del compte i del progrés: A2 i progrés a la plataforma | CE8.6 | 35 % (3,5 %) | Només accedeix amb ajuda; deixa nivells pendents sense recuperar. | Accedeix sola/sol i avança de manera regular. | A més, recupera els nivells pendents a les sessions de reforç. | A més, planifica quins nivells farà a cada sessió. |
+| I8. Diari de reflexió: A8 | CE8.4 | 40 % (6 %) | Menys de 2 entrades de 4. | 2-3 entrades. | 4 entrades amb què ha aprés. | 4 entrades amb què ha aprés, què li ha costat i com ho ha resolt. |
+| I9. Programació en parella: rols | CE8.5 | 50 % (10 %) | Monopolitza el teclat o no participa. | Rotegen els rols amb recordatoris del professor. | Rotegen els rols per iniciativa pròpia. | A més, ajuda la parella perquè entenga el codi, sense fer-li-ho. |
+| I10. Diàleg i resolució de discrepàncies | CE8.5 | 50 % (10 %) | No escolta les propostes o hi ha conflictes sense resoldre. | Escolta i accepta propostes quan el professor ho recorda. | Reconeix les aportacions de la parella i decideix de forma consensuada. | A més, redacta a la coavaluació què ha aportat cada membre i com han resolt les discrepàncies. |
+| I11. Hàbits de seguretat: A2 i totes les sessions | CE8.6 | 50 % (5 %) | Comparteix la contrasenya o deixa la sessió oberta més de 2 vegades. | Compleix les normes amb recordatoris. | Compleix totes les normes sense recordatoris. | A més, recorda les normes als companys. |
 
 ## Taula de traçabilitat i qualificació
 
 | Criteri | Pes % | Activitat(s) | Instrument i indicadors | Pes de cada indicador dins del criteri |
 |---|---|---|---|---|
-| CE2.6 | 55 | Tutorials, A1, A3, A4, A5, A6, A7, A9 | Rúbrica: I1, I2, I3, I4, I5, I6 | I1 20 % · I2 20 % · I3 20 % · I4 25 % · I5 10 % · I6 5 % |
-| CE2.5 | 15 | A2, A8, tutorials | Rúbrica: I7, I8 | I7 60 % · I8 40 % |
-| CE4.6 | 20 | Totes en parella | Rúbrica: I9, I10 | I9 50 % · I10 50 % |
-| CE1.5 | 10 | A2 | Rúbrica: I11 | I11 100 % |
+| CE8.1 | 15 | Artista, A1, A3 | Rúbrica: I1 | I1 100 % |
+| CE8.2 | 25 | Flappy Bird, Aventurero Minecraft, A5, A6 | Rúbrica: I2, I3 | I2 50 % · I3 50 % |
+| CE8.3 | 15 | Héroe Minecraft, A7 | Rúbrica: I4 | I4 100 % |
+| CE8.4 | 15 | A4, A8, tutorials | Rúbrica: I5, I8 | I5 60 % · I8 40 % |
+| CE8.5 | 20 | Totes en parella | Rúbrica: I9, I10 | I9 50 % · I10 50 % |
+| CE8.6 | 10 | A2, A9, tutorials | Rúbrica: I11, I7, I6 | I11 50 % · I7 35 % · I6 15 % |
 
-Nota del criteri = Σ nota de l'indicador × pes. Nota de la SA = Σ nota del criteri × pes (55 / 15 / 20 / 10).
+Nota del criteri = Σ nota de l'indicador × pes. Nota de la SA = Σ nota del criteri × pes (15 / 25 / 15 / 15 / 20 / 10).
 
 ## Recursos i materials
 

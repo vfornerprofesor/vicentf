@@ -26,17 +26,17 @@ Productes: correu de la reunió de jocs de taula amb adjunts, cinc carpetes amb 
 
 | Codi | Descripció |
 |---|---|
-| CE1 | Comunicar-se mitjançant el correu electrònic de manera clara, respectuosa i segura, redactant i enviant missatges als destinataris adequats, adjuntant arxius, organitzant la safata d'entrada i responent o reenviant amb criteri. |
+| CE6 | Comunicar-se mitjançant el correu electrònic de manera clara, respectuosa i segura, redactant i enviant missatges als destinataris adequats, adjuntant arxius, organitzant la safata d'entrada i responent o reenviant amb criteri. |
 
 ## Criteris d'avaluació
 
 | Codi | Descripció | Pes % | Justificació del pes |
 |---|---|---|---|
-| CE1.1 | Triar els destinataris adequats (A, CC, CCO), escrivint correctament les adreces i comprovant-les abans d'enviar. | 20 % | Base de la seguretat i la privacitat; l'error més greu i habitual és enviar a qui no toca. |
-| CE1.2 | Redactar el missatge amb assumpte breu i informatiu, salutació, cos clar i comiat, amb la signatura personalitzada configurada. | 25 % | Nucli comunicatiu de la unitat; integra expressió escrita i normes de cortesia digital. |
-| CE1.3 | Adjuntar al missatge els arxius requerits i comprovar que arriben. | 15 % | Destresa concreta de dificultat baixa, ja treballada a la gestió d'arxius. |
-| CE1.4 | Organitzar la safata d'entrada creant carpetes i classificant-hi els correus rebuts. | 20 % | Destresa nova, sistemàtica i amb molts passos; essencial per a l'ús real del correu. |
-| CE1.5 | Respondre i reenviar de manera adequada (respondre o respondre a tots, reenviar) i actuar amb prudència: no obrir enllaços o adjunts estranys i no difondre adreces alienes. | 20 % | Integra tot l'après en una situació real de comunicació i incorpora l'ús responsable. |
+| CE6.1 | Triar els destinataris adequats (A, CC, CCO), escrivint correctament les adreces i comprovant-les abans d'enviar. | 20 % | Base de la seguretat i la privacitat; l'error més greu i habitual és enviar a qui no toca. |
+| CE6.2 | Redactar el missatge amb assumpte breu i informatiu, salutació, cos clar i comiat, amb la signatura personalitzada configurada. | 25 % | Nucli comunicatiu de la unitat; integra expressió escrita i normes de cortesia digital. |
+| CE6.3 | Adjuntar al missatge els arxius requerits i comprovar que arriben. | 15 % | Destresa concreta de dificultat baixa, ja treballada a la gestió d'arxius. |
+| CE6.4 | Organitzar la safata d'entrada creant carpetes i classificant-hi els correus rebuts. | 20 % | Destresa nova, sistemàtica i amb molts passos; essencial per a l'ús real del correu. |
+| CE6.5 | Respondre i reenviar de manera adequada (respondre o respondre a tots, reenviar) i actuar amb prudència: no obrir enllaços o adjunts estranys i no difondre adreces alienes. | 20 % | Integra tot l'après en una situació real de comunicació i incorpora l'ús responsable. |
 | | **Total** | **100 %** | |
 
 ## Sabers bàsics
@@ -155,21 +155,21 @@ Productes: correu de la reunió de jocs de taula amb adjunts, cinc carpetes amb 
 
 | Indicador | Criteri | Pes | Evidència | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|---|
-| R1. Destinataris | CE1.1 | 100 % del criteri (20 % de la SA) | Captura `correu_electronic` i correus enviats | Destinataris equivocats o adreces incorrectes; no usa CC o CCO. | Usa A, CC i CCO, però n'intercanvia algun o confon la funció d'alguna. | Usa A, CC i CCO correctament, amb les adreces ben escrites. | Com Notable, i explica la diferència entre CC i CCO i quan convé cada una. |
-| R2. Redacció i signatura | CE1.2 | 100 % del criteri (25 % de la SA) | Captura `correu_electronic`, correus enviats i `cadena` | Assumpte buit o genèric; sense salutació ni comiat; sense signatura. | Assumpte present; salutació o comiat incomplets; signatura incompleta. | Assumpte informatiu, salutació, cos amb la informació i comiat; signatura amb nom, curs i centre. | Com Notable, amb un cos ben organitzat i sense faltes que dificulten la lectura; signatura automàtica configurada. |
-| R3. Adjunts | CE1.3 | 100 % del criteri (15 % de la SA) | Captura `correu_electronic` | Cap adjunt visible. | Un adjunt que s'obri, o dos amb algun problema. | Dos imatges adjuntes i visibles de dos jocs diferents. | Com Notable, amb noms d'arxiu descriptius i una tercera imatge o un comentari a l'adjunt. |
-| R4. Carpetes | CE1.4 | 100 % del criteri (20 % de la SA) | Captures `carpetes` i de cada carpeta | Menys de 3 carpetes creades o correus sense classificar. | 5 carpetes; classificats 3 dels correus rebuts. | 5 carpetes amb noms exactes i tots els correus rebuts a la carpeta correcta. | Com Notable, de manera autònoma i amb la captura de cada carpeta ben nomenada. |
-| R5. Resposta i prudència | CE1.5 | 100 % del criteri (20 % de la SA) | Captura `cadena` i observació a l'aula | No respon a tots, o respon només a un; obri enllaços o adjunts estranys quan es proposa. | Respon a tots amb el text demanat; dubta en triar entre respondre i reenviar. | Respon a tots amb el text i la signatura i tria bé entre respondre i reenviar. | Com Notable, i justifica l'elecció i comprova les adreces abans d'enviar, avisant d'un correu sospitós. |
+| R1. Destinataris | CE6.1 | 100 % del criteri (20 % de la SA) | Captura `correu_electronic` i correus enviats | Destinataris equivocats o adreces incorrectes; no usa CC o CCO. | Usa A, CC i CCO, però n'intercanvia algun o confon la funció d'alguna. | Usa A, CC i CCO correctament, amb les adreces ben escrites. | Com Notable, i explica la diferència entre CC i CCO i quan convé cada una. |
+| R2. Redacció i signatura | CE6.2 | 100 % del criteri (25 % de la SA) | Captura `correu_electronic`, correus enviats i `cadena` | Assumpte buit o genèric; sense salutació ni comiat; sense signatura. | Assumpte present; salutació o comiat incomplets; signatura incompleta. | Assumpte informatiu, salutació, cos amb la informació i comiat; signatura amb nom, curs i centre. | Com Notable, amb un cos ben organitzat i sense faltes que dificulten la lectura; signatura automàtica configurada. |
+| R3. Adjunts | CE6.3 | 100 % del criteri (15 % de la SA) | Captura `correu_electronic` | Cap adjunt visible. | Un adjunt que s'obri, o dos amb algun problema. | Dos imatges adjuntes i visibles de dos jocs diferents. | Com Notable, amb noms d'arxiu descriptius i una tercera imatge o un comentari a l'adjunt. |
+| R4. Carpetes | CE6.4 | 100 % del criteri (20 % de la SA) | Captures `carpetes` i de cada carpeta | Menys de 3 carpetes creades o correus sense classificar. | 5 carpetes; classificats 3 dels correus rebuts. | 5 carpetes amb noms exactes i tots els correus rebuts a la carpeta correcta. | Com Notable, de manera autònoma i amb la captura de cada carpeta ben nomenada. |
+| R5. Resposta i prudència | CE6.5 | 100 % del criteri (20 % de la SA) | Captura `cadena` i observació a l'aula | No respon a tots, o respon només a un; obri enllaços o adjunts estranys quan es proposa. | Respon a tots amb el text demanat; dubta en triar entre respondre i reenviar. | Respon a tots amb el text i la signatura i tria bé entre respondre i reenviar. | Com Notable, i justifica l'elecció i comprova les adreces abans d'enviar, avisant d'un correu sospitós. |
 
 ## Taula de traçabilitat i qualificació
 
 | Criteri | Pes % | Activitat(s) | Instrument i indicador | Pes de l'indicador dins del criteri |
 |---|---|---|---|---|
-| CE1.1 | 20 % | A1, A2 | Rúbrica, R1 | R1 100 % |
-| CE1.2 | 25 % | A1, A2, A3 | Rúbrica, R2 | R2 100 % |
-| CE1.3 | 15 % | A1 | Rúbrica, R3 | R3 100 % |
-| CE1.4 | 20 % | A2 | Rúbrica, R4 | R4 100 % |
-| CE1.5 | 20 % | A3 | Rúbrica, R5 | R5 100 % |
+| CE6.1 | 20 % | A1, A2 | Rúbrica, R1 | R1 100 % |
+| CE6.2 | 25 % | A1, A2, A3 | Rúbrica, R2 | R2 100 % |
+| CE6.3 | 15 % | A1 | Rúbrica, R3 | R3 100 % |
+| CE6.4 | 20 % | A2 | Rúbrica, R4 | R4 100 % |
+| CE6.5 | 20 % | A3 | Rúbrica, R5 | R5 100 % |
 
 **Nota de la SA = 0,20·R1 + 0,25·R2 + 0,15·R3 + 0,20·R4 + 0,20·R5**
 
