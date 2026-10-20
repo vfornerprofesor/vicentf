@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Exam 5 · Trip planner</title>
+    <style>
+        body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        label {
+            display: inline-block;
+            width: 90px;
+        }
+
+        li {
+            margin-bottom: .3rem;
+        }
+
+        li button {
+            margin-left: .5rem;
+        }
+
+        .ok {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trip planner</h1>
+
+    <section>
+        <h2>Exercise 1 · My trips</h2>
+        <form id="tripForm">
+            <p><label for="destination">Destination</label> <input type="text" id="destination"></p>
+            <p><label for="tripDate">Date</label> <input type="date" id="tripDate"></p>
+            <p><label for="budget">Budget (€)</label> <input type="text" id="budget"></p>
+            <button type="submit">Save trip</button>
+        </form>
+        <p id="daysLeft"></p>
+        <p id="tripMessage"></p>
+        <ul id="tripList"></ul>
+        <p id="tripSummary"></p>
+    </section>
+
+    <section>
+        <h2>Exercise 2 · The end of the course</h2>
+        <div id="courseOutput"></div>
+    </section>
+
+    <script src="dayjs.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

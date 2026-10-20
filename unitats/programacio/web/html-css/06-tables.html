@@ -263,6 +263,74 @@
                     &lt;/tfoot&gt;
                 </vf-code>
             </vf-details>
+            <vf-callout type="exercici">
+                *Exercise 6.4.* Build exactly this table. You will need <code>rowspan</code>, <code>colspan</code> and both
+                at once in the same cell. Tip: draw the grid on paper first and count 7 columns in every row.
+            </vf-callout>
+            <vf-preview>
+                &lt;table border="1" cellpadding="6" cellspacing="0" width="100%"&gt;
+                  &lt;tr&gt;
+                    &lt;td rowspan="6"&gt;&lt;b&gt;NIVEL 1&lt;br&gt;MASTER&lt;/b&gt;&lt;/td&gt;
+                    &lt;td colspan="4"&gt;&lt;b&gt;MATRIZ DE CONFIGURACIÓN GLOBAL DE SISTEMAS&lt;/b&gt;&lt;/td&gt;
+                    &lt;td rowspan="2" colspan="2"&gt;&lt;b&gt;ESTADO&lt;/b&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td rowspan="2"&gt;&lt;b&gt;Módulo A&lt;/b&gt;&lt;/td&gt;
+                    &lt;td colspan="2"&gt;Submódulos&lt;/td&gt;
+                    &lt;td rowspan="2"&gt;&lt;b&gt;Versión&lt;/b&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;Alpha&lt;/td&gt;
+                    &lt;td&gt;Beta&lt;/td&gt;
+                    &lt;td&gt;Activo&lt;/td&gt;
+                    &lt;td&gt;Sync&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td colspan="2"&gt;&lt;b&gt;Núcleo Central&lt;/b&gt;&lt;/td&gt;
+                    &lt;td rowspan="3"&gt;Estable&lt;/td&gt;
+                    &lt;td rowspan="3"&gt;v4.2.0&lt;/td&gt;
+                    &lt;td colspan="2"&gt;Verificado&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td rowspan="2"&gt;Subsistema 1&lt;/td&gt;
+                    &lt;td&gt;Core-X&lt;/td&gt;
+                    &lt;td&gt;Puerto 80&lt;/td&gt;
+                    &lt;td&gt;OK&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;Core-Y&lt;/td&gt;
+                    &lt;td&gt;Puerto 443&lt;/td&gt;
+                    &lt;td&gt;Pendiente&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td colspan="7"&gt;&lt;b&gt;--- LÍNEA DE SEPARACIÓN DE SEGURIDAD ---&lt;/b&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td rowspan="4"&gt;&lt;b&gt;ZONA B&lt;/b&gt;&lt;/td&gt;
+                    &lt;td&gt;ID&lt;/td&gt;
+                    &lt;td colspan="3"&gt;Descripción del Protocolo&lt;/td&gt;
+                    &lt;td&gt;Riesgo&lt;/td&gt;
+                    &lt;td&gt;Acción&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;001&lt;/td&gt;
+                    &lt;td colspan="3"&gt;Autenticación Multifactor Avanzada (MFA)&lt;/td&gt;
+                    &lt;td&gt;Bajo&lt;/td&gt;
+                    &lt;td rowspan="2"&gt;Permitir&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;002&lt;/td&gt;
+                    &lt;td colspan="3"&gt;Pasarela de Datos Cifrados (SSL/TLS)&lt;/td&gt;
+                    &lt;td&gt;Medio&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;003&lt;/td&gt;
+                    &lt;td colspan="3"&gt;Cortafuegos Perimetral Externo (WAF)&lt;/td&gt;
+                    &lt;td&gt;Alto&lt;/td&gt;
+                    &lt;td&gt;Bloquear&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+            </vf-preview>
         </vf-content>
 
         <vf-hr></vf-hr>

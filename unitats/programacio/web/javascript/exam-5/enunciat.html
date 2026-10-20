@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>JavaScript exam 5</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript exam 5 · Using objects</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>This exam covers <strong>everything from lesson 1 to lesson 21</strong>. The new part is objects and built-in classes (<code>Date</code>, <code>Set</code>…), static methods, parameters and libraries.</li>
+        <li>Create a folder called <code>surname-name-exam5</code> and copy inside it <code>exam.html</code>, <code>script.js</code> and <code>dayjs.min.js</code> (a local copy of the library Day.js) from the <code>starter</code> folder. In <code>exam.html</code> you only link <code>dayjs.min.js</code> and <code>script.js</code>, in the right place and order. You write in <code>script.js</code>.</li>
+        <li>You can use VS Code, Live Server, the browser and DevTools. You cannot use notes, the lessons, the internet, a mobile phone or any AI tool.</li>
+        <li>At the end, make a zip of the folder (<code>surname-name-exam5.zip</code>) and hand it in.</li>
+    </ul>
+
+    <h2>How your code is marked</h2>
+    <ul>
+        <li>At the top of <code>script.js</code>, a comment on several lines with your name, your group and the date and, <strong>with examples taken from your own program</strong>, a short explanation of: class and object, instance, encapsulation and inheritance.</li>
+        <li>Write the comment <code>// static</code> at the end of every line where you call a <strong>static method</strong>.</li>
+        <li>The array is the truth: change it, save it, draw it again. Mark the part that loads the data with <code>// DATA</code> and the blocks of the listener of the form with <code>// INPUT</code>, <code>// PROCESS</code> and <code>// OUTPUT</code>.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· My trips · about 40 min</span></h2>
+        <p>Each trip is an object: <code>{ destination: "Rome", date: "2027-04-10", budget: 450 }</code>.</p>
+        <ol>
+            <li><strong>Load and save.</strong> The trips are kept in <code>localStorage</code> (key <code>trips</code>). If there is nothing or the data is broken, start with an empty array.</li>
+            <li><strong>Days left.</strong> When the user <strong>changes</strong> the date, show <code>Paris: 112 days left</code> under the form (or <code>That date has already passed.</code>). Calculate it with <code>Date</code> and <code>getTime()</code>.
+                <span class="tip">The date field gives a text like <code>"2027-06-24"</code>. <code>new Date(text + "T00:00:00")</code> gives that day in local time.</span>
+            </li>
+            <li><strong>Destination.</strong> It is saved with only the first letter in capitals: <code>"rOME "</code> → <code>"Rome"</code> (use string methods with the right parameters).</li>
+            <li><strong>Budget.</strong> <code>readBudget(text)</code> returns the budget as a number (it accepts a comma: <code>300,5</code>), or throws an error with the name <code>"BudgetError"</code> and a different message if it is empty, not a number or negative. Write its JSDoc.</li>
+            <li><strong>Save a trip.</strong> When the form is sent (the page must not reload): the destination and the date cannot be empty and the budget is read with <code>readBudget</code>. Show any error in red and put the cursor in the wrong field. If there is already a trip to that destination, change its date and budget; if not, add a new one. Save, draw, show a message in green and empty the form.</li>
+            <li><strong>Draw.</strong> The trips sorted by date, built with <code>createElement</code>, each with a <strong>Delete</strong> button (one single listener on the list). Use <strong>Day.js</strong> for the date and the days (the token <code>ddd</code> is the short name of the day):
+                <div class="expected">Lisbon · Fri 05/03/2027 · in 120 days · 300,50 € [Delete]</div>
+                Under the list: the number of trips, the destinations without repetition (a <code>Set</code>, shown with <code>for...of</code>), the total budget and the average per trip rounded to whole euros. Amounts with <code>toLocaleString</code> and the options of a currency in euros.
+                <div class="expected">2 trips · 2 destinations: Lisbon, Rome · total 900,50 € · about 450,00 € per trip</div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· The end of the course · about 12 min</span></h2>
+        <p>The course ends on <strong>18 June 2027</strong>. Show in <code>#courseOutput</code>:</p>
+        <ol>
+            <li>The date in local format and the name of its day of the week (use the array <code>dayNames</code>).</li>
+            <li>Create that date twice: with <code>new</code> and numbers, and with <code>new</code> and the text <code>"2027-06-18T00:00:00"</code>. Show whether they are the same date, compared the right way.</li>
+            <li>The function <code>daysBetween(a, b)</code> is given, but it has <strong>1 error</strong>. Write three <code>console.assert</code> with dates of January 2027 (normal, edge and strange case), find the error and fix it, with a comment above the line. Write its JSDoc.</li>
+            <li>How many days are left until the end (with <code>daysBetween</code>, rounded up), and the same with Day.js.</li>
+            <li>How many whole weeks are left and, with a static method of <code>Number</code>, whether the days are an exact number of weeks.</li>
+        </ol>
+        <div class="expected">
+            <span class="label">Example (it depends on the day)</span>
+            End of the course: 18/6/2027 (Friday)<br>
+            The two dates are the same: true<br>
+            Days left: 106 (Day.js says 105)<br>
+            Weeks left: 15 · exact weeks: false
+        </div>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Try the form with wrong and right data, press F5, delete a trip.</li>
+        <li>The console must not show any red error or failed assertion.</li>
+    </ul>
+
+</body>
+
+</html>

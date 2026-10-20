@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Examen 2 de JavaScript: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .9rem;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        h3 {
+            margin-top: 1.6rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Examen 2 de JavaScript · correcció (bloc 2, RA3 · sessió 20)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> Enunciat: <a href="../enunciat.html">enunciat.html</a> (amb <code>starter/exam.html</code> i <code>starter/script.js</code>). Lliçons 1-9.
+        Es qualifica amb la <strong>rúbrica del bloc 2</strong> de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>. Si l'alumne té el bloc 1 pendent, aplica també la taula final.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="exam.html">exam.html (provar)</a>
+        <a href="script.js">script.js</a>
+    </p>
+
+    <h2>Proves</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Exercici</th><th>Entrada</th><th>Resultat esperat</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>6, 7, 7.5</td><td><code>Final mark: 6.90 · Pass</code> en verd</td></tr>
+                <tr><td>1</td><td>9, 9.5, 10 / 3, 4, 2</td><td><code>9.55 · Excellent</code> / <code>2.90 · Fail</code> en roig</td></tr>
+                <tr><td>1</td><td>camp buit / <code>abc</code> / <code>11</code></td><td>Tres missatges diferents en roig; després, unes notes correctes esborren l'error</td></tr>
+                <tr><td>2</td><td>botó</td><td>Taula de 6 files (6.5 Pass, 8 Good, 4 Fail, 9.5 Excellent, 3 Fail, 7 Good) i <code>6 marks · 4 passed · 2 failed · average 6.33 · best 9.5</code></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Errors de <code>bestMark</code> (línies del starter): 18 <code>if (mark &lt; 0 {</code> (sintaxi: trenca tot l'arxiu fins que es corregix) · 19 <code>continue</code> en lloc de <code>break</code> (lògica: llegix el 10 de després del −1) · 21 <code>mark &lt; best</code> en lloc de <code>&gt;</code> (lògica: amb <code>best = 0</code> sempre torna 0).</p>
+
+    <h2>Rúbrica del bloc 2 en este examen</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P3.1. Selecció (CA3.1)</td><td><code>gradeWord</code> (4 paraules) i colors</td><td>0-1 paraules correctes.</td><td>2.</td><td>3.</td><td>Les 4, <code>else if</code> en ordre, sense condicions redundants.</td></tr>
+                <tr><td>P3.2. Repetició (CA3.2)</td><td>Ex. 2: bucle de la taula</td><td>No acaba, no recorre o no acumula.</td><td>Recorre i acumula, però algun valor del resum falla.</td><td>Taula i resum correctes.</td><td>A més, la taula es construïx en una cadena i es posa en la pàgina una sola vegada.</td></tr>
+                <tr><td>P3.3. Salt (CA3.3)</td><td>Ex. 2 (<code>break</code>) i <code>bestMark</code></td><td>No s'atura en el −1.</td><td>S'atura, però el −1 entra en algun càlcul.</td><td>S'atura amb <code>break</code> en tots dos llocs.</td><td>A més, un comentari explica per què <code>break</code> i no <code>continue</code>.</td></tr>
+                <tr><td>P3.4. Programa amb diverses estructures (CA3.5)</td><td>Ex. 1 complet</td><td>No mostra cap resultat.</td><td>Funciona, però falla algun exemple.</td><td>Tots els exemples correctes.</td><td>A més, les funcions calculen i només el listener toca la pàgina.</td></tr>
+                <tr><td>P3.5. Depuració (CA3.6)</td><td>3 errors de <code>bestMark</code></td><td>0-1 corregits.</td><td>2.</td><td>Els 3.</td><td>Els 3, amb línia, tipus i causa anotats.</td></tr>
+                <tr><td>P3.6. Excepcions pròpies (CA3.8)</td><td><code>readMark</code></td><td>No llança cap error.</td><td><code>throw new Error</code> en almenys un cas.</td><td>Missatge diferent per a buit, no número i fora de 0-10.</td><td>A més, <code>name = "ValidationError"</code>.</td></tr>
+                <tr><td>P3.7. Control d'excepcions (CA3.4)</td><td>Listener de l'ex. 1</td><td>Sense <code>try/catch</code> o es trenca.</td><td><code>try/catch</code>, no es trenca.</td><td>A més, el missatge en la pàgina en roig.</td><td>A més, amb notes correctes l'error desapareix (text i color).</td></tr>
+                <tr><td>P3.8. Assercions (CA3.9)</td><td>3 <code>console.assert</code> de <code>bestMark</code></td><td>Menys de 3 o mal plantejades.</td><td>3 correctes.</td><td>A més, li han servit per a trobar els errors de lògica (passen després de corregir).</td><td>A més, cas límit (nota després del −1) i cas estrany (llista que comença amb −1).</td></tr>
+                <tr><td>P3.9. Documentació (CA3.7)</td><td>JSDoc de <code>readMark</code></td><td>Cap comentari.</td><td>Diu què fa.</td><td>JSDoc amb <code>@param</code> i <code>@returns</code>.</td><td>A més, <code>@throws</code>.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 1 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P1.1. Projecte</td><td>Enllaç de l'script</td><td>No enllaçat.</td><td>Enllaçat i funciona.</td><td>A més, noms exactes.</td><td>A més, al final del <code>body</code>, cap arxiu sobrant.</td></tr>
+                <tr><td>P1.2. Entorn</td><td>Live Server i assercions</td><td>No s'executa.</td><td>S'executa.</td><td>A més, usa la consola per a les assercions.</td><td>A més, sagnat i cap error.</td></tr>
+                <tr><td>P1.3. Blocs</td><td>INPUT, PROCESS, OUTPUT en els dos listeners: 6 marques</td><td>0-2.</td><td>3-4.</td><td>5.</td><td>Les 6.</td></tr>
+                <tr><td>P1.4. Comentaris</td><td>Capçalera, blocs, comentaris dels errors</td><td>Falten.</td><td>Els de bloc i errors.</td><td>A més, capçalera.</td><td>A més, els dels errors expliquen la causa.</td></tr>
+                <tr><td>P1.5. Tipus</td><td>Notes com a números, <code>readMark</code> torna number, comptadors</td><td>Notes guardades com a text.</td><td>Algun valor com a text sense efecte.</td><td>Tots números.</td><td>A més, comprova el tipus abans de calcular (<code>isNaN</code>).</td></tr>
+                <tr><td>P1.6. Variables</td><td>Tot el codi</td><td>Més de 2 repeticions (0.3, 10, 5 escrits a mà).</td><td>1-2.</td><td>Cap.</td><td>A més, camelCase.</td></tr>
+                <tr><td>P1.7. Constants</td><td>Pesos i límits</td><td>2 o més errors.</td><td>Un.</td><td><code>const</code> per a pesos i límits, <code>let</code> per a comptadors.</td><td>A més, plantilles amb les constants.</td></tr>
+                <tr><td>P1.8. Operadors</td><td>Nota final, límits, mitjana, comparacions de color</td><td>Menys de la meitat correctes.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes, amb parèntesis i <code>===</code>.</td></tr>
+                <tr><td>P1.9. Conversions</td><td><code>Number</code> en <code>readMark</code></td><td>Calcula amb text.</td><td>Convertix, però en algun lloc queda text.</td><td>Totes convertides.</td><td>A més, un comentari explica la conversió.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Errors típics</h2>
+    <ul>
+        <li><code>age === NaN</code> per a comprovar números (sempre fals): usar <code>isNaN</code>.</li>
+        <li>La mitjana dividida per <code>groupMarks.length</code> (9) en lloc del comptador.</li>
+        <li>Escriure en la pàgina des de <code>gradeWord</code> o <code>finalMark</code>.</li>
+        <li><code>throw "text"</code>: <code>error.message</code> ix <code>undefined</code>.</li>
+    </ul>
+
+</body>
+
+</html>

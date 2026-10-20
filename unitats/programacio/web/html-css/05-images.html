@@ -221,6 +221,22 @@
                 *Exercise 5.4.* Break one image on purpose: change its <code>src</code> to a name that does not exist.
                 Reload and look at what the browser shows. Now you know why <code>alt</code> matters.
             </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 5.5.* Download the two files below and build a page with a heading + an audio player for the
+                song, and a heading + a video player for the video. Both need <code>controls</code>.
+            </vf-callout>
+            <vf-row>
+                <vf-col classes="col-md-6">
+                    <vf-title level="3">Song</vf-title>
+                    <audio src="assets/unitats/programacio/web/html-css/05-images/ca%C3%A7%C3%B3.mp3" controls style="width:100%"></audio>
+                    <vf-btn link="assets/unitats/programacio/web/html-css/05-images/ca%C3%A7%C3%B3.mp3" download>Download the song (cançó.mp3)</vf-btn>
+                </vf-col>
+                <vf-col classes="col-md-6">
+                    <vf-title level="3">Video</vf-title>
+                    <video src="assets/unitats/programacio/web/html-css/05-images/video.mp4" controls style="width:100%"></video>
+                    <vf-btn link="assets/unitats/programacio/web/html-css/05-images/video.mp4" download>Download the video (video.mp4)</vf-btn>
+                </vf-col>
+            </vf-row>
             <vf-details summary="Show the solution (Exercise 5.3)">
                 <vf-code language="html">
                     &lt;a href="https://unsplash.com" target="_blank" rel="noopener"&gt;

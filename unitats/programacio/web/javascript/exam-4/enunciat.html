@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>JavaScript exam 4</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript exam 4 · Making it interactive</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>This exam covers <strong>everything from lesson 1 to lesson 19</strong>. The new part is events, creating elements, forms, the console and <code>localStorage</code>.</li>
+        <li>Create a folder called <code>surname-name-exam4</code> and copy inside it <code>exam.html</code> and <code>script.js</code> from the <code>starter</code> folder. You only write in <code>script.js</code>; in <code>exam.html</code> you only add the link to the script.</li>
+        <li>At the top of <code>script.js</code>, a comment on several lines with your name, your group and the date. In the same comment, list <strong>the ways in and out</strong> that your program uses (<code>prompt</code>, console, <code>confirm</code>, the page, <code>localStorage</code>…) and why you use each one.</li>
+        <li>You can use VS Code, Live Server, the browser and DevTools. You cannot use notes, the lessons, the internet, a mobile phone or any AI tool.</li>
+        <li>At the end, make a zip of the folder (<code>surname-name-exam4.zip</code>) and hand it in.</li>
+    </ul>
+
+    <h2>How your code is marked</h2>
+    <ul>
+        <li>The array is the truth: change it, save it, draw it again. Everything the user typed is shown with <code>textContent</code>, never with <code>innerHTML</code>.</li>
+        <li>Messages for the user in the page, never with <code>alert</code>.</li>
+        <li>Mark the part that loads the data with <code>// DATA</code>, and the blocks of the listener of the form with <code>// INPUT</code>, <code>// PROCESS</code> and <code>// OUTPUT</code>.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· Shop stock · about 38 min</span></h2>
+        <p>The form saves the products of a shop. Each product is an object: <code>{ name: "Mouse", code: "MOU-001", price: 15.5, units: 10 }</code>.</p>
+        <ol>
+            <li><strong>Opening.</strong> When the page loads, ask with <code>prompt</code> who opens the shop and write <code>Shop opened by Ana</code> in the console (or <code>Shop opened</code> if they press Cancel or write nothing).</li>
+            <li><strong>Load and save.</strong> Read the products from <code>localStorage</code> (key <code>products</code>) or start with an empty array. If the saved data is broken, start with an empty array: the page must not break. Every time you save, show the array as a table in the console.</li>
+            <li><strong>Draw.</strong> The list is built with <code>createElement</code>: one line per product with a <strong>Delete</strong> button. Use the function <code>unitsText</code> for the units:
+                <div class="expected">Mouse (MOU-001) · 15,50 € · 10 units [Delete]</div>
+                Under the list, with <code>filter</code>, <code>reduce</code> and <code>toLocaleString</code>:
+                <div class="expected">3 products · 1 out of stock · stock value: 1.422,00 €</div>
+            </li>
+            <li><strong>unitsText.</strong> The function is given, but it has <strong>2 errors</strong>. Write three <code>console.assert</code> (normal, edge and strange case), find the errors and fix them, with a comment above each line you fix. Write its <strong>JSDoc</strong>.</li>
+            <li><strong>Save a product.</strong> When the form is sent (the page must not reload):
+                <ul>
+                    <li>The code is saved in capital letters. The price can be written with a comma (<code>15,50</code>): change it to a dot with <code>replace</code> and a regular expression.</li>
+                    <li>Check: the name has from 1 to 30 characters; the code is <strong>3 letters, a dash and 3 digits</strong> (regular expression); the price is a number bigger than 0; the units are a number, 0 or more.</li>
+                    <li>If there are errors: show <strong>all</strong> of them in red, mark the wrong fields with the class <code>wrong</code> and put the cursor in the first one. Fixed fields stop being red.</li>
+                    <li>If everything is right: if a product with that code already exists, add the units to it; if not, add a new product. Save, draw, show <code>Product saved.</code> in green, empty the form and put the cursor in the name.</li>
+                </ul>
+            </li>
+            <li><strong>Counter.</strong> While the user types the name, show <code>7 / 30</code> next to it, in red over 30.</li>
+            <li><strong>Delete.</strong> One single listener on the list for all the Delete buttons (<code>event.target</code> and <code>data-</code>). It removes the product, saves and draws.</li>
+        </ol>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· Shelves · about 12 min</span></h2>
+        <p><code>START_SHELVES</code> has the units in each place of the shelves when the shop opens (0 = empty).</p>
+        <ol>
+            <li>Draw the shelves as a table built with <code>createElement</code> and two loops, one inside the other. The empty places have the class <code>empty</code>. Under it: <code>Empty places: 3 · Total units: 25</code>.</li>
+            <li>When the user <strong>clicks a place</strong>, it gets one more unit. Use one single listener on the table: each cell knows its row and its column with <code>data-</code>.</li>
+            <li>The shelves are saved in <code>localStorage</code> (key <code>shelves</code>) every time they change, and loaded when the page opens (or <code>START_SHELVES</code> if there is nothing or it is broken).</li>
+            <li><strong>Start again</strong> asks for confirmation with <code>confirm</code> and puts back the units of <code>START_SHELVES</code>, which must never change.</li>
+        </ol>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Try the form with wrong and right data, press F5, delete a product, click the shelves and press F5 again.</li>
+        <li>To start from zero, delete the keys in DevTools → Application → Local Storage. The console must not show any red error.</li>
+    </ul>
+
+</body>
+
+</html>

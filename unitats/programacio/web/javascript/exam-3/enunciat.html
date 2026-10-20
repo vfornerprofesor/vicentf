@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>JavaScript exam 3</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript exam 3 · Working with data</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>This exam covers <strong>everything from lesson 1 to lesson 15</strong>. The new part is arrays, objects, array methods, regular expressions, sets and maps, and JSON.</li>
+        <li>Create a folder called <code>surname-name-exam3</code> and copy inside it <code>exam.html</code> and <code>script.js</code> from the <code>starter</code> folder. You only write in <code>script.js</code>; in <code>exam.html</code> you only add the link to the script.</li>
+        <li>Write a comment on several lines with your name, your group and the date at the top of <code>script.js</code>.</li>
+        <li>You can use VS Code, Live Server, the browser and DevTools. You cannot use notes, the lessons, the internet, a mobile phone or any AI tool.</li>
+        <li>At the end, make a zip of the folder (<code>surname-name-exam3.zip</code>) and hand it in.</li>
+    </ul>
+
+    <h2>How your code is marked</h2>
+    <ul>
+        <li>The array is the truth: change the array, then draw again.</li>
+        <li>Fixed values in constants. Functions that calculate return a value; the listeners read the inputs and write in the page. Mark the blocks of the listener of <strong>Add</strong> with <code>// INPUT</code>, <code>// PROCESS</code> and <code>// OUTPUT</code>.</li>
+        <li>Where you use a <code>Set</code> or a <code>Map</code>, write a comment that says why you chose it.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· Our books · about 40 min</span></h2>
+        <p>The constant <code>booksText</code> has the books of the club in JSON. Each book is an object with <code>title</code>, <code>author</code>, <code>year</code>, <code>pages</code>, <code>genre</code> and <code>read</code>.</p>
+        <ol>
+            <li><strong>Start.</strong> Turn <code>booksText</code> into the array <code>books</code>. If the text is broken, show a message in red and start with an empty array: the page must not break. Mark this part with <code>// DATA</code>.</li>
+            <li><strong>The list.</strong> <code>draw()</code> shows the books numbered from 1, using <code>forEach</code> and its index:
+                <div class="expected">1. Dune (1965) · Frank Herbert · science fiction · 612 pages · read</div>
+            </li>
+            <li><strong>Numbers of the club.</strong> Under the list, always up to date, <strong>without <code>for</code> loops</strong> except for the map of genres:
+                <ul>
+                    <li>the titles of the books that are read (<code>filter</code> and <code>map</code>);</li>
+                    <li>the total number of pages (<code>reduce</code>);</li>
+                    <li>the titles from the oldest book to the newest (<code>sort</code>), without changing the order of the list;</li>
+                    <li>the average number of pages with one decimal, using <code>averagePages</code>;</li>
+                    <li>how many different authors there are (a <code>Set</code>);</li>
+                    <li>how many books each genre has (a <code>Map</code>, shown with <code>for...of</code> and <code>entries()</code>).</li>
+                </ul>
+                <div class="expected">
+                    <span class="label">Expected result with the books of the start</span>
+                    Read: Dune, The BFG<br>
+                    Total pages: 1332<br>
+                    From oldest to newest: Dune, The BFG, Matilda, Holes<br>
+                    Average pages: 333.0<br>
+                    Different authors: 3<br>
+                    Books per genre: science fiction: 1 · adventure: 2 · mystery: 1
+                </div>
+            </li>
+            <li><strong>averagePages.</strong> The function is given, but it has <strong>2 errors</strong>. Write three <code>console.assert</code> with your own small lists (normal, edge and strange case), find the errors and fix them. Above each line you fix, write a comment with the line and what was wrong.</li>
+            <li><strong>Add.</strong> The button adds a book that is not read. The title cannot be empty, the year must be <strong>4 digits</strong> (check it with a regular expression) and the pages a number bigger than 0. The genre is saved in lowercase. Show each error in red; if everything is right, add it, draw again and show a message in green.</li>
+            <li><strong>Remove.</strong> <code>removeBook(title)</code> removes the book with that title. If it does not exist, it <strong>throws an error</strong> with the name <code>"NotFoundError"</code> and the message <code>There is no book called "..."</code>. The button shows that message in red. Write the <strong>JSDoc</strong> of <code>removeBook</code>.</li>
+            <li><strong>Mark as read.</strong> <code>indexOfTitle(title)</code> returns the position of the book, or <code>-1</code>, with a loop. The button uses it to change the book to read, or shows a message if it does not exist.</li>
+            <li><strong>Export.</strong> The button shows the array as indented JSON.</li>
+        </ol>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· Reading room · about 12 min</span></h2>
+        <p>The array <code>seats</code> is the room of the next meeting: 3 rows of 5 seats; <code>"X"</code> is occupied and <code>""</code> is free.</p>
+        <ol>
+            <li>Draw the room as a table, with two loops, one inside the other.</li>
+            <li><code>isRowFull(row)</code> returns <code>true</code> if every seat of that row is occupied, and <code>countFree()</code> returns how many free seats there are. Under the table: <code>Row 1 full: true · Row 2 full: false · Row 3 full: false · Free seats: 6</code>.</li>
+            <li><strong>Book the seat:</strong> the user writes the row and the seat (counting from 1). If the seat does not exist or is occupied, show a message in red. If it is free, it becomes occupied and the room and the line under it are drawn again.</li>
+        </ol>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Try every button with right and wrong data. Reload the page to start again.</li>
+        <li>The console must not show any red error or failed assertion.</li>
+    </ul>
+
+</body>
+
+</html>

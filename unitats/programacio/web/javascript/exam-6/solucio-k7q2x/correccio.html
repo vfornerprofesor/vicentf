@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Examen 6 de JavaScript: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .9rem;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        h3 {
+            margin-top: 1.6rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Examen 6 de JavaScript · correcció (bloc 6, RA4 · sessió 50)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> Enunciat: <a href="../enunciat.html">enunciat.html</a> (amb <code>starter/</code>: <code>exam.html</code>, <code>dayjs.min.js</code>, <code>js/model.js</code> i <code>js/main.js</code>). Lliçons 1-25.
+        Es qualifica amb la <strong>rúbrica del bloc 6</strong> de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>. Per als blocs 1-5 pendents, taules del final.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="exam.html">exam.html (provar)</a>
+        <a href="js/model.js">js/model.js</a>
+        <a href="js/main.js">js/main.js</a>
+    </p>
+    <p>Mòduls: obri-ho des del servidor, no amb doble clic. Esborra la clau <code>products</code> de <code>localStorage</code> entre alumne i alumne.</p>
+
+    <h2>Proves</h2>
+    <ol>
+        <li>En carregar: 4 productes del catàleg (dos digitals) i <code>4 products · total: 354,65 € · platforms: PC, Switch · …</code>. Cap asserció en roig.</li>
+        <li><code>Z</code> → error de nom (i <code>✗</code> mentre s'escriu); preu <code>-3</code> o <code>abc</code> → missatge de <code>PriceError</code>; unitats <code>-1</code> → error.</li>
+        <li><code>Pac Man</code>, <code>4,5</code>, unitats buides → 1 unitat (359,15 €). <code>Zelda</code>, 59.95, 3 → Zelda passa a 5. <code>Fortnite</code>, 0, plataforma PC → digital.</li>
+        <li>F5: tot continua i els digitals conserven la plataforma (prova que <code>toJSON</code> i <code>fromObject</code> funcionen). Delete elimina.</li>
+    </ol>
+    <p>Error d'<code>applyDiscount</code> (línia 8 del starter): dividix per 10 en lloc de 100 (<code>applyDiscount(100, 20)</code> dona −100).</p>
+
+    <h2>Rúbrica del bloc 6 en este examen</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P4.1. Components (CA4.1)</td><td>8 comentaris de components</td><td>0-3 ben posats.</td><td>4-6.</td><td>7.</td><td>Els 8.</td></tr>
+                <tr><td>P4.2. Definició (CA4.2)</td><td><code>Product</code></td><td>Error en carregar o en fer <code>new</code>.</td><td>Es creen objectes.</td><td>A més, PascalCase i cap funció solta que hauria de ser un mètode.</td><td>A més, cap propietat creada fora del constructor o dels camps.</td></tr>
+                <tr><td>P4.3. Propietats i mètodes (CA4.3)</td><td><code>total</code>, <code>toString</code>, <code>toJSON</code></td><td>Cap funciona.</td><td>2 de 3.</td><td>Els 3 amb <code>this</code>.</td><td>A més, <code>toString</code> crida <code>total()</code>.</td></tr>
+                <tr><td>P4.4. Constructor (CA4.4)</td><td>Constructor de <code>Product</code></td><td>No assigna.</td><td>Assigna les tres propietats.</td><td>A més, <code>units = 1</code>.</td><td>A més, el preu passa pel <code>set</code>.</td></tr>
+                <tr><td>P4.5. Visibilitat (CA4.6)</td><td><code>#price</code></td><td>No privat o sense <code>get</code>.</td><td><code>#price</code> amb <code>get</code>.</td><td>A més, <code>set</code> que rebutja.</td><td>A més, <code>toJSON</code> inclou el preu (es veu en <code>localStorage</code>).</td></tr>
+                <tr><td>P4.6. Mètode estàtic (CA4.8)</td><td><code>fromObject</code></td><td>No <code>static</code> o cridat sobre un objecte.</td><td>Definit.</td><td>Cridat sobre la classe, torna una instància que funciona.</td><td>A més, amb <code>map</code> i torna <code>DigitalProduct</code> quan hi ha plataforma.</td></tr>
+                <tr><td>P4.7. Herència (CA4.7)</td><td><code>DigitalProduct</code></td><td>Falta <code>extends</code> o <code>super</code>.</td><td>Es crea la instància.</td><td>A més, <code>toString</code> sobreescrit.</td><td>A més, reutilitza <code>super.toString()</code> (i <code>super.toJSON()</code>).</td></tr>
+                <tr><td>P4.8. Llibreria de classes (CA4.9)</td><td><code>export</code>/<code>import</code></td><td>Classes en <code>main.js</code> o error d'import.</td><td>Exporta i importa.</td><td>A més, <code>model.js</code> només té definicions.</td><td>A més, cap referència a la pàgina en <code>model.js</code>.</td></tr>
+                <tr><td>P4.9. Programa amb les classes (CA4.5)</td><td><code>main.js</code></td><td>No crea instàncies.</td><td>Array d'instàncies mostrades amb <code>toString()</code>.</td><td>A més, total correcte amb <code>total()</code>.</td><td>A més, creades amb <code>fromObject</code> i <code>map</code>, i sobreviuen a F5.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Blocs pendents</h2>
+    <p>Mateixos criteris que en les guies anteriors. On es veu cada indicador en esta prova:</p>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Bloc</th><th>Indicadors i evidència</th></tr></thead>
+            <tbody>
+                <tr><td>1 (RA1)</td><td>P1.1 enllaç de Day.js i del mòdul (Excel·lent: <code>type="module"</code>, ordre i al final del <code>body</code>) · P1.2 Live Server i consola · P1.3 DATA, INPUT, PROCESS, OUTPUT (4 marques) · P1.4 capçalera, components, error · P1.5 preu i unitats números · P1.6 i P1.7 tot el codi · P1.8 condicions de validació, total, descompte · P1.9 <code>Number</code> del preu i de les unitats.</td></tr>
+                <tr><td>2 (RA3)</td><td>P3.1 5 casos (nom, preu, unitats, nou, repetit) · P3.2 <code>draw</code> i <code>Set</code> · P3.3 <code>return</code> amb errors · P3.4 formulari complet · P3.5 error d'<code>applyDiscount</code> (corregit = Notable; amb línia i causa = Excel·lent) · P3.6 <code>set price</code> (<code>PriceError</code> = Excel·lent) · P3.7 càrrega i creació del producte · P3.8 assercions (6 o més, amb límit i estrany = Excel·lent) · P3.9 JSDoc d'<code>applyDiscount</code>.</td></tr>
+                <tr><td>3 (RA6)</td><td>P6.1 sense evidència: es manté · P6.2 Array, Set, RegExp, String · P6.3 afegir, eliminar, sumar unitats amb <code>find</code> · P6.4 <code>forEach</code> amb índex i <code>for...of</code> del <code>Set</code> · P6.5 <code>Set</code> de plataformes (comentari = Excel·lent) · P6.6 patró del nom (<code>Zelda</code> sí, <code>Z</code> i <code>&lt;b&gt;</code> no) i <code>replace</code> de la coma · P6.7 i P6.8 <code>JSON.parse</code>/<code>stringify</code> amb <code>localStorage</code> i <code>try/catch</code> · P6.9 <code>map</code>, <code>reduce</code>, <code>filter</code>, <code>find</code>.</td></tr>
+                <tr><td>4 (RA5)</td><td>P5.1 <code>console.table</code> (sense <code>prompt</code>: el màxim és el que ja tenia o Notable) · P5.2 imports amb <code>toLocaleString</code> i data amb Day.js · P5.3 DOM, consola, <code>localStorage</code> · P5.4 <code>submit</code>, <code>input</code>, delegació en Delete · P5.5 formulari, missatges, cursor.</td></tr>
+                <tr><td>5 (RA2)</td><td>P2.1 sense evidència directa: es manté (o comentari d'encapsulació en <code>#price</code>) · P2.2 afegir (llig, crea, mostra) · P2.3 <code>Set</code> · P2.4 sense evidència: es manté · P2.5 <code>trim</code>, <code>replace</code>, <code>push</code>, <code>splice</code>, <code>length</code>, <code>toLocaleString</code> · P2.6 <code>Product.fromObject</code> cridat sobre la classe · P2.7 <code>toLocaleString</code> amb opcions, <code>format</code>, <code>splice</code>, <code>replace</code> · P2.8 Day.js (carregat abans i format exacte = Notable).</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

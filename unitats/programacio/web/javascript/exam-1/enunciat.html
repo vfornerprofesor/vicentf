@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>JavaScript exam 1</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript exam 1 · The basics</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>This exam covers lessons 1, 2 and 3: <code>prompt</code>, <code>document.write</code>, the console, variables, data types, conversions and operators.</li>
+        <li>Create a folder called <code>surname-name-exam1</code> with two files: <code>index.html</code> (the title of the tab is <code>Exam 1</code> and a big heading with your name) and <code>script.js</code>, linked in the right place. Open it with Live Server.</li>
+        <li>The first lines of <code>script.js</code> are a comment on several lines with your name, your group and the date. Then write <code>console.log("Exam 1 is running");</code></li>
+        <li>Both exercises go in the same <code>script.js</code>, one after the other.</li>
+        <li>You can use VS Code, Live Server, the browser and its console. You cannot use notes, the lessons, the internet, a mobile phone or any AI tool.</li>
+        <li>At the end, make a zip of the folder (<code>surname-name-exam1.zip</code>) and hand it in.</li>
+    </ul>
+
+    <h2>How your code is marked</h2>
+    <ul>
+        <li>Every fixed value is a <strong>constant</strong>, written only once. Use <code>let</code> only if a value changes. No <code>var</code>.</li>
+        <li>Every exercise has four blocks marked with a comment: <code>// DATA</code>, <code>// INPUT</code>, <code>// PROCESS</code> and <code>// OUTPUT</code>.</li>
+        <li>The messages use template literals and the amounts have two decimals.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· Stationery shop · about 30 min</span></h2>
+        <p>Write the program of the till of a stationery shop.</p>
+        <ul>
+            <li><strong>Data:</strong> the shop is called <code>Paper &amp; Co</code>, its owner is <code>Vicent</code>, a pen costs 1.25 euros, the VAT is 21 % and a box has 12 pens.</li>
+            <li><strong>Input:</strong> ask the customer's name, how many pens they want and how much money they give (it can have decimals, for example <code>40.5</code>).</li>
+        </ul>
+        <p>Show in the page, each thing on its own line:</p>
+        <ol>
+            <li>A greeting with the name of the customer and the name of the shop.</li>
+            <li>How many <strong>complete boxes</strong> and how many <strong>loose pens</strong> they take.</li>
+            <li>The price without VAT, the VAT and the total.</li>
+            <li>The change, and the change split into <strong>whole euros and cents</strong>.</li>
+            <li><code>true</code> or <code>false</code> for each of these sentences:
+                <ul>
+                    <li>The customer gave enough money.</li>
+                    <li>They get a free bag: they take 24 pens or more, or the total is more than 30 euros.</li>
+                    <li>The customer is the owner (the name is exactly the name of the owner).</li>
+                    <li>They get a discount next time: they are not the owner and they take at least one complete box.</li>
+                </ul>
+            </li>
+            <li>The type of the three values you asked (<code>typeof</code>). They must be a text and two numbers.</li>
+        </ol>
+        <p>Also, write the three values you asked in the console, and write a comment next to the conversion that explains why you need it and what would happen without it.</p>
+        <div class="expected">
+            <span class="label">Example: Ana, 20 pens, she gives 40</span>
+            Hello, Ana! Welcome to Paper &amp; Co.<br>
+            20 pens: 1 boxes and 8 loose pens<br>
+            Price: 25.00 euros · VAT (21 %): 5.25 euros · Total: 30.25 euros<br>
+            Change: 9.75 euros = 9 euros and 75 cents<br>
+            Enough money: true · Free bag: true · The customer is the owner: false · Discount next time: true<br>
+            Types: string, number, number
+        </div>
+        <p class="tip"><strong>Tip:</strong> <code>Math.floor(x)</code> takes the whole part of a number and <code>Math.round(x)</code> rounds it to the nearest whole number.</p>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· The film · about 15 min</span></h2>
+        <p>Ask how many minutes a film lasts, and the hour and the minute when it starts (two questions). Show:</p>
+        <ol>
+            <li>How long it lasts in hours and minutes.</li>
+            <li>At what time it ends. If it ends after midnight, the hour starts again from 0.</li>
+            <li><code>true</code> or <code>false</code>: it is a long film (more than 120 minutes).</li>
+            <li><code>true</code> or <code>false</code>: it ends after midnight.</li>
+        </ol>
+        <div class="expected">
+            <span class="label">Example: 135 minutes, starts at 22:50</span>
+            It lasts 2 h 15 min<br>
+            It ends at 1:05<br>
+            Long film: true<br>
+            It ends after midnight: true
+        </div>
+        <p class="tip"><strong>Tip:</strong> count everything in minutes from 0:00. A day has 24 × 60 minutes. If you write <code>1:5</code> instead of <code>1:05</code> it is fine. Extra: <code>String(5).padStart(2, "0")</code> gives <code>"05"</code>.</p>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Try your program with the two examples and with other values of your own.</li>
+        <li>The console must not show any red error.</li>
+    </ul>
+
+</body>
+
+</html>

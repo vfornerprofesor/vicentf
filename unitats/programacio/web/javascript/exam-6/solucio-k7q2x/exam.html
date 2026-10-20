@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Exam 6 · Game shop</title>
+    <style>
+        body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        label {
+            display: inline-block;
+            width: 70px;
+        }
+
+        li {
+            margin-bottom: .3rem;
+        }
+
+        li button {
+            margin-left: .5rem;
+        }
+
+        .ok {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game shop</h1>
+
+    <section>
+        <form id="productForm">
+            <p><label for="name">Name</label> <input type="text" id="name"> <span id="nameCheck"></span></p>
+            <p><label for="price">Price</label> <input type="text" id="price" placeholder="59,95"></p>
+            <p><label for="units">Units</label> <input type="text" id="units" placeholder="1"></p>
+            <p><label for="platform">Platform</label> <input type="text" id="platform" placeholder="only for digital games"></p>
+            <button type="submit">Add</button>
+        </form>
+        <p id="message"></p>
+        <ul id="productList"></ul>
+        <p id="summary"></p>
+    </section>
+
+    <script src="dayjs.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

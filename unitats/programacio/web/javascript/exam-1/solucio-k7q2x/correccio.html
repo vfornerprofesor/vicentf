@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Examen 1 de JavaScript: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .9rem;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        h3 {
+            margin-top: 1.6rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Examen 1 de JavaScript · correcció (bloc 1, RA1 · sessió 7)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> Enunciat: <a href="../enunciat.html">enunciat.html</a> (no hi ha arxius de partida: l'alumne crea <code>index.html</code> i <code>script.js</code>).
+        Lliçons 1-3: cap <code>if</code>, bucle, funció pròpia ni DOM. Es qualifica amb la <strong>rúbrica del bloc 1</strong> de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="index-exam.html">index.html de l'alumne (provar)</a>
+        <a href="script.js">script.js</a>
+    </p>
+    <p>L'<code>index.html</code> de l'alumne està ací com a <code>index-exam.html</code> perquè l'<code>index.html</code> de cada carpeta és la pàgina que en bloqueja el contingut. En obrir-lo apareixen sis <code>prompt</code>: Ana, 20, 40, 135, 22, 50 donen els exemples de l'enunciat.</p>
+
+    <h2>Proves</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Entrada</th><th>Resultat esperat</th></tr></thead>
+            <tbody>
+                <tr><td>Ana, 20, 40</td><td>1 caixa i 8 bolígrafs · 25.00 · 5.25 · 30.25 · canvi 9.75 = 9 euros i 75 cèntims · true · true · false · true · string, number, number</td></tr>
+                <tr><td>Vicent, 30, 50</td><td>2 caixes i 6 · 37.50 · 7.88 · 45.38 · canvi 4.63 = 4 euros i 63 cèntims · true · true · <strong>true</strong> · <strong>false</strong></td></tr>
+                <tr><td>Pau, 5, 5</td><td>0 caixes i 5 · total 7.56 · canvi −2.56 · <strong>false</strong> · false · false · false</td></tr>
+                <tr><td>135 min, 22:50</td><td>2 h 15 min · 1:05 · true · true</td></tr>
+                <tr><td>90 min, 18:00</td><td>1 h 30 min · 19:30 · false · false</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Amb un canvi negatiu, la descomposició en euros i cèntims dona valors estranys: no es penalitza (encara no hi ha <code>if</code>).</p>
+
+    <h2>Rúbrica del bloc 1 en este examen</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P1.1. Projecte (CA1.2, 50 %)</td><td>Carpeta</td><td>Falta un arxiu o <code>script.js</code> no està enllaçat.</td><td>Tots dos i enllaçat.</td><td>A més, noms exactes (carpeta i arxius).</td><td>A més, script al final del <code>body</code> i cap arxiu sobrant.</td></tr>
+                <tr><td>P1.2. Entorn (CA1.3)</td><td>Live Server i consola</td><td>No s'executa amb Live Server.</td><td>S'executa.</td><td>A més, el missatge inicial i els tres valors en la consola.</td><td>A més, sagnat uniforme i cap error en la consola.</td></tr>
+                <tr><td>P1.3. Blocs (CA1.1)</td><td>8 marques (4 per exercici)</td><td>0-3 ben posades.</td><td>4-6.</td><td>7.</td><td>Les 8, cap línia en un bloc equivocat.</td></tr>
+                <tr><td>P1.4. Comentaris (CA1.9)</td><td>Capçalera, blocs, conversió</td><td>Falten els comentaris de bloc o algun trenca el codi.</td><td>Comentaris de bloc correctes.</td><td>A més, capçalera de diverses línies.</td><td>A més, el de la conversió explica el perquè.</td></tr>
+                <tr><td>P1.5. Tipus (CA1.4)</td><td>Dades (nom text, bolígrafs, diners, minuts, hora: números; resultats booleans) i línia <code>typeof</code></td><td>Menys de la meitat amb el tipus adequat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes, i la línia <code>typeof</code> diu string, number, number.</td></tr>
+                <tr><td>P1.6. Variables (CA1.5)</td><td>Tot el codi</td><td>No funciona o més de 2 valors repetits (1.25, 12, 60 escrits diverses vegades).</td><td>1-2.</td><td>Cap.</td><td>A més, noms descriptius en camelCase.</td></tr>
+                <tr><td>P1.7. Constants i literals (CA1.6)</td><td>Tot el codi</td><td>2 o més errors (<code>var</code>, <code>let</code> per a fixos, decimals amb coma).</td><td>Un.</td><td>Cap.</td><td>A més, plantilles de text i <code>toFixed(2)</code>.</td></tr>
+                <tr><td>P1.8. Operadors (CA1.7)</td><td>12 expressions: caixes (<code>/</code>), solts (<code>%</code>), IVA, total, canvi, euros, cèntims, quatre booleans de l'ex. 1; hores/minuts, hora final, dos booleans de l'ex. 2 (compta cada exercici com a 6)</td><td>0-5 correctes.</td><td>6-9.</td><td>10-11.</td><td>Les 12, amb <code>===</code> i parèntesis on cal.</td></tr>
+                <tr><td>P1.9. Conversions (CA1.8)</td><td>5 lectures numèriques</td><td>Alguna dada calcula com a text (<code>"20" + …</code>, hores concatenades) en més de 2 lectures.</td><td>Almenys 3 convertides.</td><td>Les 5.</td><td>A més, el comentari distingix conversió explícita i implícita.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Errors típics</h2>
+    <ul>
+        <li>Cèntims amb <code>(change - changeEuros) * 100</code> sense arrodonir: ix <code>74.99999…</code>. Compta com a operació amb defecte (no correcta).</li>
+        <li>Hora final sense <code>% (24 * 60)</code>: <code>25:05</code>.</li>
+        <li><code>isOwner</code> amb <code>=</code> en lloc de <code>===</code> (assigna i dona el nom).</li>
+        <li>"Descompte" sense parèntesis o amb <code>||</code>.</li>
+        <li>Constants de l'exercici 2 escrites dins dels càlculs (60 en cada línia).</li>
+    </ul>
+
+</body>
+
+</html>

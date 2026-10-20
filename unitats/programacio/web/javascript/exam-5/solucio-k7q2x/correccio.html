@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Examen 5 de JavaScript: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .9rem;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        h3 {
+            margin-top: 1.6rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Examen 5 de JavaScript · correcció (bloc 5, RA2 · sessió 44)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> Enunciat: <a href="../enunciat.html">enunciat.html</a> (amb <code>starter/</code>: <code>exam.html</code>, <code>script.js</code> i <code>dayjs.min.js</code>). Lliçons 1-21.
+        Es qualifica amb la <strong>rúbrica del bloc 5</strong> de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>. Per als blocs 1-4 pendents, taules del final.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="exam.html">exam.html (provar)</a>
+        <a href="script.js">script.js</a>
+    </p>
+    <p>Els dies depenen del dia en què s'obri la pàgina; <code>Math.ceil</code> i el <code>diff</code> de Day.js poden diferir en un dia: tots dos valen. Esborra la clau <code>trips</code> de <code>localStorage</code> entre alumne i alumne.</p>
+
+    <h2>Proves</h2>
+    <ol>
+        <li>Escriure <code>paris</code> i triar el 24/06/2027: <code>Paris: … days left</code>. Una data passada: <code>That date has already passed.</code></li>
+        <li>Enviar sense destinació, sense data, pressupost buit, <code>abc</code>, <code>-5</code>: cinc missatges en roig, cursor en el camp.</li>
+        <li><code>rOME </code>, 10/04/2027, 450 → <code>Rome</code>. <code>lisbon</code>, 05/03/2027, <code>300,5</code> → Lisbon primer (per data). <code>Rome</code>, 01/05/2027, 600 → modifica Rome. Resum: <code>2 trips · 2 destinations: Lisbon, Rome · total 900,50 € · about 450,00 € per trip</code>.</li>
+        <li>F5 conserva; Delete elimina.</li>
+        <li>Exercici 2: 18/6/2027 (Friday), <code>true</code>, dies amb les dues formes, setmanes i <code>Number.isInteger</code>.</li>
+    </ol>
+    <p>Error de <code>daysBetween</code> (línia 15 del starter): <code>/ 1000 * 60 * 60 * 24</code> en lloc de <code>/ (1000 * 60 * 60 * 24)</code>. L'asserció del mateix dia passa igualment.</p>
+
+    <h2>Rúbrica del bloc 5 en este examen</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P2.1. Fonaments POO (CA2.1)</td><td>Comentari inicial: 4 conceptes</td><td>0-1 ben explicats.</td><td>2.</td><td>3.</td><td>Els 4, amb exemples del seu programa (no els de la lliçó).</td></tr>
+                <tr><td>P2.2. Programa simple (CA2.2)</td><td>Dies que falten (canvi de data)</td><td>No llig, no calcula o no mostra.</td><td>Llig, calcula i mostra.</td><td>Resultat correcte (±1).</td><td>A més, missatge per a una data passada o buida.</td></tr>
+                <tr><td>P2.3. Classes predefinides (CA2.3)</td><td><code>Date</code>, <code>Set</code></td><td>No crea instàncies amb <code>new</code>.</td><td>Crea <code>Date</code> i <code>Set</code> i usa un mètode de cada un.</td><td>Resultats correctes.</td><td>A més, <code>size</code>, recorregut del <code>Set</code>, <code>getDay</code> i <code>getTime</code>.</td></tr>
+                <tr><td>P2.4. Constructors (CA2.8)</td><td>Ex. 2: dues formes</td><td>Cap correcta (p. ex. mes 6).</td><td>Una.</td><td>Totes dues.</td><td>A més, comparades amb <code>getTime()</code> (dona <code>true</code>).</td></tr>
+                <tr><td>P2.5. Mètodes i propietats (CA2.4, 40 %)</td><td><code>trim</code>, <code>toLowerCase</code>, <code>toUpperCase</code>, <code>slice</code>, <code>push</code>, <code>splice</code>, <code>length</code>, <code>find</code>: 8</td><td>0-3 ben usats.</td><td>4-6.</td><td>7.</td><td>Els 8.</td></tr>
+                <tr><td>P2.6. Mètodes estàtics (CA2.5)</td><td>Marques <code>// static</code> i crides (<code>Math.ceil</code>, <code>Math.round</code>, <code>Math.floor</code>, <code>Number.isInteger</code>, <code>JSON.parse</code>/<code>stringify</code>)</td><td>Menys de la meitat ben marcades, o marca mètodes d'objecte com a estàtics.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes, i cap estàtic cridat sobre un objecte.</td></tr>
+                <tr><td>P2.7. Paràmetres (CA2.6)</td><td><code>slice</code> del nom, <code>toLocaleString</code> amb opcions, <code>format("ddd DD/MM/YYYY")</code>, <code>diff(…, "day")</code>, <code>replace(/,/g, ".")</code>: 5</td><td>0-2.</td><td>3.</td><td>4.</td><td>Les 5.</td></tr>
+                <tr><td>P2.8. Llibreria (CA2.7, 50 %)</td><td>Day.js</td><td>No es carrega o va després de l'script.</td><td>Carregada abans i una crida correcta.</td><td>Format i <code>diff</code> correctes.</td><td>A més, el token <code>ddd</code> i la comparació amb el càlcul de l'ex. 2.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 1 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P1.1. Projecte</td><td>Dos scripts</td><td>Algun no enllaçat.</td><td>Tots dos.</td><td>Noms exactes.</td><td>Al final del <code>body</code>, Day.js primer.</td></tr>
+                <tr><td>P1.2. Entorn</td><td>Live Server, assercions</td><td>No s'executa.</td><td>S'executa.</td><td>Usa la consola.</td><td>Sagnat, cap error.</td></tr>
+                <tr><td>P1.3. Blocs</td><td>DATA, INPUT, PROCESS, OUTPUT</td><td>0-1.</td><td>2.</td><td>3.</td><td>4.</td></tr>
+                <tr><td>P1.4. Comentaris</td><td>Capçalera, error, static</td><td>Falten.</td><td>Els demanats.</td><td>Capçalera.</td><td>Expliquen el perquè.</td></tr>
+                <tr><td>P1.5. Tipus</td><td>Pressupost número, data text, booleans de l'ex. 2</td><td>Menys de la meitat.</td><td>La meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P1.6. Variables</td><td>Tot</td><td>Més de 2 repeticions.</td><td>1-2.</td><td>Cap.</td><td>camelCase.</td></tr>
+                <tr><td>P1.7. Constants</td><td>Tot</td><td>2 o més errors.</td><td>Un.</td><td>Correctes.</td><td>Plantilles.</td></tr>
+                <tr><td>P1.8. Operadors</td><td>Dies, mitjana, setmanes, parèntesis de <code>daysBetween</code></td><td>Menys de la meitat.</td><td>La meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P1.9. Conversions</td><td><code>Number</code> del pressupost</td><td>Text.</td><td colspan="2">Convertit: Notable.</td><td>A més, comentari que l'explica.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 2 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P3.1. Selecció</td><td>5 casos: destinació buida, data buida, nou, repetit, data passada</td><td>0-2.</td><td>3.</td><td>4.</td><td>5.</td></tr>
+                <tr><td>P3.2. Repetició</td><td><code>draw</code>, <code>Set</code></td><td>Falla.</td><td>Algun resultat erroni.</td><td>Correctes.</td><td>Sense números fixos.</td></tr>
+                <tr><td>P3.3. Salt</td><td><code>return</code> amb errors</td><td>Guarda igualment.</td><td>Executa de més.</td><td>Ix en el moment.</td><td>Comentari.</td></tr>
+                <tr><td>P3.4. Programa</td><td>Ex. 1</td><td>No funciona.</td><td>Falla alguna prova.</td><td>Totes.</td><td>Funcions separades.</td></tr>
+                <tr><td>P3.5. Depuració</td><td>Error de <code>daysBetween</code></td><td colspan="2">No corregit: Insuficient.</td><td>Corregit.</td><td>Amb línia i causa.</td></tr>
+                <tr><td>P3.6. Excepcions pròpies</td><td><code>readBudget</code></td><td>No llança.</td><td>Un cas.</td><td>Tres missatges.</td><td><code>BudgetError</code>.</td></tr>
+                <tr><td>P3.7. Control</td><td>Càrrega i enviament</td><td>Es trenca.</td><td>Un lloc.</td><td>Missatge en la pàgina.</td><td>Tots dos llocs.</td></tr>
+                <tr><td>P3.8. Assercions</td><td><code>daysBetween</code></td><td>Menys de 3.</td><td>3.</td><td>Li han servit.</td><td>Límit i estrany.</td></tr>
+                <tr><td>P3.9. Documentació</td><td>JSDoc de <code>readBudget</code> i <code>daysBetween</code></td><td>Cap.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code>.</td><td><code>@throws</code> i tipus.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 3 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P6.1. Matriu</td><td>—</td><td colspan="4">Sense evidència en esta prova: es manté la nota anterior.</td></tr>
+                <tr><td>P6.2. Classes</td><td>Array, Set, String, RegExp (coma)</td><td>Menys de la meitat.</td><td>La meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P6.3. Llistes</td><td>Afegir, eliminar, modificar</td><td>Cap.</td><td>Afig i elimina.</td><td>Modifica el repetit.</td><td>Amb <code>find</code>, sense duplicar.</td></tr>
+                <tr><td>P6.4. Iteradors</td><td><code>forEach</code>, <code>Set</code></td><td>Cap.</td><td><code>for...of</code>.</td><td><code>forEach</code> amb índex.</td><td>Recorre el <code>Set</code>.</td></tr>
+                <tr><td>P6.5. Tria de col·lecció</td><td><code>Set</code> de destinacions</td><td>Array amb repetits.</td><td colspan="2"><code>Set</code>: Notable.</td><td>A més, comentari que ho justifica.</td></tr>
+                <tr><td>P6.6. Regex</td><td><code>replace(/,/g, ".")</code></td><td colspan="2">No: Insuficient.</td><td colspan="2">Sí: Notable (només hi ha un ús en esta prova).</td></tr>
+                <tr><td>P6.7. Formats</td><td><code>JSON</code></td><td>Cap.</td><td>Un sentit.</td><td>Tots dos.</td><td>Comentari del format.</td></tr>
+                <tr><td>P6.8. JSON</td><td>Desar i carregar</td><td>No.</td><td>Un sentit.</td><td>Sobreviu a F5.</td><td><code>try/catch</code>.</td></tr>
+                <tr><td>P6.9. Agregades</td><td><code>sort</code>, <code>map</code>, <code>reduce</code>, <code>find</code></td><td>0-1.</td><td>2.</td><td>3.</td><td>4.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 4 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P5.1. Consola</td><td>Assercions</td><td colspan="4">Sense <code>prompt</code> en esta prova: es manté la nota anterior.</td></tr>
+                <tr><td>P5.2. Formats</td><td>Imports, data local, data Day.js</td><td>0-1.</td><td>2.</td><td>3.</td><td>Tots amb <code>toLocaleString</code>/Day.js.</td></tr>
+                <tr><td>P5.3. Possibilitats E/S</td><td>DOM, <code>localStorage</code>, consola</td><td>Usa <code>alert</code>/<code>prompt</code> per a les dades.</td><td>La majoria adequats.</td><td>Tots.</td><td>— (no es demana justificació).</td></tr>
+                <tr><td>P5.4. Esdeveniments</td><td><code>submit</code>, <code>change</code>, Delete</td><td>No funcionen.</td><td><code>submit</code> i Delete.</td><td>A més, <code>change</code>.</td><td>A més, un sol controlador per als Delete.</td></tr>
+                <tr><td>P5.5. Interfície</td><td>Ex. 1</td><td>No llig o no dibuixa.</td><td>Llig, actualitza, redibuixa amb <code>createElement</code>.</td><td>Missatges i formulari buidat.</td><td>Cursor al camp erroni.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

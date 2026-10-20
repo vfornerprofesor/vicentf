@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Exam 4 · Shop stock</title>
+    <style>
+        body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        label {
+            display: inline-block;
+            width: 60px;
+        }
+
+        li {
+            margin-bottom: .3rem;
+        }
+
+        li button {
+            margin-left: .5rem;
+        }
+
+        td {
+            width: 50px;
+            height: 40px;
+            border: 1px solid #999;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .ok {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffecec;
+        }
+
+        .empty {
+            background-color: #ffecec;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shop stock</h1>
+
+    <section>
+        <h2>Exercise 1 · Products</h2>
+        <form id="productForm">
+            <p><label for="name">Name</label> <input type="text" id="name"> <span id="nameCount">0 / 30</span></p>
+            <p><label for="code">Code</label> <input type="text" id="code" placeholder="MOU-001"></p>
+            <p><label for="price">Price</label> <input type="text" id="price" placeholder="15,50"></p>
+            <p><label for="units">Units</label> <input type="text" id="units"></p>
+            <button type="submit">Save</button>
+        </form>
+        <div id="formMessages"></div>
+        <ul id="productList"></ul>
+        <p id="summary"></p>
+    </section>
+
+    <section>
+        <h2>Exercise 2 · Shelves</h2>
+        <div id="shelves"></div>
+        <p id="shelvesInfo"></p>
+        <button id="resetShelves">Start again</button>
+    </section>
+
+</body>
+</html>

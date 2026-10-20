@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>JavaScript exam 2</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript exam 2 · Control the flow</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>This exam covers <strong>everything from lesson 1 to lesson 9</strong>: the basics, the DOM, decisions, loops, functions, debugging and errors.</li>
+        <li>Create a folder called <code>surname-name-exam2</code> and copy inside it <code>exam.html</code> and <code>script.js</code> from the <code>starter</code> folder. You only write in <code>script.js</code>; in <code>exam.html</code> you only add the link to the script.</li>
+        <li>Write a comment on several lines with your name, your group and the date at the top of <code>script.js</code>.</li>
+        <li>All the results are shown <strong>in the page</strong>, never with <code>alert</code>. The console is only for your assertions.</li>
+        <li>You can use VS Code, Live Server, the browser and DevTools. You cannot use notes, the lessons, the internet, a mobile phone or any AI tool.</li>
+        <li>At the end, make a zip of the folder (<code>surname-name-exam2.zip</code>) and hand it in.</li>
+    </ul>
+
+    <h2>How your code is marked</h2>
+    <ul>
+        <li>Fixed values in constants, written only once. <code>let</code> only for what changes.</li>
+        <li>Functions that <strong>calculate</strong> return a value and never touch the page. Only the listeners of the buttons read the inputs and write in the page.</li>
+        <li>Inside each listener, mark the blocks with <code>// INPUT</code>, <code>// PROCESS</code> and <code>// OUTPUT</code>.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· Final mark of a student · about 25 min</span></h2>
+        <p>The final mark of the module is: <strong>30 % exam 1 + 30 % exam 2 + 40 % project</strong>. When the user clicks <strong>Calculate</strong>, the page shows the final mark with two decimals and its word, in green if it is a pass and in red if it is a fail.</p>
+        <ol>
+            <li><code>readMark(input)</code> returns the mark of a field as a number. If the field is empty, if it is not a number or if it is not between 0 and 10, it <strong>throws an error</strong> with the name <code>"ValidationError"</code> and a clear message, different for each case.</li>
+            <li><code>finalMark(exam1, exam2, project)</code> returns the final mark.</li>
+            <li><code>gradeWord(mark)</code> returns <code>"Fail"</code> (less than 5), <code>"Pass"</code> (5 to less than 7), <code>"Good"</code> (7 to less than 9) or <code>"Excellent"</code> (9 or more).</li>
+            <li>The listener uses the three functions. If there is an error, it shows its message in red and the program never breaks. With correct marks, the old error disappears.</li>
+            <li>Write the <strong>JSDoc</strong> comment of <code>readMark</code>, with the errors it throws.</li>
+        </ol>
+        <div class="expected">
+            <span class="label">Examples</span>
+            6, 7, 7.5 → Final mark: 6.90 · Pass (green)<br>
+            6, abc, 7 → "abc" is not a number. (red)<br>
+            6, 7, 11 → The marks go from 0 to 10. (red)
+        </div>
+        <p class="tip"><strong>Tip:</strong> <code>isNaN(x)</code> is <code>true</code> when <code>x</code> is not a number. The classes <code>ok</code> (green) and <code>error</code> (red) are already in the HTML.</p>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· The group · about 22 min</span></h2>
+        <p>In <code>script.js</code> there is the array <code>groupMarks</code>. A negative mark means <strong>"end of the list"</strong>: that mark and all the marks after it do not count.</p>
+        <ol>
+            <li>The function <code>bestMark(marks)</code> is given, but it has <strong>3 errors</strong> (the page will not work until you fix the first one). Write three <code>console.assert</code> for it (a normal case, an edge case and a strange case), use them to find the errors and fix them. Above each line you fix, write a comment with the line, the type of error (syntax or logic) and what was wrong.</li>
+            <li>When the user clicks <strong>Show the group</strong>, a loop builds a table with one row per mark: the number of the student, the mark and its word (use your <code>gradeWord</code>), the word in green or red. The loop <strong>stops</strong> at the first negative mark.</li>
+            <li>Under the table: how many marks, how many passed, how many failed, the average with two decimals and the best mark (use <code>bestMark</code>).</li>
+        </ol>
+        <div class="expected">
+            <span class="label">Expected summary</span>
+            6 marks · 4 passed · 2 failed · average 6.33 · best 9.5
+        </div>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Try exercise 1 with the examples and with an empty field. Try exercise 2.</li>
+        <li>The console must not show any red error or failed assertion.</li>
+    </ul>
+
+</body>
+
+</html>

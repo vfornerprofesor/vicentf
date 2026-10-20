@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Examen 3 de JavaScript: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .9rem;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        h3 {
+            margin-top: 1.6rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Examen 3 de JavaScript · correcció (bloc 3, RA6 · sessió 30)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> Enunciat: <a href="../enunciat.html">enunciat.html</a> (amb <code>starter/exam.html</code> i <code>starter/script.js</code>). Lliçons 1-15.
+        Es qualifica amb la <strong>rúbrica del bloc 3</strong> de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>. Per als blocs 1 i 2 pendents, taules del final.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="exam.html">exam.html (provar)</a>
+        <a href="script.js">script.js</a>
+    </p>
+
+    <h2>Proves</h2>
+    <ol>
+        <li>En carregar: 4 llibres numerats i les sis línies de l'enunciat. Seients: <code>Row 1 full: true · … · Free seats: 6</code>.</li>
+        <li>Afegir amb el títol buit, amb l'any <code>73</code>, amb pàgines <code>-4</code>: tres errors. <code>Momo</code>, Michael Ende, 1973, 304, <code>Fantasy</code> → s'afig amb gènere <code>fantasy</code>; autors 4.</li>
+        <li>Eliminar <code>Matilda</code> (ok) i <code>Nope</code> (<code>There is no book called "Nope".</code>). Marcar <code>Holes</code> com a llegit: apareix en "Read".</li>
+        <li>L'ordre per any no canvia l'ordre de la llista numerada.</li>
+        <li><em>Export</em>: JSON sagnat amb els canvis.</li>
+        <li>Seients: 1,1 → ocupat; 4,1 → no existix; 2,2 i 2,4 → reservats; després la fila 2 és plena i queden 4 lliures.</li>
+    </ol>
+    <p>Errors d'<code>averagePages</code> (línies del starter): 14 <code>reduce</code> sense el <code>0</code> inicial (comença amb un objecte i dona <code>"[object Object]240…"</code>) · 15 <code>books.length</code> en lloc de <code>list.length</code>.</p>
+
+    <h2>Rúbrica del bloc 3 en este examen</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P6.1. Matriu (CA6.1)</td><td>Ex. 2</td><td>No accedix amb <code>[fila][columna]</code>.</td><td>Taula amb bucles niats.</td><td>A més, <code>isRowFull</code>, <code>countFree</code> i la reserva funcionen.</td><td>A més, sense números fixos (usa <code>length</code>) i controla seients fora de rang.</td></tr>
+                <tr><td>P6.2. Classes de tipus avançats (CA6.2)</td><td>4 necessitats: llista (Array), autors diferents (Set), recompte per gènere (Map), any (RegExp)</td><td>0-1 amb la classe adequada.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
+                <tr><td>P6.3. Llistes (CA6.3)</td><td>Afegir, eliminar, marcar</td><td>Cap funciona.</td><td>Afig i elimina.</td><td>A més, marca com a llegit buscant pel títol.</td><td>A més, títols inexistents controlats en eliminar i en marcar.</td></tr>
+                <tr><td>P6.4. Iteradors (CA6.4)</td><td>Llista, <code>Map</code></td><td>Cap recorregut correcte.</td><td>Un <code>for...of</code> correcte.</td><td>A més, <code>forEach</code> amb l'índex en la llista.</td><td>A més, el <code>Map</code> amb <code>for...of</code> i <code>entries()</code>.</td></tr>
+                <tr><td>P6.5. Tria de col·lecció (CA6.5)</td><td><code>Set</code> d'autors i <code>Map</code> de gèneres</td><td>Cap de les dues ben triada (p. ex. un array amb repetits).</td><td>Una.</td><td>Totes dues.</td><td>A més, un comentari justifica cada tria.</td></tr>
+                <tr><td>P6.6. Expressions regulars (CA6.7)</td><td>Any: <code>1973</code> sí; <code>73</code>, <code>19733</code>, <code>19a3</code> no</td><td>Cap patró o accepta qualsevol text.</td><td>3 dels 4 casos.</td><td>Els 4 (amb <code>^</code> i <code>$</code>).</td><td>A més, usa el patró en una constant i el número es guarda convertit.</td></tr>
+                <tr><td>P6.7. Formats d'intercanvi (CA6.8)</td><td><code>JSON.parse</code> i <code>JSON.stringify</code></td><td>Cap dels dos.</td><td>Un.</td><td>Tots dos.</td><td>A més, un comentari diu que el text és JSON (o la diferència amb XML).</td></tr>
+                <tr><td>P6.8. JSON (CA6.9)</td><td>Inici i <em>Export</em></td><td>No obté l'array.</td><td>Obté l'array i el mostra.</td><td>A més, l'exporta amb els canvis.</td><td>A més, <code>try/catch</code> en l'inici i JSON sagnat.</td></tr>
+                <tr><td>P6.9. Operacions agregades (CA6.10)</td><td><code>filter</code>, <code>map</code>, <code>reduce</code>, <code>sort</code></td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4, sense <code>for</code>, i el <code>sort</code> sobre una còpia.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 1 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P1.1. Projecte</td><td>Enllaç de l'script</td><td>No enllaçat.</td><td>Enllaçat.</td><td>A més, noms exactes.</td><td>A més, al final del <code>body</code>, cap sobrant.</td></tr>
+                <tr><td>P1.2. Entorn</td><td>Live Server, assercions</td><td>No s'executa.</td><td>S'executa.</td><td>A més, assercions en la consola.</td><td>A més, sagnat i cap error.</td></tr>
+                <tr><td>P1.3. Blocs</td><td>DATA i INPUT/PROCESS/OUTPUT d'Afegir: 4</td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
+                <tr><td>P1.4. Comentaris</td><td>Capçalera, blocs, errors, Set/Map</td><td>Falten.</td><td>Els demanats.</td><td>A més, capçalera.</td><td>A més, expliquen el perquè.</td></tr>
+                <tr><td>P1.5. Tipus</td><td>Llibre nou: any i pàgines números, <code>read</code> booleà, textos</td><td>Menys de la meitat bé.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P1.6. Variables</td><td>Tot</td><td>Més de 2 repeticions.</td><td>1-2.</td><td>Cap.</td><td>A més, camelCase.</td></tr>
+                <tr><td>P1.7. Constants</td><td>Tot</td><td>2 o més errors.</td><td>Un.</td><td>Correctes.</td><td>A més, plantilles.</td></tr>
+                <tr><td>P1.8. Operadors</td><td>Condicions de validació, comparacions, seients</td><td>Menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P1.9. Conversions</td><td>Any, pàgines, fila i seient</td><td>Calcula amb text.</td><td>Almenys 2 de 4.</td><td>3-4.</td><td>Les 4 i un comentari les explica.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 2 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P3.1. Selecció</td><td>6 casos: títol buit, any, pàgines, vàlid, seient ocupat, seient inexistent</td><td>0-2.</td><td>3-4.</td><td>5.</td><td>Els 6.</td></tr>
+                <tr><td>P3.2. Repetició</td><td><code>indexOfTitle</code>, <code>countFree</code>, taula</td><td>Algun bucle no acaba o deixa elements.</td><td>Funcionen amb algun resultat erroni.</td><td>Tots correctes.</td><td>A més, sense números fixos.</td></tr>
+                <tr><td>P3.3. Salt</td><td><code>isRowFull</code>, <code>indexOfTitle</code>, validacions</td><td>No ix quan cal.</td><td>Ix, però recorre de més amb una bandera.</td><td>Ix amb <code>return</code> en el moment just.</td><td>A més, un comentari ho explica.</td></tr>
+                <tr><td>P3.4. Programa</td><td>Ex. 2 complet</td><td>No dibuixa.</td><td>Falla alguna prova.</td><td>Totes correctes.</td><td>A més, funcions separades.</td></tr>
+                <tr><td>P3.5. Depuració</td><td>2 errors d'<code>averagePages</code></td><td>Cap.</td><td>Un.</td><td>Tots dos.</td><td>Tots dos, amb línia i causa.</td></tr>
+                <tr><td>P3.6. Excepcions pròpies</td><td><code>removeBook</code></td><td>No llança.</td><td>Llança <code>Error</code>.</td><td>Amb el missatge del títol.</td><td>A més, <code>NotFoundError</code>.</td></tr>
+                <tr><td>P3.7. Control d'excepcions</td><td>Botó Remove i inici</td><td>Es trenca.</td><td><code>try/catch</code> en un lloc.</td><td>A més, missatge en la pàgina.</td><td>Tots dos llocs, i el missatge passa a verd en una acció correcta.</td></tr>
+                <tr><td>P3.8. Assercions</td><td><code>averagePages</code></td><td>Menys de 3.</td><td>3 correctes.</td><td>A més, li han servit per a trobar els errors.</td><td>A més, cas límit i cas estrany.</td></tr>
+                <tr><td>P3.9. Documentació</td><td>JSDoc de <code>removeBook</code></td><td>Cap.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code>.</td><td>A més, <code>@throws</code>.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Errors típics</h2>
+    <ul>
+        <li><code>splice(indexOfTitle(title), 1)</code> sense controlar el −1: elimina l'últim llibre.</li>
+        <li>Regex sense <code>^</code> i <code>$</code>: <code>19733</code> passa.</li>
+        <li><code>books.sort(...)</code> directament: la llista canvia d'ordre.</li>
+        <li>Gèneres comptats amb un objecte o un array: funciona, però no és el <code>Map</code> demanat (P6.5).</li>
+    </ul>
+
+</body>
+
+</html>

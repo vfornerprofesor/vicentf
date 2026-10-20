@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>JavaScript exam 6</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 2rem;
+            padding: .75rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .time {
+            font-weight: normal;
+            font-size: .9rem;
+            color: #61607a;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .tip {
+            padding: .5rem .75rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expected {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--line);
+            border-radius: 8px;
+        }
+
+        .expected .label {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #61607a;
+        }
+
+        .expected table {
+            border-collapse: collapse;
+        }
+
+        .expected th,
+        .expected td {
+            padding: .3rem .8rem;
+            border: 1px solid #999;
+        }
+
+        table.fields {
+            border-collapse: collapse;
+        }
+
+        table.fields th,
+        table.fields td {
+            padding: .3rem .8rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        table.fields th {
+            background: var(--soft);
+        }
+
+        section {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript exam 6 · Your own classes</h1>
+
+    <div class="meta">
+        <span><strong>Name:</strong> ______________________________</span>
+        <span><strong>Group:</strong> ________</span>
+        <span><strong>Date:</strong> ____/____/________</span>
+        <span><strong>Time:</strong> 55 minutes</span>
+    </div>
+
+    <h2>Before you start</h2>
+    <ul>
+        <li>This exam covers <strong>everything from lesson 1 to lesson 25</strong>. The new part is your own classes, private fields, static methods, inheritance and modules.</li>
+        <li>Create a folder called <code>surname-name-exam6</code> and copy inside it <code>exam.html</code>, <code>dayjs.min.js</code> and the folder <code>js</code> (with <code>model.js</code> and <code>main.js</code>) from the <code>starter</code> folder.</li>
+        <li>In <code>exam.html</code> you only link <code>dayjs.min.js</code> and <code>js/main.js</code> <strong>as a module</strong>, in the right place and order. You write in <code>js/model.js</code> (exercise 1) and <code>js/main.js</code> (exercise 2). Modules only work with Live Server.</li>
+        <li>You can use VS Code, Live Server, the browser and DevTools. You cannot use notes, the lessons, the internet, a mobile phone or any AI tool.</li>
+        <li>At the end, make a zip of the folder (<code>surname-name-exam6.zip</code>) and hand it in.</li>
+    </ul>
+
+    <!-- ===== EXERCISE 1 ===== -->
+    <section>
+        <h2>Exercise 1 <span class="time">· The classes (model.js) · about 22 min</span></h2>
+        <p><code>model.js</code> only has definitions: no <code>document</code>, no <code>querySelector</code>. Write and <strong>export</strong>:</p>
+        <ol>
+            <li>The class <code>Product</code>:
+                <ul>
+                    <li>The constructor receives <code>name</code>, <code>price</code> and <code>units</code>; if <code>units</code> is not given, it is 1.</li>
+                    <li>The price is a <strong>private field</strong> with a <code>get</code> and a <code>set</code>. The <code>set</code> throws an error with the name <code>"PriceError"</code> if the price is not a number or is negative. The constructor uses the <code>set</code>.</li>
+                    <li><code>total()</code> returns the price × the units, and <code>toString()</code> returns <code>Zelda · 59,95 € × 2 = 119,90 €</code> using <code>total()</code> (currency with <code>toLocaleString</code>).</li>
+                    <li><code>toJSON()</code> returns a plain object with the name, the price and the units.</li>
+                    <li>The static method <code>fromObject(data)</code> receives a plain object and returns a <code>Product</code>, or a <code>DigitalProduct</code> if the data has a <code>platform</code>.</li>
+                </ul>
+            </li>
+            <li>The class <code>DigitalProduct</code>, child of <code>Product</code>, that also has a <code>platform</code>. Its <code>toString()</code> reuses the one of <code>Product</code> and adds <code>· download for PC</code>; its <code>toJSON()</code> adds the platform to the data of <code>Product</code>.</li>
+            <li>Mark with a comment each part of your classes: <code>// constructor</code>, <code>// public property</code>, <code>// private field</code>, <code>// get</code>, <code>// set</code>, <code>// method</code>, <code>// static method</code>, <code>// child class</code>.</li>
+            <li>The function <code>applyDiscount</code> is given, but it has <strong>1 error</strong>. Find it with the tests of exercise 2, fix it with a comment and write its JSDoc.</li>
+        </ol>
+    </section>
+
+    <!-- ===== EXERCISE 2 ===== -->
+    <section>
+        <h2>Exercise 2 <span class="time">· The shop (main.js) · about 30 min</span></h2>
+        <ol>
+            <li><strong>Import</strong> what you need from <code>model.js</code>.</li>
+            <li><strong>Load and save.</strong> The products are kept in <code>localStorage</code> (key <code>products</code>). The first time there is nothing: use <code>catalogText</code>. Turn the data into objects with <code>fromObject</code> and <code>map</code>. If the data is broken, show a message and start with an empty shop. Every time you save, show the products as a table in the console. Mark this part with <code>// DATA</code>.</li>
+            <li><strong>Draw.</strong> The list built with <code>createElement</code>, each product with its <code>toString()</code> and a <strong>Delete</strong> button (one single listener on the list). Under it:
+                <div class="expected">4 products · total: 354,65 € · platforms: PC, Switch · updated 15/04/2027 10:20</div>
+                The total adds the <code>total()</code> of each product. The platforms come from a <code>Set</code> of the digital products (<code>instanceof</code>). The date and time use Day.js (<code>HH:mm</code> is the hour and the minutes).
+            </li>
+            <li><strong>Name check.</strong> While the user types the name, show <code>✓</code> or <code>✗</code>: a valid name has from 2 to 30 letters (without accents), numbers or spaces (regular expression).</li>
+            <li><strong>Add.</strong> When the form is sent: the price can have a comma (<code>4,5</code>), change it with <code>replace</code> and a regular expression; if the units are empty, the product gets the units by default; if there is a platform, it is a <code>DigitalProduct</code>. Create the object inside a <code>try</code> and show the message of a <code>PriceError</code>. Check the name and the units too. Errors in red with the cursor in the wrong field. If a product with that name exists, add the units to it; if not, add the new product. Save, draw, message in green, empty the form. Mark the blocks with <code>// INPUT</code>, <code>// PROCESS</code> and <code>// OUTPUT</code>.</li>
+            <li><strong>Tests.</strong> At the end of <code>main.js</code>: three <code>console.assert</code> for <code>applyDiscount</code> (normal, edge and strange case) and at least three for your classes (for example <code>total()</code>, the units by default and the <code>PriceError</code> of a negative price).</li>
+        </ol>
+    </section>
+
+    <h2>Before you hand in</h2>
+    <ul>
+        <li>Add a normal game and a digital one, press F5 (the digital one must still say its platform), delete a product.</li>
+        <li>The console must not show any red error or failed assertion.</li>
+    </ul>
+
+</body>
+
+</html>

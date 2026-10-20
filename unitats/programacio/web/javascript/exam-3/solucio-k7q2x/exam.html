@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Exam 3 · Book club</title>
+    <style>
+        body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input {
+            width: 120px;
+            margin: 0 .3rem .5rem 0;
+        }
+
+        td {
+            width: 40px;
+            height: 30px;
+            border: 1px solid #999;
+            text-align: center;
+        }
+
+        pre {
+            padding: .5rem;
+            background: #f4f4f4;
+        }
+
+        .ok {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book club</h1>
+
+    <section>
+        <h2>Exercise 1 · Our books</h2>
+        <p>
+            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="author" placeholder="Author">
+            <input type="text" id="year" placeholder="Year">
+            <input type="text" id="pages" placeholder="Pages">
+            <input type="text" id="genre" placeholder="Genre">
+            <button id="addBook">Add</button>
+        </p>
+        <p>
+            <input type="text" id="bookTitle" placeholder="Title of a book">
+            <button id="removeBook">Remove</button>
+            <button id="markRead">Mark as read</button>
+        </p>
+        <p id="booksMessage"></p>
+        <div id="booksOutput"></div>
+        <h3>Numbers of the club</h3>
+        <div id="statsOutput"></div>
+        <button id="exportButton">Export</button>
+        <pre id="exportOutput"></pre>
+    </section>
+
+    <section>
+        <h2>Exercise 2 · Reading room</h2>
+        <div id="seatsOutput"></div>
+        <p id="seatsInfo"></p>
+        <p>
+            Row <input type="text" id="seatRow">
+            Seat <input type="text" id="seatCol">
+            <button id="bookSeat">Book the seat</button>
+        </p>
+        <p id="seatMessage"></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

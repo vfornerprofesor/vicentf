@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Examen 4 de JavaScript: correcció</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            color: var(--primary);
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .93rem;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: var(--soft);
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .files a {
+            display: inline-block;
+            margin: 0 .5rem .5rem 0;
+            padding: .25rem .7rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        pre {
+            padding: .75rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .9rem;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        h3 {
+            margin-top: 1.6rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Examen 4 de JavaScript · correcció (bloc 4, RA5 · sessió 41)</h1>
+
+    <p class="box">
+        <strong>Només per al professor.</strong> Enunciat: <a href="../enunciat.html">enunciat.html</a> (amb <code>starter/exam.html</code> i <code>starter/script.js</code>). Lliçons 1-19.
+        Es qualifica amb la <strong>rúbrica del bloc 4</strong> de la <a href="../../situacio-aprenentatge.html">situació d'aprenentatge</a>. Per als blocs 1-3 pendents, taules del final.
+    </p>
+
+    <h2>Fitxers de la solució</h2>
+    <p class="files">
+        <a href="exam.html">exam.html (provar)</a>
+        <a href="script.js">script.js</a>
+    </p>
+    <p><code>localStorage</code> és per origen: corregix cada alumne en un port o una finestra privada diferent, o esborra les claus <code>products</code> i <code>shelves</code> entre alumne i alumne.</p>
+
+    <h2>Proves</h2>
+    <ol>
+        <li>En carregar: el <code>prompt</code> i el missatge en la consola (també amb Cancel).</li>
+        <li>Formulari buit: quatre errors, quatre camps en roig, cursor en el nom.</li>
+        <li><code>Mouse</code>, <code>mou-001</code>, <code>15,5</code>, <code>10</code> → es guarda com <code>MOU-001</code> i 15,50 €. <code>Keyboard</code>, <code>KEY-002</code>, 30, 0 → <code>1 out of stock</code>, <code>0 units</code>. <code>Mouse</code>, <code>MOU-001</code>, 15.5, 5 → Mouse passa a 15 unitats. <code>Screen</code>, <code>SCR-003</code>, 1189.5, 1 → <code>3 products · 1 out of stock · stock value: 1.422,00 €</code>.</li>
+        <li>F5: tot continua. Eliminar Keyboard. Nom de més de 30 caràcters: comptador roig i error en enviar.</li>
+        <li>Prestatgeries: <code>Empty places: 3 · Total units: 25</code>; clic en un 0 → 1 (ja no és roig); F5 conserva el canvi; <em>Start again</em> amb Acceptar torna a l'inici.</li>
+    </ol>
+    <p>Errors d'<code>unitsText</code> (starter): línia 9 <code>n &gt; 1</code> (0 seria singular) · línies 10/12 tots dos <code>return</code> diuen <code>units</code>. Correcció: <code>n === 1 ? "unit" : "units"</code>.</p>
+
+    <h2>Rúbrica del bloc 4 en este examen</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P5.1. Consola (CA5.1)</td><td>Obertura i desar</td><td>No usa <code>prompt</code> ni escriu en la consola.</td><td><code>prompt</code> i <code>console.log</code> del missatge.</td><td>A més, <code>console.table</code> en desar.</td><td>A més, controla Cancel i el text buit.</td></tr>
+                <tr><td>P5.2. Formats (CA5.2)</td><td>Preu de cada producte, valor de l'estoc, unitats amb <code>unitsText</code></td><td>0-1 amb format.</td><td>2.</td><td>Els 3.</td><td>Els 3, els imports amb <code>toLocaleString</code> (no a mà).</td></tr>
+                <tr><td>P5.3. Possibilitats d'E/S (CA5.3)</td><td>Comentari inicial i ús real</td><td>Usa <code>alert</code>/<code>prompt</code> per a les dades del formulari o els errors.</td><td>Mitjà adequat en la majoria de casos.</td><td>En tots (prompt, consola, confirm, DOM, localStorage).</td><td>A més, el comentari justifica cada un.</td></tr>
+                <tr><td>P5.4. Esdeveniments (CA5.7)</td><td><code>submit</code>, Delete, <code>input</code>, clic de les prestatgeries</td><td>No funcionen o la pàgina es recarrega.</td><td>Enviament amb <code>preventDefault</code> i Delete.</td><td>A més, l'esdeveniment <code>input</code> del comptador.</td><td>A més, un sol controlador amb <code>event.target</code>/<code>dataset</code> en la llista i en les prestatgeries.</td></tr>
+                <tr><td>P5.5. Interfície (CA5.8)</td><td>Formulari i llista</td><td>No llig els camps o no dibuixa.</td><td>Llig, actualitza l'array, redibuixa amb <code>createElement</code> i <code>textContent</code>.</td><td>A més, tots els errors en la pàgina i formulari buidat.</td><td>A més, classe <code>wrong</code> que desapareix en corregir i cursor en el primer camp erroni.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 1 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P1.1. Projecte</td><td>Enllaç</td><td>No enllaçat.</td><td>Enllaçat.</td><td>Noms exactes.</td><td>Al final del <code>body</code>, cap sobrant.</td></tr>
+                <tr><td>P1.2. Entorn</td><td>Live Server, consola</td><td>No s'executa.</td><td>S'executa.</td><td>Usa la consola.</td><td>Sagnat, cap error.</td></tr>
+                <tr><td>P1.3. Blocs</td><td>DATA, INPUT, PROCESS, OUTPUT</td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
+                <tr><td>P1.4. Comentaris</td><td>Capçalera, blocs, errors</td><td>Falten.</td><td>Els demanats.</td><td>Capçalera completa.</td><td>Expliquen el perquè.</td></tr>
+                <tr><td>P1.5. Tipus</td><td>Preu i unitats números, codi text</td><td>Preus o unitats guardats com a text.</td><td>Algun sense efecte.</td><td>Tots correctes.</td><td>A més, valida amb <code>isNaN</code> abans de guardar.</td></tr>
+                <tr><td>P1.6. Variables</td><td>Tot</td><td>Més de 2 repeticions (30 escrit a mà…).</td><td>1-2.</td><td>Cap.</td><td>camelCase.</td></tr>
+                <tr><td>P1.7. Constants</td><td>Tot</td><td>2 o més errors.</td><td>Un.</td><td>Correctes.</td><td>Plantilles.</td></tr>
+                <tr><td>P1.8. Operadors</td><td>Validacions, valor de l'estoc</td><td>Menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P1.9. Conversions</td><td>Preu i unitats</td><td>Calcula amb text.</td><td>Una convertida.</td><td>Totes dues.</td><td>A més, comentari que l'explica.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 2 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P3.1. Selecció</td><td>5 casos: nom, codi, preu, unitats, codi repetit</td><td>0-2.</td><td>3.</td><td>4.</td><td>Els 5.</td></tr>
+                <tr><td>P3.2. Repetició</td><td><code>draw</code>, errors, prestatgeries</td><td>Algun bucle falla.</td><td>Algun resultat erroni.</td><td>Correctes.</td><td>Sense números fixos.</td></tr>
+                <tr><td>P3.3. Salt</td><td><code>return</code> amb errors</td><td>S'afig igualment.</td><td>Executa codi que no tocava.</td><td>Ix en el moment just.</td><td>A més, comentari.</td></tr>
+                <tr><td>P3.4. Programa</td><td>Ex. 1</td><td>No guarda.</td><td>Falla alguna prova.</td><td>Totes.</td><td>Funcions separades (desar, dibuixar).</td></tr>
+                <tr><td>P3.5. Depuració</td><td>2 errors d'<code>unitsText</code></td><td>Cap.</td><td>Un.</td><td>Tots dos.</td><td>Amb línia i causa.</td></tr>
+                <tr><td>P3.6. Excepcions pròpies</td><td>—</td><td colspan="4">No hi ha evidència en esta prova: es manté la nota anterior de l'indicador.</td></tr>
+                <tr><td>P3.7. Control d'excepcions</td><td>Càrrega de <code>products</code> i <code>shelves</code></td><td>Sense <code>try/catch</code>.</td><td>En una càrrega.</td><td>En totes dues.</td><td>A més, amb dades trencades la pàgina comença buida i tot funciona.</td></tr>
+                <tr><td>P3.8. Assercions</td><td><code>unitsText</code></td><td>Menys de 3.</td><td>3.</td><td>Li han servit per a corregir.</td><td>Cas límit (1) i estrany (0).</td></tr>
+                <tr><td>P3.9. Documentació</td><td>JSDoc d'<code>unitsText</code></td><td>Cap.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code>.</td><td>Amb tipus.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Bloc 3 pendent</h2>
+    <div class="scroll">
+        <table>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <tbody>
+                <tr><td>P6.1. Matriu</td><td>Ex. 2</td><td>No accedix amb <code>[f][c]</code>.</td><td>Taula amb bucles niats.</td><td>A més, el clic modifica la cel·la i el resum és correcte.</td><td>A més, <code>START_SHELVES</code> no canvia (còpia fila a fila).</td></tr>
+                <tr><td>P6.2. Classes</td><td>Array de productes, RegExp, String (<code>toUpperCase</code>, <code>replace</code>)</td><td>Menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
+                <tr><td>P6.3. Llistes</td><td>Ex. 1</td><td>No afig ni elimina.</td><td>Afig i elimina.</td><td>Codi repetit suma unitats.</td><td>Amb <code>find</code>, sense duplicar.</td></tr>
+                <tr><td>P6.4. Iteradors</td><td><code>draw</code>, errors</td><td>Cap correcte.</td><td><code>for...of</code>.</td><td><code>forEach</code> amb índex.</td><td>— (no hi ha Set/Map: el màxim és Notable; si ja tenia més, es manté).</td></tr>
+                <tr><td>P6.5. Tria de col·lecció</td><td>—</td><td colspan="4">No hi ha evidència en esta prova: es manté la nota anterior.</td></tr>
+                <tr><td>P6.6. Regex</td><td>Codi (<code>MOU-001</code> sí; <code>MOU001</code>, <code>MO-001</code>, <code>MOUS-001</code> no) i coma del preu</td><td>Cap patró.</td><td>3 de 4 casos.</td><td>Els 4.</td><td>A més, <code>replace(/,/g, ".")</code>.</td></tr>
+                <tr><td>P6.7. Formats</td><td><code>JSON.stringify</code> i <code>JSON.parse</code></td><td>Cap.</td><td>Un.</td><td>Tots dos.</td><td>Comentari que diu el format.</td></tr>
+                <tr><td>P6.8. JSON</td><td>Desar i carregar</td><td>Desa sense JSON.</td><td>Un sentit.</td><td>Sobreviu a F5.</td><td>A més, <code>try/catch</code>.</td></tr>
+                <tr><td>P6.9. Agregades</td><td><code>filter</code>, <code>reduce</code>, <code>find</code>, <code>forEach</code></td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

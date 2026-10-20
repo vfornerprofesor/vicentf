@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Exam 2 · Marks</title>
+    <style>
+        body {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input {
+            width: 70px;
+            margin-right: .5rem;
+        }
+
+        td {
+            padding: .2rem .8rem;
+            border: 1px solid #999;
+        }
+
+        .ok {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Marks</h1>
+
+    <section>
+        <h2>Exercise 1 · Final mark of a student</h2>
+        <p>
+            Exam 1 <input type="text" id="exam1">
+            Exam 2 <input type="text" id="exam2">
+            Project <input type="text" id="project">
+            <button id="calculate">Calculate</button>
+        </p>
+        <p id="markOutput"></p>
+    </section>
+
+    <section>
+        <h2>Exercise 2 · The group</h2>
+        <button id="showGroup">Show the group</button>
+        <div id="groupOutput"></div>
+        <p id="groupSummary"></p>
+    </section>
+
+</body>
+</html>
