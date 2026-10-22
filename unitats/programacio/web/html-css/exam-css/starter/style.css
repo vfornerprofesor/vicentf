@@ -1,28 +1,9 @@
 /* CSS exam - Name: ______________________ */
 
 /* ---------- Given styles: do not change them ---------- */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-    color: #23272f;
-}
-
-header,
-main section {
-    padding: 1rem;
-}
-
 .stage {
-    height: 240px;
+    height: 200px;
     background-color: #e4ecf4;
-}
-
-.box {
-    width: 120px;
-    height: 60px;
-    background-color: #1f3c5a;
-    color: #ffffff;
 }
 
 .photo {
@@ -34,17 +15,9 @@ main section {
 }
 
 
-/* ---------- Exercise 1 ---------- */
+/* ---------- Exercise 1: text and boxes ---------- */
 
 
 
-/* ---------- Exercise 3 ---------- */
-
-
-
-/* ---------- Exercise 4 ---------- */
-
-
-
-/* ---------- Exercise 5 ---------- */
+/* ---------- Exercise 2: layout ---------- */
 

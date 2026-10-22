@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kdenlive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Guia de consulta per al vídeo del còmic i el vídeo de pel·lícules">Kdenlive</vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-content>
+            <vf-text>
+                Esta pàgina és una *guia de consulta*: no s'entrega ni s'avalua. Kdenlive l'aprendràs fent directament
+                el [vídeo del còmic](projectes/comic/video-comic.html), seguint la demostració a classe, i després el
+                tornaràs a usar en el [vídeo de pel·lícules](projectes/comic/video-pelicules.html). Quan no recordes
+                com es feia alguna cosa, vine ací.
+            </vf-text>
+            <vf-callout type="consell">
+                Els apartats estan en l'ordre en què els necessitaràs per a muntar el còmic. Els noms dels menús poden
+                canviar una mica segons la versió de Kdenlive o l'idioma de l'ordinador.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">
+            1. Què és Kdenlive
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                *Kdenlive* és un *editor de vídeo no lineal* i lliure: pots col·locar imatges, àudios i vídeos en una
+                línia de temps, moure'ls, retallar-los i combinar-los en l'ordre que vulgues. A LliureX ja està
+                instal·lat.
+            </vf-text>
+            <vf-text>Quan treballes amb Kdenlive tindràs dos fitxers diferents:</vf-text>
+            <vf-list>
+                <li><vf-text>El *projecte* (*.kdenlive*): és el que pots tornar a obrir i continuar editant. No és un vídeo: només guarda on està cada clip.</vf-text></li>
+                <li><vf-text>El *vídeo exportat* (*.mp4*): és el resultat final que es pot veure en qualsevol reproductor i el que s'entrega.</vf-text></li>
+            </vf-list>
+            <vf-callout type="recorda">
+                Guarda sempre *els dos*. Sense el *.kdenlive* no podràs corregir res; sense el *.mp4* no tens res per a entregar.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">
+            2. Crear el projecte
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Abans d'obrir Kdenlive, comprova que la carpeta del còmic té dins les carpetes *Vinyetes* i *audios*.</vf-text></li>
+                <li><vf-text>Obri Kdenlive i crea un projecte nou (*Fitxer &gt; Nou*).</vf-text></li>
+                <li><vf-text>A la configuració del projecte tria el perfil *1920 x 1080 (Full HD) a 25 fps*.</vf-text></li>
+                <li><vf-text>Desa el projecte (*Fitxer &gt; Desa com a...*) *dins de la carpeta del còmic*, al costat de *Vinyetes* i *audios*. Posa-li un nom clar, per exemple *comic.kdenlive*.</vf-text></li>
+            </vf-list>
+            <vf-text>Si el perfil no és el correcte, pots canviar-lo després a *Projecte &gt; Configuració del projecte*.</vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            3. La interfície
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>*Safata del projecte*: llista de tots els fitxers que has importat (imatges, àudios, música). Encara no formen part del vídeo.</vf-text></li>
+                <li><vf-text>*Monitor de clip*: mostra el fitxer que tens seleccionat a la safata.</vf-text></li>
+                <li><vf-text>*Monitor de projecte*: mostra el vídeo tal com està muntat a la línia de temps. És el que veurà qui mire el teu còmic.</vf-text></li>
+                <li><vf-text>*Pistes*: les de *vídeo* (V1, V2...) per a imatges i títols, i les d'*àudio* (A1, A2...) per a veus i música.</vf-text></li>
+                <li><vf-text>*Línia de temps*: on col·loques els clips d'esquerra (principi) a dreta (final). La línia vertical és el *cursor de reproducció*.</vf-text></li>
+                <li><vf-text>*Eines*: l'eina de *selecció* (per a moure i allargar clips) i l'eina de *tall* (per a partir un clip en dos).</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            4. Importar el material
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Afig a la safata del projecte totes les vinyetes, tots els àudios i la música.</vf-text></li>
+                <li><vf-text>Pots fer-ho *arrossegant* els fitxers des de l'explorador fins a la safata, o amb el menú *Projecte &gt; Afegeix un clip o una carpeta*.</vf-text></li>
+                <li><vf-text>Comprova que estan totes les vinyetes (*Vinyeta1*, *Vinyeta2*...) i tots els àudios (*Vinyeta1.mp3*, *Vinyeta2.mp3*...).</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            5. Col·locar i ajustar clips
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>*Posar un clip a la línia de temps*: arrossega'l des de la safata del projecte. Les imatges i els títols van a una *pista de vídeo*; els àudios, a una *pista d'àudio*.</vf-text></li>
+                <li><vf-text>*Canviar la durada d'una imatge*: amb l'eina de selecció, arrossega la vora dreta del clip per allargar-lo o escurçar-lo.</vf-text></li>
+            </vf-list>
+            <vf-text>
+                L'ordre i la durada de cada vinyeta els tens explicats pas a pas al
+                [vídeo del còmic](projectes/comic/video-comic.html).
+            </vf-text>
+            <vf-callout type="consell">
+                Deixa activat l'*ajust magnètic* (la icona de l'imant): els clips s'enganxen sols a la vora del clip
+                anterior i al final de l'àudio, i així no queden buits ni solapaments.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">
+            6. Retallar i moure
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>*Tallar un clip pel cursor*: posa el cursor de reproducció on vols tallar, selecciona el clip i usa l'eina de tall (o la drecera de l'apartat 12).</vf-text></li>
+                <li><vf-text>*Llevar un tros*: talla'l pels dos extrems, selecciona el tros que sobra i prem *Supr*.</vf-text></li>
+                <li><vf-text>*Desplaçar clips*: arrossega'ls amb l'eina de selecció a un altre punt o a una altra pista.</vf-text></li>
+                <li><vf-text>*Desfer*: si t'equivoques, *Ctrl + Z*.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            7. Títols
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Per a escriure text (introducció, portada, crèdits) crea un *clip de títol*
+                (*Projecte &gt; Afegeix un clip de títol*). Escriu el text, tria la mida i el color, i accepta.
+            </vf-text>
+            <vf-text>
+                El clip de títol apareix a la safata del projecte: arrossega'l a la línia de temps i ajusta'n la durada
+                com qualsevol imatge. Què ha de portar cada títol ho diu la pàgina de cada activitat.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">
+            8. Transicions
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>Entre dos clips de la mateixa pista pots afegir una *fosa*: fes doble clic en la unió entre els dos clips (o selecciona'n un i usa el menú de transicions).</vf-text></li>
+                <li><vf-text>Fes-la *curta* (uns *0,5 segons*): arrossega les vores de la transició per a canviar-ne la durada.</vf-text></li>
+                <li><vf-text>Reprodueix el tros i comprova que la transició *no talla l'àudio* de cap vinyeta.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            9. So
+        </vf-title>
+        <vf-content>
+            <vf-list>
+                <li><vf-text>*Volum d'un clip o d'una pista*: aplica-li l'efecte de volum (o usa el mesclador d'àudio per a tota la pista).</vf-text></li>
+                <li><vf-text>*Música de fons*: posa-la en una pista d'àudio a banda i baixa-la fins a uns *-22 dB*, per davall de les veus.</vf-text></li>
+                <li><vf-text>*Fade in i fade out*: arrossega els xicotets cercles de les cantonades superiors del clip d'àudio cap a dins.</vf-text></li>
+                <li><vf-text>Escolta-ho sempre amb auriculars: la *veu s'ha d'entendre per damunt de la música* en totes les vinyetes.</vf-text></li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">
+            10. Exportar
+        </vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li><vf-text>Desa el projecte (*Ctrl + S*).</vf-text></li>
+                <li><vf-text>Obri la finestra de renderitzat (*Projecte &gt; Renderitza*).</vf-text></li>
+                <li><vf-text>Tria el format *MP4 (H.264)*, resolució *1920 x 1080* i *25 fps*.</vf-text></li>
+                <li><vf-text>Escriu el nom del fitxer que demana l'activitat.</vf-text></li>
+                <li><vf-text>Renderitza i espera que acabe. Després obri l'MP4 amb un reproductor i mira'l sencer.</vf-text></li>
+            </vf-list>
+            <vf-callout type="atencio">
+                L'exportació *tarda*: comença-la amb temps i no tanques Kdenlive ni apagues l'ordinador fins que acabe.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">
+            11. Problemes freqüents
+        </vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Problema</th>
+                            <th>Solució</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>La imatge es veu deformada o amb bandes negres.</td>
+                            <td>Revisa el perfil del projecte (<em>Projecte &gt; Configuració del projecte</em>): ha de ser 1920 x 1080.</td>
+                        </tr>
+                        <tr>
+                            <td>En obrir el projecte en un altre ordinador, diu que hi ha fitxers «no trobats».</td>
+                            <td>Mou sempre la <strong>carpeta sencera</strong> del còmic (projecte, Vinyetes i audios junts), no només el fitxer <code>.kdenlive</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Es veuen trossos negres entre vinyetes.</td>
+                            <td>Hi ha buits a la línia de temps: acosta el clip següent fins que toque l'anterior (amb l'ajust magnètic activat).</td>
+                        </tr>
+                        <tr>
+                            <td>La veu no s'entén perquè la música la tapa.</td>
+                            <td>Baixa el volum de la pista de música (uns -22 dB) o acaba-la amb un fade out abans que comencen les veus.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <vf-title level="2">
+            12. Dreceres principals
+        </vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Acció</th>
+                            <th>Drecera</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Reproduir / parar</td>
+                            <td><kbd>Espai</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Tallar el clip seleccionat pel cursor</td>
+                            <td><kbd>Maj</kbd> + <kbd>R</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Desfer</td>
+                            <td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Desar el projecte</td>
+                            <td><kbd>Ctrl</kbd> + <kbd>S</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Zoom a la línia de temps</td>
+                            <td><kbd>Ctrl</kbd> + roda del ratolí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrena dels còmics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Presentació, coavaluació i autoavaluació">Estrena dels còmics</vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">
+            Què farem en l'estrena
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Ha arribat el moment de veure tots els còmics! En esta sessió cada alumne/a presenta el seu còmic i el
+                projectem davant de tot el grup. Mentre els veiem, *coavaluarem* els còmics dels companys i, al final,
+                cadascú farà la seua *autoavaluació*.
+            </vf-text>
+            <vf-steps>
+                <vf-step title="Preparem l'estrena">
+                    <vf-text>Es preparen el projector i els altaveus i es fa la llista d'ordre de les presentacions.</vf-text>
+                </vf-step>
+                <vf-step title="Presentació i projecció de cada còmic">
+                    <vf-text>Quan et toque, presenta el teu còmic en *1 minut*: el *títol*, l'*ODS* que has treballat i el *missatge* que vols transmetre. Després es projecta el vídeo.</vf-text>
+                    <vf-text>Mentre es veuen els còmics dels companys, omple la *fitxa de coavaluació*.</vf-text>
+                </vf-step>
+                <vf-step title="Autoavaluació i propostes de millora">
+                    <vf-text>Al final de la sessió, omple la *fitxa d'autoavaluació* sobre el teu procés (guió, vinyetes, àudio, vídeo i organització) i escriu les teues propostes de millora.</vf-text>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <vf-title level="2">
+            Prepara la teua presentació
+        </vf-title>
+        <vf-content>
+            <vf-text>Tens *1 minut*. Porta pensat què diràs:</vf-text>
+            <vf-list>
+                <li><vf-text>*Títol* del còmic.</vf-text></li>
+                <li><vf-text>*ODS* que has treballat.</vf-text></li>
+                <li><vf-text>*Missatge*: quin problema explica el teu còmic i quina solució proposa.</vf-text></li>
+            </vf-list>
+            <vf-callout type="consell">
+                Parla amb veu clara. Si pots, connecta el teu còmic amb una situació real que el grup conega.
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">
+            Coavaluació dels còmics
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Puntua cada còmic dels companys amb esta rúbrica i escriu *un punt fort* i *una millora*. La nota de
+                cada indicador serà la *mitjana de tot el grup*. Els comentaris que escrigues els rebrà l'autor/a i li
+                serviran per a la seua autoavaluació: sigues concret/a i respectuós/a.
+            </vf-text>
+
+            <vf-title level="3">R6 Rúbrica de coavaluació de l'estrena</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CO1. Presentació del còmic</strong></td>
+                            <td>CE5.6</td>
+                            <td>30&nbsp;% (3&nbsp;%)</td>
+                            <td>No presenta el còmic o només en diu el títol.</td>
+                            <td>Diu el títol i l'ODS però no explica el missatge.</td>
+                            <td>Explica títol, ODS i missatge en un minut, amb veu clara.</td>
+                            <td>A més, connecta el còmic amb una situació real que el grup coneix.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CO2. El missatge arriba</strong></td>
+                            <td>CE5.6</td>
+                            <td>20&nbsp;% (2&nbsp;%)</td>
+                            <td>Després de veure'l no se sap de quin problema parla.</td>
+                            <td>S'entén el problema però no la solució.</td>
+                            <td>S'entenen el problema i la solució relacionats amb l'ODS.</td>
+                            <td>A més, el còmic fa pensar o emociona (el grup ho diu en els comentaris).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Fitxa de coavaluació</vf-title>
+            <vf-text>Una fila per cada còmic. Posa a cada indicador una nota de l'1 al 10 seguint la rúbrica.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 160px;">Autor/a del còmic</th>
+                            <th style="min-width: 110px;">CO1. Presentació (1-10)</th>
+                            <th style="min-width: 110px;">CO2. El missatge arriba (1-10)</th>
+                            <th style="min-width: 200px;">Un punt fort</th>
+                            <th style="min-width: 200px;">Una millora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <vf-title level="2">
+            Autoavaluació i millora
+        </vf-title>
+        <vf-content>
+            <vf-text>
+                Ara et toca valorar el teu propi treball. Omple la fitxa: marca amb una X com valores cada apartat i
+                explica'n el *motiu concret*. Després escriu *tres propostes de millora*. El professor qualificarà la
+                fitxa amb la rúbrica que tens més avall.
+            </vf-text>
+
+            <vf-title level="3">Fitxa d'autoavaluació</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 140px;">Apartat</th>
+                            <th class="text-center">Insuficient</th>
+                            <th class="text-center">Suficient-Bé</th>
+                            <th class="text-center">Notable</th>
+                            <th class="text-center">Excel·lent</th>
+                            <th style="min-width: 260px;">Per què? (motiu concret)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Guió</strong></td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vinyetes</strong></td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Àudio</strong></td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vídeo</strong></td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Organització</strong></td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td class="text-center">&#9744;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-callout type="consell">
+                Un motiu concret és, per exemple: «la vinyeta 7 té la bafarada damunt de la cara». «Està bé» no és un motiu.
+            </vf-callout>
+
+            <vf-text>*Tres propostes de millora* (almenys una a partir dels comentaris de la coavaluació):</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Núm.</th>
+                            <th>Proposta de millora</th>
+                            <th style="min-width: 160px;">Ve de la coavaluació? (sí/no)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">R7 Rúbrica d'autoavaluació i millora</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AT1. Valoració del resultat i del procés</strong></td>
+                            <td>CE5.6</td>
+                            <td>25&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Fitxa sense omplir o només amb notes sense cap explicació.</td>
+                            <td>Valora cada apartat, però amb explicacions genèriques («està bé»).</td>
+                            <td>Valora cada apartat amb un motiu concret (p. ex. «la vinyeta 7 té la bafarada damunt de la cara»).</td>
+                            <td>A més, la valoració és coherent amb les rúbriques rebudes i identifica què li va costar més del procés.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AT2. Propostes de millora</strong></td>
+                            <td>CE5.6</td>
+                            <td>25&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Cap proposta, o propostes que no es poden fer («fer-ho millor»).</td>
+                            <td>Una o dues propostes concretes.</td>
+                            <td>Tres propostes concretes, almenys una a partir dels comentaris de la coavaluació.</td>
+                            <td>A més, n'aplica una abans de tancar el lliurament o explica com l'aplicaria en el pròxim projecte.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <vf-content>
+            <vf-btn classes="btn-short" link="projectes/comic/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al Projecte Còmic</vf-btn>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

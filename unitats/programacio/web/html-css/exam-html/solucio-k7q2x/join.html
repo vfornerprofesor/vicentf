@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Join the Repair Café</title>
+</head>
+
+<body>
+    <!-- HTML exam · Name: Marta García López · Group: 1r SMX A -->
+    <header>
+        <h1>SMX Repair Café</h1>
+        <nav>
+            <a href="event.html">Home</a>
+            <a href="join.html">Join us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Book your place</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>About you</legend>
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </p>
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Your device</legend>
+                    <p>
+                        <label for="device">Device</label>
+                        <select id="device" name="device" required>
+                            <option value="">Choose one</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="desktop">Desktop PC</option>
+                            <option value="phone">Phone</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="problem">What is the problem?</label>
+                        <textarea id="problem" name="problem" rows="4" required></textarea>
+                    </p>
+                    <p>
+                        Do you bring the charger?
+                        <input type="radio" id="charger-yes" name="charger" value="yes" required>
+                        <label for="charger-yes">Yes</label>
+                        <input type="radio" id="charger-no" name="charger" value="no">
+                        <label for="charger-no">No</label>
+                    </p>
+                    <p>
+                        <label for="day">Preferred day</label>
+                        <input type="date" id="day" name="day">
+                    </p>
+                </fieldset>
+
+                <p>
+                    <input type="checkbox" id="rules" name="rules" required>
+                    <label for="rules">I accept that the repair is not guaranteed</label>
+                </p>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SMX students · <a href="mailto:repaircafe@example.com">repaircafe@example.com</a></p>
+    </footer>
+</body>
+
+</html>

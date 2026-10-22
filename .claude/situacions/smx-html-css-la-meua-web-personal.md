@@ -92,7 +92,7 @@ Després de cada prova hi ha una sessió de **correcció i reforç**: correcció
 | 14 | Miniprojecte 1 | Formulari; revisió en parelles amb la llista de requisits; lliurament en zip. |
 | 15 | 8. Semàntica | Àrees de la pàgina, `div` i `span`, accessibilitat. Ex. 8.1, 8.3. |
 | 16 | 8. Validació | Validador del W3C. Ex. 8.2 i pàgina dels mòduls de SMX (més exercicis). |
-| 17 | Repàs | Exercicis de repàs del format de la prova: esquelet de memòria, trobar errors, llista niada, taula, formulari, etiquetes semàntiques. |
+| 17 | Repàs | Repàs del format de la prova: una pàgina petita des de zero (esquelet, semàntica, llista niada, taula, imatge i enllaços) i la seua pàgina de formulari, validades amb 0 errors. |
 | 18 | Prova d'HTML | Prova individual (55 min). |
 | 19 | Correcció i reforç | Correcció comentada de la prova d'HTML i reforç. |
 
@@ -118,7 +118,7 @@ Després de cada prova hi ha una sessió de **correcció i reforç**: correcció
 | 35 | 13. Grid | Columnes, `fr`, `gap`. Ex. 13.1, 13.2. |
 | 36 | 13. Grid | Galeria d'imatges. Ex. 13.3. |
 | 37 | 13. Grid | Disposició de pàgina. Ex. 13.4 i tauler d'escacs (més exercicis). |
-| 38 | Repàs | Exercicis de repàs del format de la prova: selectors, càlcul de caixa, centrar, barra de navegació, galeria, trobar errors. |
+| 38 | Repàs | Repàs del format de la prova: donar tot l'estil a una pàgina HTML donada (selectors, text, caixes amb el càlcul, barra, centrar, targetes i galeria). |
 | 39 | Prova de CSS | Prova individual (55 min). |
 | 40 | Correcció i reforç | Correcció comentada de la prova de CSS i reforç. |
 | 41 | 14. Responsive | `viewport`, imatges flexibles. Ex. 14.1. |
@@ -188,11 +188,11 @@ Mateixa dinàmica de revisió en parelles. Criteris treballats: CA2.1, CA2.2.
 
 ### Prova d'HTML (sessió 18)
 
-Esquelet de memòria · corregir 8 errors en un codi donat · una llista niada · una taula amb `colspan` · un formulari de 4 camps amb `label` i `required` · triar l'etiqueta semàntica adequada en 6 casos.
+Dos exercicis, dues pàgines escrites des de zero per a un Repair Café: `event.html` (esquelet, etiquetes semàntiques, llista niada, taula amb `colspan`, imatge amb `figure`, enllaços interns, de correu i externs, entitats) i `join.html` (formulari de 7 camps en dos `fieldset`, amb `label`, tipus adequats i `required`). Les dues han de passar el validador amb 0 errors.
 
 ### Prova de CSS (sessió 39)
 
-Escriure una regla per a un selector donat · calcular la mida real d'una caixa · centrar una caixa amb flexbox · maquetar una barra de navegació · una galeria amb grid · trobar 5 errors en un CSS donat.
+Dos exercicis sobre una mateixa pàgina HTML donada, a la qual l'alumnat escriu tot el CSS: enllaçar el full, text i caixes (selectors, contenidor centrat, una caixa amb el càlcul de la seua mida en `content-box` i `border-box` escrit en un comentari, targetes) i maquetació (barra de navegació i caixa centrada amb flexbox, targetes en fila que baixen de línia, galeria amb grid).
 
 ### Projecte final — La meua web personal (sessions 47-62)
 
@@ -225,14 +225,14 @@ Si el lloc no s'obri o el menú no funciona, es torna per a corregir-lo abans de
 
 ### Rúbrica de la prova d'HTML
 
-**Rúbrica de 4 nivells**, una fila per criteri de RA1. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen **totes** les condicions; Insuficient és no arribar a Suficient.
+**Rúbrica de 4 nivells**, una fila per criteri de RA1. Els llindars concrets de cada nivell (quants elements, quines parts) estan en la guia de correcció de la prova. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen **totes** les condicions; Insuficient és no arribar a Suficient.
 
 | Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| PH1. Esquelet i correcció d'errors | CA1.1 | 50 % del criteri | A l'esquelet li falten 2 o més elements (doctype, `html` amb `lang`, `head`, `meta charset`, `title`, `body`) o estan mal niats, o corregix menys de 4 dels 8 errors. | Esquelet amb com a màxim un element absent o mal niat, i almenys 4 errors corregits. | Esquelet complet i ben niat, i almenys 6 errors corregits. | Esquelet complet, ben niat i sagnat, i els 8 errors corregits sense introduir-ne de nous. |
-| PH2. Llista niada i taula | CA1.2 | 50 % del criteri | Ni la llista niada ni la taula es veuen en el navegador com demana l'enunciat. | Almenys una de les dues es veu com demana l'enunciat. | Totes dues es veuen com demana l'enunciat, amb com a màxim un defecte de codi (subllista fora del `li`, capçalera sense `th`, una etiqueta sense tancar). | Totes dues sense cap defecte de codi; el `colspan` ocupa exactament les columnes demanades. |
-| PH3. Formulari | CA1.3 | 50 % del criteri | Menys de 2 camps complets (`label` associada amb `for`/`id`, tipus adequat i `required` on el demana l'enunciat). | 2 camps complets. | 3 camps complets. | Els 4 camps complets, dins d'un `form` amb botó d'enviament. |
-| PH4. Etiquetes semàntiques | CA1.4 | 25 % del criteri | 0-2 casos encertats de 6. | 3 casos encertats. | 4 o 5 casos encertats. | Els 6 casos encertats. |
+| PH1. Estructura del document | CA1.1 | 50 % del criteri | Falten 3 o més elements de l'esquelet (doctype, `html` amb `lang`, `head`, `meta charset`, `title`, `body`) sumant les pàgines, o una etiqueta sense tancar o mal niada trenca la pàgina. | Falten com a màxim 2 elements i les pàgines es veuen senceres. | Esquelets complets, encapçalaments en ordre i noms de fitxer exactes. | A més, codi sagnat, comentari d'autoria i caràcters especials escrits com a entitat. |
+| PH2. Llistes, taules, imatges i enllaços | CA1.2 | 50 % del criteri | Com a màxim una de les quatre parts (llista niada, taula, imatge, enllaços) es veu o funciona com demana l'enunciat. | 2 o 3 parts. | Les 4 parts, amb com a màxim 2 defectes de codi (subllista fora del `li`, capçalera sense `th`, `colspan` incorrecte, `alt` no descriptiu, ruta absoluta, enllaç extern sense pestanya nova). | Les 4 parts sense cap defecte. |
+| PH3. Formulari | CA1.3 | 50 % del criteri | Menys de la meitat dels camps complets (`label` associada amb `for`/`id`, tipus adequat i `required` només on el demana l'enunciat). | La meitat dels camps complets. | Tots menys un. | Tots, agrupats en `fieldset` amb `legend` i amb botó d'enviament dins del `form`. |
+| PH4. Semàntica i validació | CA1.4 | 25 % del criteri | Menys de 4 de les etiquetes semàntiques demanades en el seu lloc, o més de 6 errors en el validador sumant les pàgines. | 4 o 5 etiquetes ben posades i com a màxim 6 errors. | Totes menys una com a molt, i com a màxim 2 errors. | Totes en el seu lloc i en cada pàgina, cap `div` i 0 errors. |
 
 ### Rúbrica de la prova de CSS
 
@@ -240,9 +240,9 @@ Si el lloc no s'obri o el menú no funciona, es torna per a corregir-lo abans de
 
 | Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| PC1. Selectors i errors de CSS | CA2.1 | 40 % del criteri | El selector no tria els elements demanats, o corregix menys de 2 dels 5 errors. | El selector tria els elements demanats (encara que la regla tinga algun error de sintaxi), i almenys 2 errors corregits. | Selector i sintaxi correctes, i almenys 4 errors corregits. | Selector i sintaxi correctes, i els 5 errors corregits. |
-| PC2. Càlcul del model de caixa | CA2.2 | 50 % del criteri | No planteja el càlcul o suma valors que no formen part de la caixa. | Planteja el càlcul sumant contingut, `padding` i `border`, encara que cap de les dues dimensions done el resultat correcte. | Almenys una dimensió (amplària o altura) correcta. | Les dues dimensions correctes, amb el càlcul escrit. |
-| PC3. Flexbox i grid | CA2.3 | 50 % del criteri | Cap apartat (centrar amb flexbox, barra de navegació, galeria amb grid) funciona del tot i com a màxim un funciona amb defectes. | Almenys un apartat funciona del tot, o almenys dos funcionen amb defectes (alineació, `gap`, nombre de columnes). | Almenys dos apartats funcionen del tot. | Els tres apartats funcionen sense defectes. |
+| PC1. Selectors i format del text | CA2.1 | 40 % del criteri | El full no està enllaçat, o menys de la meitat de les regles trien només els elements demanats i fan el que es demana. | La meitat de les regles o més. | Totes menys una com a molt. | Totes, el `link` en el `head`, mides de text en `rem` i 0 errors en el validador de CSS. |
+| PC2. Model de caixa | CA2.2 | 50 % del criteri | No planteja el càlcul de la caixa o suma valors que no en formen part. | El càlcul suma contingut, `padding` i `border`, encara que el resultat no isca. | Caixa visible en `content-box` correcta en les dues dimensions i contenidor centrat amb `max-width` i `margin` automàtic. | A més, l'àrea de contingut en `border-box` correcta i les targetes amb `padding`, `border-radius` i `box-shadow`. |
+| PC3. Flexbox i grid | CA2.3 | 50 % del criteri | Cap maquetació (barra, centrar, targetes, galeria) funciona del tot i com a màxim una funciona amb defectes. | Una funciona del tot, o dues o més funcionen amb defectes (alineació, `gap`, `wrap`, nombre de columnes, propietat en el fill). | La meitat o més funcionen del tot. | Totes funcionen del tot. |
 
 ### Rúbrica del projecte
 

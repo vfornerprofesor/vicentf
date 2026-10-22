@@ -1,28 +1,9 @@
 /* CSS exam - SOLUTION */
 
 /* ---------- Given styles: do not change them ---------- */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-    color: #23272f;
-}
-
-header,
-main section {
-    padding: 1rem;
-}
-
 .stage {
-    height: 240px;
+    height: 200px;
     background-color: #e4ecf4;
-}
-
-.box {
-    width: 120px;
-    height: 60px;
-    background-color: #1f3c5a;
-    color: #ffffff;
 }
 
 .photo {
@@ -34,31 +15,69 @@ main section {
 }
 
 
-/* ---------- Exercise 1 ---------- */
-/* Descendant + class selector: only the .lead inside .intro.
-   ".lead" alone would also change the paragraph in .news (wrong). */
+/* ---------- Exercise 1: text and boxes ---------- */
+
+/* 1. The page */
+body {
+    margin: 0;
+    background-color: #f4f3fa;
+    color: #23272f;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 2. The title */
+#title {
+    text-align: center;
+    text-transform: uppercase;
+    color: #1f3c5a;
+}
+
+/* 3. Only the lead paragraphs of .intro (the one of .news does not change) */
 .intro .lead {
     font-size: 1.25rem;
     color: #1f3c5a;
     line-height: 1.6;
 }
 
-/* Id selector */
-#title {
-    text-align: center;
-    text-transform: uppercase;
+/* 4. The box of the tournament */
+.box {
+    width: 200px;
+    height: 100px;
+    padding: 10px 20px;
+    border: 5px solid #f2a541;
+    background-color: #1f3c5a;
+    color: #ffffff;
+    /*
+       A) content-box: visible box
+          width  = 200 + 20 + 20 + 5 + 5 = 250 px
+          height = 100 + 10 + 10 + 5 + 5 = 130 px
+       B) border-box: the visible box is 200 x 100 px
+          content width  = 200 - 20 - 20 - 5 - 5 = 150 px
+          content height = 100 - 10 - 10 - 5 - 5 = 70 px
+    */
+    box-sizing: border-box;
+}
+
+/* 5. The cards */
+.card {
+    padding: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #d8d6e3;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 
-/* ---------- Exercise 3 ---------- */
-.stage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* ---------- Exercise 2: layout ---------- */
 
-
-/* ---------- Exercise 4 ---------- */
+/* 1. Navigation bar */
 nav ul {
     display: flex;
     justify-content: center;
@@ -71,9 +90,9 @@ nav ul {
 nav a {
     display: block;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
     background-color: #1f3c5a;
     color: #ffffff;
+    border-radius: 6px;
     text-decoration: none;
 }
 
@@ -82,8 +101,25 @@ nav a:hover {
     color: #1f3c5a;
 }
 
+/* 2. The box in the centre of the stage */
+.stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* ---------- Exercise 5 ---------- */
+/* 3. The cards in a row that wraps */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    flex: 1 1 250px;
+}
+
+/* 4. The gallery */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

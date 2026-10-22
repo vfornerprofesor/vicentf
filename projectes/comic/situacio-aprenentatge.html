@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situació d'aprenentatge - Projecte Còmic</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Situació d'aprenentatge · Projecte Còmic (document per al professorat)">Un còmic per a canviar el món</vf-title>
+
+        <div class="center">
+            <vf-badge>3r ESO</vf-badge>
+            <vf-badge>Intel·ligència Artificial, Programació i Robòtica II</vf-badge>
+            <vf-badge>22 sessions</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="projectes/comic/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al projecte</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Justificació i context</vf-title>
+        <vf-content>
+            <vf-text>Primera SA del curs, que ocupa tot el primer trimestre. L'alumnat crea un còmic animat i sonoritzat sobre un dels Objectius de Desenvolupament Sostenible. Primer planifica (tria de l'ODS, història i guió multimèdia de com a mínim 15 vinyetes en equip o 10 individual) i fa les vinyetes amb Storyboard That; després aprén Audacity amb activitats, grava i munta l'àudio de cada vinyeta; finalment aprén Kdenlive muntant directament el vídeo del còmic, sincronitzant vinyetes i àudio, i munta un segon vídeo amb la cançó «De ellos aprendí».</vf-text>
+            <vf-text>L'alumnat consumeix contingut audiovisual a diari però rarament planifica una producció pròpia: comença a crear sense guió, no organitza els arxius, fa servir música i imatges sense pensar en els drets i no sap valorar ni millorar el resultat.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Repte / producte final</vf-title>
+        <vf-content>
+            <vf-callout type="exercici">
+                <strong>«Conta una història que ajude a canviar el món.»</strong> Fes un còmic animat i sonoritzat que faça pensar sobre un ODS.
+            </vf-callout>
+            <vf-list>
+                <li><strong>Intermedis</strong>: document «Guió multimèdia» (PDF), carpeta <code>vinyetes.zip</code>, activitats d'Audacity i àudios <code>Vinyeta1.mp3</code>, <code>Vinyeta2.mp3</code>… (lliurats en <code>audios.zip</code>).</li>
+                <li><strong>Finals</strong>: vídeo <code>comic_Nom_Cognom.mp4</code> amb introducció, totes les vinyetes sincronitzades amb el so, transicions i crèdits amb l'ODS treballat, i vídeo de la cançó «De ellos aprendí» (<code>pelicules_Nom_Cognom.mp4</code>).</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Fitxa de programació</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Context</strong>: Personal, Educatiu i Social.</li>
+                <li><strong>Problema</strong>: l'alumnat consumeix contingut audiovisual però no planifica una producció pròpia, no organitza els arxius, no pensa en els drets dels recursos i no sap valorar ni millorar el resultat.</li>
+                <li><strong>Producte intermedi i/o final</strong>: guió multimèdia, <code>vinyetes.zip</code>, activitats d'Audacity, àudios de les vinyetes; vídeo del còmic <code>comic_Nom_Cognom.mp4</code> i vídeo de la cançó «De ellos aprendí».</li>
+                <li><strong>Reptes del s. XXI i ODS</strong>: compromís davant les situacions d'inequitat i exclusió i consciència ecosocial, a partir de la creació de continguts propis. ODS triat per l'alumnat (1-17) i ODS 4: Educació de qualitat: el còmic explica el problema, el desenvolupament i una solució a un repte global.</li>
+                <li><strong>Competències clau</strong>: CCL, CD, CPSAA, CC, CE, CCEC.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Competència específica</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Descripció</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE5</td>
+                            <td>Planificar i produir una narració multimèdia (còmic animat i sonoritzat), des del guió fins al muntatge audiovisual, combinant imatge, text, àudio i vídeo per a comunicar un missatge de manera creativa, respectant els drets d'autoria i valorant el resultat.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Criteris d'avaluació</vf-title>
+        <vf-content>
+            <vf-text>El pes és el pes del criteri dins de CE5. Com que la SA treballa tots els criteris de CE5 i només els d'esta competència, sumen 100&nbsp;%.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteri</th>
+                            <th>Descripció</th>
+                            <th>Pes %</th>
+                            <th>Justificació del pes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE5.1</td>
+                            <td>Planificar la producció mitjançant un guió multimèdia que descriga, per a cada vinyeta, l'escena, els personatges, el text i el so, coherent amb el missatge i l'ODS triat.</td>
+                            <td>15</td>
+                            <td>Base de tot el projecte; es concentra en un sol document (T1-T2).</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.2</td>
+                            <td>Crear les vinyetes aplicant els elements del llenguatge del còmic (escenes, plans, personatges, bafarades i cartutxos) amb una seqüència narrativa comprensible.</td>
+                            <td>20</td>
+                            <td>Primer producte visual i nucli narratiu del còmic.</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.3</td>
+                            <td>Gravar i editar àudio digital (nivells, reducció de soroll, normalització, pistes, esvaïments i efectes) i exportar-lo en el format adequat.</td>
+                            <td>20</td>
+                            <td>Destresa tècnica nova amb moltes operacions; pràctica guiada i aplicació.</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.4</td>
+                            <td>Muntar vídeo amb un editor no lineal sincronitzant imatge i so, amb introducció, transicions i crèdits, i exportar-lo amb els paràmetres adequats.</td>
+                            <td>25</td>
+                            <td>El més complex i integrador: reunix tots els recursos i dona els dos productes finals.</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.5</td>
+                            <td>Organitzar els recursos del projecte (carpetes, noms d'arxiu, formats de treball i d'exportació) i utilitzar recursos lliures de drets citant-ne l'autoria.</td>
+                            <td>10</td>
+                            <td>Hàbit transversal que es comprova en cada lliurament.</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.6</td>
+                            <td>Presentar el producte final, valorar-ne el resultat i proposar millores a partir de l'autoavaluació i la coavaluació.</td>
+                            <td>10</td>
+                            <td>Tancament reflexiu en una sola sessió.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sabers bàsics</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Producció multimèdia: fases, guió multimèdia i storyboard.</li>
+                <li>Llenguatge del còmic: vinyetes, plans, personatges, diàlegs, bafarades i cartutxos.</li>
+                <li>Captura de pantalla i organització de recursos: carpetes, noms, formats i compressió (ZIP).</li>
+                <li>Àudio digital: interfície d'Audacity, gravació, nivells, reducció de soroll, normalització, pistes, esvaïments, efectes i exportació a MP3.</li>
+                <li>Vídeo digital: interfície de Kdenlive, pistes, línia de temps, retall, sincronització, transicions, títols i exportació (MP4, resolució i fotogrames per segon).</li>
+                <li>Recursos lliures de drets i llicències (Pixabay, Freesound). Citació de l'autoria. Ús educatiu d'obres amb drets.</li>
+                <li>Objectius de Desenvolupament Sostenible.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Descriptors del perfil d'eixida</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>CCL1</strong>: expressió escrita i oral coherent i correcta (guió, diàlegs, gravació de veus, presentació).</li>
+                <li><strong>CD1</strong>: cerca i selecció de recursos respectant la propietat intel·lectual (sons, música, imatges).</li>
+                <li><strong>CD2</strong>: creació de continguts digitals amb l'eina adequada a cada fase (Storyboard That, Audacity, Kdenlive).</li>
+                <li><strong>CPSAA5</strong>: planificació a mitjà termini i retroalimentació per aprendre dels errors (guió, autoavaluació, propostes de millora).</li>
+                <li><strong>CC4</strong>: comprensió de les relacions ecosocials i compromís amb el desenvolupament sostenible (ODS).</li>
+                <li><strong>CE3</strong>: procés de creació d'una idea fins al producte final.</li>
+                <li><strong>CCEC3, CCEC4</strong>: expressió d'idees amb una producció audiovisual pròpia i ús creatiu de tècniques visuals, sonores i audiovisuals.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seqüència de sessions</vf-title>
+        <vf-content>
+            <vf-text>En totes les sessions de pràctica: 5 min d'arrancada (encendre l'equip, iniciar sessió, obrir la carpeta del curs) i 5 min finals de desar i tancar. Agrupament per defecte: individual. Norma d'aula en les tasques autònomes: «pregunta a dos companys abans que al professor».</vf-text>
+            <vf-steps>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T1 — Triem l'ODS i la història (sessions 1-2) · CE5.1</vf-title>
+                    <vf-title level="4">Sessió 1 — Presentació i ODS (55 min)</vf-title>
+                    <vf-list>
+                        <li>15 min: presentació de l'assignatura i del projecte; es mostren les rúbriques de tot el projecte.</li>
+                        <li>10 min: qüestionari inicial.</li>
+                        <li>20 min: exploració dels ODS a la web de Nacions Unides (llista reduïda amb exemples per a qui la necessite).</li>
+                        <li>10 min: creació del document «Guió multimèdia» a la carpeta del curs (Informàtica - 3 ESO), amb el títol provisional i els tres punts.</li>
+                        <li>Material: web dels ODS, Document de Google, plantilla del guió, web de la matèria.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 2 — ODS i resum de la història (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>20 min: redacció del punt 1 (ODS: de què tracta i per què l'he triat).</li>
+                        <li>25 min: redacció del punt 2 (resum: plantejament, desenvolupament, conclusió amb solució; personatges i ambients) amb preguntes guia. Revisió entre iguals del resum i revisió ràpida del professor.</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T2 — El guió multimèdia (sessions 3-4) · CE5.1, CE5.2</vf-title>
+                    <vf-title level="4">Sessió 3 — Què és un guió multimèdia (55 min)</vf-title>
+                    <vf-list>
+                        <li>15 min: què és un guió multimèdia, exemples, taula per vinyeta (escena, so, personatges, diàlegs, altres elements).</li>
+                        <li>35 min: divisió de la història en vinyetes i emplenament de les taules.</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 4 — Acabem i revisem el guió (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>25 min: acabament del guió.</li>
+                        <li>15 min: coavaluació per parelles amb la llista de control del guió (seqüència, coherència amb l'ODS, respecte) i correccions.</li>
+                        <li>10 min: exportació a PDF i lliurament a Aules.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T3 — Fem les vinyetes (sessions 5-8) · CE5.2, CE5.5</vf-title>
+                    <vf-title level="4">Sessió 5 — Storyboard That i captures (55 min)</vf-title>
+                    <vf-list>
+                        <li>15 min: demostració de Storyboard That (escenes, personatges, textos, formes) i de la captura de regió (Shutter).</li>
+                        <li>35 min: primeres tres vinyetes, captura i canvi de nom (Vinyeta1, Vinyeta2, Vinyeta3).</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessions 6-7 — Creació de vinyetes (55 min cada una)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>45 min: resta de vinyetes de tres en tres, captura, canvi de nom i pujada a la carpeta Vinyetes del núvol.</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 8 — Revisió i lliurament de les vinyetes (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>30 min: revisió amb el guió al costat (que representen el guió, que no hi haja cap falta de respecte); vinyetes pendents.</li>
+                        <li>15 min: compressió de la carpeta i lliurament de <code>vinyetes.zip</code> a Aules.</li>
+                        <li>5 min: tancament.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T4 — Aprenem Audacity (sessions 9-11) · CE5.3</vf-title>
+                    <vf-title level="4">Sessió 9 — Interfície i edició bàsica (55 min)</vf-title>
+                    <vf-list>
+                        <li>15 min: interfície (transport, eines, dispositius, mesuradors, pistes i línia de temps); prova de gravació amb el nivell entre -12 dB i -6 dB; importació d'àudio des del mòbil.</li>
+                        <li>35 min: activitat 1 (seleccionar, tallar, copiar, desfer): exercicis 1 i 3 de la web.</li>
+                        <li>5 min: exportar i pujar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 10 — Netejar una gravació (55 min)</vf-title>
+                    <vf-list>
+                        <li>10 min: demostració de reducció de soroll (perfil de soroll), tall de silencis, normalitzar (-1 dB) i amplificar.</li>
+                        <li>40 min: activitat 2: exercici 2 de la web, i normalització del resultat.</li>
+                        <li>5 min: exportar i pujar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 11 — Pistes, esvaïments i efectes (55 min)</vf-title>
+                    <vf-list>
+                        <li>10 min: demostració de diverses pistes, so de fons a -18/-20 dB, esvaïments, efectes i exportació a MP3; projecte <code>.aup3</code>.</li>
+                        <li>40 min: activitat 3: exercicis 4, 5 i 6 de la web.</li>
+                        <li>5 min: exportar i pujar.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T5 — Gravem els àudios de les vinyetes (sessions 12-13) · CE5.3, CE5.5</vf-title>
+                    <vf-title level="4">Sessió 12 — Assaig i gravació (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>10 min: assaig dels diàlegs amb el guió.</li>
+                        <li>35 min: gravació de les veus de la primera meitat de les vinyetes, per torns en un espai silenciós.</li>
+                        <li>5 min: desar els projectes.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 13 — Gravació i neteja (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>45 min: gravació de la resta de vinyetes, reducció de soroll, tall de silencis i normalització; organització dels projectes a la carpeta <code>audios</code>. Escolta entre iguals.</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T6 — Muntatge de l'àudio de les vinyetes (sessions 14-15) · CE5.3, CE5.5</vf-title>
+                    <vf-title level="4">Sessió 14 — Fons i efectes (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>15 min: cerca de sons de fons i efectes (Pixabay, Freesound).</li>
+                        <li>30 min: muntatge en pistes amb fade in i fade out i la veu per damunt de la música.</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 15 — Revisió i exportació (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>35 min: revisió de volums, exportació de tots els MP3 i dels projectes <code>.aup3</code>.</li>
+                        <li>10 min: escolta creuada i compressió <code>audios.zip</code>; lliurament.</li>
+                        <li>5 min: tancament.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T7 — Aprenem Kdenlive amb el vídeo del còmic (sessions 16-17) · CE5.4</vf-title>
+                    <vf-text>Kdenlive s'aprén directament sobre el projecte del vídeo del còmic, amb demostració projectada i pràctica guiada pas a pas; la pàgina de suport de Kdenlive fa de guia. No hi ha activitats de pràctica separades: l'evidència és el vídeo del còmic (T8) i el de la cançó (T9).</vf-text>
+                    <vf-title level="4">Sessió 16 — Interfície i primeres vinyetes (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>15 min: demostració: perfil del projecte (1920&nbsp;x&nbsp;1080, 25 fps), safata de projecte, monitor, pistes i línia de temps.</li>
+                        <li>30 min: pràctica guiada sobre el propi còmic: importació de vinyetes i àudios, Vinyeta1 + Vinyeta1.mp3 a la línia de temps, ajust de la durada de la imatge a la de l'àudio; es repeteix amb les primeres vinyetes.</li>
+                        <li>5 min: desar el projecte.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 17 — Introducció, transicions i títols (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>15 min: demostració: clip de títol per a la introducció, música de fons amb fade out, transició de fosa.</li>
+                        <li>30 min: pràctica guiada: introducció del còmic (títol, nom i cognom, curs) i continuació del muntatge de les vinyetes.</li>
+                        <li>5 min: desar el projecte.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T8 — Muntem el vídeo del còmic (sessions 18-19) · CE5.4, CE5.5</vf-title>
+                    <vf-title level="4">Sessió 18 — Muntatge de totes les vinyetes (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>45 min: muntatge autònom de la resta de vinyetes, en ordre i sense buits, ajustant la durada de cada imatge a la del seu àudio.</li>
+                        <li>5 min: desar el projecte.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 19 — Acabat i exportació (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>10 min: demostració breu de l'exportació a MP4 (1920&nbsp;x&nbsp;1080, 25 fps).</li>
+                        <li>25 min: transicions, final amb crèdits (ODS, nom, grup, IES Betxí, curs), revisió del so.</li>
+                        <li>15 min: exportació de <code>comic_Nom_Cognom.mp4</code> i lliurament a Aules o enllaç del núvol (l'exportació pot tardar: començar-la amb temps).</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T9 — Vídeo de la cançó «De ellos aprendí» (sessions 20-21) · CE5.4, CE5.5</vf-title>
+                    <vf-text>Individual o en parella.</vf-text>
+                    <vf-title level="4">Sessió 20 — Taula de muntatge, imatges i muntatge (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>20 min: taula temps · frase · pel·lícula; selecció i preparació de les imatges a la carpeta <code>pelicules</code>.</li>
+                        <li>25 min: muntatge sobre la pista de la cançó marcant els canvis amb el ritme.</li>
+                        <li>5 min: desar.</li>
+                    </vf-list>
+                    <vf-title level="4">Sessió 21 — Sincronització, crèdits i exportació (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: arrancada.</li>
+                        <li>30 min: ajustos de sincronització, portada i crèdits (nom, grup, IES Betxí, curs).</li>
+                        <li>20 min: exportació de <code>pelicules_Nom_Cognom.mp4</code> i lliurament.</li>
+                    </vf-list>
+                </vf-step>
+                <vf-step>
+                    <vf-title level="3" styles="margin-top:0">T10 — Estrena i valoració (sessió 22) · CE5.6</vf-title>
+                    <vf-title level="4">Sessió 22 — Estrena dels còmics (55 min)</vf-title>
+                    <vf-list>
+                        <li>5 min: preparar projector i altaveus; llista d'ordre.</li>
+                        <li>35 min: estrena dels còmics (presentació d'1 min: títol, ODS i missatge, i projecció); coavaluació amb rúbrica de cada còmic.</li>
+                        <li>15 min: autoavaluació del procés (guió, vinyetes, àudio, vídeo, organització) i propostes de millora.</li>
+                    </vf-list>
+                </vf-step>
+            </vf-steps>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats</vf-title>
+        <vf-content>
+            <vf-text>Les instruccions completes per a l'alumnat són a la web de la matèria (<a href="projectes/comic/index.html">Projecte Còmic</a>). Per a cada tasca: enunciat breu i nivells.</vf-text>
+            <vf-title level="3">T1-T2 — Guió multimèdia</vf-title>
+            <vf-text><strong>Enunciat</strong>: crea el document «Guió multimèdia» amb títol i tres punts: 1) ODS (de què tracta i per què l'has triat), 2) resum de la història (plantejament d'un problema, desenvolupament, conclusió amb una solució; personatges i ambients), 3) guió dividit en com a mínim 15 vinyetes en equip o 10 individual; per a cada vinyeta, un subtítol, un resum i una taula amb Escena, So, Personatges, Diàlegs i Altres elements. Lliura'l en PDF a Aules.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: plantilla amb la taula ja creada; mínim de 10 vinyetes; preguntes guia; pot explicar la història oralment abans d'escriure-la.</li>
+                <li><strong>Estàndard</strong>: 15 vinyetes en equip (10 si es fa individual) amb totes les files de la taula plenes.</li>
+                <li><strong>Ampliació</strong>: més de 20 vinyetes amb canvis de pla indicats a «Altres elements».</li>
+            </vf-list>
+
+            <vf-title level="3">T3 — Vinyetes</vf-title>
+            <vf-text><strong>Enunciat</strong>: crea totes les vinyetes del guió amb Storyboard That, captura cada vinyeta, anomena-la Vinyeta1, Vinyeta2…, puja-les a la carpeta Vinyetes del núvol i lliura <code>vinyetes.zip</code>.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: targeta de passos amb captures; menys vinyetes; company tutor.</li>
+                <li><strong>Estàndard</strong>: totes les vinyetes del guió amb escenes, personatges i bafarades.</li>
+                <li><strong>Ampliació</strong>: plans diferents i cartutxos narratius.</li>
+            </vf-list>
+
+            <vf-title level="3">T4 — Activitats d'Audacity</vf-title>
+            <vf-text><strong>Enunciat</strong>: fes els sis exercicis de la pàgina Audacity (1 unir àudios, 2 llevar el soroll, 3 llevar la tos i completar la frase, 4 jugar amb la veu, 5 efectes de so, 6 efecte ràdio amb música de fons), exporta cada resultat a MP3 i puja'l a Aules.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: guia visual de la interfície; exercicis 1, 2 i 5 amb menys passos.</li>
+                <li><strong>Estàndard</strong>: els sis exercicis.</li>
+                <li><strong>Ampliació</strong>: exercici 6 amb envolupant de volum ajustat amb precisió i equalització.</li>
+            </vf-list>
+
+            <vf-title level="3">T5-T6 — Àudios de les vinyetes</vf-title>
+            <vf-text><strong>Enunciat</strong>: per a cada vinyeta grava la veu, lleva el soroll, talla silencis, normalitza a -1 dB, afig so de fons (-18/-20 dB, fade in i fade out) i efectes lliures de drets, exporta a MP3 (128-192 kbps) com a <code>VinyetaN.mp3</code> a la carpeta <code>audios</code>, guarda el <code>.aup3</code> i lliura <code>audios.zip</code>.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: menys vinyetes amb veu (la resta, amb text); veu sintètica com a alternativa; llista de passos numerada sense efectes; sons de fons preseleccionats.</li>
+                <li><strong>Estàndard</strong>: totes les vinyetes amb veu, fons i almenys un efecte on l'acció ho demana.</li>
+                <li><strong>Ampliació</strong>: diverses pistes d'efectes i equalització.</li>
+            </vf-list>
+
+            <vf-title level="3">T7-T8 — Vídeo del còmic amb Kdenlive</vf-title>
+            <vf-text><strong>Enunciat</strong>: seguint la demostració i la pàgina de suport de Kdenlive, munta el còmic amb una introducció (títol, nom i cognom, curs; 3-5 s amb música), totes les vinyetes en ordre amb la durada del seu àudio i sense buits, transicions, un final amb l'ODS i crèdits (nom, grup, IES Betxí, curs; 3-5 s), i exporta <code>comic_Nom_Cognom.mp4</code> (1920&nbsp;x&nbsp;1080, 25 fps).</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: projecte de vídeo amb la introducció ja feta; targeta de dreceres; sense transicions.</li>
+                <li><strong>Estàndard</strong>: tots els elements de l'enunciat.</li>
+                <li><strong>Ampliació</strong>: títols animats, efectes i fotogrames clau, i música de fons general a -22 dB.</li>
+            </vf-list>
+
+            <vf-title level="3">T9 — Vídeo de la cançó</vf-title>
+            <vf-text><strong>Enunciat</strong>: fes la taula temps · frase · pel·lícula, busca una imatge (o clip) per frase, guarda-les a <code>pelicules</code> amb noms ordenats (<code>01_rei-lleo.png</code>…), munta-les amb Kdenlive sincronitzades amb la cançó sobre un fons uniforme, amb portada (títol, imatges) i crèdits (nom, grup, IES Betxí, curs), i exporta <code>pelicules_Nom_Cognom.mp4</code>.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: plantilla de projecte amb la cançó i les marques de temps; menys canvis d'imatge; només imatges.</li>
+                <li><strong>Estàndard</strong>: una imatge per frase, sincronitzada, amb transicions.</li>
+                <li><strong>Ampliació</strong>: imatges i vídeos o només vídeos; lletra subtitulada i sincronitzada.</li>
+            </vf-list>
+
+            <vf-title level="3">T10 — Estrena i valoració</vf-title>
+            <vf-text><strong>Enunciat</strong>: presenta el teu còmic (títol, ODS i missatge), coavalua els còmics dels companys amb la rúbrica (un punt fort i una millora per còmic) i completa l'autoavaluació amb tres propostes de millora.</vf-text>
+            <vf-list>
+                <li><strong>Bàsic</strong>: autoavaluació amb escala visual; presentació en grup reduït.</li>
+                <li><strong>Estàndard</strong>: presentació davant del grup i autoavaluació completa.</li>
+                <li><strong>Ampliació</strong>: proposta de millora aplicada a una vinyeta o a un àudio abans de tancar el lliurament.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Atenció a la diversitat (DUA)</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tasca</th>
+                            <th style="min-width: 260px;">Mesures de resposta I-II (metodologia, agrupament, recursos)</th>
+                            <th style="min-width: 260px;">Mesures de resposta III-IV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>T1</strong></td>
+                            <td>presentació en gran grup i treball individual amb revisió entre iguals del resum. Web dels ODS, Document de Google a la carpeta Informàtica - 3 ESO, plantilla del guió, web de la matèria.</td>
+                            <td>llista reduïda d'ODS amb exemples; preguntes guia; explicar la història oralment abans d'escriure-la; temps addicional.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T2</strong></td>
+                            <td>explicació amb exemples, treball individual i coavaluació per parelles. Llista de control del guió i exemples de guions.</td>
+                            <td>plantilla amb la taula ja creada; mínim de vinyetes reduït (10); suport del professor en la divisió en escenes; altes capacitats: guió de més de 20 vinyetes amb canvis de pla.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T3</strong></td>
+                            <td>demostració projectada i treball individual autònom. Storyboard That, ferramenta de captura, carpeta al núvol, rúbrica de vinyetes.</td>
+                            <td>targeta de passos amb captures; reducció del nombre de vinyetes; company tutor; ampliació de pantalla; altes capacitats: plans diferents i cartutxos narratius.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T4</strong></td>
+                            <td>demostració i pràctica guiada individual; gravació en un espai silenciós per torns. Audacity, auriculars amb micròfon o mòbil, arxius de pràctica, fitxes d'activitats.</td>
+                            <td>guia visual de la interfície; gravació assistida; veu sintètica per a alumnat amb dificultats d'expressió oral; activitats amb menys passos; temps addicional.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T5</strong></td>
+                            <td>treball individual (o en parella si el grup comparteix veus), una vinyeta cada vegada; revisió entre iguals de l'audició.</td>
+                            <td>gravació per torns amb acompanyament; menys vinyetes amb veu; veu sintètica; temps ampliat.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T6</strong></td>
+                            <td>treball individual autònom amb revisió del professor i escolta creuada. Bancs de sons lliures.</td>
+                            <td>llista de passos numerada i reduïda (sense efectes); sons de fons preseleccionats; suport individual en els volums; altes capacitats: diverses pistes d'efectes i equalització.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T7</strong></td>
+                            <td>demostració projectada i pràctica guiada individual sobre el propi vídeo del còmic. Pàgina de suport de Kdenlive.</td>
+                            <td>projecte del còmic amb el perfil i les primeres vinyetes ja col·locades; targeta amb les dreceres; temps ampliat; altes capacitats: efectes i fotogrames clau.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T8</strong></td>
+                            <td>treball individual autònom amb revisió del professor. Rúbrica del vídeo.</td>
+                            <td>projecte de vídeo amb la introducció ja feta; reducció de requisits (sense transicions); temps ampliat; altes capacitats: títols animats i música de fons general.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T9</strong></td>
+                            <td>treball individual o en parella amb revisió del professor. Pista de la cançó proporcionada pel professor.</td>
+                            <td>plantilla de projecte amb la cançó i les marques de temps; menys canvis d'imatge; temps ampliat; altes capacitats: lletra subtitulada i sincronitzada.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T10</strong></td>
+                            <td>visionat en gran grup, coavaluació i autoavaluació individual.</td>
+                            <td>autoavaluació amb escala visual; presentar el còmic en grup reduït; temps addicional per a completar el lliurament.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>Quan s'aplica una mesura que redueix requisits (p. ex. 10 vinyetes, sense transicions, sense efectes), la rúbrica s'aplica sobre el requisit adaptat.</vf-text>
+
+            <vf-title level="3">Accessibilitat</vf-title>
+            <vf-list>
+                <li><strong>Física</strong>: dreceres de teclat i ratolí alternatiu; gravació amb el mòbil si l'ús del micròfon de l'ordinador és difícil.</li>
+                <li><strong>Sensorial</strong>: instruccions en vídeo, demostració projectada i targetes amb captures; ampliació de pantalla; subtítols en els vídeos d'exemple; per a alumnat amb dificultats auditives, prioritat a bafarades i text en les vinyetes i comprovació visual dels mesuradors de nivell.</li>
+                <li><strong>Cognitiva</strong>: tasques dividides en passos numerats, una vinyeta cada vegada, rúbriques conegudes des de l'inici, llistes de control.</li>
+                <li><strong>Emocional</strong>: gravació en espai separat i per torns (o veu sintètica) per a qui li fa vergonya la seua veu; presentació en grup reduït; tria lliure de l'ODS i de la història.</li>
+                <li>Es considera la perspectiva cultural, de gènere i socioeconòmica (personatges i ambients diversos; treball a l'aula sense necessitat d'equip propi) i la connexió amb els ODS, afavorint el rol actiu de l'alumnat i el seguiment continu amb feedback.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Instruments d'avaluació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Moment</th>
+                            <th>Qui avalua</th>
+                            <th>Activitat on s'aplica</th>
+                            <th>Tipus de qualificació</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Llista de control del guió (formativa)</td>
+                            <td>Sessió 4</td>
+                            <td>Co (parelles)</td>
+                            <td>T2</td>
+                            <td>Fet/no fet, sense qualificació: serveix per a corregir abans del lliurament</td>
+                        </tr>
+                        <tr>
+                            <td>R1 Rúbrica del guió multimèdia</td>
+                            <td>Lliurament T2</td>
+                            <td>Hetero</td>
+                            <td>T1, T2</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>R2 Rúbrica de les vinyetes</td>
+                            <td>Lliurament T3</td>
+                            <td>Hetero</td>
+                            <td>T3</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>E1 Escala de les activitats d'Audacity</td>
+                            <td>Lliurament de cada exercici (sessions 9-11)</td>
+                            <td>Hetero</td>
+                            <td>T4</td>
+                            <td>Escala de 3 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>R3 Rúbrica dels àudios de les vinyetes</td>
+                            <td>Lliurament T6</td>
+                            <td>Hetero</td>
+                            <td>T5, T6</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>R4 Rúbrica del vídeo del còmic</td>
+                            <td>Lliurament T8</td>
+                            <td>Hetero</td>
+                            <td>T7, T8</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>R5 Rúbrica del vídeo de la cançó</td>
+                            <td>Lliurament T9</td>
+                            <td>Hetero</td>
+                            <td>T9</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>R6 Rúbrica de coavaluació de l'estrena</td>
+                            <td>Sessió 22</td>
+                            <td>Co (tot el grup puntua cada còmic; es fa la mitjana)</td>
+                            <td>T10</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                        <tr>
+                            <td>R7 Rúbrica d'autoavaluació i millora</td>
+                            <td>Sessió 22</td>
+                            <td>Auto (l'alumnat omple la fitxa) + hetero (el professor qualifica la fitxa)</td>
+                            <td>T10</td>
+                            <td>Rúbrica de 4 nivells</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>Rúbriques: el professor posa una nota dins de la franja del nivell (Insuficient 1-4 · Suficient-Bé 5-6 · Notable 7-8 · Excel·lent 9-10). Un lliurament inexistent és un 0 en tots els seus indicadors. Entre parèntesis, el pes de l'indicador en CE5.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Indicadors d'èxit</vf-title>
+        <vf-content>
+            <!-- Rubriques: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
+            <vf-title level="3">R1 Rúbrica del guió multimèdia</vf-title>
+            <vf-text>Rúbrica de 4 nivells. S'aplica al document «Guió multimèdia». El guió és un esborrany de treball: es valora que la història s'entenga i que cada vinyeta tinga la informació necessària per a fer-la, no el detall.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>GM1. ODS i justificació (punt 1)</strong></td>
+                            <td>CE5.1</td>
+                            <td>15&nbsp;% (2,25&nbsp;%)</td>
+                            <td>No hi ha cap ODS: ni es nomena ni es pot saber pel que s'escriu.</td>
+                            <td>L'ODS només s'endevina (pel títol o el tema) i no hi ha ni explicació ni motiu.</td>
+                            <td>Nomena l'ODS (o el seu tema de manera inequívoca: fam, salut, aigua, vida submarina…) i dona una raó breu de la tria <strong>o</strong> explica breument de què tracta.</td>
+                            <td>Nomena l'ODS, explica breument de què tracta <strong>i</strong> dona una raó de la tria (encara que siga senzilla).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GM2. Resum de la història (punt 2, esborrany)</strong></td>
+                            <td>CE5.1</td>
+                            <td>25&nbsp;% (3,75&nbsp;%)</td>
+                            <td>No hi ha resum, o no s'entén de què va la història, o no té relació amb l'ODS, o conté faltes de respecte.</td>
+                            <td>S'entén de què va, però falta el problema o com acaba.</td>
+                            <td>En poques frases s'entén el problema i com acaba la història, relacionada amb l'ODS.</td>
+                            <td>A més, apareixen els personatges principals o el lloc, i s'explica com s'arriba a la solució.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GM3. Taula de cada vinyeta (punt 3)</strong></td>
+                            <td>CE5.1</td>
+                            <td>30&nbsp;% (4,5&nbsp;%)</td>
+                            <td>No hi ha taules, o la meitat de les vinyetes o menys compleixen els 4 camps.</td>
+                            <td>Més de la meitat de les vinyetes compleixen els 4 camps.</td>
+                            <td>Almenys 3 de cada 4 vinyetes (75&nbsp;%) compleixen els 4 camps.</td>
+                            <td>Totes les vinyetes compleixen els 4 camps.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GM4. Nombre de vinyetes i cobertura de la història</strong></td>
+                            <td>CE5.1</td>
+                            <td>20&nbsp;% (3&nbsp;%)</td>
+                            <td>Menys de 10 vinyetes en equip (menys de 7 si és individual), o les vinyetes no corresponen a la història.</td>
+                            <td>Entre 10 i 14 vinyetes en equip (entre 7 i 9 si és individual).</td>
+                            <td>El mínim o més (15 en equip, 10 individual), però alguna part de la història (inici, desenvolupament o final) queda sense vinyeta.</td>
+                            <td>El mínim o més (15 en equip, 10 individual) i cobreixen tota la història: inici, desenvolupament i final.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GM5. Presentació del document</strong></td>
+                            <td>CE5.1</td>
+                            <td>10&nbsp;% (1,5&nbsp;%)</td>
+                            <td>Falten el títol i algun dels punts, o més de 15 faltes fora dels diàlegs, o el document no es pot llegir.</td>
+                            <td>Falta el títol o un dels punts, o no és PDF, o entre 9 i 15 faltes fora dels diàlegs.</td>
+                            <td>Títol, tres punts i vinyetes numerades en ordre; entre 4 i 8 faltes fora dels diàlegs.</td>
+                            <td>Tot l'anterior amb 0-3 faltes fora dels diàlegs i format uniforme.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GM6. Seqüència narrativa del guió</strong></td>
+                            <td>CE5.2</td>
+                            <td>10&nbsp;% (2&nbsp;%)</td>
+                            <td>Hi ha salts que impedeixen entendre la història o vinyetes desordenades.</td>
+                            <td>La història s'entén però hi ha algun salt sense explicar o vinyetes repetides sense acció nova.</td>
+                            <td>Cada vinyeta fa avançar la història i l'ordre és lògic.</td>
+                            <td>A més, preveu canvis de pla o cartutxos narratius per als salts de temps o de lloc.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text><strong>Els 4 camps de GM3</strong>, en cada vinyeta: <strong>Escena</strong>, el lloc on passa la vinyeta (basta el lloc); <strong>So</strong>, sempre hi ha d'haver alguna cosa; <strong>Diàlegs o veu en off</strong>, sempre hi ha d'haver alguna cosa («X», «No hay», «Ninguno» o la casella buida compten com a buit); <strong>Personatges</strong>, basten els noms. <strong>Altres elements</strong> pot quedar buit i no penalitza.</vf-text>
+            <vf-text><strong>GM4:</strong> la taula de la vinyeta (sobretot la fila Escena) compta com a resum; només es mira el nombre de vinyetes i que cobrisquen inici, desenvolupament i final.</vf-text>
+            <vf-text><strong>GM5:</strong> no es compten les faltes dels diàlegs (és llenguatge oral dels personatges); cada paraula errònia es compta una vegada encara que es repetisca.</vf-text>
+            <vf-text>Amb la mesura de mínim reduït, el mínim de GM4 és de 10 vinyetes també en equip.</vf-text>
+
+            <vf-title level="3">R2 Rúbrica de les vinyetes</vf-title>
+            <vf-text>Rúbrica de 4 nivells. S'aplica a <code>vinyetes.zip</code>, amb el guió al costat.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>VN1. Totes les vinyetes, fidels al guió</strong></td>
+                            <td>CE5.2</td>
+                            <td>30&nbsp;% (6&nbsp;%)</td>
+                            <td>Falten més d'un quart de les vinyetes del guió, o la majoria no representen el que diu el guió.</td>
+                            <td>Falten algunes vinyetes (fins a un quart) o diverses no coincideixen amb l'escena o els personatges del guió.</td>
+                            <td>Estan totes les vinyetes del guió i representen l'escena, els personatges i el diàleg previstos.</td>
+                            <td>Totes coincideixen amb el guió, inclosos els detalls d'«Altres elements»; els canvis respecte al guió milloren la història.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VN2. Elements del llenguatge del còmic</strong></td>
+                            <td>CE5.2</td>
+                            <td>35&nbsp;% (7&nbsp;%)</td>
+                            <td>Vinyetes amb escena o personatges però sense bafarades ni textos, o text il·legible.</td>
+                            <td>Escena, personatges i bafarades, però el text no s'entén bé (tapa personatges, bafarada que no assenyala qui parla) o sempre el mateix pla.</td>
+                            <td>Escena, personatges i bafarades ben col·locades i llegibles en totes les vinyetes; personatges amb postura o expressió adequada a l'acció.</td>
+                            <td>A més, usa almenys dos plans diferents i cartutxos narratius o onomatopeies on la història ho demana.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VN3. Seqüència i respecte</strong></td>
+                            <td>CE5.2</td>
+                            <td>25&nbsp;% (5&nbsp;%)</td>
+                            <td>Mirades en ordre, les vinyetes no conten una història comprensible, o hi ha alguna falta de respecte.</td>
+                            <td>La història s'entén amb ajuda del guió; algun salt sense explicar.</td>
+                            <td>La història s'entén mirant només les vinyetes en ordre; cap falta de respecte.</td>
+                            <td>A més, el missatge sobre l'ODS queda clar en la conclusió i es manté la coherència visual (mateix aspecte dels personatges i ambients).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VN4. Captures, noms i lliurament</strong></td>
+                            <td>CE5.5</td>
+                            <td>30&nbsp;% (3&nbsp;%)</td>
+                            <td>No hi ha ZIP, o les imatges no estan dins, o no tenen el nom VinyetaN.</td>
+                            <td>ZIP amb totes les imatges però alguna amb nom incorrecte o captura amb trossos de la interfície.</td>
+                            <td>ZIP amb Vinyeta1…VinyetaN correctes; captures retallades només a la vinyeta.</td>
+                            <td>A més, totes les captures tenen la mateixa mida i les vinyetes també són a la carpeta Vinyetes del núvol.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">E1 Escala de les activitats d'Audacity</vf-title>
+            <vf-text>Escala de 3 nivells: <strong>Malament = 0 · Bé = 5 · Molt bé = 10</strong>. S'aplica a cada MP3 lliurat.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 200px;">Malament (0)</th>
+                            <th style="min-width: 200px;">Bé (5)</th>
+                            <th style="min-width: 200px;">Molt bé (10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AD1. Ex. 1 Unir àudios</strong></td>
+                            <td>CE5.3</td>
+                            <td>5&nbsp;% (1&nbsp;%)</td>
+                            <td>No lliurat o els àudios no estan units.</td>
+                            <td>Units en l'ordre de la cançó però amb silencis massa llargs o talls.</td>
+                            <td>Diàleg alternat, sense talls i amb ritme natural.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AD2. Ex. 2 Llevar el soroll</strong></td>
+                            <td>CE5.3</td>
+                            <td>5&nbsp;% (1&nbsp;%)</td>
+                            <td>No lliurat o el soroll continua igual.</td>
+                            <td>Soroll reduït però la veu sona metàl·lica o queda soroll audible.</td>
+                            <td>Soroll eliminat i veu natural.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AD3. Ex. 3 Llevar la tos i completar la frase</strong></td>
+                            <td>CE5.3</td>
+                            <td>5&nbsp;% (1&nbsp;%)</td>
+                            <td>No lliurat, la tos continua o falta el tros 03_SEGUNDO.</td>
+                            <td>Tos eliminada i frase completa, però el punt d'unió se sent (bot o silenci).</td>
+                            <td>Tos eliminada i frase sencera sense que es note la unió.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AD4. Ex. 4 Jugar amb la veu</strong></td>
+                            <td>CE5.3</td>
+                            <td>5&nbsp;% (1&nbsp;%)</td>
+                            <td>No lliurat o menys de dos dels quatre efectes fets.</td>
+                            <td>Dos o tres efectes correctes.</td>
+                            <td>Els quatre (to greu, inversió, to agut, velocitat) correctes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AD5. Ex. 5 Efectes de so</strong></td>
+                            <td>CE5.3</td>
+                            <td>5&nbsp;% (1&nbsp;%)</td>
+                            <td>No lliurat o sense llamp ni pluja.</td>
+                            <td>Llamp i pluja afegits però tapen la veu o estan fora de lloc.</td>
+                            <td>Llamp i pluja en el moment adequat, amb volum que deixa entendre la frase.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AD6. Ex. 6 Efecte ràdio amb música de fons</strong></td>
+                            <td>CE5.3</td>
+                            <td>5&nbsp;% (1&nbsp;%)</td>
+                            <td>No lliurat o sense efecte ràdio ni música.</td>
+                            <td>Efecte ràdio o música de fons, però la música no baixa mentre es parla.</td>
+                            <td>Veu tipus ràdio i música que baixa amb l'envolupant mentre es parla i torna a pujar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">R3 Rúbrica dels àudios de les vinyetes</vf-title>
+            <vf-text>Rúbrica de 4 nivells. S'aplica a <code>audios.zip</code>.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AV1. Veu de cada vinyeta</strong></td>
+                            <td>CE5.3</td>
+                            <td>10&nbsp;% (2&nbsp;%)</td>
+                            <td>Falten àudios de més d'un quart de les vinyetes o la veu no segueix el guió.</td>
+                            <td>Hi ha àudio de quasi totes les vinyetes; la veu segueix el guió però es llig de manera plana o amb errades.</td>
+                            <td>Un àudio per vinyeta, amb el text del guió i una lectura clara.</td>
+                            <td>A més, entonació i ritme adequats a cada personatge i situació (veus diferenciades).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AV2. Neteja de la gravació</strong></td>
+                            <td>CE5.3</td>
+                            <td>20&nbsp;% (4&nbsp;%)</td>
+                            <td>Soroll de fons evident o distorsió (nivells en roig) en la majoria d'àudios.</td>
+                            <td>Soroll o distorsió en alguns àudios, o silencis llargs al principi o al final.</td>
+                            <td>Sense soroll audible ni distorsió; silencis inicials i finals tallats.</td>
+                            <td>A més, la veu sona natural en tots (sense efecte metàl·lic) i sense errades ni tos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AV3. Volum homogeni</strong></td>
+                            <td>CE5.3</td>
+                            <td>10&nbsp;% (2&nbsp;%)</td>
+                            <td>Diferències de volum molt grans entre vinyetes (cal tocar el volum per a sentir-les).</td>
+                            <td>Diferències apreciables en algunes vinyetes.</td>
+                            <td>Totes les vinyetes sonen a un volum semblant (normalitzades).</td>
+                            <td>Volum homogeni i cap vinyeta satura en els punts forts.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AV4. So de fons</strong></td>
+                            <td>CE5.3</td>
+                            <td>15&nbsp;% (3&nbsp;%)</td>
+                            <td>Sense so de fons, o el fons tapa la veu.</td>
+                            <td>So de fons en algunes vinyetes, o sense fade in/fade out, o massa fort en algun moment.</td>
+                            <td>So de fons en totes les vinyetes, per davall de la veu (aprox. -18/-20 dB), amb fade in i fade out.</td>
+                            <td>A més, el fons s'adapta a l'ambient de cada escena (no sempre la mateixa música).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AV5. Efectes de so</strong></td>
+                            <td>CE5.3</td>
+                            <td>15&nbsp;% (3&nbsp;%)</td>
+                            <td>Sense efectes, o efectes que no tenen relació amb l'acció.</td>
+                            <td>Algun efecte coherent però fora de temps o massa fort.</td>
+                            <td>Efectes coherents amb l'acció, col·locats en el moment exacte, sense tapar la veu.</td>
+                            <td>A més, efectes en totes les vinyetes on el guió els preveu, amb entrada i eixida suaus.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AV6. Exportació i organització</strong></td>
+                            <td>CE5.5</td>
+                            <td>30&nbsp;% (3&nbsp;%)</td>
+                            <td>No hi ha ZIP o els fitxers no són MP3.</td>
+                            <td>ZIP amb MP3 però algun nom incorrecte o desordenat.</td>
+                            <td>Carpeta <code>audios</code> amb Vinyeta1.mp3…VinyetaN.mp3 correctes, a 128-192 kbps.</td>
+                            <td>A més, conserva el projecte <code>.aup3</code> de cada vinyeta (es comprova a l'aula).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">R4 Rúbrica del vídeo del còmic</vf-title>
+            <vf-text>Rúbrica de 4 nivells. S'aplica a <code>comic_Nom_Cognom.mp4</code>.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>VC1. Introducció i vinyetes en ordre</strong></td>
+                            <td>CE5.4</td>
+                            <td>15&nbsp;% (3,75&nbsp;%)</td>
+                            <td>Falta la introducció o falten vinyetes.</td>
+                            <td>Introducció incompleta (falta títol, nom o curs) o d'una durada inadequada, o alguna vinyeta desordenada.</td>
+                            <td>Introducció de 3-5 s amb títol, nom i curs, i totes les vinyetes en ordre.</td>
+                            <td>A més, la música de la introducció acaba amb fade out abans de la Vinyeta 1.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VC2. Sincronització imatge-so</strong></td>
+                            <td>CE5.4</td>
+                            <td>20&nbsp;% (5&nbsp;%)</td>
+                            <td>Moltes imatges no coincideixen amb el seu àudio (es veu una vinyeta i se sent una altra).</td>
+                            <td>Sincronitzat en general, però algunes imatges duren més o menys que el seu àudio o hi ha buits negres.</td>
+                            <td>Cada imatge dura el mateix que el seu àudio, en ordre i sense buits.</td>
+                            <td>Sincronització exacta en tot el vídeo, inclosos els efectes amb l'acció de la vinyeta.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VC3. Transicions</strong></td>
+                            <td>CE5.4</td>
+                            <td>5&nbsp;% (1,25&nbsp;%)</td>
+                            <td>Sense transicions i amb talls bruscs.</td>
+                            <td>Alguna transició, o transicions que tallen l'àudio.</td>
+                            <td>Transició curta entre la introducció, les vinyetes i el final.</td>
+                            <td>Transicions coherents i uniformes en tot el vídeo, sense afectar el so.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VC4. So del vídeo</strong></td>
+                            <td>CE5.4</td>
+                            <td>10&nbsp;% (2,5&nbsp;%)</td>
+                            <td>La veu no s'entén per damunt de la música o hi ha silencis inesperats.</td>
+                            <td>La veu s'entén quasi sempre; algun salt de volum entre vinyetes.</td>
+                            <td>La veu se sent per damunt de la música en totes les vinyetes; sense silencis inesperats.</td>
+                            <td>A més, música general a -22 dB o fades que fan el so continu de principi a fi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VC5. Exportació</strong></td>
+                            <td>CE5.4</td>
+                            <td>5&nbsp;% (1,25&nbsp;%)</td>
+                            <td>No és un MP4 o no es reprodueix.</td>
+                            <td>MP4 però amb resolució o fps diferents dels demanats, o imatge deformada.</td>
+                            <td>MP4 1920&nbsp;x&nbsp;1080 a 25 fps.</td>
+                            <td>MP4 correcte i vinyetes sense deformar ni retallar (respecten la proporció).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VC7. Final i crèdits</strong></td>
+                            <td>CE5.4</td>
+                            <td>10&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Sense final ni crèdits.</td>
+                            <td>Final present però incomplet (falta l'ODS o alguna dada dels crèdits) o d'una durada inadequada.</td>
+                            <td>Final de 3-5 s amb l'ODS treballat i crèdits amb nom, grup, IES Betxí i curs.</td>
+                            <td>A més, una frase de conclusió i la música que torna a pujar i acaba amb fade out.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VC6. Nom i lliurament</strong></td>
+                            <td>CE5.5</td>
+                            <td>20&nbsp;% (2&nbsp;%)</td>
+                            <td>No lliurat, o enllaç sense permís de lectura.</td>
+                            <td>Lliurat amb nom incorrecte.</td>
+                            <td><code>comic_Nom_Cognom.mp4</code> lliurat a Aules o per enllaç amb permís de lectura.</td>
+                            <td>A més, el projecte de Kdenlive és amb les carpetes Vinyetes i audios (es comprova a l'aula).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">R5 Rúbrica del vídeo de la cançó</vf-title>
+            <vf-text>Rúbrica de 4 nivells. S'aplica a <code>pelicules_Nom_Cognom.mp4</code> i a la taula de muntatge.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CN1. Taula de muntatge</strong></td>
+                            <td>CE5.4</td>
+                            <td>5&nbsp;% (1,25&nbsp;%)</td>
+                            <td>Sense taula, o menys de la meitat de frases amb pel·lícula.</td>
+                            <td>Taula amb la majoria de frases i pel·lícules, però sense temps o amb errors.</td>
+                            <td>Taula temps · frase · pel·lícula completa i correcta.</td>
+                            <td>A més, temps precisos al segon que coincideixen amb els canvis del vídeo.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CN2. Imatges per frase</strong></td>
+                            <td>CE5.4</td>
+                            <td>10&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Menys de la meitat de les frases tenen imatge, o imatges desordenades.</td>
+                            <td>La majoria de frases tenen imatge en ordre; algunes pixelades o de pel·lícula equivocada.</td>
+                            <td>Una imatge (o clip) per frase, de la pel·lícula correcta, en l'ordre de la cançó i ben visible.</td>
+                            <td>A més, combina imatges i clips de vídeo, o imatges PNG sense fons que s'integren al fons.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CN3. Sincronització amb la lletra</strong></td>
+                            <td>CE5.4</td>
+                            <td>10&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Les imatges no canvien amb la lletra.</td>
+                            <td>Canvien amb la lletra en general, amb diversos desfasaments clarament visibles.</td>
+                            <td>Cada imatge apareix quan comença la seua frase i dura fins a la següent.</td>
+                            <td>Sincronització exacta en tot el vídeo, inclosa la tornada repetida.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CN4. Acabat, portada i crèdits</strong></td>
+                            <td>CE5.4</td>
+                            <td>5&nbsp;% (1,25&nbsp;%)</td>
+                            <td>Sense portada ni crèdits, o talls bruscs constants.</td>
+                            <td>Portada o crèdits incomplets; fons canviant o transicions irregulars.</td>
+                            <td>Portada (títol, imatges) i crèdits (nom, grup, IES Betxí, curs) de 3-5 s; fons uniforme; transicions curtes.</td>
+                            <td>A més, títols amb el nom de la pel·lícula ben llegibles.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CN5. Exportació</strong></td>
+                            <td>CE5.4</td>
+                            <td>5&nbsp;% (1,25&nbsp;%)</td>
+                            <td>No és un MP4 o no es reprodueix.</td>
+                            <td>MP4 amb resolució o fps diferents dels demanats.</td>
+                            <td>MP4 1920&nbsp;x&nbsp;1080 a 25 fps.</td>
+                            <td>MP4 correcte i so de la cançó sense talls de principi a fi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CN6. Carpeta i nom</strong></td>
+                            <td>CE5.5</td>
+                            <td>20&nbsp;% (2&nbsp;%)</td>
+                            <td>No lliurat, o imatges sense organitzar.</td>
+                            <td>Lliurat amb nom incorrecte o imatges sense numerar.</td>
+                            <td>Carpeta <code>pelicules</code> amb noms ordenats (<code>01_…</code>, <code>02_…</code>) i <code>pelicules_Nom_Cognom.mp4</code>.</td>
+                            <td>A més, clips de vídeo retallats només als segons necessaris (5-10 s).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">R6 Rúbrica de coavaluació de l'estrena</vf-title>
+            <vf-text>Rúbrica de 4 nivells, simplificada per a l'alumnat. Cada alumne/a puntua els còmics dels companys i escriu un punt fort i una millora; la nota de cada indicador és la mitjana del grup. La mateixa fitxa recull els comentaris que l'autor/a usarà en R7.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CO1. Presentació del còmic</strong></td>
+                            <td>CE5.6</td>
+                            <td>30&nbsp;% (3&nbsp;%)</td>
+                            <td>No presenta el còmic o només en diu el títol.</td>
+                            <td>Diu el títol i l'ODS però no explica el missatge.</td>
+                            <td>Explica títol, ODS i missatge en un minut, amb veu clara.</td>
+                            <td>A més, connecta el còmic amb una situació real que el grup coneix.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CO2. El missatge arriba</strong></td>
+                            <td>CE5.6</td>
+                            <td>20&nbsp;% (2&nbsp;%)</td>
+                            <td>Després de veure'l no se sap de quin problema parla.</td>
+                            <td>S'entén el problema però no la solució.</td>
+                            <td>S'entenen el problema i la solució relacionats amb l'ODS.</td>
+                            <td>A més, el còmic fa pensar o emociona (el grup ho diu en els comentaris).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">R7 Rúbrica d'autoavaluació i millora</vf-title>
+            <vf-text>Rúbrica de 4 nivells. L'alumnat omple la fitxa d'autoavaluació (escala visual sobre guió, vinyetes, àudio, vídeo i organització, i tres propostes de millora); el professor qualifica la fitxa.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Indicador</th>
+                            <th style="min-width: 80px;">Criteri</th>
+                            <th style="min-width: 120px;">Pes</th>
+                            <th style="min-width: 180px;">Insuficient (1-4)</th>
+                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
+                            <th style="min-width: 180px;">Notable (7-8)</th>
+                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AT1. Valoració del resultat i del procés</strong></td>
+                            <td>CE5.6</td>
+                            <td>25&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Fitxa sense omplir o només amb notes sense cap explicació.</td>
+                            <td>Valora cada apartat, però amb explicacions genèriques («està bé»).</td>
+                            <td>Valora cada apartat amb un motiu concret (p. ex. «la vinyeta 7 té la bafarada damunt de la cara»).</td>
+                            <td>A més, la valoració és coherent amb les rúbriques rebudes i identifica què li va costar més del procés.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AT2. Propostes de millora</strong></td>
+                            <td>CE5.6</td>
+                            <td>25&nbsp;% (2,5&nbsp;%)</td>
+                            <td>Cap proposta, o propostes que no es poden fer («fer-ho millor»).</td>
+                            <td>Una o dues propostes concretes.</td>
+                            <td>Tres propostes concretes, almenys una a partir dels comentaris de la coavaluació.</td>
+                            <td>A més, n'aplica una abans de tancar el lliurament o explica com l'aplicaria en el pròxim projecte.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula de traçabilitat i qualificació</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteri</th>
+                            <th>Pes en CE5</th>
+                            <th>Activitat(s)</th>
+                            <th>Instrument(s) i indicadors</th>
+                            <th>Pes de cada indicador dins del criteri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CE5.1</td>
+                            <td>15&nbsp;%</td>
+                            <td>T1, T2</td>
+                            <td>R1: GM1, GM2, GM3, GM4, GM5</td>
+                            <td>GM1 15&nbsp;% · GM2 25&nbsp;% · GM3 30&nbsp;% · GM4 20&nbsp;% · GM5 10&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.2</td>
+                            <td>20&nbsp;%</td>
+                            <td>T2, T3</td>
+                            <td>R1: GM6 · R2: VN1, VN2, VN3</td>
+                            <td>GM6 10&nbsp;% · VN1 30&nbsp;% · VN2 35&nbsp;% · VN3 25&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.3</td>
+                            <td>20&nbsp;%</td>
+                            <td>T4, T5, T6</td>
+                            <td>E1: AD1-AD6 · R3: AV1-AV5</td>
+                            <td>AD1-AD6 5&nbsp;% cadascun (30&nbsp;%) · AV1 10&nbsp;% · AV2 20&nbsp;% · AV3 10&nbsp;% · AV4 15&nbsp;% · AV5 15&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.4</td>
+                            <td>25&nbsp;%</td>
+                            <td>T7, T8, T9</td>
+                            <td>R4: VC1-VC5, VC7 · R5: CN1-CN5</td>
+                            <td>VC1 15&nbsp;% · VC2 20&nbsp;% · VC3 5&nbsp;% · VC4 10&nbsp;% · VC5 5&nbsp;% · VC7 10&nbsp;% · CN1 5&nbsp;% · CN2 10&nbsp;% · CN3 10&nbsp;% · CN4 5&nbsp;% · CN5 5&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.5</td>
+                            <td>10&nbsp;%</td>
+                            <td>T3, T5, T6, T8, T9</td>
+                            <td>R2: VN4 · R3: AV6 · R4: VC6 · R5: CN6</td>
+                            <td>VN4 30&nbsp;% · AV6 30&nbsp;% · VC6 20&nbsp;% · CN6 20&nbsp;%</td>
+                        </tr>
+                        <tr>
+                            <td>CE5.6</td>
+                            <td>10&nbsp;%</td>
+                            <td>T10</td>
+                            <td>R6: CO1, CO2 · R7: AT1, AT2</td>
+                            <td>CO1 30&nbsp;% · CO2 20&nbsp;% · AT1 25&nbsp;% · AT2 25&nbsp;%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text><strong>Nota del criteri</strong> = Σ (nota de l'indicador × pes de l'indicador dins del criteri).</vf-text>
+            <vf-text><strong>Nota de CE5</strong> = CE5.1 × 15&nbsp;% + CE5.2 × 20&nbsp;% + CE5.3 × 20&nbsp;% + CE5.4 × 25&nbsp;% + CE5.5 × 10&nbsp;% + CE5.6 × 10&nbsp;%.</vf-text>
+            <vf-text>CE5 pesa un 25&nbsp;% en la nota final de l'assignatura.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Recursos i materials</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Web de la matèria: pàgines del Projecte Còmic (<a href="projectes/comic/guio-multimedia.html">Guió multimèdia</a>, <a href="projectes/comic/creacio-vinyetes.html">Creació de vinyetes</a>, <a href="projectes/comic/audacity.html">Audacity</a>, <a href="projectes/comic/preparar-audios-vinyetes.html">Preparar àudios de les vinyetes</a>, <a href="projectes/comic/kdenlive.html">Kdenlive</a>, <a href="projectes/comic/video-comic.html">Vídeo del còmic</a>, <a href="projectes/comic/video-pelicules.html">Vídeo pel·lícules</a>).</li>
+                <li>Web dels ODS de Nacions Unides.</li>
+                <li>Compte educatiu: Document de Google, carpeta Informàtica - 3 ESO al núvol, Aules per als lliuraments.</li>
+                <li>Storyboard That; Shutter o captura de regió rectangular.</li>
+                <li>Audacity (LliureX); auriculars amb micròfon o mòbil; arxius d'àudio de pràctica dels exercicis 1-6; espai de gravació silenciós.</li>
+                <li>Bancs de sons i música lliures: Pixabay, Freesound.</li>
+                <li>Kdenlive (LliureX); targeta de dreceres.</li>
+                <li>Pista de la cançó proporcionada pel professor.</li>
+                <li>Projector i altaveus; llista de control del guió; rúbriques R1-R7; fitxa de coavaluació i d'autoavaluació (escala visual) (<a href="projectes/comic/estrena.html">pàgina de l'estrena</a>).</li>
+            </vf-list>
+        </vf-content>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

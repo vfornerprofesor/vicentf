@@ -351,7 +351,7 @@
                                 <tr>
                                     <td>17</td>
                                     <td>Repàs</td>
-                                    <td>Exercicis de repàs del format de la prova: esquelet de memòria, trobar errors, llista niada, taula, formulari, etiquetes semàntiques.</td>
+                                    <td>Repàs del format de la prova: una pàgina petita des de zero (esquelet, semàntica, llista niada, taula, imatge i enllaços) i la seua pàgina de formulari, validades amb 0 errors.</td>
                                 </tr>
                                 <tr>
                                     <td>18</td>
@@ -472,7 +472,7 @@
                                 <tr>
                                     <td>38</td>
                                     <td>Repàs</td>
-                                    <td>Exercicis de repàs del format de la prova: selectors, càlcul de caixa, centrar, barra de navegació, galeria, trobar errors.</td>
+                                    <td>Repàs del format de la prova: donar tot l'estil a una pàgina HTML donada (selectors, text, caixes amb el càlcul, barra, centrar, targetes i galeria).</td>
                                 </tr>
                                 <tr>
                                     <td>39</td>
@@ -755,10 +755,10 @@
             <vf-text>Mateixa dinàmica de revisió en parelles. Criteris treballats: CA2.1, CA2.2.</vf-text>
 
             <vf-title level="3">Prova d'HTML (sessió 18)</vf-title>
-            <vf-text>Esquelet de memòria · corregir 8 errors en un codi donat · una llista niada · una taula amb <code>colspan</code> · un formulari de 4 camps amb <code>label</code> i <code>required</code> · triar l'etiqueta semàntica adequada en 6 casos.</vf-text>
+            <vf-text>Dos exercicis, dues pàgines escrites des de zero per a un Repair Café: <code>event.html</code> (esquelet, etiquetes semàntiques, llista niada, taula amb <code>colspan</code>, imatge amb <code>figure</code>, enllaços interns, de correu i externs, entitats) i <code>join.html</code> (formulari de 7 camps en dos <code>fieldset</code>, amb <code>label</code>, tipus adequats i <code>required</code>). Les dues han de passar el validador amb 0 errors.</vf-text>
 
             <vf-title level="3">Prova de CSS (sessió 39)</vf-title>
-            <vf-text>Escriure una regla per a un selector donat · calcular la mida real d'una caixa · centrar una caixa amb flexbox · maquetar una barra de navegació · una galeria amb grid · trobar 5 errors en un CSS donat.</vf-text>
+            <vf-text>Dos exercicis sobre una mateixa pàgina HTML donada, a la qual l'alumnat escriu tot el CSS: enllaçar el full, text i caixes (selectors, contenidor centrat, una caixa amb el càlcul de la seua mida en <code>content-box</code> i <code>border-box</code> escrit en un comentari, targetes) i maquetació (barra de navegació i caixa centrada amb flexbox, targetes en fila que baixen de línia, galeria amb grid).</vf-text>
 
             <vf-title level="3">Projecte final — La meua web personal (sessions 47-62)</vf-title>
             <vf-text>Quatre pàgines (<code>index</code>, <code>about</code>, <code>projects</code>, <code>contact</code>) amb els requisits mínims de la lliçó 16, que coincidixen amb el nivell Suficient de cada fila de la rúbrica:</vf-text>
@@ -830,7 +830,7 @@
         <vf-content>
 
             <vf-title level="3">Rúbrica de la prova d'HTML</vf-title>
-            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient.</vf-text>
+            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1. Els llindars concrets de cada nivell (quants elements, quines parts) estan en la guia de correcció de la prova. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient.</vf-text>
             <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -847,40 +847,40 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>PH1. Esquelet i correcció d'errors</strong></td>
+                            <td><strong>PH1. Estructura del document</strong></td>
                             <td>CA1.1</td>
                             <td>50&nbsp;% del criteri</td>
-                            <td>A l'esquelet li falten 2 o més elements (doctype, <code>html</code> amb <code>lang</code>, <code>head</code>, <code>meta charset</code>, <code>title</code>, <code>body</code>) o estan mal niats, o corregix menys de 4 dels 8 errors.</td>
-                            <td>Esquelet amb com a màxim un element absent o mal niat, i almenys 4 errors corregits.</td>
-                            <td>Esquelet complet i ben niat, i almenys 6 errors corregits.</td>
-                            <td>Esquelet complet, ben niat i sagnat, i els 8 errors corregits sense introduir-ne de nous.</td>
+                            <td>Falten 3 o més elements de l'esquelet (doctype, <code>html</code> amb <code>lang</code>, <code>head</code>, <code>meta charset</code>, <code>title</code>, <code>body</code>) sumant les pàgines, o una etiqueta sense tancar o mal niada trenca la pàgina.</td>
+                            <td>Falten com a màxim 2 elements i les pàgines es veuen senceres.</td>
+                            <td>Esquelets complets, encapçalaments en ordre i noms de fitxer exactes.</td>
+                            <td>A més, codi sagnat, comentari d'autoria i caràcters especials escrits com a entitat.</td>
                         </tr>
                         <tr>
-                            <td><strong>PH2. Llista niada i taula</strong></td>
+                            <td><strong>PH2. Llistes, taules, imatges i enllaços</strong></td>
                             <td>CA1.2</td>
                             <td>50&nbsp;% del criteri</td>
-                            <td>Ni la llista niada ni la taula es veuen en el navegador com demana l'enunciat.</td>
-                            <td>Almenys una de les dues es veu com demana l'enunciat.</td>
-                            <td>Totes dues es veuen com demana l'enunciat, amb com a màxim un defecte de codi (subllista fora del <code>li</code>, capçalera sense <code>th</code>, una etiqueta sense tancar).</td>
-                            <td>Totes dues sense cap defecte de codi; el <code>colspan</code> ocupa exactament les columnes demanades.</td>
+                            <td>Com a màxim una de les quatre parts (llista niada, taula, imatge, enllaços) es veu o funciona com demana l'enunciat.</td>
+                            <td>2 o 3 parts.</td>
+                            <td>Les 4 parts, amb com a màxim 2 defectes de codi (subllista fora del <code>li</code>, capçalera sense <code>th</code>, <code>colspan</code> incorrecte, <code>alt</code> no descriptiu, ruta absoluta, enllaç extern sense pestanya nova).</td>
+                            <td>Les 4 parts sense cap defecte.</td>
                         </tr>
                         <tr>
                             <td><strong>PH3. Formulari</strong></td>
                             <td>CA1.3</td>
                             <td>50&nbsp;% del criteri</td>
-                            <td>Menys de 2 camps complets (<code>label</code> associada amb <code>for</code>/<code>id</code>, tipus adequat i <code>required</code> on el demana l'enunciat).</td>
-                            <td>2 camps complets.</td>
-                            <td>3 camps complets.</td>
-                            <td>Els 4 camps complets, dins d'un <code>form</code> amb botó d'enviament.</td>
+                            <td>Menys de la meitat dels camps complets (<code>label</code> associada amb <code>for</code>/<code>id</code>, tipus adequat i <code>required</code> només on el demana l'enunciat).</td>
+                            <td>La meitat dels camps complets.</td>
+                            <td>Tots menys un.</td>
+                            <td>Tots, agrupats en <code>fieldset</code> amb <code>legend</code> i amb botó d'enviament dins del <code>form</code>.</td>
                         </tr>
                         <tr>
-                            <td><strong>PH4. Etiquetes semàntiques</strong></td>
+                            <td><strong>PH4. Semàntica i validació</strong></td>
                             <td>CA1.4</td>
                             <td>25&nbsp;% del criteri</td>
-                            <td>0-2 casos encertats de 6.</td>
-                            <td>3 casos encertats.</td>
-                            <td>4 o 5 casos encertats.</td>
-                            <td>Els 6 casos encertats.</td>
+                            <td>Menys de 4 de les etiquetes semàntiques demanades en el seu lloc, o més de 6 errors en el validador sumant les pàgines.</td>
+                            <td>4 o 5 etiquetes ben posades i com a màxim 6 errors.</td>
+                            <td>Totes menys una com a molt, i com a màxim 2 errors.</td>
+                            <td>Totes en el seu lloc i en cada pàgina, cap <code>div</code> i 0 errors.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -904,31 +904,31 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>PC1. Selectors i errors de CSS</strong></td>
+                            <td><strong>PC1. Selectors i format del text</strong></td>
                             <td>CA2.1</td>
                             <td>40&nbsp;% del criteri</td>
-                            <td>El selector no tria els elements demanats, o corregix menys de 2 dels 5 errors.</td>
-                            <td>El selector tria els elements demanats (encara que la regla tinga algun error de sintaxi), i almenys 2 errors corregits.</td>
-                            <td>Selector i sintaxi correctes, i almenys 4 errors corregits.</td>
-                            <td>Selector i sintaxi correctes, i els 5 errors corregits.</td>
+                            <td>El full no està enllaçat, o menys de la meitat de les regles trien només els elements demanats i fan el que es demana.</td>
+                            <td>La meitat de les regles o més.</td>
+                            <td>Totes menys una com a molt.</td>
+                            <td>Totes, el <code>link</code> en el <code>head</code>, mides de text en <code>rem</code> i 0 errors en el validador de CSS.</td>
                         </tr>
                         <tr>
-                            <td><strong>PC2. Càlcul del model de caixa</strong></td>
+                            <td><strong>PC2. Model de caixa</strong></td>
                             <td>CA2.2</td>
                             <td>50&nbsp;% del criteri</td>
-                            <td>No planteja el càlcul o suma valors que no formen part de la caixa.</td>
-                            <td>Planteja el càlcul sumant contingut, <code>padding</code> i <code>border</code>, encara que cap de les dues dimensions done el resultat correcte.</td>
-                            <td>Almenys una dimensió (amplària o altura) correcta.</td>
-                            <td>Les dues dimensions correctes, amb el càlcul escrit.</td>
+                            <td>No planteja el càlcul de la caixa o suma valors que no en formen part.</td>
+                            <td>El càlcul suma contingut, <code>padding</code> i <code>border</code>, encara que el resultat no isca.</td>
+                            <td>Caixa visible en <code>content-box</code> correcta en les dues dimensions i contenidor centrat amb <code>max-width</code> i <code>margin</code> automàtic.</td>
+                            <td>A més, l'àrea de contingut en <code>border-box</code> correcta i les targetes amb <code>padding</code>, <code>border-radius</code> i <code>box-shadow</code>.</td>
                         </tr>
                         <tr>
                             <td><strong>PC3. Flexbox i grid</strong></td>
                             <td>CA2.3</td>
                             <td>50&nbsp;% del criteri</td>
-                            <td>Cap apartat (centrar amb flexbox, barra de navegació, galeria amb grid) funciona del tot i com a màxim un funciona amb defectes.</td>
-                            <td>Almenys un apartat funciona del tot, o almenys dos funcionen amb defectes (alineació, <code>gap</code>, nombre de columnes).</td>
-                            <td>Almenys dos apartats funcionen del tot.</td>
-                            <td>Els tres apartats funcionen sense defectes.</td>
+                            <td>Cap maquetació (barra, centrar, targetes, galeria) funciona del tot i com a màxim una funciona amb defectes.</td>
+                            <td>Una funciona del tot, o dues o més funcionen amb defectes (alineació, <code>gap</code>, <code>wrap</code>, nombre de columnes, propietat en el fill).</td>
+                            <td>La meitat o més funcionen del tot.</td>
+                            <td>Totes funcionen del tot.</td>
                         </tr>
                     </tbody>
                 </table>
