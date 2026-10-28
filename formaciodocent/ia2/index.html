@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel·ligència artificial 2.0 (2026)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" centered subtitle="Formació docent · Infantil, primària i secundària · Segon any de formació en IA">Intel·ligència artificial 2.0 (2026)</vf-title>
+
+        <div class="center">
+            <vf-badge>5 h presencials</vf-badge>
+            <vf-badge>3 sessions</vf-badge>
+            <vf-badge>+ bloc extra d'autoformació</vf-badge>
+        </div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Presentació</vf-title>
+        <vf-content>
+            <vf-text>Formació pràctica per al claustre amb dos objectius: <strong>reduir el temps de preparació de materials</strong> i <strong>incorporar la IA a la gestió diària de l'aula</strong>. És el segon any de formació: donem per sabut l'ús bàsic de xats d'IA, la generació d'imatges i els criteris de protecció de dades, i anem un pas més enllà.</vf-text>
+            <vf-text>El curs s'articula al voltant de <strong>Codocente</strong>, plataforma educativa integral, i es completa amb eines d'IA <strong>gratuïtes</strong> que fan allò que Codocente no fa: activitats interactives, contes il·lustrats, àudios, consulta dels documents del centre i assistents personalitzats.</vf-text>
+            <vf-text>Enfocament 100% aplicat: cada participant treballa amb continguts reals de la seua programació i acaba amb material preparat per a la setmana següent. Totes les pàgines estan escrites perquè es puguen seguir de manera autònoma si algú no pot assistir a una sessió.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Requisits</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Ordinador (o tauleta).</li>
+                <li>Compte de Codocente.</li>
+                <li>Compte personal de Google (gratuït).</li>
+                <li>Opcionalment, compte gratuït de Claude.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Objectius</vf-title>
+        <vf-content>
+            <vf-text>En acabar la formació, el professorat serà capaç de:</vf-text>
+            <vf-list ordered>
+                <li>Generar situacions d'aprenentatge, fitxes i recursos didàctics amb IA en Codocente, ajustats al seu nivell i grup.</li>
+                <li>Gestionar el dia a dia de l'aula des de Codocente: assistència, avaluació, punts i recompenses.</li>
+                <li>Configurar i utilitzar la pissarra digital de Codocente com a rutina diària.</li>
+                <li>Crear activitats interactives (jocs, quizzes, ruletes, simuladors) sense saber programar i compartir-les amb l'alumnat per enllaç.</li>
+                <li>Crear contes il·lustrats personalitzats i àudios (locucions, diàlegs, dictats) per a activitats d'escolta i accessibilitat.</li>
+                <li>Consultar i explotar la documentació del centre amb Gemini Notebook (abans NotebookLM).</li>
+                <li>Crear <i>skills</i> de Gemini per automatitzar les tasques que repeteixen cada setmana.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sessions</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sessió</th>
+                            <th>Durada</th>
+                            <th>Contingut</th>
+                            <th>Producte final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="formaciodocent/ia2/sessio1.html">S1</a></td>
+                            <td>2 h</td>
+                            <td>Codocente: recursos amb IA, pissarra, gestió de classe</td>
+                            <td>SA + fitxes d'una unitat real; pissarra d'un dia muntada; grup configurat</td>
+                        </tr>
+                        <tr>
+                            <td><a href="formaciodocent/ia2/sessio2.html">S2</a></td>
+                            <td>2 h</td>
+                            <td>Crear materials interactius i multimèdia (Gemini Canvas / Claude, Storybook, AI Studio, imatge avançada)</td>
+                            <td>1 activitat interactiva compartida, 1 conte o àudio</td>
+                        </tr>
+                        <tr>
+                            <td><a href="formaciodocent/ia2/sessio3.html">S3</a></td>
+                            <td>1 h</td>
+                            <td>Gemini Notebook + skills de Gemini</td>
+                            <td>1 quadern amb documents del centre; 1 skill pròpia</td>
+                        </tr>
+                        <tr>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>autoformació</td>
+                            <td>Claude Cowork i Claude Code (pagament, sense terminal) + Veo</td>
+                            <td>Joc tipus Duolingo; correcció d'entregues</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Metodologia</vf-title>
+        <vf-content>
+            <vf-text>Alternança d'explicació breu (10-15 min) i taller guiat. Cada bloc té <strong>exemples per a infantil/primària</strong> i <strong>per a secundària</strong>, i un <strong>repte</strong> final.</vf-text>
+            <div class="center">
+                <vf-badge>Infantil/Primària</vf-badge>
+                <vf-badge>Secundària</vf-badge>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Materials del curs</vf-title>
+        <vf-content>
+            <vf-row centered>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/sessio1.html"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Sessió 1 · Codocente</vf-btn>
+                </vf-col>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/sessio2.html"><i class="fas fa-magic" aria-hidden="true"></i> Sessió 2 · Materials interactius i multimèdia</vf-btn>
+                </vf-col>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/sessio3.html"><i class="fas fa-book" aria-hidden="true"></i> Sessió 3 · Organitzar i automatitzar</vf-btn>
+                </vf-col>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" inverse link="formaciodocent/ia2/extra.html"><i class="fas fa-rocket" aria-hidden="true"></i> Extra · IA de pagament</vf-btn>
+                </vf-col>
+            </vf-row>
+        </vf-content>
+
+        <vf-btn classes="btn-short" link="formaciodocent/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a Formació docent</vf-btn>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

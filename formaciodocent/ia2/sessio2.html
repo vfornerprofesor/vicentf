@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Sessió 2 · Materials interactius i multimèdia</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Sessió 2">Crear materials interactius i multimèdia</vf-title>
+
+        <div class="center">
+            <vf-badge>2 h</vf-badge>
+            <vf-badge>Gemini Canvas / Claude</vf-badge>
+            <vf-badge>Storybook</vf-badge>
+            <vf-badge>AI Studio</vf-badge>
+            <vf-badge>Imatge avançada</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-content>
+            <vf-text>Tot es fa amb el <strong>compte personal de Google gratuït</strong>.</vf-text>
+            <vf-text><strong>Producte final de la sessió</strong>: 1 activitat interactiva compartida i 1 conte o àudio.</vf-text>
+            <vf-callout type="atencio">
+                No puges mai dades personals de l'alumnat.
+            </vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Activitats interactives amb Canvas</vf-title>
+        <vf-content>
+            <div class="center"><vf-badge>50 min</vf-badge></div>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>Dins de Gemini ([gemini.google.com](https://gemini.google.com)) hi ha l'eina <strong>Canvas</strong>: li descrius una activitat i et crea una mini-aplicació web que funciona al moment i que es pot <strong>compartir per enllaç</strong> amb l'alumnat (no cal que tinguen compte).</vf-text>
+            <vf-text>Alternativa equivalent i gratuïta: <strong>Claude</strong> ([claude.ai](https://claude.ai)), que crea <i>artifacts</i> que també es poden publicar per enllaç. Usem Gemini com a eina principal (mateix compte de Google) i Claude com a pla B o per comparar resultats.</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Obri Canvas">
+                    <vf-text>Obri [gemini.google.com](https://gemini.google.com) → botó <strong>Eines</strong> → <strong>Canvas</strong>.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-gemini-eines-canvas.png" alt="Menú Eines de Gemini amb l'opció Canvas"></vf-img>
+                </vf-step>
+                <vf-step title="Escriu el prompt">
+                    <vf-text>Usa la plantilla de prompt i els exemples d'avall.</vf-text>
+                </vf-step>
+                <vf-step title="Prova i millora l'activitat">
+                    <vf-text>Prova l'activitat a la part dreta. Demana canvis en llenguatge natural: «fes els botons més grans», «afegeix so quan encerten», «posa-ho tot en valencià».</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-canvas-activitat.png" alt="Canvas de Gemini amb una activitat interactiva a la dreta"></vf-img>
+                </vf-step>
+                <vf-step title="Comparteix-la">
+                    <vf-text><strong>Compartir i exportar</strong> → <strong>Compartir</strong> → copia l'enllaç (<code>g.co/gemini/share/…</code>) → penja'l a l'aula virtual o a la pissarra de Codocente.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-canvas-compartir.png" alt="Diàleg de compartir una activitat de Canvas"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-callout type="atencio">
+                <strong>Important de l'enllaç</strong>: és una «foto» del moment en què es crea; si després canvies l'activitat, cal <strong>tornar a compartir</strong> i usar l'enllaç nou. Qualsevol persona amb l'enllaç la pot obrir sense compte. Amb comptes de centre (Workspace) l'opció pot estar desactivada: per això usem el compte personal.
+            </vf-callout>
+
+            <vf-title level="3">Pla B amb Claude</vf-title>
+            <vf-text>[claude.ai](https://claude.ai), gratuït.</vf-text>
+            <vf-steps>
+                <vf-step title="Activa la creació de fitxers">
+                    <vf-text>Abans de res: <i>Configuració → Capacitats → Execució de codi i creació de fitxers</i>.</vf-text>
+                </vf-step>
+                <vf-step title="Demana l'activitat">
+                    <vf-text>Amb el mateix prompt que faries servir a Gemini.</vf-text>
+                </vf-step>
+                <vf-step title="Publica-la">
+                    <vf-text>Botó <strong>Publicar</strong> de l'artifact → enllaç públic.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-claude-publicar-artifact.png" alt="Botó Publicar d'un artifact de Claude"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-title level="3">Plantilla de prompt</vf-title>
+            <vf-text>Copia-la i substitueix el que hi ha entre claudàtors.</vf-text>
+            <vf-code language="plaintext">
+                Crea una activitat interactiva per a alumnat de [curs] sobre [contingut].
+                Tipus: [quiz / joc de parelles / ruleta / arrossegar i deixar / simulador].
+                Requisits: tot en valencià, lletra gran i botons grans, retroacció immediata (encert/error amb explicació), comptador de punts i botó per tornar a començar.
+                Usa aquest contingut: [enganxar llista/text].
+            </vf-code>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-list>
+                <li>Joc de parelles imatge-paraula amb el vocabulari de la tardor (infantil 5 anys, amb lectura en veu alta de la paraula).</li>
+                <li>Ruleta de preguntes de la unitat de ciències per a 3r de primària.</li>
+                <li>Joc de càlcul mental amb temporitzador i nivells (2n cicle).</li>
+            </vf-list>
+            <vf-badge>Secundària</vf-badge>
+            <vf-list>
+                <li>Quiz d'autoavaluació a partir dels apunts de la unitat (enganxar el text).</li>
+                <li>Simulador interactiu: circuit elèctric, tir parabòlic, oferta i demanda, línia del temps de la Guerra Civil.</li>
+                <li>Escape room digital de 4 proves amb codi final.</li>
+            </vf-list>
+
+            <vf-callout type="consell">
+                Comença senzill i ves afegint coses; si es trenca alguna cosa, demana «torna a la versió anterior»; comprova el contingut (la IA s'equivoca en respostes).
+            </vf-callout>
+
+            <vf-callout type="exercici">
+                <strong>Repte</strong>: crea una activitat per a una sessió de la setmana vinent i comparteix l'enllaç al grup de la formació.
+            </vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Contes il·lustrats amb Storybook</vf-title>
+        <vf-content>
+            <div class="center"><vf-badge>25 min</vf-badge></div>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>Dins de Gemini, <strong>Storybook</strong> crea un conte il·lustrat de 10 pàgines amb narració en veu alta, a partir d'una descripció, d'una foto o d'un dibuix de l'alumnat. Gratuït (majors de 18 anys).</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Demana el conte">
+                    <vf-text>Obri un xat nou de Gemini i demana-ho directament, indicant edat, tema, valors i estil d'il·lustració. Pots adjuntar una foto o un dibuix.</vf-text>
+                    <vf-code language="plaintext">Crea un llibre il·lustrat (storybook) per a xiquets de 5 anys sobre…</vf-code>
+                </vf-step>
+                <vf-step title="Llig-lo, comparteix-lo o imprimeix-lo">
+                    <vf-text>Es pot llegir a pantalla amb àudio, compartir per enllaç o imprimir.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-storybook-conte.png" alt="Conte generat amb Storybook obert"></vf-img>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-storybook-compartir.png" alt="Opcions de compartir i imprimir un conte de Storybook"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-list>
+                <li>Conte per treballar una emoció o un conflicte real de l'aula (sense noms reals).</li>
+                <li>Conte a partir d'un dibuix fet per l'alumnat («dona-li vida al nostre drac»).</li>
+                <li>Conte per presentar una rutina nova (anar al bany, la fila, el pati).</li>
+            </vf-list>
+            <vf-badge>Secundària</vf-badge>
+            <vf-list>
+                <li>Explicar un concepte abstracte com a conte (la fotosíntesi, el cicle de l'aigua) per a alumnat NEE o 1r ESO.</li>
+                <li>Contes en anglés/francés de nivell A1-A2 per a lectura amb àudio.</li>
+            </vf-list>
+
+            <vf-callout type="atencio">
+                La lectura en veu alta només està disponible en alguns idiomes. Comprova si funciona en valencià; si no, el conte es fa igual i l'àudio es genera amb AI Studio (vegeu l'apartat següent).
+            </vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Àudios i locucions amb Google AI Studio</vf-title>
+        <vf-content>
+            <div class="center"><vf-badge>25 min</vf-badge></div>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>Google AI Studio (gratuït amb compte de Google) té un <strong>espai d'àudio</strong> per generar veu d'alta qualitat (models Gemini 3.8 TTS, setembre de 2026): un taller per <strong>dissenyar veus</strong> (triar-ne una de la biblioteca o descriure-la) i un <strong>editor de guió a dues veus</strong> per a diàlegs, on es pot indicar línia a línia com s'ha de dir cada frase. L'àudio es descarrega i porta una marca d'aigua invisible (SynthID).</vf-text>
+            <vf-text><strong>On és</strong>: no sempre apareix al menú principal. Entra directament per [aistudio.google.com/generate-speech](https://aistudio.google.com/generate-speech).</vf-text>
+            <!-- CAPTURA PENDENT -->
+            <vf-img src="assets/formaciodocent/ia2/s2-aistudio-generacio-veu.png" alt="Pantalla de generació de veu de Google AI Studio"></vf-img>
+            <vf-text>Alternatives: la descàrrega del <strong>resum en àudio</strong> de Gemini Notebook ([sessió 3](formaciodocent/ia2/sessio3.html)). ElevenLabs només com a menció (la versió gratuïta és molt limitada).</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Obri AI Studio">
+                    <vf-text>Obri [aistudio.google.com/generate-speech](https://aistudio.google.com/generate-speech) i inicia la sessió.</vf-text>
+                </vf-step>
+                <vf-step title="Tria o dissenya la veu">
+                    <vf-text>Una veu, o dues veus per a un diàleg.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-aistudio-seleccio-veu.png" alt="Selecció de veu a Google AI Studio"></vf-img>
+                </vf-step>
+                <vf-step title="Enganxa el text">
+                    <vf-text>En mode diàleg, una línia per personatge. Si cal, indica com dir-lo: «a poc a poc», «alegre», «xiuxiuejant».</vf-text>
+                </vf-step>
+                <vf-step title="Genera, escolta i descarrega">
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-aistudio-descarrega.png" alt="Botó de descàrrega de l'àudio a Google AI Studio"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-callout type="atencio">
+                <strong>Problema conegut (octubre 2026)</strong>: amb textos llargs, de vegades només sona la primera síl·laba. Solució: genera per fragments curts (un paràgraf o 4-5 línies de diàleg cada vegada).
+            </vf-callout>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-list>
+                <li>Dictat graduat llegit a poc a poc, amb pauses.</li>
+                <li>El conte de Storybook (apartat anterior) narrat amb dues veus (narrador + personatge).</li>
+                <li>Instruccions orals per a alumnat que encara no llig.</li>
+            </vf-list>
+            <vf-badge>Secundària</vf-badge>
+            <vf-list>
+                <li>Diàleg d'escolta en anglés/francés (dues veus, nivell A2/B1) + preguntes generades amb Gemini.</li>
+                <li>Versió en àudio d'uns apunts per a alumnat amb dislèxia.</li>
+                <li>Simulació d'entrevista a un personatge històric.</li>
+            </vf-list>
+
+            <vf-callout type="atencio">
+                El valencià no apareix a la llista d'idiomes destacats: comprova la pronúncia amb un fragment curt abans de fer tot l'àudio. Si no convenç, alternativa: el resum en àudio de Gemini Notebook ([sessió 3](formaciodocent/ia2/sessio3.html)).
+            </vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Imatge: nivell avançat</vf-title>
+        <vf-content>
+            <div class="center"><vf-badge>15 min</vf-badge></div>
+            <vf-text>No s'explica com generar imatges (ja se sap). Només usos que van més enllà:</vf-text>
+            <vf-list>
+                <li><strong>Seqüències amb personatge consistent</strong>: puja una imatge del personatge i demana «el mateix personatge rentant-se les mans, pas 1/2/3/4» → seqüències per a rutines o TEA.</li>
+                <li><strong>Infografia a partir d'un text</strong>: enganxa un text de la unitat i demana una infografia amb el text en valencià (revisa l'ortografia).</li>
+                <li><strong>Combinar diverses imatges</strong> en una (escenari + personatges + objecte) per a làmines de descripció o d'expressió oral.</li>
+                <li><strong>Fotos reals → làmines</strong>: foto de l'excursió → dibuix per acolorir o per numerar.</li>
+            </vf-list>
+            <!-- CAPTURA PENDENT -->
+            <vf-img src="assets/formaciodocent/ia2/s2-imatge-personatge-consistent.png" alt="Exemple de seqüència d'imatges amb un personatge consistent"></vf-img>
+
+            <vf-callout type="exercici">
+                <strong>Repte final de la sessió 2</strong>: tindre 1 activitat interactiva i 1 conte o àudio preparats per a la setmana vinent.
+            </vf-callout>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio1.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Sessió 1</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio3.html">Sessió 3 <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Guió del formador</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <!-- Pàgina NO enllaçada des de cap lloc del web: guió intern per a Vicent. -->
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Pàgina interna, no enllaçada">Guió del formador</vf-title>
+
+        <div id="vf-index" levels="2"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Temporització</vf-title>
+        <vf-content>
+            <vf-title level="3" not-show-index>Sessió 1 · Codocente (2 h)</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Bloc</th>
+                            <th>Minuts</th>
+                            <th>Material</th>
+                            <th>Producte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Benvinguda i què és Codocente</td>
+                            <td>10</td>
+                            <td>Codocente (app.codocente.com)</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Creació de recursos amb IA</td>
+                            <td>45</td>
+                            <td>Codocente; 1 unitat real de la programació de cada docent</td>
+                            <td>SA + fitxes d'una unitat real</td>
+                        </tr>
+                        <tr>
+                            <td>Pissarra digital</td>
+                            <td>35</td>
+                            <td>Codocente (pissarra)</td>
+                            <td>Pissarra d'un dia muntada</td>
+                        </tr>
+                        <tr>
+                            <td>Gestió de classe</td>
+                            <td>25</td>
+                            <td>Codocente (grup, assistència, punts i recompenses)</td>
+                            <td>Grup real configurat</td>
+                        </tr>
+                        <tr>
+                            <td>Tancament</td>
+                            <td>5</td>
+                            <td>—</td>
+                            <td>SA + fitxes + pissarra + grup</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3" not-show-index>Sessió 2 · Materials interactius i multimèdia (2 h)</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Bloc</th>
+                            <th>Minuts</th>
+                            <th>Material</th>
+                            <th>Producte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Activitats interactives amb Canvas</td>
+                            <td>50</td>
+                            <td>Gemini Canvas (compte personal de Google); Claude com a pla B</td>
+                            <td>1 activitat interactiva compartida per enllaç</td>
+                        </tr>
+                        <tr>
+                            <td>Contes il·lustrats amb Storybook</td>
+                            <td>25</td>
+                            <td>Gemini (Storybook); foto o dibuix opcional</td>
+                            <td>1 conte il·lustrat</td>
+                        </tr>
+                        <tr>
+                            <td>Àudios i locucions amb AI Studio</td>
+                            <td>25</td>
+                            <td>aistudio.google.com/generate-speech</td>
+                            <td>1 àudio</td>
+                        </tr>
+                        <tr>
+                            <td>Imatge: nivell avançat</td>
+                            <td>15</td>
+                            <td>Gemini (imatge); 1 text de la unitat</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3" not-show-index>Sessió 3 · Organitzar i automatitzar (1 h)</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Bloc</th>
+                            <th>Minuts</th>
+                            <th>Material</th>
+                            <th>Producte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gemini Notebook</td>
+                            <td>30</td>
+                            <td>Gemini Notebook; documents del centre en PDF; programació</td>
+                            <td>Quadern de la programació + 1 recurs (mapa mental o qüestionari)</td>
+                        </tr>
+                        <tr>
+                            <td>Skills de Gemini</td>
+                            <td>25</td>
+                            <td>Gemini (Personalitza → Skills)</td>
+                            <td>1 skill pròpia provada amb un cas real</td>
+                        </tr>
+                        <tr>
+                            <td>Tancament</td>
+                            <td>5</td>
+                            <td>Enllaç al bloc extra</td>
+                            <td>Kit complet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Checklist previ</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>☐ Comptes de Codocente creats per a tots els participants.</li>
+                <li>☐ Compte personal de Google per participant.</li>
+                <li>☐ Wifi.</li>
+                <li>☐ Projector.</li>
+                <li>☐ Documents reals que ha de portar cada docent: 1 unitat de la programació, 1 text de la unitat, documents del centre en PDF.</li>
+                <li>☐ Abans de la S2: comprovar si la lectura en veu alta de Storybook funciona en valencià.</li>
+                <li>☐ Abans de la S2: comprovar la pronúncia en valencià d'AI Studio amb un fragment curt.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Enllaços ràpids</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Codocente: [app.codocente.com](https://app.codocente.com) · [codocente.com](https://codocente.com)</li>
+                <li>Gemini (Canvas, Storybook, imatge, skills, Veo): [gemini.google.com](https://gemini.google.com)</li>
+                <li>Claude: [claude.ai](https://claude.ai)</li>
+                <li>Google AI Studio (veu): [aistudio.google.com/generate-speech](https://aistudio.google.com/generate-speech)</li>
+                <li>Gemini Notebook (abans NotebookLM): [notebooklm.google.com](https://notebooklm.google.com)</li>
+                <li>ElevenLabs (només menció): [elevenlabs.io](https://elevenlabs.io)</li>
+                <li>Publicar el joc de l'extra: [Netlify Drop](https://app.netlify.com/drop) · [GitHub Pages](https://pages.github.com)</li>
+                <li>Pàgines del curs: [índex](formaciodocent/ia2/index.html) · [sessió 1](formaciodocent/ia2/sessio1.html) · [sessió 2](formaciodocent/ia2/sessio2.html) · [sessió 3](formaciodocent/ia2/sessio3.html) · [extra](formaciodocent/ia2/extra.html)</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Captures pendents</vf-title>
+        <vf-content>
+            <vf-text>Totes van a la carpeta <code>assets/formaciodocent/ia2/</code>.</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Fitxer</th>
+                            <th>Pàgina</th>
+                            <th>Què ha de mostrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>s1-codocente-generador-sa.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio1.html">Sessió 1</a></td>
+                            <td>Generador de situacions d'aprenentatge de Codocente</td>
+                        </tr>
+                        <tr>
+                            <td><code>s1-codocente-fitxa-generada.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio1.html">Sessió 1</a></td>
+                            <td>Exemple de fitxa generada amb Codocente</td>
+                        </tr>
+                        <tr>
+                            <td><code>s1-codocente-pissarra-dia.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio1.html">Sessió 1</a></td>
+                            <td>Pissarra digital de Codocente completa per a un dia</td>
+                        </tr>
+                        <tr>
+                            <td><code>s1-codocente-pissarra-element.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio1.html">Sessió 1</a></td>
+                            <td>Configuració d'un element de la pissarra de Codocente</td>
+                        </tr>
+                        <tr>
+                            <td><code>s1-codocente-assistencia.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio1.html">Sessió 1</a></td>
+                            <td>Pantalla d'assistència de Codocente</td>
+                        </tr>
+                        <tr>
+                            <td><code>s1-codocente-punts-recompenses.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio1.html">Sessió 1</a></td>
+                            <td>Punts i recompenses a Codocente</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-gemini-eines-canvas.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Menú Eines de Gemini amb l'opció Canvas</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-canvas-activitat.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Canvas de Gemini amb una activitat interactiva a la dreta</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-canvas-compartir.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Diàleg de compartir una activitat de Canvas</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-claude-publicar-artifact.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Botó Publicar d'un artifact de Claude</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-storybook-conte.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Conte generat amb Storybook obert</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-storybook-compartir.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Opcions de compartir i imprimir un conte de Storybook</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-aistudio-generacio-veu.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Pantalla de generació de veu de Google AI Studio</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-aistudio-seleccio-veu.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Selecció de veu a Google AI Studio</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-aistudio-descarrega.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Botó de descàrrega de l'àudio a Google AI Studio</td>
+                        </tr>
+                        <tr>
+                            <td><code>s2-imatge-personatge-consistent.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio2.html">Sessió 2</a></td>
+                            <td>Exemple de seqüència d'imatges amb un personatge consistent</td>
+                        </tr>
+                        <tr>
+                            <td><code>s3-notebook-fonts.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio3.html">Sessió 3</a></td>
+                            <td>Quadern de Gemini Notebook amb les fonts pujades</td>
+                        </tr>
+                        <tr>
+                            <td><code>s3-notebook-resposta-cites.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio3.html">Sessió 3</a></td>
+                            <td>Resposta de Gemini Notebook amb cites a les fonts</td>
+                        </tr>
+                        <tr>
+                            <td><code>s3-notebook-studio.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio3.html">Sessió 3</a></td>
+                            <td>Panell Studio de Gemini Notebook</td>
+                        </tr>
+                        <tr>
+                            <td><code>s3-skills-crear.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio3.html">Sessió 3</a></td>
+                            <td>Pantalla de creació d'una skill de Gemini</td>
+                        </tr>
+                        <tr>
+                            <td><code>s3-skills-invocar.png</code></td>
+                            <td><a href="formaciodocent/ia2/sessio3.html">Sessió 3</a></td>
+                            <td>Invocar una skill amb / en un xat de Gemini</td>
+                        </tr>
+                        <tr>
+                            <td><code>extra-claude-escriptori-pestanyes.png</code></td>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>Aplicació d'escriptori de Claude amb les pestanyes Chat, Cowork i Code</td>
+                        </tr>
+                        <tr>
+                            <td><code>extra-joc-primaria.png</code></td>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>Joc de primària «Taules campiones» funcionant</td>
+                        </tr>
+                        <tr>
+                            <td><code>extra-joc-secundaria.png</code></td>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>Joc de secundària «Vocab Quest» funcionant</td>
+                        </tr>
+                        <tr>
+                            <td><code>extra-cowork-correccio.png</code></td>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>Claude Cowork amb la carpeta de correcció</td>
+                        </tr>
+                        <tr>
+                            <td><code>extra-notes-xlsx.png</code></td>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>Full de càlcul notes.xlsx resultant de la correcció</td>
+                        </tr>
+                        <tr>
+                            <td><code>extra-veo-video.png</code></td>
+                            <td><a href="formaciodocent/ia2/extra.html">Extra</a></td>
+                            <td>Generació d'un vídeo amb Veo a Gemini</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </vf-content>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>
