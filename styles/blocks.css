@@ -126,6 +126,14 @@
     overflow-x: auto;
 }
 
+/* Text pla (prompts d'IA, frases per copiar): no es codi amb indentacio
+   significativa, aixi que fem salt de linia en lloc de scroll horitzontal.
+   Els salts de linia originals es conserven (pre-wrap). */
+.code_block.language-plaintext {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 /* vf-preview: renderitzat en viu del codi HTML d'un vf-code, dins d'un
    iframe sandboxed (vore components/vf-preview.js). Mateix llenguatge
    visual que .pre_code (radi, ombra), amb una etiqueta de capçalera en
