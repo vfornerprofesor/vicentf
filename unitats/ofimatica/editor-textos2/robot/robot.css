@@ -307,7 +307,10 @@ h2 { color: var(--verd); font-size: 1.15rem; font-weight: normal; margin: 0 0 10
 
 /* Document d'instruccions: paper clar, perquè les captures de Writer es vegen bé */
 
+/* Per damunt de les scanlines (z-index 50): les instruccions es veuen nítides */
 .document {
+    position: relative;
+    z-index: 60;
     margin-top: 24px;
     background: var(--paper);
     color: var(--tinta);
@@ -474,16 +477,6 @@ input[type="text"]:focus { outline: none; box-shadow: 0 0 0 3px rgba(57, 255, 15
 .btn-mini { font-size: .8rem; padding: 4px 8px; border-color: var(--groc); color: var(--groc); background: transparent; }
 .btn-pista { border-color: var(--groc); color: var(--groc); background: rgba(255, 211, 79, .1); }
 
-.btn-perill {
-    font-size: 1.3rem;
-    padding: 16px 30px;
-    border-color: var(--roig);
-    color: #fff;
-    background: rgba(255, 79, 109, .3);
-    box-shadow: 0 0 20px rgba(255, 79, 109, .4);
-}
-
-.btn-perill:hover { background: rgba(255, 79, 109, .55); }
 
 .resposta { min-height: 1.4em; margin: 6px 0; font-family: var(--mono) !important; }
 .resposta.ok { color: var(--verd); }
@@ -506,7 +499,7 @@ input[type="text"]:focus { outline: none; box-shadow: 0 0 0 3px rgba(57, 255, 15
 
 /* ---------- Final ---------- */
 
-.final .estat-missio { max-width: 720px; margin: 0 auto 20px; }
+.final .estat-missio { max-width: 480px; margin: 0 auto 20px; }
 
 /* ---------- Peu ---------- */
 

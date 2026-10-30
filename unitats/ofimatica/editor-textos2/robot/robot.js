@@ -4,8 +4,7 @@
  * Estat de la partida = nombre de codis correctes (0..8):
  *   0      → història + activació (codi VULL AJUDAR-TE)
  *   1..7   → transmissió amb les instruccions del DOCUMENT n
- *   8      → ubicació trobada; botó per desactivar els robots
- *   9      → final (robots desactivats)
+ *   8      → final (robots reprogramats)
  *
  * Tot el que el professorat pot voler canviar està en NIVELLS i ESTATS:
  * codis, pistes, missatges i imatges. Les instruccions de cada document
@@ -66,59 +65,56 @@ var NIVELLS = [
 ];
 
 // Què es mostra en cada estat: imatge de la història, missatges i instruccions.
+// Les imatges són a assets/unitats/ofimatica/editor-textos2/estat/ (DOC_01 en
+// activar la plataforma … DOC_08_FINAL en superar el DOCUMENT 7).
 // {nom} es substitueix pel nom de l'alumne/a.
 var ESTATS = {
     1: {
-        imatge: 'historia/vinyeta-7.jpg',
-        sistema: "Connexió establerta. Usuari: {nom}. Nucli del robot: BLOQUEJAT (0/7 mòduls).",
-        informatic: "{nom}, gràcies per connectar-te! El robot només entén documents de text ben fets. Cada document correcte desbloqueja un mòdul de la seua programació. Comencem: descarrega el DOCUMENT 1 i segueix les instruccions.",
+        imatge: 'estat/DOC_01.png',
+        sistema: "Connexió establerta. Usuari: {nom}. Programació del robot: BLOQUEJADA (0/7 documents).",
+        informatic: "{nom}, gràcies per connectar-te! El robot no em deixa escapar… Només entén documents de text ben fets: cada document correcte actualitza la seua programació. Comencem: descarrega el DOCUMENT 1 i segueix les instruccions.",
         document: 1
     },
     2: {
-        imatge: 'estat/estat-1.png',
-        sistema: "Mòdul 1/7 reprogramat: memòria de preferències.",
-        informatic: "«El nàufrag està atrapat»… El robot sap que estic ací! No podem parar. Ara cal donar format al text perquè el robot el puga llegir.",
+        imatge: 'estat/DOC_02.png',
+        sistema: "DOCUMENT 1 ACTUALITZAT.",
+        informatic: "«El nàufrag està atrapat»… però mira: el robot ja m'ha portat menjar! Seguim: ara cal donar format al text perquè el robot el puga llegir.",
         document: 2
     },
     3: {
-        imatge: 'estat/estat-2.png',
-        sistema: "Mòdul 2/7 reprogramat: lectura de formats.",
-        informatic: "El robot ja distingeix colors, negretes i cursives. Ara toca ordenar el document amb títols i subtítols.",
+        imatge: 'estat/DOC_03.png',
+        sistema: "DOCUMENT 2 ACTUALITZAT.",
+        informatic: "El robot m'ha deixat refugiar-me en la cova. Ara toca ordenar el document amb títols i subtítols.",
         document: 3
     },
     4: {
-        imatge: 'estat/estat-3.png',
-        sistema: "Mòdul 3/7 reprogramat: estructura del document.",
-        informatic: "Molt bé! Ara el robot sap on comença cada apartat. Fem que el document parega professional: estils i índex.",
+        imatge: 'estat/DOC_04.png',
+        sistema: "DOCUMENT 3 ACTUALITZAT.",
+        informatic: "Ara el robot fins i tot vol jugar a les cartes amb mi! Fem que el document parega professional: estils i índex.",
         document: 4
     },
     5: {
-        imatge: 'estat/estat-4.png',
-        sistema: "Mòdul 4/7 reprogramat: índex de navegació.",
-        informatic: "Amb l'índex, el robot ja pot moure's pel seu propi sistema. Ara cal organitzar la informació dels personatges en llistes.",
+        imatge: 'estat/DOC_05.png',
+        sistema: "DOCUMENT 4 ACTUALITZAT. Actualitzant software…",
+        informatic: "He connectat el robot per a actualitzar el seu software. Ara cal organitzar la informació dels personatges en llistes.",
         document: 5
     },
     6: {
-        imatge: 'estat/estat-5.png',
-        sistema: "Mòdul 5/7 reprogramat: CONFIGURANT ROBOT…",
-        informatic: "Ho has aconseguit: el robot ha entrat en mode configuració! Ara cal completar el seu informe amb taules i imatges.",
+        imatge: 'estat/DOC_06.png',
+        sistema: "DOCUMENT 5 ACTUALITZAT. CONFIGURANT ROBOT…",
+        informatic: "El robot ja està de la nostra part: diu que anem a arreglar tots els robots! Ara completa el seu informe amb taules i imatges.",
         document: 6
     },
     7: {
-        imatge: 'estat/estat-6.png',
-        sistema: "Mòdul 6/7 reprogramat: base de dades visual.",
-        informatic: "Només queda un mòdul! Prepara el document final en PDF i descobreix on estic.",
+        imatge: 'estat/DOC_07.png',
+        sistema: "DOCUMENT 6 ACTUALITZAT.",
+        informatic: "Funciona! Els robots de la ciutat ja canvien la seua programació. Només queda el document final: fes-lo en PDF i descobreix on estic perquè vinguen a per mi.",
         document: 7
     },
     8: {
-        imatge: 'estat/estat-7.png',
-        sistema: "Mòdul 7/7 reprogramat. Ubicació desbloquejada: STROMBOLI (38°47'30.6\"N 15°11'52.0\"E).",
-        informatic: "Estic a l'illa de Stromboli! L'equip de rescat ja ve de camí. Només falta una cosa: desactivar els robots per sempre."
-    },
-    9: {
-        imatge: 'estat/final.png',
-        sistema: "Ordre rebuda. Desactivant tots els robots… 3… 2… 1… ROBOTS DESACTIVATS.",
-        informatic: "ENHORABONA!! HAS ACONSEGUIT SALVAR-ME A MI I AL MÓN!!! Moltes gràcies, {nom}!!!"
+        imatge: 'estat/DOC_08_FINAL.png',
+        sistema: "DOCUMENT 7 ACTUALITZAT. Ubicació: STROMBOLI (38°47'30.6\"N 15°11'52.0\"E). Tots els robots reprogramats.",
+        informatic: "ENHORABONA!! HAS ACONSEGUIT SALVAR-ME A MI I AL MÓN!!! Els robots ja demanen perdó i l'equip de rescat ve a buscar-me. Moltes gràcies, {nom}!!!"
     }
 };
 
@@ -242,7 +238,6 @@ function pinta() {
     pintaCapcalera();
     if (partida.pas === 0) { pintaIntro(); }
     else if (partida.pas <= 7) { pintaTransmissio(partida.pas, false); }
-    else if (partida.pas === 8) { pintaUbicacio(); }
     else { pintaFinal(); }
 }
 
@@ -353,20 +348,8 @@ function pintaArxiu(n) {
     pintaTransmissio(n, true);
 }
 
-function pintaUbicacio() {
-    var estat = ESTATS[8];
-    var boto = el('button', { type: 'button', 'class': 'btn btn-perill', text: '⏻ DESACTIVA ELS ROBOTS' });
-    boto.addEventListener('click', function () {
-        partida.pas = 9; guarda(); pinta();
-    });
-    app.appendChild(el('section', { 'class': 'pantalla ubicacio' }, [
-        el('div', { 'class': 'transmissio-cap' }, [estatMissio(estat, '7/7'), bitacola(estat)]),
-        el('div', { 'class': 'panell centrat' }, [boto])
-    ]));
-}
-
 function pintaFinal() {
-    var estat = ESTATS[9];
+    var estat = ESTATS[8];
     app.appendChild(el('section', { 'class': 'pantalla final' }, [
         el('h1', { 'class': 'glitch', text: 'MISSIÓ COMPLETADA' }),
         estatMissio(estat, 'FINAL'),
@@ -479,7 +462,7 @@ if (revisio) {
     var barra = document.getElementById('revisio');
     barra.hidden = false;
     barra.appendChild(el('span', { text: 'MODE REVISIÓ (professorat) · no es guarda res · ves al pas:' }));
-    ['Inici', 'Doc 1', 'Doc 2', 'Doc 3', 'Doc 4', 'Doc 5', 'Doc 6', 'Doc 7', 'Ubicació', 'Final'].forEach(function (t, i) {
+    ['Inici', 'Doc 1', 'Doc 2', 'Doc 3', 'Doc 4', 'Doc 5', 'Doc 6', 'Doc 7', 'Final'].forEach(function (t, i) {
         var b = el('button', { type: 'button', 'class': 'btn btn-mini', text: t });
         b.addEventListener('click', function () {
             partida.pas = i;
@@ -491,7 +474,7 @@ if (revisio) {
     // ?revisio&pas=N obri directament el pas N (enllaços de la guia del professorat)
     var pasUrl = /[?&]pas=(\d+)/.exec(location.search);
     if (pasUrl) {
-        partida.pas = Math.min(9, parseInt(pasUrl[1], 10));
+        partida.pas = Math.min(8, parseInt(pasUrl[1], 10));
         partida.nom = 'Professorat';
     }
 }
