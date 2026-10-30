@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R0-B0T · Terminal de rescat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="unitats/ofimatica/editor-textos2/robot/robot.css">
+</head>
+
+<body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="cap">
+        <img class="cap-robot" src="assets/unitats/ofimatica/editor-textos2/historia/robot.png" alt="">
+        <div class="cap-text">
+            <div class="cap-titol">R0-B0T <span>· terminal de rescat</span></div>
+            <div class="cap-estat"><span class="led" id="led"></span> <span id="estat-connexio">SENSE CONNEXIÓ</span></div>
+        </div>
+        <div class="cap-usuari" id="usuari"></div>
+    </header>
+
+    <nav class="moduls" id="moduls" aria-label="Mòduls reprogramats"></nav>
+
+    <div class="revisio" id="revisio" hidden></div>
+
+    <main id="app" aria-live="polite"></main>
+
+    <footer class="peu">
+        <span>R0-B0T v2.0 · IES de Betxí</span>
+        <button type="button" class="enllac" id="reiniciar">Reinicia la partida</button>
+    </footer>
+
+    <script src="unitats/ofimatica/editor-textos2/robot/robot.js"></script>
+</body>
+
+</html>

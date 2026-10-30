@@ -1,0 +1,628 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Taller de circuits</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: banc de laboratori sobre paper mil·limetrat. Esquerra: circuit i controls. Dreta: resultats, explicació i fórmules. Reptes a baix, a tot l'ample. */
+:root {
+  --paper: #EEF3F5;
+  --grid: #DDE6EA;
+  --card: #FFFFFF;
+  --ink: #12263A;
+  --muted: #4E6277;
+  --line: #CAD6DD;
+  --teal: #0B7F86;
+  --rose: #C23A68;
+  --amber: #F5A623;
+  --flow: #E08700;
+  --wire: #44586B;
+  --ok: #17703F;
+  --ok-bg: #E2F4E9;
+  --warn: #9A4A06;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1A22; --grid: #14252E; --card: #14242E; --ink: #E6EEF3; --muted: #9FB3C2; --line: #29424F;
+    --teal: #3CC6CE; --rose: #F27BA3; --amber: #FFC24D; --flow: #FFC24D; --wire: #8CA4B6;
+    --ok: #66D494; --ok-bg: #12372A; --warn: #F2A65A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1A22; --grid: #14252E; --card: #14242E; --ink: #E6EEF3; --muted: #9FB3C2; --line: #29424F;
+  --teal: #3CC6CE; --rose: #F27BA3; --amber: #FFC24D; --flow: #FFC24D; --wire: #8CA4B6;
+  --ok: #66D494; --ok-bg: #12372A; --warn: #F2A65A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 48px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; line-height: 1.1; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; font-weight: 800; }
+h3 { font-size: 1.1rem; font-weight: 800; }
+p { margin: 0; }
+sub { font-size: .7em; line-height: 0; }
+.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+.lead { color: var(--muted); max-width: 60ch; margin-top: 10px; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch; }
+.modes { display: flex; flex-wrap: wrap; gap: 12px; flex: 1 1 420px; min-width: 0; }
+.mode {
+  flex: 1 1 200px; min-width: 0; min-height: 68px; padding: 10px 18px; text-align: left;
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 14px; cursor: pointer; font-family: var(--font-body);
+}
+.mode .mt { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; }
+.mode .ms { font-size: .9rem; color: var(--muted); }
+.mode[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.mode[aria-pressed="true"] .ms { color: var(--paper); opacity: .8; }
+.btn {
+  min-height: 56px; padding: 10px 22px; font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; cursor: pointer;
+  background: var(--card); color: var(--ink); border: 2px solid var(--ink); border-radius: 14px;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.reset { align-self: stretch; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+.layout { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 980px) { .layout { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); } }
+.col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; min-width: 0; }
+.card > h2 { margin-bottom: 14px; }
+.cap { font-size: .88rem; color: var(--muted); }
+
+/* circuit */
+#board { width: 100%; height: auto; display: block; max-width: 100%; }
+#board .wire { fill: none; stroke: var(--wire); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+#board .flow { fill: none; stroke: var(--flow); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 0.1 19.9; animation: flow var(--dur, 2s) linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -20; } }
+#board .t { fill: var(--ink); font-family: var(--font-body); font-weight: 700; font-size: 20px; }
+#board .t1 { fill: var(--teal); }
+#board .t2 { fill: var(--rose); }
+#board .body { fill: var(--card); stroke-width: 5; }
+#board .c1 .body { stroke: var(--teal); }
+#board .c2 .body { stroke: var(--rose); }
+#board .lit { fill: var(--amber); }
+#board .fil { fill: none; stroke: var(--wire); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+#board .plate { stroke: var(--ink); stroke-linecap: round; }
+#board .back { fill: var(--card); }
+#board .dot { fill: var(--wire); }
+.off { display: none; }
+.boardcap { margin-top: 8px; }
+
+/* controls */
+.ctl { display: flex; flex-direction: column; gap: 4px; padding-block: 10px; }
+.ctl + .ctl { border-top: 1px solid var(--line); }
+.ctl-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.ctl-name { font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.swatch { width: 14px; height: 14px; border-radius: 50%; background: var(--sc); flex: none; }
+.ctl-val { font-family: var(--font-display); font-weight: 800; font-size: 2rem; font-variant-numeric: tabular-nums; line-height: 1; }
+.ctl-val small { font-size: 1.1rem; font-weight: 600; color: var(--muted); }
+.ctl-row { display: flex; align-items: center; gap: 12px; }
+.step {
+  flex: none; width: 52px; height: 52px; border-radius: 14px; border: 2px solid var(--line); background: var(--card); color: var(--ink);
+  font-size: 1.7rem; font-weight: 700; line-height: 1; cursor: pointer; font-family: var(--font-body);
+}
+.step:hover { border-color: var(--sc); }
+input[type=range] { flex: 1 1 auto; min-width: 0; width: 100%; height: 48px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
+input[type=range]::-webkit-slider-runnable-track { height: 12px; border-radius: 6px; background: linear-gradient(to right, var(--sc) var(--pct, 0%), var(--line) var(--pct, 0%)); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 36px; height: 36px; border-radius: 50%; background: var(--card); border: 5px solid var(--sc); margin-top: -12px; box-shadow: 0 1px 4px rgba(0,0,0,.25); }
+input[type=range]::-moz-range-track { height: 12px; border-radius: 6px; background: var(--line); }
+input[type=range]::-moz-range-progress { height: 12px; border-radius: 6px; background: var(--sc); }
+input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--card); border: 5px solid var(--sc); }
+
+.live { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--paper); border: 1px dashed var(--line); display: flex; flex-direction: column; gap: 2px; }
+.live b { font-family: var(--font-display); }
+.live.ok { background: var(--ok-bg); border: 1px solid var(--ok); color: var(--ok); }
+.live .st { font-family: var(--font-mono); font-size: .9rem; font-weight: 500; overflow-wrap: anywhere; }
+
+/* resultats */
+.stats3 { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.stat { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat .k { font-size: .9rem; font-weight: 700; color: var(--muted); }
+.stat .v { font-family: var(--font-display); font-weight: 800; font-size: 1.9rem; line-height: 1.1; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.stat .v.big { font-size: 2.6rem; color: var(--ink); }
+.stat .cap { line-height: 1.3; }
+.bulbs { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.bulbcard { display: flex; flex-direction: column; gap: 12px; }
+.bulbcard .hd { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.bulbcard .hd h3 { display: flex; align-items: center; gap: 10px; }
+.chip { font-family: var(--font-mono); font-weight: 700; font-size: .9rem; padding: 3px 10px; border-radius: 999px; border: 2px solid var(--sc); color: var(--ink); }
+.light-bar { height: 16px; border-radius: 8px; background: var(--line); overflow: hidden; }
+.light-fill { height: 100%; width: 0; background: var(--amber); border-radius: 8px; transition: width .15s linear; }
+.light-lbl { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; font-size: .95rem; flex-wrap: wrap; }
+.light-lbl span:last-child { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.maxlight { color: var(--warn); font-size: .88rem; font-weight: 700; }
+
+.explain { display: flex; flex-direction: column; gap: 10px; }
+.explain p { max-width: 62ch; }
+
+.formulas { display: flex; flex-direction: column; gap: 6px; overflow-x: auto; }
+.frow { display: grid; grid-template-columns: minmax(150px, 0.9fr) minmax(0, 1.4fr); gap: 4px 14px; padding: 8px 0; border-top: 1px solid var(--line); align-items: baseline; }
+.frow:first-child { border-top: 0; }
+.frow .sym { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
+.frow .num { font-family: var(--font-mono); font-size: .92rem; font-weight: 500; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .frow { grid-template-columns: 1fr; } }
+.ohm { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.ohm span { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 6px 14px; }
+
+/* reptes */
+.chead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 14px; }
+.prog { font-weight: 700; }
+.chals { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); align-items: start; }
+.chal { border: 2px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; background: var(--card); }
+.chal.act { border-color: var(--ink); }
+.chal.done { border-color: var(--ok); background: var(--ok-bg); }
+.chal .tag { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.chal.done .tag { color: var(--ok); }
+.chal .steps { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 6px; }
+.chal .hintbox { background: var(--paper); border-radius: 10px; padding: 10px 12px; }
+.chal .why { font-weight: 700; color: var(--ok); }
+.chal .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.chal .btn { min-height: 48px; padding: 8px 16px; font-size: 1rem; }
+.alldone { margin-top: 14px; padding: 14px 16px; border-radius: 12px; background: var(--ok-bg); color: var(--ok); font-weight: 700; border: 1px solid var(--ok); }
+
+@media (prefers-reduced-motion: reduce) {
+  #board .flow { animation: none; }
+  .light-fill { transition: none; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Física · 3r d'ESO · Electricitat</p>
+    <h1>Taller de circuits</h1>
+    <p class="lead">Canvia la pila i les resistències i observa la intensitat, la tensió de cada bombeta i la llum que fa. Després prova els tres reptes.</p>
+  </header>
+
+  <div class="bar">
+    <div class="modes" role="group" aria-label="Tipus de circuit">
+      <button type="button" class="mode" id="m-serie" aria-pressed="true"><span class="mt">Circuit en sèrie</span><span class="ms">Un sol camí per al corrent</span></button>
+      <button type="button" class="mode" id="m-par" aria-pressed="false"><span class="mt">Circuit en paral·lel</span><span class="ms">Cada bombeta té el seu camí</span></button>
+    </div>
+    <button type="button" class="btn reset" id="reset">↺ Reinicia</button>
+  </div>
+
+  <main class="layout">
+    <div class="col">
+      <section class="card" aria-label="Circuit">
+        <svg id="board" viewBox="0 0 640 336" role="img" aria-label="Circuit en sèrie amb una pila i dues bombetes">
+          <defs>
+            <radialGradient id="glowGrad">
+              <stop offset="0%" style="stop-color:var(--amber);stop-opacity:.95"></stop>
+              <stop offset="60%" style="stop-color:var(--amber);stop-opacity:.4"></stop>
+              <stop offset="100%" style="stop-color:var(--amber);stop-opacity:0"></stop>
+            </radialGradient>
+          </defs>
+
+          <g id="gS">
+            <path class="wire" d="M70,150 V70 H570 V290 H70 V210"></path>
+            <path class="flow" data-cur="I" d="M70,150 V70 H570 V290 H70 V210"></path>
+            <g class="bulb c1" id="bS1" transform="translate(220 70)"></g>
+            <g class="bulb c2" id="bS2" transform="translate(420 70)"></g>
+            <text class="t t1" id="lS1" x="220" y="134" text-anchor="middle"></text>
+            <text class="t t2" id="lS2" x="420" y="134" text-anchor="middle"></text>
+            <text class="t" id="lSI" x="320" y="320" text-anchor="middle"></text>
+          </g>
+
+          <g id="gP" class="off">
+            <path class="wire" d="M70,150 V70 H300"></path>
+            <path class="wire" d="M300,70 H480"></path>
+            <path class="wire" d="M300,70 V290"></path>
+            <path class="wire" d="M480,70 V290"></path>
+            <path class="wire" d="M480,290 H70 V210"></path>
+            <path class="flow" data-cur="I" d="M70,150 V70 H300"></path>
+            <path class="flow" data-cur="I2" d="M300,70 H480"></path>
+            <path class="flow" data-cur="I1" d="M300,70 V150"></path>
+            <path class="flow" data-cur="I1" d="M300,210 V290"></path>
+            <path class="flow" data-cur="I2" d="M480,70 V150"></path>
+            <path class="flow" data-cur="I2" d="M480,210 V290"></path>
+            <path class="flow" data-cur="I2" d="M480,290 H300"></path>
+            <path class="flow" data-cur="I" d="M300,290 H70 V210"></path>
+            <circle class="dot" cx="300" cy="70" r="7"></circle>
+            <circle class="dot" cx="480" cy="70" r="7"></circle>
+            <circle class="dot" cx="300" cy="290" r="7"></circle>
+            <circle class="dot" cx="480" cy="290" r="7"></circle>
+            <g class="bulb c1" id="bP1" transform="translate(300 180)"></g>
+            <g class="bulb c2" id="bP2" transform="translate(480 180)"></g>
+            <text class="t t1" id="lP1" x="348" y="187"></text>
+            <text class="t t2" id="lP2" x="528" y="187"></text>
+            <text class="t" id="lPI" x="185" y="320" text-anchor="middle"></text>
+          </g>
+
+          <g id="pila">
+            <rect class="back" x="44" y="146" width="52" height="68"></rect>
+            <line class="plate" x1="50" y1="158" x2="90" y2="158" stroke-width="6"></line>
+            <line class="plate" x1="60" y1="171" x2="80" y2="171" stroke-width="6"></line>
+            <line class="plate" x1="50" y1="188" x2="90" y2="188" stroke-width="6"></line>
+            <line class="plate" x1="60" y1="201" x2="80" y2="201" stroke-width="6"></line>
+            <text class="t" x="102" y="164">+</text>
+            <text class="t" x="102" y="212">−</text>
+            <text class="t" id="lV" x="118" y="192"></text>
+          </g>
+        </svg>
+        <p class="cap boardcap">Els punts grocs representen el corrent: com més intensitat, més ràpids van.</p>
+      </section>
+
+      <section class="card" aria-labelledby="h-ctl">
+        <h2 id="h-ctl">Controls</h2>
+        <div id="controls"></div>
+        <div class="live" id="live"></div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="card" aria-labelledby="h-res">
+        <h2 id="h-res">Resultats del circuit</h2>
+        <div class="stats3">
+          <div class="stat"><span class="k">Resistència equivalent</span><span class="v" id="o-Rt"></span><span class="cap" id="c-Rt"></span></div>
+          <div class="stat"><span class="k">Intensitat total</span><span class="v big" id="o-I"></span><span class="cap" id="c-I"></span></div>
+          <div class="stat"><span class="k">Potència total</span><span class="v" id="o-P"></span><span class="cap">P = V · I</span></div>
+        </div>
+      </section>
+
+      <div class="bulbs" id="bulbs"></div>
+
+      <section class="card explain" aria-labelledby="h-exp">
+        <h2 id="h-exp">Què està passant?</h2>
+        <div id="explain" class="explain"></div>
+      </section>
+
+      <section class="card" aria-labelledby="h-for">
+        <h2 id="h-for">Fórmules que s'apliquen</h2>
+        <div class="ohm"><span>V = I · R</span><span>P = V · I</span></div>
+        <p class="cap" style="margin-bottom:8px" id="fmode"></p>
+        <div class="formulas" id="formulas"></div>
+      </section>
+    </div>
+  </main>
+
+  <section class="card" aria-labelledby="h-rep">
+    <div class="chead">
+      <h2 id="h-rep">Reptes guiats</h2>
+      <p class="prog" id="prog"></p>
+    </div>
+    <div class="chals" id="chals"></div>
+    <p class="alldone" id="alldone" hidden>Enhorabona! Has superat els tres reptes. Prova ara a inventar-ne un de nou.</p>
+  </section>
+</div>
+
+<script>
+/*CORE*/
+const PNOM = 6;
+function calc(s) {
+  const V = s.V, R1 = s.R1, R2 = s.R2;
+  if (s.mode === 'serie') {
+    const Rt = R1 + R2, I = V / Rt;
+    return { Rt, I, I1: I, I2: I, V1: I * R1, V2: I * R2 };
+  }
+  const I1 = V / R1, I2 = V / R2;
+  return { Rt: 1 / (1 / R1 + 1 / R2), I: I1 + I2, I1, I2, V1: V, V2: V };
+}
+function bright(P) { return Math.min(1, Math.sqrt(P / PNOM)); }
+function f(x, d) { return x.toFixed(d === undefined ? 2 : d).replace('.', ','); }
+function g(x, d) { return String(+x.toFixed(d === undefined ? 2 : d)).replace('.', ','); }
+const CH = [
+  {
+    mode: 'serie', title: 'Sèrie: 0,5 A',
+    goal: 'Aconsegueix que la intensitat del circuit en sèrie siga de 0,50 A.',
+    steps: [
+      'Comprova que estàs en circuit en sèrie.',
+      'Mira la fórmula I = V ÷ Rt: la intensitat actual és massa alta o massa baixa?',
+      'Per a pujar la intensitat, baixa les resistències o puja la pila. Per a baixar-la, fes el contrari.'
+    ],
+    hint: 'Amb una pila de 6 V necessites una resistència total de 12 Ω. Per exemple, R₁ = 6 Ω i R₂ = 6 Ω.',
+    check: function (s, c) { return { ok: s.mode === 'serie' && Math.abs(c.I - 0.5) < 0.005, now: 'I = ' + f(c.I) + ' A', goal: '0,50 A' }; },
+    why: function (s, c) { return 'Ho has aconseguit! I = V ÷ (R₁ + R₂) = ' + f(s.V, 1) + ' ÷ ' + (s.R1 + s.R2) + ' = ' + f(c.I) + ' A.'; }
+  },
+  {
+    mode: 'par', title: 'Paral·lel: 2 A',
+    goal: 'En un circuit en paral·lel, aconsegueix que la intensitat total siga de 2,00 A.',
+    steps: [
+      'Passa a circuit en paral·lel.',
+      'Cada bombeta rep la tensió de la pila: I₁ = V ÷ R₁ i I₂ = V ÷ R₂.',
+      'La intensitat total és I₁ + I₂. Ajusta pila i resistències fins arribar a 2,00 A.'
+    ],
+    hint: 'Amb 12 V i R₁ = R₂ = 12 Ω, cada camí porta 1 A i el total és 2 A.',
+    check: function (s, c) { return { ok: s.mode === 'par' && Math.abs(c.I - 2) < 0.005, now: 'I = ' + f(c.I) + ' A', goal: '2,00 A' }; },
+    why: function (s, c) { return 'Ho has aconseguit! I = I₁ + I₂ = ' + f(c.I1) + ' + ' + f(c.I2) + ' = ' + f(c.I) + ' A.'; }
+  },
+  {
+    mode: 'serie', title: 'Sèrie: repartir 9 V',
+    goal: 'En un circuit en sèrie, posa la pila a 9 V i aconsegueix 6 V a la bombeta 1 i 3 V a la bombeta 2.',
+    steps: [
+      'En sèrie la tensió es reparteix en proporció a la resistència.',
+      'Si V₁ ha de ser el doble de V₂, quina relació han de tindre R₁ i R₂?',
+      'Posa la pila a 9 V i ajusta les resistències fins que es complisquen els dos valors.'
+    ],
+    hint: 'R₁ ha de ser el doble de R₂. Per exemple, R₁ = 20 Ω i R₂ = 10 Ω.',
+    check: function (s, c) {
+      return {
+        ok: s.mode === 'serie' && Math.abs(s.V - 9) < 0.01 && Math.abs(c.V1 - 6) < 0.05 && Math.abs(c.V2 - 3) < 0.05,
+        now: 'pila ' + f(s.V, 1) + ' V · V₁ = ' + f(c.V1) + ' V · V₂ = ' + f(c.V2) + ' V',
+        goal: '9 V · 6 V · 3 V'
+      };
+    },
+    why: function (s, c) { return 'Ho has aconseguit! V₁ + V₂ = ' + f(c.V1) + ' + ' + f(c.V2) + ' = ' + f(s.V, 1) + ' V, i V₁ és el doble perquè R₁ és el doble de R₂.'; }
+  }
+];
+/*END CORE*/
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var DEF = { mode: 'serie', V: 6, R1: 10, R2: 20 };
+  var st = { mode: DEF.mode, V: DEF.V, R1: DEF.R1, R2: DEF.R2 };
+  var active = 0;
+  var done = [false, false, false];
+  var whyText = ['', '', ''];
+  var hintOpen = [false, false, false];
+
+  var CTL = [
+    { k: 'V', name: 'Voltatge de la pila', unit: 'V', min: 1, max: 12, step: 0.5, color: 'var(--ink)', dec: 1 },
+    { k: 'R1', name: 'Resistència R₁ (bombeta 1)', unit: 'Ω', min: 1, max: 50, step: 1, color: 'var(--teal)', dec: 0 },
+    { k: 'R2', name: 'Resistència R₂ (bombeta 2)', unit: 'Ω', min: 1, max: 50, step: 1, color: 'var(--rose)', dec: 0 }
+  ];
+
+  /* ---------- construcció inicial ---------- */
+  var ctlHTML = '';
+  CTL.forEach(function (c) {
+    ctlHTML += '<div class="ctl" style="--sc:' + c.color + '">' +
+      '<div class="ctl-head"><label class="ctl-name" for="s-' + c.k + '"><span class="swatch"></span>' + c.name + '</label>' +
+      '<span class="ctl-val"><span id="v-' + c.k + '"></span> <small>' + c.unit + '</small></span></div>' +
+      '<div class="ctl-row">' +
+      '<button type="button" class="step" data-k="' + c.k + '" data-d="-1" aria-label="Baixa ' + c.name + '">−</button>' +
+      '<input type="range" id="s-' + c.k + '" min="' + c.min + '" max="' + c.max + '" step="' + c.step + '">' +
+      '<button type="button" class="step" data-k="' + c.k + '" data-d="1" aria-label="Puja ' + c.name + '">+</button>' +
+      '</div></div>';
+  });
+  $('controls').innerHTML = ctlHTML;
+
+  var bulbHTML = '';
+  [1, 2].forEach(function (n) {
+    var col = n === 1 ? 'var(--teal)' : 'var(--rose)';
+    bulbHTML += '<section class="card bulbcard" style="--sc:' + col + '" aria-label="Bombeta ' + n + '">' +
+      '<div class="hd"><h3>Bombeta ' + n + '</h3><span class="chip" id="o-R' + n + '"></span></div>' +
+      '<div class="stats3">' +
+      '<div class="stat"><span class="k">Tensió V<sub>' + n + '</sub></span><span class="v" id="o-V' + n + '"></span><span class="cap" id="c-V' + n + '"></span></div>' +
+      '<div class="stat"><span class="k">Intensitat I<sub>' + n + '</sub></span><span class="v" id="o-I' + n + '"></span><span class="cap" id="c-I' + n + '"></span></div>' +
+      '<div class="stat"><span class="k">Potència P<sub>' + n + '</sub></span><span class="v" id="o-P' + n + '"></span><span class="cap">P = V · I</span></div>' +
+      '</div>' +
+      '<div><div class="light-lbl"><span>Brillantor</span><span id="o-b' + n + '"></span></div>' +
+      '<div class="light-bar"><div class="light-fill" id="bar' + n + '"></div></div>' +
+      '<p class="maxlight" id="max' + n + '" hidden>Llum al màxim: ja supera la potència de referència (6 W).</p></div>' +
+      '</section>';
+  });
+  $('bulbs').innerHTML = bulbHTML;
+
+  document.querySelectorAll('.bulb').forEach(function (b) {
+    b.innerHTML = '<circle class="glow" r="46" fill="url(#glowGrad)" opacity="0"></circle>' +
+      '<circle class="body" r="32"></circle>' +
+      '<circle class="lit" r="29" opacity="0"></circle>' +
+      '<path class="fil" d="M-14,14 L-14,0 L-7,-11 L0,0 L7,-11 L14,0 L14,14"></path>';
+  });
+
+  var chHTML = '';
+  CH.forEach(function (ch, i) {
+    chHTML += '<article class="chal" id="ch' + i + '">' +
+      '<div class="tag"><span>Repte ' + (i + 1) + '</span><span id="ch' + i + 'mark"></span></div>' +
+      '<h3>' + ch.title + '</h3>' +
+      '<p>' + ch.goal + '</p>' +
+      '<div class="detail" id="ch' + i + 'd" style="display:flex;flex-direction:column;gap:12px">' +
+      '<ol class="steps">' + ch.steps.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ol>' +
+      '<div class="acts"><button type="button" class="btn" data-hint="' + i + '">Vull una pista</button>' +
+      '<button type="button" class="btn" data-next="' + i + '" id="ch' + i + 'n" hidden>Següent repte →</button></div>' +
+      '<p class="hintbox" id="ch' + i + 'h" hidden>' + ch.hint + '</p>' +
+      '<p class="why" id="ch' + i + 'w" role="status"></p>' +
+      '</div>' +
+      '<button type="button" class="btn" data-pick="' + i + '" id="ch' + i + 'p">Fes aquest repte</button>' +
+      '</article>';
+  });
+  $('chals').innerHTML = chHTML;
+
+  /* ---------- actualització ---------- */
+  function setBulb(id, b) {
+    var g0 = $(id);
+    var glow = g0.querySelector('.glow');
+    glow.setAttribute('opacity', (b * 0.95).toFixed(2));
+    glow.setAttribute('r', (46 + b * 24).toFixed(1));
+    g0.querySelector('.lit').setAttribute('opacity', (b * 0.9).toFixed(2));
+  }
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+
+  function explainHTML(s, c, b1, b2) {
+    var cmp, html;
+    var both = b1 >= 0.999 && b2 >= 0.999;
+    if (s.mode === 'serie') {
+      if (both) cmp = 'Les dues bombetes estan al màxim de llum.';
+      else if (s.R1 === s.R2) cmp = 'Com que R₁ = R₂, les dues bombetes brillen igual.';
+      else cmp = 'La bombeta ' + (s.R1 > s.R2 ? 1 : 2) + ' té més resistència, agafa més tensió i brilla més.';
+      html = '<p>En sèrie només hi ha un camí, així que per les dues bombetes passa <b>la mateixa intensitat</b>: I = V ÷ R<sub>t</sub> = ' + f(s.V, 1) + ' ÷ ' + g(c.Rt) + ' = <b>' + f(c.I) + ' A</b>.</p>' +
+        '<p>La tensió de la pila es <b>reparteix</b>: ' + f(c.V1) + ' V + ' + f(c.V2) + ' V = ' + f(s.V, 1) + ' V. ' + cmp + '</p>';
+    } else {
+      if (both) cmp = 'Les dues bombetes estan al màxim de llum.';
+      else if (s.R1 === s.R2) cmp = 'Com que R₁ = R₂, les dues bombetes brillen igual.';
+      else cmp = 'La bombeta ' + (s.R1 < s.R2 ? 1 : 2) + ' té menys resistència, deixa passar més intensitat i brilla més.';
+      html = '<p>En paral·lel hi ha dos camins i <b>cada bombeta rep tota la tensió</b> de la pila: ' + f(s.V, 1) + ' V.</p>' +
+        '<p>Cada camí porta la seua intensitat (I₁ = ' + f(c.I1) + ' A, I₂ = ' + f(c.I2) + ' A) i la total és la suma: <b>' + f(c.I) + ' A</b>. ' + cmp + '</p>' +
+        '<p>La resistència equivalent (' + g(c.Rt) + ' Ω) és menor que qualsevol de les dues resistències.</p>';
+    }
+    return html;
+  }
+
+  function formulasHTML(s, c) {
+    var rows = [];
+    var P1 = c.V1 * c.I1, P2 = c.V2 * c.I2;
+    if (s.mode === 'serie') {
+      rows.push(['R<sub>t</sub> = R<sub>1</sub> + R<sub>2</sub>', '= ' + s.R1 + ' + ' + s.R2 + ' = ' + g(c.Rt) + ' Ω']);
+      rows.push(['I = V ÷ R<sub>t</sub>', '= ' + f(s.V, 1) + ' ÷ ' + g(c.Rt) + ' = ' + f(c.I) + ' A']);
+      rows.push(['V<sub>1</sub> = I · R<sub>1</sub>', '= ' + f(c.I) + ' · ' + s.R1 + ' = ' + f(c.V1) + ' V']);
+      rows.push(['V<sub>2</sub> = I · R<sub>2</sub>', '= ' + f(c.I) + ' · ' + s.R2 + ' = ' + f(c.V2) + ' V']);
+      rows.push(['V = V<sub>1</sub> + V<sub>2</sub>', '= ' + f(c.V1) + ' + ' + f(c.V2) + ' = ' + f(c.V1 + c.V2) + ' V']);
+    } else {
+      rows.push(['1 ÷ R<sub>t</sub> = 1 ÷ R<sub>1</sub> + 1 ÷ R<sub>2</sub>', '= 1/' + s.R1 + ' + 1/' + s.R2 + ' → R<sub>t</sub> = ' + g(c.Rt) + ' Ω']);
+      rows.push(['V<sub>1</sub> = V<sub>2</sub> = V', '= ' + f(s.V, 1) + ' V']);
+      rows.push(['I<sub>1</sub> = V ÷ R<sub>1</sub>', '= ' + f(s.V, 1) + ' ÷ ' + s.R1 + ' = ' + f(c.I1) + ' A']);
+      rows.push(['I<sub>2</sub> = V ÷ R<sub>2</sub>', '= ' + f(s.V, 1) + ' ÷ ' + s.R2 + ' = ' + f(c.I2) + ' A']);
+      rows.push(['I = I<sub>1</sub> + I<sub>2</sub>', '= ' + f(c.I1) + ' + ' + f(c.I2) + ' = ' + f(c.I) + ' A']);
+    }
+    rows.push(['P<sub>1</sub> = V<sub>1</sub> · I<sub>1</sub>', '= ' + f(c.V1) + ' · ' + f(c.I1) + ' = ' + f(P1) + ' W']);
+    rows.push(['P<sub>2</sub> = V<sub>2</sub> · I<sub>2</sub>', '= ' + f(c.V2) + ' · ' + f(c.I2) + ' = ' + f(P2) + ' W']);
+    return rows.map(function (r) { return '<div class="frow"><span class="sym">' + r[0] + '</span><span class="num">' + r[1] + '</span></div>'; }).join('');
+  }
+
+  function render() {
+    var s = st, c = calc(s), serie = s.mode === 'serie';
+    var P1 = c.V1 * c.I1, P2 = c.V2 * c.I2, b1 = bright(P1), b2 = bright(P2);
+
+    $('m-serie').setAttribute('aria-pressed', serie);
+    $('m-par').setAttribute('aria-pressed', !serie);
+
+    CTL.forEach(function (ct) {
+      var val = s[ct.k], inp = $('s-' + ct.k);
+      inp.value = val;
+      inp.style.setProperty('--pct', ((val - ct.min) / (ct.max - ct.min) * 100) + '%');
+      $('v-' + ct.k).textContent = f(val, ct.dec);
+    });
+
+    /* circuit */
+    $('gS').classList.toggle('off', !serie);
+    $('gP').classList.toggle('off', serie);
+    $('board').setAttribute('aria-label', serie ? 'Circuit en sèrie amb una pila i dues bombetes' : 'Circuit en paral·lel amb una pila i dues bombetes');
+    $('lV').textContent = f(s.V, 1) + ' V';
+    $('lS1').textContent = 'R₁ = ' + s.R1 + ' Ω';
+    $('lS2').textContent = 'R₂ = ' + s.R2 + ' Ω';
+    $('lP1').textContent = 'R₁ = ' + s.R1 + ' Ω';
+    $('lP2').textContent = 'R₂ = ' + s.R2 + ' Ω';
+    $('lSI').textContent = 'I = ' + f(c.I) + ' A';
+    $('lPI').textContent = 'I = ' + f(c.I) + ' A';
+    setBulb('bS1', b1); setBulb('bS2', b2); setBulb('bP1', b1); setBulb('bP2', b2);
+    document.querySelectorAll('#board .flow').forEach(function (p) {
+      var v = c[p.getAttribute('data-cur')];
+      p.style.setProperty('--dur', clamp(0.5 / v, 0.3, 8).toFixed(2) + 's');
+    });
+
+    /* resultats */
+    $('o-Rt').textContent = g(c.Rt) + ' Ω';
+    $('c-Rt').textContent = serie ? 'Es sumen: R₁ + R₂' : 'Sempre menor que R₁ i R₂';
+    $('o-I').textContent = f(c.I) + ' A';
+    $('c-I').textContent = serie ? 'I = V ÷ Rt, la mateixa en tot el circuit' : 'I = I₁ + I₂ (es sumen els camins)';
+    $('o-P').textContent = f(P1 + P2) + ' W';
+    [1, 2].forEach(function (n) {
+      var V = n === 1 ? c.V1 : c.V2, I = n === 1 ? c.I1 : c.I2, P = n === 1 ? P1 : P2, b = n === 1 ? b1 : b2;
+      $('o-R' + n).textContent = 'R' + (n === 1 ? '₁' : '₂') + ' = ' + s['R' + n] + ' Ω';
+      $('o-V' + n).textContent = f(V) + ' V';
+      $('o-I' + n).textContent = f(I) + ' A';
+      $('o-P' + n).textContent = f(P) + ' W';
+      $('c-V' + n).textContent = serie ? 'V = I · R (es reparteix)' : 'Tota la tensió de la pila';
+      $('c-I' + n).textContent = serie ? 'La mateixa que la total' : 'I = V ÷ R';
+      $('o-b' + n).textContent = Math.round(b * 100) + ' %';
+      $('bar' + n).style.width = (b * 100).toFixed(1) + '%';
+      $('max' + n).hidden = b < 0.999;
+    });
+
+    $('explain').innerHTML = explainHTML(s, c, b1, b2);
+    $('fmode').textContent = serie ? 'Circuit en sèrie' : 'Circuit en paral·lel';
+    $('formulas').innerHTML = formulasHTML(s, c);
+
+    /* reptes */
+    var res = CH[active].check(s, c);
+    var changed = false;
+    if (res.ok && !done[active]) {
+      done[active] = true;
+      whyText[active] = CH[active].why(s, c);
+      changed = true;
+    }
+    var live = $('live');
+    var ch = CH[active];
+    live.classList.toggle('ok', done[active]);
+    var line;
+    if (s.mode !== ch.mode) line = 'Aquest repte es fa en circuit ' + (ch.mode === 'serie' ? 'en sèrie' : 'en paral·lel') + '. Canvia el tipus de circuit.';
+    else line = 'Ara: ' + res.now + ' · Objectiu: ' + res.goal;
+    live.innerHTML = '<b>Repte ' + (active + 1) + ': ' + ch.title + (done[active] ? ' · superat ✓' : '') + '</b><span class="st"></span>';
+    live.querySelector('.st').textContent = done[active] && !res.ok ? 'Ja el tens superat. Pots provar altres valors.' : line;
+    if (changed) updateChals();
+  }
+
+  function updateChals() {
+    var n = 0;
+    CH.forEach(function (ch, i) {
+      var el = $('ch' + i), isAct = i === active;
+      if (done[i]) n++;
+      el.classList.toggle('act', isAct);
+      el.classList.toggle('done', done[i]);
+      $('ch' + i + 'd').style.display = isAct || done[i] ? 'flex' : 'none';
+      $('ch' + i + 'p').hidden = isAct;
+      $('ch' + i + 'mark').textContent = done[i] ? 'Superat ✓' : (isAct ? 'En marxa' : '');
+      $('ch' + i + 'h').hidden = !hintOpen[i];
+      $('ch' + i + 'w').textContent = done[i] ? whyText[i] : '';
+      $('ch' + i + 'n').hidden = !(isAct && done[i] && i < CH.length - 1);
+      el.querySelector('.steps').style.display = done[i] ? 'none' : '';
+      el.querySelector('[data-hint]').hidden = done[i];
+    });
+    $('prog').textContent = 'Reptes superats: ' + n + ' de ' + CH.length;
+    $('alldone').hidden = n < CH.length;
+  }
+
+  function setActive(i) {
+    active = i;
+    st.mode = CH[i].mode;
+    updateChals();
+    render();
+  }
+
+  /* ---------- esdeveniments ---------- */
+  CTL.forEach(function (ct) {
+    $('s-' + ct.k).addEventListener('input', function (e) { st[ct.k] = parseFloat(e.target.value); render(); });
+  });
+  document.querySelectorAll('.step').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var ct = CTL.filter(function (x) { return x.k === b.dataset.k; })[0];
+      var v = st[ct.k] + ct.step * parseInt(b.dataset.d, 10);
+      st[ct.k] = clamp(Math.round(v / ct.step) * ct.step, ct.min, ct.max);
+      render();
+    });
+  });
+  $('m-serie').addEventListener('click', function () { st.mode = 'serie'; render(); });
+  $('m-par').addEventListener('click', function () { st.mode = 'par'; render(); });
+  $('reset').addEventListener('click', function () {
+    st = { mode: DEF.mode, V: DEF.V, R1: DEF.R1, R2: DEF.R2 };
+    active = 0; done = [false, false, false]; whyText = ['', '', '']; hintOpen = [false, false, false];
+    updateChals(); render();
+  });
+  $('chals').addEventListener('click', function (e) {
+    var t = e.target.closest('button');
+    if (!t) return;
+    if (t.dataset.pick !== undefined) setActive(parseInt(t.dataset.pick, 10));
+    else if (t.dataset.next !== undefined) setActive(parseInt(t.dataset.next, 10) + 1);
+    else if (t.dataset.hint !== undefined) {
+      var i = parseInt(t.dataset.hint, 10);
+      hintOpen[i] = !hintOpen[i];
+      t.textContent = hintOpen[i] ? 'Amaga la pista' : 'Vull una pista';
+      updateChals();
+    }
+  });
+
+  updateChals();
+  render();
+})();
+</script>
+
+</body></html>

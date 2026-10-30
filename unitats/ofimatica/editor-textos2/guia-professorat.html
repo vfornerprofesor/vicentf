@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Guia del professorat - El nàufrag de l'illa v2.0</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Document privat per al professorat. No publicar ni enllaçar des de la unitat.">Guia del professorat: El nàufrag de l'illa (v2.0)</vf-title>
+
+        <div class="center">
+            <vf-badge>1r ESO</vf-badge>
+            <vf-badge>Editor de textos</vf-badge>
+            <vf-badge>18 sessions de 55 min</vf-badge>
+        </div>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Com funciona la v2.0</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>No hi ha correu. L'alumnat puja cada document a la tasca d'<strong>Aules</strong> (DOCUMENT 1 … DOCUMENT 7) i escriu el codi a la <a href="unitats/ofimatica/editor-textos2/robot/index.html" target="_blank" rel="noopener noreferrer">plataforma del robot</a>.</li>
+                <li>La plataforma comprova el codi de forma <strong>exacta</strong>: majúscules, minúscules i espais del mig compten (només s'ignoren els espais del principi i del final).</li>
+                <li>Amb un codi correcte, l'alumne/a veu la imatge de l'estat de la història, el missatge del robot i les instruccions del document següent.</li>
+                <li>Després de <strong>3 intents fallits</strong> en un mateix codi, el robot ofereix una pista.</li>
+                <li>El progrés es guarda al navegador (localStorage). Si l'alumne/a canvia d'ordinador o esborra les dades, ha de tornar a escriure els codis des del principi: els pot recuperar perquè ja els té en els documents lliurats.</li>
+                <li>Els botons <strong>DOC 1 … DOC 7</strong> de dalt permeten rellegir les instruccions de les proves ja superades.</li>
+            </vf-list>
+            <vf-callout type="consell"><strong>Mode revisió</strong>: <a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio" target="_blank" rel="noopener noreferrer">robot/index.html?revisio</a> mostra una barra per a saltar a qualsevol pas sense tocar el progrés guardat. Afegint <code>&amp;pas=N</code> s'obri directament el pas N.</vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Taula per prova</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 60px;">Prova</th>
+                            <th style="min-width: 110px;">Tasca d'Aules</th>
+                            <th style="min-width: 200px;">Habilitats</th>
+                            <th style="min-width: 240px;">Codi exacte / com s'obté</th>
+                            <th style="min-width: 170px;">Instruccions (web)</th>
+                            <th style="min-width: 140px;">Document</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>—</td>
+                            <td>Activar la plataforma (nom + codi)</td>
+                            <td><vf-code language="plaintext">VULL AJUDAR-TE</vf-code><br>—</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=0" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Pantalla d'inici</a></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>DOCUMENT 1</td>
+                            <td>Moure paràgrafs; eliminar paraules</td>
+                            <td><vf-code language="plaintext">ELNAUFRAGESTAATRAPAT</vf-code><br>Inicials de les 20 pel·lícules</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=1" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 1</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/1%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>DOCUMENT 2</td>
+                            <td>Buscar; formats de caràcter; superíndex i subíndex</td>
+                            <td><vf-code language="plaintext">1065511911</vf-code><br>10 roig · 6 verd · 55 negreta · 11 ratllat i cursiva · 9 vocal · 11 consonant</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=2" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 2</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/2%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>DOCUMENT 3</td>
+                            <td>Títols i subtítols</td>
+                            <td><vf-code language="plaintext">661</vf-code><br>23×5×6 − 52 − 22 + 34 − 11 + 25 − 3</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=3" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 3</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/3%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>DOCUMENT 4</td>
+                            <td>Format dels estils; índex; salt de pàgina</td>
+                            <td><vf-code language="plaintext">252200</vf-code><br>Subtítols per vocal/consonant dels punts 1 a 6</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=4" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 4</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/4%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>DOCUMENT 5</td>
+                            <td>Llistes amb nivells; sagnat i interliniat</td>
+                            <td><vf-code language="plaintext">CONFIGURANTROBOT</vf-code><br>Lletres BNMEHFTQZMSQNANS + César +1</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=5" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 5</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/5%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>DOCUMENT 6</td>
+                            <td>Taules; imatges</td>
+                            <td><vf-code language="plaintext">632</vf-code><br>(f7,c7)=6 · (f4,c9)=3 · (f8,c5)=2</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=6" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 6</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/6%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>DOCUMENT 7</td>
+                            <td>Enllaç; encapçalament; peu de pàgina; PDF</td>
+                            <td><vf-code language="plaintext">STROMBOLI</vf-code><br>38°47'30.6"N 15°11'52.0"E</td>
+                            <td><a href="unitats/ofimatica/editor-textos2/robot/index.html?revisio&amp;pas=7" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye" aria-hidden="true"></i> Instruccions DOCUMENT 7</a></td>
+                            <td><a href="assets/unitats/ofimatica/editor-textos/7%20-%20DOCUMENT_RESULTAT.odt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Resultat esperat</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-text>El document de partida (<a href="assets/unitats/ofimatica/editor-textos2/fitxers/document-1.odt">document-1.odt</a>) es descarrega des de les instruccions del DOCUMENT 1; el <a href="assets/unitats/ofimatica/editor-textos2/fitxers/sudoku.png" target="_blank" rel="noopener noreferrer">sudoku</a>, des de les del DOCUMENT 6. En superar el DOCUMENT 7 la plataforma mostra la ubicació i el botó «Desactiva els robots», que porta al missatge final: «ENHORABONA!! HAS ACONSEGUIT SALVAR-ME A MI I AL MÓN!!!».</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Com editar la plataforma</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>Instruccions</strong> de cada document: <code>unitats/ofimatica/editor-textos2/robot/instruccions/document-N.html</code>.</li>
+                <li><strong>Captures</strong> de Writer: <code>assets/unitats/ofimatica/editor-textos2/instruccions/docN/</code>. Cada fitxer té un nom descriptiu (per exemple <code>doc2/03-negreta.png</code>): si es substitueix amb el mateix nom, no cal tocar l'HTML.</li>
+                <li><strong>Imatges de la història</strong>: les 7 vinyetes de presentació són a <code>assets/unitats/ofimatica/editor-textos2/historia/</code>. Les imatges de l'estat en cada prova van a <code>assets/unitats/ofimatica/editor-textos2/estat/</code> amb aquests noms: <code>estat-1.png</code> … <code>estat-7.png</code> (en superar cada DOCUMENT) i <code>final.png</code> (desactivació dels robots). Mentre no hi siguen, la plataforma mostra un requadre «IMATGE PENDENT».</li>
+                <li><strong>Codis, pistes i missatges</strong> del robot: al principi de <code>unitats/ofimatica/editor-textos2/robot/robot.js</code> (constants <code>NIVELLS</code> i <code>ESTATS</code>).</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Sessions i documents</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 90px;">Sessions</th>
+                            <th style="min-width: 200px;">Contingut</th>
+                            <th style="min-width: 300px;">Eines de Writer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S1</td>
+                            <td>Història, plataforma, entorn i Prova 1</td>
+                            <td>Obrir, escriure, guardar i pujar un arxiu a Aules</td>
+                        </tr>
+                        <tr>
+                            <td>S2</td>
+                            <td>DOCUMENT 1</td>
+                            <td>Seleccionar, tallar, enganxar, moure paràgrafs, suprimir</td>
+                        </tr>
+                        <tr>
+                            <td>S3-S4</td>
+                            <td>DOCUMENT 2</td>
+                            <td>Cerca i substitueix; tipus i tamany de lletra; negreta, cursiva, subratllat, tachat; superíndex i subíndex</td>
+                        </tr>
+                        <tr>
+                            <td>S5-S6</td>
+                            <td>DOCUMENT 3</td>
+                            <td>Estils de títol i subtítol; navegador de l'estructura</td>
+                        </tr>
+                        <tr>
+                            <td>S7-S8</td>
+                            <td>DOCUMENT 4</td>
+                            <td>Modificar estils; salt de pàgina; índex de contingut i actualització</td>
+                        </tr>
+                        <tr>
+                            <td>S9-S10</td>
+                            <td>DOCUMENT 5</td>
+                            <td>Llistes numerades i no numerades amb nivells; sagnat i interliniat</td>
+                        </tr>
+                        <tr>
+                            <td>S11-S12</td>
+                            <td>DOCUMENT 6</td>
+                            <td>Taules; imatges, ordre i llegendes (caràtules)</td>
+                        </tr>
+                        <tr>
+                            <td>S13-S14</td>
+                            <td>DOCUMENT 7</td>
+                            <td>Encapçalament; peu amb numeració; hipervincle; exportar a PDF</td>
+                        </tr>
+                        <tr>
+                            <td>S15</td>
+                            <td>Reforç, nous lliuraments i proves pendents</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S16</td>
+                            <td>Missatge final i rescat</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S17</td>
+                            <td>Reflexió, autoavaluació i coavaluació</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>S18</td>
+                            <td>Tancament i revisió de la rúbrica</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-text>Cada document: la primera sessió és demostració i pràctica guiada; la segona, prova, reforç i ampliació. Al final de cada parella de sessions hauria d'haver-se lliurat el document corresponent i introduït el codi.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Seguiment a Aules</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Creeu una tasca per document (DOCUMENT 1 … DOCUMENT 7) amb lliurament de fitxer. La del DOCUMENT 7 ha d'admetre dos fitxers (Writer i PDF).</li>
+                <li>Corregiu amb la rúbrica directament a cada tasca: el codi correcte indica que el document és, com a mínim, funcional; reviseu el format al fitxer lliurat.</li>
+                <li>Per a veure on està cada alumne/a, demaneu que mostre la barra de mòduls de la plataforma (els DOC superats es veuen en verd).</li>
+                <li>Qui ja ha superat una prova pot ajudar un company, però sense dir-li el codi.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Errors típics per document</vf-title>
+        <vf-content>
+            <vf-list>
+                <li><strong>DOCUMENT 1</strong>: moure el paràgraf però deixar el text duplicat; esborrar una paraula equivocada; deixar espais dobles.</li>
+                <li><strong>DOCUMENT 2</strong>: confondre colors (roig/verd), comptar en majúscules o minúscules, aplicar el format a tota la línia en lloc de només el fragment, canviar el tamany però no el tipus, confondre superíndex amb subíndex.</li>
+                <li><strong>DOCUMENT 3</strong>: posar negreta i tamany gran manualment sense usar estils; confondre el nivell de títol i subtítol.</li>
+                <li><strong>DOCUMENT 4</strong>: fer l'índex a mà; no actualitzar l'índex després de canviar els títols; modificar cada títol per separat en lloc de l'estil; usar Intro repetit en lloc del salt de pàgina.</li>
+                <li><strong>DOCUMENT 5</strong>: escriure els números o els guions a mà; barrejar llista numerada i no numerada; sagnar amb espais; interliniat no aplicat al paràgraf correcte.</li>
+                <li><strong>DOCUMENT 6</strong>: files i columnes comptades malament (f=fila, c=columna); taula amb cel·les fusionades quan no toca; imatges en ordre equivocat; caràtules sense numeració automàtica.</li>
+                <li><strong>DOCUMENT 7</strong>: pujar només el document de Writer i no el PDF; encapçalament només a la primera pàgina; peu sense numeració; enllaç que sembla enllaç però no és actiu; coordenades transcrites amb error.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Si un codi no funciona</vf-title>
+        <vf-content>
+            <vf-list ordered>
+                <li>Comproveu primer el format: majúscules, espais entre lletres o números, o el codi del document equivocat.</li>
+                <li>No doneu la solució: indiqueu la zona o l'habilitat («revisa els títols») o deixeu que l'alumne/a arribe als 3 intents per a obtindre la pista.</li>
+                <li>Si l'alumne/a repeteix la mateixa errada, passeu a una demostració curta en pantalla.</li>
+                <li>Si un alumne es bloqueja més d'una sessió, podeu donar-li el codi perquè continue i registrar a la rúbrica l'habilitat pendent.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Consells d'aula</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>Sessió 1: reserveu temps per a l'accés a Aules i per a provar una pujada de fitxer.</li>
+                <li>Insistiu en llegir com s'ha d'escriure el codi: el robot no perdona les minúscules.</li>
+                <li>Mantingueu la ficció: és el robot qui accepta o rebutja els codis.</li>
+                <li>Feu una projecció de «l'estat del rescat» (proves superades per grup) per motivar sense posar noms.</li>
+                <li>Amb dues sessions per document, aprofiteu la primera per a la pràctica guiada i reserveu la segona per a la prova; qui va ràpid passa a ampliació o ajuda.</li>
+                <li>Demaneu que no es comente el final fins a la sessió 16 per no avançar el desenllaç.</li>
+            </vf-list>
+        </vf-content>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

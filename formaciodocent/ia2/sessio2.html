@@ -92,29 +92,28 @@
 
             <vf-title level="3">Què és</vf-title>
             <vf-text>Dins de Gemini ([gemini.google.com](https://gemini.google.com)) hi ha l'eina <strong>Canvas</strong>: li descrius una activitat i et crea una mini-aplicació web que funciona al moment i que es pot <strong>compartir per enllaç</strong> amb l'alumnat (no cal que tinguen compte).</vf-text>
-            <vf-text>Alternativa equivalent i gratuïta: <strong>Claude</strong> ([claude.ai](https://claude.ai)), que crea <i>artifacts</i> que també es poden publicar per enllaç. Usem Gemini com a eina principal (mateix compte de Google) i Claude com a pla B o per comparar resultats.</vf-text>
+            <vf-text>Alternativa gratuïta: <strong>Claude</strong> ([claude.ai](https://claude.ai)), que crea <i>artifacts</i> semblants. Amb el compte gratuït no dona enllaç per compartir: l'activitat es <strong>descarrega</strong> com a fitxer HTML. Usem Gemini com a eina principal (mateix compte de Google) i Claude com a pla B o per comparar resultats.</vf-text>
 
             <vf-title level="3">Passos</vf-title>
             <vf-steps>
                 <vf-step title="Obri Canvas">
-                    <vf-text>Obri [gemini.google.com](https://gemini.google.com) → botó <strong>Eines</strong> → <strong>Canvas</strong>.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s2-gemini-eines-canvas.png" alt="Menú Eines de Gemini amb l'opció Canvas"></vf-img>
+                    <vf-text>Obri [gemini.google.com](https://gemini.google.com) → menú d'eines del quadre de text → <strong>Canvas</strong>.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_01.png" alt="Menú d'eines de Gemini amb l'opció Canvas marcada"></vf-img>
                 </vf-step>
                 <vf-step title="Escriu el prompt">
                     <vf-text>Usa la plantilla de prompt i els exemples d'avall.</vf-text>
                 </vf-step>
                 <vf-step title="Prova i millora l'activitat">
-                    <vf-text>Prova l'activitat a la part dreta. Demana canvis en llenguatge natural: «fes els botons més grans», «afegeix so quan encerten», «posa-ho tot en valencià».</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s2-canvas-activitat.png" alt="Canvas de Gemini amb una activitat interactiva a la dreta"></vf-img>
+                    <vf-text>Prova l'activitat a la <strong>Vista prèvia</strong>. Demana canvis en llenguatge natural: «fes els botons més grans», «afegeix so quan encerten», «posa-ho tot en valencià».</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_02.png" alt="Canvas de Gemini amb el Joc de Parelles de la Tardor en vista prèvia"></vf-img>
                 </vf-step>
                 <vf-step title="Comparteix-la">
-                    <vf-text><strong>Compartir i exportar</strong> → <strong>Compartir</strong> → copia l'enllaç (<code>g.co/gemini/share/…</code>) → penja'l a l'aula virtual o a la pissarra de Codocente.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s2-canvas-compartir.png" alt="Diàleg de compartir una activitat de Canvas"></vf-img>
+                    <vf-text>Botó de <strong>compartir</strong> de la barra superior → <strong>Copiar enllaç</strong> (<code>share.gemini.google/…</code>) → penja'l a l'aula virtual o a la pissarra de Codocente.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_03.png" alt="Diàleg d'enllaç públic per compartir una activitat de Canvas"></vf-img>
                 </vf-step>
             </vf-steps>
+
+            <vf-text><strong>Prova l'exemple</strong>: [Joc de parelles de la tardor](https://share.gemini.google/4Py0n65hCYne), creat amb el primer prompt d'exemple d'avall.</vf-text>
 
             <vf-callout type="atencio">
                 <strong>Important de l'enllaç</strong>: és una «foto» del moment en què es crea; si després canvies l'activitat, cal <strong>tornar a compartir</strong> i usar l'enllaç nou. Qualsevol persona amb l'enllaç la pot obrir sense compte. Amb comptes de centre (Workspace) l'opció pot estar desactivada: per això usem el compte personal.
@@ -124,17 +123,19 @@
             <vf-text>[claude.ai](https://claude.ai), gratuït.</vf-text>
             <vf-steps>
                 <vf-step title="Activa la creació de fitxers">
-                    <vf-text>Abans de res: <i>Configuració → Capacitats → Execució de codi i creació de fitxers</i>.</vf-text>
+                    <vf-text>Abans de res: <i>Configuració → Capacitats</i> → activa <strong>Artefactes</strong> i <strong>Execució de codi i creació de fitxers</strong>.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_04.png" alt="Configuració de Claude, apartat Capacitats, amb Artefactes i Execució de codi activats"></vf-img>
                 </vf-step>
                 <vf-step title="Demana l'activitat">
                     <vf-text>Amb el mateix prompt que faries servir a Gemini.</vf-text>
                 </vf-step>
-                <vf-step title="Publica-la">
-                    <vf-text>Botó <strong>Publicar</strong> de l'artifact → enllaç públic.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s2-claude-publicar-artifact.png" alt="Botó Publicar d'un artifact de Claude"></vf-img>
+                <vf-step title="Descarrega-la">
+                    <vf-text>Botó <strong>Exportar</strong> de l'artifact → descarrega el fitxer <code>.html</code>. Amb el compte gratuït no hi ha enllaç per compartir: puja el fitxer a l'aula virtual o obri'l amb el navegador de l'ordinador de classe.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_05.png" alt="Artifact de Claude Taller de circuits amb el botó Exportar"></vf-img>
                 </vf-step>
             </vf-steps>
+
+            <vf-text><strong>Prova l'exemple</strong>: [Taller de circuits](formaciodocent/ia2/exemples/taller-de-circuits.html), creat amb Claude amb el prompt del simulador de circuits d'avall i descarregat.</vf-text>
 
             <vf-title level="3">Plantilla de prompt</vf-title>
             <vf-text>Copia-la i substitueix el que hi ha entre claudàtors.</vf-text>
