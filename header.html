@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="styles/blocks.css">
 <link rel="stylesheet" href="styles/buttons.css">
 
-<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 
 <!-- Bootstrap JS + dependencias. NO tornem a carregar jQuery ací: cada
      pagina ja en carrega una copia completa (3.6.4) al <head> abans que
@@ -18,45 +17,15 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Components. L'ORDRE IMPORTA: aquest fragment es carrega via
-     $('#header').load('header.html'), i jQuery evalua els <script src> d'un
-     fragment carregat aixi un darrere l'altre, en l'ordre exacte en que
-     apareixen (comprovat empiricament retardant un script i mesurant amb la
-     Performance API quan arrencava la peticio del seguent: no arrenca fins
-     que l'anterior ha acabat de carregar-se i executar-se). Per aixo
-     vf-element.js va primer: la resta de components l'esteneixen amb
-     "extends VFElement" i fallarien amb ReferenceError si encara no
-     existira. Si afegeixes un component nou, el seu <script> ha d'anar
-     despres de vf-element.js. -->
-
-<script src="scripts/utils.js"></script>
-<script src="components/vf-element.js"></script>
-<script src="components/vf-text.js"></script>
-<script src="components/vf-password.js"></script>
-<script src="components/vf-row.js"></script>
-<script src="components/vf-col.js"></script>
-<script src="components/vf-list.js"></script>
-<script src="components/vf-img.js"></script>
-<script src="components/vf-video.js"></script>
-<script src="components/vf-content.js"></script>
-<script src="components/vf-title.js"></script>
-<script src="components/vf-code.js"></script>
-<script src="components/vf-preview.js"></script>
-<script src="components/vf-btn.js"></script>
-<script src="components/vf-frame.js"></script>
-<script src="components/vf-hr.js"></script>
-<script src="components/vf-quote.js"></script>
-<script src="components/vf-card.js"></script>
-<script src="components/vf-callout.js"></script>
-<script src="components/vf-details.js"></script>
-<script src="components/vf-prompt.js"></script>
-<script src="components/vf-steps.js"></script>
-<script src="components/vf-step.js"></script>
-<script src="components/vf-badge.js"></script>
-
-
+<!-- Components: UN sol fitxer generat per scripts/build-bundle.sh amb
+     highlight.js + utils.js + tots els components/vf-*.js (vf-element.js
+     primer). Abans eren 25 <script> separats i jQuery els descarregava
+     d'un en un en carregar header.html: ~4-5 s de pantalla de carrega.
+     NO afegeixes ací <script src="components/vf-...js">: crea el fitxer
+     a components/ i el hook pre-commit (.githooks/pre-commit) regenera el
+     bundle. A mà: bash scripts/build-bundle.sh -->
 <link rel="stylesheet" href="scripts/highlight/styles/default.min.css">
-<script src="scripts/highlight/highlight.min.js"></script>
+<script src="components/vf-bundle.js"></script>
 <!-- Cada vf-code ja es ressalta a si mateix amb hljs.highlightElement() en
      renderitzar (vegeu components/vf-code.js), aixi que aquesta crida
      normalment no fa cap faena de mes: hljs.highlightAll() salta els blocs
