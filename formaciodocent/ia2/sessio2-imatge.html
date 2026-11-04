@@ -71,46 +71,44 @@
 
         <vf-content>
             <vf-text>No s'explica com generar imatges (ja se sap). Només usos que van més enllà, cadascun amb el seu prompt:</vf-text>
-            <vf-text><strong>Seqüències amb personatge consistent</strong>: puja una imatge del personatge → seqüències per a rutines o TEA.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Usa el personatge de la imatge adjunta i mantín exactament el mateix aspecte (cara, cabells, roba i colors) en totes les imatges.
-                    Crea 4 imatges separades, una per pas, d'una seqüència per a [rentar-se les mans] per a alumnat [d'infantil / amb TEA]:
-                    pas 1, [obrir l'aixeta i mullar-se les mans]; pas 2, [posar-se sabó]; pas 3, [fregar-se bé les mans]; pas 4, [esbandir-se i eixugar-se].
-                    Estil pictograma: fons blanc, sense elements que distraguen, traç clar i el número del pas en gran a la cantonada.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Seqüències amb personatge consistent" desc="Puja una imatge del personatge → seqüències per a rutines o TEA.">
+                    <vf-code language="plaintext">
+                        Usa el personatge de la imatge adjunta i mantín exactament el mateix aspecte (cara, cabells, roba i colors) en totes les imatges.
+                        Crea 4 imatges separades, una per pas, d'una seqüència per a [rentar-se les mans] per a alumnat [d'infantil / amb TEA]:
+                        pas 1, [obrir l'aixeta i mullar-se les mans]; pas 2, [posar-se sabó]; pas 3, [fregar-se bé les mans]; pas 4, [esbandir-se i eixugar-se].
+                        Estil pictograma: fons blanc, sense elements que distraguen, traç clar i el número del pas en gran a la cantonada.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
             <!-- CAPTURA PENDENT -->
             <vf-img src="assets/formaciodocent/ia2/s2-imatge-personatge-consistent.png" alt="Exemple de seqüència d'imatges amb un personatge consistent"></vf-img>
 
-            <vf-text><strong>Infografia a partir d'un text</strong>: revisa sempre l'ortografia del text de la imatge.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea una infografia vertical per a alumnat de [5é de primària] a partir del text que t'enganxe al final. Títol: «[El cicle de l'aigua]».
-                    Com a màxim 5 blocs, cadascun amb una icona i una frase curta, fletxes que indiquen l'ordre, colors suaus i lletra gran.
-                    Tot el text ha d'estar en valencià i sense faltes d'ortografia. No afegisques informació que no estiga al text.
-                    Text: [enganxa el text de la unitat]
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Combinar diverses imatges</strong> en una (escenari + personatges + objecte) per a làmines de descripció o d'expressió oral. Adjunta les imatges.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Combina les imatges adjuntes en una sola làmina: usa la imatge 1 ([el parc]) com a escenari, col·loca-hi els personatges de la imatge 2 fent [un pícnic] i afegeix l'objecte de la imatge 3 ([un globus roig]) en primer pla.
-                    Estil coherent entre tots els elements ([il·lustració infantil]), amb molts detalls per descriure (accions, colors, posicions), per a una activitat d'expressió oral de [1r de primària].
-                    Sense text dins de la imatge.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Fotos reals → làmines</strong>: foto de l'excursió → dibuix per acolorir o per numerar. Usa fotos on no es reconega l'alumnat.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Convertix la foto adjunta de [l'excursió a la granja] en un dibuix de línies negres sobre fons blanc per acolorir, per a alumnat d'[infantil de 4 anys].
-                    Traç gruixut, formes simplificades, sense ombres ni grisos i sense cares reconeixibles.
-                </vf-code>
-            </vf-details>
-            <vf-text>I per a la versió per numerar, en el mateix xat:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">Ara fes una versió del mateix dibuix amb [8] elements assenyalats amb cercles numerats de l'1 al [8], per a una activitat de vocabulari.</vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Infografia a partir d'un text" desc="Revisa sempre l'ortografia del text de la imatge.">
+                    <vf-code language="plaintext">
+                        Crea una infografia vertical per a alumnat de [5é de primària] a partir del text que t'enganxe al final. Títol: «[El cicle de l'aigua]».
+                        Com a màxim 5 blocs, cadascun amb una icona i una frase curta, fletxes que indiquen l'ordre, colors suaus i lletra gran.
+                        Tot el text ha d'estar en valencià i sense faltes d'ortografia. No afegisques informació que no estiga al text.
+                        Text: [enganxa el text de la unitat]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Combinar diverses imatges" desc="Escenari, personatges i objecte en una sola làmina de descripció o d'expressió oral. Adjunta les imatges.">
+                    <vf-code language="plaintext">
+                        Combina les imatges adjuntes en una sola làmina: usa la imatge 1 ([el parc]) com a escenari, col·loca-hi els personatges de la imatge 2 fent [un pícnic] i afegeix l'objecte de la imatge 3 ([un globus roig]) en primer pla.
+                        Estil coherent entre tots els elements ([il·lustració infantil]), amb molts detalls per descriure (accions, colors, posicions), per a una activitat d'expressió oral de [1r de primària].
+                        Sense text dins de la imatge.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Fotos reals → làmines" desc="Foto de l'excursió → dibuix per acolorir o per numerar. Usa fotos on no es reconega l'alumnat.">
+                    <vf-code language="plaintext">
+                        Convertix la foto adjunta de [l'excursió a la granja] en un dibuix de línies negres sobre fons blanc per acolorir, per a alumnat d'[infantil de 4 anys].
+                        Traç gruixut, formes simplificades, sense ombres ni grisos i sense cares reconeixibles.
+                    </vf-code>
+                    <vf-text>I per a la versió per numerar, en el mateix xat:</vf-text>
+                    <vf-code language="plaintext">Ara fes una versió del mateix dibuix amb [8] elements assenyalats amb cercles numerats de l'1 al [8], per a una activitat de vocabulari.</vf-code>
+                </vf-prompt>
+            </vf-prompts>
 
             <vf-callout type="exercici">
                 <strong>Repte final de la sessió 2</strong>: tindre 1 activitat interactiva i 1 conte o àudio preparats per a la setmana vinent.

@@ -75,67 +75,65 @@
             <div class="center"><vf-badge>Claude Code a l'app d'escriptori</vf-badge></div>
             <vf-text><strong>Idea</strong>: una app web amb lliçons curtes, vides, ratxa de dies, punts d'experiència, nivells que es desbloquegen i retroacció immediata. Es guarda com a fitxers en una carpeta i s'obri amb el navegador (i es pot publicar gratis, per exemple arrossegant la carpeta a [Netlify Drop](https://app.netlify.com/drop) o a [GitHub Pages](https://pages.github.com)).</vf-text>
 
-            <vf-title level="3">Exemple de primària: «Taules campiones» (3r-4t)</vf-title>
-            <vf-badge>Infantil/Primària</vf-badge>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea una aplicació web en una carpeta nova, tot en valencià, tipus Duolingo, per practicar les taules de multiplicar.
-                    Requisits: un camí de nivells (taula del 2 al 10, i un nivell final barrejat) que es desbloquegen en superar l'anterior; cada lliçó té 10 preguntes de tipus variat (triar resposta, escriure el resultat, arrossegar el número que falta); 3 vides per lliçó; punts d'experiència i ratxa de dies guardats al navegador; animació i so quan encerten; botons grans per a tauleta.
-                    Quan acabes, obri-la al navegador perquè la prove.
-                </vf-code>
-            </vf-details>
-            <!-- CAPTURA PENDENT -->
-            <vf-img src="assets/formaciodocent/ia2/extra-joc-primaria.png" alt="Joc de primària «Taules campiones» funcionant"></vf-img>
-
-            <vf-title level="3">Exemple de secundària: «Vocab Quest» (anglés 2n ESO)</vf-title>
-            <vf-badge>Secundària</vf-badge>
-            <vf-text>Adaptable a qualsevol matèria.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea una app web tipus Duolingo per aprendre vocabulari d'anglés de 2n d'ESO.
-                    Els continguts han d'estar en un fitxer `vocabulari.json` separat perquè jo puga afegir unitats sense tocar el codi.
-                    Unitats: "Food", "Travel", "Jobs" (20 paraules cada una, amb frase d'exemple).
-                    Tipus d'exercici: traducció, escoltar i escriure (usa la veu del navegador), completar la frase, parelles.
-                    Vides, ratxa, XP, repàs automàtic de les paraules fallades i pantalla de resultats final.
-                    Interfície en valencià.
-                </vf-code>
-            </vf-details>
-            <!-- CAPTURA PENDENT -->
-            <vf-img src="assets/formaciodocent/ia2/extra-joc-secundaria.png" alt="Joc de secundària «Vocab Quest» funcionant"></vf-img>
+            <vf-title level="3">Exemples</vf-title>
+            <vf-prompts>
+                <vf-prompt title="Taules campiones" desc="*Infantil/Primària* (3r-4t): les taules de multiplicar en un camí de nivells.">
+                    <vf-code language="plaintext">
+                        Crea una aplicació web en una carpeta nova, tot en valencià, tipus Duolingo, per practicar les taules de multiplicar.
+                        Requisits: un camí de nivells (taula del 2 al 10, i un nivell final barrejat) que es desbloquegen en superar l'anterior; cada lliçó té 10 preguntes de tipus variat (triar resposta, escriure el resultat, arrossegar el número que falta); 3 vides per lliçó; punts d'experiència i ratxa de dies guardats al navegador; animació i so quan encerten; botons grans per a tauleta.
+                        Quan acabes, obri-la al navegador perquè la prove.
+                    </vf-code>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/extra-joc-primaria.png" alt="Joc de primària «Taules campiones» funcionant"></vf-img>
+                </vf-prompt>
+                <vf-prompt title="Vocab Quest" desc="*Secundària* (anglés 2n ESO): vocabulari amb unitats en un fitxer apart. Adaptable a qualsevol matèria.">
+                    <vf-code language="plaintext">
+                        Crea una app web tipus Duolingo per aprendre vocabulari d'anglés de 2n d'ESO.
+                        Els continguts han d'estar en un fitxer `vocabulari.json` separat perquè jo puga afegir unitats sense tocar el codi.
+                        Unitats: "Food", "Travel", "Jobs" (20 paraules cada una, amb frase d'exemple).
+                        Tipus d'exercici: traducció, escoltar i escriure (usa la veu del navegador), completar la frase, parelles.
+                        Vides, ratxa, XP, repàs automàtic de les paraules fallades i pantalla de resultats final.
+                        Interfície en valencià.
+                    </vf-code>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/extra-joc-secundaria.png" alt="Joc de secundària «Vocab Quest» funcionant"></vf-img>
+                </vf-prompt>
+            </vf-prompts>
 
             <vf-callout type="consell">
                 <strong>Itera</strong>: «fes-la més colorida», «afegeix un mode professor per veure els errors més freqüents», «afegeix la unitat 4 amb aquestes paraules: …».
             </vf-callout>
             <vf-title level="3">Prompts d'iteració</vf-title>
-            <vf-text><strong>Fes-la més colorida</strong>:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Fes la interfície més colorida i atractiva per a [alumnat de 3r-4t de primària]: colors vius, cantonades arrodonides, un personatge mascota que reaccione als encerts i als errors, i animacions suaus.
-                    No canvies el funcionament ni el contingut. Quan acabes, obri-la al navegador perquè la prove.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Mode professor</strong> per veure els errors més freqüents:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Afegeix un mode professor, protegit amb una contrasenya senzilla ([1234]), que mostre per a cada lliçó les preguntes més fallades i el percentatge d'encert, a partir de les dades guardades al navegador.
-                    Afegeix un botó per exportar aquestes dades a un fitxer CSV.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Afegir una unitat</strong> (joc de secundària):</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Afegeix la unitat 4, «[School]», al fitxer vocabulari.json amb aquestes paraules i frases d'exemple: [enganxa la llista].
-                    Comprova que apareix al camí de nivells, que es desbloqueja en superar la unitat 3 i que tots els tipus d'exercici funcionen amb les paraules noves.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Fes-la més colorida" desc="">
+                    <vf-code language="plaintext">
+                        Fes la interfície més colorida i atractiva per a [alumnat de 3r-4t de primària]: colors vius, cantonades arrodonides, un personatge mascota que reaccione als encerts i als errors, i animacions suaus.
+                        No canvies el funcionament ni el contingut. Quan acabes, obri-la al navegador perquè la prove.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Mode professor" desc="Per veure els errors més freqüents.">
+                    <vf-code language="plaintext">
+                        Afegeix un mode professor, protegit amb una contrasenya senzilla ([1234]), que mostre per a cada lliçó les preguntes més fallades i el percentatge d'encert, a partir de les dades guardades al navegador.
+                        Afegeix un botó per exportar aquestes dades a un fitxer CSV.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Afegir una unitat" desc="Una unitat nova al joc de secundària.">
+                    <vf-code language="plaintext">
+                        Afegeix la unitat 4, «[School]», al fitxer vocabulari.json amb aquestes paraules i frases d'exemple: [enganxa la llista].
+                        Comprova que apareix al camí de nivells, que es desbloqueja en superar la unitat 3 i que tots els tipus d'exercici funcionen amb les paraules noves.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
             <vf-title level="3">Publicar el joc</vf-title>
             <vf-text>Abans d'arrossegar la carpeta a Netlify Drop o a GitHub Pages, demana a Claude Code que la deixe preparada:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Prepara l'aplicació per publicar-la com a web estàtica: comprova que funciona obrint només index.html, que totes les rutes són relatives i que no necessita cap servidor ni cap instal·lació.
-                    Després explica'm pas a pas, sense usar el terminal, com publicar-la gratis arrossegant la carpeta a Netlify Drop, i com obtindre l'enllaç per compartir-lo amb l'alumnat.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Preparar el joc per publicar" desc="Comprova que funciona com a web estàtica i explica com publicar-lo a Netlify Drop sense terminal.">
+                    <vf-code language="plaintext">
+                        Prepara l'aplicació per publicar-la com a web estàtica: comprova que funciona obrint només index.html, que totes les rutes són relatives i que no necessita cap servidor ni cap instal·lació.
+                        Després explica'm pas a pas, sense usar el terminal, com publicar-la gratis arrossegant la carpeta a Netlify Drop, i com obtindre l'enllaç per compartir-lo amb l'alumnat.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
         </vf-content>
 
         <div class="d-flex flex-wrap justify-content-between">

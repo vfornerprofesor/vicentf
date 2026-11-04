@@ -106,84 +106,79 @@
             <vf-title level="3">Exemples</vf-title>
             <vf-text>A AI Studio, el «prompt» és el text que s'ha de locutar més les indicacions de veu i de to. Per als diàlegs, usa el mode de dues veus i escriu una línia per personatge, amb el nom del personatge davant (ha de coincidir amb el nom que dones a cada veu).</vf-text>
             <vf-badge>Infantil/Primària</vf-badge>
-            <vf-text><strong>Dictat graduat</strong> llegit a poc a poc, amb pauses.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Llig aquest dictat per a alumnat de [2n de primària] en valencià, amb una veu clara i tranquil·la, molt a poc a poc.
-                    Digues cada frase dues vegades i fes una pausa llarga (uns 8 segons) després de cada frase perquè puguen escriure.
+            <vf-prompts>
+                <vf-prompt title="Dictat graduat" desc="Llegit a poc a poc, amb pauses.">
+                    <vf-code language="plaintext">
+                        Llig aquest dictat per a alumnat de [2n de primària] en valencià, amb una veu clara i tranquil·la, molt a poc a poc.
+                        Digues cada frase dues vegades i fes una pausa llarga (uns 8 segons) després de cada frase perquè puguen escriure.
 
-                    Frase 1: [El gat dorm damunt del sofà.]
-                    Frase 2: [La meua germana porta una motxilla blava.]
-                    Frase 3: [Al pati hi ha tres arbres molt alts.]
-                    Frase 4: [Demà anirem d'excursió a la muntanya.]
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Conte narrat amb dues veus</strong> (narrador + personatge), per exemple el conte de [Storybook](formaciodocent/ia2/sessio2-storybook.html). Mode diàleg.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Narrador: (to càlid i pausat, com qui conta un conte abans de dormir) [Hi havia una vegada un drac que tenia por del foc.]
-                    Drac: (veu infantil, una mica espantada) [Jo no vull traure foc! I si creme el bosc?]
-                    Narrador: (amb intriga, baixant la veu) [Però una nit d'hivern, tots els animals del bosc tenien molt de fred...]
-                    Drac: (decidit, amb més força) [Està bé. Ho faré a poc a poc, només una flameta.]
-                    Narrador: (alegre) [I aquella nit, gràcies al drac, el bosc sencer es va escalfar.]
-                    [Continua amb el text del teu conte, una línia per intervenció.]
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Instruccions orals</strong> per a alumnat que encara no llig.</vf-text>
-            <vf-details summary="Veure les instruccions">
-                <vf-code language="plaintext">
-                    Llig aquestes instruccions per a alumnat d'[infantil de 5 anys] que encara no llig, amb una veu alegre i propera, molt a poc a poc, i fes una pausa de 3 segons entre pas i pas.
+                        Frase 1: [El gat dorm damunt del sofà.]
+                        Frase 2: [La meua germana porta una motxilla blava.]
+                        Frase 3: [Al pati hi ha tres arbres molt alts.]
+                        Frase 4: [Demà anirem d'excursió a la muntanya.]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Conte narrat amb dues veus" desc="Narrador i personatge, per exemple el conte de [Storybook](formaciodocent/ia2/sessio2-storybook.html). Mode diàleg.">
+                    <vf-code language="plaintext">
+                        Narrador: (to càlid i pausat, com qui conta un conte abans de dormir) [Hi havia una vegada un drac que tenia por del foc.]
+                        Drac: (veu infantil, una mica espantada) [Jo no vull traure foc! I si creme el bosc?]
+                        Narrador: (amb intriga, baixant la veu) [Però una nit d'hivern, tots els animals del bosc tenien molt de fred...]
+                        Drac: (decidit, amb més força) [Està bé. Ho faré a poc a poc, només una flameta.]
+                        Narrador: (alegre) [I aquella nit, gràcies al drac, el bosc sencer es va escalfar.]
+                        [Continua amb el text del teu conte, una línia per intervenció.]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Instruccions orals" desc="Per a alumnat que encara no llig." label="Veure les instruccions">
+                    <vf-code language="plaintext">
+                        Llig aquestes instruccions per a alumnat d'[infantil de 5 anys] que encara no llig, amb una veu alegre i propera, molt a poc a poc, i fes una pausa de 3 segons entre pas i pas.
 
-                    Primer, [agafa les tisores i retalla el cercle].
-                    Després, [pega el cercle damunt del cartó].
-                    Al final, [pinta'l del teu color preferit].
-                    [Molt bé! Ja has acabat.]
-                </vf-code>
-            </vf-details>
+                        Primer, [agafa les tisores i retalla el cercle].
+                        Després, [pega el cercle damunt del cartó].
+                        Al final, [pinta'l del teu color preferit].
+                        [Molt bé! Ja has acabat.]
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
             <vf-badge>Secundària</vf-badge>
-            <vf-text><strong>Diàleg d'escolta en anglés/francés</strong> (dues veus, nivell A2/B1). Mode diàleg; les indicacions de to poden anar en valencià.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Anna: (simpàtica i curiosa, ritme natural però clar) [Hi Tom! What did you do last weekend?]
-                    Tom: (relaxat) [I went to the mountains with my family. We walked for five hours!]
-                    Anna: (sorpresa) [Five hours? Weren't you tired?]
-                    Tom: (rient) [Yes, very tired. But the views were amazing.]
-                    [Continua o enganxa el teu diàleg, nivell A2, una línia per intervenció.]
-                </vf-code>
-            </vf-details>
-            <vf-text>Després, genera les preguntes amb <strong>Gemini</strong>:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    A partir d'aquest diàleg en [anglés] de nivell [A2], crea 8 preguntes de comprensió oral per a alumnat de [3r d'ESO]: 4 d'opció múltiple (3 opcions) i 4 de vertader/fals, en [anglés].
-                    Posa les solucions al final.
-                    Diàleg: [enganxa el diàleg]
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Versió en àudio d'uns apunts</strong> per a alumnat amb dislèxia. Genera'l per fragments curts (un apartat cada vegada).</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Llig aquests apunts per a alumnat de [3r d'ESO] amb dislèxia, en valencià, amb una veu clara i un ritme pausat.
-                    Llig els títols amb un to una mica més marcat i fes una pausa breu després de cada títol i de cada paràgraf.
+            <vf-prompts>
+                <vf-prompt title="Diàleg d'escolta en anglés/francés" desc="Dues veus, nivell A2/B1, i preguntes de comprensió amb Gemini. Les indicacions de to poden anar en valencià.">
+                    <vf-code language="plaintext">
+                        Anna: (simpàtica i curiosa, ritme natural però clar) [Hi Tom! What did you do last weekend?]
+                        Tom: (relaxat) [I went to the mountains with my family. We walked for five hours!]
+                        Anna: (sorpresa) [Five hours? Weren't you tired?]
+                        Tom: (rient) [Yes, very tired. But the views were amazing.]
+                        [Continua o enganxa el teu diàleg, nivell A2, una línia per intervenció.]
+                    </vf-code>
+                    <vf-text>Després, genera les preguntes amb <strong>Gemini</strong>:</vf-text>
+                    <vf-code language="plaintext">
+                        A partir d'aquest diàleg en [anglés] de nivell [A2], crea 8 preguntes de comprensió oral per a alumnat de [3r d'ESO]: 4 d'opció múltiple (3 opcions) i 4 de vertader/fals, en [anglés].
+                        Posa les solucions al final.
+                        Diàleg: [enganxa el diàleg]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Versió en àudio d'uns apunts" desc="Per a alumnat amb dislèxia. Genera'l per fragments curts (un apartat cada vegada).">
+                    <vf-code language="plaintext">
+                        Llig aquests apunts per a alumnat de [3r d'ESO] amb dislèxia, en valencià, amb una veu clara i un ritme pausat.
+                        Llig els títols amb un to una mica més marcat i fes una pausa breu després de cada títol i de cada paràgraf.
 
-                    [Enganxa un apartat dels apunts]
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Simulació d'entrevista a un personatge històric.</strong> Primer, demana el guió a Gemini:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Escriu el guió d'una entrevista de 2 minuts a [Marie Curie] per a alumnat de [4t d'ESO], amb dos personatges: Periodista i [Marie Curie].
-                    8 intervencions curtes, dades històriques rigoroses i tot en valencià.
-                    Format: una línia per intervenció, començant pel nom del personatge i dos punts, i entre parèntesis com s'ha de dir cada frase.
-                </vf-code>
-            </vf-details>
-            <vf-text>Després, enganxa el guió a AI Studio en mode diàleg. Per exemple:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Periodista: (to professional i curiós) [Senyora Curie, com va començar a investigar la radioactivitat?]
-                    Marie Curie: (veu madura i serena, amb orgull contingut) [Tot va començar amb uns minerals d'urani que brillaven d'una manera estranya...]
-                    [Continua amb la resta del guió.]
-                </vf-code>
-            </vf-details>
+                        [Enganxa un apartat dels apunts]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Simulació d'entrevista a un personatge històric" desc="Guió amb Gemini i locució a dues veus amb AI Studio.">
+                    <vf-text>Primer, demana el guió a Gemini:</vf-text>
+                    <vf-code language="plaintext">
+                        Escriu el guió d'una entrevista de 2 minuts a [Marie Curie] per a alumnat de [4t d'ESO], amb dos personatges: Periodista i [Marie Curie].
+                        8 intervencions curtes, dades històriques rigoroses i tot en valencià.
+                        Format: una línia per intervenció, començant pel nom del personatge i dos punts, i entre parèntesis com s'ha de dir cada frase.
+                    </vf-code>
+                    <vf-text>Després, enganxa el guió a AI Studio en mode diàleg. Per exemple:</vf-text>
+                    <vf-code language="plaintext">
+                        Periodista: (to professional i curiós) [Senyora Curie, com va començar a investigar la radioactivitat?]
+                        Marie Curie: (veu madura i serena, amb orgull contingut) [Tot va començar amb uns minerals d'urani que brillaven d'una manera estranya...]
+                        [Continua amb la resta del guió.]
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
 
             <vf-callout type="atencio">
                 El valencià no apareix a la llista d'idiomes destacats: comprova la pronúncia amb un fragment curt abans de fer tot l'àudio. Si no convenç, alternativa: el resum en àudio de Gemini Notebook ([sessió 3](formaciodocent/ia2/sessio3-notebook.html)).

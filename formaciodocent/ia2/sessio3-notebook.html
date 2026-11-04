@@ -98,32 +98,29 @@
                 <vf-step title="Genera materials des del panell Studio">
                     <vf-text>Resum en àudio, vídeo-resum, mapa mental, informe, taula de dades, targetes, qüestionari, infografia i presentació. Per a presentacions i vídeos, primer mostra un esborrany per revisar-lo abans de generar-lo.</vf-text>
                     <vf-text>Si el recurs et deixa personalitzar-lo abans de generar-lo, escriu indicacions concretes de públic, extensió i enfocament. Exemples:</vf-text>
-                    <vf-text><strong>Resum en àudio</strong> per a famílies:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">
-                            Resum en àudio per a les famílies de l'alumnat de [2n de primària], en valencià, d'uns [4] minuts.
-                            Explica què aprendran els seus fills i filles en aquesta unitat, amb llenguatge senzill i sense tecnicismes, i acaba amb 3 idees per practicar a casa.
-                        </vf-code>
-                    </vf-details>
-                    <vf-text><strong>Qüestionari</strong>:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">
-                            Qüestionari de 10 preguntes per a alumnat de [3r d'ESO], només sobre [els apartats 2 i 3], amb dificultat progressiva.
-                            Explica cada resposta a partir dels apunts.
-                        </vf-code>
-                    </vf-details>
-                    <vf-text><strong>Mapa mental</strong>:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">Mapa mental de la unitat centrat en [els conceptes clau], amb un màxim de 3 nivells i paraules curtes a cada node.</vf-code>
-                    </vf-details>
-                    <vf-text><strong>Targetes</strong>:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">Targetes amb els [20] conceptes clau de la unitat: a la cara davantera, el concepte; darrere, una definició d'una sola frase amb paraules que entenga l'alumnat de [2n d'ESO].</vf-code>
-                    </vf-details>
-                    <vf-text><strong>Presentació</strong>:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">Presentació de [8] diapositives per introduir la unitat a alumnat de [6é de primària]: poc text per diapositiva, una idea per diapositiva i una pregunta per al debat al final.</vf-code>
-                    </vf-details>
+                    <vf-prompts>
+                        <vf-prompt title="Resum en àudio" desc="Per a famílies.">
+                            <vf-code language="plaintext">
+                                Resum en àudio per a les famílies de l'alumnat de [2n de primària], en valencià, d'uns [4] minuts.
+                                Explica què aprendran els seus fills i filles en aquesta unitat, amb llenguatge senzill i sense tecnicismes, i acaba amb 3 idees per practicar a casa.
+                            </vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Qüestionari" desc="">
+                            <vf-code language="plaintext">
+                                Qüestionari de 10 preguntes per a alumnat de [3r d'ESO], només sobre [els apartats 2 i 3], amb dificultat progressiva.
+                                Explica cada resposta a partir dels apunts.
+                            </vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Mapa mental" desc="">
+                            <vf-code language="plaintext">Mapa mental de la unitat centrat en [els conceptes clau], amb un màxim de 3 nivells i paraules curtes a cada node.</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Targetes" desc="">
+                            <vf-code language="plaintext">Targetes amb els [20] conceptes clau de la unitat: a la cara davantera, el concepte; darrere, una definició d'una sola frase amb paraules que entenga l'alumnat de [2n d'ESO].</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Presentació" desc="">
+                            <vf-code language="plaintext">Presentació de [8] diapositives per introduir la unitat a alumnat de [6é de primària]: poc text per diapositiva, una idea per diapositiva i una pregunta per al debat al final.</vf-code>
+                        </vf-prompt>
+                    </vf-prompts>
                     <!-- CAPTURA PENDENT -->
                     <vf-img src="assets/formaciodocent/ia2/s3-notebook-studio.png" alt="Panell Studio de Gemini Notebook"></vf-img>
                 </vf-step>
@@ -135,49 +132,46 @@
 
             <vf-title level="3">Usos per al professorat</vf-title>
             <vf-text>Quaderns de centre:</vf-text>
-            <vf-text><strong>Quadern «Normativa i documents del centre»</strong> compartit amb el claustre.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">Fes una taula amb totes les dates i terminis que apareixen en aquests documents (sessions d'avaluació, lliurament de programacions, reclamacions...), ordenats cronològicament, amb el document i l'apartat d'on ix cada una.</vf-code>
-            </vf-details>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Quin és el procediment, pas a pas, quan [un alumne acumula faltes d'assistència injustificades]?
-                    Indica qui ha d'actuar en cada pas i cita el document i l'article corresponents.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Quadern de la programació</strong> per localitzar criteris i sabers en segons.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">Llista els criteris d'avaluació i els sabers bàsics de [2n d'ESO] relacionats amb [l'expressió escrita], amb el codi de cada criteri, i cita on apareixen.</vf-code>
-            </vf-details>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Fes una taula amb les situacions d'aprenentatge de la programació i els criteris d'avaluació que treballa cadascuna.
-                    Al final, indica quins criteris no estan associats a cap situació d'aprenentatge.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Quadern «Normativa i documents del centre»" desc="Compartit amb el claustre: dates i terminis, i procediments pas a pas." label="Veure els prompts">
+                    <vf-code language="plaintext">Fes una taula amb totes les dates i terminis que apareixen en aquests documents (sessions d'avaluació, lliurament de programacions, reclamacions...), ordenats cronològicament, amb el document i l'apartat d'on ix cada una.</vf-code>
+                    <vf-code language="plaintext">
+                        Quin és el procediment, pas a pas, quan [un alumne acumula faltes d'assistència injustificades]?
+                        Indica qui ha d'actuar en cada pas i cita el document i l'article corresponents.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Quadern de la programació" desc="Per localitzar criteris i sabers en segons i revisar quins criteris treballa cada situació d'aprenentatge." label="Veure els prompts">
+                    <vf-code language="plaintext">Llista els criteris d'avaluació i els sabers bàsics de [2n d'ESO] relacionats amb [l'expressió escrita], amb el codi de cada criteri, i cita on apareixen.</vf-code>
+                    <vf-code language="plaintext">
+                        Fes una taula amb les situacions d'aprenentatge de la programació i els criteris d'avaluació que treballa cadascuna.
+                        Al final, indica quins criteris no estan associats a cap situació d'aprenentatge.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
 
             <vf-title level="3">Usos per a l'aula</vf-title>
             <vf-badge>Infantil/Primària</vf-badge>
-            <vf-text>A partir d'un llibre o d'una unitat, <strong>generar preguntes de comprensió</strong> i un <strong>resum en àudio per a les famílies</strong> (per a l'àudio, usa la indicació de «Resum en àudio» del pas 3).</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    A partir de [el llibre / la unitat 4], crea 10 preguntes de comprensió per a alumnat de [2n de primària]: 4 literals, 4 inferencials i 2 d'opinió.
-                    Frases curtes i vocabulari senzill. Afegeix la resposta esperada de cada pregunta.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Preguntes de comprensió" desc="A partir d'un llibre o d'una unitat. Per al *resum en àudio per a les famílies*, usa la indicació de «Resum en àudio» del pas 3.">
+                    <vf-code language="plaintext">
+                        A partir de [el llibre / la unitat 4], crea 10 preguntes de comprensió per a alumnat de [2n de primària]: 4 literals, 4 inferencials i 2 d'opinió.
+                        Frases curtes i vocabulari senzill. Afegeix la resposta esperada de cada pregunta.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
             <vf-badge>Secundària</vf-badge>
             <vf-text>Quadern de la unitat compartit amb l'alumnat per estudiar: qüestionaris, targetes, guia d'estudi i resums d'aprenentatge interactius basats només en els apunts del professor. Per als qüestionaris i les targetes, usa les indicacions del pas 3. A més:</vf-text>
-            <vf-text><strong>Guia d'estudi</strong>:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">Crea una guia d'estudi de la unitat per a alumnat de [4t d'ESO], basada només en les fonts: esquema dels apartats, 5 conceptes clau amb la seua definició, 3 errors típics i 5 preguntes d'examen possibles.</vf-code>
-            </vf-details>
-            <vf-text><strong>Resum d'aprenentatge interactiu</strong> (perquè l'alumnat el faça servir en el xat del quadern):</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Fes-me de tutor de la unitat [3]. Explica'm l'apartat [2] en 5 punts curts i, després de cada punt, fes-me una pregunta per comprovar que ho he entés.
-                    No passes al punt següent fins que la meua resposta siga correcta. Basa't només en els apunts.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Guia d'estudi" desc="Esquema, conceptes clau, errors típics i preguntes d'examen.">
+                    <vf-code language="plaintext">Crea una guia d'estudi de la unitat per a alumnat de [4t d'ESO], basada només en les fonts: esquema dels apartats, 5 conceptes clau amb la seua definició, 3 errors típics i 5 preguntes d'examen possibles.</vf-code>
+                </vf-prompt>
+                <vf-prompt title="Resum d'aprenentatge interactiu" desc="Perquè l'alumnat el faça servir en el xat del quadern.">
+                    <vf-code language="plaintext">
+                        Fes-me de tutor de la unitat [3]. Explica'm l'apartat [2] en 5 punts curts i, després de cada punt, fes-me una pregunta per comprovar que ho he entés.
+                        No passes al punt següent fins que la meua resposta siga correcta. Basa't només en els apunts.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
 
             <vf-callout type="atencio">
                 No puges documents amb dades personals de l'alumnat (actes, informes individuals).

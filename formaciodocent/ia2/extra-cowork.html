@@ -96,14 +96,16 @@
                 </vf-step>
                 <vf-step title="Demana la correcció a Cowork">
                     <vf-text>A Cowork, tria la carpeta i demana:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">
-                            En aquesta carpeta tens l'enunciat, la solució i les entregues de l'alumnat en fotos (una carpeta per alumne, identificat per codi).
-                            Per a cada alumne: transcriu les respostes, compara-les amb la solució, posa la puntuació de cada exercici segons la rúbrica i escriu un comentari breu i constructiu en valencià (2-3 frases).
-                            Si no pots llegir alguna resposta, marca-la com a "ILLEGIBLE" en lloc d'endevinar.
-                            Al final crea un full de càlcul `notes.xlsx` amb codi, nota per exercici, nota final i comentari, i un fitxer `errors-frequents.md` amb els 3 errors més repetits del grup.
-                        </vf-code>
-                    </vf-details>
+                    <vf-prompts>
+                        <vf-prompt title="Correcció d'entregues en fotos" desc="Transcriu, puntua amb la rúbrica, comenta i crea notes.xlsx i errors-frequents.md.">
+                            <vf-code language="plaintext">
+                                En aquesta carpeta tens l'enunciat, la solució i les entregues de l'alumnat en fotos (una carpeta per alumne, identificat per codi).
+                                Per a cada alumne: transcriu les respostes, compara-les amb la solució, posa la puntuació de cada exercici segons la rúbrica i escriu un comentari breu i constructiu en valencià (2-3 frases).
+                                Si no pots llegir alguna resposta, marca-la com a "ILLEGIBLE" en lloc d'endevinar.
+                                Al final crea un full de càlcul `notes.xlsx` amb codi, nota per exercici, nota final i comentari, i un fitxer `errors-frequents.md` amb els 3 errors més repetits del grup.
+                            </vf-code>
+                        </vf-prompt>
+                    </vf-prompts>
                 </vf-step>
                 <vf-step title="Revisa el resultat">
                     <vf-text>Revisa <code>notes.xlsx</code> i els casos ILLEGIBLE.</vf-text>
@@ -114,14 +116,15 @@
                 </vf-step>
             </vf-steps>
 
-            <vf-text><strong>Variant sense fotos</strong>: entregues digitals (PDF, Docs) → mateix procés, més fiable.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    En aquesta carpeta tens l'enunciat, la solució (o rúbrica) i les entregues digitals de l'alumnat a la subcarpeta entregues/ (un fitxer PDF o DOCX per alumne, anomenat amb el seu codi: A01, A02...).
-                    Per a cada alumne: llig les respostes, compara-les amb la solució, posa la puntuació de cada exercici segons la rúbrica i escriu un comentari breu i constructiu en valencià (2-3 frases).
-                    Al final crea un full de càlcul `notes.xlsx` amb codi, nota per exercici, nota final i comentari, i un fitxer `errors-frequents.md` amb els 3 errors més repetits del grup.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Variant sense fotos" desc="Entregues digitals (PDF, Docs) → mateix procés, més fiable.">
+                    <vf-code language="plaintext">
+                        En aquesta carpeta tens l'enunciat, la solució (o rúbrica) i les entregues digitals de l'alumnat a la subcarpeta entregues/ (un fitxer PDF o DOCX per alumne, anomenat amb el seu codi: A01, A02...).
+                        Per a cada alumne: llig les respostes, compara-les amb la solució, posa la puntuació de cada exercici segons la rúbrica i escriu un comentari breu i constructiu en valencià (2-3 frases).
+                        Al final crea un full de càlcul `notes.xlsx` amb codi, nota per exercici, nota final i comentari, i un fitxer `errors-frequents.md` amb els 3 errors més repetits del grup.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
         </vf-content>
 
         <div class="d-flex flex-wrap justify-content-between">

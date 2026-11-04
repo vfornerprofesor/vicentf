@@ -132,64 +132,64 @@
             <vf-title level="3">Exemples</vf-title>
             <vf-text>Cada exemple té el seu prompt complet. Canvia el que hi ha entre [claudàtors] pel teu contingut.</vf-text>
             <vf-badge>Infantil/Primària</vf-badge>
-            <vf-text><strong>Joc de parelles imatge-paraula</strong> amb el vocabulari de la tardor (infantil 5 anys, amb lectura en veu alta de la paraula).</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea un joc de parelles imatge-paraula per a alumnat d'infantil de 5 anys amb el vocabulari de la tardor: [castanya, fulla, bolet, paraigua, esquirol, pluja].
-                    Cada parella té una carta amb un dibuix gran i senzill (o un emoji) i una carta amb la paraula en MAJÚSCULES.
-                    Quan l'alumne toca una carta de paraula, llig la paraula en veu alta en valencià (usa la veu del navegador).
-                    Requisits: tot en valencià, cartes molt grans per a tauleta, com a màxim 6 parelles, so i animació d'alegria quan encerten, sense instruccions escrites llargues (només icones) i un botó gran per tornar a jugar.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Ruleta de preguntes</strong> de la unitat de ciències per a 3r de primària.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea una ruleta de preguntes per a alumnat de 3r de primària sobre la unitat de ciències [els animals vertebrats i invertebrats].
-                    La ruleta té 8 sectors de colors; en girar-la, mostra una pregunta d'opció múltiple (3 opcions) del sector que ha eixit.
-                    Requisits: tot en valencià, lletra gran, retroacció immediata (encert/error amb una explicació curta i fàcil), comptador de punts, mode per equips (de 2 a 4 equips, per torns) i botó per tornar a començar.
-                    Usa aquestes preguntes: [enganxa les preguntes o el text de la unitat].
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Joc de càlcul mental</strong> amb temporitzador i nivells (2n cicle).</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea un joc de càlcul mental per a alumnat de 2n cicle de primària ([3r-4t]).
-                    Té 3 nivells: nivell 1, [sumes i restes fins a 100]; nivell 2, [taules de multiplicar]; nivell 3, [operacions combinades senzilles].
-                    Cada partida dura 60 segons amb un temporitzador visible; cada encert suma punts i cada 5 encerts seguits donen un bonus.
-                    Requisits: tot en valencià, números grans, teclat numèric en pantalla per a tauleta, retroacció immediata, millor puntuació guardada al navegador i botó per tornar a començar.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Joc de parelles imatge-paraula" desc="Amb el vocabulari de la tardor (infantil 5 anys, amb lectura en veu alta de la paraula).">
+                    <vf-code language="plaintext">
+                        Crea un joc de parelles imatge-paraula per a alumnat d'infantil de 5 anys amb el vocabulari de la tardor: [castanya, fulla, bolet, paraigua, esquirol, pluja].
+                        Cada parella té una carta amb un dibuix gran i senzill (o un emoji) i una carta amb la paraula en MAJÚSCULES.
+                        Quan l'alumne toca una carta de paraula, llig la paraula en veu alta en valencià (usa la veu del navegador).
+                        Requisits: tot en valencià, cartes molt grans per a tauleta, com a màxim 6 parelles, so i animació d'alegria quan encerten, sense instruccions escrites llargues (només icones) i un botó gran per tornar a jugar.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Ruleta de preguntes" desc="De la unitat de ciències per a 3r de primària.">
+                    <vf-code language="plaintext">
+                        Crea una ruleta de preguntes per a alumnat de 3r de primària sobre la unitat de ciències [els animals vertebrats i invertebrats].
+                        La ruleta té 8 sectors de colors; en girar-la, mostra una pregunta d'opció múltiple (3 opcions) del sector que ha eixit.
+                        Requisits: tot en valencià, lletra gran, retroacció immediata (encert/error amb una explicació curta i fàcil), comptador de punts, mode per equips (de 2 a 4 equips, per torns) i botó per tornar a començar.
+                        Usa aquestes preguntes: [enganxa les preguntes o el text de la unitat].
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Joc de càlcul mental" desc="Amb temporitzador i nivells (2n cicle).">
+                    <vf-code language="plaintext">
+                        Crea un joc de càlcul mental per a alumnat de 2n cicle de primària ([3r-4t]).
+                        Té 3 nivells: nivell 1, [sumes i restes fins a 100]; nivell 2, [taules de multiplicar]; nivell 3, [operacions combinades senzilles].
+                        Cada partida dura 60 segons amb un temporitzador visible; cada encert suma punts i cada 5 encerts seguits donen un bonus.
+                        Requisits: tot en valencià, números grans, teclat numèric en pantalla per a tauleta, retroacció immediata, millor puntuació guardada al navegador i botó per tornar a començar.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
             <vf-badge>Secundària</vf-badge>
-            <vf-text><strong>Quiz d'autoavaluació</strong> a partir dels apunts de la unitat (enganxar el text).</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea un quiz d'autoavaluació per a alumnat de [3r d'ESO] a partir dels apunts que t'enganxe al final.
-                    15 preguntes barrejades: opció múltiple, vertader/fals i completar buits, en ordre aleatori.
-                    Després de cada resposta, mostra si és correcta i una explicació de 2-3 línies basada només en els apunts.
-                    Al final, mostra la nota sobre 10 i la llista dels apartats que cal repassar segons els errors.
-                    Requisits: tot en valencià, retroacció immediata i botó per tornar a començar.
-                    Apunts: [enganxa el text de la unitat].
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Simulador interactiu</strong>: circuit elèctric, tir parabòlic, oferta i demanda, línia del temps de la Guerra Civil.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea un simulador interactiu per a alumnat de [3r d'ESO] sobre [circuits elèctrics en sèrie i en paral·lel].
-                    L'alumnat pot [canviar el voltatge de la pila i el valor de les resistències amb lliscadors] i veu en temps real [la intensitat, la tensió a cada resistència i la brillantor de les bombetes].
-                    Inclou un panell amb les fórmules que s'apliquen i 3 reptes guiats amb comprovació automàtica ([p. ex. «aconsegueix que la intensitat siga de 0,5 A»]).
-                    Requisits: tot en valencià, controls grans, explicació breu de cada resultat i botó per reiniciar.
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Quiz d'autoavaluació" desc="A partir dels apunts de la unitat (enganxar el text).">
+                    <vf-code language="plaintext">
+                        Crea un quiz d'autoavaluació per a alumnat de [3r d'ESO] a partir dels apunts que t'enganxe al final.
+                        15 preguntes barrejades: opció múltiple, vertader/fals i completar buits, en ordre aleatori.
+                        Després de cada resposta, mostra si és correcta i una explicació de 2-3 línies basada només en els apunts.
+                        Al final, mostra la nota sobre 10 i la llista dels apartats que cal repassar segons els errors.
+                        Requisits: tot en valencià, retroacció immediata i botó per tornar a començar.
+                        Apunts: [enganxa el text de la unitat].
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Simulador interactiu" desc="Circuit elèctric, tir parabòlic, oferta i demanda, línia del temps de la Guerra Civil.">
+                    <vf-code language="plaintext">
+                        Crea un simulador interactiu per a alumnat de [3r d'ESO] sobre [circuits elèctrics en sèrie i en paral·lel].
+                        L'alumnat pot [canviar el voltatge de la pila i el valor de les resistències amb lliscadors] i veu en temps real [la intensitat, la tensió a cada resistència i la brillantor de les bombetes].
+                        Inclou un panell amb les fórmules que s'apliquen i 3 reptes guiats amb comprovació automàtica ([p. ex. «aconsegueix que la intensitat siga de 0,5 A»]).
+                        Requisits: tot en valencià, controls grans, explicació breu de cada resultat i botó per reiniciar.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
             <vf-text>Altres idees per als claudàtors: <strong>tir parabòlic</strong> (angle i velocitat inicial → trajectòria, altura màxima i abast), <strong>oferta i demanda</strong> (preu i factors externs → corbes i punt d'equilibri), <strong>línia del temps de la Guerra Civil</strong> (clicar cada fet → explicació breu, data i conseqüències).</vf-text>
-            <vf-text><strong>Escape room digital</strong> de 4 proves amb codi final.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea un escape room digital per a alumnat de [2n d'ESO] sobre [la unitat de l'energia], amb una història d'ambientació breu ([sou un equip d'investigadors tancat al laboratori]).
-                    Té 4 proves seguides, cadascuna d'un tipus diferent (endevinalla, ordenar elements, missatge xifrat senzill i pregunta d'aplicació); en resoldre cada prova s'obté un dígit, i els 4 dígits formen el codi final que obri el cadenat.
-                    Requisits: tot en valencià, temporitzador de [30] minuts, una pista opcional per prova que resta 2 minuts, retroacció en cada prova i pantalla final de victòria.
-                    Contingut de les proves: [enganxa els continguts o les preguntes].
-                </vf-code>
-            </vf-details>
+            <vf-prompts>
+                <vf-prompt title="Escape room digital" desc="De 4 proves amb codi final.">
+                    <vf-code language="plaintext">
+                        Crea un escape room digital per a alumnat de [2n d'ESO] sobre [la unitat de l'energia], amb una història d'ambientació breu ([sou un equip d'investigadors tancat al laboratori]).
+                        Té 4 proves seguides, cadascuna d'un tipus diferent (endevinalla, ordenar elements, missatge xifrat senzill i pregunta d'aplicació); en resoldre cada prova s'obté un dígit, i els 4 dígits formen el codi final que obri el cadenat.
+                        Requisits: tot en valencià, temporitzador de [30] minuts, una pista opcional per prova que resta 2 minuts, retroacció en cada prova i pantalla final de victòria.
+                        Contingut de les proves: [enganxa els continguts o les preguntes].
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
 
             <vf-callout type="consell">
                 Comença senzill i ves afegint coses; si es trenca alguna cosa, demana «torna a la versió anterior»; comprova el contingut (la IA s'equivoca en respostes).
