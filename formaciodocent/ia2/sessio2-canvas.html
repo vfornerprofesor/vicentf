@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Sessió 2 · Gemini Canvas / Claude</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Sessió 2">Activitats interactives amb Canvas</vf-title>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-content>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>Dins de Gemini ([gemini.google.com](https://gemini.google.com)) hi ha l'eina <strong>Canvas</strong>: li descrius una activitat i et crea una mini-aplicació web que funciona al moment i que es pot <strong>compartir per enllaç</strong> amb l'alumnat (no cal que tinguen compte).</vf-text>
+            <vf-text>Alternativa gratuïta: <strong>Claude</strong> ([claude.ai](https://claude.ai)), que crea <i>artifacts</i> semblants. Amb el compte gratuït no dona enllaç per compartir: l'activitat es <strong>descarrega</strong> com a fitxer HTML. Usem Gemini com a eina principal (mateix compte de Google) i Claude com a pla B o per comparar resultats.</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Obri Canvas">
+                    <vf-text>Obri [gemini.google.com](https://gemini.google.com) → menú d'eines del quadre de text → <strong>Canvas</strong>.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_01.png" alt="Menú d'eines de Gemini amb l'opció Canvas marcada"></vf-img>
+                </vf-step>
+                <vf-step title="Escriu el prompt">
+                    <vf-text>Usa la plantilla de prompt i els exemples d'avall.</vf-text>
+                </vf-step>
+                <vf-step title="Prova i millora l'activitat">
+                    <vf-text>Prova l'activitat a la <strong>Vista prèvia</strong>. Demana canvis en llenguatge natural: «fes els botons més grans», «afegeix so quan encerten», «posa-ho tot en valencià».</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_02.png" alt="Canvas de Gemini amb el Joc de Parelles de la Tardor en vista prèvia"></vf-img>
+                </vf-step>
+                <vf-step title="Comparteix-la">
+                    <vf-text>Botó de <strong>compartir</strong> de la barra superior → <strong>Copiar enllaç</strong> (<code>share.gemini.google/…</code>) → penja'l a l'aula virtual o a la pissarra de Codocente.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_03.png" alt="Diàleg d'enllaç públic per compartir una activitat de Canvas"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-text><strong>Prova l'exemple</strong>: [Joc de parelles de la tardor](https://share.gemini.google/4Py0n65hCYne), creat amb el primer prompt d'exemple d'avall.</vf-text>
+
+            <vf-callout type="atencio">
+                <strong>Important de l'enllaç</strong>: és una «foto» del moment en què es crea; si després canvies l'activitat, cal <strong>tornar a compartir</strong> i usar l'enllaç nou. Qualsevol persona amb l'enllaç la pot obrir sense compte. Amb comptes de centre (Workspace) l'opció pot estar desactivada: per això usem el compte personal.
+            </vf-callout>
+
+            <vf-title level="3">Pla B amb Claude</vf-title>
+            <vf-text>[claude.ai](https://claude.ai), gratuït.</vf-text>
+            <vf-steps>
+                <vf-step title="Activa la creació de fitxers">
+                    <vf-text>Abans de res: <i>Configuració → Capacitats</i> → activa <strong>Artefactes</strong> i <strong>Execució de codi i creació de fitxers</strong>.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_04.png" alt="Configuració de Claude, apartat Capacitats, amb Artefactes i Execució de codi activats"></vf-img>
+                </vf-step>
+                <vf-step title="Demana l'activitat">
+                    <vf-text>Amb el mateix prompt que faries servir a Gemini.</vf-text>
+                </vf-step>
+                <vf-step title="Descarrega-la">
+                    <vf-text>Botó <strong>Exportar</strong> de l'artifact → descarrega el fitxer <code>.html</code>. Amb el compte gratuït no hi ha enllaç per compartir: puja el fitxer a l'aula virtual o obri'l amb el navegador de l'ordinador de classe.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_05.png" alt="Artifact de Claude Taller de circuits amb el botó Exportar"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-text><strong>Prova l'exemple</strong>: [Taller de circuits](formaciodocent/ia2/exemples/taller-de-circuits.html), creat amb Claude amb el prompt del simulador de circuits d'avall i descarregat.</vf-text>
+
+            <vf-title level="3">Plantilla de prompt</vf-title>
+            <vf-text>Copia-la i substitueix el que hi ha entre claudàtors.</vf-text>
+            <vf-code language="plaintext">
+                Crea una activitat interactiva per a alumnat de [curs] sobre [contingut].
+                Tipus: [quiz / joc de parelles / ruleta / arrossegar i deixar / simulador].
+                Requisits: tot en valencià, lletra gran i botons grans, retroacció immediata (encert/error amb explicació), comptador de punts i botó per tornar a començar.
+                Usa aquest contingut: [enganxar llista/text].
+            </vf-code>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-text>Cada exemple té el seu prompt complet. Canvia el que hi ha entre [claudàtors] pel teu contingut.</vf-text>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-text><strong>Joc de parelles imatge-paraula</strong> amb el vocabulari de la tardor (infantil 5 anys, amb lectura en veu alta de la paraula).</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Crea un joc de parelles imatge-paraula per a alumnat d'infantil de 5 anys amb el vocabulari de la tardor: [castanya, fulla, bolet, paraigua, esquirol, pluja].
+                    Cada parella té una carta amb un dibuix gran i senzill (o un emoji) i una carta amb la paraula en MAJÚSCULES.
+                    Quan l'alumne toca una carta de paraula, llig la paraula en veu alta en valencià (usa la veu del navegador).
+                    Requisits: tot en valencià, cartes molt grans per a tauleta, com a màxim 6 parelles, so i animació d'alegria quan encerten, sense instruccions escrites llargues (només icones) i un botó gran per tornar a jugar.
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Ruleta de preguntes</strong> de la unitat de ciències per a 3r de primària.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Crea una ruleta de preguntes per a alumnat de 3r de primària sobre la unitat de ciències [els animals vertebrats i invertebrats].
+                    La ruleta té 8 sectors de colors; en girar-la, mostra una pregunta d'opció múltiple (3 opcions) del sector que ha eixit.
+                    Requisits: tot en valencià, lletra gran, retroacció immediata (encert/error amb una explicació curta i fàcil), comptador de punts, mode per equips (de 2 a 4 equips, per torns) i botó per tornar a començar.
+                    Usa aquestes preguntes: [enganxa les preguntes o el text de la unitat].
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Joc de càlcul mental</strong> amb temporitzador i nivells (2n cicle).</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Crea un joc de càlcul mental per a alumnat de 2n cicle de primària ([3r-4t]).
+                    Té 3 nivells: nivell 1, [sumes i restes fins a 100]; nivell 2, [taules de multiplicar]; nivell 3, [operacions combinades senzilles].
+                    Cada partida dura 60 segons amb un temporitzador visible; cada encert suma punts i cada 5 encerts seguits donen un bonus.
+                    Requisits: tot en valencià, números grans, teclat numèric en pantalla per a tauleta, retroacció immediata, millor puntuació guardada al navegador i botó per tornar a començar.
+                </vf-code>
+            </vf-details>
+            <vf-badge>Secundària</vf-badge>
+            <vf-text><strong>Quiz d'autoavaluació</strong> a partir dels apunts de la unitat (enganxar el text).</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Crea un quiz d'autoavaluació per a alumnat de [3r d'ESO] a partir dels apunts que t'enganxe al final.
+                    15 preguntes barrejades: opció múltiple, vertader/fals i completar buits, en ordre aleatori.
+                    Després de cada resposta, mostra si és correcta i una explicació de 2-3 línies basada només en els apunts.
+                    Al final, mostra la nota sobre 10 i la llista dels apartats que cal repassar segons els errors.
+                    Requisits: tot en valencià, retroacció immediata i botó per tornar a començar.
+                    Apunts: [enganxa el text de la unitat].
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Simulador interactiu</strong>: circuit elèctric, tir parabòlic, oferta i demanda, línia del temps de la Guerra Civil.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Crea un simulador interactiu per a alumnat de [3r d'ESO] sobre [circuits elèctrics en sèrie i en paral·lel].
+                    L'alumnat pot [canviar el voltatge de la pila i el valor de les resistències amb lliscadors] i veu en temps real [la intensitat, la tensió a cada resistència i la brillantor de les bombetes].
+                    Inclou un panell amb les fórmules que s'apliquen i 3 reptes guiats amb comprovació automàtica ([p. ex. «aconsegueix que la intensitat siga de 0,5 A»]).
+                    Requisits: tot en valencià, controls grans, explicació breu de cada resultat i botó per reiniciar.
+                </vf-code>
+            </vf-details>
+            <vf-text>Altres idees per als claudàtors: <strong>tir parabòlic</strong> (angle i velocitat inicial → trajectòria, altura màxima i abast), <strong>oferta i demanda</strong> (preu i factors externs → corbes i punt d'equilibri), <strong>línia del temps de la Guerra Civil</strong> (clicar cada fet → explicació breu, data i conseqüències).</vf-text>
+            <vf-text><strong>Escape room digital</strong> de 4 proves amb codi final.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Crea un escape room digital per a alumnat de [2n d'ESO] sobre [la unitat de l'energia], amb una història d'ambientació breu ([sou un equip d'investigadors tancat al laboratori]).
+                    Té 4 proves seguides, cadascuna d'un tipus diferent (endevinalla, ordenar elements, missatge xifrat senzill i pregunta d'aplicació); en resoldre cada prova s'obté un dígit, i els 4 dígits formen el codi final que obri el cadenat.
+                    Requisits: tot en valencià, temporitzador de [30] minuts, una pista opcional per prova que resta 2 minuts, retroacció en cada prova i pantalla final de victòria.
+                    Contingut de les proves: [enganxa els continguts o les preguntes].
+                </vf-code>
+            </vf-details>
+
+            <vf-callout type="consell">
+                Comença senzill i ves afegint coses; si es trenca alguna cosa, demana «torna a la versió anterior»; comprova el contingut (la IA s'equivoca en respostes).
+            </vf-callout>
+
+            <vf-callout type="exercici">
+                <strong>Repte</strong>: crea una activitat per a una sessió de la setmana vinent i comparteix l'enllaç al grup de la formació.
+            </vf-callout>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio1-gestio-aula.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Gestió d'aula</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio2-storybook.html">Storybook <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

@@ -76,189 +76,27 @@
 
         <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
 
-        <div id="vf-index" levels="2,3"></div>
-
         <vf-content>
             <vf-text>Bloc d'autoformació, fora d'hores, per a qui tinga (o vulga provar) una subscripció de pagament.</vf-text>
-            <vf-callout type="recorda">
-                <strong>Sense terminal</strong>: tot es fa des de l'aplicació d'escriptori de Claude (Windows/Mac), que té tres pestanyes:
-                <ul>
-                    <li><strong>Chat</strong>.</li>
-                    <li><strong>Cowork</strong>: treballa amb els fitxers d'una carpeta de l'ordinador; llig, crea i organitza documents, fulls de càlcul i presentacions.</li>
-                    <li><strong>Code</strong>: crea aplicacions; tu només parles, ell escriu el codi i el prova.</li>
-                </ul>
-                Cowork i Code requerixen pla de pagament (Pro o superior), en macOS i Windows.
-            </vf-callout>
-            <!-- CAPTURA PENDENT -->
-            <vf-img src="assets/formaciodocent/ia2/extra-claude-escriptori-pestanyes.png" alt="Aplicació d'escriptori de Claude amb les pestanyes Chat, Cowork i Code"></vf-img>
         </vf-content>
 
         <!-- ============================================================ -->
-        <vf-title level="2">Crear un joc tipus Duolingo</vf-title>
+        <vf-title level="2">Apartats</vf-title>
         <vf-content>
-            <div class="center"><vf-badge>Claude Code a l'app d'escriptori</vf-badge></div>
-            <vf-text><strong>Idea</strong>: una app web amb lliçons curtes, vides, ratxa de dies, punts d'experiència, nivells que es desbloquegen i retroacció immediata. Es guarda com a fitxers en una carpeta i s'obri amb el navegador (i es pot publicar gratis, per exemple arrossegant la carpeta a [Netlify Drop](https://app.netlify.com/drop) o a [GitHub Pages](https://pages.github.com)).</vf-text>
-
-            <vf-title level="3">Exemple de primària: «Taules campiones» (3r-4t)</vf-title>
-            <vf-badge>Infantil/Primària</vf-badge>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea una aplicació web en una carpeta nova, tot en valencià, tipus Duolingo, per practicar les taules de multiplicar.
-                    Requisits: un camí de nivells (taula del 2 al 10, i un nivell final barrejat) que es desbloquegen en superar l'anterior; cada lliçó té 10 preguntes de tipus variat (triar resposta, escriure el resultat, arrossegar el número que falta); 3 vides per lliçó; punts d'experiència i ratxa de dies guardats al navegador; animació i so quan encerten; botons grans per a tauleta.
-                    Quan acabes, obri-la al navegador perquè la prove.
-                </vf-code>
-            </vf-details>
-            <!-- CAPTURA PENDENT -->
-            <vf-img src="assets/formaciodocent/ia2/extra-joc-primaria.png" alt="Joc de primària «Taules campiones» funcionant"></vf-img>
-
-            <vf-title level="3">Exemple de secundària: «Vocab Quest» (anglés 2n ESO)</vf-title>
-            <vf-badge>Secundària</vf-badge>
-            <vf-text>Adaptable a qualsevol matèria.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Crea una app web tipus Duolingo per aprendre vocabulari d'anglés de 2n d'ESO.
-                    Els continguts han d'estar en un fitxer `vocabulari.json` separat perquè jo puga afegir unitats sense tocar el codi.
-                    Unitats: "Food", "Travel", "Jobs" (20 paraules cada una, amb frase d'exemple).
-                    Tipus d'exercici: traducció, escoltar i escriure (usa la veu del navegador), completar la frase, parelles.
-                    Vides, ratxa, XP, repàs automàtic de les paraules fallades i pantalla de resultats final.
-                    Interfície en valencià.
-                </vf-code>
-            </vf-details>
-            <!-- CAPTURA PENDENT -->
-            <vf-img src="assets/formaciodocent/ia2/extra-joc-secundaria.png" alt="Joc de secundària «Vocab Quest» funcionant"></vf-img>
-
-            <vf-callout type="consell">
-                <strong>Itera</strong>: «fes-la més colorida», «afegeix un mode professor per veure els errors més freqüents», «afegeix la unitat 4 amb aquestes paraules: …».
-            </vf-callout>
-            <vf-title level="3">Prompts d'iteració</vf-title>
-            <vf-text><strong>Fes-la més colorida</strong>:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Fes la interfície més colorida i atractiva per a [alumnat de 3r-4t de primària]: colors vius, cantonades arrodonides, un personatge mascota que reaccione als encerts i als errors, i animacions suaus.
-                    No canvies el funcionament ni el contingut. Quan acabes, obri-la al navegador perquè la prove.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Mode professor</strong> per veure els errors més freqüents:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Afegeix un mode professor, protegit amb una contrasenya senzilla ([1234]), que mostre per a cada lliçó les preguntes més fallades i el percentatge d'encert, a partir de les dades guardades al navegador.
-                    Afegeix un botó per exportar aquestes dades a un fitxer CSV.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Afegir una unitat</strong> (joc de secundària):</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Afegeix la unitat 4, «[School]», al fitxer vocabulari.json amb aquestes paraules i frases d'exemple: [enganxa la llista].
-                    Comprova que apareix al camí de nivells, que es desbloqueja en superar la unitat 3 i que tots els tipus d'exercici funcionen amb les paraules noves.
-                </vf-code>
-            </vf-details>
-            <vf-title level="3">Publicar el joc</vf-title>
-            <vf-text>Abans d'arrossegar la carpeta a Netlify Drop o a GitHub Pages, demana a Claude Code que la deixe preparada:</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Prepara l'aplicació per publicar-la com a web estàtica: comprova que funciona obrint només index.html, que totes les rutes són relatives i que no necessita cap servidor ni cap instal·lació.
-                    Després explica'm pas a pas, sense usar el terminal, com publicar-la gratis arrossegant la carpeta a Netlify Drop, i com obtindre l'enllaç per compartir-lo amb l'alumnat.
-                </vf-code>
-            </vf-details>
-        </vf-content>
-
-        <!-- ============================================================ -->
-        <vf-title level="2">Corregir entregues a partir de fotos</vf-title>
-        <vf-content>
-            <div class="center"><vf-badge>Claude Cowork</vf-badge></div>
-
-            <vf-title level="3">Funciona amb fotos?</vf-title>
-            <vf-text>Sí, amb matisos: Claude llig bé la lletra manuscrita clara de secundària i de primària a partir de 3r-4t; costa més amb lletra d'infantil/1r cicle, fotos tortes, amb ombres o en llapis fluix.</vf-text>
-            <vf-callout type="consell">
-                <ul>
-                    <li>Foto zenital, bona llum, una pàgina per foto (o escaneja amb el mòbil: Google Drive o l'app de càmera en mode document).</li>
-                    <li>Funciona millor amb respostes curtes o problemes que amb redaccions llargues de lletra difícil.</li>
-                </ul>
-            </vf-callout>
-            <vf-callout type="atencio">
-                <ul>
-                    <li><strong>La IA proposa, el professorat decidix</strong>: revisa sempre la nota i el comentari.</li>
-                    <li><strong>Protecció de dades</strong>: anomena els fitxers amb un codi (<code>A01.jpg</code>, <code>A02.jpg</code>), no amb el nom; no fotografies el nom (tapa'l o doblega la capçalera). La relació codi–nom només la té el professor.</li>
-                </ul>
-            </vf-callout>
-
-            <vf-title level="3">Passos</vf-title>
-            <vf-steps>
-                <vf-step title="Prepara la carpeta">
-                    <vf-text>Crea una carpeta <code>correccio-tema3</code> amb: <code>enunciat.pdf</code>, <code>solucions.pdf</code> (o rúbrica) i una subcarpeta <code>entregues/</code> amb les fotos.</vf-text>
-                </vf-step>
-                <vf-step title="Demana la correcció a Cowork">
-                    <vf-text>A Cowork, tria la carpeta i demana:</vf-text>
-                    <vf-details summary="Veure el prompt">
-                        <vf-code language="plaintext">
-                            En aquesta carpeta tens l'enunciat, la solució i les entregues de l'alumnat en fotos (una carpeta per alumne, identificat per codi).
-                            Per a cada alumne: transcriu les respostes, compara-les amb la solució, posa la puntuació de cada exercici segons la rúbrica i escriu un comentari breu i constructiu en valencià (2-3 frases).
-                            Si no pots llegir alguna resposta, marca-la com a "ILLEGIBLE" en lloc d'endevinar.
-                            Al final crea un full de càlcul `notes.xlsx` amb codi, nota per exercici, nota final i comentari, i un fitxer `errors-frequents.md` amb els 3 errors més repetits del grup.
-                        </vf-code>
-                    </vf-details>
-                </vf-step>
-                <vf-step title="Revisa el resultat">
-                    <vf-text>Revisa <code>notes.xlsx</code> i els casos ILLEGIBLE.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/extra-cowork-correccio.png" alt="Claude Cowork amb la carpeta de correcció"></vf-img>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/extra-notes-xlsx.png" alt="Full de càlcul notes.xlsx resultant de la correcció"></vf-img>
-                </vf-step>
-            </vf-steps>
-
-            <vf-text><strong>Variant sense fotos</strong>: entregues digitals (PDF, Docs) → mateix procés, més fiable.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    En aquesta carpeta tens l'enunciat, la solució (o rúbrica) i les entregues digitals de l'alumnat a la subcarpeta entregues/ (un fitxer PDF o DOCX per alumne, anomenat amb el seu codi: A01, A02...).
-                    Per a cada alumne: llig les respostes, compara-les amb la solució, posa la puntuació de cada exercici segons la rúbrica i escriu un comentari breu i constructiu en valencià (2-3 frases).
-                    Al final crea un full de càlcul `notes.xlsx` amb codi, nota per exercici, nota final i comentari, i un fitxer `errors-frequents.md` amb els 3 errors més repetits del grup.
-                </vf-code>
-            </vf-details>
-        </vf-content>
-
-        <!-- ============================================================ -->
-        <vf-title level="2">Vídeo amb Veo</vf-title>
-        <vf-content>
-            <vf-text>Veo (dins de Gemini, botó <i>Crear vídeo</i>, o a Flow per a edicions més llargues) genera clips de vídeo de pocs segons amb so a partir d'un text o d'una imatge. En el pla gratuït no està disponible o és molt limitat; amb Google AI Plus/Pro funciona per crèdits.</vf-text>
-            <!-- CAPTURA PENDENT -->
-            <vf-img src="assets/formaciodocent/ia2/extra-veo-video.png" alt="Generació d'un vídeo amb Veo a Gemini"></vf-img>
-
-            <vf-title level="3">Usos</vf-title>
-            <vf-text><strong>Presentació d'una unitat</strong> («tràiler» de 8 segons del viatge a l'antic Egipte).</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Vídeo de 8 segons en estil tràiler de pel·lícula d'aventures, per a alumnat de [5é de primària]: la càmera sobrevola el desert al capvespre i s'acosta a les piràmides de Gizeh; al final, un escarabat daurat brilla damunt d'una pedra amb jeroglífics.
-                    Música èpica i so de vent. Sense text en pantalla (el títol l'afegiràs tu després).
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Personatge mascota de l'aula</strong> que dona la benvinguda o planteja el repte de la setmana.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Vídeo de 8 segons: [un mussol de dibuixos animats amb ulleres i motxilla], la mascota de la classe de [3r de primària], mira a càmera dins d'una aula alegre i diu en valencià, amb veu amable:
-                    «[Hola, exploradors! El repte d'esta setmana és descobrir per què cauen les fulles a la tardor.]»
-                    Estil animació 3D infantil, llum càlida.
-                </vf-code>
-            </vf-details>
-            <vf-text>Comprova la pronúncia en valencià del resultat; si no convenç, genera el vídeo sense veu i afegeix-hi un àudio fet amb AI Studio ([sessió 2](formaciodocent/ia2/sessio2.html)).</vf-text>
-            <vf-text><strong>Infantil: animar un dibuix de l'alumnat.</strong> Adjunta la foto del dibuix.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Anima el dibuix adjunt, fet per l'alumnat d'[infantil de 5 anys]: [el drac obri les ales, vola en cercle pel cel i aterra somrient].
-                    Mantín exactament l'estil, el traç i els colors del dibuix original, com si el dibuix cobrara vida. So: [aleteig suau i música alegre]. Sense persones.
-                </vf-code>
-            </vf-details>
-            <vf-text><strong>Comunicació amb famílies</strong>: clip de presentació d'una eixida o projecte.</vf-text>
-            <vf-details summary="Veure el prompt">
-                <vf-code language="plaintext">
-                    Vídeo de 8 segons per presentar a les famílies [l'eixida a l'Albufera] de [4t de primària]: [pla general d'una barca tradicional navegant per l'Albufera al matí, amb ocells volant].
-                    Estil documental, llum natural, so ambient [d'aigua i ocells]. Sense persones reconeixibles.
-                </vf-code>
-            </vf-details>
-
-            <vf-callout type="atencio">
-                No generes vídeos amb cares reals de l'alumnat.
-            </vf-callout>
+            <vf-row centered>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/extra-autoformacio.html"><i class="fas fa-laptop" aria-hidden="true"></i> Autoformació</vf-btn>
+                </vf-col>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/extra-claude-code.html"><i class="fas fa-code" aria-hidden="true"></i> Claude Code</vf-btn>
+                </vf-col>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/extra-cowork.html"><i class="fas fa-folder-open" aria-hidden="true"></i> Claude Cowork</vf-btn>
+                </vf-col>
+                <vf-col classes="col-min-200px">
+                    <vf-btn classes="btn-block-full" link="formaciodocent/ia2/extra-veo.html"><i class="fas fa-video" aria-hidden="true"></i> Veo</vf-btn>
+                </vf-col>
+            </vf-row>
         </vf-content>
 
         <div class="d-flex flex-wrap justify-content-between">

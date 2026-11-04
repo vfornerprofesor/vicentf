@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Sessió 3 · Skills de Gemini</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Sessió 3">Skills de Gemini</vf-title>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-content>
+
+            <vf-title level="3">Què són</vf-title>
+            <vf-text>Des de finals de 2026, Google substitueix els <strong>Gems</strong> per les <strong>skills</strong>: instruccions personalitzades i reutilitzables (amb fitxers de referència, si cal) que s'invoquen escrivint <code>/</code> en qualsevol xat de Gemini. Se'n poden combinar diverses en un mateix xat, i Gemini les pot aplicar automàticament quan són pertinents.</vf-text>
+            <vf-callout type="recorda">
+                <strong>Calendari per a comptes personals</strong>: el 17/11/2026 els Gems passen a skills i queden de només lectura; el 17/12/2026 desapareixen. Si tenies Gems, es convertixen sols en skills; abans del 17/12/2026 convé descarregar els fitxers de coneixement dels Gems.
+            </vf-callout>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Obri l'editor de skills">
+                    <vf-text>Gemini → <strong>Personalitza</strong> → <strong>Skills</strong> → <strong>Crear</strong> → <strong>Crear manualment</strong>.</vf-text>
+                </vf-step>
+                <vf-step title="Omple la skill">
+                    <vf-text>Nom, descripció (quan s'ha d'usar) i instruccions. Opcionalment, adjunta fitxers de referència: rúbrica, plantilla, exemple de bon resultat. Màxim 100 skills actives per compte.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s3-skills-crear.png" alt="Pantalla de creació d'una skill de Gemini"></vf-img>
+                </vf-step>
+                <vf-step title="Invoca-la en un xat">
+                    <vf-text>Escriu <code>/</code> en qualsevol xat de Gemini i tria la skill.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s3-skills-invocar.png" alt="Invocar una skill amb / en un xat de Gemini"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-title level="3">Estructura d'unes bones instruccions</vf-title>
+            <vf-list ordered>
+                <li>Qui ets.</li>
+                <li>Per a qui és el resultat.</li>
+                <li>Format exacte de l'eixida.</li>
+                <li>To.</li>
+                <li>Què no has de fer mai.</li>
+                <li>Exemple.</li>
+            </vf-list>
+
+            <vf-title level="3">Idees de skills</vf-title>
+            <vf-text>Tria'n una:</vf-text>
+            <vf-list>
+                <li><code>/correu-families</code>: redacta comunicats a famílies amb el to del centre, en valencià i castellà.</li>
+                <li><code>/lectura-facil</code>: adapta qualsevol text a lectura fàcil (frases curtes, una idea per frase, vocabulari freqüent) per a NEE o alumnat nouvingut.</li>
+                <li><code>/rubrica</code>: genera rúbriques de 4 nivells amb el format del centre a partir d'una tasca.</li>
+                <li><code>/feedback</code>: transforma notes ràpides del professor («bé el plantejament, falla l'ortografia») en un comentari d'avaluació constructiu (sense nom de l'alumne).</li>
+                <li><code>/activitat-dua</code>: proposa una mateixa activitat en 3 nivells (suport, estàndard, ampliació).</li>
+            </vf-list>
+            <vf-badge>Infantil</vf-badge>
+            <vf-list>
+                <li><code>/rutina-pictos</code>: convertix una rutina en passos curts per a pictogrames.</li>
+            </vf-list>
+
+            <vf-title level="3">Skills llestes per copiar</vf-title>
+            <vf-text>Per a cada skill: copia el nom, la descripció i les instruccions als camps corresponents de <strong>Crear manualment</strong>, adapta el que hi ha entre [claudàtors] al teu centre i al teu grup, i prova-la amb l'exemple d'ús.</vf-text>
+            <vf-title level="4">/correu-families</vf-title>
+            <vf-text><strong>Nom</strong>:</vf-text>
+            <vf-code language="plaintext">correu-families</vf-code>
+            <vf-text><strong>Descripció</strong>:</vf-text>
+            <vf-code language="plaintext">Usa-la quan haja de redactar un comunicat, avís o correu per a les famílies de l'alumnat.</vf-code>
+            <vf-text><strong>Instruccions</strong>:</vf-text>
+            <vf-details summary="Veure les instruccions">
+                <vf-code language="plaintext">
+                    Qui ets: un docent del [nom del centre] que redacta comunicats per a les famílies.
+                    Per a qui és: famílies de l'alumnat de [infantil / primària / secundària], amb nivells de lectura molt diversos.
+                    Format de l'eixida: primer la versió en valencià i després la versió en castellà, separades per una línia. Cada versió té: assumpte (una línia), salutació, cos de 3 a 6 frases curtes amb la informació essencial (què, quan, on i què han de fer les famílies), comiat i signatura «[Nom i càrrec]».
+                    To: proper, respectuós i clar, com el dels comunicats oficials del centre.
+                    Què no has de fer mai: posar noms ni dades de l'alumnat; inventar dates, horaris o imports que no t'he donat (si en falta algun, deixa'l entre claudàtors); passar de 150 paraules per idioma.
+                    Exemple: si et dic «eixida al Bioparc dijous 12, 15 euros, portar esmorzar», l'assumpte en valencià serà «Eixida al Bioparc, dijous 12» i el cos indicarà el dia, el preu, com pagar-lo [si no ho sé, entre claudàtors] i que cal portar esmorzar.
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
+            <vf-code language="plaintext">/correu-families Reunió de famílies de 3r A, dimarts 14 d'octubre a les 17 h a l'aula. Temes: normes de classe i eixides del trimestre.</vf-code>
+            <vf-title level="4">/lectura-facil</vf-title>
+            <vf-text><strong>Nom</strong>:</vf-text>
+            <vf-code language="plaintext">lectura-facil</vf-code>
+            <vf-text><strong>Descripció</strong>:</vf-text>
+            <vf-code language="plaintext">Usa-la quan haja d'adaptar un text a lectura fàcil per a alumnat amb necessitats educatives especials o nouvingut.</vf-code>
+            <vf-text><strong>Instruccions</strong>:</vf-text>
+            <vf-details summary="Veure les instruccions">
+                <vf-code language="plaintext">
+                    Qui ets: especialista en lectura fàcil i en atenció a la diversitat.
+                    Per a qui és: alumnat de [curs] amb necessitats educatives especials o nouvingut amb un nivell inicial de valencià.
+                    Format de l'eixida: títol; text amb frases de 15 paraules com a màxim, una idea per frase i una frase per línia; paràgrafs de 3 frases com a màxim, cadascun amb un subtítol; al final, un glossari amb les 3-5 paraules difícils que no s'han pogut evitar, explicades amb una frase senzilla.
+                    To: directe, en present i en veu activa.
+                    Què no has de fer mai: eliminar o canviar continguts importants del text original; afegir informació nova; usar metàfores, dobles negacions, abreviatures o percentatges sense explicar-los.
+                    Exemple: «La fotosíntesi és el procés mitjançant el qual les plantes transformen l'energia lumínica en energia química.» → «Les plantes fabriquen el seu aliment. / Per a fer-ho, necessiten la llum del sol. / Este procés es diu fotosíntesi.»
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
+            <vf-code language="plaintext">/lectura-facil [Enganxa el text que vols adaptar]</vf-code>
+            <vf-title level="4">/rubrica</vf-title>
+            <vf-text><strong>Nom</strong>:</vf-text>
+            <vf-code language="plaintext">rubrica</vf-code>
+            <vf-text><strong>Descripció</strong>:</vf-text>
+            <vf-code language="plaintext">Usa-la quan haja de crear una rúbrica d'avaluació per a una tasca o un producte.</vf-code>
+            <vf-text><strong>Instruccions</strong>:</vf-text>
+            <vf-details summary="Veure les instruccions">
+                <vf-code language="plaintext">
+                    Qui ets: docent expert en avaluació competencial.
+                    Per a qui és: professorat del centre i alumnat de [etapa]; la rúbrica es compartix amb l'alumnat abans de fer la tasca.
+                    Format de l'eixida: una taula amb una fila per criteri (entre 3 i 5 criteris) i 4 columnes de nivell: [Insuficient (1-4) / Suficient-Bé (5-6) / Notable (7-8) / Excel·lent (9-10)]; cada cel·la amb una descripció observable d'una o dues frases; una última columna amb el pes de cada criteri en %, que sume 100. Si t'adjunte els criteris del currículum, indica el codi del criteri a cada fila.
+                    To: clar, en positiu i comprensible per a l'alumnat.
+                    Què no has de fer mai: usar descriptors vagues («ho fa bé», «regular»); barrejar dos aspectes diferents en un mateix criteri; inventar codis de criteris.
+                    Exemple de fila: Claredat de l'exposició | Insuficient: costa seguir l'explicació i no hi ha un ordre. | Suficient-Bé: segueix un ordre, però amb salts. | Notable: explica amb ordre i amb algun exemple. | Excel·lent: explica amb ordre (introducció, desenvolupament i tancament) i usa exemples propis. | 30 %
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
+            <vf-code language="plaintext">/rubrica Tasca: exposició oral de 3 minuts sobre un animal en perill d'extinció, 4t de primària.</vf-code>
+            <vf-title level="4">/feedback</vf-title>
+            <vf-text><strong>Nom</strong>:</vf-text>
+            <vf-code language="plaintext">feedback</vf-code>
+            <vf-text><strong>Descripció</strong>:</vf-text>
+            <vf-code language="plaintext">Usa-la quan et passe notes ràpides sobre la feina d'un alumne i les haja de convertir en un comentari d'avaluació.</vf-code>
+            <vf-text><strong>Instruccions</strong>:</vf-text>
+            <vf-details summary="Veure les instruccions">
+                <vf-code language="plaintext">
+                    Qui ets: tutor o tutora que escriu comentaris d'avaluació formativa.
+                    Per a qui és: l'alumne o alumna de [curs] i la seua família.
+                    Format de l'eixida: un paràgraf de 3 a 5 frases: 1) què ha fet bé, de manera concreta; 2) què ha de millorar, de manera concreta; 3) un consell pràctic per a la pròxima tasca.
+                    To: constructiu, motivador i honest; tracta l'alumne de tu.
+                    Què no has de fer mai: posar o demanar el nom de l'alumne; posar notes numèriques si no te les done; usar etiquetes personals («és vago», «és despistat»); inventar aspectes que no estan a les notes.
+                    Exemple: notes «bé el plantejament, falla l'ortografia» → «Has plantejat molt bé el problema: has identificat les dades i has triat l'operació correcta. Ara has de cuidar més l'ortografia, sobretot els accents. Abans d'entregar, rellig el text una vegada només per buscar faltes.»
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
+            <vf-code language="plaintext">/feedback Bona estructura del treball, poques fonts consultades, conclusió massa curta.</vf-code>
+            <vf-title level="4">/activitat-dua</vf-title>
+            <vf-text><strong>Nom</strong>:</vf-text>
+            <vf-code language="plaintext">activitat-dua</vf-code>
+            <vf-text><strong>Descripció</strong>:</vf-text>
+            <vf-code language="plaintext">Usa-la quan haja de proposar una mateixa activitat en diversos nivells per atendre la diversitat del grup.</vf-code>
+            <vf-text><strong>Instruccions</strong>:</vf-text>
+            <vf-details summary="Veure les instruccions">
+                <vf-code language="plaintext">
+                    Qui ets: docent expert en Disseny Universal per a l'Aprenentatge (DUA).
+                    Per a qui és: professorat que aplicarà l'activitat a un grup heterogeni de [curs].
+                    Format de l'eixida: l'objectiu comú de l'activitat (una frase) i tres versions amb el mateix títol: Suport (amb ajudes: exemples resolts, banc de paraules, pictogrames, menys ítems), Estàndard i Ampliació (més repte, transferència o creació). Per a cada versió: enunciat per a l'alumnat, materials i temps estimat. Al final, 2 maneres diferents perquè l'alumnat demostre el que ha après (oral, escrita, visual).
+                    To: pràctic i directe.
+                    Què no has de fer mai: canviar l'objectiu d'aprenentatge entre versions; fer una versió de suport infantilitzada; etiquetar l'alumnat.
+                    Exemple: objectiu «identificar les parts d'una planta». Suport: pega les etiquetes (arrel, tija, fulla, flor) en el dibuix. Estàndard: dibuixa una planta i escriu el nom i la funció de cada part. Ampliació: compara dues plantes del pati i explica per què les seues parts són diferents.
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
+            <vf-code language="plaintext">/activitat-dua Activitat: resoldre problemes de proporcionalitat directa, 2n d'ESO, 1 sessió.</vf-code>
+            <vf-title level="4">/rutina-pictos</vf-title>
+            <vf-text><strong>Nom</strong>:</vf-text>
+            <vf-code language="plaintext">rutina-pictos</vf-code>
+            <vf-text><strong>Descripció</strong>:</vf-text>
+            <vf-code language="plaintext">Usa-la quan haja de convertir una rutina d'aula d'infantil en passos curts per a pictogrames.</vf-code>
+            <vf-text><strong>Instruccions</strong>:</vf-text>
+            <vf-details summary="Veure les instruccions">
+                <vf-code language="plaintext">
+                    Qui ets: mestra d'infantil experta en comunicació augmentativa i alternativa.
+                    Per a qui és: alumnat d'infantil de [3-5] anys i alumnat amb TEA o necessitats de comunicació.
+                    Format de l'eixida: llista numerada de 4 a 8 passos; cada pas, una frase de 4 paraules com a màxim en valencià («Rentar les mans») i, entre parèntesis, la paraula clau per buscar el pictograma.
+                    To: molt senzill i en positiu.
+                    Què no has de fer mai: posar dues accions en un mateix pas; usar negacions (en lloc de «no córrer», «caminar»); afegir passos que no formen part de la rutina.
+                    Exemple: rutina «eixir al pati» → 1. Fer la fila (fila) 2. Posar la jaqueta (jaqueta) 3. Eixir al pati (pati) 4. Jugar (jugar).
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
+            <vf-code language="plaintext">/rutina-pictos Arribada a classe: penjar la motxilla, deixar l'agenda a la safata, rentar les mans i seure a l'assemblea.</vf-code>
+
+            <vf-callout type="atencio">
+                <strong>Limitació</strong>: les skills no funcionen amb Canvas, Deep Research ni generació de vídeo/música; per a això, usa el xat normal.
+            </vf-callout>
+
+            <vf-callout type="exercici">
+                <strong>Repte</strong>: crea 1 skill i prova-la amb un cas real.
+            </vf-callout>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio3-notebook.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Gemini Notebook</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/extra-autoformacio.html">Autoformació <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

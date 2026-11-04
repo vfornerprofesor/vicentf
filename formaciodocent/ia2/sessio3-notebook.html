@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Sessió 3 · Gemini Notebook</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Sessió 3">Gemini Notebook (abans NotebookLM)</vf-title>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-content>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>Des del juliol de 2026, NotebookLM s'anomena <strong>Gemini Notebook</strong> (els quaderns antics i els enllaços continuen funcionant). Crees un quadern, hi puges documents (PDF, Docs, webs, vídeos de YouTube) i la IA respon <strong>només</strong> a partir d'aquests documents, citant d'on trau cada cosa.</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Crea un quadern i puja les fonts">
+                    <vf-text>Entra a Gemini Notebook (l'antiga adreça [notebooklm.google.com](https://notebooklm.google.com) redirigix), crea un quadern i puja les fonts: programació didàctica, currículum (decret), PEC/PAM, pla de convivència, normativa d'avaluació.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s3-notebook-fonts.png" alt="Quadern de Gemini Notebook amb les fonts pujades"></vf-img>
+                </vf-step>
+                <vf-step title="Fes preguntes amb citació">
+                    <vf-text>Per exemple:</vf-text>
+                    <vf-code language="plaintext">Quins criteris d'avaluació de 4t de primària tenen a veure amb l'expressió oral?</vf-code>
+                    <vf-code language="plaintext">Què diu el pla de convivència sobre l'ús del mòbil?</vf-code>
+                    <vf-text>Plantilla general per a qualsevol pregunta:</vf-text>
+                    <vf-code language="plaintext">
+                        Segons les fonts, [la teua pregunta].
+                        Cita el document i l'apartat d'on trau cada informació. Si la resposta no està a les fonts, digues-ho clarament en lloc de deduir-la.
+                    </vf-code>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s3-notebook-resposta-cites.png" alt="Resposta de Gemini Notebook amb cites a les fonts"></vf-img>
+                </vf-step>
+                <vf-step title="Genera materials des del panell Studio">
+                    <vf-text>Resum en àudio, vídeo-resum, mapa mental, informe, taula de dades, targetes, qüestionari, infografia i presentació. Per a presentacions i vídeos, primer mostra un esborrany per revisar-lo abans de generar-lo.</vf-text>
+                    <vf-text>Si el recurs et deixa personalitzar-lo abans de generar-lo, escriu indicacions concretes de públic, extensió i enfocament. Exemples:</vf-text>
+                    <vf-text><strong>Resum en àudio</strong> per a famílies:</vf-text>
+                    <vf-details summary="Veure el prompt">
+                        <vf-code language="plaintext">
+                            Resum en àudio per a les famílies de l'alumnat de [2n de primària], en valencià, d'uns [4] minuts.
+                            Explica què aprendran els seus fills i filles en aquesta unitat, amb llenguatge senzill i sense tecnicismes, i acaba amb 3 idees per practicar a casa.
+                        </vf-code>
+                    </vf-details>
+                    <vf-text><strong>Qüestionari</strong>:</vf-text>
+                    <vf-details summary="Veure el prompt">
+                        <vf-code language="plaintext">
+                            Qüestionari de 10 preguntes per a alumnat de [3r d'ESO], només sobre [els apartats 2 i 3], amb dificultat progressiva.
+                            Explica cada resposta a partir dels apunts.
+                        </vf-code>
+                    </vf-details>
+                    <vf-text><strong>Mapa mental</strong>:</vf-text>
+                    <vf-details summary="Veure el prompt">
+                        <vf-code language="plaintext">Mapa mental de la unitat centrat en [els conceptes clau], amb un màxim de 3 nivells i paraules curtes a cada node.</vf-code>
+                    </vf-details>
+                    <vf-text><strong>Targetes</strong>:</vf-text>
+                    <vf-details summary="Veure el prompt">
+                        <vf-code language="plaintext">Targetes amb els [20] conceptes clau de la unitat: a la cara davantera, el concepte; darrere, una definició d'una sola frase amb paraules que entenga l'alumnat de [2n d'ESO].</vf-code>
+                    </vf-details>
+                    <vf-text><strong>Presentació</strong>:</vf-text>
+                    <vf-details summary="Veure el prompt">
+                        <vf-code language="plaintext">Presentació de [8] diapositives per introduir la unitat a alumnat de [6é de primària]: poc text per diapositiva, una idea per diapositiva i una pregunta per al debat al final.</vf-code>
+                    </vf-details>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s3-notebook-studio.png" alt="Panell Studio de Gemini Notebook"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-callout type="recorda">
+                <strong>Pla gratuït</strong>: és suficient per al curs (molts quaderns i fonts per quadern). Els límits d'ús es recarreguen cada poques hores amb un màxim setmanal, i els resums en àudio/vídeo són els que abans s'esgoten.
+            </vf-callout>
+
+            <vf-title level="3">Usos per al professorat</vf-title>
+            <vf-text>Quaderns de centre:</vf-text>
+            <vf-text><strong>Quadern «Normativa i documents del centre»</strong> compartit amb el claustre.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">Fes una taula amb totes les dates i terminis que apareixen en aquests documents (sessions d'avaluació, lliurament de programacions, reclamacions...), ordenats cronològicament, amb el document i l'apartat d'on ix cada una.</vf-code>
+            </vf-details>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Quin és el procediment, pas a pas, quan [un alumne acumula faltes d'assistència injustificades]?
+                    Indica qui ha d'actuar en cada pas i cita el document i l'article corresponents.
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Quadern de la programació</strong> per localitzar criteris i sabers en segons.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">Llista els criteris d'avaluació i els sabers bàsics de [2n d'ESO] relacionats amb [l'expressió escrita], amb el codi de cada criteri, i cita on apareixen.</vf-code>
+            </vf-details>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Fes una taula amb les situacions d'aprenentatge de la programació i els criteris d'avaluació que treballa cadascuna.
+                    Al final, indica quins criteris no estan associats a cap situació d'aprenentatge.
+                </vf-code>
+            </vf-details>
+
+            <vf-title level="3">Usos per a l'aula</vf-title>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-text>A partir d'un llibre o d'una unitat, <strong>generar preguntes de comprensió</strong> i un <strong>resum en àudio per a les famílies</strong> (per a l'àudio, usa la indicació de «Resum en àudio» del pas 3).</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    A partir de [el llibre / la unitat 4], crea 10 preguntes de comprensió per a alumnat de [2n de primària]: 4 literals, 4 inferencials i 2 d'opinió.
+                    Frases curtes i vocabulari senzill. Afegeix la resposta esperada de cada pregunta.
+                </vf-code>
+            </vf-details>
+            <vf-badge>Secundària</vf-badge>
+            <vf-text>Quadern de la unitat compartit amb l'alumnat per estudiar: qüestionaris, targetes, guia d'estudi i resums d'aprenentatge interactius basats només en els apunts del professor. Per als qüestionaris i les targetes, usa les indicacions del pas 3. A més:</vf-text>
+            <vf-text><strong>Guia d'estudi</strong>:</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">Crea una guia d'estudi de la unitat per a alumnat de [4t d'ESO], basada només en les fonts: esquema dels apartats, 5 conceptes clau amb la seua definició, 3 errors típics i 5 preguntes d'examen possibles.</vf-code>
+            </vf-details>
+            <vf-text><strong>Resum d'aprenentatge interactiu</strong> (perquè l'alumnat el faça servir en el xat del quadern):</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Fes-me de tutor de la unitat [3]. Explica'm l'apartat [2] en 5 punts curts i, després de cada punt, fes-me una pregunta per comprovar que ho he entés.
+                    No passes al punt següent fins que la meua resposta siga correcta. Basa't només en els apunts.
+                </vf-code>
+            </vf-details>
+
+            <vf-callout type="atencio">
+                No puges documents amb dades personals de l'alumnat (actes, informes individuals).
+            </vf-callout>
+
+            <vf-callout type="exercici">
+                <strong>Repte</strong>: crea el quadern de la teua programació i genera'n un recurs (mapa mental o qüestionari).
+            </vf-callout>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio2-imatge.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Imatge avançada</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio3-skills.html">Skills de Gemini <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

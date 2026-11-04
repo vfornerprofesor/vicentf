@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Extra · Veo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Extra">Vídeo amb Veo</vf-title>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
+
+        <vf-content>
+            <vf-text>Veo (dins de Gemini, botó <i>Crear vídeo</i>, o a Flow per a edicions més llargues) genera clips de vídeo de pocs segons amb so a partir d'un text o d'una imatge. En el pla gratuït no està disponible o és molt limitat; amb Google AI Plus/Pro funciona per crèdits.</vf-text>
+            <!-- CAPTURA PENDENT -->
+            <vf-img src="assets/formaciodocent/ia2/extra-veo-video.png" alt="Generació d'un vídeo amb Veo a Gemini"></vf-img>
+
+            <vf-title level="3">Usos</vf-title>
+            <vf-text><strong>Presentació d'una unitat</strong> («tràiler» de 8 segons del viatge a l'antic Egipte).</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Vídeo de 8 segons en estil tràiler de pel·lícula d'aventures, per a alumnat de [5é de primària]: la càmera sobrevola el desert al capvespre i s'acosta a les piràmides de Gizeh; al final, un escarabat daurat brilla damunt d'una pedra amb jeroglífics.
+                    Música èpica i so de vent. Sense text en pantalla (el títol l'afegiràs tu després).
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Personatge mascota de l'aula</strong> que dona la benvinguda o planteja el repte de la setmana.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Vídeo de 8 segons: [un mussol de dibuixos animats amb ulleres i motxilla], la mascota de la classe de [3r de primària], mira a càmera dins d'una aula alegre i diu en valencià, amb veu amable:
+                    «[Hola, exploradors! El repte d'esta setmana és descobrir per què cauen les fulles a la tardor.]»
+                    Estil animació 3D infantil, llum càlida.
+                </vf-code>
+            </vf-details>
+            <vf-text>Comprova la pronúncia en valencià del resultat; si no convenç, genera el vídeo sense veu i afegeix-hi un àudio fet amb AI Studio ([sessió 2](formaciodocent/ia2/sessio2-ai-studio.html)).</vf-text>
+            <vf-text><strong>Infantil: animar un dibuix de l'alumnat.</strong> Adjunta la foto del dibuix.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Anima el dibuix adjunt, fet per l'alumnat d'[infantil de 5 anys]: [el drac obri les ales, vola en cercle pel cel i aterra somrient].
+                    Mantín exactament l'estil, el traç i els colors del dibuix original, com si el dibuix cobrara vida. So: [aleteig suau i música alegre]. Sense persones.
+                </vf-code>
+            </vf-details>
+            <vf-text><strong>Comunicació amb famílies</strong>: clip de presentació d'una eixida o projecte.</vf-text>
+            <vf-details summary="Veure el prompt">
+                <vf-code language="plaintext">
+                    Vídeo de 8 segons per presentar a les famílies [l'eixida a l'Albufera] de [4t de primària]: [pla general d'una barca tradicional navegant per l'Albufera al matí, amb ocells volant].
+                    Estil documental, llum natural, so ambient [d'aigua i ocells]. Sense persones reconeixibles.
+                </vf-code>
+            </vf-details>
+
+            <vf-callout type="atencio">
+                No generes vídeos amb cares reals de l'alumnat.
+            </vf-callout>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/extra-cowork.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Claude Cowork</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>
