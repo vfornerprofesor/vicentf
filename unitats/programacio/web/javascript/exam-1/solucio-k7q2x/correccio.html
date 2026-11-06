@@ -144,22 +144,21 @@
         <table>
             <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
             <tbody>
-                <tr><td>P1.1. Projecte (CA1.2, 50 %)</td><td>Carpeta</td><td>Falta un arxiu o <code>script.js</code> no està enllaçat.</td><td>Tots dos i enllaçat.</td><td>A més, noms exactes (carpeta i arxius).</td><td>A més, script al final del <code>body</code> i cap arxiu sobrant.</td></tr>
-                <tr><td>P1.2. Entorn (CA1.3)</td><td>Live Server i consola</td><td>No s'executa amb Live Server.</td><td>S'executa.</td><td>A més, el missatge inicial i els tres valors en la consola.</td><td>A més, sagnat uniforme i cap error en la consola.</td></tr>
-                <tr><td>P1.3. Blocs (CA1.1)</td><td>8 marques (4 per exercici)</td><td>0-3 ben posades.</td><td>4-6.</td><td>7.</td><td>Les 8, cap línia en un bloc equivocat.</td></tr>
-                <tr><td>P1.4. Comentaris (CA1.9)</td><td>Capçalera, blocs, conversió</td><td>Falten els comentaris de bloc o algun trenca el codi.</td><td>Comentaris de bloc correctes.</td><td>A més, capçalera de diverses línies.</td><td>A més, el de la conversió explica el perquè.</td></tr>
-                <tr><td>P1.5. Tipus (CA1.4)</td><td>Dades (nom text, bolígrafs, diners, minuts, hora: números; resultats booleans) i línia <code>typeof</code></td><td>Menys de la meitat amb el tipus adequat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes, i la línia <code>typeof</code> diu string, number, number.</td></tr>
-                <tr><td>P1.6. Variables (CA1.5)</td><td>Tot el codi</td><td>No funciona o més de 2 valors repetits (1.25, 12, 60 escrits diverses vegades).</td><td>1-2.</td><td>Cap.</td><td>A més, noms descriptius en camelCase.</td></tr>
-                <tr><td>P1.7. Constants i literals (CA1.6)</td><td>Tot el codi</td><td>2 o més errors (<code>var</code>, <code>let</code> per a fixos, decimals amb coma).</td><td>Un.</td><td>Cap.</td><td>A més, plantilles de text i <code>toFixed(2)</code>.</td></tr>
-                <tr><td>P1.8. Operadors (CA1.7)</td><td>12 expressions: caixes (<code>/</code>), solts (<code>%</code>), IVA, total, canvi, euros, cèntims, quatre booleans de l'ex. 1; hores/minuts, hora final, dos booleans de l'ex. 2 (compta cada exercici com a 6)</td><td>0-5 correctes.</td><td>6-9.</td><td>10-11.</td><td>Les 12, amb <code>===</code> i parèntesis on cal.</td></tr>
-                <tr><td>P1.9. Conversions (CA1.8)</td><td>5 lectures numèriques</td><td>Alguna dada calcula com a text (<code>"20" + …</code>, hores concatenades) en més de 2 lectures.</td><td>Almenys 3 convertides.</td><td>Les 5.</td><td>A més, el comentari distingix conversió explícita i implícita.</td></tr>
+                <tr><td>P1.1. Variables i constants (CA1.5, CA1.6 · 15 %)</td><td>Tot el codi: 1.25, 0.21, 12, 60, nom de la botiga i propietari</td><td>Quasi tots els valors escrits directament.</td><td>Dades principals en variables, però 3 o més literals repetits.</td><td>Com a màxim 2 literals repetits (pot usar <code>let</code> on caldria <code>const</code>).</td><td>Dades fixes en constants, <code>const</code> per a tot el que no canvia, cap repetició.</td></tr>
+                <tr><td>P1.2. Entrada i conversions (CA1.8, CA1.4 · 15 %)</td><td>6 lectures (nom, bolígrafs, diners, durada, hora, minut); 5 numèriques</td><td>Falten lectures o més de 2 numèriques com a text.</td><td>Almenys 3 numèriques convertides.</td><td>Totes menys una lectura (o hora i minut en una pregunta), numèriques convertides.</td><td>Les 6 lectures i les 5 numèriques convertides.</td></tr>
+                <tr><td>P1.3. Càlculs (CA1.7 · 25 %)</td><td>8 apartats: caixes, solts, preu sense IVA, IVA, total, canvi, euros del canvi, cèntims del canvi</td><td>0-3 punts.</td><td>3,25-5.</td><td>5,25-7.</td><td>7,25-8.</td></tr>
+                <tr><td>P1.4. Booleans i tipus (CA1.7, CA1.4 · 15 %)</td><td>5 apartats: diners suficients, bossa gratis, és el propietari, descompte, <code>typeof</code> de les tres lectures</td><td>0-1,75 punts.</td><td>2-3.</td><td>3,25-4,25.</td><td>4,5-5.</td></tr>
+                <tr><td>P1.5. Segon exercici: la pel·lícula (CA1.7 · 20 %)</td><td>4 apartats: durada en h i min, hora final (amb pas de mitjanit), pel·li llarga, acaba després de mitjanit</td><td>0-1,5 punts.</td><td>1,75-2,5.</td><td>2,75-3,5.</td><td>3,75-4.</td></tr>
+                <tr><td>P1.6. Eixida en la pàgina (CA1.1 · 10 %)</td><td>16 resultats en la pàgina</td><td>Menys de 8.</td><td>8-13.</td><td>14-15.</td><td>Els 16, cada un en la seua línia.</td></tr>
             </tbody>
         </table>
     </div>
+    <p>Apartats de P1.3-P1.5: 1 correcte · 0,75 error lleu (<code>&gt;</code>/<code>&gt;=</code>, <code>==</code>, falta el pas de mitjanit) · 0,5 idea ben plantejada amb un error important (variable equivocada, precedència, sintaxi, text sense convertir) · 0 no hi és. Nota = Σ valor del nivell × pes (Insuficient 3 · Suficient-Bé 5,5 · Notable 7,5 · Excel·lent 9,5).</p>
+    <p class="box">No es valoren la carpeta ni els noms d'arxius, els <code>console.log</code>, els comentaris ni les marques de bloc, encara que l'enunciat els demane. Es valora el que han escrit encara que no s'execute. <code>Math.round</code> i <code>Math.floor</code> no s'han vist: no arrodonir o no traure la part entera no es penalitza, i <code>parseInt(x)</code> i <code>x - parseInt(x)</code> compten com a correctes.</p>
 
     <h2>Errors típics</h2>
     <ul>
-        <li>Cèntims amb <code>(change - changeEuros) * 100</code> sense arrodonir: ix <code>74.99999…</code>. Compta com a operació amb defecte (no correcta).</li>
+        <li>Cèntims amb <code>(change - changeEuros) * 100</code> sense arrodonir: ix <code>74.99999…</code>. Compta com a correcte (no s'ha vist <code>Math.round</code>).</li>
         <li>Hora final sense <code>% (24 * 60)</code>: <code>25:05</code>.</li>
         <li><code>isOwner</code> amb <code>=</code> en lloc de <code>===</code> (assigna i dona el nom).</li>
         <li>"Descompte" sense parèntesis o amb <code>||</code>.</li>

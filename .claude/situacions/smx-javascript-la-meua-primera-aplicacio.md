@@ -430,7 +430,7 @@ Si l'aplicació no s'obri o dona error en carregar, es torna per a corregir-la a
 
 ## Indicadors d'èxit
 
-En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen **totes** les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. La columna "Pes" és el pes de l'indicador dins del seu criteri.
+En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen **totes** les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. La columna "Pes" és el pes de l'indicador dins del seu criteri, excepte en la rúbrica del bloc 1, on és el pes en la nota de la prova.
 
 **Una rúbrica per bloc.** Les proves són acumulatives, però cada una es qualifica només amb la rúbrica del seu bloc. Les rúbriques no depenen dels exercicis d'una prova concreta: on diuen "la meitat" o "tots menys un", la guia de correcció de cada prova dona els números concrets.
 
@@ -440,15 +440,20 @@ En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen 
 
 | Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P1.1. Projecte | CA1.2 | 50 % | Falta algun arxiu o l'script no està enllaçat. | Carpeta amb la pàgina i l'script enllaçat, que s'executa. | A més, noms de carpeta i d'arxius com demana l'enunciat. | A més, l'script es carrega al final del `body` (o amb `defer`) i no hi ha arxius sobrants. |
-| P1.2. Entorn de desenrotllament | CA1.3 | 100 % | El programa no s'executa des de VS Code amb Live Server. | S'executa amb Live Server. | A més, usa la consola de DevTools quan la prova ho demana (missatges, `typeof`, assercions). | A més, codi sagnat uniformement i cap error en la consola en lliurar. |
-| P1.3. Blocs del programa | CA1.1 | 100 % | Menys de la meitat dels blocs (dades, entrada, procés, eixida) marcats bé amb comentaris en el seu codi. | Almenys la meitat. | Tots menys un. | Tots, i cap línia en un bloc equivocat. |
-| P1.4. Comentaris | CA1.9 | 100 % | Falten els comentaris demanats o n'hi ha algun que trenca el programa. | Els comentaris demanats, amb la sintaxi correcta. | A més, comentari de diverses línies a l'inici amb el nom i la data. | A més, els comentaris expliquen la intenció (per què), no repetixen el codi. |
-| P1.5. Tipus de dades | CA1.4 | 100 % | Menys de la meitat de les dades guardades amb el tipus adequat. | Almenys la meitat. | Totes menys una. | Totes, comprovades o justificades (`typeof`). |
-| P1.6. Ús de variables | CA1.5 | 100 % | El codi no funciona o repetix més de 2 valors o expressions en lloc d'usar variables. | Funciona, amb com a màxim 2 repeticions. | Cap repetició: cada dada en la seua variable. | A més, noms descriptius en camelCase. |
-| P1.7. Constants i literals | CA1.6 | 100 % | 2 o més errors: `let` o `var` per a valors fixos, decimals amb coma, textos sense cometes. | Com a màxim un error. | `const` per a tot el que no canvia i `let` només per al que canvia; literals correctes. | A més, els missatges amb plantilles de text. |
-| P1.8. Operadors | CA1.7 | 100 % | Menys de la meitat de les expressions (càlculs, comparacions i condicions) correctes. | Almenys la meitat. | Totes menys una. | Totes, amb `===`/`!==` i parèntesis on cal. |
-| P1.9. Conversions | CA1.8 | 100 % | Calcula amb números llegits com a text en més de la meitat de les lectures. | Almenys la meitat de les lectures convertides. | Totes convertides. | Totes, i un comentari explica què passaria sense la conversió (implícita). |
+| P1.1. Variables i constants | CA1.5, CA1.6 | 15 % | Quasi no usa variables: els valors van escrits directament en els càlculs i en els missatges. | Variables o constants per a les dades principals, però 3 o més valors fixos escrits com a literal o repetits. | Les dades de l'enunciat en variables o constants, amb com a màxim 2 literals repetits. Pot usar `let` on caldria `const`. | Dades fixes en constants i `const` per a tot el que no canvia, sense repeticions. |
+| P1.2. Entrada i conversions | CA1.8, CA1.4 | 15 % | Falten lectures o més de la meitat de les numèriques es fan servir com a text. | Totes o quasi totes les lectures; almenys la meitat de les numèriques convertides. | Totes les lectures menys una i les numèriques convertides. | Totes les lectures i totes les numèriques convertides (`Number`, `parseInt`, `parseFloat`). |
+| P1.3. Càlculs | CA1.7 | 25 % | Menys del 40 % dels punts dels apartats de càlcul (aritmètica, `%`, percentatges, part entera i decimal). | 40-64 %. | 65-89 %. | 90 % o més. |
+| P1.4. Booleans i tipus | CA1.7, CA1.4 | 15 % | Menys del 40 % dels punts dels apartats de comparacions, operadors lògics i `typeof`. | 40-64 %. | 65-89 %. | 90 % o més. |
+| P1.5. Segon exercici | CA1.7 | 20 % | Menys del 40 % dels punts dels apartats del segon exercici de la prova. | 40-64 %. | 65-89 %. | 90 % o més. |
+| P1.6. Eixida en la pàgina | CA1.1 | 10 % | Mostra menys de la meitat dels resultats demanats. | En mostra almenys la meitat. | Mostra quasi tots els resultats (en falten 1-2). | Tots els resultats, cada un en la seua línia. |
+
+**Pes en la rúbrica del bloc 1:** és el pes de l'indicador en la nota de la prova. El pes dins de cada criteri és el de la taula de criteris. **Nota de la prova** = Σ valor del nivell × pes, amb Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5.
+
+**Punts per apartat (P1.3-P1.5):** 1 = correcte · 0,75 = correcte amb un error lleu (límit `>`/`>=`, `==` en lloc de `===`, falta un cas límit) · 0,5 = la idea està ben plantejada però té un error important (funció o variable equivocada, precedència, sintaxi, text sense convertir) · 0 = no hi és o la idea no és correcta. La guia de correcció de cada prova dona la llista d'apartats.
+
+**Criteri de correcció:** és la primera prova de programació. Es valora tot el que s'ha escrit, encara que no s'execute: una línia amb la idea correcta puntua encara que tinga un error de sintaxi, i un error que atura el programa no arrossega les línies de després. No es valoren l'organització en fitxers, els `console.log`, els comentaris ni les marques de bloc: CA1.2, CA1.3 i CA1.9 s'avaluen en el projecte (R1 i R9). No usar `const` per als resultats no baixa de Notable P1.1.
+
+**Arrodoniment:** `Math.round`, `Math.floor` i `toFixed` no són obligatoris. No es penalitza no arrodonir ni no traure la part entera; `parseInt(x)` i `x - parseInt(x)` compten com a correctes. Un apartat que no hi és gens continua valent 0.
 
 ### Rúbrica del bloc 2 (RA3)
 
@@ -521,7 +526,7 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 
 | Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| R1. Estructura del projecte | CA1.2 | 50 % | Falta algun arxiu de l'estructura o l'aplicació no s'obri. | `index.html`, `css/`, `js/main.js`, `js/model.js` i `js/tests.js`; noms en minúscules sense espais; s'obri amb Live Server. | A més, cap ruta absoluta en els enllaços ni en els `import`. | A més, cap arxiu sobrant (proves velles, còpies). |
+| R1. Estructura del projecte | CA1.2, CA1.3 | 100 % en cada un | Falta algun arxiu de l'estructura o l'aplicació no s'obri. | `index.html`, `css/`, `js/main.js`, `js/model.js` i `js/tests.js`; noms en minúscules sense espais; s'obri amb Live Server. | A més, cap ruta absoluta en els enllaços ni en els `import`. | A més, cap arxiu sobrant (proves velles, còpies). |
 | R2. Mètodes i propietats predefinits | CA2.4 | 60 % | Menys de 5 mètodes o propietats diferents, o algun usat malament. | Almenys 5 mètodes o propietats diferents de cadenes, arrays o elements, ben usats. | A més, cap bucle que reimplemente un mètode existent (`includes`, `indexOf`). | A més, `Date` o `toLocaleString` per a mostrar una data o un número. |
 | R3. Llibreria externa | CA2.7 | 50 % | Cap llibreria externa. | Una llibreria carregada per CDN i cridada almenys una vegada amb efecte visible. | A més, usa opcions de la llibreria i n'enllaça la documentació en el README. | A més, l'aplicació funciona encara que la llibreria no carregue. |
 | R4. Selecció | CA3.1 | 50 % | Alguna decisió de l'aplicació falla (resposta correcta o incorrecta, camp buit, filtre, missatge final). | Totes les decisions de l'opció funcionen. | A més, sense condicions redundants ni `if` niats evitables. | A més, retorn anticipat o ternari on simplifica el codi. |
@@ -529,7 +534,7 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 | R6. Control d'excepcions | CA3.4 | 60 % | `JSON.parse` de `localStorage` o crides que poden fallar sense protecció. | `try/catch` en llegir `localStorage` i en les crides al model que poden llançar errors; l'aplicació no es trenca. | A més, missatge clar a l'usuari en la pàgina. | A més, després d'un error la interfície queda coherent (redibuix o `finally`). |
 | R7. Programa complet | CA3.5 | 70 % | Falta algun requisit de l'opció triada o no funciona. | Tots els requisits de l'opció triada funcionen. | A més, funcions d'una sola tasca, de 20 línies com a màxim, sense codi repetit. | A més, en la presentació explica una funció línia a línia i respon bé la pregunta del professor. |
 | R8. Prova i depuració | CA3.6 | 70 % | Errors en la consola en un ús normal. | Cap error en la consola en un ús normal. | A més, cap error en els casos límit (camp buit, llista buida, `localStorage` corrupte). | A més, README amb la llista de proves manuals fetes i el resultat. |
-| R9. Comentaris i documentació | CA3.7 | 70 % | Funcions sense comentari o README incomplet. | Comentari damunt de cada funció i mètode; README complet. | A més, comentaris en format JSDoc amb `@param` i `@returns`. | A més, cap comentari desfasat respecte del codi. |
+| R9. Comentaris i documentació | CA3.7, CA1.9 | 70 % (CA3.7) · 100 % (CA1.9) | Funcions sense comentari o README incomplet. | Comentari damunt de cada funció i mètode; README complet. | A més, comentaris en format JSDoc amb `@param` i `@returns`. | A més, cap comentari desfasat respecte del codi. |
 | R10. Errors propis | CA3.8 | 50 % | El model no llança cap error davant de dades no vàlides. | El model llança `Error` amb un missatge clar davant de dades no vàlides (text buit, pregunta sense opcions). | A més, una classe d'error pròpia (`extends Error`). | A més, `main.js` la distingix amb `instanceof` i mostra un missatge diferent. |
 | R11. Assercions | CA3.9 | 60 % | Menys de 6 `console.assert` o algun falla. | `tests.js` amb almenys 6 `console.assert` sobre el model, tots en verd. | A més, cobrixen tots els mètodes públics del model. | A més, inclouen casos límit (llista buida, valor no vàlid, error llançat). |
 | R12. Ús de les classes pròpies | CA4.5 | 70 % | Les dades no són instàncies de les seues classes. | Les dades són un array d'instàncies de les seues classes i l'aplicació usa els seus mètodes. | A més, la lògica (puntuar, marcar, filtrar) està en mètodes del model, no en `main.js`. | A més, una subclasse del model usada en l'aplicació. |
@@ -549,15 +554,15 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 
 | Criteri | Pes dins del RA | Activitat(s) | Indicadors (instrument) i pes dins del criteri |
 |---|---|---|---|
-| CA1.1 | 10 % | Lliçó 1 | P1.3 (rúbrica del bloc 1) 100 % |
-| CA1.2 | 10 % | Lliçó 1, miniprojectes, projecte | P1.1 (rúbrica del bloc 1) 50 % · R1 (projecte) 50 % |
-| CA1.3 | 10 % | Lliçó 1 | P1.2 (rúbrica del bloc 1) 100 % |
-| CA1.4 | 10 % | Lliçó 2 | P1.5 (rúbrica del bloc 1) 100 % |
-| CA1.5 | 10 % | Lliçó 2 | P1.6 (rúbrica del bloc 1) 100 % |
-| CA1.6 | 10 % | Lliçó 2 | P1.7 (rúbrica del bloc 1) 100 % |
-| CA1.7 | 20 % | Lliçó 3 | P1.8 (rúbrica del bloc 1) 100 % |
-| CA1.8 | 10 % | Lliçó 2 | P1.9 (rúbrica del bloc 1) 100 % |
-| CA1.9 | 10 % | Lliçó 1 | P1.4 (rúbrica del bloc 1) 100 % |
+| CA1.1 | 10 % | Lliçó 1 | P1.6 (rúbrica del bloc 1) 100 % |
+| CA1.2 | 10 % | Lliçó 1, miniprojectes, projecte | R1 (projecte) 100 % |
+| CA1.3 | 10 % | Lliçó 1, projecte | R1 (projecte) 100 % |
+| CA1.4 | 10 % | Lliçó 2 | P1.2 (rúbrica del bloc 1) 50 % · P1.4 (rúbrica del bloc 1) 50 % |
+| CA1.5 | 10 % | Lliçó 2 | P1.1 (rúbrica del bloc 1) 100 % |
+| CA1.6 | 10 % | Lliçó 2 | P1.1 (rúbrica del bloc 1) 100 % |
+| CA1.7 | 20 % | Lliçó 3 | P1.3 (rúbrica del bloc 1) 42 % · P1.4 (rúbrica del bloc 1) 25 % · P1.5 (rúbrica del bloc 1) 33 % |
+| CA1.8 | 10 % | Lliçó 2 | P1.2 (rúbrica del bloc 1) 100 % |
+| CA1.9 | 10 % | Lliçó 1, projecte | R9 (projecte) 100 % |
 | CA2.1 | 10 % | Lliçó 20 (N9) | P2.1 (rúbrica del bloc 5) 100 % |
 | CA2.2 | 20 % | Lliçons 1-7 i 20 (N9) | P2.2 (rúbrica del bloc 5) 100 % |
 | CA2.3 | 10 % | Lliçons 14 (N6) i 20 (N9) | P2.3 (rúbrica del bloc 5) 100 % |
@@ -599,7 +604,7 @@ Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i err
 | CA6.9 | 16 % | Lliçons 15 (N7), 19 i 23 (N12), projecte | P6.8 (rúbrica del bloc 3) 40 % · R22 (projecte) 60 % |
 | CA6.10 | 24 % | Lliçó 12 (N4), projecte | P6.9 (rúbrica del bloc 3) 50 % · R23 (projecte) 50 % |
 
-**Nota de cada criteri** = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA3.6 = 0,30·P3.5 + 0,70·R8; CA1.1 = P1.3.
+**Nota de cada criteri** = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA3.6 = 0,30·P3.5 + 0,70·R8; CA1.1 = P1.6.
 
 **Nota de RA1** = 0,10·(CA1.1 + CA1.2 + CA1.3 + CA1.4 + CA1.5 + CA1.6 + CA1.8 + CA1.9) + 0,20·CA1.7
 
