@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>SMX Repair Café</h1>
+        <a href="file:///home/alumne/Escritorio/examen/join.html">Home</a>
+        <a href="event.html">Join us</a>
+    </header>
+
+    <main>
+        <h2>Book your place</h2>
+        <form action="#"></form>
+
+        <fieldset>
+            <legend>About you</legend>
+            <label for="nom">Name</label>
+            <input type="text" id="nom" name="nom" min="3" max="12">
+            <br>
+            <label for="correu">Email</label>
+            <input type="gmail" id="correu" name="correu">
+        </fieldset>
+
+        <fieldset>
+            <legend>Your device</legend>
+            <label for="device">Device</label>
+            <select id="device" name="device">
+                <option>Laptop</option>
+                <option>Desktop</option>
+                <option>PC</option>
+                <option>Phone</option>
+            </select>
+            <br>
+            <label for="problema">What is the problem?</label>
+            <textarea id="comment" name="comment"></textarea>
+            <br>
+            Do you bring the charger?
+            <input type="radio" id="yes" name="charger-yes">
+            <label for="charger" required>Yes</label>
+            <input type="radio" id="no" name="charger-no">
+            <label for="charger">No</label>
+            <br>
+            <label for="day">Preferred day</label>
+            <input type="date" id="day" name="day">
+        </fieldset>
+
+        <input type="checkbox" id="accept" name="accept">
+        <label for="Esports">I accept that the repair is not guaranteed</label>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SMX students · repaircafe@example.com</p>
+        <button type="submit">Send</button>
+    </footer>
+</body>
+
+</html>

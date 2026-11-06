@@ -58,7 +58,7 @@ def main():
 
     cos = markdown.markdown(
         text,
-        extensions=["tables", "attr_list", "md_in_html", "sane_lists", "toc"],
+        extensions=["fenced_code", "tables", "attr_list", "md_in_html", "sane_lists", "toc"],
         extension_configs={"toc": {"slugify": lambda v, s: "s-" + re.sub(r"[^a-z0-9]+", "-", v.lower()).strip("-")}},
     )
 
