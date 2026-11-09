@@ -451,6 +451,28 @@
                 *Exercise 4.7.* A "Show / hide" button that makes a paragraph appear and
                 disappear using `classList.toggle`.
             </vf-callout>
+            <vf-callout type="exercici">
+                *Exercise 4.8.* Three buttons (red, green and blue), three titles with
+                the ids `punt1`, `punt2` and `punt3`, and one input. The user types the
+                id of one title in the input and, when they click a button, *only that
+                title* changes its text colour.
+            </vf-callout>
+            <vf-code language="html">
+                &lt;button id="btnRoig"&gt;Roig&lt;/button&gt;
+                &lt;button id="btnVerd"&gt;Verd&lt;/button&gt;
+                &lt;button id="btnBlau"&gt;Blau&lt;/button&gt;
+
+                &lt;h1 id="punt1"&gt;Punt 1&lt;/h1&gt;
+                &lt;h1 id="punt2"&gt;Punt 2&lt;/h1&gt;
+                &lt;h1 id="punt3"&gt;Punt 3&lt;/h1&gt;
+
+                &lt;label for="identificador"&gt;Indica el id de l'element a canviar&lt;/label&gt;
+                &lt;input type="text" id="identificador" name="identificador"&gt;
+            </vf-code>
+            <vf-text>
+                Clue: the value of the input is exactly the text you need inside
+                `getElementById`.
+            </vf-text>
 
             <vf-details summary="Show the solution (4.5 and 4.7)">
                 <vf-code language="javascript">

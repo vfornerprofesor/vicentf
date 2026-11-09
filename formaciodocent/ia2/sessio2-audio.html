@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Sessió 2 · Àudio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Sessió 2">Àudio: locucions, veus amb emocions i cançons</vf-title>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-content>
+            <vf-text>Tres eines, cadascuna per a una cosa:</vf-text>
+            <vf-list>
+                <li><strong>Google AI Studio</strong>: locucions i diàlegs a dues veus (dictats, contes narrats, instruccions orals). Gratuït.</li>
+                <li><strong>ElevenLabs</strong>: veu amb emocions marcades amb etiquetes com <code>[whispers]</code> o <code>[nervous]</code> (contes dramatitzats, personatges).</li>
+                <li><strong>Suno</strong>: cançons completes amb una lletra feta abans amb Gemini, o música instrumental.</li>
+            </vf-list>
+        </vf-content>
+
+        <vf-title level="2">Google AI Studio</vf-title>
+        <vf-content>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>Google AI Studio (gratuït amb compte de Google) té un <strong>espai d'àudio</strong> per generar veu d'alta qualitat (models Gemini 3.8 TTS, setembre de 2026): un taller per <strong>dissenyar veus</strong> (triar-ne una de la biblioteca o descriure-la) i un <strong>editor de guió a dues veus</strong> per a diàlegs, on es pot indicar línia a línia com s'ha de dir cada frase. L'àudio es descarrega i porta una marca d'aigua invisible (SynthID).</vf-text>
+            <vf-text><strong>On és</strong>: no sempre apareix al menú principal. Entra directament per [aistudio.google.com/generate-speech](https://aistudio.google.com/generate-speech).</vf-text>
+            <!-- CAPTURA PENDENT -->
+            <vf-img src="assets/formaciodocent/ia2/s2-aistudio-generacio-veu.png" alt="Pantalla de generació de veu de Google AI Studio"></vf-img>
+            <vf-text>Alternativa: la descàrrega del <strong>resum en àudio</strong> de Gemini Notebook ([sessió 3](formaciodocent/ia2/sessio3-notebook.html)).</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Obri AI Studio">
+                    <vf-text>Obri [aistudio.google.com/generate-speech](https://aistudio.google.com/generate-speech) i inicia la sessió.</vf-text>
+                </vf-step>
+                <vf-step title="Tria o dissenya la veu">
+                    <vf-text>Una veu, o dues veus per a un diàleg.</vf-text>
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-aistudio-seleccio-veu.png" alt="Selecció de veu a Google AI Studio"></vf-img>
+                </vf-step>
+                <vf-step title="Enganxa el text">
+                    <vf-text>En mode diàleg, una línia per personatge. Si cal, indica com dir-lo: «a poc a poc», «alegre», «xiuxiuejant».</vf-text>
+                </vf-step>
+                <vf-step title="Genera, escolta i descarrega">
+                    <!-- CAPTURA PENDENT -->
+                    <vf-img src="assets/formaciodocent/ia2/s2-aistudio-descarrega.png" alt="Botó de descàrrega de l'àudio a Google AI Studio"></vf-img>
+                </vf-step>
+            </vf-steps>
+
+            <vf-callout type="atencio">
+                <strong>Problema conegut (octubre 2026)</strong>: amb textos llargs, de vegades només sona la primera síl·laba. Solució: genera per fragments curts (un paràgraf o 4-5 línies de diàleg cada vegada).
+            </vf-callout>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-text>A AI Studio, el «prompt» és el text que s'ha de locutar més les indicacions de veu i de to. Per als diàlegs, usa el mode de dues veus i escriu una línia per personatge, amb el nom del personatge davant (ha de coincidir amb el nom que dones a cada veu).</vf-text>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Dictat graduat" desc="Llegit a poc a poc, amb pauses.">
+                    <vf-code language="plaintext">
+                        Llig aquest dictat per a alumnat de [2n de primària] en valencià, amb una veu clara i tranquil·la, molt a poc a poc.
+                        Digues cada frase dues vegades i fes una pausa llarga (uns 8 segons) després de cada frase perquè puguen escriure.
+
+                        Frase 1: [El gat dorm damunt del sofà.]
+                        Frase 2: [La meua germana porta una motxilla blava.]
+                        Frase 3: [Al pati hi ha tres arbres molt alts.]
+                        Frase 4: [Demà anirem d'excursió a la muntanya.]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Conte narrat amb dues veus" desc="Narrador i personatge, per exemple el conte de [Storybook](formaciodocent/ia2/sessio2-storybook.html). Mode diàleg.">
+                    <vf-code language="plaintext">
+                        Narrador: (to càlid i pausat, com qui conta un conte abans de dormir) [Hi havia una vegada un drac que tenia por del foc.]
+                        Drac: (veu infantil, una mica espantada) [Jo no vull traure foc! I si creme el bosc?]
+                        Narrador: (amb intriga, baixant la veu) [Però una nit d'hivern, tots els animals del bosc tenien molt de fred...]
+                        Drac: (decidit, amb més força) [Està bé. Ho faré a poc a poc, només una flameta.]
+                        Narrador: (alegre) [I aquella nit, gràcies al drac, el bosc sencer es va escalfar.]
+                        [Continua amb el text del teu conte, una línia per intervenció.]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Instruccions orals" desc="Per a alumnat que encara no llig." label="Veure les instruccions">
+                    <vf-code language="plaintext">
+                        Llig aquestes instruccions per a alumnat d'[infantil de 5 anys] que encara no llig, amb una veu alegre i propera, molt a poc a poc, i fes una pausa de 3 segons entre pas i pas.
+
+                        Primer, [agafa les tisores i retalla el cercle].
+                        Després, [pega el cercle damunt del cartó].
+                        Al final, [pinta'l del teu color preferit].
+                        [Molt bé! Ja has acabat.]
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+            <vf-badge>Secundària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Diàleg d'escolta en anglés/francés" desc="Dues veus, nivell A2/B1, i preguntes de comprensió amb Gemini. Les indicacions de to poden anar en valencià.">
+                    <vf-code language="plaintext">
+                        Anna: (simpàtica i curiosa, ritme natural però clar) [Hi Tom! What did you do last weekend?]
+                        Tom: (relaxat) [I went to the mountains with my family. We walked for five hours!]
+                        Anna: (sorpresa) [Five hours? Weren't you tired?]
+                        Tom: (rient) [Yes, very tired. But the views were amazing.]
+                        [Continua o enganxa el teu diàleg, nivell A2, una línia per intervenció.]
+                    </vf-code>
+                    <vf-text>Després, genera les preguntes amb <strong>Gemini</strong>:</vf-text>
+                    <vf-code language="plaintext">
+                        A partir d'aquest diàleg en [anglés] de nivell [A2], crea 8 preguntes de comprensió oral per a alumnat de [3r d'ESO]: 4 d'opció múltiple (3 opcions) i 4 de vertader/fals, en [anglés].
+                        Posa les solucions al final.
+                        Diàleg: [enganxa el diàleg]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Versió en àudio d'uns apunts" desc="Per a alumnat amb dislèxia. Genera'l per fragments curts (un apartat cada vegada).">
+                    <vf-code language="plaintext">
+                        Llig aquests apunts per a alumnat de [3r d'ESO] amb dislèxia, en valencià, amb una veu clara i un ritme pausat.
+                        Llig els títols amb un to una mica més marcat i fes una pausa breu després de cada títol i de cada paràgraf.
+
+                        [Enganxa un apartat dels apunts]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Simulació d'entrevista a un personatge històric" desc="Guió amb Gemini i locució a dues veus amb AI Studio.">
+                    <vf-text>Primer, demana el guió a Gemini:</vf-text>
+                    <vf-code language="plaintext">
+                        Escriu el guió d'una entrevista de 2 minuts a [Marie Curie] per a alumnat de [4t d'ESO], amb dos personatges: Periodista i [Marie Curie].
+                        8 intervencions curtes, dades històriques rigoroses i tot en valencià.
+                        Format: una línia per intervenció, començant pel nom del personatge i dos punts, i entre parèntesis com s'ha de dir cada frase.
+                    </vf-code>
+                    <vf-text>Després, enganxa el guió a AI Studio en mode diàleg. Per exemple:</vf-text>
+                    <vf-code language="plaintext">
+                        Periodista: (to professional i curiós) [Senyora Curie, com va començar a investigar la radioactivitat?]
+                        Marie Curie: (veu madura i serena, amb orgull contingut) [Tot va començar amb uns minerals d'urani que brillaven d'una manera estranya...]
+                        [Continua amb la resta del guió.]
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+
+            <vf-callout type="atencio">
+                El valencià no apareix a la llista d'idiomes destacats: comprova la pronúncia amb un fragment curt abans de fer tot l'àudio. Si no convenç, alternativa: el resum en àudio de Gemini Notebook ([sessió 3](formaciodocent/ia2/sessio3-notebook.html)).
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">ElevenLabs: veus amb emocions</vf-title>
+        <vf-content>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>[elevenlabs.io](https://elevenlabs.io) genera veu molt expressiva. Amb els models que admeten <strong>etiquetes d'àudio</strong> (Eleven v3 i posteriors) s'escriu entre claudàtors com s'ha de dir cada frase: xiuxiuejant, nerviós, rient, sospirant... Ideal per a contes dramatitzats i personatges.</vf-text>
+            <vf-text><strong>Pla gratuït</strong>: uns quants minuts d'àudio al mes i només per a ús no comercial. Prou per a provar i per a àudios curts d'aula. Es pot entrar amb el compte de Google.</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Obri Text to Speech">
+                    <vf-text>Entra a [elevenlabs.io](https://elevenlabs.io), inicia la sessió i obri <strong>Text to Speech</strong>.</vf-text>
+                </vf-step>
+                <vf-step title="Tria el model i la veu">
+                    <vf-text>Tria un model <strong>Eleven v3</strong> (o més recent): els models antics no entenen les etiquetes i les llegirien en veu alta. Tria una veu de la biblioteca que encaixe amb el personatge.</vf-text>
+                </vf-step>
+                <vf-step title="Enganxa el text amb les etiquetes">
+                    <vf-text>Cada etiqueta va <strong>just davant</strong> de la frase que modifica. Per a diàlegs, usa el mode de diàleg (una veu per personatge).</vf-text>
+                </vf-step>
+                <vf-step title="Genera, escolta i descarrega">
+                    <vf-text>Si una etiqueta no es nota, prova una altra veu o reescriu la frase: no totes les veus responen igual.</vf-text>
+                </vf-step>
+            </vf-steps>
+
+            <vf-title level="3">Les etiquetes</vf-title>
+            <vf-text>Les etiquetes s'escriuen <strong>en anglés</strong> encara que el text siga en valencià. No hi ha una llista tancada: es pot descriure qualsevol emoció o acció. Les més útils:</vf-text>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tipus</th>
+                            <th>Etiquetes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Volum i to</td>
+                            <td><code>[whispers]</code> xiuxiuejant · <code>[shouts]</code> cridant · <code>[sings]</code> cantant · <code>[low, gravelly voice]</code> veu greu i ronca</td>
+                        </tr>
+                        <tr>
+                            <td>Emocions</td>
+                            <td><code>[nervous]</code> nerviós · <code>[excited]</code> emocionat · <code>[happy]</code> content · <code>[sad]</code> trist · <code>[angry]</code> enfadat · <code>[curious]</code> curiós · <code>[surprised]</code> sorprés · <code>[sarcastic]</code> sarcàstic · <code>[mischievously]</code> entremaliat · <code>[reassuring]</code> tranquil·litzador</td>
+                        </tr>
+                        <tr>
+                            <td>Reaccions</td>
+                            <td><code>[laughs]</code> riu · <code>[chuckles]</code> riu per baix · <code>[sighs]</code> sospira · <code>[gasps]</code> s'esglaia · <code>[crying]</code> plora · <code>[gulps]</code> s'empassa la saliva · <code>[clears throat]</code> s'aclareix la gola</td>
+                        </tr>
+                        <tr>
+                            <td>Pauses</td>
+                            <td><code>[short pause]</code> · <code>[long pause]</code> · punts suspensius (<code>...</code>)</td>
+                        </tr>
+                        <tr>
+                            <td>Efectes i accents</td>
+                            <td><code>[applause]</code> aplaudiments · <code>[strong French accent]</code> accent francés fort (canvia l'idioma)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <vf-callout type="consell">
+                Trucs de puntuació: els <strong>punts suspensius</strong> (...) afegixen pausa i pes, i les <strong>MAJÚSCULES</strong> donen èmfasi a una paraula. Es poden combinar dues etiquetes: <code>[whispers] [nervous]</code>.
+            </vf-callout>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-text>Igual que a AI Studio, Gemini pot escriure el text amb les etiquetes ja posades:</vf-text>
+            <vf-code language="plaintext">
+                Escriu [un conte de 6 frases] per a alumnat de [infantil de 4 anys] sobre [una bruixa que té por de la foscor], en valencià.
+                Afegeix etiquetes d'àudio d'ElevenLabs en anglés entre claudàtors just davant de cada frase per marcar l'emoció: [whispers], [nervous], [excited], [laughs], [sighs], [gasps], [surprised].
+                Usa punts suspensius per a les pauses de suspens i alguna paraula en MAJÚSCULES per donar èmfasi.
+            </vf-code>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Conte de suspens per a l'assemblea" desc="Infantil 4-5 anys. Una sola veu de narrador.">
+                    <vf-code language="plaintext">
+                        [whispers] Una nit, la bruixa Rita va sentir un soroll al bosc...
+                        [nervous] Qui hi ha? Qui hi ha ahí?
+                        [long pause] [gasps] Uns ulls grocs la miraven des de darrere d'un arbre!
+                        [whispers] Rita va encendre la seua llanterna... a poc a poc...
+                        [surprised] I era... un MUSSOL!
+                        [laughs] Un mussol xicotet que també tenia por de la foscor.
+                        [happy] Des d'aquella nit, Rita i el mussol passegen junts pel bosc.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Personatges de la rutina" desc="Infantil: la mascota de l'aula dona les instruccions amb emoció. Una veu divertida.">
+                    <vf-code language="plaintext">
+                        [excited] Bon dia, bon dia! Soc en Tito, el dinosaure de la classe!
+                        [curious] Sabeu què toca ara? [short pause] Recollir les joguines!
+                        [mischievously] Qui les guardarà més ràpid? Jo compte fins a deu...
+                        [happy] Molt bé! Quina classe més ordenada! [laughs]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Teatre d'emocions" desc="Primària: la mateixa frase amb emocions diferents per endevinar-les a classe.">
+                    <vf-code language="plaintext">
+                        [happy] Avui plourà tot el dia.
+                        [sad] Avui plourà tot el dia.
+                        [angry] Avui plourà tot el dia.
+                        [nervous] Avui plourà tot el dia.
+                        [surprised] Avui plourà tot el dia.
+                    </vf-code>
+                    <vf-text>Activitat: escolten cada versió i diuen (o assenyalen amb un pictograma) quina emoció és.</vf-text>
+                </vf-prompt>
+            </vf-prompts>
+            <vf-badge>Secundària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Escena dramatitzada d'una lectura" desc="Fragment de la lectura obligatòria amb dues veus. Mode diàleg.">
+                    <vf-code language="plaintext">
+                        Narrador: [low, gravelly voice] La porta del soterrani estava oberta... i ningú no l'havia oberta.
+                        Marta: [nervous] [whispers] Has sentit això?
+                        Pau: [sighs] No comences, Marta. Són les canonades.
+                        Marta: [gasps] Les canonades no diuen el teu NOM.
+                        [Continua amb el fragment de la lectura, una línia per intervenció.]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Escolta en anglés amb emocions" desc="Per treballar la comprensió del to, no només del contingut.">
+                    <vf-code language="plaintext">
+                        Speaker 1: [excited] Guess what? I got the tickets for the concert!
+                        Speaker 2: [sarcastic] Oh, great. Another Saturday listening to your favourite band.
+                        Speaker 1: [surprised] Wait... you don't like them?
+                        Speaker 2: [laughs] I'm joking! I love them. [excited] When is it?
+                    </vf-code>
+                    <vf-text>Pregunta de comprensió: «Is Speaker 2 really angry? How do you know?»</vf-text>
+                </vf-prompt>
+            </vf-prompts>
+
+            <vf-callout type="atencio">
+                Comprova la pronúncia en valencià amb un fragment curt abans de fer tot l'àudio, i no clones mai la veu d'una persona real (alumnat, famílies o companys).
+            </vf-callout>
+        </vf-content>
+
+        <vf-title level="2">Suno: cançons</vf-title>
+        <vf-content>
+
+            <vf-title level="3">Què és</vf-title>
+            <vf-text>[suno.com](https://suno.com) crea cançons completes (música i veu cantada) a partir d'una lletra i d'una descripció de l'estil, o música <strong>instrumental</strong> sense veu. El més útil per a l'aula: escriure la lletra abans amb <strong>Gemini</strong> (amb el contingut que volem treballar) i passar-la a Suno.</vf-text>
+            <vf-text><strong>Pla gratuït</strong>: uns crèdits diaris que donen per a unes quantes cançons al dia, només per a ús personal i no comercial (a l'aula i al blog de classe, sí; vendre-les, no). Es pot entrar amb el compte de Google.</vf-text>
+
+            <vf-title level="3">Passos</vf-title>
+            <vf-steps>
+                <vf-step title="Escriu la lletra amb Gemini">
+                    <vf-text>Amb el prompt de lletra de baix. Revisa-la: ortografia, rima i que el contingut siga correcte.</vf-text>
+                </vf-step>
+                <vf-step title="Obri Suno en mode Custom">
+                    <vf-text>Entra a [suno.com/create](https://suno.com/create) i tria <strong>Custom</strong> (personalitzat). Apareixen tres camps: <strong>Lyrics</strong> (lletra), <strong>Style of Music</strong> (estil) i <strong>Title</strong> (títol).</vf-text>
+                </vf-step>
+                <vf-step title="Enganxa la lletra i descriu l'estil">
+                    <vf-text>A <strong>Lyrics</strong>, la lletra amb les etiquetes d'estructura. A <strong>Style of Music</strong>, l'estil en anglés: gènere, instruments, tempo i tipus de veu.</vf-text>
+                </vf-step>
+                <vf-step title="Genera i tria">
+                    <vf-text>Suno fa dues versions cada vegada. Tria la millor i descarrega-la en MP3.</vf-text>
+                </vf-step>
+            </vf-steps>
+
+            <vf-title level="3">Etiquetes d'estructura</vf-title>
+            <vf-text>Dins de la lletra, entre claudàtors i en anglés, indiquen cada part de la cançó:</vf-text>
+            <vf-list>
+                <li><code>[Intro]</code> introducció · <code>[Verse]</code> estrofa · <code>[Pre-Chorus]</code> pont cap a la tornada · <code>[Chorus]</code> tornada · <code>[Bridge]</code> pont · <code>[Outro]</code> final · <code>[End]</code> acaba ací.</li>
+                <li><code>[Instrumental]</code> o <code>[Instrumental Break]</code>: un tros sense veu (per ballar o fer el gest).</li>
+                <li>Es poden afegir indicacions curtes: <code>[Chorus - kids choir]</code>, <code>[Verse - whispered]</code>, <code>[Clapping]</code>.</li>
+            </vf-list>
+            <vf-text>Per a música <strong>sense veu</strong>, activa l'opció <strong>Instrumental</strong> i deixa la lletra buida: només compta l'estil.</vf-text>
+
+            <vf-title level="3">Prompt per a la lletra (Gemini)</vf-title>
+            <vf-code language="plaintext">
+                Escriu la lletra d'una cançó per a alumnat de [infantil de 3 anys] per treballar [la rutina de rentar-se les mans], en valencià.
+                Vocabulari molt senzill, frases curtes, rimes fàcils i una tornada que es repetisca i es puga acompanyar amb gestos.
+                Format per a Suno: marca les parts amb [Intro], [Verse], [Chorus], [Verse], [Chorus], [Outro], una línia per vers.
+                Proposa també, a banda, una descripció de l'estil musical en anglés (màxim 120 caràcters) per al camp «Style of Music».
+            </vf-code>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Cançó de la rutina" desc="Infantil 3 anys: rentar-se les mans. Lletra feta amb Gemini.">
+                    <vf-text><strong>Lyrics</strong>:</vf-text>
+                    <vf-code language="plaintext">
+                        [Intro]
+                        [Clapping]
+
+                        [Verse]
+                        Obri l'aixeta, xof, xof, xof,
+                        l'aigua fresqueta cau a poc a poc.
+
+                        [Chorus - kids choir]
+                        Sabó, sabó, frega que frega,
+                        mans ben netes, quina alegria!
+
+                        [Verse]
+                        Entre els dits i per darrere,
+                        les ungletes, una a una.
+
+                        [Chorus - kids choir]
+                        Sabó, sabó, frega que frega,
+                        mans ben netes, quina alegria!
+
+                        [Outro]
+                        Tanca l'aixeta i eixuga-te-les!
+                        [End]
+                    </vf-code>
+                    <vf-text><strong>Style of Music</strong>:</vf-text>
+                    <vf-code language="plaintext">children's song, cheerful, ukulele and xylophone, slow tempo, clear female voice, kids choir in chorus</vf-code>
+                </vf-prompt>
+                <vf-prompt title="Cançó de vocabulari o de conceptes" desc="Infantil 5 anys o 1r cicle: els colors, els nombres, els dies de la setmana, les estacions.">
+                    <vf-text>A Gemini:</vf-text>
+                    <vf-code language="plaintext">
+                        Escriu una cançó en valencià per a alumnat d'[infantil de 5 anys] per aprendre [els dies de la setmana], amb una estrofa per a cada [dia] i una tornada que repetisca tots els [dies] en ordre.
+                        Format per a Suno amb [Verse], [Chorus] i [Outro]. Al final, una descripció de l'estil en anglés per a «Style of Music».
+                    </vf-code>
+                    <vf-text><strong>Style of Music</strong> d'exemple:</vf-text>
+                    <vf-code language="plaintext">upbeat children's pop, piano and hand claps, easy to sing along, male and female voices</vf-code>
+                </vf-prompt>
+                <vf-prompt title="Música instrumental per a moments de l'aula" desc="Infantil/Primària: relaxació després del pati, música de recollir, sintonia de l'assemblea. Opció Instrumental activada.">
+                    <vf-code language="plaintext">calm instrumental music for children, soft piano and harp, nature sounds, very slow tempo, relaxing, no drums</vf-code>
+                    <vf-text>Altres estils per a la mateixa opció:</vf-text>
+                    <vf-code language="plaintext">
+                        Recollir: playful instrumental, marimba and pizzicato strings, medium tempo, 1 minute, fun ending
+                        Assemblea: short cheerful jingle, glockenspiel and ukulele, 20 seconds, happy morning
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+            <vf-badge>Secundària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Cançó per memoritzar" desc="Verbs irregulars, taula periòdica, fórmules, dates d'història... Lletra amb Gemini.">
+                    <vf-code language="plaintext">
+                        Escriu una cançó de rap en [anglés] per a alumnat de [2n d'ESO] amb [els 20 verbs irregulars més freqüents] (infinitiu, passat i participi).
+                        La tornada ha de repetir els [5] més difícils. Rimes fàcils de recordar, ritme marcat.
+                        Format per a Suno amb [Intro], [Verse], [Chorus], [Bridge] i [Outro]. Al final, una descripció de l'estil en anglés per a «Style of Music».
+                    </vf-code>
+                    <vf-text><strong>Style of Music</strong> d'exemple:</vf-text>
+                    <vf-code language="plaintext">old school hip hop, boom bap beat, clear male rap vocals, catchy chorus, 90 bpm</vf-code>
+                </vf-prompt>
+                <vf-prompt title="L'alumnat escriu la lletra" desc="Projecte: la lletra la fan ells (sobre el tema de la unitat) i Suno només posa la música.">
+                    <vf-text>Gemini com a corrector, no com a autor:</vf-text>
+                    <vf-code language="plaintext">
+                        Revisa aquesta lletra feta per alumnat de [3r d'ESO] sobre [el canvi climàtic]. No la reescrigues: marca els errors d'ortografia i de contingut, proposa on posar les etiquetes de Suno ([Verse], [Chorus]...) i suggerix 3 estils musicals en anglés que encaixen.
+                        Lletra: [enganxa la lletra]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Banda sonora d'un projecte" desc="Música instrumental per a un vídeo, un pòdcast o una presentació. Opció Instrumental activada.">
+                    <vf-code language="plaintext">epic cinematic orchestral, slow build, strings and drums, documentary style, 1 minute</vf-code>
+                </vf-prompt>
+            </vf-prompts>
+
+            <vf-callout type="atencio">
+                Suno canta en valencià, però de vegades pronuncia malament alguna paraula. Si passa, escriu-la com sona o canvia-la per una altra. No posis noms d'artistes reals a l'estil («a l'estil de...»): descriu el gènere i els instruments.
+            </vf-callout>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio2-storybook.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Storybook</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio2-imatge.html">Imatge avançada <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>

@@ -167,6 +167,7 @@
         <li><a href="#e5">Exercici 4.5</a></li>
         <li><a href="#e6">Exercici 4.6</a></li>
         <li><a href="#e7">Exercici 4.7</a></li>
+        <li><a href="#e8">Exercici 4.8</a></li>
     </ul>
 
     <section class="ex" id="e1">
@@ -647,6 +648,139 @@ button.addEventListener(&quot;click&quot;, function () {
             paragraph.classList.toggle(&quot;hidden&quot;);
         });
     &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e8">
+        <h2>Exercici 4.8</h2>
+        <div class="enunciat"><strong>Exercise 4.8.</strong> Three buttons (red, green and blue), three titles with the ids <code>punt1</code>, <code>punt2</code> and <code>punt3</code>, and one input. The user types the id of one title in the input and, when they click a button, <em>only that title</em> changes its text colour.</div>
+        <h3>Solució</h3>
+        <span class="fname">index.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;button id="btnRoig"&gt;Roig&lt;/button&gt;
+    &lt;button id="btnVerd"&gt;Verd&lt;/button&gt;
+    &lt;button id="btnBlau"&gt;Blau&lt;/button&gt;
+
+    &lt;h1 id="punt1"&gt;Punt 1&lt;/h1&gt;
+    &lt;h1 id="punt2"&gt;Punt 2&lt;/h1&gt;
+    &lt;h1 id="punt3"&gt;Punt 3&lt;/h1&gt;
+
+    &lt;label for="identificador"&gt;Indica el id de l'element a canviar&lt;/label&gt;
+    &lt;input type="text" id="identificador" name="identificador"&gt;
+
+
+    &lt;script&gt;
+
+        const BTNROIG = document.getElementById('btnRoig')
+        const BTNVERD = document.getElementById('btnVerd')
+        const BTNBLAU = document.getElementById('btnBlau')
+
+        function clickRoig() {
+            const INPUTIDENTIFICADOR = document.getElementById('identificador');
+            let IDCANVIAR = INPUTIDENTIFICADOR.value;
+            
+            const ELEMENT = document.getElementById(IDCANVIAR);
+            ELEMENT.style.color = 'red';
+        }
+
+        function clickVerd() {
+            const INPUTIDENTIFICADOR = document.getElementById('identificador');
+            let IDCANVIAR = INPUTIDENTIFICADOR.value;
+            
+            const ELEMENT = document.getElementById(IDCANVIAR);
+            ELEMENT.style.color = 'green';
+        }
+
+        function clickBlau() {
+            const INPUTIDENTIFICADOR = document.getElementById('identificador');
+            let IDCANVIAR = INPUTIDENTIFICADOR.value;
+            
+            const ELEMENT = document.getElementById(IDCANVIAR);
+            ELEMENT.style.color = 'blue';
+        }
+
+
+        BTNROIG.addEventListener('click', clickRoig);
+        BTNVERD.addEventListener('click', clickVerd);
+        BTNBLAU.addEventListener('click', clickBlau);
+    &lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <div class="note">Cada funció llig el <code>value</code> de l'input <strong>dins</strong> de la funció (en el moment del clic, no quan carrega la pàgina) i l'usa directament com a argument de <code>getElementById</code>. Si l'id escrit no existix, <code>ELEMENT</code> és <code>null</code> i salta el <code>TypeError</code>: bon moment per a parlar de validar amb un <code>if</code> (lliçó 5). Les tres funcions només canvien el color; es pot proposar com a millora una sola funció <code>pintar(color)</code>.</div>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 4.8" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;&lt;script&gt;(function(){var q=[];window.prompt=function(){return q.length?String(q.shift()):null};window.alert=function(m){var d=document.createElement(&quot;p&quot;);d.style.cssText=&quot;background:#fff8ec;border-left:4px solid #f2a541;padding:.3rem .6rem;font:14px sans-serif&quot;;d.textContent=&quot;alert: &quot;+m;document.body.appendChild(d)};window.confirm=function(){return true};var oc=console.log;console.log=function(){var a=[].slice.call(arguments).map(function(x){return typeof x===&quot;object&quot;?JSON.stringify(x):String(x)}).join(&quot; &quot;);var p=document.getElementById(&quot;__console&quot;);if(!p){p=document.createElement(&quot;pre&quot;);p.id=&quot;__console&quot;;p.style.cssText=&quot;background:#222;color:#9f9;padding:.5rem;margin:.5rem 0 0;font:13px monospace;white-space:pre-wrap&quot;;(document.body||document.documentElement).appendChild(p)}p.textContent+=a+&quot;\n&quot;;try{oc.apply(console,arguments)}catch(e){}};})();&lt;/script&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;button id=&quot;btnRoig&quot;&gt;Roig&lt;/button&gt;
+    &lt;button id=&quot;btnVerd&quot;&gt;Verd&lt;/button&gt;
+    &lt;button id=&quot;btnBlau&quot;&gt;Blau&lt;/button&gt;
+
+    &lt;h1 id=&quot;punt1&quot;&gt;Punt 1&lt;/h1&gt;
+    &lt;h1 id=&quot;punt2&quot;&gt;Punt 2&lt;/h1&gt;
+    &lt;h1 id=&quot;punt3&quot;&gt;Punt 3&lt;/h1&gt;
+
+    &lt;label for=&quot;identificador&quot;&gt;Indica el id de l'element a canviar&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;identificador&quot; name=&quot;identificador&quot;&gt;
+
+
+    &lt;script&gt;
+
+        const BTNROIG = document.getElementById('btnRoig')
+        const BTNVERD = document.getElementById('btnVerd')
+        const BTNBLAU = document.getElementById('btnBlau')
+
+        function clickRoig() {
+            const INPUTIDENTIFICADOR = document.getElementById('identificador');
+            let IDCANVIAR = INPUTIDENTIFICADOR.value;
+            
+            const ELEMENT = document.getElementById(IDCANVIAR);
+            ELEMENT.style.color = 'red';
+        }
+
+        function clickVerd() {
+            const INPUTIDENTIFICADOR = document.getElementById('identificador');
+            let IDCANVIAR = INPUTIDENTIFICADOR.value;
+            
+            const ELEMENT = document.getElementById(IDCANVIAR);
+            ELEMENT.style.color = 'green';
+        }
+
+        function clickBlau() {
+            const INPUTIDENTIFICADOR = document.getElementById('identificador');
+            let IDCANVIAR = INPUTIDENTIFICADOR.value;
+            
+            const ELEMENT = document.getElementById(IDCANVIAR);
+            ELEMENT.style.color = 'blue';
+        }
+
+
+        BTNROIG.addEventListener('click', clickRoig);
+        BTNVERD.addEventListener('click', clickVerd);
+        BTNBLAU.addEventListener('click', clickBlau);
+    &lt;/script&gt;
+
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>

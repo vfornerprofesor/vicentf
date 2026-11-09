@@ -109,6 +109,157 @@
                     <vf-code language="plaintext">Ara fes una versió del mateix dibuix amb [8] elements assenyalats amb cercles numerats de l'1 al [8], per a una activitat de vocabulari.</vf-code>
                 </vf-prompt>
             </vf-prompts>
+        </vf-content>
+
+        <vf-title level="2">Codis d'imatge</vf-title>
+        <vf-content>
+            <vf-text>Paraules curtes amb barra (<code>/topdown</code>, <code>/blueprint</code>...) que es posen dins del prompt de Gemini per demanar un estil o un tipus d'imatge sense haver-lo de descriure. <strong>No són ordres oficials</strong>: funcionen perquè Gemini les entén com una descripció compacta. Per això es poden combinar entre elles i amb text normal, i també funcionen per <strong>editar</strong> una imatge adjunta.</vf-text>
+            <vf-callout type="consell">
+                Si un codi no fa l'efecte esperat, afegix al costat què vols en una frase: «<code>/explodedview</code>: les peces separades i amb el nom de cadascuna».
+            </vf-callout>
+
+            <vf-title level="3">Els codis més útils per a l'aula</vf-title>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codi</th>
+                            <th>Què fa</th>
+                            <th>Ús a l'aula</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>/topdown</code></td>
+                            <td>Vista zenital, des de dalt a 90°</td>
+                            <td>Plànols de l'aula o del pati, el plat saludable, materials ordenats damunt la taula</td>
+                        </tr>
+                        <tr>
+                            <td><code>/dronview</code></td>
+                            <td>Vista aèria de dron, ampla i panoràmica</td>
+                            <td>El poble, un paisatge de geografia, el recorregut d'una excursió</td>
+                        </tr>
+                        <tr>
+                            <td><code>/360view</code></td>
+                            <td>Panoràmica que envolta, com una foto de 360°</td>
+                            <td>Escenaris per descriure: un mercat, una plaça medieval, el fons marí</td>
+                        </tr>
+                        <tr>
+                            <td><code>/blueprint</code></td>
+                            <td>Plànol tècnic: línies blanques sobre fons blau</td>
+                            <td>Tecnologia, plàstica, la casa dels tres porquets com a plànol</td>
+                        </tr>
+                        <tr>
+                            <td><code>/explodedview</code></td>
+                            <td>Vista explosionada: les peces separades i en ordre</td>
+                            <td>Parts d'una bicicleta, d'una flor, d'un ordinador o d'una joguina</td>
+                        </tr>
+                        <tr>
+                            <td><code>/anatomy</code></td>
+                            <td>Estructura interna d'un ésser viu o d'un objecte</td>
+                            <td>Ciències: el cos humà, l'interior d'una llavor, un insecte, un volcà</td>
+                        </tr>
+                        <tr>
+                            <td><code>/cleanplate</code></td>
+                            <td>Lleva del fons persones i objectes que molesten</td>
+                            <td>Fotos d'excursió sense alumnat reconeixible, fotos de l'aula netes</td>
+                        </tr>
+                        <tr>
+                            <td><code>/newbg</code></td>
+                            <td>Canvia el fons per un altre que encaixe</td>
+                            <td>Posar la mascota de l'aula a la lluna, a l'antic Egipte o a la selva</td>
+                        </tr>
+                        <tr>
+                            <td><code>/together</code></td>
+                            <td>Ajunta diversos personatges o objectes en una escena</td>
+                            <td>Combinar els dibuixos de l'alumnat en una sola làmina de classe</td>
+                        </tr>
+                        <tr>
+                            <td><code>/vintagefilm</code></td>
+                            <td>Aspecte de foto antiga: gra i colors de pel·lícula</td>
+                            <td>Història: «fotos» d'una època, com era l'escola dels avis</td>
+                        </tr>
+                        <tr>
+                            <td><code>/goldenhour</code> · <code>/bluehour</code></td>
+                            <td>Llum càlida de posta de sol · llum freda del crepuscle</td>
+                            <td>Il·lustracions de contes amb ambient (dia, nit, calma, misteri)</td>
+                        </tr>
+                        <tr>
+                            <td><code>/fog</code> · <code>/cinematic</code></td>
+                            <td>Boira i misteri · aspecte de pel·lícula</td>
+                            <td>Portades de contes i lectures, presentació d'una unitat</td>
+                        </tr>
+                        <tr>
+                            <td><code>/hdreal</code> · <code>/fabricmacro</code></td>
+                            <td>Molt detall i realisme · primeríssim pla de textures</td>
+                            <td>Observar de prop: textures de materials, teixits, pell d'animals</td>
+                        </tr>
+                        <tr>
+                            <td><code>/interiormakeover</code></td>
+                            <td>Redissenya un espai interior</td>
+                            <td>Idees per reorganitzar l'aula o un racó (adjunta foto de l'aula buida)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-title level="3">Exemples</vf-title>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Plànol de l'aula per orientar-se" desc="Infantil 4-5 anys: on està cada racó. Adjunta una foto de l'aula sense alumnat.">
+                    <vf-code language="plaintext">
+                        /topdown /cleanplate Convertix la foto adjunta de la nostra aula en un plànol vist des de dalt, estil dibuix infantil amb colors vius, per a alumnat d'[infantil de 4 anys].
+                        Cada racó amb un dibuix gran i clar: [la catifa de l'assemblea, el racó de la biblioteca, el racó de les construccions, les taules i el lavabo].
+                        Sense text.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="La mascota viatja" desc="Infantil: la mascota de l'aula a cada lloc del projecte. Adjunta la imatge de la mascota.">
+                    <vf-code language="plaintext">
+                        /newbg Mantín exactament igual el personatge de la imatge adjunta i posa'l [a la lluna, saludant al costat d'un coet].
+                        Estil il·lustració infantil, colors suaus, /goldenhour. Sense text.
+                    </vf-code>
+                    <vf-text>En el mateix xat, canvia només el lloc: «Ara posa'l [al fons del mar amb peixos de colors]».</vf-text>
+                </vf-prompt>
+                <vf-prompt title="Làmina de classe amb tots els dibuixos" desc="Infantil/Primària: adjunta fotos de 3-4 dibuixos de l'alumnat.">
+                    <vf-code language="plaintext">
+                        /together Ajunta en una sola escena els personatges dels dibuixos adjunts, respectant la forma i els colors de cada dibuix, jugant junts en [un parc].
+                        Estil de dibuix infantil fet amb ceres, com si l'haguera fet la mateixa classe. Sense text.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Com és per dins?" desc="Primària: ciències amb una imatge per observar i comentar.">
+                    <vf-code language="plaintext">
+                        /anatomy /explodedview Mostra com és per dins [una llavor de fesol que comença a germinar] per a alumnat de [2n de primària].
+                        Colors clars, fons blanc, cada part ben separada i amb una fletxa i el nom en valencià: [la pell, l'arrel, la tija i les fulles].
+                        Comprova que el text no té faltes.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+            <vf-badge>Secundària</vf-badge>
+            <vf-prompts>
+                <vf-prompt title="Vista explosionada d'un objecte tècnic" desc="Tecnologia: identificar peces i funcions.">
+                    <vf-code language="plaintext">
+                        /explodedview /hdreal [Un ratolí d'ordinador] amb totes les peces separades en ordre de muntatge, fons blanc, per a alumnat de [2n d'ESO].
+                        Cada peça amb una línia i el nom en valencià. Comprova l'ortografia.
+                    </vf-code>
+                    <vf-text>I la mateixa imatge com a plànol: «Ara fes-la amb /blueprint».</vf-text>
+                </vf-prompt>
+                <vf-prompt title="Foto d'època per a història" desc="Per comentar fonts (deixa clar que és una recreació).">
+                    <vf-code language="plaintext">
+                        /vintagefilm Recreació d'una [aula d'una escola de poble als anys 50]: pupitres de fusta, pissarra, mapa a la paret, estufa de llenya.
+                        Sense persones reconeixibles ni text. Ha de semblar una foto de l'època.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Paisatge per a geografia" desc="Relleu, usos del sòl o el curs d'un riu.">
+                    <vf-code language="plaintext">
+                        /dronview /hdreal [El curs mitjà d'un riu mediterrani] amb meandres, camps de conreu, un poble i una carretera, per a alumnat de [1r d'ESO].
+                        Vista realista i clara per poder assenyalar els elements a classe. Sense text.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+
+            <vf-callout type="atencio">
+                Les imatges amb text, plànols i esquemes poden tindre errors (paraules mal escrites, peces que no existixen). Revisa-les sempre abans d'usar-les a classe, sobretot les de ciències.
+            </vf-callout>
 
             <vf-callout type="exercici">
                 <strong>Repte final de la sessió 2</strong>: tindre 1 activitat interactiva i 1 conte o àudio preparats per a la setmana vinent.
@@ -116,7 +267,7 @@
         </vf-content>
 
         <div class="d-flex flex-wrap justify-content-between">
-            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio2-ai-studio.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> AI Studio</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio2-audio.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Àudio</vf-btn>
             <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
             <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio3-notebook.html">Gemini Notebook <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
         </div>
