@@ -69,6 +69,9 @@
 
         <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
 
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Usos avançats</vf-title>
         <vf-content>
             <vf-text>No s'explica com generar imatges (ja se sap). Només usos que van més enllà, cadascun amb el seu prompt:</vf-text>
             <vf-prompts>
@@ -83,7 +86,32 @@
                         <strong>Una sola acció per pas.</strong> Amb 4 passos, el pas 1 i el 4 tenien dues accions cadascun i Gemini dibuixava el personatge dues vegades a la mateixa vinyeta. Separant-ho en 6 passos ix bé.
                     </vf-callout>
                 </vf-prompt>
+                <vf-prompt title="Combinar diverses imatges" desc="Escenari, personatges i objecte en una sola làmina de descripció o d'expressió oral. Adjunta les imatges.">
+                    <vf-code language="plaintext">
+                        Combina les imatges adjuntes en una sola làmina: usa la imatge 1 ([el parc]) com a escenari, col·loca-hi els personatges de les imatges 2 i 3 fent [un pícnic] i afegeix l'objecte de la imatge 4 ([un globus aerostàtic roig]) en primer pla.
+                        Estil coherent entre tots els elements ([il·lustració infantil]), amb molts detalls per descriure (accions, colors, posicions), per a una activitat d'expressió oral de [1r de primària].
+                        Sense text dins de la imatge.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Infografia a partir d'un text" desc="Revisa sempre l'ortografia del text de la imatge.">
+                    <vf-code language="plaintext">
+                        Crea una infografia vertical per a alumnat de [5é de primària] a partir del text que t'enganxe al final. Títol: «[El cicle de l'aigua]».
+                        Com a màxim 5 blocs, cadascun amb una icona i una frase curta, fletxes que indiquen l'ordre, colors suaus i lletra gran.
+                        Tot el text ha d'estar en valencià i sense faltes d'ortografia. No afegisques informació que no estiga al text.
+                        Text: [enganxa el text de la unitat]
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Fotos reals → làmines" desc="Foto de l'excursió → dibuix per acolorir o per numerar. Usa fotos on no es reconega l'alumnat.">
+                    <vf-code language="plaintext">
+                        Convertix la foto adjunta de [l'excursió a la granja] en un dibuix de línies negres sobre fons blanc per acolorir, per a alumnat d'[infantil de 4 anys].
+                        Traç gruixut, formes simplificades, sense ombres ni grisos i sense cares reconeixibles.
+                    </vf-code>
+                    <vf-text>I per a la versió per numerar, en el mateix xat:</vf-text>
+                    <vf-code language="plaintext">Ara fes una versió del mateix dibuix amb [8] elements assenyalats amb cercles numerats de l'1 al [8], per a una activitat de vocabulari.</vf-code>
+                </vf-prompt>
             </vf-prompts>
+
+            <vf-title level="3">Exemple: seqüència amb personatge consistent</vf-title>
             <vf-row>
                 <vf-col classes="col-md-4">
                     <vf-text>Personatge adjunt:</vf-text>
@@ -98,15 +126,7 @@
                 Mira el text del resultat: als passos 5 i 6 ha escrit «ENGAR. ESBANDIR-SE.» i «EIXUGE. EIXUGAR-SE.». Revisa sempre el text de les imatges; si cal, demana «Torna-la a fer sense cap text» i posa tu els rètols.
             </vf-callout>
 
-            <vf-prompts>
-                <vf-prompt title="Combinar diverses imatges" desc="Escenari, personatges i objecte en una sola làmina de descripció o d'expressió oral. Adjunta les imatges.">
-                    <vf-code language="plaintext">
-                        Combina les imatges adjuntes en una sola làmina: usa la imatge 1 ([el parc]) com a escenari, col·loca-hi els personatges de les imatges 2 i 3 fent [un pícnic] i afegeix l'objecte de la imatge 4 ([un globus aerostàtic roig]) en primer pla.
-                        Estil coherent entre tots els elements ([il·lustració infantil]), amb molts detalls per descriure (accions, colors, posicions), per a una activitat d'expressió oral de [1r de primària].
-                        Sense text dins de la imatge.
-                    </vf-code>
-                </vf-prompt>
-            </vf-prompts>
+            <vf-title level="3">Exemple: combinar diverses imatges</vf-title>
             <vf-text>Imatges adjuntes:</vf-text>
             <vf-row>
                 <vf-col classes="col-6 col-md-3">
@@ -131,25 +151,6 @@
                 <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_06.jpg" alt="Il·lustració infantil d'un pícnic al parc: una xiqueta i un xiquet sobre unes estovalles de quadres i un globus aerostàtic roig a la dreta"></vf-img>
             </div></div>
             <vf-text>Fixa't que Gemini ha mantingut les cares i els cabells dels personatges, però els ha canviat la roba de superheroi per roba de carrer per encaixar en el pícnic. Si vols que la mantinga, digues-ho al prompt («amb el vestit de superheroi»).</vf-text>
-
-            <vf-prompts>
-                <vf-prompt title="Infografia a partir d'un text" desc="Revisa sempre l'ortografia del text de la imatge.">
-                    <vf-code language="plaintext">
-                        Crea una infografia vertical per a alumnat de [5é de primària] a partir del text que t'enganxe al final. Títol: «[El cicle de l'aigua]».
-                        Com a màxim 5 blocs, cadascun amb una icona i una frase curta, fletxes que indiquen l'ordre, colors suaus i lletra gran.
-                        Tot el text ha d'estar en valencià i sense faltes d'ortografia. No afegisques informació que no estiga al text.
-                        Text: [enganxa el text de la unitat]
-                    </vf-code>
-                </vf-prompt>
-                <vf-prompt title="Fotos reals → làmines" desc="Foto de l'excursió → dibuix per acolorir o per numerar. Usa fotos on no es reconega l'alumnat.">
-                    <vf-code language="plaintext">
-                        Convertix la foto adjunta de [l'excursió a la granja] en un dibuix de línies negres sobre fons blanc per acolorir, per a alumnat d'[infantil de 4 anys].
-                        Traç gruixut, formes simplificades, sense ombres ni grisos i sense cares reconeixibles.
-                    </vf-code>
-                    <vf-text>I per a la versió per numerar, en el mateix xat:</vf-text>
-                    <vf-code language="plaintext">Ara fes una versió del mateix dibuix amb [8] elements assenyalats amb cercles numerats de l'1 al [8], per a una activitat de vocabulari.</vf-code>
-                </vf-prompt>
-            </vf-prompts>
         </vf-content>
 
         <vf-title level="2">Codis d'imatge</vf-title>
@@ -272,11 +273,6 @@
                         Sense text.
                     </vf-code>
                 </vf-prompt>
-            </vf-prompts>
-            <vf-text>Resultat del plànol de l'aula:</vf-text>
-            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_11.jpg" alt="Plànol d'una aula d'infantil vist des de dalt: racó de biblioteca amb coixins, catifa de l'assemblea, taules amb cadires verdes, racó de construccions i lavabo"></vf-img>
-
-            <vf-prompts>
                 <vf-prompt title="La mascota viatja" desc="Infantil: la mascota de l'aula a cada lloc del projecte. Adjunta la imatge de la mascota.">
                     <vf-code language="plaintext">
                         /newbg Mantín exactament igual el personatge de la imatge adjunta i posa'l [a la lluna, saludant al costat d'un coet].
@@ -298,6 +294,9 @@
                     </vf-code>
                 </vf-prompt>
             </vf-prompts>
+            <vf-title level="4">Resultat del plànol de l'aula</vf-title>
+            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_11.jpg" alt="Plànol d'una aula d'infantil vist des de dalt: racó de biblioteca amb coixins, catifa de l'assemblea, taules amb cadires verdes, racó de construccions i lavabo"></vf-img>
+
             <vf-badge>Secundària</vf-badge>
             <vf-prompts>
                 <vf-prompt title="Vista explosionada d'un objecte tècnic" desc="Tecnologia: identificar peces i funcions.">
@@ -313,9 +312,6 @@
                         Sense persones reconeixibles ni text. Ha de semblar una foto de l'època.
                     </vf-code>
                 </vf-prompt>
-            </vf-prompts>
-
-            <vf-prompts>
                 <vf-prompt title="Paisatge per a geografia" desc="Relleu, usos del sòl o el curs d'un riu.">
                     <vf-code language="plaintext">
                         /dronview /hdreal [El curs mitjà d'un riu mediterrani] amb meandres, camps de conreu, un poble i una carretera, per a alumnat de [1r d'ESO].
@@ -323,7 +319,7 @@
                     </vf-code>
                 </vf-prompt>
             </vf-prompts>
-            <vf-text>Resultat del paisatge per a geografia:</vf-text>
+            <vf-title level="4">Resultat del paisatge per a geografia</vf-title>
             <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_10.jpg" alt="Vista aèria realista d'un riu mediterrani amb meandres, camps de conreu, un poble blanc i una carretera"></vf-img>
 
             <vf-callout type="atencio">
