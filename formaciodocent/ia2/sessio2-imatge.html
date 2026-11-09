@@ -82,21 +82,55 @@
                     <vf-callout type="consell">
                         <strong>Una sola acció per pas.</strong> Amb 4 passos, el pas 1 i el 4 tenien dues accions cadascun i Gemini dibuixava el personatge dues vegades a la mateixa vinyeta. Separant-ho en 6 passos ix bé.
                     </vf-callout>
-                    <vf-row>
-                        <vf-col classes="col-md-4">
-                            <vf-text>Personatge adjunt:</vf-text>
-                            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_01.jpg" alt="Superheroi infantil amb cabells arrissats, antifaç i vestit verd i morat, volant sobre una ciutat"></vf-img>
-                        </vf-col>
-                        <vf-col classes="col-md-8">
-                            <vf-text>Resultat:</vf-text>
-                            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_02.jpg" alt="Seqüència de 6 pictogrames de rentar-se les mans amb el mateix superheroi en cada pas, numerats de l'1 al 6"></vf-img>
-                        </vf-col>
-                    </vf-row>
-                    <vf-callout type="atencio">
-                        Mira el text del resultat: als passos 5 i 6 ha escrit «ENGAR. ESBANDIR-SE.» i «EIXUGE. EIXUGAR-SE.». Revisa sempre el text de les imatges; si cal, demana «Torna-la a fer sense cap text» i posa tu els rètols.
-                    </vf-callout>
                 </vf-prompt>
             </vf-prompts>
+            <vf-row>
+                <vf-col classes="col-md-4">
+                    <vf-text>Personatge adjunt:</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_01.jpg" alt="Superheroi infantil amb cabells arrissats, antifaç i vestit verd i morat, volant sobre una ciutat"></vf-img>
+                </vf-col>
+                <vf-col classes="col-md-8">
+                    <vf-text>Resultat:</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_02.jpg" alt="Seqüència de 6 pictogrames de rentar-se les mans amb el mateix superheroi en cada pas, numerats de l'1 al 6"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-callout type="atencio">
+                Mira el text del resultat: als passos 5 i 6 ha escrit «ENGAR. ESBANDIR-SE.» i «EIXUGE. EIXUGAR-SE.». Revisa sempre el text de les imatges; si cal, demana «Torna-la a fer sense cap text» i posa tu els rètols.
+            </vf-callout>
+
+            <vf-prompts>
+                <vf-prompt title="Combinar diverses imatges" desc="Escenari, personatges i objecte en una sola làmina de descripció o d'expressió oral. Adjunta les imatges.">
+                    <vf-code language="plaintext">
+                        Combina les imatges adjuntes en una sola làmina: usa la imatge 1 ([el parc]) com a escenari, col·loca-hi els personatges de les imatges 2 i 3 fent [un pícnic] i afegeix l'objecte de la imatge 4 ([un globus aerostàtic roig]) en primer pla.
+                        Estil coherent entre tots els elements ([il·lustració infantil]), amb molts detalls per descriure (accions, colors, posicions), per a una activitat d'expressió oral de [1r de primària].
+                        Sense text dins de la imatge.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+            <vf-text>Imatges adjuntes:</vf-text>
+            <vf-row>
+                <vf-col classes="col-6 col-md-3">
+                    <vf-text>1. Escenari</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_03.jpg" alt="Foto d'un parc amb camí de terra, arbres i un arc al fons"></vf-img>
+                </vf-col>
+                <vf-col classes="col-6 col-md-3">
+                    <vf-text>2. Personatge</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_01.jpg" alt="Superheroi infantil amb vestit verd i morat"></vf-img>
+                </vf-col>
+                <vf-col classes="col-6 col-md-3">
+                    <vf-text>3. Personatge</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_04.jpg" alt="Superheroïna infantil amb vestit blau i rosa"></vf-img>
+                </vf-col>
+                <vf-col classes="col-6 col-md-3">
+                    <vf-text>4. Objecte</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_05.jpg" alt="Foto d'un globus aerostàtic roig al cel"></vf-img>
+                </vf-col>
+            </vf-row>
+            <vf-text>Resultat:</vf-text>
+            <div class="row justify-content-center"><div class="col-md-6">
+                <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_06.jpg" alt="Il·lustració infantil d'un pícnic al parc: una xiqueta i un xiquet sobre unes estovalles de quadres i un globus aerostàtic roig a la dreta"></vf-img>
+            </div></div>
+            <vf-text>Fixa't que Gemini ha mantingut les cares i els cabells dels personatges, però els ha canviat la roba de superheroi per roba de carrer per encaixar en el pícnic. Si vols que la mantinga, digues-ho al prompt («amb el vestit de superheroi»).</vf-text>
 
             <vf-prompts>
                 <vf-prompt title="Infografia a partir d'un text" desc="Revisa sempre l'ortografia del text de la imatge.">
@@ -106,37 +140,6 @@
                         Tot el text ha d'estar en valencià i sense faltes d'ortografia. No afegisques informació que no estiga al text.
                         Text: [enganxa el text de la unitat]
                     </vf-code>
-                </vf-prompt>
-                <vf-prompt title="Combinar diverses imatges" desc="Escenari, personatges i objecte en una sola làmina de descripció o d'expressió oral. Adjunta les imatges.">
-                    <vf-code language="plaintext">
-                        Combina les imatges adjuntes en una sola làmina: usa la imatge 1 ([el parc]) com a escenari, col·loca-hi els personatges de les imatges 2 i 3 fent [un pícnic] i afegeix l'objecte de la imatge 4 ([un globus aerostàtic roig]) en primer pla.
-                        Estil coherent entre tots els elements ([il·lustració infantil]), amb molts detalls per descriure (accions, colors, posicions), per a una activitat d'expressió oral de [1r de primària].
-                        Sense text dins de la imatge.
-                    </vf-code>
-                    <vf-text>Imatges adjuntes:</vf-text>
-                    <vf-row>
-                        <vf-col classes="col-6 col-md-3">
-                            <vf-text>1. Escenari</vf-text>
-                            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_03.jpg" alt="Foto d'un parc amb camí de terra, arbres i un arc al fons"></vf-img>
-                        </vf-col>
-                        <vf-col classes="col-6 col-md-3">
-                            <vf-text>2. Personatge</vf-text>
-                            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_01.jpg" alt="Superheroi infantil amb vestit verd i morat"></vf-img>
-                        </vf-col>
-                        <vf-col classes="col-6 col-md-3">
-                            <vf-text>3. Personatge</vf-text>
-                            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_04.jpg" alt="Superheroïna infantil amb vestit blau i rosa"></vf-img>
-                        </vf-col>
-                        <vf-col classes="col-6 col-md-3">
-                            <vf-text>4. Objecte</vf-text>
-                            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_05.jpg" alt="Foto d'un globus aerostàtic roig al cel"></vf-img>
-                        </vf-col>
-                    </vf-row>
-                    <vf-text>Resultat:</vf-text>
-                    <div class="row justify-content-center"><div class="col-md-6">
-                        <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_06.jpg" alt="Il·lustració infantil d'un pícnic al parc: una xiqueta i un xiquet sobre unes estovalles de quadres i un globus aerostàtic roig a la dreta"></vf-img>
-                    </div></div>
-                    <vf-text>Fixa't que Gemini ha mantingut les cares i els cabells dels personatges, però els ha canviat la roba de superheroi per roba de carrer per encaixar en el pícnic. Si vols que la mantinga, digues-ho al prompt («amb el vestit de superheroi»).</vf-text>
                 </vf-prompt>
                 <vf-prompt title="Fotos reals → làmines" desc="Foto de l'excursió → dibuix per acolorir o per numerar. Usa fotos on no es reconega l'alumnat.">
                     <vf-code language="plaintext">
@@ -268,8 +271,12 @@
                         Cada racó amb un dibuix gran i clar: [la catifa de l'assemblea, el racó de la biblioteca, el racó de les construccions, les taules i el lavabo].
                         Sense text.
                     </vf-code>
-                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_11.jpg" alt="Plànol d'una aula d'infantil vist des de dalt: racó de biblioteca amb coixins, catifa de l'assemblea, taules amb cadires verdes, racó de construccions i lavabo"></vf-img>
                 </vf-prompt>
+            </vf-prompts>
+            <vf-text>Resultat del plànol de l'aula:</vf-text>
+            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_11.jpg" alt="Plànol d'una aula d'infantil vist des de dalt: racó de biblioteca amb coixins, catifa de l'assemblea, taules amb cadires verdes, racó de construccions i lavabo"></vf-img>
+
+            <vf-prompts>
                 <vf-prompt title="La mascota viatja" desc="Infantil: la mascota de l'aula a cada lloc del projecte. Adjunta la imatge de la mascota.">
                     <vf-code language="plaintext">
                         /newbg Mantín exactament igual el personatge de la imatge adjunta i posa'l [a la lluna, saludant al costat d'un coet].
@@ -306,14 +313,18 @@
                         Sense persones reconeixibles ni text. Ha de semblar una foto de l'època.
                     </vf-code>
                 </vf-prompt>
+            </vf-prompts>
+
+            <vf-prompts>
                 <vf-prompt title="Paisatge per a geografia" desc="Relleu, usos del sòl o el curs d'un riu.">
                     <vf-code language="plaintext">
                         /dronview /hdreal [El curs mitjà d'un riu mediterrani] amb meandres, camps de conreu, un poble i una carretera, per a alumnat de [1r d'ESO].
                         Vista realista i clara per poder assenyalar els elements a classe. Sense text.
                     </vf-code>
-                    <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_10.jpg" alt="Vista aèria realista d'un riu mediterrani amb meandres, camps de conreu, un poble blanc i una carretera"></vf-img>
                 </vf-prompt>
             </vf-prompts>
+            <vf-text>Resultat del paisatge per a geografia:</vf-text>
+            <vf-img src="assets/formaciodocent/ia2/sessio2/ia2_sessio2_4_10.jpg" alt="Vista aèria realista d'un riu mediterrani amb meandres, camps de conreu, un poble blanc i una carretera"></vf-img>
 
             <vf-callout type="atencio">
                 Les imatges amb text, plànols i esquemes poden tindre errors (paraules mal escrites, peces que no existixen). Revisa-les sempre abans d'usar-les a classe, sobretot les de ciències.
