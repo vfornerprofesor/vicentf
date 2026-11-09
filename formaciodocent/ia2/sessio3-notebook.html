@@ -80,8 +80,7 @@
             <vf-steps>
                 <vf-step title="Crea un quadern i puja les fonts">
                     <vf-text>Entra a Gemini Notebook (l'antiga adreça [notebooklm.google.com](https://notebooklm.google.com) redirigix), crea un quadern i puja les fonts: programació didàctica, currículum (decret), PEC/PAM, pla de convivència, normativa d'avaluació.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s3-notebook-fonts.png" alt="Quadern de Gemini Notebook amb les fonts pujades"></vf-img>
+                    <vf-img src="assets/formaciodocent/ia2/sessio3/ia2_sessio3_1_02.png" alt="Quadern «Xatbot - Programació JS» de Gemini Notebook amb nou fonts (els temes de JavaScript), una resposta amb cites i el panell Studio"></vf-img>
                 </vf-step>
                 <vf-step title="Fes preguntes amb citació">
                     <vf-text>Per exemple:</vf-text>
@@ -92,37 +91,47 @@
                         Segons les fonts, [la teua pregunta].
                         Cita el document i l'apartat d'on trau cada informació. Si la resposta no està a les fonts, digues-ho clarament en lloc de deduir-la.
                     </vf-code>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s3-notebook-resposta-cites.png" alt="Resposta de Gemini Notebook amb cites a les fonts"></vf-img>
+                    <vf-img src="assets/formaciodocent/ia2/sessio3/ia2_sessio3_1_01.png" alt="Quadern de Formació Professional: pregunta sobre la renúncia a la convocatòria i resposta amb cites numerades a la normativa"></vf-img>
                 </vf-step>
                 <vf-step title="Genera materials des del panell Studio">
                     <vf-text>Resum en àudio, vídeo-resum, mapa mental, informe, taula de dades, targetes, qüestionari, infografia i presentació. Per a presentacions i vídeos, primer mostra un esborrany per revisar-lo abans de generar-lo.</vf-text>
                     <vf-text>Si el recurs et deixa personalitzar-lo abans de generar-lo, escriu indicacions concretes de públic, extensió i enfocament. Exemples:</vf-text>
                     <vf-prompts>
-                        <vf-prompt title="Resum en àudio" desc="Per a famílies.">
+                        <vf-prompt title="Resum en àudio" desc="Pòdcast de dues veus que conversen sobre les fonts. Ex.: per a les famílies.">
                             <vf-code language="plaintext">
                                 Resum en àudio per a les famílies de l'alumnat de [2n de primària], en valencià, d'uns [4] minuts.
                                 Explica què aprendran els seus fills i filles en aquesta unitat, amb llenguatge senzill i sense tecnicismes, i acaba amb 3 idees per practicar a casa.
                             </vf-code>
                         </vf-prompt>
-                        <vf-prompt title="Qüestionari" desc="">
+                        <vf-prompt title="Presentació" desc="Diapositives generades a partir de les fonts. Ex.: introduir la unitat a classe.">
+                            <vf-code language="plaintext">Presentació de [8] diapositives per introduir la unitat a alumnat de [6é de primària]: poc text per diapositiva, una idea per diapositiva i una pregunta per al debat al final.</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Vídeo-resum" desc="Vídeo narrat amb diapositives; es tria el format i l'estil visual. Ex.: presentar la SA a l'alumnat.">
+                            <vf-code language="plaintext">Vídeo-resum de [5] minuts per a alumnat de [1r d'ESO] que presente la situació d'aprenentatge: el repte, què hauran de fer en cada fase i com s'avaluarà. To motivador, exemples propers i cap tecnicisme sense explicar.</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Mapa mental" desc="Esquema en arbre, amb nodes que s'obrin. Ex.: visió global de la unitat.">
+                            <vf-code language="plaintext">Mapa mental de la unitat centrat en [els conceptes clau], amb un màxim de 3 nivells i paraules curtes a cada node.</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Informe" desc="Document escrit: guia d'estudi, document informatiu, entrada de blog o informe interactiu. Ex.: guia per a famílies.">
+                            <vf-code language="plaintext">Informe en format de guia per a les famílies de [6é de primària] sobre [la unitat de l'aigua]: què aprendran, calendari aproximat, com poden ajudar des de casa i com s'avaluarà. Llenguatge senzill i com a màxim una pàgina.</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Targetes" desc="Targetes didàctiques: pregunta o concepte davant, resposta darrere. Ex.: repassar vocabulari.">
+                            <vf-code language="plaintext">Targetes amb els [20] conceptes clau de la unitat: a la cara davantera, el concepte; darrere, una definició d'una sola frase amb paraules que entenga l'alumnat de [2n d'ESO].</vf-code>
+                        </vf-prompt>
+                        <vf-prompt title="Qüestionari" desc="Preguntes tipus test amb l'explicació de cada resposta. Ex.: autoavaluació de l'alumnat.">
                             <vf-code language="plaintext">
                                 Qüestionari de 10 preguntes per a alumnat de [3r d'ESO], només sobre [els apartats 2 i 3], amb dificultat progressiva.
                                 Explica cada resposta a partir dels apunts.
                             </vf-code>
                         </vf-prompt>
-                        <vf-prompt title="Mapa mental" desc="">
-                            <vf-code language="plaintext">Mapa mental de la unitat centrat en [els conceptes clau], amb un màxim de 3 nivells i paraules curtes a cada node.</vf-code>
+                        <vf-prompt title="Infografia" desc="Una imatge amb el resum visual; revisa l'ortografia del text. Ex.: presentar un cicle formatiu.">
+                            <vf-code language="plaintext">Infografia vertical per a alumnat de [4t d'ESO] que resumisca [el cicle formatiu de Sistemes Microinformàtics i Xarxes]: durada, mòduls principals, què s'aprén, eixides professionals i estudis posteriors. Poc text, icones grans i colors suaus.</vf-code>
                         </vf-prompt>
-                        <vf-prompt title="Targetes" desc="">
-                            <vf-code language="plaintext">Targetes amb els [20] conceptes clau de la unitat: a la cara davantera, el concepte; darrere, una definició d'una sola frase amb paraules que entenga l'alumnat de [2n d'ESO].</vf-code>
-                        </vf-prompt>
-                        <vf-prompt title="Presentació" desc="">
-                            <vf-code language="plaintext">Presentació de [8] diapositives per introduir la unitat a alumnat de [6é de primària]: poc text per diapositiva, una idea per diapositiva i una pregunta per al debat al final.</vf-code>
+                        <vf-prompt title="Taula de dades" desc="Extrau dades de les fonts en una taula exportable a Fulls de càlcul. Ex.: criteris i situacions d'aprenentatge.">
+                            <vf-code language="plaintext">Taula amb tots els criteris d'avaluació de [la programació de 2n d'ESO]: codi, criteri, competència específica, situació d'aprenentatge on es treballa i instrument d'avaluació.</vf-code>
                         </vf-prompt>
                     </vf-prompts>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s3-notebook-studio.png" alt="Panell Studio de Gemini Notebook"></vf-img>
+                    <vf-img src="assets/formaciodocent/ia2/sessio3/ia2_sessio3_1_03.png" alt="Panell Studio de Gemini Notebook amb les nou eines: resum d'àudio, presentació, resum de vídeo, mapa mental, informes, targetes didàctiques, qüestionari, infografia i taula de dades"></vf-img>
                 </vf-step>
             </vf-steps>
 
@@ -148,6 +157,28 @@
                     </vf-code>
                 </vf-prompt>
             </vf-prompts>
+
+            <vf-title level="4">Exemple: quadern de Formació Professional</vf-title>
+            <vf-text>Fonts: la normativa d'FP (decrets, reials decrets, ordres i instruccions d'inici de curs) i els currículums dels cicles. És el quadern de la captura del pas 2. Materials generats des del panell Studio:</vf-text>
+            <vf-list>
+                <li><vf-text>[Resum en àudio: què s'aprén al CFGM de Sistemes Microinformàtics i Xarxes](https://notebooklm.link.google/xF1vk2zrHQvV)</vf-text></li>
+                <li><vf-text>[Informe interactiu: instruccions d'inici de curs](https://notebooklm.link.google/BOVpv2cfEOSw)</vf-text></li>
+                <li><vf-text>[Infografia del cicle de Sistemes Microinformàtics i Xarxes (SMX)](https://notebooklm.link.google/mzVDhC4nXS8A)</vf-text></li>
+                <li><vf-text>[Infografia del cicle d'Informàtica de Gestió (IG)](https://notebooklm.link.google/8iTcjFhhy5Bg)</vf-text></li>
+            </vf-list>
+
+            <vf-title level="4">Exemple: situació d'aprenentatge «Eco-Detectius a l'Acció»</vf-title>
+            <vf-text>Quadern amb la situació d'aprenentatge «Eco-Detectius a l'Acció: el repte de l'escola Residu Zero». L'alumnat fa d'investigador per diagnosticar l'empremta ecològica del centre (aigua, energia i residus). El producte final és un pla d'acció «Residu Zero»: un informe digital de diagnòstic i una campanya de sensibilització multimèdia. Inclou l'alineació amb el DUA i una rúbrica (90&nbsp;% competències, 10&nbsp;% actitud cooperativa i responsabilitat ecosocial). Materials generats:</vf-text>
+            <vf-list>
+                <li><vf-text>[Esquema](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/316d5993-ae2a-4a02-a44a-ebadd2793798)</vf-text></li>
+                <li><vf-text>[Presentació](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/a9291490-5411-4898-b697-ceb522c5fcec)</vf-text></li>
+                <li><vf-text>[Resum en àudio](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/b565032e-0529-48ee-98a0-20392cfd7749)</vf-text></li>
+                <li><vf-text>[Vídeo-resum 1](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/98b0eb21-b56a-464b-a957-a6578b87334b)</vf-text></li>
+                <li><vf-text>[Vídeo-resum 2](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/ebe465d8-e226-487d-97ba-6000219ab2c3)</vf-text></li>
+                <li><vf-text>[Vídeo-resum per a l'alumnat](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/8b26bfd2-d59c-4ac2-932d-9298a641116e)</vf-text></li>
+                <li><vf-text>[Informe interactiu](https://notebook.google.com/notebook/1926de71-2783-4782-bf10-baa003537b23/artifact/4b6950b4-2fdf-4bc9-9cf8-4b5fd0d3a024)</vf-text></li>
+            </vf-list>
+            <vf-text>Fixa't en els tres vídeos: dos per al professorat i un altre amb un enfocament diferent per a l'alumnat, tots a partir de les mateixes fonts.</vf-text>
 
             <vf-title level="3">Usos per a l'aula</vf-title>
             <vf-badge>Infantil/Primària</vf-badge>
@@ -180,6 +211,9 @@
                     </vf-code>
                 </vf-prompt>
             </vf-prompts>
+
+            <vf-title level="4">Exemple: xatbot de Programació JS</vf-title>
+            <vf-text>Quadern compartit amb l'alumnat amb els temes de JavaScript com a fonts (captura del pas 1). Cada alumne pregunta els dubtes al xat i el quadern respon només amb els apunts, citant el tema. Es marquen només les fonts dels temes ja treballats.</vf-text>
 
             <vf-callout type="atencio">
                 No puges documents amb dades personals de l'alumnat (actes, informes individuals).

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La recepta de la festa · Proporcionalitat directa (DUA)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #2b2a33;
+            --muted: #6b6878;
+            --paper: #fffdf7;
+            --desk: #ece7da;
+            --line: #d9d3c3;
+            --suport: #2e9e6a;
+            --suport-soft: #e3f4ec;
+            --estandard: #2f6fb5;
+            --estandard-soft: #e2edf8;
+            --ampliacio: #c4581f;
+            --ampliacio-soft: #fbe9df;
+            --accent: #f2b33d;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px 16px 48px;
+            background: var(--desk);
+            color: var(--ink);
+            font: 16px/1.55 "Nunito", system-ui, sans-serif;
+        }
+
+        .sheet {
+            max-width: 820px;
+            margin: 0 auto 28px;
+            padding: 36px 40px 32px;
+            background: var(--paper);
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 8px 24px rgba(60, 50, 20, .12);
+            position: relative;
+        }
+
+        /* Capçalera de fitxa */
+        .top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px 24px;
+            padding-bottom: 14px;
+            border-bottom: 3px solid var(--ink);
+            font-size: .9rem;
+            color: var(--muted);
+        }
+
+        .top strong {
+            color: var(--ink);
+        }
+
+        .fields {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px 20px;
+            margin: 18px 0 22px;
+            font-size: .9rem;
+        }
+
+        .field {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .field span {
+            flex: 1;
+            border-bottom: 1.5px dotted var(--muted);
+            min-height: 1.4em;
+        }
+
+        h1 {
+            margin: 0 0 4px;
+            font: 400 2.4rem/1.1 "Patrick Hand", cursive;
+            letter-spacing: .5px;
+        }
+
+        .subtitle {
+            margin: 0 0 18px;
+            color: var(--muted);
+        }
+
+        .goal {
+            padding: 12px 16px;
+            background: #fff6dc;
+            border: 2px dashed var(--accent);
+            border-radius: 10px;
+        }
+
+        .goal b {
+            display: block;
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #9a6b07;
+        }
+
+        /* Cada versió */
+        .level {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 14px 4px 6px;
+            border-radius: 999px;
+            color: #fff;
+            font-weight: 800;
+            font-size: .85rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .level i {
+            display: grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .25);
+            font-style: normal;
+        }
+
+        .suport .level {
+            background: var(--suport);
+        }
+
+        .estandard .level {
+            background: var(--estandard);
+        }
+
+        .ampliacio .level {
+            background: var(--ampliacio);
+        }
+
+        .sheet.suport {
+            border-top: 8px solid var(--suport);
+        }
+
+        .sheet.estandard {
+            border-top: 8px solid var(--estandard);
+        }
+
+        .sheet.ampliacio {
+            border-top: 8px solid var(--ampliacio);
+        }
+
+        h2 {
+            margin: 14px 0 10px;
+            font: 400 1.9rem/1.15 "Patrick Hand", cursive;
+        }
+
+        .task {
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+        }
+
+        .suport .task {
+            background: var(--suport-soft);
+        }
+
+        .estandard .task {
+            background: var(--estandard-soft);
+        }
+
+        .ampliacio .task {
+            background: var(--ampliacio-soft);
+        }
+
+        .task p {
+            margin: 0 0 8px;
+        }
+
+        .task ol,
+        .task ul {
+            margin: 6px 0 0;
+            padding-left: 1.3em;
+        }
+
+        .task li {
+            margin-bottom: 6px;
+        }
+
+        h3 {
+            margin: 22px 0 8px;
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .steps {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            counter-reset: s;
+        }
+
+        .steps>li {
+            counter-increment: s;
+            position: relative;
+            padding: 0 0 18px 46px;
+        }
+
+        .steps>li::before {
+            content: counter(s);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--suport);
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .steps b {
+            display: block;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 10px 0 0;
+            font-size: 1.05rem;
+        }
+
+        th,
+        td {
+            min-width: 110px;
+            padding: 8px 14px;
+            border: 2px solid var(--ink);
+            text-align: center;
+        }
+
+        th {
+            background: var(--suport-soft);
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 70px;
+            border-bottom: 2px solid var(--ink);
+            text-align: center;
+        }
+
+        .op {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 6px 12px;
+            background: #fff;
+            border: 1.5px solid var(--line);
+            border-radius: 8px;
+            font: 400 1.35rem "Patrick Hand", cursive;
+        }
+
+        .answer {
+            margin-top: 6px;
+            height: 120px;
+            background:
+                repeating-linear-gradient(transparent 0 31px, var(--line) 31px 32px);
+            border-left: 2px solid #f0a8a8;
+        }
+
+        .answer.tall {
+            height: 190px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 1.5px dashed var(--line);
+            font-size: .9rem;
+        }
+
+        .chip {
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: #f1eee6;
+        }
+
+        .ways {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .way {
+            padding: 14px 16px;
+            border: 2px solid var(--line);
+            border-radius: 12px;
+        }
+
+        .way b {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .way .icon {
+            font-size: 1.6rem;
+        }
+
+        .credit {
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: .85rem;
+            color: var(--muted);
+        }
+
+        .print {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--ink);
+            color: #fff;
+            font: 700 .9rem "Nunito", sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+        }
+
+        @media (max-width: 600px) {
+            .sheet {
+                padding: 24px 18px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .fields,
+            .ways {
+                grid-template-columns: 1fr;
+            }
+
+            th,
+            td {
+                min-width: 0;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: #fff;
+            }
+
+            .sheet {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+
+            .print,
+            .credit {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Portada: objectiu comú -->
+    <section class="sheet">
+        <div class="top">
+            <span><strong>Matemàtiques</strong> · 2n d'ESO</span>
+            <span>Proporcionalitat directa · 1 sessió</span>
+        </div>
+        <div class="fields">
+            <div class="field">Nom <span></span></div>
+            <div class="field">Grup <span></span></div>
+            <div class="field">Data <span></span></div>
+        </div>
+        <h1>La recepta de la festa</h1>
+        <p class="subtitle">Una mateixa activitat en tres versions: tria la teua o la que t'indique el professorat.</p>
+        <div class="goal">
+            <b>Objectiu d'aprenentatge</b>
+            Identificar relacions de proporcionalitat directa entre dues magnituds i resoldre problemes quotidians utilitzant la regla de tres o la reducció a la unitat.
+        </div>
+    </section>
+
+    <!-- Versió Suport -->
+    <section class="sheet suport">
+        <span class="level"><i>1</i>Suport</span>
+        <h2>La recepta de la festa</h2>
+        <div class="task">
+            <p>Per a preparar el berenar de la classe necessitem adaptar les quantitats d'una recepta de galetes.</p>
+            <p>Sabem que per a <strong>4 persones</strong> necessitem <strong>100 g de sucre</strong>. Quants grams de sucre necessitarem per a <strong>12 persones</strong>?</p>
+        </div>
+
+        <h3>Guia pas a pas</h3>
+        <ol class="steps">
+            <li>
+                <b>Organitza les dades en la taula</b>
+                <table>
+                    <thead>
+                        <tr><th>Persones</th><th>Sucre (g)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>4</td><td>100</td></tr>
+                        <tr><td>12</td><td>?</td></tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <b>Troba la quantitat per a 1 persona (reducció a la unitat)</b>
+                Divideix els grams entre el nombre de persones:<br>
+                <span class="op">100 ÷ 4 = <span class="blank">&nbsp;</span> g per persona</span>
+            </li>
+            <li>
+                <b>Calcula el total per a 12 persones</b>
+                Multiplica la quantitat d'1 persona per 12:<br>
+                <span class="op"><span class="blank">&nbsp;</span> × 12 = <span class="blank">&nbsp;</span> g de sucre</span>
+            </li>
+        </ol>
+
+        <div class="meta">
+            <span class="chip">⏱ 35 minuts</span>
+            <span class="chip">📄 Full de treball amb la taula i els passos</span>
+            <span class="chip">🧮 Calculadora o taula de multiplicar</span>
+        </div>
+    </section>
+
+    <!-- Versió Estàndard -->
+    <section class="sheet estandard">
+        <span class="level"><i>2</i>Estàndard</span>
+        <h2>La recepta de la festa</h2>
+        <div class="task">
+            <p>Anem a organitzar el berenar de final de curs per a tota la classe. La recepta original de galetes està pensada per a <strong>4 persones</strong> i utilitza <strong>100 g de sucre</strong> i <strong>250 g de farina</strong>.</p>
+            <p>Si a la nostra classe serem <strong>28 persones</strong>:</p>
+            <ol>
+                <li>Calcula quants grams de sucre i quants grams de farina necessitarem en total.</li>
+                <li>Explica quin mètode has utilitzat per a resoldre-ho (reducció a la unitat o regla de tres) i indica quina és la constant de proporcionalitat en aquest cas.</li>
+            </ol>
+        </div>
+
+        <h3>Resolució</h3>
+        <div class="answer tall"></div>
+
+        <div class="meta">
+            <span class="chip">⏱ 35 minuts</span>
+            <span class="chip">📄 Full d'activitats</span>
+            <span class="chip">📐 Llibreta, eines de dibuix o calculadora</span>
+        </div>
+    </section>
+
+    <!-- Versió Ampliació -->
+    <section class="sheet ampliacio">
+        <span class="level"><i>3</i>Ampliació</span>
+        <h2>La recepta de la festa</h2>
+        <div class="task">
+            <p>Estem planificant el pressupost del berenar de final de curs. La recepta bàsica per a <strong>4 persones</strong> requereix <strong>100 g de sucre</strong> i <strong>250 g de farina</strong>.</p>
+            <p>Teniu un pressupost limitat i heu trobat que el paquet de farina d'1 kg costa <strong>1,20 €</strong> i el paquet de sucre d'1 kg costa <strong>1,00 €</strong>.</p>
+            <ol>
+                <li>Calcula la quantitat exacta de cada ingredient i el cost total dels ingredients principals si l'esdeveniment és per a <strong>45 persones</strong>.</li>
+                <li>Dissenya una fórmula o una expressió algebraica (<em>y = k · x</em>) que permeta a qualsevol altre curs introduir el seu nombre d'alumnes (<em>x</em>) i obtindre directament la quantitat de farina necessària (<em>y</em>).</li>
+            </ol>
+        </div>
+
+        <h3>Resolució</h3>
+        <div class="answer tall"></div>
+
+        <div class="meta">
+            <span class="chip">⏱ 35 minuts</span>
+            <span class="chip">📄 Full amb reptes d'aplicació i pressupost</span>
+            <span class="chip">📱 Calculadora o dispositiu per comprovar</span>
+        </div>
+    </section>
+
+    <!-- Avaluació accessible -->
+    <section class="sheet">
+        <h2>Demostra el que has après</h2>
+        <p class="subtitle">Tria una de les dues maneres.</p>
+        <div class="ways">
+            <div class="way">
+                <span class="icon">✍️</span>
+                <b>Escrita o visual</b>
+                Omple un mural interactiu o una fitxa on es veja la relació proporcional amb la taula de magnituds i el procés d'operació que has fet.
+            </div>
+            <div class="way">
+                <span class="icon">🎙️</span>
+                <b>Oral o digital</b>
+                Grava un àudio breu o explica-ho en parella (en 1 minut): com canvia la quantitat d'ingredients si es duplica o es triplica el nombre de convidats? Raona la relació entre les dues magnituds.
+            </div>
+        </div>
+    </section>
+
+    <p class="credit">Exemple generat amb la skill <strong>@activitat-dua</strong> de Gemini · Curs IA 2.0 (2026)</p>
+
+    <button class="print" type="button" onclick="window.print()">🖨 Imprimir</button>
+
+</body>
+
+</html>

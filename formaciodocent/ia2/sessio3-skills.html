@@ -74,7 +74,7 @@
         <vf-content>
 
             <vf-title level="3">Què són</vf-title>
-            <vf-text>Des de finals de 2026, Google substitueix els <strong>Gems</strong> per les <strong>skills</strong>: instruccions personalitzades i reutilitzables (amb fitxers de referència, si cal) que s'invoquen escrivint <code>/</code> en qualsevol xat de Gemini. Se'n poden combinar diverses en un mateix xat, i Gemini les pot aplicar automàticament quan són pertinents.</vf-text>
+            <vf-text>Des de finals de 2026, Google substitueix els <strong>Gems</strong> per les <strong>skills</strong>: instruccions personalitzades i reutilitzables (amb fitxers de referència, si cal) que s'invoquen escrivint <code>@</code> i el nom de la skill en qualsevol xat de Gemini. Se'n poden combinar diverses en un mateix xat, i Gemini les pot aplicar automàticament quan són pertinents.</vf-text>
             <vf-callout type="recorda">
                 <strong>Calendari per a comptes personals</strong>: el 17/11/2026 els Gems passen a skills i queden de només lectura; el 17/12/2026 desapareixen. Si tenies Gems, es convertixen sols en skills; abans del 17/12/2026 convé descarregar els fitxers de coneixement dels Gems.
             </vf-callout>
@@ -86,13 +86,13 @@
                 </vf-step>
                 <vf-step title="Omple la skill">
                     <vf-text>Nom, descripció (quan s'ha d'usar) i instruccions. Opcionalment, adjunta fitxers de referència: rúbrica, plantilla, exemple de bon resultat. Màxim 100 skills actives per compte.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s3-skills-crear.png" alt="Pantalla de creació d'una skill de Gemini"></vf-img>
+                    <vf-img src="assets/formaciodocent/ia2/sessio3/ia2_sessio3_2_01.png" alt="Formulari de creació de la skill activitat-dua amb els camps nom, descripció i instruccions"></vf-img>
                 </vf-step>
                 <vf-step title="Invoca-la en un xat">
-                    <vf-text>Escriu <code>/</code> en qualsevol xat de Gemini i tria la skill.</vf-text>
-                    <!-- CAPTURA PENDENT -->
-                    <vf-img src="assets/formaciodocent/ia2/s3-skills-invocar.png" alt="Invocar una skill amb / en un xat de Gemini"></vf-img>
+                    <vf-text>Escriu <code>@</code> en qualsevol xat de Gemini, tria la skill de la llista (o escriu-ne el nom, per exemple <code>@correu-families</code>) i, a continuació, el que necessites.</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio3/ia2_sessio3_2_02.png" alt="En escriure @ en un xat de Gemini apareix la llista amb les skills (Habilidades) activitat-dua i correu-families i els connectors"></vf-img>
+                    <vf-text>Amb la interfície en castellà, les skills apareixen com a <strong>Habilidades</strong>. En triar-la, el nom queda en negreta i darrere escrius la petició:</vf-text>
+                    <vf-img src="assets/formaciodocent/ia2/sessio3/ia2_sessio3_2_03.png" alt="Xat de Gemini amb @activitat-dua en negreta seguit de la petició: resoldre problemes de proporcionalitat directa, 2n d'ESO, 1 sessió"></vf-img>
                 </vf-step>
             </vf-steps>
 
@@ -109,7 +109,7 @@
             <vf-title level="3">Skills llestes per copiar</vf-title>
             <vf-text>Per a cada skill: copia el nom, la descripció i les instruccions als camps corresponents de <strong>Crear manualment</strong>, adapta el que hi ha entre [claudàtors] al teu centre i al teu grup, i prova-la amb l'exemple d'ús.</vf-text>
             <vf-prompts>
-                <vf-prompt title="/correu-families" desc="Redacta comunicats a famílies amb el to del centre, en valencià i castellà." label="Veure la skill">
+                <vf-prompt title="@correu-families" desc="Redacta comunicats a famílies amb el to del centre, en valencià i castellà." label="Veure la skill">
                     <vf-text><strong>Nom</strong>:</vf-text>
                     <vf-code language="plaintext">correu-families</vf-code>
                     <vf-text><strong>Descripció</strong>:</vf-text>
@@ -124,9 +124,9 @@
                         Exemple: si et dic «eixida al Bioparc dijous 12, 15 euros, portar esmorzar», l'assumpte en valencià serà «Eixida al Bioparc, dijous 12» i el cos indicarà el dia, el preu, com pagar-lo [si no ho sé, entre claudàtors] i que cal portar esmorzar.
                     </vf-code>
                     <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
-                    <vf-code language="plaintext">/correu-families Reunió de famílies de 3r A, dimarts 14 d'octubre a les 17 h a l'aula. Temes: normes de classe i eixides del trimestre.</vf-code>
+                    <vf-code language="plaintext">@correu-families Reunió de famílies de 3r A, dimarts 14 d'octubre a les 17 h a l'aula. Temes: normes de classe i eixides del trimestre.</vf-code>
                 </vf-prompt>
-                <vf-prompt title="/lectura-facil" desc="Adapta qualsevol text a lectura fàcil (frases curtes, una idea per frase, vocabulari freqüent) per a NEE o alumnat nouvingut." label="Veure la skill">
+                <vf-prompt title="@lectura-facil" desc="Adapta qualsevol text a lectura fàcil (frases curtes, una idea per frase, vocabulari freqüent) per a NEE o alumnat nouvingut." label="Veure la skill">
                     <vf-text><strong>Nom</strong>:</vf-text>
                     <vf-code language="plaintext">lectura-facil</vf-code>
                     <vf-text><strong>Descripció</strong>:</vf-text>
@@ -141,9 +141,9 @@
                         Exemple: «La fotosíntesi és el procés mitjançant el qual les plantes transformen l'energia lumínica en energia química.» → «Les plantes fabriquen el seu aliment. / Per a fer-ho, necessiten la llum del sol. / Este procés es diu fotosíntesi.»
                     </vf-code>
                     <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
-                    <vf-code language="plaintext">/lectura-facil [Enganxa el text que vols adaptar]</vf-code>
+                    <vf-code language="plaintext">@lectura-facil [Enganxa el text que vols adaptar]</vf-code>
                 </vf-prompt>
-                <vf-prompt title="/rubrica" desc="Genera rúbriques de 4 nivells amb el format del centre a partir d'una tasca." label="Veure la skill">
+                <vf-prompt title="@rubrica" desc="Genera rúbriques de 4 nivells amb el format del centre a partir d'una tasca." label="Veure la skill">
                     <vf-text><strong>Nom</strong>:</vf-text>
                     <vf-code language="plaintext">rubrica</vf-code>
                     <vf-text><strong>Descripció</strong>:</vf-text>
@@ -158,9 +158,9 @@
                         Exemple de fila: Claredat de l'exposició | Insuficient: costa seguir l'explicació i no hi ha un ordre. | Suficient-Bé: segueix un ordre, però amb salts. | Notable: explica amb ordre i amb algun exemple. | Excel·lent: explica amb ordre (introducció, desenvolupament i tancament) i usa exemples propis. | 30 %
                     </vf-code>
                     <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
-                    <vf-code language="plaintext">/rubrica Tasca: exposició oral de 3 minuts sobre un animal en perill d'extinció, 4t de primària.</vf-code>
+                    <vf-code language="plaintext">@rubrica Tasca: exposició oral de 3 minuts sobre un animal en perill d'extinció, 4t de primària.</vf-code>
                 </vf-prompt>
-                <vf-prompt title="/feedback" desc="Transforma notes ràpides del professor («bé el plantejament, falla l'ortografia») en un comentari d'avaluació constructiu (sense nom de l'alumne)." label="Veure la skill">
+                <vf-prompt title="@feedback" desc="Transforma notes ràpides del professor («bé el plantejament, falla l'ortografia») en un comentari d'avaluació constructiu (sense nom de l'alumne)." label="Veure la skill">
                     <vf-text><strong>Nom</strong>:</vf-text>
                     <vf-code language="plaintext">feedback</vf-code>
                     <vf-text><strong>Descripció</strong>:</vf-text>
@@ -175,9 +175,9 @@
                         Exemple: notes «bé el plantejament, falla l'ortografia» → «Has plantejat molt bé el problema: has identificat les dades i has triat l'operació correcta. Ara has de cuidar més l'ortografia, sobretot els accents. Abans d'entregar, rellig el text una vegada només per buscar faltes.»
                     </vf-code>
                     <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
-                    <vf-code language="plaintext">/feedback Bona estructura del treball, poques fonts consultades, conclusió massa curta.</vf-code>
+                    <vf-code language="plaintext">@feedback Bona estructura del treball, poques fonts consultades, conclusió massa curta.</vf-code>
                 </vf-prompt>
-                <vf-prompt title="/activitat-dua" desc="Proposa una mateixa activitat en 3 nivells (suport, estàndard, ampliació)." label="Veure la skill">
+                <vf-prompt title="@activitat-dua" desc="Proposa una mateixa activitat en 3 nivells (suport, estàndard, ampliació)." label="Veure la skill">
                     <vf-text><strong>Nom</strong>:</vf-text>
                     <vf-code language="plaintext">activitat-dua</vf-code>
                     <vf-text><strong>Descripció</strong>:</vf-text>
@@ -192,9 +192,9 @@
                         Exemple: objectiu «identificar les parts d'una planta». Suport: pega les etiquetes (arrel, tija, fulla, flor) en el dibuix. Estàndard: dibuixa una planta i escriu el nom i la funció de cada part. Ampliació: compara dues plantes del pati i explica per què les seues parts són diferents.
                     </vf-code>
                     <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
-                    <vf-code language="plaintext">/activitat-dua Activitat: resoldre problemes de proporcionalitat directa, 2n d'ESO, 1 sessió.</vf-code>
+                    <vf-code language="plaintext">@activitat-dua Activitat: resoldre problemes de proporcionalitat directa, 2n d'ESO, 1 sessió.</vf-code>
                 </vf-prompt>
-                <vf-prompt title="/rutina-pictos" desc="*Infantil*: convertix una rutina en passos curts per a pictogrames." label="Veure la skill">
+                <vf-prompt title="@rutina-pictos" desc="*Infantil*: convertix una rutina en passos curts per a pictogrames." label="Veure la skill">
                     <vf-text><strong>Nom</strong>:</vf-text>
                     <vf-code language="plaintext">rutina-pictos</vf-code>
                     <vf-text><strong>Descripció</strong>:</vf-text>
@@ -209,9 +209,39 @@
                         Exemple: rutina «eixir al pati» → 1. Fer la fila (fila) 2. Posar la jaqueta (jaqueta) 3. Eixir al pati (pati) 4. Jugar (jugar).
                     </vf-code>
                     <vf-text><strong>Exemple d'ús</strong> (en un xat de Gemini):</vf-text>
-                    <vf-code language="plaintext">/rutina-pictos Arribada a classe: penjar la motxilla, deixar l'agenda a la safata, rentar les mans i seure a l'assemblea.</vf-code>
+                    <vf-code language="plaintext">@rutina-pictos Arribada a classe: penjar la motxilla, deixar l'agenda a la safata, rentar les mans i seure a l'assemblea.</vf-code>
                 </vf-prompt>
             </vf-prompts>
+
+            <vf-title level="3">Exemple: resultat de @correu-families</vf-title>
+            <vf-text>Amb l'exemple d'ús de la targeta (<code>@correu-families Reunió de famílies de 3r A, dimarts 14 d'octubre a les 17 h a l'aula. Temes: normes de classe i eixides del trimestre.</code>), Gemini torna:</vf-text>
+            <vf-code language="plaintext">
+                Reunió de famílies de 3r A, dimarts 14 d'octubre
+
+                Benvolgudes famílies,
+
+                Us convidem a la reunió presencial de famílies de 3r A que tindrà lloc el dimarts 14 d'octubre, a les 17:00 h, a l'aula. Durant la trobada tractarem les normes de classe i les eixides programades per a aquest trimestre. La vostra assistència és molt important.
+
+                Atentament,
+
+                [Nom i càrrec]
+
+                Reunión de familias de 3.º A, martes 14 de octubre
+
+                Apreciadas familias:
+
+                Os invitamos a la reunión presencial de familias de 3.º A que tendrá lugar el martes 14 de octubre, a las 17:00 h, en el aula. Durante el encuentro trataremos las normas de clase y las salidas programadas para este trimestre. Vuestra asistencia es muy importante.
+
+                Atentamente,
+
+                [Nombre y cargo]
+            </vf-code>
+            <vf-text>Fixa't que respecta el que diuen les instruccions: assumpte, les dues llengües i la signatura entre claudàtors perquè no l'inventa.</vf-text>
+
+            <vf-title level="3">Exemple: resultat de @activitat-dua</vf-title>
+            <vf-text>Amb l'exemple d'ús de la targeta (<code>@activitat-dua Activitat: resoldre problemes de proporcionalitat directa, 2n d'ESO, 1 sessió.</code>), Gemini proposa «La recepta de la festa» en tres versions (suport, estàndard i ampliació) amb el mateix objectiu, i dues maneres d'avaluar-la. L'hem passada a format de fitxa, llesta per imprimir:</vf-text>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/exemples/activitat-dua-proporcionalitat.html" newtab><i class="fas fa-file-alt" aria-hidden="true"></i> Veure la fitxa «La recepta de la festa»</vf-btn>
+            <vf-text>Fixa't que les tres versions mantenen el mateix objectiu i el mateix context (la recepta), i només canvia l'ajuda i el repte: és el que demanen les instruccions de la skill.</vf-text>
 
             <vf-callout type="atencio">
                 <strong>Limitació</strong>: les skills no funcionen amb Canvas, Deep Research ni generació de vídeo/música; per a això, usa el xat normal.
