@@ -113,6 +113,9 @@
     padding: 0 !important;
     padding-block: 0 !important;
     display: grid;
+    /* La columna no pot créixer més que el bloc: les línies llargues fan
+       scroll dins del codi en lloc d'eixamplar la pàgina. */
+    grid-template-columns: minmax(0, 1fr);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 10px var(--shadow-soft);

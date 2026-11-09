@@ -134,6 +134,17 @@ a:hover {
   margin-top: calc(var(--menu-h) + var(--space-4));
 }
 
+/* Paraules molt llargues (URL, document.body.style.backgroundColor...) en
+   columnes estretes com els callouts en mòbil: es tallen en lloc
+   d'eixamplar la pàgina. */
+#content p,
+#content li,
+#content td,
+#content th,
+#content .vf-callout {
+  overflow-wrap: anywhere;
+}
+
 /* Classe d'escapament per si mai cal un element a tot l'ample de la
    finestra (una imatge, un iframe) dins d'un #content ara limitat. */
 .full-bleed {
@@ -203,9 +214,20 @@ a:hover {
   filter: brightness(1.1);
 }
 
+/* max-width:100% (estandard) en lloc de -webkit-fill-available, que
+   Firefox no enten: amb aixo una imatge mai fa mes ampla la pagina que el
+   seu contenidor. Els styles="max-width:400px" els converteix vf-img.js
+   en min(400px, 100%) perque tampoc desborden en mobil. */
 .vf-img {
-  max-width: -webkit-fill-available;
+  max-width: 100%;
+  height: auto;
   border-radius: var(--radius-sm);
+}
+
+/* Videos i iframes incrustats (YouTube...) amb width fixa en l'HTML */
+#content video,
+#content iframe {
+  max-width: 100%;
 }
 
 .vf-video {
@@ -219,7 +241,7 @@ a:hover {
 
 .vf-img-col {
   width: 100%;
-  min-width: 300px
+  min-width: min(300px, 100%);
 }
 
 .vf-img-half {
@@ -426,7 +448,7 @@ vf-text {
 /* VF-CODE */
 vf-code {
   display: block;
-  min-width: 250px;
+  min-width: min(250px, 100%);
   width: 100%;
   max-width: 68ch;
   border-radius: 8px;
@@ -832,7 +854,8 @@ vf-callout {
    prompt s'obri en un <dialog> modal */
 .vf-prompts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  /* min(): dins d'un pas o en mòbil, una targeta no fa la pàgina més ampla */
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: var(--space-3);
   margin: var(--space-3) 0 var(--space-4);
 }
@@ -914,6 +937,13 @@ vf-prompt {
   font-size: 1.25rem;
 }
 
+/* Els marges negatius de .row (Bootstrap) eixien del desplegable, que té
+   menys padding que els 15px que compensen, i eixamplaven la pàgina. */
+.vf-details-body .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .vf-prompt-dialog-body {
   padding: var(--space-3) var(--space-4) var(--space-4);
 }
@@ -963,6 +993,10 @@ vf-prompt {
 
 .vf-step-body {
   flex: 1 1 auto;
+  /* Sense min-width:0, un element flex no es fa mes estret que el seu
+     contingut: una imatge o un codi ample dins d'un pas estirava tota la
+     pagina (i el text de dalt) mes enlla de la pantalla. */
+  min-width: 0;
   padding-top: 4px;
 }
 

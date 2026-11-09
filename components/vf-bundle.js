@@ -1953,7 +1953,15 @@ class VFImage extends VFElement {
         
         processClasses(img, this.getAttribute('classes'));
         processStyles(img, this.getAttribute('styles'));
-        
+        // styles="max-width:400px" (o width fixa) en una pantalla mes
+        // estreta desbordava: el limit en px passa a ser min(px, 100%).
+        for (const prop of ['maxWidth', 'width']) {
+            const v = img.style[prop];
+            if (v && /^\d+(\.\d+)?px$/.test(v)) {
+                img.style[prop] = 'min(' + v + ', 100%)';
+            }
+        }
+
         if (link && link !== "") {
             const a = document.createElement('a');
             a.href = link;
