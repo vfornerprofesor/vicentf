@@ -69,10 +69,59 @@
 
         <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar al curs</vf-btn>
 
+        <div id="vf-index" levels="2,3"></div>
+
         <vf-content>
-            <vf-text>Veo (dins de Gemini, botó <i>Crear vídeo</i>, o a Flow per a edicions més llargues) genera clips de vídeo de pocs segons amb so a partir d'un text o d'una imatge. En el pla gratuït no està disponible o és molt limitat; amb Google AI Plus/Pro funciona per crèdits.</vf-text>
+            <vf-text>Veo (dins de Gemini, botó <i>Crear vídeo</i>, o a [Flow](https://labs.google/flow) per a edicions més llargues) genera clips de vídeo de pocs segons amb so a partir d'un text o d'una imatge. En el pla gratuït no està disponible o és molt limitat; amb Google AI Plus/Pro funciona per crèdits.</vf-text>
+            <vf-text>A l'app de Gemini, el model de vídeo ara és <strong>Gemini Omni</strong>, el successor de Veo: es fa servir igual i tot el que hi ha en esta pàgina funciona amb els dos.</vf-text>
             <!-- CAPTURA PENDENT -->
             <vf-img src="assets/formaciodocent/ia2/extra-veo-video.png" alt="Generació d'un vídeo amb Veo a Gemini"></vf-img>
+
+            <vf-title level="3">Escenes a partir d'un personatge</vf-title>
+            <vf-text>Amb la funció <strong>Ingredients</strong> (fins a 3 imatges de referència) el vídeo manté el mateix personatge, objecte o estil en totes les escenes. Puja la imatge del personatge (per exemple, el superheroi de la [seqüència de la sessió 2](formaciodocent/ia2/sessio2-imatge.html)) i, si vols, una de l'escenari i una d'un objecte. Cada escena és un clip curt: fes-les d'una en una amb el mateix personatge adjunt i després ajunta-les a Flow o a qualsevol editor de vídeo.</vf-text>
+            <vf-prompts>
+                <vf-prompt title="Infantil: el personatge explica la rutina" desc="Una escena per pas, sempre amb el mateix personatge adjunt.">
+                    <vf-code language="plaintext">
+                        Usa el personatge de la imatge adjunta i mantín exactament el mateix aspecte (cara, cabells, roba i colors).
+                        Vídeo de 8 segons, estil animació infantil: el personatge [obri l'aixeta i es mulla les mans] en un lavabo d'escola alegre, mira a càmera i somriu.
+                        Moviments lents i clars, perquè l'alumnat d'[infantil de 4 anys] puga imitar-los. So: [aigua corrent i música suau]. Sense text en pantalla.
+                    </vf-code>
+                    <vf-text>Escena següent, en el mateix xat: «Ara el mateix personatge [es posa sabó i es frega bé les mans]».</vf-text>
+                </vf-prompt>
+                <vf-prompt title="Primària: personatge, escenari i objecte" desc="Adjunta 3 imatges: el personatge, l'escenari i un objecte.">
+                    <vf-code language="plaintext">
+                        Vídeo de 8 segons amb les tres imatges adjuntes: el personatge de la imatge 1 entra a l'escenari de la imatge 2 ([la biblioteca de l'escola]) i troba l'objecte de la imatge 3 ([un llibre antic que brilla]).
+                        Mantín el personatge i l'estil exactament com a les imatges. El personatge diu, sorprés: «[Què amagarà este llibre?]». Música de misteri suau.
+                    </vf-code>
+                </vf-prompt>
+                <vf-prompt title="Secundària: escenes d'una narració" desc="Per a un booktrailer o la dramatització d'una lectura.">
+                    <vf-code language="plaintext">
+                        Usa el personatge de la imatge adjunta ([la protagonista de la lectura]) i mantín-lo igual en tot el vídeo.
+                        Vídeo de 8 segons, estil cinematogràfic: [la protagonista baixa les escales d'un soterrani fosc amb una llanterna; s'atura en sentir un soroll]. Pla mitjà, llum de llanterna, so de passos i silenci tens.
+                    </vf-code>
+                </vf-prompt>
+            </vf-prompts>
+
+            <vf-title level="3">Un avatar que diga el teu text</vf-title>
+            <vf-text>Hi ha dos camins, segons la durada del text:</vf-text>
+            <vf-list>
+                <li><vf-text><strong>Amb Veo, directament</strong>: escriu al prompt què diu el personatge, entre cometes, i si cal adjunta la seua imatge com a ingredient. Va bé per a frases curtes (un clip són uns 8 segons). Mira l'exemple de la mascota de l'aula, als usos.</vf-text></li>
+                <li><vf-text><strong>HeyGen o D-ID</strong> (textos més llargs): puges la imatge del personatge (feta amb Gemini) i un àudio, i l'eina mou els llavis al ritme de l'àudio. L'àudio el pots fer en valencià amb [ElevenLabs](formaciodocent/ia2/sessio2-audio.html), així no depens de les veus de l'eina. Tenen proves gratuïtes amb marca d'aigua i minuts limitats.</vf-text></li>
+            </vf-list>
+            <vf-steps>
+                <vf-step title="Crea el personatge">
+                    <vf-text>Amb Gemini, una imatge de cara, de front i amb fons senzill: «Il·lustració d'[una científica simpàtica amb bata i ulleres], de cintura cap amunt, mirant a càmera, fons llis, estil [animació 3D infantil]».</vf-text>
+                </vf-step>
+                <vf-step title="Fes l'àudio">
+                    <vf-text>A ElevenLabs, el text que ha de dir, amb etiquetes d'emoció si vols. Descarrega l'MP3.</vf-text>
+                </vf-step>
+                <vf-step title="Ajunta imatge i àudio">
+                    <vf-text>A [HeyGen](https://www.heygen.com) o [D-ID](https://www.d-id.com): crea un avatar a partir de la foto (<em>photo avatar</em>), tria l'opció de pujar el teu àudio en lloc d'escriure el text, genera el vídeo i descarrega'l.</vf-text>
+                </vf-step>
+            </vf-steps>
+            <vf-callout type="atencio">
+                Usa personatges inventats o la teua pròpia imatge, mai cares ni veus d'alumnes, famílies o companys. Revisa també les condicions d'ús de l'eina abans de pujar-hi res.
+            </vf-callout>
 
             <vf-title level="3">Usos</vf-title>
             <vf-prompts>
@@ -112,8 +161,9 @@
         </vf-content>
 
         <div class="d-flex flex-wrap justify-content-between">
-            <vf-btn classes="btn-short" link="formaciodocent/ia2/extra-cowork.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Claude Cowork</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/extra-autoformacio.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Autoformació</vf-btn>
             <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/extra-claude-code.html">Claude Code <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
         </div>
     </div>
     <div id="footer"></div>
