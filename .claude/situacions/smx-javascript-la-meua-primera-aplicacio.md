@@ -394,7 +394,7 @@ Totes són pràctiques, en l'ordinador, individuals i sense apunts, de 55 min, i
 
 ### Projecte final — La meua primera aplicació (sessions 51-62)
 
-Opció A (joc de preguntes) o opció B (llista de tasques) de la lliçó 26, amb els arxius HTML i CSS de partida. Tota la nota ve del JavaScript. Requisits mínims, que coincidixen amb el nivell Mitjà-baix de cada fila de la rúbrica:
+Opció A (joc de preguntes) o opció B (llista de tasques) de la lliçó 26, amb els arxius HTML i CSS de partida. Tota la nota ve del JavaScript. Requisits mínims, que coincidixen amb el nivell Mitjà-alt de cada fila de la rúbrica:
 
 - **Estructura**: `index.html`, `css/`, `js/main.js`, `js/model.js`, `js/tests.js`; noms en minúscules sense espais; s'obri amb Live Server.
 - **Funcionalitat**: tots els requisits de l'opció triada en la lliçó 26; totes les decisions funcionen i els bucles acaben sempre.
