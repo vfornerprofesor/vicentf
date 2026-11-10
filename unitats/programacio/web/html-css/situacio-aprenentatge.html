@@ -254,7 +254,7 @@
         <vf-title level="2">Seqüència de sessions</vf-title>
         <vf-content>
             <vf-text><strong>Estructura tipus d'una sessió de 55 min</strong>: 5 min d'arrencada (obrir VS Code i la carpeta de treball) · 10-15 min de demostració en directe, escrivint el codi davant de l'alumnat · 30-35 min d'exercicis · 5 min de tancament (desar i comprovar en el navegador). Les sessions de miniprojecte, prova i projecte no tenen demostració.</vf-text>
-            <vf-text>Després de cada prova hi ha una sessió de <strong>correcció i reforç</strong>: correcció comentada amb la rúbrica; qui ha tret Insuficient en alguna fila repetix exercicis bàsics d'eixe criteri amb ajuda del professor, i la resta fa exercicis d'ampliació.</vf-text>
+            <vf-text>Després de cada prova hi ha una sessió de <strong>correcció i reforç</strong>: correcció comentada amb la rúbrica; qui ha tret Baix o Mitjà-baix en alguna fila repetix exercicis bàsics d'eixe criteri amb ajuda del professor, i la resta fa exercicis d'ampliació.</vf-text>
             <vf-steps>
                 <vf-step>
                     <vf-title level="3" styles="margin-top:0">Bloc 1 — HTML (sessions 1-19)</vf-title>
@@ -761,7 +761,7 @@
             <vf-text>Dos exercicis sobre una mateixa pàgina HTML donada, a la qual l'alumnat escriu tot el CSS: enllaçar el full, text i caixes (selectors, contenidor centrat, una caixa amb el càlcul de la seua mida en <code>content-box</code> i <code>border-box</code> escrit en un comentari, targetes) i maquetació (barra de navegació i caixa centrada amb flexbox, targetes en fila que baixen de línia, galeria amb grid).</vf-text>
 
             <vf-title level="3">Projecte final — La meua web personal (sessions 47-62)</vf-title>
-            <vf-text>Quatre pàgines (<code>index</code>, <code>about</code>, <code>projects</code>, <code>contact</code>) amb els requisits mínims de la lliçó 16, que coincidixen amb el nivell Suficient de cada fila de la rúbrica:</vf-text>
+            <vf-text>Quatre pàgines (<code>index</code>, <code>about</code>, <code>projects</code>, <code>contact</code>) amb els requisits mínims de la lliçó 16, que coincidixen amb el nivell Mitjà-alt de cada fila de la rúbrica:</vf-text>
             <vf-list>
                 <li><strong>HTML</strong>: esquelet complet i <code>title</code> propi en cada pàgina; <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> i <code>footer</code> en les quatre; el mateix menú en totes i tots els enllaços funcionant; almenys 5 imatges en <code>images/</code> amb <code>alt</code> descriptiu; almenys una taula i una llista; formulari de contacte de 6 camps, tots amb <code>label</code>, i <code>required</code> en els obligatoris; com a màxim 3 errors en el validador sumant les quatre pàgines.</li>
                 <li><strong>CSS</strong>: un únic full extern i cap <code>style=</code>; <code>box-sizing: border-box</code>; <code>:root</code> amb almenys 5 variables; una Google Font; flexbox en el menú; grid o flexbox en la pàgina de projectes; almenys un <code>:hover</code> amb <code>transition</code>; <code>viewport</code> i almenys una consulta de mitjans; sense desplaçament horitzontal ni contingut tallat a 375 px.</li>
@@ -830,57 +830,57 @@
         <vf-content>
 
             <vf-title level="3">Rúbrica de la prova d'HTML</vf-title>
-            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1. Els llindars concrets de cada nivell (quants elements, quines parts) estan en la guia de correcció de la prova. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient.</vf-text>
+            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1. Els llindars concrets de cada nivell (quants elements, quines parts) estan en la guia de correcció de la prova. En les tres rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Baix és no arribar a Mitjà-baix. <strong>Mitjà-alt</strong> vol dir que ho fa bé, encara que siga amb errors (és el nivell de l'aprovat), i <strong>Alt</strong>, que ho fa complet; Mitjà-baix és que ho intenta però queda lluny. <strong>Valor de cada nivell</strong>: cada fila es puntua de 0 a 3 i val nivell × 10 ÷ 3, és a dir, Baix = 0 · Mitjà-baix = 3,33 · Mitjà-alt = 6,67 · Alt = 10. La columna "Pes en el criteri" diu quant compta l'indicador en la nota del seu criteri: <strong>1 = bàsic</strong>, <strong>2 = intermedi</strong>, <strong>3 = avançat</strong>, segons la profunditat amb què demostra el criteri (el projecte, on s'aplica en un lloc web real, és avançat). La nota del criteri és la mitjana ponderada de tots els seus indicadors, i la taula de traçabilitat dona el % que representa cada un.</vf-text>
             <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
-                            <th style="min-width: 180px;">Insuficient (1-4)</th>
-                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
-                            <th style="min-width: 180px;">Notable (7-8)</th>
-                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
+                            <th style="min-width: 180px;">Baix (0)</th>
+                            <th style="min-width: 180px;">Mitjà-baix (1)</th>
+                            <th style="min-width: 180px;">Mitjà-alt (2)</th>
+                            <th style="min-width: 180px;">Alt (3)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>PH1. Estructura del document</strong></td>
                             <td>CA1.1</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>Falten 3 o més elements de l'esquelet (doctype, <code>html</code> amb <code>lang</code>, <code>head</code>, <code>meta charset</code>, <code>title</code>, <code>body</code>) sumant les pàgines, o una etiqueta sense tancar o mal niada trenca la pàgina.</td>
-                            <td>Falten com a màxim 2 elements i les pàgines es veuen senceres.</td>
-                            <td>Esquelets complets, encapçalaments en ordre i noms de fitxer exactes.</td>
-                            <td>A més, codi sagnat, comentari d'autoria i caràcters especials escrits com a entitat.</td>
+                            <td>2 · intermedi</td>
+                            <td>No hi ha esquelet: falten la majoria dels elements (doctype, <code>html</code> amb <code>lang</code>, <code>head</code>, <code>meta charset</code>, <code>title</code>, <code>body</code>) o les pàgines no es veuen.</td>
+                            <td>Hi ha esquelet, però en falten 3 o més elements sumant les pàgines, o una etiqueta sense tancar o mal niada en trenca una part.</td>
+                            <td>Falten com a màxim 2 elements de l'esquelet i les pàgines es veuen senceres.</td>
+                            <td>Esquelets complets, encapçalaments en ordre, noms de fitxer exactes, codi sagnat i comentari d'autoria.</td>
                         </tr>
                         <tr>
                             <td><strong>PH2. Llistes, taules, imatges i enllaços</strong></td>
                             <td>CA1.2</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>Com a màxim una de les quatre parts (llista niada, taula, imatge, enllaços) es veu o funciona com demana l'enunciat.</td>
-                            <td>2 o 3 parts.</td>
+                            <td>2 · intermedi</td>
+                            <td>Cap de les quatre parts (llista niada, taula, imatge, enllaços) es veu o funciona com demana l'enunciat.</td>
+                            <td>Només una de les quatre parts.</td>
+                            <td>2 o 3 parts, o les 4 amb 3 o més defectes de codi.</td>
                             <td>Les 4 parts, amb com a màxim 2 defectes de codi (subllista fora del <code>li</code>, capçalera sense <code>th</code>, <code>colspan</code> incorrecte, <code>alt</code> no descriptiu, ruta absoluta, enllaç extern sense pestanya nova).</td>
-                            <td>Les 4 parts sense cap defecte.</td>
                         </tr>
                         <tr>
                             <td><strong>PH3. Formulari</strong></td>
                             <td>CA1.3</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>Menys de la meitat dels camps complets (<code>label</code> associada amb <code>for</code>/<code>id</code>, tipus adequat i <code>required</code> només on el demana l'enunciat).</td>
-                            <td>La meitat dels camps complets.</td>
-                            <td>Tots menys un.</td>
-                            <td>Tots, agrupats en <code>fieldset</code> amb <code>legend</code> i amb botó d'enviament dins del <code>form</code>.</td>
+                            <td>2 · intermedi</td>
+                            <td>Cap camp complet (<code>label</code> associada amb <code>for</code>/<code>id</code>, tipus adequat i <code>required</code> només on el demana l'enunciat).</td>
+                            <td>Algun camp complet, però menys de la meitat.</td>
+                            <td>Almenys la meitat dels camps complets.</td>
+                            <td>Tots els camps complets (en pot faltar un), agrupats en <code>fieldset</code> amb <code>legend</code> i amb el botó d'enviament dins del <code>form</code>.</td>
                         </tr>
                         <tr>
                             <td><strong>PH4. Semàntica i validació</strong></td>
                             <td>CA1.4</td>
-                            <td>25&nbsp;% del criteri</td>
-                            <td>Menys de 4 de les etiquetes semàntiques demanades en el seu lloc, o més de 6 errors en el validador sumant les pàgines.</td>
-                            <td>4 o 5 etiquetes ben posades i com a màxim 6 errors.</td>
-                            <td>Totes menys una com a molt, i com a màxim 2 errors.</td>
-                            <td>Totes en el seu lloc i en cada pàgina, cap <code>div</code> i 0 errors.</td>
+                            <td>1 · bàsic</td>
+                            <td>Cap de les etiquetes semàntiques demanades en el seu lloc.</td>
+                            <td>Alguna etiqueta en el seu lloc, però menys de la meitat, o més de 6 errors en el validador sumant les pàgines.</td>
+                            <td>Almenys la meitat de les etiquetes en el seu lloc i com a màxim 6 errors.</td>
+                            <td>Totes les etiquetes en el seu lloc (en pot faltar una) i com a màxim 2 errors.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -894,143 +894,143 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
-                            <th style="min-width: 180px;">Insuficient (1-4)</th>
-                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
-                            <th style="min-width: 180px;">Notable (7-8)</th>
-                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
+                            <th style="min-width: 180px;">Baix (0)</th>
+                            <th style="min-width: 180px;">Mitjà-baix (1)</th>
+                            <th style="min-width: 180px;">Mitjà-alt (2)</th>
+                            <th style="min-width: 180px;">Alt (3)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>PC1. Selectors i format del text</strong></td>
                             <td>CA2.1</td>
-                            <td>40&nbsp;% del criteri</td>
-                            <td>El full no està enllaçat, o menys de la meitat de les regles trien només els elements demanats i fan el que es demana.</td>
+                            <td>2 · intermedi</td>
+                            <td>Cap regla tria els elements demanats i fa el que es demana.</td>
+                            <td>Alguna regla correcta, però menys de la meitat, o el full no està enllaçat.</td>
                             <td>La meitat de les regles o més.</td>
-                            <td>Totes menys una com a molt.</td>
-                            <td>Totes, el <code>link</code> en el <code>head</code>, mides de text en <code>rem</code> i 0 errors en el validador de CSS.</td>
+                            <td>Totes menys una com a molt, el <code>link</code> en el <code>head</code>, mides de text en <code>rem</code> i 0 errors en el validador de CSS.</td>
                         </tr>
                         <tr>
                             <td><strong>PC2. Model de caixa</strong></td>
                             <td>CA2.2</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>No planteja el càlcul de la caixa o suma valors que no en formen part.</td>
-                            <td>El càlcul suma contingut, <code>padding</code> i <code>border</code>, encara que el resultat no isca.</td>
-                            <td>Caixa visible en <code>content-box</code> correcta en les dues dimensions i contenidor centrat amb <code>max-width</code> i <code>margin</code> automàtic.</td>
-                            <td>A més, l'àrea de contingut en <code>border-box</code> correcta i les targetes amb <code>padding</code>, <code>border-radius</code> i <code>box-shadow</code>.</td>
+                            <td>2 · intermedi</td>
+                            <td>No planteja el càlcul de la caixa ni centra el contenidor.</td>
+                            <td>Planteja el càlcul, però suma valors que no en formen part o se n'oblida, i el contenidor no està centrat.</td>
+                            <td>El càlcul suma contingut, <code>padding</code> i <code>border</code> (encara que algun resultat falle), o el contenidor està centrat amb <code>max-width</code> i <code>margin</code> automàtic.</td>
+                            <td>Caixa visible en <code>content-box</code> i àrea de contingut en <code>border-box</code> correctes, contenidor centrat i targetes amb <code>padding</code>, <code>border-radius</code> i <code>box-shadow</code>.</td>
                         </tr>
                         <tr>
                             <td><strong>PC3. Flexbox i grid</strong></td>
                             <td>CA2.3</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>Cap maquetació (barra, centrar, targetes, galeria) funciona del tot i com a màxim una funciona amb defectes.</td>
-                            <td>Una funciona del tot, o dues o més funcionen amb defectes (alineació, <code>gap</code>, <code>wrap</code>, nombre de columnes, propietat en el fill).</td>
-                            <td>La meitat o més funcionen del tot.</td>
-                            <td>Totes funcionen del tot.</td>
+                            <td>2 · intermedi</td>
+                            <td>Cap maquetació (barra, centrar, targetes, galeria) funciona.</td>
+                            <td>Una maquetació funciona, encara que siga amb defectes (alineació, <code>gap</code>, <code>wrap</code>, nombre de columnes, propietat en el fill).</td>
+                            <td>La meitat de les maquetacions o més funcionen, encara que siga amb defectes.</td>
+                            <td>Totes funcionen del tot (una pot tindre algun defecte).</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <vf-title level="3">Rúbrica del projecte</vf-title>
-            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1 i RA2. Es comprova obrint el lloc en el navegador a 375, 768 i 1200 px, passant el validador a les quatre pàgines i mirant el codi. El nivell Suficient de cada fila són els requisits mínims del projecte; cada nivell superior inclou l'anterior.</vf-text>
+            <vf-text><strong>Rúbrica de 4 nivells</strong>, una fila per criteri de RA1 i RA2. Es comprova obrint el lloc en el navegador a 375, 768 i 1200 px, passant el validador a les quatre pàgines i mirant el codi. El nivell Mitjà-alt de cada fila són els requisits mínims del projecte; cada nivell superior inclou l'anterior.</vf-text>
             <!-- Rubrica: amplades minimes perque, en pantalles estretes, faça scroll horitzontal dins de .table-responsive en lloc d'aixafar les columnes de nivell. -->
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
-                            <th style="min-width: 180px;">Insuficient (1-4)</th>
-                            <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
-                            <th style="min-width: 180px;">Notable (7-8)</th>
-                            <th style="min-width: 180px;">Excel·lent (9-10)</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
+                            <th style="min-width: 180px;">Baix (0)</th>
+                            <th style="min-width: 180px;">Mitjà-baix (1)</th>
+                            <th style="min-width: 180px;">Mitjà-alt (2)</th>
+                            <th style="min-width: 180px;">Alt (3)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>R1. Estructura i arxius</strong></td>
                             <td>CA1.1</td>
-                            <td>50&nbsp;% del criteri</td>
+                            <td>3 · avançat</td>
+                            <td>Falten la majoria de pàgines o la majoria d'elements de l'esquelet.</td>
                             <td>Falta alguna de les 4 pàgines, algun esquelet està incomplet (sense doctype, <code>lang</code>, <code>charset</code> o <code>title</code>) o alguna pàgina no té <code>title</code> propi.</td>
                             <td>Les 4 pàgines amb esquelet complet i un <code>title</code> propi en cada una.</td>
-                            <td>A més, encapçalaments en ordre (un <code>h1</code> per pàgina, sense saltar nivells) i noms d'arxius i carpetes en minúscules, sense espais ni accents.</td>
-                            <td>A més, sagnat uniforme i comentaris que separen les parts de cada pàgina.</td>
+                            <td>A més, encapçalaments en ordre (un <code>h1</code> per pàgina, sense saltar nivells), noms d'arxius i carpetes en minúscules sense espais ni accents, sagnat uniforme i comentaris que separen les parts de cada pàgina.</td>
                         </tr>
                         <tr>
                             <td><strong>R2. Llistes, enllaços, imatges i taula</strong></td>
                             <td>CA1.2</td>
-                            <td>50&nbsp;% del criteri</td>
+                            <td>3 · avançat</td>
+                            <td>No hi ha menú que funcione, ni imatges en <code>images/</code>, ni taula ni llista.</td>
                             <td>El menú no és igual o falla en alguna pàgina, hi ha menys de 5 imatges en <code>images/</code>, alguna imatge no té <code>alt</code> descriptiu, o falta la taula o la llista.</td>
                             <td>El mateix menú en les 4 pàgines amb tots els enllaços funcionant; almenys 5 imatges en <code>images/</code> amb <code>alt</code> descriptiu; almenys una taula i una llista.</td>
-                            <td>A més, taula amb fila de capçalera en <code>th</code> i enllaços externs en pestanya nova.</td>
-                            <td>A més, <code>caption</code> en la taula o almenys una <code>figure</code> amb <code>figcaption</code>.</td>
+                            <td>A més, taula amb fila de capçalera en <code>th</code>, enllaços externs en pestanya nova i <code>caption</code> en la taula o almenys una <code>figure</code> amb <code>figcaption</code>.</td>
                         </tr>
                         <tr>
                             <td><strong>R3. Formulari de contacte</strong></td>
                             <td>CA1.3</td>
-                            <td>50&nbsp;% del criteri</td>
+                            <td>3 · avançat</td>
+                            <td>No hi ha formulari, o cap camp té <code>label</code>.</td>
                             <td>Menys de 6 camps, algun camp sense <code>label</code> o cap camp obligatori amb <code>required</code>.</td>
                             <td>6 camps, tots amb <code>label</code>, i <code>required</code> en els obligatoris.</td>
-                            <td>A més, <code>label</code> associada amb <code>for</code>/<code>id</code> i almenys 3 tipus d'entrada adequats al contingut (p. ex. <code>email</code>, <code>tel</code>, <code>select</code>, <code>textarea</code>).</td>
-                            <td>A més, camps agrupats amb <code>fieldset</code> i <code>legend</code> i validació coherent (<code>type</code>, <code>minlength</code>).</td>
+                            <td>A més, <code>label</code> associada amb <code>for</code>/<code>id</code>, almenys 3 tipus d'entrada adequats al contingut (p. ex. <code>email</code>, <code>tel</code>, <code>select</code>, <code>textarea</code>), camps agrupats amb <code>fieldset</code> i <code>legend</code> i validació coherent (<code>type</code>, <code>minlength</code>).</td>
                         </tr>
                         <tr>
                             <td><strong>R4. Semàntica i validació</strong></td>
                             <td>CA1.4</td>
-                            <td>75&nbsp;% del criteri</td>
+                            <td>3 · avançat</td>
+                            <td>Cap de les etiquetes <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> o <code>footer</code>: tot està fet amb <code>div</code>.</td>
                             <td>Falta alguna de les etiquetes <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> o <code>footer</code> en alguna pàgina, o el validador dona més de 3 errors sumant les 4 pàgines.</td>
                             <td><code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code> i <code>footer</code> en les 4 pàgines i com a màxim 3 errors en el validador sumant les 4 pàgines.</td>
-                            <td>A més, 0 errors en el validador i una <code>section</code> per a cada bloc de contingut, amb el seu encapçalament.</td>
-                            <td>A més, <code>article</code> per al contingut independent (p. ex. cada projecte) i <code>div</code> només per a maquetar.</td>
+                            <td>A més, 0 errors en el validador, una <code>section</code> per a cada bloc de contingut amb el seu encapçalament, <code>article</code> per al contingut independent (p. ex. cada projecte) i <code>div</code> només per a maquetar.</td>
                         </tr>
                         <tr>
                             <td><strong>R5. Selectors, text i colors</strong></td>
                             <td>CA2.1</td>
-                            <td>60&nbsp;% del criteri</td>
+                            <td>3 · avançat</td>
+                            <td>Sense full d'estil extern: tots els estils van dins de l'HTML, o no n'hi ha.</td>
                             <td>Algun estil dins de l'HTML (<code>style=</code> o <code>&lt;style&gt;</code>), més d'un full d'estil o sense Google Font.</td>
                             <td>Un únic full extern enllaçat des de les 4 pàgines, cap estil dins de l'HTML i una Google Font aplicada.</td>
-                            <td>A més, selectors de classe i descendent (no només d'etiqueta), interlineat ≥ 1,5 i text llegible sobre tots els fons.</td>
-                            <td>A més, un esquema de 3-4 colors aplicat igual en tot el lloc i sense regles repetides ni contradictòries.</td>
+                            <td>A més, selectors de classe i descendent (no només d'etiqueta), interlineat ≥ 1,5, text llegible sobre tots els fons i un esquema de 3-4 colors aplicat igual en tot el lloc, sense regles repetides ni contradictòries.</td>
                         </tr>
                         <tr>
                             <td><strong>R6. Model de caixa</strong></td>
                             <td>CA2.2</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>Sense <code>box-sizing: border-box</code>, contingut enganxat a les vores o blocs que se superposen.</td>
+                            <td>3 · avançat</td>
+                            <td>Sense <code>box-sizing: border-box</code>, contingut enganxat a les vores i blocs que se superposen.</td>
+                            <td>Sense <code>box-sizing: border-box</code>, contingut enganxat a alguna vora o algun bloc superposat.</td>
                             <td><code>box-sizing: border-box</code>; tot el contingut separat de les vores amb <code>padding</code> o <code>margin</code> i cap bloc superposat.</td>
-                            <td>A més, contenidor centrat d'amplària màxima i almenys un bloc amb <code>border-radius</code> i <code>box-shadow</code>.</td>
-                            <td>A més, els mateixos espais en elements equivalents de les 4 pàgines.</td>
+                            <td>A més, contenidor centrat d'amplària màxima, almenys un bloc amb <code>border-radius</code> i <code>box-shadow</code>, i els mateixos espais en elements equivalents de les 4 pàgines.</td>
                         </tr>
                         <tr>
                             <td><strong>R7. Flexbox i grid</strong></td>
                             <td>CA2.3</td>
-                            <td>50&nbsp;% del criteri</td>
-                            <td>El menú no usa flexbox o la pàgina de projectes no usa ni grid ni flexbox (p. ex. maquetada amb taules o espais).</td>
+                            <td>3 · avançat</td>
+                            <td>Ni el menú ni la pàgina de projectes usen flexbox o grid (p. ex. maquetats amb taules o espais).</td>
+                            <td>El menú no usa flexbox, la pàgina de projectes no usa ni grid ni flexbox, o hi ha elements superposats.</td>
                             <td>Menú amb flexbox i pàgina de projectes amb grid o flexbox, sense elements superposats.</td>
-                            <td>A més, menú alineat amb <code>justify-content</code>, <code>align-items</code> i <code>gap</code>, i targetes de projectes alineades amb imatges de la mateixa altura.</td>
-                            <td>A més, justifica en la presentació per què ha triat flexbox o grid en cada cas.</td>
+                            <td>A més, menú alineat amb <code>justify-content</code>, <code>align-items</code> i <code>gap</code>, targetes de projectes alineades amb imatges de la mateixa altura, i justifica en la presentació per què ha triat flexbox o grid en cada cas.</td>
                         </tr>
                         <tr>
                             <td><strong>R8. Disseny adaptable</strong></td>
                             <td>CA2.4</td>
-                            <td>100&nbsp;% del criteri</td>
-                            <td>Sense <code>viewport</code>, sense cap consulta de mitjans, o a 375 px hi ha desplaçament horitzontal o contingut tallat.</td>
+                            <td>3 · avançat</td>
+                            <td>Sense <code>viewport</code> i sense cap consulta de mitjans.</td>
+                            <td>Falta el <code>viewport</code> o la consulta de mitjans, o a 375 px hi ha desplaçament horitzontal o contingut tallat.</td>
                             <td><code>viewport</code>, almenys una consulta de mitjans i, a 375 px, cap desplaçament horitzontal ni contingut tallat.</td>
-                            <td>A més, correcte a 768 i 1200 px, i el menú i els projectes canvien de disposició segons l'amplària.</td>
-                            <td>A més, escrit en <em>mobile first</em> (<code>min-width</code>).</td>
+                            <td>A més, correcte a 768 i 1200 px, el menú i els projectes canvien de disposició segons l'amplària, i escrit en <em>mobile first</em> (<code>min-width</code>).</td>
                         </tr>
                         <tr>
                             <td><strong>R9. Bones pràctiques, lliurament i presentació</strong></td>
                             <td>CA2.5</td>
-                            <td>100&nbsp;% del criteri</td>
+                            <td>3 · avançat</td>
+                            <td>No lliura el projecte o no el presenta.</td>
                             <td>Menys de 5 variables en <code>:root</code>, cap <code>:hover</code> amb <code>transition</code>, zip o README incomplets, lliurament fora de termini, o presentació sense la cosa de què està orgullós o la que milloraria.</td>
                             <td><code>:root</code> amb almenys 5 variables; almenys un <code>:hover</code> amb <code>transition</code>; zip amb el nom correcte i README complet; presentació en 3 min amb una cosa de què està orgullós i una que milloraria.</td>
-                            <td>A més, tots els colors en variables i el CSS dividit en seccions comentades.</td>
-                            <td>A més, respon bé la pregunta del professor sobre el seu codi.</td>
+                            <td>A més, tots els colors en variables, el CSS dividit en seccions comentades i respon bé la pregunta del professor sobre el seu codi.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1048,7 +1048,7 @@
                             <th>Pes dins del RA</th>
                             <th>Pes en la SA</th>
                             <th>Activitat(s)</th>
-                            <th>Indicadors (instrument) i pes dins del criteri</th>
+                            <th>Indicadors (instrument): pes (1-3) i % dins del criteri</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1057,68 +1057,68 @@
                             <td>25&nbsp;%</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçons 1-3, miniprojecte 1, projecte</td>
-                            <td>PH1 (prova d'HTML) 50&nbsp;% · R1 (projecte) 50&nbsp;%</td>
+                            <td>PH1 (prova d'HTML): pes 2, 40&nbsp;% · R1 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.2</td>
                             <td>35&nbsp;%</td>
                             <td>14&nbsp;%</td>
                             <td>Lliçons 4-6, miniprojecte 1, projecte</td>
-                            <td>PH2 (prova d'HTML) 50&nbsp;% · R2 (projecte) 50&nbsp;%</td>
+                            <td>PH2 (prova d'HTML): pes 2, 40&nbsp;% · R2 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.3</td>
                             <td>20&nbsp;%</td>
                             <td>8&nbsp;%</td>
                             <td>Lliçó 7, miniprojecte 1, projecte</td>
-                            <td>PH3 (prova d'HTML) 50&nbsp;% · R3 (projecte) 50&nbsp;%</td>
+                            <td>PH3 (prova d'HTML): pes 2, 40&nbsp;% · R3 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.4</td>
                             <td>20&nbsp;%</td>
                             <td>8&nbsp;%</td>
                             <td>Lliçó 8, projecte</td>
-                            <td>PH4 (prova d'HTML) 25&nbsp;% · R4 (projecte) 75&nbsp;%</td>
+                            <td>PH4 (prova d'HTML): pes 1, 25&nbsp;% · R4 (projecte): pes 3, 75&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.1</td>
                             <td>25&nbsp;%</td>
                             <td>15&nbsp;%</td>
                             <td>Lliçons 9-10, miniprojecte 2, projecte</td>
-                            <td>PC1 (prova de CSS) 40&nbsp;% · R5 (projecte) 60&nbsp;%</td>
+                            <td>PC1 (prova de CSS): pes 2, 40&nbsp;% · R5 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.2</td>
                             <td>20&nbsp;%</td>
                             <td>12&nbsp;%</td>
                             <td>Lliçó 11, miniprojecte 2, projecte</td>
-                            <td>PC2 (prova de CSS) 50&nbsp;% · R6 (projecte) 50&nbsp;%</td>
+                            <td>PC2 (prova de CSS): pes 2, 40&nbsp;% · R6 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.3</td>
                             <td>30&nbsp;%</td>
                             <td>18&nbsp;%</td>
                             <td>Lliçons 12-13, projecte</td>
-                            <td>PC3 (prova de CSS) 50&nbsp;% · R7 (projecte) 50&nbsp;%</td>
+                            <td>PC3 (prova de CSS): pes 2, 40&nbsp;% · R7 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.4</td>
                             <td>20&nbsp;%</td>
                             <td>12&nbsp;%</td>
                             <td>Lliçó 14, projecte</td>
-                            <td>R8 (projecte) 100&nbsp;%</td>
+                            <td>R8 (projecte): pes 3, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.5</td>
                             <td>5&nbsp;%</td>
                             <td>3&nbsp;%</td>
                             <td>Lliçó 15, projecte i presentació</td>
-                            <td>R9 (projecte) 100&nbsp;%</td>
+                            <td>R9 (projecte): pes 3, 100&nbsp;%</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <vf-text><strong>Nota de cada criteri</strong> = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA1.4 = 0,25·PH4 + 0,75·R4.</vf-text>
+            <vf-text><strong>Nota de cada criteri</strong> = Σ (nota de l'indicador × pes) ÷ Σ pesos dels seus indicadors. Per exemple, CA1.1 = (2·PH1 + 3·R1) ÷ 5; CA1.4 = (1·PH4 + 3·R4) ÷ 4. Mentre un indicador encara no s'ha avaluat (per exemple, el del projecte), la nota provisional del criteri és la mitjana ponderada dels que ja s'han avaluat.</vf-text>
             <vf-text><strong>Nota de RA1</strong> = 0,25·CA1.1 + 0,35·CA1.2 + 0,20·CA1.3 + 0,20·CA1.4</vf-text>
             <vf-text><strong>Nota de RA2</strong> = 0,25·CA2.1 + 0,20·CA2.2 + 0,30·CA2.3 + 0,20·CA2.4 + 0,05·CA2.5</vf-text>
             <vf-text><strong>Nota de la SA</strong> = 0,40·RA1 + 0,60·RA2</vf-text>
