@@ -47,6 +47,7 @@ Requisitos de la rúbrica:
 - Descriptores **observables y medibles** («usa almenys 3 etiquetes semàntiques: header, main, footer»), nunca vagos («ho fa bé»).
 - Cada ítem con **peso %** (suman 100 %) y, si viene de una SA, su **criterio** (`CE1.2`, `CA5.3`…).
 - Fórmula de la nota escrita: nota = Σ valor del nivel × peso.
+- **Si la actividad sale de una SA con evaluación competencial** (indicadores con «Pes en el criteri» 1 · bàsic / 2 · intermedi / 3 · avançat): copia ese peso 1-3 en la columna Pes, y en lugar de una nota de la actividad da la **nota de cada criterio** que toque: media ponderada (Σ valor × pes ÷ Σ pesos) de sus indicadores evaluados en esta entrega. Si el criterio también tiene indicadores en otras actividades ya corregidas, dilo y, si dispones de esas notas, calcula la nota del criterio con todos. Una nota global de la actividad solo si el profesor la pide.
 
 Formato de `avaluacio.md` (en **valenciano**, como el resto del material del sitio):
 

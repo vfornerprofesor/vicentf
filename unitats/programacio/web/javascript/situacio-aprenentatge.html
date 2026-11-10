@@ -1057,14 +1057,14 @@
                             <td>4.1, 4.2</td>
                             <td>+ 4.3-4.7</td>
                             <td>—</td>
-                            <td>CA2.4, CA5.8</td>
+                            <td>CA2.4, CA5.7, CA5.8</td>
                         </tr>
                         <tr>
                             <td>5. Decisions</td>
                             <td>5.1, 5.2</td>
                             <td>+ 5.3-5.7</td>
                             <td>—</td>
-                            <td>CA3.1</td>
+                            <td>CA3.1, CA3.3</td>
                         </tr>
                         <tr>
                             <td>6. Bucles</td>
@@ -1078,7 +1078,7 @@
                             <td>7.1-7.3</td>
                             <td>+ 7.4-7.6</td>
                             <td>7.7</td>
-                            <td>CA2.2, CA2.6, CA3.5</td>
+                            <td>CA2.2, CA2.6, CA3.3, CA3.5</td>
                         </tr>
                         <tr>
                             <td>8. Depuració i assercions</td>
@@ -1470,7 +1470,7 @@
         <!-- ============================================================ -->
         <vf-title level="2">Indicadors d'èxit</vf-title>
         <vf-content>
-            <vf-text>En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. La columna "Pes" és el pes de l'indicador dins del seu criteri, excepte en la rúbrica del bloc 1, on és el pes en la nota de la prova.</vf-text>
+            <vf-text>En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen <strong>totes</strong> les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. La columna "Pes en el criteri" diu quant compta l'indicador en la nota del seu criteri: <strong>1 = bàsic</strong>, <strong>2 = intermedi</strong>, <strong>3 = avançat</strong>, segons la profunditat amb què demostra el criteri (normalment, el projecte, on el criteri s'aplica en una aplicació real, és avançat). Un criteri pot tindre indicadors en diverses rúbriques: la seua nota és la mitjana ponderada de tots ells, i la taula de traçabilitat dona el % que representa cada indicador.</vf-text>
             <vf-text><strong>Una rúbrica per bloc.</strong> Les proves són acumulatives, però cada una es qualifica només amb la rúbrica del seu bloc. Les rúbriques no depenen dels exercicis d'una prova concreta: on diuen "la meitat" o "tots menys un", la guia de correcció de cada prova dona els números concrets.</vf-text>
             <vf-text><strong>Blocs pendents.</strong> Si un alumne té un bloc anterior pendent, a la prova següent se li aplica la rúbrica del bloc actual i, a més, la rúbrica de cada bloc pendent a la mateixa prova; la guia de correcció de cada prova diu on es veu cada indicador dels blocs anteriors. Les noves notes dels indicadors del bloc pendent substituïxen les de la seua prova.</vf-text>
 
@@ -1481,8 +1481,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -1493,7 +1493,7 @@
                         <tr>
                             <td><strong>P1.1. Variables</strong></td>
                             <td>CA1.5</td>
-                            <td>7,5&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Quasi no usa variables: les lectures i els resultats van directament dins dels càlculs i dels missatges.</td>
                             <td>Les lectures en variables, però 3 o més resultats es tornen a calcular o van escrits dins del missatge.</td>
                             <td>Les lectures i els resultats en variables, amb com a màxim 2 càlculs repetits.</td>
@@ -1502,7 +1502,7 @@
                         <tr>
                             <td><strong>P1.2. Constants i literals</strong></td>
                             <td>CA1.6</td>
-                            <td>7,5&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Les dades fixes de l'enunciat van escrites com a literal dins dels càlculs.</td>
                             <td>Algunes dades fixes en constants, però 3 o més valors fixos escrits com a literal o repetits.</td>
                             <td>Les dades fixes en constants, amb com a màxim 2 literals repetits. Pot usar <code>let</code> on caldria <code>const</code>.</td>
@@ -1511,7 +1511,7 @@
                         <tr>
                             <td><strong>P1.3. Tipus de dades</strong></td>
                             <td>CA1.4</td>
-                            <td>5&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Cap <code>typeof</code>, o els que hi ha no corresponen a les dades demanades.</td>
                             <td><code>typeof</code> d'almenys la meitat de les dades demanades.</td>
                             <td><code>typeof</code> de totes les dades demanades menys una.</td>
@@ -1520,7 +1520,7 @@
                         <tr>
                             <td><strong>P1.4. Entrada i conversions</strong></td>
                             <td>CA1.8</td>
-                            <td>15&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Falten lectures o més de la meitat de les numèriques es fan servir com a text.</td>
                             <td>Totes o quasi totes les lectures; almenys la meitat de les numèriques convertides.</td>
                             <td>Totes les lectures menys una i les numèriques convertides.</td>
@@ -1529,7 +1529,7 @@
                         <tr>
                             <td><strong>P1.5. Càlculs</strong></td>
                             <td>CA1.7</td>
-                            <td>25&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys del 40&nbsp;% dels punts dels apartats de càlcul (aritmètica, <code>%</code>, percentatges, part entera i decimal).</td>
                             <td>40-64&nbsp;%.</td>
                             <td>65-89&nbsp;%.</td>
@@ -1538,7 +1538,7 @@
                         <tr>
                             <td><strong>P1.6. Comparacions i operadors lògics</strong></td>
                             <td>CA1.7</td>
-                            <td>10&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Menys del 40&nbsp;% dels punts dels apartats de comparacions i operadors lògics.</td>
                             <td>40-64&nbsp;%.</td>
                             <td>65-89&nbsp;%.</td>
@@ -1547,7 +1547,7 @@
                         <tr>
                             <td><strong>P1.7. Segon exercici</strong></td>
                             <td>CA1.7</td>
-                            <td>20&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys del 40&nbsp;% dels punts dels apartats del segon exercici de la prova.</td>
                             <td>40-64&nbsp;%.</td>
                             <td>65-89&nbsp;%.</td>
@@ -1556,7 +1556,7 @@
                         <tr>
                             <td><strong>P1.8. Eixida en la pàgina</strong></td>
                             <td>CA1.1</td>
-                            <td>10&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Mostra menys de la meitat dels resultats demanats.</td>
                             <td>En mostra almenys la meitat.</td>
                             <td>Mostra quasi tots els resultats (en falten 1-2).</td>
@@ -1565,9 +1565,9 @@
                     </tbody>
                 </table>
             </div>
-            <vf-text><strong>Pes en la rúbrica del bloc 1:</strong> és el pes de l'indicador en la nota de la prova. El pes dins de cada criteri és el de la taula de criteris. <strong>Nota de la prova</strong> = Σ valor del nivell × pes, amb Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5.</vf-text>
+            <vf-text><strong>Valor de cada nivell:</strong> Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5 (el mateix en totes les rúbriques). La nota informativa de la prova del bloc 1 es va calcular amb aquests pesos dins de la prova: P1.1 i P1.2 7,5&nbsp;% · P1.3 5&nbsp;% · P1.4 15&nbsp;% · P1.5 25&nbsp;% · P1.6 10&nbsp;% · P1.7 20&nbsp;% · P1.8 10&nbsp;%. Per a la qualificació compten els pesos en el criteri.</vf-text>
             <vf-text><strong>Punts per apartat (P1.5-P1.7):</strong> 1 = correcte · 0,75 = correcte amb un error lleu (límit <code>&gt;</code>/<code>&gt;=</code>, <code>==</code> en lloc de <code>===</code>, falta un cas límit) · 0,5 = la idea està ben plantejada però té un error important (funció o variable equivocada, precedència, sintaxi, text sense convertir) · 0 = no hi és o la idea no és correcta. La guia de correcció de cada prova dona la llista d'apartats.</vf-text>
-            <vf-text><strong>Criteri de correcció:</strong> és la primera prova de programació. Es valora tot el que s'ha escrit, encara que no s'execute: una línia amb la idea correcta puntua encara que tinga un error de sintaxi, i un error que atura el programa no arrossega les línies de després. No es valoren l'organització en fitxers, els <code>console.log</code>, els comentaris ni les marques de bloc: CA1.2, CA1.3 i CA1.9 s'avaluen en el projecte (R1, R2 i R10). No usar <code>const</code> per als resultats no baixa de Notable P1.2.</vf-text>
+            <vf-text><strong>Criteri de correcció:</strong> és la primera prova de programació. Es valora tot el que s'ha escrit, encara que no s'execute: una línia amb la idea correcta puntua encara que tinga un error de sintaxi, i un error que atura el programa no arrossega les línies de després. No es valoren l'organització en fitxers, els <code>console.log</code>, els comentaris ni les marques de bloc: CA1.2, CA1.3 i CA1.9 s'avaluen en el projecte (R1, R2 i R10), i els blocs del programa de CA1.1 també en el projecte (R26). No usar <code>const</code> per als resultats no baixa de Notable P1.2.</vf-text>
             <vf-text><strong>Arrodoniment:</strong> <code>Math.round</code>, <code>Math.floor</code> i <code>toFixed</code> no són obligatoris. No es penalitza no arrodonir ni no traure la part entera; <code>parseInt(x)</code> i <code>x - parseInt(x)</code> compten com a correctes. Un apartat que no hi és gens continua valent 0.</vf-text>
 
             <vf-title level="3">Rúbrica del bloc 2 (RA3)</vf-title>
@@ -1577,8 +1577,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -1589,7 +1589,7 @@
                         <tr>
                             <td><strong>P3.1. Selecció</strong></td>
                             <td>CA3.1</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat dels casos de prova de les decisions correctes.</td>
                             <td>Almenys la meitat.</td>
                             <td>Tots menys un.</td>
@@ -1598,7 +1598,7 @@
                         <tr>
                             <td><strong>P3.2. Repetició</strong></td>
                             <td>CA3.2</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Algun bucle no acaba, no recorre tots els elements o no acumula.</td>
                             <td>Recorre i acumula, però el resultat (o la taula de traça) té errors.</td>
                             <td>Resultat correcte; si hi ha taula de traça, amb un error com a màxim.</td>
@@ -1607,7 +1607,7 @@
                         <tr>
                             <td><strong>P3.3. Salt</strong></td>
                             <td>CA3.3</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No ix del bucle o de la funció quan cal.</td>
                             <td>Ix, però tracta algun element de més o executa codi que no tocava.</td>
                             <td>Ix en el moment just amb <code>break</code> o <code>return</code>.</td>
@@ -1616,7 +1616,7 @@
                         <tr>
                             <td><strong>P3.4. Programa amb diverses estructures</strong></td>
                             <td>CA3.5</td>
-                            <td>30&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>El programa no s'executa o no dona cap resultat.</td>
                             <td>S'executa i combina selecció i repetició, però falla en algun cas de prova.</td>
                             <td>Correcte en tots els casos de prova.</td>
@@ -1625,7 +1625,7 @@
                         <tr>
                             <td><strong>P3.5. Prova i depuració</strong></td>
                             <td>CA3.6</td>
-                            <td>30&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat dels errors del codi donat corregits.</td>
                             <td>Almenys la meitat.</td>
                             <td>Tots menys un.</td>
@@ -1634,7 +1634,7 @@
                         <tr>
                             <td><strong>P3.6. Creació d'excepcions</strong></td>
                             <td>CA3.8</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No llança cap error amb dades no vàlides.</td>
                             <td>Llança <code>new Error</code> amb un missatge clar en almenys un cas.</td>
                             <td>Un missatge diferent per a cada cas no vàlid.</td>
@@ -1643,7 +1643,7 @@
                         <tr>
                             <td><strong>P3.7. Control d'excepcions</strong></td>
                             <td>CA3.4</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Sense <code>try/catch</code> on cal, o el programa es trenca.</td>
                             <td><code>try/catch</code> on cal i el programa no es trenca.</td>
                             <td>A més, mostra <code>error.message</code> a l'usuari.</td>
@@ -1652,7 +1652,7 @@
                         <tr>
                             <td><strong>P3.8. Assercions</strong></td>
                             <td>CA3.9</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys assercions de les demanades o mal plantejades.</td>
                             <td>Les assercions demanades, correctes, amb casos adequats.</td>
                             <td>A més, troba l'error a partir de l'asserció que falla i corregix la funció.</td>
@@ -1661,7 +1661,7 @@
                         <tr>
                             <td><strong>P3.9. Documentació</strong></td>
                             <td>CA3.7</td>
-                            <td>30&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Cap comentari de la funció.</td>
                             <td>Comentari que diu què fa la funció.</td>
                             <td>Format JSDoc amb <code>@param</code> i <code>@returns</code>.</td>
@@ -1678,8 +1678,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -1690,7 +1690,7 @@
                         <tr>
                             <td><strong>P6.1. Matriu</strong></td>
                             <td>CA6.1</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No accedix a les cel·les amb <code>[fila][columna]</code>.</td>
                             <td>Recorre o mostra la matriu amb dos bucles niats.</td>
                             <td>A més, fa l'operació demanada (fila, columna o comptatge).</td>
@@ -1699,7 +1699,7 @@
                         <tr>
                             <td><strong>P6.2. Classes de tipus avançats</strong></td>
                             <td>CA6.2</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Usa la classe adequada (Array, Set, Map, String, RegExp) en menys de la meitat de les necessitats del programa.</td>
                             <td>En almenys la meitat.</td>
                             <td>En totes menys una.</td>
@@ -1708,7 +1708,7 @@
                         <tr>
                             <td><strong>P6.3. Llistes</strong></td>
                             <td>CA6.3</td>
-                            <td>30&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No funciona cap operació sobre la llista (afegir, eliminar, modificar).</td>
                             <td>Afig i elimina correctament.</td>
                             <td>A més, modifica un element buscant-lo per una propietat.</td>
@@ -1717,7 +1717,7 @@
                         <tr>
                             <td><strong>P6.4. Iteradors</strong></td>
                             <td>CA6.4</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap recorregut correcte.</td>
                             <td>Recorregut amb <code>for...of</code> correcte.</td>
                             <td>A més, <code>forEach</code> o <code>entries()</code> quan cal la posició.</td>
@@ -1726,7 +1726,7 @@
                         <tr>
                             <td><strong>P6.5. Tria de col·lecció</strong></td>
                             <td>CA6.5</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Col·lecció inadequada en la majoria de casos (p. ex. un array amb repetits on calia un Set).</td>
                             <td>Adequada en almenys la meitat dels casos.</td>
                             <td>Adequada en tots.</td>
@@ -1735,7 +1735,7 @@
                         <tr>
                             <td><strong>P6.6. Expressions regulars</strong></td>
                             <td>CA6.7</td>
-                            <td>60&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Cap patró correcte.</td>
                             <td>Un patró classifica bé la majoria dels casos de prova.</td>
                             <td>Tots els patrons classifiquen bé tots els casos.</td>
@@ -1744,7 +1744,7 @@
                         <tr>
                             <td><strong>P6.7. Classes per a formats d'intercanvi</strong></td>
                             <td>CA6.8</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>No usa l'eina adequada per a convertir les dades a text o al revés.</td>
                             <td>L'usa en un sentit.</td>
                             <td>En els dos sentits (<code>JSON.stringify</code> i <code>JSON.parse</code>).</td>
@@ -1753,7 +1753,7 @@
                         <tr>
                             <td><strong>P6.8. JSON</strong></td>
                             <td>CA6.9</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No convertix les dades amb <code>JSON.parse</code> ni <code>JSON.stringify</code>.</td>
                             <td>Convertix en un sentit i usa les dades.</td>
                             <td>Convertix en els dos sentits i les dades no es perden.</td>
@@ -1762,7 +1762,7 @@
                         <tr>
                             <td><strong>P6.9. Operacions agregades</strong></td>
                             <td>CA6.10</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat de les operacions demanades correctes.</td>
                             <td>Almenys la meitat.</td>
                             <td>Totes menys una.</td>
@@ -1779,8 +1779,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -1791,7 +1791,7 @@
                         <tr>
                             <td><strong>P5.1. Consola</strong></td>
                             <td>CA5.1</td>
-                            <td>60&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No llig amb <code>prompt</code> o no escriu en la consola el que es demana.</td>
                             <td>Llig amb <code>prompt</code> i escriu amb <code>console.log</code> el que es demana.</td>
                             <td>A més, mostra un array d'objectes amb <code>console.table</code>.</td>
@@ -1800,7 +1800,7 @@
                         <tr>
                             <td><strong>P5.2. Formats</strong></td>
                             <td>CA5.2</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat dels valors amb el format demanat.</td>
                             <td>Almenys la meitat.</td>
                             <td>Tots.</td>
@@ -1809,7 +1809,7 @@
                         <tr>
                             <td><strong>P5.3. Possibilitats d'entrada i eixida</strong></td>
                             <td>CA5.3</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Usa un mitjà inadequat per a la necessitat (p. ex. <code>alert</code> per als errors del formulari o <code>prompt</code> per a les dades de la pàgina).</td>
                             <td>Mitjà adequat en la majoria de necessitats.</td>
                             <td>En totes (<code>prompt</code>, consola, <code>confirm</code>, DOM, <code>localStorage</code>).</td>
@@ -1818,7 +1818,7 @@
                         <tr>
                             <td><strong>P5.4. Controladors d'esdeveniments</strong></td>
                             <td>CA5.7</td>
-                            <td>30&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap controlador funciona amb <code>addEventListener</code>, o la pàgina es recarrega en enviar.</td>
                             <td>Els controladors principals funcionen (enviament amb <code>preventDefault</code>, clics).</td>
                             <td>A més, un esdeveniment d'entrada o de teclat (<code>input</code>, <code>change</code>, <code>keydown</code>).</td>
@@ -1827,7 +1827,7 @@
                         <tr>
                             <td><strong>P5.5. Interfície per a entrada i eixida</strong></td>
                             <td>CA5.8</td>
-                            <td>30&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No llig els camps o no mostra les dades.</td>
                             <td>Llig els camps, actualitza l'array i redibuixa amb <code>createElement</code> i <code>textContent</code>.</td>
                             <td>A més, missatges d'error en la pàgina i camps buidats després d'afegir.</td>
@@ -1844,8 +1844,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -1856,7 +1856,7 @@
                         <tr>
                             <td><strong>P2.1. Fonaments de la POO</strong></td>
                             <td>CA2.1</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Explica en comentaris menys de la meitat dels conceptes (classe i objecte, instància, encapsulació, herència).</td>
                             <td>Almenys la meitat.</td>
                             <td>Tots menys un.</td>
@@ -1865,7 +1865,7 @@
                         <tr>
                             <td><strong>P2.2. Programa simple</strong></td>
                             <td>CA2.2</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No s'executa o li falta l'entrada, el procés o l'eixida.</td>
                             <td>S'executa de principi a fi (llig, calcula i mostra).</td>
                             <td>A més, el resultat és correcte.</td>
@@ -1874,7 +1874,7 @@
                         <tr>
                             <td><strong>P2.3. Classes predefinides</strong></td>
                             <td>CA2.3</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>No crea les instàncies amb <code>new</code> o no usa cap mètode.</td>
                             <td>Crea les instàncies demanades i usa un mètode de cada una.</td>
                             <td>A més, els resultats són correctes.</td>
@@ -1883,7 +1883,7 @@
                         <tr>
                             <td><strong>P2.4. Constructors</strong></td>
                             <td>CA2.8</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap constructor amb els paràmetres adequats.</td>
                             <td>Almenys un constructor amb els paràmetres adequats (p. ex. el mes comptat des de 0).</td>
                             <td>Tots els demanats.</td>
@@ -1892,7 +1892,7 @@
                         <tr>
                             <td><strong>P2.5. Mètodes i propietats</strong></td>
                             <td>CA2.4</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat dels mètodes i propietats que necessita el programa ben usats.</td>
                             <td>Almenys la meitat.</td>
                             <td>Totes menys una.</td>
@@ -1901,7 +1901,7 @@
                         <tr>
                             <td><strong>P2.6. Mètodes estàtics</strong></td>
                             <td>CA2.5</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat de les crides estàtiques ben usades i marcades (<code>// static</code>).</td>
                             <td>Almenys la meitat.</td>
                             <td>Totes menys una.</td>
@@ -1910,7 +1910,7 @@
                         <tr>
                             <td><strong>P2.7. Paràmetres</strong></td>
                             <td>CA2.6</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Menys de la meitat de les crides amb paràmetres donen el resultat que cal.</td>
                             <td>Almenys la meitat.</td>
                             <td>Totes menys una.</td>
@@ -1919,7 +1919,7 @@
                         <tr>
                             <td><strong>P2.8. Llibreria</strong></td>
                             <td>CA2.7</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>La llibreria no es carrega o la crida dona error.</td>
                             <td>Carregada abans de l'script propi i una funció cridada amb resultat correcte.</td>
                             <td>Totes les operacions demanades correctes.</td>
@@ -1936,8 +1936,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -1948,7 +1948,7 @@
                         <tr>
                             <td><strong>P4.1. Components d'una classe</strong></td>
                             <td>CA4.1</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Menys de la meitat dels components de les seues classes marcats bé amb comentaris.</td>
                             <td>Almenys la meitat.</td>
                             <td>Tots menys un.</td>
@@ -1957,7 +1957,7 @@
                         <tr>
                             <td><strong>P4.2. Definició de la classe</strong></td>
                             <td>CA4.2</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>La classe dona error en carregar o en fer <code>new</code>.</td>
                             <td>Es poden crear objectes de la classe.</td>
                             <td>A més, nom en PascalCase i cap funció solta que hauria de ser un mètode.</td>
@@ -1966,7 +1966,7 @@
                         <tr>
                             <td><strong>P4.3. Propietats i mètodes</strong></td>
                             <td>CA4.3</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap mètode demanat funciona.</td>
                             <td>Almenys la meitat dels mètodes funcionen.</td>
                             <td>Tots funcionen i usen <code>this</code>.</td>
@@ -1975,7 +1975,7 @@
                         <tr>
                             <td><strong>P4.4. Constructor</strong></td>
                             <td>CA4.4</td>
-                            <td>100&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Sense constructor o no assigna les propietats.</td>
                             <td>Assigna totes les propietats.</td>
                             <td>A més, valor per defecte en el paràmetre que ho demana.</td>
@@ -1984,7 +1984,7 @@
                         <tr>
                             <td><strong>P4.5. Visibilitat</strong></td>
                             <td>CA4.6</td>
-                            <td>100&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>El camp no és privat o no hi ha <code>get</code>.</td>
                             <td>Camp privat (<code>#</code>) amb <code>get</code>.</td>
                             <td>A més, <code>set</code> que rebutja els valors no vàlids.</td>
@@ -1993,7 +1993,7 @@
                         <tr>
                             <td><strong>P4.6. Mètode estàtic</strong></td>
                             <td>CA4.8</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>No definix <code>static</code> o el crida sobre una instància.</td>
                             <td>Mètode <code>static</code> definit.</td>
                             <td>A més, cridat sobre la classe, torna una instància que funciona.</td>
@@ -2002,7 +2002,7 @@
                         <tr>
                             <td><strong>P4.7. Herència</strong></td>
                             <td>CA4.7</td>
-                            <td>100&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Falta <code>extends</code> o <code>super</code> i dona error.</td>
                             <td><code>extends</code> i <code>super</code> correctes; la instància es crea.</td>
                             <td>A més, un mètode sobreescrit.</td>
@@ -2011,7 +2011,7 @@
                         <tr>
                             <td><strong>P4.8. Llibreria de classes</strong></td>
                             <td>CA4.9</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Classes en <code>main.js</code> o error en importar.</td>
                             <td><code>model.js</code> exporta les classes i <code>main.js</code> les importa.</td>
                             <td>A més, <code>model.js</code> només conté definicions (cap codi que s'execute en importar-lo).</td>
@@ -2020,7 +2020,7 @@
                         <tr>
                             <td><strong>P4.9. Programa amb les classes creades</strong></td>
                             <td>CA4.5</td>
-                            <td>30&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>No crea cap instància de les seues classes.</td>
                             <td>Array d'instàncies, cada una mostrada amb els seus mètodes.</td>
                             <td>A més, un càlcul global correcte fet amb els mètodes de les classes.</td>
@@ -2038,8 +2038,8 @@
                     <thead>
                         <tr>
                             <th style="min-width: 150px;">Indicador</th>
-                            <th>Criteri</th>
-                            <th style="min-width: 130px;">Pes</th>
+                            <th style="min-width: 90px; white-space: nowrap;">Criteri</th>
+                            <th style="min-width: 120px;">Pes en el criteri</th>
                             <th style="min-width: 180px;">Insuficient (1-4)</th>
                             <th style="min-width: 180px;">Suficient-Bé (5-6)</th>
                             <th style="min-width: 180px;">Notable (7-8)</th>
@@ -2050,7 +2050,7 @@
                         <tr>
                             <td><strong>R1. Estructura del projecte</strong></td>
                             <td>CA1.2</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Falta algun arxiu de l'estructura.</td>
                             <td><code>index.html</code>, <code>css/</code>, <code>js/main.js</code>, <code>js/model.js</code> i <code>js/tests.js</code>; noms en minúscules sense espais.</td>
                             <td>A més, cap ruta absoluta en els enllaços ni en els <code>import</code>.</td>
@@ -2059,7 +2059,7 @@
                         <tr>
                             <td><strong>R2. Entorn de desenrotllament</strong></td>
                             <td>CA1.3</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>L'aplicació no s'obri des de VS Code amb Live Server.</td>
                             <td>S'obri amb Live Server des de VS Code i carrega tots els arxius (cap error 404 en la consola).</td>
                             <td>A més, codi sagnat de manera uniforme (format de VS Code o Prettier).</td>
@@ -2068,7 +2068,7 @@
                         <tr>
                             <td><strong>R3. Mètodes i propietats predefinits</strong></td>
                             <td>CA2.4</td>
-                            <td>60&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Menys de 5 mètodes o propietats diferents, o algun usat malament.</td>
                             <td>Almenys 5 mètodes o propietats diferents de cadenes, arrays o elements, ben usats.</td>
                             <td>A més, cap bucle que reimplemente un mètode existent (<code>includes</code>, <code>indexOf</code>).</td>
@@ -2077,7 +2077,7 @@
                         <tr>
                             <td><strong>R4. Llibreria externa</strong></td>
                             <td>CA2.7</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap llibreria externa.</td>
                             <td>Una llibreria carregada per CDN i cridada almenys una vegada amb efecte visible.</td>
                             <td>A més, usa opcions de la llibreria i n'enllaça la documentació en el README.</td>
@@ -2086,7 +2086,7 @@
                         <tr>
                             <td><strong>R5. Selecció</strong></td>
                             <td>CA3.1</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Alguna decisió de l'aplicació falla (resposta correcta o incorrecta, camp buit, filtre, missatge final).</td>
                             <td>Totes les decisions de l'opció funcionen.</td>
                             <td>A més, sense condicions redundants ni <code>if</code> niats evitables.</td>
@@ -2095,7 +2095,7 @@
                         <tr>
                             <td><strong>R6. Repetició</strong></td>
                             <td>CA3.2</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Algun bucle no acaba o deixa elements sense tractar.</td>
                             <td>Els bucles de dibuix i de càlcul recorren tots els elements i acaben sempre.</td>
                             <td>A més, cap índex fora de rang ni variable de bucle innecessària.</td>
@@ -2104,7 +2104,7 @@
                         <tr>
                             <td><strong>R7. Control d'excepcions</strong></td>
                             <td>CA3.4</td>
-                            <td>60&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td><code>JSON.parse</code> de <code>localStorage</code> o crides que poden fallar sense protecció.</td>
                             <td><code>try/catch</code> en llegir <code>localStorage</code> i en les crides al model que poden llançar errors; l'aplicació no es trenca.</td>
                             <td>A més, missatge clar a l'usuari en la pàgina.</td>
@@ -2113,7 +2113,7 @@
                         <tr>
                             <td><strong>R8. Programa complet</strong></td>
                             <td>CA3.5</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Falta algun requisit de l'opció triada o no funciona.</td>
                             <td>Tots els requisits de l'opció triada funcionen.</td>
                             <td>A més, funcions d'una sola tasca, de 20 línies com a màxim, sense codi repetit.</td>
@@ -2122,7 +2122,7 @@
                         <tr>
                             <td><strong>R9. Prova i depuració</strong></td>
                             <td>CA3.6</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Errors en la consola en un ús normal.</td>
                             <td>Cap error en la consola en un ús normal.</td>
                             <td>A més, cap error en els casos límit (camp buit, llista buida, <code>localStorage</code> corrupte).</td>
@@ -2131,7 +2131,7 @@
                         <tr>
                             <td><strong>R10. Comentaris en el codi</strong></td>
                             <td>CA1.9</td>
-                            <td>100&nbsp;%</td>
+                            <td>1 · bàsic</td>
                             <td>Alguna funció o mètode sense comentari.</td>
                             <td>Comentari damunt de cada funció i mètode.</td>
                             <td>A més, comentaris en les parts no evidents (condicions, expressions regulars) i cap comentari que només repetisca el codi.</td>
@@ -2140,7 +2140,7 @@
                         <tr>
                             <td><strong>R11. Documentació</strong></td>
                             <td>CA3.7</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>README absent o incomplet.</td>
                             <td><code>README.txt</code> complet: nom, opció triada, com s'usa, què ha costat més i què afegiria.</td>
                             <td>A més, comentaris en format JSDoc amb <code>@param</code> i <code>@returns</code> en les funcions i els mètodes.</td>
@@ -2149,7 +2149,7 @@
                         <tr>
                             <td><strong>R12. Errors propis</strong></td>
                             <td>CA3.8</td>
-                            <td>50&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>El model no llança cap error davant de dades no vàlides.</td>
                             <td>El model llança <code>Error</code> amb un missatge clar davant de dades no vàlides (text buit, pregunta sense opcions).</td>
                             <td>A més, una classe d'error pròpia (<code>extends Error</code>).</td>
@@ -2158,7 +2158,7 @@
                         <tr>
                             <td><strong>R13. Assercions</strong></td>
                             <td>CA3.9</td>
-                            <td>60&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Menys de 6 <code>console.assert</code> o algun falla.</td>
                             <td><code>tests.js</code> amb almenys 6 <code>console.assert</code> sobre el model, tots en verd.</td>
                             <td>A més, cobrixen tots els mètodes públics del model.</td>
@@ -2167,7 +2167,7 @@
                         <tr>
                             <td><strong>R14. Ús de les classes pròpies</strong></td>
                             <td>CA4.5</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Les dades no són instàncies de les seues classes.</td>
                             <td>Les dades són un array d'instàncies de les seues classes i l'aplicació usa els seus mètodes.</td>
                             <td>A més, la lògica (puntuar, marcar, filtrar) està en mètodes del model, no en <code>main.js</code>.</td>
@@ -2176,7 +2176,7 @@
                         <tr>
                             <td><strong>R15. Mètodes estàtics</strong></td>
                             <td>CA4.8</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap mètode estàtic en el model.</td>
                             <td>Un mètode estàtic en el model, usat (p. ex. <code>fromJSON</code> per a tornar a crear les instàncies en carregar).</td>
                             <td>A més, cridat sobre la classe dins d'un <code>map</code>.</td>
@@ -2185,7 +2185,7 @@
                         <tr>
                             <td><strong>R16. Llibreria de classes</strong></td>
                             <td>CA4.9</td>
-                            <td>60&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Classes en <code>main.js</code> o sense mòduls.</td>
                             <td><code>model.js</code> amb almenys 2 classes exportades i importades en <code>main.js</code>.</td>
                             <td>A més, <code>tests.js</code> importa les mateixes classes.</td>
@@ -2194,7 +2194,7 @@
                         <tr>
                             <td><strong>R17. Consola</strong></td>
                             <td>CA5.1</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td><code>tests.js</code> no mostra res en la consola.</td>
                             <td>En executar <code>tests.js</code>, la consola mostra quines proves fallen i un resum amb <code>console.log</code>.</td>
                             <td>A més, <code>console.table</code> per a mostrar l'estat del model.</td>
@@ -2203,7 +2203,7 @@
                         <tr>
                             <td><strong>R18. Formats</strong></td>
                             <td>CA5.2</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Números sense format (decimals llargs, percentatges sense símbol).</td>
                             <td>Puntuació, comptadors i percentatges amb un format adequat.</td>
                             <td>A més, <code>toLocaleString</code> o <code>Intl</code> per a números o dates.</td>
@@ -2212,7 +2212,7 @@
                         <tr>
                             <td><strong>R19. Controladors d'esdeveniments</strong></td>
                             <td>CA5.7</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Menys de 3 controladors, d'un sol tipus, o <code>onclick</code> en l'HTML.</td>
                             <td>Almenys 3 <code>addEventListener</code> de 2 tipus diferents i cap <code>onclick</code> en l'HTML.</td>
                             <td>A més, usa l'objecte <code>event</code> (<code>key</code>, <code>target</code>, <code>preventDefault</code>).</td>
@@ -2221,7 +2221,7 @@
                         <tr>
                             <td><strong>R20. Entrada i eixida en la interfície</strong></td>
                             <td>CA5.8</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>La pàgina no reflectix les dades o usa <code>innerHTML</code> amb text de l'usuari.</td>
                             <td>Llig els controls, mostra les dades amb <code>createElement</code> i <code>textContent</code>, i la pàgina sempre coincidix amb l'array (<code>draw()</code>).</td>
                             <td>A més, missatges d'error i de confirmació en la pàgina, no amb <code>alert</code>.</td>
@@ -2230,7 +2230,7 @@
                         <tr>
                             <td><strong>R21. Llistes</strong></td>
                             <td>CA6.3</td>
-                            <td>70&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>No hi ha array o la pàgina i l'array no coincidixen.</td>
                             <td>Array d'instàncies en el qual s'afig, s'elimina i es modifica, i després es redibuixa.</td>
                             <td>A més, elimina i modifica per identificador, no per posició en la pantalla.</td>
@@ -2239,7 +2239,7 @@
                         <tr>
                             <td><strong>R22. Iteradors</strong></td>
                             <td>CA6.4</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Recorreguts amb índexs erronis o que se n'ixen de l'array.</td>
                             <td>Recorre la llista amb <code>for...of</code> o <code>forEach</code> en dibuixar i en desar.</td>
                             <td>A més, <code>entries()</code> o l'índex de <code>forEach</code> quan necessita la posició.</td>
@@ -2248,7 +2248,7 @@
                         <tr>
                             <td><strong>R23. Expressions regulars</strong></td>
                             <td>CA6.7</td>
-                            <td>40&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap expressió regular.</td>
                             <td>Un camp validat amb <code>test()</code> i missatge si no complix.</td>
                             <td>A més, el patró usa <code>^</code>, <code>$</code> i classes de caràcters.</td>
@@ -2257,7 +2257,7 @@
                         <tr>
                             <td><strong>R24. JSON</strong></td>
                             <td>CA6.9</td>
-                            <td>60&nbsp;%</td>
+                            <td>3 · avançat</td>
                             <td>Desa sense JSON o es perden dades en recarregar.</td>
                             <td><code>JSON.stringify</code> en desar i <code>JSON.parse</code> en carregar.</td>
                             <td>A més, una única funció <code>save()</code> que desa tot l'estat en una sola clau.</td>
@@ -2266,11 +2266,20 @@
                         <tr>
                             <td><strong>R25. Operacions agregades</strong></td>
                             <td>CA6.10</td>
-                            <td>50&nbsp;%</td>
+                            <td>2 · intermedi</td>
                             <td>Cap operació agregada.</td>
                             <td>Almenys 2 operacions agregades diferents amb resultat visible (comptador, filtre, puntuació).</td>
                             <td><code>filter</code>, <code>map</code> i <code>reduce</code>.</td>
                             <td>A més, encadenades en almenys un cas dins d'un mètode del model.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R26. Blocs del programa</strong></td>
+                            <td>CA1.1</td>
+                            <td>3 · avançat</td>
+                            <td><code>main.js</code> sense cap separació reconeixible entre les parts del programa.</td>
+                            <td>Comentaris que marquen almenys 3 blocs en <code>main.js</code> (p. ex. dades, funcions, esdeveniments, inici).</td>
+                            <td>Tots els blocs marcats i cada línia en el seu bloc (cap funció enmig dels controladors ni variables soltes al final).</td>
+                            <td>A més, el <code>README.txt</code> diu què fa cada arxiu (<code>index.html</code>, <code>main.js</code>, <code>model.js</code>, <code>tests.js</code>) dins del programa.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2287,308 +2296,308 @@
                             <th>Criteri</th>
                             <th>Pes dins del RA</th>
                             <th>Activitat(s)</th>
-                            <th>Indicadors (instrument) i pes dins del criteri</th>
+                            <th>Indicadors (instrument): pes (1-3) i % dins del criteri</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>CA1.1</td>
                             <td>10&nbsp;%</td>
-                            <td>Lliçó 1</td>
-                            <td>P1.8 (rúbrica del bloc 1) 100&nbsp;%</td>
+                            <td>Lliçó 1, projecte</td>
+                            <td>P1.8 (rúbrica del bloc 1): pes 1, 25&nbsp;% · R26 (projecte): pes 3, 75&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.2</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 1, miniprojectes, projecte</td>
-                            <td>R1 (projecte) 100&nbsp;%</td>
+                            <td>R1 (projecte): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.3</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 1, projecte</td>
-                            <td>R2 (projecte) 100&nbsp;%</td>
+                            <td>R2 (projecte): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.4</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 2</td>
-                            <td>P1.3 (rúbrica del bloc 1) 100&nbsp;%</td>
+                            <td>P1.3 (rúbrica del bloc 1): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.5</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 2</td>
-                            <td>P1.1 (rúbrica del bloc 1) 100&nbsp;%</td>
+                            <td>P1.1 (rúbrica del bloc 1): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.6</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 2</td>
-                            <td>P1.2 (rúbrica del bloc 1) 100&nbsp;%</td>
+                            <td>P1.2 (rúbrica del bloc 1): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.7</td>
                             <td>20&nbsp;%</td>
                             <td>Lliçó 3</td>
-                            <td>P1.5 (rúbrica del bloc 1) 45&nbsp;% · P1.6 (rúbrica del bloc 1) 18&nbsp;% · P1.7 (rúbrica del bloc 1) 37&nbsp;%</td>
+                            <td>P1.5 (rúbrica del bloc 1): pes 2, 40&nbsp;% · P1.6 (rúbrica del bloc 1): pes 1, 20&nbsp;% · P1.7 (rúbrica del bloc 1): pes 2, 40&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.8</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 2</td>
-                            <td>P1.4 (rúbrica del bloc 1) 100&nbsp;%</td>
+                            <td>P1.4 (rúbrica del bloc 1): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA1.9</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 1, projecte</td>
-                            <td>R10 (projecte) 100&nbsp;%</td>
+                            <td>R10 (projecte): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.1</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 20 (N9)</td>
-                            <td>P2.1 (rúbrica del bloc 5) 100&nbsp;%</td>
+                            <td>P2.1 (rúbrica del bloc 5): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.2</td>
                             <td>20&nbsp;%</td>
                             <td>Lliçons 1-7 i 20 (N9)</td>
-                            <td>P2.2 (rúbrica del bloc 5) 100&nbsp;%</td>
+                            <td>P2.2 (rúbrica del bloc 5): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.3</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçons 14 (N6) i 20 (N9)</td>
-                            <td>P2.3 (rúbrica del bloc 5) 100&nbsp;%</td>
+                            <td>P2.3 (rúbrica del bloc 5): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.4</td>
                             <td>20&nbsp;%</td>
                             <td>Lliçons 4, 10, 17, 21 (N10), projecte</td>
-                            <td>P2.5 (rúbrica del bloc 5) 40&nbsp;% · R3 (projecte) 60&nbsp;%</td>
+                            <td>P2.5 (rúbrica del bloc 5): pes 2, 40&nbsp;% · R3 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.5</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçons 3 i 21 (N10)</td>
-                            <td>P2.6 (rúbrica del bloc 5) 100&nbsp;%</td>
+                            <td>P2.6 (rúbrica del bloc 5): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.6</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçons 3, 7 i 21 (N10)</td>
-                            <td>P2.7 (rúbrica del bloc 5) 100&nbsp;%</td>
+                            <td>P2.7 (rúbrica del bloc 5): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.7</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 21 (N10), projecte</td>
-                            <td>P2.8 (rúbrica del bloc 5) 50&nbsp;% · R4 (projecte) 50&nbsp;%</td>
+                            <td>P2.8 (rúbrica del bloc 5): pes 2, 50&nbsp;% · R4 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA2.8</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 20 (N9)</td>
-                            <td>P2.4 (rúbrica del bloc 5) 100&nbsp;%</td>
+                            <td>P2.4 (rúbrica del bloc 5): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.1</td>
                             <td>15&nbsp;%</td>
                             <td>Lliçó 5, projecte</td>
-                            <td>P3.1 (rúbrica del bloc 2) 50&nbsp;% · R5 (projecte) 50&nbsp;%</td>
+                            <td>P3.1 (rúbrica del bloc 2): pes 2, 50&nbsp;% · R5 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.2</td>
                             <td>20&nbsp;%</td>
                             <td>Lliçó 6, projecte</td>
-                            <td>P3.2 (rúbrica del bloc 2) 50&nbsp;% · R6 (projecte) 50&nbsp;%</td>
+                            <td>P3.2 (rúbrica del bloc 2): pes 2, 50&nbsp;% · R6 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.3</td>
                             <td>5&nbsp;%</td>
                             <td>Lliçons 5-7</td>
-                            <td>P3.3 (rúbrica del bloc 2) 100&nbsp;%</td>
+                            <td>P3.3 (rúbrica del bloc 2): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.4</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçons 9 (N2) i 19, miniprojecte 1, projecte</td>
-                            <td>P3.7 (rúbrica del bloc 2) 40&nbsp;% · R7 (projecte) 60&nbsp;%</td>
+                            <td>P3.7 (rúbrica del bloc 2): pes 2, 40&nbsp;% · R7 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.5</td>
                             <td>15&nbsp;%</td>
                             <td>Lliçó 7, miniprojecte 1, projecte</td>
-                            <td>P3.4 (rúbrica del bloc 2) 30&nbsp;% · R8 (projecte) 70&nbsp;%</td>
+                            <td>P3.4 (rúbrica del bloc 2): pes 1, 25&nbsp;% · R8 (projecte): pes 3, 75&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.6</td>
                             <td>15&nbsp;%</td>
                             <td>Lliçons 1 i 8 (N1), miniprojecte 1, projecte</td>
-                            <td>P3.5 (rúbrica del bloc 2) 30&nbsp;% · R9 (projecte) 70&nbsp;%</td>
+                            <td>P3.5 (rúbrica del bloc 2): pes 2, 40&nbsp;% · R9 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.7</td>
                             <td>5&nbsp;%</td>
                             <td>Lliçó 8 (N1), projecte</td>
-                            <td>P3.9 (rúbrica del bloc 2) 30&nbsp;% · R11 (projecte) 70&nbsp;%</td>
+                            <td>P3.9 (rúbrica del bloc 2): pes 1, 25&nbsp;% · R11 (projecte): pes 3, 75&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.8</td>
                             <td>5&nbsp;%</td>
                             <td>Lliçons 9 (N2) i 24 (N13), projecte</td>
-                            <td>P3.6 (rúbrica del bloc 2) 50&nbsp;% · R12 (projecte) 50&nbsp;%</td>
+                            <td>P3.6 (rúbrica del bloc 2): pes 2, 40&nbsp;% · R12 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA3.9</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçons 8 (N1) i 25 (N14), miniprojecte 1, projecte</td>
-                            <td>P3.8 (rúbrica del bloc 2) 40&nbsp;% · R13 (projecte) 60&nbsp;%</td>
+                            <td>P3.8 (rúbrica del bloc 2): pes 2, 40&nbsp;% · R13 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.1</td>
                             <td>5&nbsp;%</td>
                             <td>Lliçó 22 (N11)</td>
-                            <td>P4.1 (rúbrica del bloc 6) 100&nbsp;%</td>
+                            <td>P4.1 (rúbrica del bloc 6): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.2</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 22 (N11)</td>
-                            <td>P4.2 (rúbrica del bloc 6) 100&nbsp;%</td>
+                            <td>P4.2 (rúbrica del bloc 6): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.3</td>
                             <td>15&nbsp;%</td>
                             <td>Lliçó 22 (N11)</td>
-                            <td>P4.3 (rúbrica del bloc 6) 100&nbsp;%</td>
+                            <td>P4.3 (rúbrica del bloc 6): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.4</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 22 (N11)</td>
-                            <td>P4.4 (rúbrica del bloc 6) 100&nbsp;%</td>
+                            <td>P4.4 (rúbrica del bloc 6): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.5</td>
                             <td>20&nbsp;%</td>
                             <td>Lliçons 22 (N11) i 25 (N14), projecte</td>
-                            <td>P4.9 (rúbrica del bloc 6) 30&nbsp;% · R14 (projecte) 70&nbsp;%</td>
+                            <td>P4.9 (rúbrica del bloc 6): pes 1, 25&nbsp;% · R14 (projecte): pes 3, 75&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.6</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 23 (N12)</td>
-                            <td>P4.5 (rúbrica del bloc 6) 100&nbsp;%</td>
+                            <td>P4.5 (rúbrica del bloc 6): pes 3, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.7</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 24 (N13)</td>
-                            <td>P4.7 (rúbrica del bloc 6) 100&nbsp;%</td>
+                            <td>P4.7 (rúbrica del bloc 6): pes 3, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.8</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 23 (N12), projecte</td>
-                            <td>P4.6 (rúbrica del bloc 6) 50&nbsp;% · R15 (projecte) 50&nbsp;%</td>
+                            <td>P4.6 (rúbrica del bloc 6): pes 2, 50&nbsp;% · R15 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA4.9</td>
                             <td>10&nbsp;%</td>
                             <td>Lliçó 25 (N14), projecte</td>
-                            <td>P4.8 (rúbrica del bloc 6) 40&nbsp;% · R16 (projecte) 60&nbsp;%</td>
+                            <td>P4.8 (rúbrica del bloc 6): pes 2, 40&nbsp;% · R16 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA5.1</td>
                             <td>8&nbsp;%</td>
                             <td>Lliçons 1-2 i 19 (N8), projecte</td>
-                            <td>P5.1 (rúbrica del bloc 4) 60&nbsp;% · R17 (projecte) 40&nbsp;%</td>
+                            <td>P5.1 (rúbrica del bloc 4): pes 2, 50&nbsp;% · R17 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA5.2</td>
                             <td>12&nbsp;%</td>
                             <td>Lliçons 2-3 i 19 (N8), projecte</td>
-                            <td>P5.2 (rúbrica del bloc 4) 50&nbsp;% · R18 (projecte) 50&nbsp;%</td>
+                            <td>P5.2 (rúbrica del bloc 4): pes 2, 50&nbsp;% · R18 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA5.3</td>
                             <td>4&nbsp;%</td>
                             <td>Lliçó 19 (N8)</td>
-                            <td>P5.3 (rúbrica del bloc 4) 100&nbsp;%</td>
+                            <td>P5.3 (rúbrica del bloc 4): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA5.7</td>
                             <td>40&nbsp;%</td>
                             <td>Lliçons 4, 16, 18, miniprojecte 2, projecte</td>
-                            <td>P5.4 (rúbrica del bloc 4) 30&nbsp;% · R19 (projecte) 70&nbsp;%</td>
+                            <td>P5.4 (rúbrica del bloc 4): pes 2, 40&nbsp;% · R19 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA5.8</td>
                             <td>36&nbsp;%</td>
                             <td>Lliçons 4, 17, 18, miniprojecte 2, projecte</td>
-                            <td>P5.5 (rúbrica del bloc 4) 30&nbsp;% · R20 (projecte) 70&nbsp;%</td>
+                            <td>P5.5 (rúbrica del bloc 4): pes 2, 40&nbsp;% · R20 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.1</td>
                             <td>8&nbsp;%</td>
                             <td>Lliçó 10 (amb N3)</td>
-                            <td>P6.1 (rúbrica del bloc 3) 100&nbsp;%</td>
+                            <td>P6.1 (rúbrica del bloc 3): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.2</td>
                             <td>4&nbsp;%</td>
                             <td>Lliçó 14 (N6)</td>
-                            <td>P6.2 (rúbrica del bloc 3) 100&nbsp;%</td>
+                            <td>P6.2 (rúbrica del bloc 3): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.3</td>
                             <td>16&nbsp;%</td>
                             <td>Lliçons 10-11, miniprojecte 2, projecte</td>
-                            <td>P6.3 (rúbrica del bloc 3) 30&nbsp;% · R21 (projecte) 70&nbsp;%</td>
+                            <td>P6.3 (rúbrica del bloc 3): pes 2, 40&nbsp;% · R21 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.4</td>
                             <td>8&nbsp;%</td>
                             <td>Lliçons 10, 12 (N4), 14 (N6), projecte</td>
-                            <td>P6.4 (rúbrica del bloc 3) 50&nbsp;% · R22 (projecte) 50&nbsp;%</td>
+                            <td>P6.4 (rúbrica del bloc 3): pes 2, 50&nbsp;% · R22 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.5</td>
                             <td>8&nbsp;%</td>
                             <td>Lliçó 14 (N6)</td>
-                            <td>P6.5 (rúbrica del bloc 3) 100&nbsp;%</td>
+                            <td>P6.5 (rúbrica del bloc 3): pes 2, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.7</td>
                             <td>12&nbsp;%</td>
                             <td>Lliçons 13 (N5) i 18, projecte</td>
-                            <td>P6.6 (rúbrica del bloc 3) 60&nbsp;% · R23 (projecte) 40&nbsp;%</td>
+                            <td>P6.6 (rúbrica del bloc 3): pes 3, 60&nbsp;% · R23 (projecte): pes 2, 40&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.8</td>
                             <td>4&nbsp;%</td>
                             <td>Lliçó 15 (N7)</td>
-                            <td>P6.7 (rúbrica del bloc 3) 100&nbsp;%</td>
+                            <td>P6.7 (rúbrica del bloc 3): pes 1, 100&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.9</td>
                             <td>16&nbsp;%</td>
                             <td>Lliçons 15 (N7), 19 i 23 (N12), projecte</td>
-                            <td>P6.8 (rúbrica del bloc 3) 40&nbsp;% · R24 (projecte) 60&nbsp;%</td>
+                            <td>P6.8 (rúbrica del bloc 3): pes 2, 40&nbsp;% · R24 (projecte): pes 3, 60&nbsp;%</td>
                         </tr>
                         <tr>
                             <td>CA6.10</td>
                             <td>24&nbsp;%</td>
                             <td>Lliçó 12 (N4), projecte</td>
-                            <td>P6.9 (rúbrica del bloc 3) 50&nbsp;% · R25 (projecte) 50&nbsp;%</td>
+                            <td>P6.9 (rúbrica del bloc 3): pes 2, 50&nbsp;% · R25 (projecte): pes 2, 50&nbsp;%</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <vf-text><strong>Nota de cada criteri</strong> = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA3.6 = 0,30·P3.5 + 0,70·R9; CA1.1 = P1.8.</vf-text>
+            <vf-text><strong>Nota de cada criteri</strong> = Σ (nota de l'indicador × pes) ÷ Σ pesos dels seus indicadors. Per exemple, CA3.6 = (2·P3.5 + 3·R9) ÷ 5; CA1.7 = (2·P1.5 + 1·P1.6 + 2·P1.7) ÷ 5; CA1.1 = P1.8. Mentre un indicador encara no s'ha avaluat (per exemple, el del projecte), la nota provisional del criteri és la mitjana ponderada dels que ja s'han avaluat.</vf-text>
             <vf-text><strong>Nota de RA1</strong> = 0,10·(CA1.1 + CA1.2 + CA1.3 + CA1.4 + CA1.5 + CA1.6 + CA1.8 + CA1.9) + 0,20·CA1.7</vf-text>
             <vf-text><strong>Nota de RA2</strong> = 0,10·(CA2.1 + CA2.3 + CA2.5 + CA2.6 + CA2.7 + CA2.8) + 0,20·(CA2.2 + CA2.4)</vf-text>
             <vf-text><strong>Nota de RA3</strong> = 0,15·(CA3.1 + CA3.5 + CA3.6) + 0,20·CA3.2 + 0,10·(CA3.4 + CA3.9) + 0,05·(CA3.3 + CA3.7 + CA3.8)</vf-text>

@@ -39,7 +39,7 @@ Muchas situaciones de aprendizaje **no salen del currículum**: el profesor las 
 
 **Competencias propias del docente en una materia con currículum oficial**: su numeración **continúa tras la última CE oficial de la materia** (p. ej. en 1r ESO TRDR, con CE1–CE4 oficiales, la primera propia es `CE5`, la siguiente `CE6`…), y sus criterios `CE5.1`, `CE5.2`… Nunca reutilices un código oficial. Consulta qué CE propias existen ya en `.claude/situacions/<curs>-*.md` antes de crear una nueva, para no repetir número.
 
-**Evaluación competencial (siempre, ESO y FP)**: la nota sale de abajo arriba: **indicador → criterio → RA/CE → SA**. Nota del criterio = Σ nota del indicador × peso del indicador dentro del criterio; nota del RA/CE = Σ nota del criterio × peso dentro del RA/CE; nota de la SA = Σ nota del RA/CE × su peso. **Los instrumentos no tienen peso propio** (una prueba o un proyecto no "valen" un %): no fuerces ni muestres pesos por instrumento. Lo que importa y siempre se muestra es el **peso de cada indicador dentro de su criterio** (los indicadores de un criterio suman 100 %), elegido por la calidad de la evidencia (p. ej. el proyecto pesa más que la prueba si el criterio se demuestra mejor en un producto real), con números redondos.
+**Evaluación competencial (siempre, ESO y FP)**: la nota sale de abajo arriba: **indicador → criterio → RA/CE → SA**. Nota del criterio = Σ (nota del indicador × peso) ÷ Σ pesos de sus indicadores (media ponderada de **todos** los indicadores que lo evalúan, estén en una, dos o más rúbricas/instrumentos); nota del RA/CE = Σ nota del criterio × peso dentro del RA/CE; nota de la SA = Σ nota del RA/CE × su peso. **Los instrumentos no tienen peso propio** (una prueba o un proyecto no "valen" un %): no fuerces ni muestres pesos por instrumento. Lo que importa y siempre se muestra es el **peso de cada indicador dentro de su criterio**, en escala **1 = bàsic, 2 = intermedi, 3 = avançat** según la profundidad con la que el indicador demuestra el criterio (p. ej. reconocer o usar de forma aislada = 1; aplicar en un ejercicio = 2; aplicar en un producto real/proyecto = 3). Todo indicador lleva su peso 1-3, aunque sea el único de su criterio. El % que resulta (peso ÷ suma de pesos del criterio) se muestra en la tabla de trazabilidad. Ventaja: si un indicador aún no se ha evaluado, la nota provisional del criterio es la media ponderada de los ya evaluados.
 
 Si el encargo no dice cuál es el caso, **no lo decidas tú**: lee las actividades de la unidad, haz una propuesta razonada ("las actividades de la unidad encajan con la CE X de la materia Y" o "no encajan con nada del currículum, propongo inventarlas") y **termina tu respuesta con la pregunta** para que el usuario confirme. No redactes la situación de aprendizaje completa hasta tener la respuesta.
 
@@ -54,7 +54,7 @@ Si el encargo no dice cuál es el caso, **no lo decidas tú**: lee las actividad
 
 - **Una competencia específica por SA**, como norma general. Si ves necesario usar más de una, justifícalo y pregúntalo antes.
 - **Pesos en los criterios**: cada CA lleva un **peso %** según su importancia y dificultad (lo más complejo o nuclear pesa más). Los pesos de los CA de la SA suman **100 %**. Justifica en una línea cada peso.
-- **Instrumentos → indicadores → criterio**: una SA puede tener varios instrumentos. Cada instrumento se define por sus **indicadores**, y **cada indicador apunta directamente a un único CA**. **Cada indicador lleva su peso**: % dentro de su criterio (los indicadores de un mismo criterio suman 100 %) y, entre paréntesis, el % que representa en la nota de la SA (peso del indicador × peso del criterio). Un criterio puede evaluarse con indicadores de varios instrumentos. La nota de la SA es la suma ponderada de las notas de los CA.
+- **Instrumentos → indicadores → criterio**: una SA puede tener varios instrumentos. Cada instrumento se define por sus **indicadores**, y **cada indicador apunta directamente a un único CA**. **Cada indicador lleva su peso 1-3** (bàsic/intermedi/avançat) dentro de su criterio; en la tabla de trazabilidad, además, el % que resulta dentro del criterio (peso ÷ suma de pesos). Un criterio puede evaluarse con indicadores de varios instrumentos. La nota de la SA es la suma ponderada de las notas de los CA.
 - **Alineación constructiva**: cada CA tiene al menos una actividad que lo trabaja y al menos un indicador que lo evalúa. Nada suelto. Incluye siempre la tabla de trazabilidad (§5).
 - **Contexto real y cercano** al alumnado de esa edad: un reto o producto final con sentido fuera del aula (organizar las fotos del viaje, preparar la carpeta compartida del grupo, una web para el centro…).
 - **Progresión**: de guiado a autónomo. Demostración del profesor, práctica guiada, práctica autónoma, reto final. Actividades graduadas (básica / estándar / ampliación).
@@ -110,15 +110,15 @@ estat: <esborrany | revisat>
 ## Indicadors d'èxit
 ### <Instrument 1>
 (tipus de qualificació + taula adaptada al tipus:
- rúbrica → indicador | criteri | pes | Insuficient | Suficient-Bé | Notable | Excel·lent;
+ rúbrica → indicador | criteri | pes en el criteri (1 · bàsic / 2 · intermedi / 3 · avançat) | Insuficient | Suficient-Bé | Notable | Excel·lent;
  fet/no fet → indicador | criteri | pes | què compta com "fet" (10) | no fet (0);
  escala de N nivells → primer la llista categoria = valor (p. ex. Malament = 3 · Bé = 6 · Molt bé = 10); després indicador | criteri | pes | una columna per categoria amb el seu descriptor;
  nota única → indicador | criteri | pes | com es posa la nota)
 ### <Instrument 2>
 (...)
 ## Taula de traçabilitat i qualificació
-(criteri | pes % | activitat(s) | instrument(s) i indicadors | pes de cada indicador dins del criteri)
-(al final: nota del criteri = Σ nota indicador × pes; nota de la SA = Σ nota criteri × pes)
+(criteri | pes % | activitat(s) | indicadors (instrument): pes 1-3 i % dins del criteri, p. ex. «P3.4 (rúbrica del bloc 2): pes 1, 25 % · R8 (projecte): pes 3, 75 %»)
+(al final: nota del criteri = Σ (nota indicador × pes) ÷ Σ pesos, amb un exemple; nota del RA/CE = Σ nota criteri × pes; nota de la SA = Σ nota RA/CE × pes)
 ## Recursos i materials
 ```
 

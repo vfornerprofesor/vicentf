@@ -122,7 +122,7 @@ Els blocs van per RA i cada un acaba amb una prova acumulativa (entra tot el que
 
 **Estructura tipus d'una sessió de 55 min**: 5 min d'arrencada (obrir VS Code, la carpeta de treball i Live Server) · 10-15 min de demostració en directe, escrivint el codi davant de l'alumnat · 30-35 min d'exercicis · 5 min de tancament (desar i comprovar que no hi ha errors en la consola). Les sessions de miniprojecte, prova i projecte no tenen demostració.
 
-**Correcció de les proves**: en els primers 15 min de la sessió següent a cada prova, correcció comentada amb la rúbrica. Qui ha tret Insuficient en alguna fila repetix els exercicis bàsics d'eixe criteri en el temps d'exercicis de les sessions següents, amb ajuda del professor. Qui té un bloc pendent el recupera en la prova següent: se li aplica també la rúbrica d'eixe bloc. Qui té un bloc pendent el recupera en la prova següent: se li aplica també la rúbrica d'eixe bloc.
+**Correcció de les proves**: en els primers 15 min de la sessió següent a cada prova, correcció comentada amb la rúbrica. Qui ha tret Insuficient en alguna fila repetix els exercicis bàsics d'eixe criteri en el temps d'exercicis de les sessions següents, amb ajuda del professor. Qui té un bloc pendent el recupera en la prova següent: se li aplica també la rúbrica d'eixe bloc.
 
 ### Bloc 1 — RA1: elements del programa (sessions 1-7)
 
@@ -230,10 +230,10 @@ Els enunciats de les lliçons estan en la web. Nivells: **bàsic** = primers exe
 | 1. El primer programa | 1.1, 1.2 | + 1.3-1.5 | — | CA1.1, CA1.2, CA1.3, CA1.9, CA5.1 |
 | 2. Variables | 2.1, 2.2 | + 2.3-2.7 | — | CA1.4, CA1.5, CA1.6, CA1.8 |
 | 3. Operadors | 3.1, 3.2 | + 3.3-3.6 | — | CA1.7, CA2.5, CA5.2 |
-| 4. El DOM | 4.1, 4.2 | + 4.3-4.7 | — | CA2.4, CA5.8 |
-| 5. Decisions | 5.1, 5.2 | + 5.3-5.7 | — | CA3.1 |
+| 4. El DOM | 4.1, 4.2 | + 4.3-4.7 | — | CA2.4, CA5.7, CA5.8 |
+| 5. Decisions | 5.1, 5.2 | + 5.3-5.7 | — | CA3.1, CA3.3 |
 | 6. Bucles | 6.1-6.3 | + 6.4, 6.7 | 6.5, 6.6 | CA3.2, CA3.3 |
-| 7. Funcions | 7.1-7.3 | + 7.4-7.6 | 7.7 | CA2.2, CA2.6, CA3.5 |
+| 7. Funcions | 7.1-7.3 | + 7.4-7.6 | 7.7 | CA2.2, CA2.6, CA3.3, CA3.5 |
 | 8. Depuració i assercions | 8.1 | + 8.2-8.4 | 8.5 | CA3.6, CA3.7, CA3.9 |
 | 9. Errors i excepcions | 9.1 | + 9.2, 9.3 | 9.4 | CA3.4, CA3.8 |
 | 10. Arrays | 10.1, 10.2 | + 10.3-10.5, 10.8, 10.9 | 10.6, 10.7, 10.10 | CA6.1, CA6.3, CA6.4 |
@@ -430,7 +430,7 @@ Si l'aplicació no s'obri o dona error en carregar, es torna per a corregir-la a
 
 ## Indicadors d'èxit
 
-En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen **totes** les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. La columna "Pes" és el pes de l'indicador dins del seu criteri, excepte en la rúbrica del bloc 1, on és el pes en la nota de la prova.
+En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen **totes** les condicions; Insuficient és no arribar a Suficient. Cada nivell superior inclou l'anterior. La columna "Pes en el criteri" diu quant compta l'indicador en la nota del seu criteri: **1 = bàsic**, **2 = intermedi**, **3 = avançat**, segons la profunditat amb què demostra el criteri (normalment, el projecte, on el criteri s'aplica en una aplicació real, és avançat). Un criteri pot tindre indicadors en diverses rúbriques: la seua nota és la mitjana ponderada de tots ells, i la taula de traçabilitat dona el % que representa cada indicador.
 
 **Una rúbrica per bloc.** Les proves són acumulatives, però cada una es qualifica només amb la rúbrica del seu bloc. Les rúbriques no depenen dels exercicis d'una prova concreta: on diuen "la meitat" o "tots menys un", la guia de correcció de cada prova dona els números concrets.
 
@@ -438,177 +438,178 @@ En totes les rúbriques, cada fila rep el nivell més alt del qual es complixen 
 
 ### Rúbrica del bloc 1 (RA1)
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P1.1. Variables | CA1.5 | 7,5 % | Quasi no usa variables: les lectures i els resultats van directament dins dels càlculs i dels missatges. | Les lectures en variables, però 3 o més resultats es tornen a calcular o van escrits dins del missatge. | Les lectures i els resultats en variables, amb com a màxim 2 càlculs repetits. | Cada lectura i cada resultat en una variable amb nom descriptiu, que es reutilitza sense repetir càlculs. |
-| P1.2. Constants i literals | CA1.6 | 7,5 % | Les dades fixes de l'enunciat van escrites com a literal dins dels càlculs. | Algunes dades fixes en constants, però 3 o més valors fixos escrits com a literal o repetits. | Les dades fixes en constants, amb com a màxim 2 literals repetits. Pot usar `let` on caldria `const`. | `const` per a tot el que no canvia, literals ben escrits (decimals amb punt, textos entre cometes) i cap repetició. |
-| P1.3. Tipus de dades | CA1.4 | 5 % | Cap `typeof`, o els que hi ha no corresponen a les dades demanades. | `typeof` d'almenys la meitat de les dades demanades. | `typeof` de totes les dades demanades menys una. | `typeof` de totes les dades demanades, i les numèriques ja convertides mostren `number`. |
-| P1.4. Entrada i conversions | CA1.8 | 15 % | Falten lectures o més de la meitat de les numèriques es fan servir com a text. | Totes o quasi totes les lectures; almenys la meitat de les numèriques convertides. | Totes les lectures menys una i les numèriques convertides. | Totes les lectures i totes les numèriques convertides (`Number`, `parseInt`, `parseFloat`). |
-| P1.5. Càlculs | CA1.7 | 25 % | Menys del 40 % dels punts dels apartats de càlcul (aritmètica, `%`, percentatges, part entera i decimal). | 40-64 %. | 65-89 %. | 90 % o més. |
-| P1.6. Comparacions i operadors lògics | CA1.7 | 10 % | Menys del 40 % dels punts dels apartats de comparacions i operadors lògics. | 40-64 %. | 65-89 %. | 90 % o més. |
-| P1.7. Segon exercici | CA1.7 | 20 % | Menys del 40 % dels punts dels apartats del segon exercici de la prova. | 40-64 %. | 65-89 %. | 90 % o més. |
-| P1.8. Eixida en la pàgina | CA1.1 | 10 % | Mostra menys de la meitat dels resultats demanats. | En mostra almenys la meitat. | Mostra quasi tots els resultats (en falten 1-2). | Tots els resultats, cada un en la seua línia. |
+| P1.1. Variables | CA1.5 | 1 · bàsic | Quasi no usa variables: les lectures i els resultats van directament dins dels càlculs i dels missatges. | Les lectures en variables, però 3 o més resultats es tornen a calcular o van escrits dins del missatge. | Les lectures i els resultats en variables, amb com a màxim 2 càlculs repetits. | Cada lectura i cada resultat en una variable amb nom descriptiu, que es reutilitza sense repetir càlculs. |
+| P1.2. Constants i literals | CA1.6 | 1 · bàsic | Les dades fixes de l'enunciat van escrites com a literal dins dels càlculs. | Algunes dades fixes en constants, però 3 o més valors fixos escrits com a literal o repetits. | Les dades fixes en constants, amb com a màxim 2 literals repetits. Pot usar `let` on caldria `const`. | `const` per a tot el que no canvia, literals ben escrits (decimals amb punt, textos entre cometes) i cap repetició. |
+| P1.3. Tipus de dades | CA1.4 | 1 · bàsic | Cap `typeof`, o els que hi ha no corresponen a les dades demanades. | `typeof` d'almenys la meitat de les dades demanades. | `typeof` de totes les dades demanades menys una. | `typeof` de totes les dades demanades, i les numèriques ja convertides mostren `number`. |
+| P1.4. Entrada i conversions | CA1.8 | 2 · intermedi | Falten lectures o més de la meitat de les numèriques es fan servir com a text. | Totes o quasi totes les lectures; almenys la meitat de les numèriques convertides. | Totes les lectures menys una i les numèriques convertides. | Totes les lectures i totes les numèriques convertides (`Number`, `parseInt`, `parseFloat`). |
+| P1.5. Càlculs | CA1.7 | 2 · intermedi | Menys del 40 % dels punts dels apartats de càlcul (aritmètica, `%`, percentatges, part entera i decimal). | 40-64 %. | 65-89 %. | 90 % o més. |
+| P1.6. Comparacions i operadors lògics | CA1.7 | 1 · bàsic | Menys del 40 % dels punts dels apartats de comparacions i operadors lògics. | 40-64 %. | 65-89 %. | 90 % o més. |
+| P1.7. Segon exercici | CA1.7 | 2 · intermedi | Menys del 40 % dels punts dels apartats del segon exercici de la prova. | 40-64 %. | 65-89 %. | 90 % o més. |
+| P1.8. Eixida en la pàgina | CA1.1 | 1 · bàsic | Mostra menys de la meitat dels resultats demanats. | En mostra almenys la meitat. | Mostra quasi tots els resultats (en falten 1-2). | Tots els resultats, cada un en la seua línia. |
 
-**Pes en la rúbrica del bloc 1:** és el pes de l'indicador en la nota de la prova. El pes dins de cada criteri és el de la taula de criteris. **Nota de la prova** = Σ valor del nivell × pes, amb Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5.
+**Valor de cada nivell:** Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5 (el mateix en totes les rúbriques). La nota informativa de la prova del bloc 1 es va calcular amb aquests pesos dins de la prova: P1.1 i P1.2 7,5 % · P1.3 5 % · P1.4 15 % · P1.5 25 % · P1.6 10 % · P1.7 20 % · P1.8 10 %. Per a la qualificació compten els pesos en el criteri.
 
 **Punts per apartat (P1.5-P1.7):** 1 = correcte · 0,75 = correcte amb un error lleu (límit `>`/`>=`, `==` en lloc de `===`, falta un cas límit) · 0,5 = la idea està ben plantejada però té un error important (funció o variable equivocada, precedència, sintaxi, text sense convertir) · 0 = no hi és o la idea no és correcta. La guia de correcció de cada prova dona la llista d'apartats.
 
-**Criteri de correcció:** és la primera prova de programació. Es valora tot el que s'ha escrit, encara que no s'execute: una línia amb la idea correcta puntua encara que tinga un error de sintaxi, i un error que atura el programa no arrossega les línies de després. No es valoren l'organització en fitxers, els `console.log`, els comentaris ni les marques de bloc: CA1.2, CA1.3 i CA1.9 s'avaluen en el projecte (R1, R2 i R10). No usar `const` per als resultats no baixa de Notable P1.2.
+**Criteri de correcció:** és la primera prova de programació. Es valora tot el que s'ha escrit, encara que no s'execute: una línia amb la idea correcta puntua encara que tinga un error de sintaxi, i un error que atura el programa no arrossega les línies de després. No es valoren l'organització en fitxers, els `console.log`, els comentaris ni les marques de bloc: CA1.2, CA1.3 i CA1.9 s'avaluen en el projecte (R1, R2 i R10), i els blocs del programa de CA1.1 també en el projecte (R26). No usar `const` per als resultats no baixa de Notable P1.2.
 
 **Arrodoniment:** `Math.round`, `Math.floor` i `toFixed` no són obligatoris. No es penalitza no arrodonir ni no traure la part entera; `parseInt(x)` i `x - parseInt(x)` compten com a correctes. Un apartat que no hi és gens continua valent 0.
 
 ### Rúbrica del bloc 2 (RA3)
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P3.1. Selecció | CA3.1 | 50 % | Menys de la meitat dels casos de prova de les decisions correctes. | Almenys la meitat. | Tots menys un. | Tots, amb `else if` ben ordenat i sense condicions redundants. |
-| P3.2. Repetició | CA3.2 | 50 % | Algun bucle no acaba, no recorre tots els elements o no acumula. | Recorre i acumula, però el resultat (o la taula de traça) té errors. | Resultat correcte; si hi ha taula de traça, amb un error com a màxim. | Tot correcte, sense números fixos en lloc de `length`. |
-| P3.3. Salt | CA3.3 | 100 % | No ix del bucle o de la funció quan cal. | Ix, però tracta algun element de més o executa codi que no tocava. | Ix en el moment just amb `break` o `return`. | A més, explica en un comentari per què ix (o què faria `continue`). |
-| P3.4. Programa amb diverses estructures | CA3.5 | 30 % | El programa no s'executa o no dona cap resultat. | S'executa i combina selecció i repetició, però falla en algun cas de prova. | Correcte en tots els casos de prova. | A més, el càlcul i la presentació estan en funcions separades, sense codi repetit. |
-| P3.5. Prova i depuració | CA3.6 | 30 % | Menys de la meitat dels errors del codi donat corregits. | Almenys la meitat. | Tots menys un. | Tots, amb la línia, el tipus i la causa anotats. |
-| P3.6. Creació d'excepcions | CA3.8 | 50 % | No llança cap error amb dades no vàlides. | Llança `new Error` amb un missatge clar en almenys un cas. | Un missatge diferent per a cada cas no vàlid. | A més, un nom propi (`name`) o una classe d'error pròpia. |
-| P3.7. Control d'excepcions | CA3.4 | 40 % | Sense `try/catch` on cal, o el programa es trenca. | `try/catch` on cal i el programa no es trenca. | A més, mostra `error.message` a l'usuari. | A més, tots els punts que poden fallar protegits, i en un cas correcte desapareix el missatge d'error anterior. |
-| P3.8. Assercions | CA3.9 | 40 % | Menys assercions de les demanades o mal plantejades. | Les assercions demanades, correctes, amb casos adequats. | A més, troba l'error a partir de l'asserció que falla i corregix la funció. | A més, inclouen un cas límit i un cas estrany. |
-| P3.9. Documentació | CA3.7 | 30 % | Cap comentari de la funció. | Comentari que diu què fa la funció. | Format JSDoc amb `@param` i `@returns`. | A més, `@throws` amb els errors que llança (o el tipus en cada etiqueta, si no en llança). |
+| P3.1. Selecció | CA3.1 | 2 · intermedi | Menys de la meitat dels casos de prova de les decisions correctes. | Almenys la meitat. | Tots menys un. | Tots, amb `else if` ben ordenat i sense condicions redundants. |
+| P3.2. Repetició | CA3.2 | 2 · intermedi | Algun bucle no acaba, no recorre tots els elements o no acumula. | Recorre i acumula, però el resultat (o la taula de traça) té errors. | Resultat correcte; si hi ha taula de traça, amb un error com a màxim. | Tot correcte, sense números fixos en lloc de `length`. |
+| P3.3. Salt | CA3.3 | 2 · intermedi | No ix del bucle o de la funció quan cal. | Ix, però tracta algun element de més o executa codi que no tocava. | Ix en el moment just amb `break` o `return`. | A més, explica en un comentari per què ix (o què faria `continue`). |
+| P3.4. Programa amb diverses estructures | CA3.5 | 1 · bàsic | El programa no s'executa o no dona cap resultat. | S'executa i combina selecció i repetició, però falla en algun cas de prova. | Correcte en tots els casos de prova. | A més, el càlcul i la presentació estan en funcions separades, sense codi repetit. |
+| P3.5. Prova i depuració | CA3.6 | 2 · intermedi | Menys de la meitat dels errors del codi donat corregits. | Almenys la meitat. | Tots menys un. | Tots, amb la línia, el tipus i la causa anotats. |
+| P3.6. Creació d'excepcions | CA3.8 | 2 · intermedi | No llança cap error amb dades no vàlides. | Llança `new Error` amb un missatge clar en almenys un cas. | Un missatge diferent per a cada cas no vàlid. | A més, un nom propi (`name`) o una classe d'error pròpia. |
+| P3.7. Control d'excepcions | CA3.4 | 2 · intermedi | Sense `try/catch` on cal, o el programa es trenca. | `try/catch` on cal i el programa no es trenca. | A més, mostra `error.message` a l'usuari. | A més, tots els punts que poden fallar protegits, i en un cas correcte desapareix el missatge d'error anterior. |
+| P3.8. Assercions | CA3.9 | 2 · intermedi | Menys assercions de les demanades o mal plantejades. | Les assercions demanades, correctes, amb casos adequats. | A més, troba l'error a partir de l'asserció que falla i corregix la funció. | A més, inclouen un cas límit i un cas estrany. |
+| P3.9. Documentació | CA3.7 | 1 · bàsic | Cap comentari de la funció. | Comentari que diu què fa la funció. | Format JSDoc amb `@param` i `@returns`. | A més, `@throws` amb els errors que llança (o el tipus en cada etiqueta, si no en llança). |
 
 ### Rúbrica del bloc 3 (RA6)
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P6.1. Matriu | CA6.1 | 100 % | No accedix a les cel·les amb `[fila][columna]`. | Recorre o mostra la matriu amb dos bucles niats. | A més, fa l'operació demanada (fila, columna o comptatge). | A més, en una funció que servix per a qualsevol fila o mida, sense números fixos. |
-| P6.2. Classes de tipus avançats | CA6.2 | 100 % | Usa la classe adequada (Array, Set, Map, String, RegExp) en menys de la meitat de les necessitats del programa. | En almenys la meitat. | En totes menys una. | En totes. |
-| P6.3. Llistes | CA6.3 | 30 % | No funciona cap operació sobre la llista (afegir, eliminar, modificar). | Afig i elimina correctament. | A més, modifica un element buscant-lo per una propietat. | A més, controla l'element que no existix (`-1` o `undefined`). |
-| P6.4. Iteradors | CA6.4 | 50 % | Cap recorregut correcte. | Recorregut amb `for...of` correcte. | A més, `forEach` o `entries()` quan cal la posició. | A més, recorre un `Set` o un `Map`. |
-| P6.5. Tria de col·lecció | CA6.5 | 100 % | Col·lecció inadequada en la majoria de casos (p. ex. un array amb repetits on calia un Set). | Adequada en almenys la meitat dels casos. | Adequada en tots. | A més, un comentari en el codi justifica cada tria. |
-| P6.6. Expressions regulars | CA6.7 | 60 % | Cap patró correcte. | Un patró classifica bé la majoria dels casos de prova. | Tots els patrons classifiquen bé tots els casos. | A més, usa `match` o `replace` amb una expressió regular quan es demana. |
-| P6.7. Classes per a formats d'intercanvi | CA6.8 | 100 % | No usa l'eina adequada per a convertir les dades a text o al revés. | L'usa en un sentit. | En els dos sentits (`JSON.stringify` i `JSON.parse`). | A més, un comentari diu quin format tracta (JSON o XML). |
-| P6.8. JSON | CA6.9 | 40 % | No convertix les dades amb `JSON.parse` ni `JSON.stringify`. | Convertix en un sentit i usa les dades. | Convertix en els dos sentits i les dades no es perden. | A més, `JSON.parse` protegit amb `try/catch` i, si es mostra, JSON sagnat. |
-| P6.9. Operacions agregades | CA6.10 | 50 % | Menys de la meitat de les operacions demanades correctes. | Almenys la meitat. | Totes menys una. | Totes, sense cap bucle `for`. |
+| P6.1. Matriu | CA6.1 | 2 · intermedi | No accedix a les cel·les amb `[fila][columna]`. | Recorre o mostra la matriu amb dos bucles niats. | A més, fa l'operació demanada (fila, columna o comptatge). | A més, en una funció que servix per a qualsevol fila o mida, sense números fixos. |
+| P6.2. Classes de tipus avançats | CA6.2 | 2 · intermedi | Usa la classe adequada (Array, Set, Map, String, RegExp) en menys de la meitat de les necessitats del programa. | En almenys la meitat. | En totes menys una. | En totes. |
+| P6.3. Llistes | CA6.3 | 2 · intermedi | No funciona cap operació sobre la llista (afegir, eliminar, modificar). | Afig i elimina correctament. | A més, modifica un element buscant-lo per una propietat. | A més, controla l'element que no existix (`-1` o `undefined`). |
+| P6.4. Iteradors | CA6.4 | 2 · intermedi | Cap recorregut correcte. | Recorregut amb `for...of` correcte. | A més, `forEach` o `entries()` quan cal la posició. | A més, recorre un `Set` o un `Map`. |
+| P6.5. Tria de col·lecció | CA6.5 | 2 · intermedi | Col·lecció inadequada en la majoria de casos (p. ex. un array amb repetits on calia un Set). | Adequada en almenys la meitat dels casos. | Adequada en tots. | A més, un comentari en el codi justifica cada tria. |
+| P6.6. Expressions regulars | CA6.7 | 3 · avançat | Cap patró correcte. | Un patró classifica bé la majoria dels casos de prova. | Tots els patrons classifiquen bé tots els casos. | A més, usa `match` o `replace` amb una expressió regular quan es demana. |
+| P6.7. Classes per a formats d'intercanvi | CA6.8 | 1 · bàsic | No usa l'eina adequada per a convertir les dades a text o al revés. | L'usa en un sentit. | En els dos sentits (`JSON.stringify` i `JSON.parse`). | A més, un comentari diu quin format tracta (JSON o XML). |
+| P6.8. JSON | CA6.9 | 2 · intermedi | No convertix les dades amb `JSON.parse` ni `JSON.stringify`. | Convertix en un sentit i usa les dades. | Convertix en els dos sentits i les dades no es perden. | A més, `JSON.parse` protegit amb `try/catch` i, si es mostra, JSON sagnat. |
+| P6.9. Operacions agregades | CA6.10 | 2 · intermedi | Menys de la meitat de les operacions demanades correctes. | Almenys la meitat. | Totes menys una. | Totes, sense cap bucle `for`. |
 
 ### Rúbrica del bloc 4 (RA5)
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P5.1. Consola | CA5.1 | 60 % | No llig amb `prompt` o no escriu en la consola el que es demana. | Llig amb `prompt` i escriu amb `console.log` el que es demana. | A més, mostra un array d'objectes amb `console.table`. | A més, controla que l'usuari cancel·le o escriga una dada no vàlida. |
-| P5.2. Formats | CA5.2 | 50 % | Menys de la meitat dels valors amb el format demanat. | Almenys la meitat. | Tots. | Tots amb `toLocaleString`, `toLocaleDateString` o una llibreria, sense construir el format a mà. |
-| P5.3. Possibilitats d'entrada i eixida | CA5.3 | 100 % | Usa un mitjà inadequat per a la necessitat (p. ex. `alert` per als errors del formulari o `prompt` per a les dades de la pàgina). | Mitjà adequat en la majoria de necessitats. | En totes (`prompt`, consola, `confirm`, DOM, `localStorage`). | A més, un comentari justifica cada mitjà. |
-| P5.4. Controladors d'esdeveniments | CA5.7 | 30 % | Cap controlador funciona amb `addEventListener`, o la pàgina es recarrega en enviar. | Els controladors principals funcionen (enviament amb `preventDefault`, clics). | A més, un esdeveniment d'entrada o de teclat (`input`, `change`, `keydown`). | A més, un sol controlador gestiona diversos elements amb `event.target` (o `dataset`). |
-| P5.5. Interfície per a entrada i eixida | CA5.8 | 30 % | No llig els camps o no mostra les dades. | Llig els camps, actualitza l'array i redibuixa amb `createElement` i `textContent`. | A més, missatges d'error en la pàgina i camps buidats després d'afegir. | A més, el camp incorrecte es marca (classe o focus) i hi torna el cursor. |
+| P5.1. Consola | CA5.1 | 2 · intermedi | No llig amb `prompt` o no escriu en la consola el que es demana. | Llig amb `prompt` i escriu amb `console.log` el que es demana. | A més, mostra un array d'objectes amb `console.table`. | A més, controla que l'usuari cancel·le o escriga una dada no vàlida. |
+| P5.2. Formats | CA5.2 | 2 · intermedi | Menys de la meitat dels valors amb el format demanat. | Almenys la meitat. | Tots. | Tots amb `toLocaleString`, `toLocaleDateString` o una llibreria, sense construir el format a mà. |
+| P5.3. Possibilitats d'entrada i eixida | CA5.3 | 2 · intermedi | Usa un mitjà inadequat per a la necessitat (p. ex. `alert` per als errors del formulari o `prompt` per a les dades de la pàgina). | Mitjà adequat en la majoria de necessitats. | En totes (`prompt`, consola, `confirm`, DOM, `localStorage`). | A més, un comentari justifica cada mitjà. |
+| P5.4. Controladors d'esdeveniments | CA5.7 | 2 · intermedi | Cap controlador funciona amb `addEventListener`, o la pàgina es recarrega en enviar. | Els controladors principals funcionen (enviament amb `preventDefault`, clics). | A més, un esdeveniment d'entrada o de teclat (`input`, `change`, `keydown`). | A més, un sol controlador gestiona diversos elements amb `event.target` (o `dataset`). |
+| P5.5. Interfície per a entrada i eixida | CA5.8 | 2 · intermedi | No llig els camps o no mostra les dades. | Llig els camps, actualitza l'array i redibuixa amb `createElement` i `textContent`. | A més, missatges d'error en la pàgina i camps buidats després d'afegir. | A més, el camp incorrecte es marca (classe o focus) i hi torna el cursor. |
 
 ### Rúbrica del bloc 5 (RA2)
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P2.1. Fonaments de la POO | CA2.1 | 100 % | Explica en comentaris menys de la meitat dels conceptes (classe i objecte, instància, encapsulació, herència). | Almenys la meitat. | Tots menys un. | Tots, amb exemples del seu programa. |
-| P2.2. Programa simple | CA2.2 | 100 % | No s'executa o li falta l'entrada, el procés o l'eixida. | S'executa de principi a fi (llig, calcula i mostra). | A més, el resultat és correcte. | A més, amb una entrada buida o no vàlida mostra un missatge en lloc d'un resultat erroni. |
-| P2.3. Classes predefinides | CA2.3 | 100 % | No crea les instàncies amb `new` o no usa cap mètode. | Crea les instàncies demanades i usa un mètode de cada una. | A més, els resultats són correctes. | A més, usa propietats i mètodes propis de cada classe més enllà del mínim (`size`, `getTime`…). |
-| P2.4. Constructors | CA2.8 | 100 % | Cap constructor amb els paràmetres adequats. | Almenys un constructor amb els paràmetres adequats (p. ex. el mes comptat des de 0). | Tots els demanats. | A més, el mateix objecte amb dues formes del constructor i comprova que són iguals. |
-| P2.5. Mètodes i propietats | CA2.4 | 40 % | Menys de la meitat dels mètodes i propietats que necessita el programa ben usats. | Almenys la meitat. | Totes menys una. | Totes. |
-| P2.6. Mètodes estàtics | CA2.5 | 100 % | Menys de la meitat de les crides estàtiques ben usades i marcades (`// static`). | Almenys la meitat. | Totes menys una. | Totes, i cap mètode estàtic cridat sobre un objecte ni cap mètode d'objecte marcat com a estàtic. |
-| P2.7. Paràmetres | CA2.6 | 100 % | Menys de la meitat de les crides amb paràmetres donen el resultat que cal. | Almenys la meitat. | Totes menys una. | Totes. |
-| P2.8. Llibreria | CA2.7 | 50 % | La llibreria no es carrega o la crida dona error. | Carregada abans de l'script propi i una funció cridada amb resultat correcte. | Totes les operacions demanades correctes. | A més, usa un patró o una opció més enllà del bàsic, seguint la documentació. |
+| P2.1. Fonaments de la POO | CA2.1 | 1 · bàsic | Explica en comentaris menys de la meitat dels conceptes (classe i objecte, instància, encapsulació, herència). | Almenys la meitat. | Tots menys un. | Tots, amb exemples del seu programa. |
+| P2.2. Programa simple | CA2.2 | 2 · intermedi | No s'executa o li falta l'entrada, el procés o l'eixida. | S'executa de principi a fi (llig, calcula i mostra). | A més, el resultat és correcte. | A més, amb una entrada buida o no vàlida mostra un missatge en lloc d'un resultat erroni. |
+| P2.3. Classes predefinides | CA2.3 | 1 · bàsic | No crea les instàncies amb `new` o no usa cap mètode. | Crea les instàncies demanades i usa un mètode de cada una. | A més, els resultats són correctes. | A més, usa propietats i mètodes propis de cada classe més enllà del mínim (`size`, `getTime`…). |
+| P2.4. Constructors | CA2.8 | 2 · intermedi | Cap constructor amb els paràmetres adequats. | Almenys un constructor amb els paràmetres adequats (p. ex. el mes comptat des de 0). | Tots els demanats. | A més, el mateix objecte amb dues formes del constructor i comprova que són iguals. |
+| P2.5. Mètodes i propietats | CA2.4 | 2 · intermedi | Menys de la meitat dels mètodes i propietats que necessita el programa ben usats. | Almenys la meitat. | Totes menys una. | Totes. |
+| P2.6. Mètodes estàtics | CA2.5 | 2 · intermedi | Menys de la meitat de les crides estàtiques ben usades i marcades (`// static`). | Almenys la meitat. | Totes menys una. | Totes, i cap mètode estàtic cridat sobre un objecte ni cap mètode d'objecte marcat com a estàtic. |
+| P2.7. Paràmetres | CA2.6 | 2 · intermedi | Menys de la meitat de les crides amb paràmetres donen el resultat que cal. | Almenys la meitat. | Totes menys una. | Totes. |
+| P2.8. Llibreria | CA2.7 | 2 · intermedi | La llibreria no es carrega o la crida dona error. | Carregada abans de l'script propi i una funció cridada amb resultat correcte. | Totes les operacions demanades correctes. | A més, usa un patró o una opció més enllà del bàsic, seguint la documentació. |
 
 ### Rúbrica del bloc 6 (RA4)
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| P4.1. Components d'una classe | CA4.1 | 100 % | Menys de la meitat dels components de les seues classes marcats bé amb comentaris. | Almenys la meitat. | Tots menys un. | Tots. |
-| P4.2. Definició de la classe | CA4.2 | 100 % | La classe dona error en carregar o en fer `new`. | Es poden crear objectes de la classe. | A més, nom en PascalCase i cap funció solta que hauria de ser un mètode. | A més, cap propietat creada fora del constructor o de la declaració de camps. |
-| P4.3. Propietats i mètodes | CA4.3 | 100 % | Cap mètode demanat funciona. | Almenys la meitat dels mètodes funcionen. | Tots funcionen i usen `this`. | A més, un mètode reutilitza un altre de la classe. |
-| P4.4. Constructor | CA4.4 | 100 % | Sense constructor o no assigna les propietats. | Assigna totes les propietats. | A més, valor per defecte en el paràmetre que ho demana. | A més, les dades passen per la validació (el `set`) des del constructor. |
-| P4.5. Visibilitat | CA4.6 | 100 % | El camp no és privat o no hi ha `get`. | Camp privat (`#`) amb `get`. | A més, `set` que rebutja els valors no vàlids. | A més, demostra que el camp no és accessible des de fora (prova, comentari o `toJSON`). |
-| P4.6. Mètode estàtic | CA4.8 | 50 % | No definix `static` o el crida sobre una instància. | Mètode `static` definit. | A més, cridat sobre la classe, torna una instància que funciona. | A més, usat amb `map` per a convertir un array d'objectes. |
-| P4.7. Herència | CA4.7 | 100 % | Falta `extends` o `super` i dona error. | `extends` i `super` correctes; la instància es crea. | A més, un mètode sobreescrit. | A més, el mètode sobreescrit reutilitza el del pare amb `super`. |
-| P4.8. Llibreria de classes | CA4.9 | 40 % | Classes en `main.js` o error en importar. | `model.js` exporta les classes i `main.js` les importa. | A més, `model.js` només conté definicions (cap codi que s'execute en importar-lo). | A més, `model.js` no fa cap referència a la pàgina. |
-| P4.9. Programa amb les classes creades | CA4.5 | 30 % | No crea cap instància de les seues classes. | Array d'instàncies, cada una mostrada amb els seus mètodes. | A més, un càlcul global correcte fet amb els mètodes de les classes. | A més, les instàncies es creen a partir de dades amb el mètode estàtic i `map`. |
+| P4.1. Components d'una classe | CA4.1 | 1 · bàsic | Menys de la meitat dels components de les seues classes marcats bé amb comentaris. | Almenys la meitat. | Tots menys un. | Tots. |
+| P4.2. Definició de la classe | CA4.2 | 2 · intermedi | La classe dona error en carregar o en fer `new`. | Es poden crear objectes de la classe. | A més, nom en PascalCase i cap funció solta que hauria de ser un mètode. | A més, cap propietat creada fora del constructor o de la declaració de camps. |
+| P4.3. Propietats i mètodes | CA4.3 | 2 · intermedi | Cap mètode demanat funciona. | Almenys la meitat dels mètodes funcionen. | Tots funcionen i usen `this`. | A més, un mètode reutilitza un altre de la classe. |
+| P4.4. Constructor | CA4.4 | 2 · intermedi | Sense constructor o no assigna les propietats. | Assigna totes les propietats. | A més, valor per defecte en el paràmetre que ho demana. | A més, les dades passen per la validació (el `set`) des del constructor. |
+| P4.5. Visibilitat | CA4.6 | 3 · avançat | El camp no és privat o no hi ha `get`. | Camp privat (`#`) amb `get`. | A més, `set` que rebutja els valors no vàlids. | A més, demostra que el camp no és accessible des de fora (prova, comentari o `toJSON`). |
+| P4.6. Mètode estàtic | CA4.8 | 2 · intermedi | No definix `static` o el crida sobre una instància. | Mètode `static` definit. | A més, cridat sobre la classe, torna una instància que funciona. | A més, usat amb `map` per a convertir un array d'objectes. |
+| P4.7. Herència | CA4.7 | 3 · avançat | Falta `extends` o `super` i dona error. | `extends` i `super` correctes; la instància es crea. | A més, un mètode sobreescrit. | A més, el mètode sobreescrit reutilitza el del pare amb `super`. |
+| P4.8. Llibreria de classes | CA4.9 | 2 · intermedi | Classes en `main.js` o error en importar. | `model.js` exporta les classes i `main.js` les importa. | A més, `model.js` només conté definicions (cap codi que s'execute en importar-lo). | A més, `model.js` no fa cap referència a la pàgina. |
+| P4.9. Programa amb les classes creades | CA4.5 | 1 · bàsic | No crea cap instància de les seues classes. | Array d'instàncies, cada una mostrada amb els seus mètodes. | A més, un càlcul global correcte fet amb els mètodes de les classes. | A més, les instàncies es creen a partir de dades amb el mètode estàtic i `map`. |
 
 ### Rúbrica del projecte
 
 Es comprova usant l'aplicació (afegir, eliminar, recarregar, dades buides i errònies), executant `tests.js`, mirant la consola i el codi. El nivell Suficient de cada fila són els requisits mínims del projecte.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
 |---|---|---|---|---|---|---|
-| R1. Estructura del projecte | CA1.2 | 100 % | Falta algun arxiu de l'estructura. | `index.html`, `css/`, `js/main.js`, `js/model.js` i `js/tests.js`; noms en minúscules sense espais. | A més, cap ruta absoluta en els enllaços ni en els `import`. | A més, cap arxiu sobrant (proves velles, còpies). |
-| R2. Entorn de desenrotllament | CA1.3 | 100 % | L'aplicació no s'obri des de VS Code amb Live Server. | S'obri amb Live Server des de VS Code i carrega tots els arxius (cap error 404 en la consola). | A més, codi sagnat de manera uniforme (format de VS Code o Prettier). | A més, cap error ni avís marcat per VS Code en els arxius JS (variables no usades, imports trencats). |
-| R3. Mètodes i propietats predefinits | CA2.4 | 60 % | Menys de 5 mètodes o propietats diferents, o algun usat malament. | Almenys 5 mètodes o propietats diferents de cadenes, arrays o elements, ben usats. | A més, cap bucle que reimplemente un mètode existent (`includes`, `indexOf`). | A més, `Date` o `toLocaleString` per a mostrar una data o un número. |
-| R4. Llibreria externa | CA2.7 | 50 % | Cap llibreria externa. | Una llibreria carregada per CDN i cridada almenys una vegada amb efecte visible. | A més, usa opcions de la llibreria i n'enllaça la documentació en el README. | A més, l'aplicació funciona encara que la llibreria no carregue. |
-| R5. Selecció | CA3.1 | 50 % | Alguna decisió de l'aplicació falla (resposta correcta o incorrecta, camp buit, filtre, missatge final). | Totes les decisions de l'opció funcionen. | A més, sense condicions redundants ni `if` niats evitables. | A més, retorn anticipat o ternari on simplifica el codi. |
-| R6. Repetició | CA3.2 | 50 % | Algun bucle no acaba o deixa elements sense tractar. | Els bucles de dibuix i de càlcul recorren tots els elements i acaben sempre. | A més, cap índex fora de rang ni variable de bucle innecessària. | A més, la cerca s'atura quan troba l'element (`break`, `return` o `find`). |
-| R7. Control d'excepcions | CA3.4 | 60 % | `JSON.parse` de `localStorage` o crides que poden fallar sense protecció. | `try/catch` en llegir `localStorage` i en les crides al model que poden llançar errors; l'aplicació no es trenca. | A més, missatge clar a l'usuari en la pàgina. | A més, després d'un error la interfície queda coherent (redibuix o `finally`). |
-| R8. Programa complet | CA3.5 | 70 % | Falta algun requisit de l'opció triada o no funciona. | Tots els requisits de l'opció triada funcionen. | A més, funcions d'una sola tasca, de 20 línies com a màxim, sense codi repetit. | A més, en la presentació explica una funció línia a línia i respon bé la pregunta del professor. |
-| R9. Prova i depuració | CA3.6 | 70 % | Errors en la consola en un ús normal. | Cap error en la consola en un ús normal. | A més, cap error en els casos límit (camp buit, llista buida, `localStorage` corrupte). | A més, README amb la llista de proves manuals fetes i el resultat. |
-| R10. Comentaris en el codi | CA1.9 | 100 % | Alguna funció o mètode sense comentari. | Comentari damunt de cada funció i mètode. | A més, comentaris en les parts no evidents (condicions, expressions regulars) i cap comentari que només repetisca el codi. | A més, cap comentari desfasat respecte del codi. |
-| R11. Documentació | CA3.7 | 70 % | README absent o incomplet. | `README.txt` complet: nom, opció triada, com s'usa, què ha costat més i què afegiria. | A més, comentaris en format JSDoc amb `@param` i `@returns` en les funcions i els mètodes. | A més, JSDoc també en les classes del model, i el README explica l'estructura d'arxius. |
-| R12. Errors propis | CA3.8 | 50 % | El model no llança cap error davant de dades no vàlides. | El model llança `Error` amb un missatge clar davant de dades no vàlides (text buit, pregunta sense opcions). | A més, una classe d'error pròpia (`extends Error`). | A més, `main.js` la distingix amb `instanceof` i mostra un missatge diferent. |
-| R13. Assercions | CA3.9 | 60 % | Menys de 6 `console.assert` o algun falla. | `tests.js` amb almenys 6 `console.assert` sobre el model, tots en verd. | A més, cobrixen tots els mètodes públics del model. | A més, inclouen casos límit (llista buida, valor no vàlid, error llançat). |
-| R14. Ús de les classes pròpies | CA4.5 | 70 % | Les dades no són instàncies de les seues classes. | Les dades són un array d'instàncies de les seues classes i l'aplicació usa els seus mètodes. | A més, la lògica (puntuar, marcar, filtrar) està en mètodes del model, no en `main.js`. | A més, una subclasse del model usada en l'aplicació. |
-| R15. Mètodes estàtics | CA4.8 | 50 % | Cap mètode estàtic en el model. | Un mètode estàtic en el model, usat (p. ex. `fromJSON` per a tornar a crear les instàncies en carregar). | A més, cridat sobre la classe dins d'un `map`. | A més, un segon mètode estàtic amb sentit (validador, comptador). |
-| R16. Llibreria de classes | CA4.9 | 60 % | Classes en `main.js` o sense mòduls. | `model.js` amb almenys 2 classes exportades i importades en `main.js`. | A més, `tests.js` importa les mateixes classes. | A més, `model.js` no toca la pàgina (es podria reutilitzar amb una altra interfície). |
-| R17. Consola | CA5.1 | 40 % | `tests.js` no mostra res en la consola. | En executar `tests.js`, la consola mostra quines proves fallen i un resum amb `console.log`. | A més, `console.table` per a mostrar l'estat del model. | A més, cap `console.log` de depuració oblidat en `main.js`. |
-| R18. Formats | CA5.2 | 50 % | Números sense format (decimals llargs, percentatges sense símbol). | Puntuació, comptadors i percentatges amb un format adequat. | A més, `toLocaleString` o `Intl` per a números o dates. | A més, singular i plural correctes ("1 tasca", "3 tasques"). |
-| R19. Controladors d'esdeveniments | CA5.7 | 70 % | Menys de 3 controladors, d'un sol tipus, o `onclick` en l'HTML. | Almenys 3 `addEventListener` de 2 tipus diferents i cap `onclick` en l'HTML. | A més, usa l'objecte `event` (`key`, `target`, `preventDefault`). | A més, un sol controlador gestiona tots els botons d'una llista (delegació o `data-*`). |
-| R20. Entrada i eixida en la interfície | CA5.8 | 70 % | La pàgina no reflectix les dades o usa `innerHTML` amb text de l'usuari. | Llig els controls, mostra les dades amb `createElement` i `textContent`, i la pàgina sempre coincidix amb l'array (`draw()`). | A més, missatges d'error i de confirmació en la pàgina, no amb `alert`. | A més, el camp es buida i rep el focus després d'afegir, i els botons es deshabiliten quan no es poden usar. |
-| R21. Llistes | CA6.3 | 70 % | No hi ha array o la pàgina i l'array no coincidixen. | Array d'instàncies en el qual s'afig, s'elimina i es modifica, i després es redibuixa. | A més, elimina i modifica per identificador, no per posició en la pantalla. | A més, l'usuari pot ordenar la llista per un criteri. |
-| R22. Iteradors | CA6.4 | 50 % | Recorreguts amb índexs erronis o que se n'ixen de l'array. | Recorre la llista amb `for...of` o `forEach` en dibuixar i en desar. | A més, `entries()` o l'índex de `forEach` quan necessita la posició. | A més, recorre també un `Set` o un `Map` (p. ex. categories sense repetir). |
-| R23. Expressions regulars | CA6.7 | 40 % | Cap expressió regular. | Un camp validat amb `test()` i missatge si no complix. | A més, el patró usa `^`, `$` i classes de caràcters. | A més, una segona expressió valida un altre camp o neteja el text amb `replace`. |
-| R24. JSON | CA6.9 | 60 % | Desa sense JSON o es perden dades en recarregar. | `JSON.stringify` en desar i `JSON.parse` en carregar. | A més, una única funció `save()` que desa tot l'estat en una sola clau. | A més, `toJSON()` en les classes per a decidir què es guarda. |
-| R25. Operacions agregades | CA6.10 | 50 % | Cap operació agregada. | Almenys 2 operacions agregades diferents amb resultat visible (comptador, filtre, puntuació). | `filter`, `map` i `reduce`. | A més, encadenades en almenys un cas dins d'un mètode del model. |
+| R1. Estructura del projecte | CA1.2 | 1 · bàsic | Falta algun arxiu de l'estructura. | `index.html`, `css/`, `js/main.js`, `js/model.js` i `js/tests.js`; noms en minúscules sense espais. | A més, cap ruta absoluta en els enllaços ni en els `import`. | A més, cap arxiu sobrant (proves velles, còpies). |
+| R2. Entorn de desenrotllament | CA1.3 | 1 · bàsic | L'aplicació no s'obri des de VS Code amb Live Server. | S'obri amb Live Server des de VS Code i carrega tots els arxius (cap error 404 en la consola). | A més, codi sagnat de manera uniforme (format de VS Code o Prettier). | A més, cap error ni avís marcat per VS Code en els arxius JS (variables no usades, imports trencats). |
+| R3. Mètodes i propietats predefinits | CA2.4 | 3 · avançat | Menys de 5 mètodes o propietats diferents, o algun usat malament. | Almenys 5 mètodes o propietats diferents de cadenes, arrays o elements, ben usats. | A més, cap bucle que reimplemente un mètode existent (`includes`, `indexOf`). | A més, `Date` o `toLocaleString` per a mostrar una data o un número. |
+| R4. Llibreria externa | CA2.7 | 2 · intermedi | Cap llibreria externa. | Una llibreria carregada per CDN i cridada almenys una vegada amb efecte visible. | A més, usa opcions de la llibreria i n'enllaça la documentació en el README. | A més, l'aplicació funciona encara que la llibreria no carregue. |
+| R5. Selecció | CA3.1 | 2 · intermedi | Alguna decisió de l'aplicació falla (resposta correcta o incorrecta, camp buit, filtre, missatge final). | Totes les decisions de l'opció funcionen. | A més, sense condicions redundants ni `if` niats evitables. | A més, retorn anticipat o ternari on simplifica el codi. |
+| R6. Repetició | CA3.2 | 2 · intermedi | Algun bucle no acaba o deixa elements sense tractar. | Els bucles de dibuix i de càlcul recorren tots els elements i acaben sempre. | A més, cap índex fora de rang ni variable de bucle innecessària. | A més, la cerca s'atura quan troba l'element (`break`, `return` o `find`). |
+| R7. Control d'excepcions | CA3.4 | 3 · avançat | `JSON.parse` de `localStorage` o crides que poden fallar sense protecció. | `try/catch` en llegir `localStorage` i en les crides al model que poden llançar errors; l'aplicació no es trenca. | A més, missatge clar a l'usuari en la pàgina. | A més, després d'un error la interfície queda coherent (redibuix o `finally`). |
+| R8. Programa complet | CA3.5 | 3 · avançat | Falta algun requisit de l'opció triada o no funciona. | Tots els requisits de l'opció triada funcionen. | A més, funcions d'una sola tasca, de 20 línies com a màxim, sense codi repetit. | A més, en la presentació explica una funció línia a línia i respon bé la pregunta del professor. |
+| R9. Prova i depuració | CA3.6 | 3 · avançat | Errors en la consola en un ús normal. | Cap error en la consola en un ús normal. | A més, cap error en els casos límit (camp buit, llista buida, `localStorage` corrupte). | A més, README amb la llista de proves manuals fetes i el resultat. |
+| R10. Comentaris en el codi | CA1.9 | 1 · bàsic | Alguna funció o mètode sense comentari. | Comentari damunt de cada funció i mètode. | A més, comentaris en les parts no evidents (condicions, expressions regulars) i cap comentari que només repetisca el codi. | A més, cap comentari desfasat respecte del codi. |
+| R11. Documentació | CA3.7 | 3 · avançat | README absent o incomplet. | `README.txt` complet: nom, opció triada, com s'usa, què ha costat més i què afegiria. | A més, comentaris en format JSDoc amb `@param` i `@returns` en les funcions i els mètodes. | A més, JSDoc també en les classes del model, i el README explica l'estructura d'arxius. |
+| R12. Errors propis | CA3.8 | 3 · avançat | El model no llança cap error davant de dades no vàlides. | El model llança `Error` amb un missatge clar davant de dades no vàlides (text buit, pregunta sense opcions). | A més, una classe d'error pròpia (`extends Error`). | A més, `main.js` la distingix amb `instanceof` i mostra un missatge diferent. |
+| R13. Assercions | CA3.9 | 3 · avançat | Menys de 6 `console.assert` o algun falla. | `tests.js` amb almenys 6 `console.assert` sobre el model, tots en verd. | A més, cobrixen tots els mètodes públics del model. | A més, inclouen casos límit (llista buida, valor no vàlid, error llançat). |
+| R14. Ús de les classes pròpies | CA4.5 | 3 · avançat | Les dades no són instàncies de les seues classes. | Les dades són un array d'instàncies de les seues classes i l'aplicació usa els seus mètodes. | A més, la lògica (puntuar, marcar, filtrar) està en mètodes del model, no en `main.js`. | A més, una subclasse del model usada en l'aplicació. |
+| R15. Mètodes estàtics | CA4.8 | 2 · intermedi | Cap mètode estàtic en el model. | Un mètode estàtic en el model, usat (p. ex. `fromJSON` per a tornar a crear les instàncies en carregar). | A més, cridat sobre la classe dins d'un `map`. | A més, un segon mètode estàtic amb sentit (validador, comptador). |
+| R16. Llibreria de classes | CA4.9 | 3 · avançat | Classes en `main.js` o sense mòduls. | `model.js` amb almenys 2 classes exportades i importades en `main.js`. | A més, `tests.js` importa les mateixes classes. | A més, `model.js` no toca la pàgina (es podria reutilitzar amb una altra interfície). |
+| R17. Consola | CA5.1 | 2 · intermedi | `tests.js` no mostra res en la consola. | En executar `tests.js`, la consola mostra quines proves fallen i un resum amb `console.log`. | A més, `console.table` per a mostrar l'estat del model. | A més, cap `console.log` de depuració oblidat en `main.js`. |
+| R18. Formats | CA5.2 | 2 · intermedi | Números sense format (decimals llargs, percentatges sense símbol). | Puntuació, comptadors i percentatges amb un format adequat. | A més, `toLocaleString` o `Intl` per a números o dates. | A més, singular i plural correctes ("1 tasca", "3 tasques"). |
+| R19. Controladors d'esdeveniments | CA5.7 | 3 · avançat | Menys de 3 controladors, d'un sol tipus, o `onclick` en l'HTML. | Almenys 3 `addEventListener` de 2 tipus diferents i cap `onclick` en l'HTML. | A més, usa l'objecte `event` (`key`, `target`, `preventDefault`). | A més, un sol controlador gestiona tots els botons d'una llista (delegació o `data-*`). |
+| R20. Entrada i eixida en la interfície | CA5.8 | 3 · avançat | La pàgina no reflectix les dades o usa `innerHTML` amb text de l'usuari. | Llig els controls, mostra les dades amb `createElement` i `textContent`, i la pàgina sempre coincidix amb l'array (`draw()`). | A més, missatges d'error i de confirmació en la pàgina, no amb `alert`. | A més, el camp es buida i rep el focus després d'afegir, i els botons es deshabiliten quan no es poden usar. |
+| R21. Llistes | CA6.3 | 3 · avançat | No hi ha array o la pàgina i l'array no coincidixen. | Array d'instàncies en el qual s'afig, s'elimina i es modifica, i després es redibuixa. | A més, elimina i modifica per identificador, no per posició en la pantalla. | A més, l'usuari pot ordenar la llista per un criteri. |
+| R22. Iteradors | CA6.4 | 2 · intermedi | Recorreguts amb índexs erronis o que se n'ixen de l'array. | Recorre la llista amb `for...of` o `forEach` en dibuixar i en desar. | A més, `entries()` o l'índex de `forEach` quan necessita la posició. | A més, recorre també un `Set` o un `Map` (p. ex. categories sense repetir). |
+| R23. Expressions regulars | CA6.7 | 2 · intermedi | Cap expressió regular. | Un camp validat amb `test()` i missatge si no complix. | A més, el patró usa `^`, `$` i classes de caràcters. | A més, una segona expressió valida un altre camp o neteja el text amb `replace`. |
+| R24. JSON | CA6.9 | 3 · avançat | Desa sense JSON o es perden dades en recarregar. | `JSON.stringify` en desar i `JSON.parse` en carregar. | A més, una única funció `save()` que desa tot l'estat en una sola clau. | A més, `toJSON()` en les classes per a decidir què es guarda. |
+| R25. Operacions agregades | CA6.10 | 2 · intermedi | Cap operació agregada. | Almenys 2 operacions agregades diferents amb resultat visible (comptador, filtre, puntuació). | `filter`, `map` i `reduce`. | A més, encadenades en almenys un cas dins d'un mètode del model. |
+| R26. Blocs del programa | CA1.1 | 3 · avançat | `main.js` sense cap separació reconeixible entre les parts del programa. | Comentaris que marquen almenys 3 blocs en `main.js` (p. ex. dades, funcions, esdeveniments, inici). | Tots els blocs marcats i cada línia en el seu bloc (cap funció enmig dels controladors ni variables soltes al final). | A més, el `README.txt` diu què fa cada arxiu (`index.html`, `main.js`, `model.js`, `tests.js`) dins del programa. |
 
 ## Taula de traçabilitat i qualificació
 
-| Criteri | Pes dins del RA | Activitat(s) | Indicadors (instrument) i pes dins del criteri |
+| Criteri | Pes dins del RA | Activitat(s) | Indicadors (instrument): pes (1-3) i % dins del criteri |
 |---|---|---|---|
-| CA1.1 | 10 % | Lliçó 1 | P1.8 (rúbrica del bloc 1) 100 % |
-| CA1.2 | 10 % | Lliçó 1, miniprojectes, projecte | R1 (projecte) 100 % |
-| CA1.3 | 10 % | Lliçó 1, projecte | R2 (projecte) 100 % |
-| CA1.4 | 10 % | Lliçó 2 | P1.3 (rúbrica del bloc 1) 100 % |
-| CA1.5 | 10 % | Lliçó 2 | P1.1 (rúbrica del bloc 1) 100 % |
-| CA1.6 | 10 % | Lliçó 2 | P1.2 (rúbrica del bloc 1) 100 % |
-| CA1.7 | 20 % | Lliçó 3 | P1.5 (rúbrica del bloc 1) 45 % · P1.6 (rúbrica del bloc 1) 18 % · P1.7 (rúbrica del bloc 1) 37 % |
-| CA1.8 | 10 % | Lliçó 2 | P1.4 (rúbrica del bloc 1) 100 % |
-| CA1.9 | 10 % | Lliçó 1, projecte | R10 (projecte) 100 % |
-| CA2.1 | 10 % | Lliçó 20 (N9) | P2.1 (rúbrica del bloc 5) 100 % |
-| CA2.2 | 20 % | Lliçons 1-7 i 20 (N9) | P2.2 (rúbrica del bloc 5) 100 % |
-| CA2.3 | 10 % | Lliçons 14 (N6) i 20 (N9) | P2.3 (rúbrica del bloc 5) 100 % |
-| CA2.4 | 20 % | Lliçons 4, 10, 17, 21 (N10), projecte | P2.5 (rúbrica del bloc 5) 40 % · R3 (projecte) 60 % |
-| CA2.5 | 10 % | Lliçons 3 i 21 (N10) | P2.6 (rúbrica del bloc 5) 100 % |
-| CA2.6 | 10 % | Lliçons 3, 7 i 21 (N10) | P2.7 (rúbrica del bloc 5) 100 % |
-| CA2.7 | 10 % | Lliçó 21 (N10), projecte | P2.8 (rúbrica del bloc 5) 50 % · R4 (projecte) 50 % |
-| CA2.8 | 10 % | Lliçó 20 (N9) | P2.4 (rúbrica del bloc 5) 100 % |
-| CA3.1 | 15 % | Lliçó 5, projecte | P3.1 (rúbrica del bloc 2) 50 % · R5 (projecte) 50 % |
-| CA3.2 | 20 % | Lliçó 6, projecte | P3.2 (rúbrica del bloc 2) 50 % · R6 (projecte) 50 % |
-| CA3.3 | 5 % | Lliçons 5-7 | P3.3 (rúbrica del bloc 2) 100 % |
-| CA3.4 | 10 % | Lliçons 9 (N2) i 19, miniprojecte 1, projecte | P3.7 (rúbrica del bloc 2) 40 % · R7 (projecte) 60 % |
-| CA3.5 | 15 % | Lliçó 7, miniprojecte 1, projecte | P3.4 (rúbrica del bloc 2) 30 % · R8 (projecte) 70 % |
-| CA3.6 | 15 % | Lliçons 1 i 8 (N1), miniprojecte 1, projecte | P3.5 (rúbrica del bloc 2) 30 % · R9 (projecte) 70 % |
-| CA3.7 | 5 % | Lliçó 8 (N1), projecte | P3.9 (rúbrica del bloc 2) 30 % · R11 (projecte) 70 % |
-| CA3.8 | 5 % | Lliçons 9 (N2) i 24 (N13), projecte | P3.6 (rúbrica del bloc 2) 50 % · R12 (projecte) 50 % |
-| CA3.9 | 10 % | Lliçons 8 (N1) i 25 (N14), miniprojecte 1, projecte | P3.8 (rúbrica del bloc 2) 40 % · R13 (projecte) 60 % |
-| CA4.1 | 5 % | Lliçó 22 (N11) | P4.1 (rúbrica del bloc 6) 100 % |
-| CA4.2 | 10 % | Lliçó 22 (N11) | P4.2 (rúbrica del bloc 6) 100 % |
-| CA4.3 | 15 % | Lliçó 22 (N11) | P4.3 (rúbrica del bloc 6) 100 % |
-| CA4.4 | 10 % | Lliçó 22 (N11) | P4.4 (rúbrica del bloc 6) 100 % |
-| CA4.5 | 20 % | Lliçons 22 (N11) i 25 (N14), projecte | P4.9 (rúbrica del bloc 6) 30 % · R14 (projecte) 70 % |
-| CA4.6 | 10 % | Lliçó 23 (N12) | P4.5 (rúbrica del bloc 6) 100 % |
-| CA4.7 | 10 % | Lliçó 24 (N13) | P4.7 (rúbrica del bloc 6) 100 % |
-| CA4.8 | 10 % | Lliçó 23 (N12), projecte | P4.6 (rúbrica del bloc 6) 50 % · R15 (projecte) 50 % |
-| CA4.9 | 10 % | Lliçó 25 (N14), projecte | P4.8 (rúbrica del bloc 6) 40 % · R16 (projecte) 60 % |
-| CA5.1 | 8 % | Lliçons 1-2 i 19 (N8), projecte | P5.1 (rúbrica del bloc 4) 60 % · R17 (projecte) 40 % |
-| CA5.2 | 12 % | Lliçons 2-3 i 19 (N8), projecte | P5.2 (rúbrica del bloc 4) 50 % · R18 (projecte) 50 % |
-| CA5.3 | 4 % | Lliçó 19 (N8) | P5.3 (rúbrica del bloc 4) 100 % |
-| CA5.7 | 40 % | Lliçons 4, 16, 18, miniprojecte 2, projecte | P5.4 (rúbrica del bloc 4) 30 % · R19 (projecte) 70 % |
-| CA5.8 | 36 % | Lliçons 4, 17, 18, miniprojecte 2, projecte | P5.5 (rúbrica del bloc 4) 30 % · R20 (projecte) 70 % |
-| CA6.1 | 8 % | Lliçó 10 (amb N3) | P6.1 (rúbrica del bloc 3) 100 % |
-| CA6.2 | 4 % | Lliçó 14 (N6) | P6.2 (rúbrica del bloc 3) 100 % |
-| CA6.3 | 16 % | Lliçons 10-11, miniprojecte 2, projecte | P6.3 (rúbrica del bloc 3) 30 % · R21 (projecte) 70 % |
-| CA6.4 | 8 % | Lliçons 10, 12 (N4), 14 (N6), projecte | P6.4 (rúbrica del bloc 3) 50 % · R22 (projecte) 50 % |
-| CA6.5 | 8 % | Lliçó 14 (N6) | P6.5 (rúbrica del bloc 3) 100 % |
-| CA6.7 | 12 % | Lliçons 13 (N5) i 18, projecte | P6.6 (rúbrica del bloc 3) 60 % · R23 (projecte) 40 % |
-| CA6.8 | 4 % | Lliçó 15 (N7) | P6.7 (rúbrica del bloc 3) 100 % |
-| CA6.9 | 16 % | Lliçons 15 (N7), 19 i 23 (N12), projecte | P6.8 (rúbrica del bloc 3) 40 % · R24 (projecte) 60 % |
-| CA6.10 | 24 % | Lliçó 12 (N4), projecte | P6.9 (rúbrica del bloc 3) 50 % · R25 (projecte) 50 % |
+| CA1.1 | 10 % | Lliçó 1, projecte | P1.8 (rúbrica del bloc 1): pes 1, 25 % · R26 (projecte): pes 3, 75 % |
+| CA1.2 | 10 % | Lliçó 1, miniprojectes, projecte | R1 (projecte): pes 1, 100 % |
+| CA1.3 | 10 % | Lliçó 1, projecte | R2 (projecte): pes 1, 100 % |
+| CA1.4 | 10 % | Lliçó 2 | P1.3 (rúbrica del bloc 1): pes 1, 100 % |
+| CA1.5 | 10 % | Lliçó 2 | P1.1 (rúbrica del bloc 1): pes 1, 100 % |
+| CA1.6 | 10 % | Lliçó 2 | P1.2 (rúbrica del bloc 1): pes 1, 100 % |
+| CA1.7 | 20 % | Lliçó 3 | P1.5 (rúbrica del bloc 1): pes 2, 40 % · P1.6 (rúbrica del bloc 1): pes 1, 20 % · P1.7 (rúbrica del bloc 1): pes 2, 40 % |
+| CA1.8 | 10 % | Lliçó 2 | P1.4 (rúbrica del bloc 1): pes 2, 100 % |
+| CA1.9 | 10 % | Lliçó 1, projecte | R10 (projecte): pes 1, 100 % |
+| CA2.1 | 10 % | Lliçó 20 (N9) | P2.1 (rúbrica del bloc 5): pes 1, 100 % |
+| CA2.2 | 20 % | Lliçons 1-7 i 20 (N9) | P2.2 (rúbrica del bloc 5): pes 2, 100 % |
+| CA2.3 | 10 % | Lliçons 14 (N6) i 20 (N9) | P2.3 (rúbrica del bloc 5): pes 1, 100 % |
+| CA2.4 | 20 % | Lliçons 4, 10, 17, 21 (N10), projecte | P2.5 (rúbrica del bloc 5): pes 2, 40 % · R3 (projecte): pes 3, 60 % |
+| CA2.5 | 10 % | Lliçons 3 i 21 (N10) | P2.6 (rúbrica del bloc 5): pes 2, 100 % |
+| CA2.6 | 10 % | Lliçons 3, 7 i 21 (N10) | P2.7 (rúbrica del bloc 5): pes 2, 100 % |
+| CA2.7 | 10 % | Lliçó 21 (N10), projecte | P2.8 (rúbrica del bloc 5): pes 2, 50 % · R4 (projecte): pes 2, 50 % |
+| CA2.8 | 10 % | Lliçó 20 (N9) | P2.4 (rúbrica del bloc 5): pes 2, 100 % |
+| CA3.1 | 15 % | Lliçó 5, projecte | P3.1 (rúbrica del bloc 2): pes 2, 50 % · R5 (projecte): pes 2, 50 % |
+| CA3.2 | 20 % | Lliçó 6, projecte | P3.2 (rúbrica del bloc 2): pes 2, 50 % · R6 (projecte): pes 2, 50 % |
+| CA3.3 | 5 % | Lliçons 5-7 | P3.3 (rúbrica del bloc 2): pes 2, 100 % |
+| CA3.4 | 10 % | Lliçons 9 (N2) i 19, miniprojecte 1, projecte | P3.7 (rúbrica del bloc 2): pes 2, 40 % · R7 (projecte): pes 3, 60 % |
+| CA3.5 | 15 % | Lliçó 7, miniprojecte 1, projecte | P3.4 (rúbrica del bloc 2): pes 1, 25 % · R8 (projecte): pes 3, 75 % |
+| CA3.6 | 15 % | Lliçons 1 i 8 (N1), miniprojecte 1, projecte | P3.5 (rúbrica del bloc 2): pes 2, 40 % · R9 (projecte): pes 3, 60 % |
+| CA3.7 | 5 % | Lliçó 8 (N1), projecte | P3.9 (rúbrica del bloc 2): pes 1, 25 % · R11 (projecte): pes 3, 75 % |
+| CA3.8 | 5 % | Lliçons 9 (N2) i 24 (N13), projecte | P3.6 (rúbrica del bloc 2): pes 2, 40 % · R12 (projecte): pes 3, 60 % |
+| CA3.9 | 10 % | Lliçons 8 (N1) i 25 (N14), miniprojecte 1, projecte | P3.8 (rúbrica del bloc 2): pes 2, 40 % · R13 (projecte): pes 3, 60 % |
+| CA4.1 | 5 % | Lliçó 22 (N11) | P4.1 (rúbrica del bloc 6): pes 1, 100 % |
+| CA4.2 | 10 % | Lliçó 22 (N11) | P4.2 (rúbrica del bloc 6): pes 2, 100 % |
+| CA4.3 | 15 % | Lliçó 22 (N11) | P4.3 (rúbrica del bloc 6): pes 2, 100 % |
+| CA4.4 | 10 % | Lliçó 22 (N11) | P4.4 (rúbrica del bloc 6): pes 2, 100 % |
+| CA4.5 | 20 % | Lliçons 22 (N11) i 25 (N14), projecte | P4.9 (rúbrica del bloc 6): pes 1, 25 % · R14 (projecte): pes 3, 75 % |
+| CA4.6 | 10 % | Lliçó 23 (N12) | P4.5 (rúbrica del bloc 6): pes 3, 100 % |
+| CA4.7 | 10 % | Lliçó 24 (N13) | P4.7 (rúbrica del bloc 6): pes 3, 100 % |
+| CA4.8 | 10 % | Lliçó 23 (N12), projecte | P4.6 (rúbrica del bloc 6): pes 2, 50 % · R15 (projecte): pes 2, 50 % |
+| CA4.9 | 10 % | Lliçó 25 (N14), projecte | P4.8 (rúbrica del bloc 6): pes 2, 40 % · R16 (projecte): pes 3, 60 % |
+| CA5.1 | 8 % | Lliçons 1-2 i 19 (N8), projecte | P5.1 (rúbrica del bloc 4): pes 2, 50 % · R17 (projecte): pes 2, 50 % |
+| CA5.2 | 12 % | Lliçons 2-3 i 19 (N8), projecte | P5.2 (rúbrica del bloc 4): pes 2, 50 % · R18 (projecte): pes 2, 50 % |
+| CA5.3 | 4 % | Lliçó 19 (N8) | P5.3 (rúbrica del bloc 4): pes 2, 100 % |
+| CA5.7 | 40 % | Lliçons 4, 16, 18, miniprojecte 2, projecte | P5.4 (rúbrica del bloc 4): pes 2, 40 % · R19 (projecte): pes 3, 60 % |
+| CA5.8 | 36 % | Lliçons 4, 17, 18, miniprojecte 2, projecte | P5.5 (rúbrica del bloc 4): pes 2, 40 % · R20 (projecte): pes 3, 60 % |
+| CA6.1 | 8 % | Lliçó 10 (amb N3) | P6.1 (rúbrica del bloc 3): pes 2, 100 % |
+| CA6.2 | 4 % | Lliçó 14 (N6) | P6.2 (rúbrica del bloc 3): pes 2, 100 % |
+| CA6.3 | 16 % | Lliçons 10-11, miniprojecte 2, projecte | P6.3 (rúbrica del bloc 3): pes 2, 40 % · R21 (projecte): pes 3, 60 % |
+| CA6.4 | 8 % | Lliçons 10, 12 (N4), 14 (N6), projecte | P6.4 (rúbrica del bloc 3): pes 2, 50 % · R22 (projecte): pes 2, 50 % |
+| CA6.5 | 8 % | Lliçó 14 (N6) | P6.5 (rúbrica del bloc 3): pes 2, 100 % |
+| CA6.7 | 12 % | Lliçons 13 (N5) i 18, projecte | P6.6 (rúbrica del bloc 3): pes 3, 60 % · R23 (projecte): pes 2, 40 % |
+| CA6.8 | 4 % | Lliçó 15 (N7) | P6.7 (rúbrica del bloc 3): pes 1, 100 % |
+| CA6.9 | 16 % | Lliçons 15 (N7), 19 i 23 (N12), projecte | P6.8 (rúbrica del bloc 3): pes 2, 40 % · R24 (projecte): pes 3, 60 % |
+| CA6.10 | 24 % | Lliçó 12 (N4), projecte | P6.9 (rúbrica del bloc 3): pes 2, 50 % · R25 (projecte): pes 2, 50 % |
 
-**Nota de cada criteri** = Σ nota de l'indicador × pes dins del criteri. Per exemple, CA3.6 = 0,30·P3.5 + 0,70·R9; CA1.1 = P1.8.
+**Nota de cada criteri** = Σ (nota de l'indicador × pes) ÷ Σ pesos dels seus indicadors. Per exemple, CA3.6 = (2·P3.5 + 3·R9) ÷ 5; CA1.7 = (2·P1.5 + 1·P1.6 + 2·P1.7) ÷ 5; CA1.1 = P1.8. Mentre un indicador encara no s'ha avaluat (per exemple, el del projecte), la nota provisional del criteri és la mitjana ponderada dels que ja s'han avaluat.
 
 **Nota de RA1** = 0,10·(CA1.1 + CA1.2 + CA1.3 + CA1.4 + CA1.5 + CA1.6 + CA1.8 + CA1.9) + 0,20·CA1.7
 
