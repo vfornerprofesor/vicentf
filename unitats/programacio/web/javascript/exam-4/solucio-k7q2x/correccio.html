@@ -137,13 +137,13 @@
     <h2>Rúbrica del bloc 4 en este examen</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P5.1. Consola (CA5.1)</td><td>Obertura i desar</td><td>No usa <code>prompt</code> ni escriu en la consola.</td><td><code>prompt</code> i <code>console.log</code> del missatge.</td><td>A més, <code>console.table</code> en desar.</td><td>A més, controla Cancel i el text buit.</td></tr>
-                <tr><td>P5.2. Formats (CA5.2)</td><td>Preu de cada producte, valor de l'estoc, unitats amb <code>unitsText</code></td><td>0-1 amb format.</td><td>2.</td><td>Els 3.</td><td>Els 3, els imports amb <code>toLocaleString</code> (no a mà).</td></tr>
-                <tr><td>P5.3. Possibilitats d'E/S (CA5.3)</td><td>Comentari inicial i ús real</td><td>Usa <code>alert</code>/<code>prompt</code> per a les dades del formulari o els errors.</td><td>Mitjà adequat en la majoria de casos.</td><td>En tots (prompt, consola, confirm, DOM, localStorage).</td><td>A més, el comentari justifica cada un.</td></tr>
-                <tr><td>P5.4. Esdeveniments (CA5.7)</td><td><code>submit</code>, Delete, <code>input</code>, clic de les prestatgeries</td><td>No funcionen o la pàgina es recarrega.</td><td>Enviament amb <code>preventDefault</code> i Delete.</td><td>A més, l'esdeveniment <code>input</code> del comptador.</td><td>A més, un sol controlador amb <code>event.target</code>/<code>dataset</code> en la llista i en les prestatgeries.</td></tr>
-                <tr><td>P5.5. Interfície (CA5.8)</td><td>Formulari i llista</td><td>No llig els camps o no dibuixa.</td><td>Llig, actualitza l'array, redibuixa amb <code>createElement</code> i <code>textContent</code>.</td><td>A més, tots els errors en la pàgina i formulari buidat.</td><td>A més, classe <code>wrong</code> que desapareix en corregir i cursor en el primer camp erroni.</td></tr>
+                <tr><td>P5.1. Consola (CA5.1)</td><td>Obertura i desar</td><td>No usa <code>prompt</code> ni escriu en la consola.</td><td>Usa <code>prompt</code> o <code>console.log</code>, però no fa el que es demana.</td><td><code>prompt</code> i <code>console.log</code> del missatge.</td><td><code>console.table</code> en desar, i controla Cancel i el text buit.</td></tr>
+                <tr><td>P5.2. Formats (CA5.2)</td><td>Preu de cada producte, valor de l'estoc, unitats amb <code>unitsText</code></td><td>Cap amb format.</td><td>1.</td><td>2.</td><td>Els 3, i els imports amb <code>toLocaleString</code> (no a mà).</td></tr>
+                <tr><td>P5.3. Possibilitats d'E/S (CA5.3)</td><td>Comentari inicial i ús real</td><td>Mitjà inadequat en tots els casos.</td><td>Usa <code>alert</code>/<code>prompt</code> per a les dades del formulari o els errors.</td><td>Mitjà adequat en la majoria de casos.</td><td>En tots (<code>prompt</code>, consola, <code>confirm</code>, DOM, <code>localStorage</code>), i el comentari justifica cada un.</td></tr>
+                <tr><td>P5.4. Esdeveniments (CA5.7)</td><td><code>submit</code>, Delete, <code>input</code>, clic de les prestatgeries</td><td>Cap controlador funciona.</td><td>Algun controlador, però la pàgina es recarrega en enviar o Delete no va.</td><td>Enviament amb <code>preventDefault</code> i Delete.</td><td>L'esdeveniment <code>input</code> del comptador, i un sol controlador amb <code>event.target</code>/<code>dataset</code> en la llista i en les prestatgeries.</td></tr>
+                <tr><td>P5.5. Interfície (CA5.8)</td><td>Formulari i llista</td><td>No llig els camps ni dibuixa.</td><td>Llig o dibuixa, però no les dos coses (o no redibuixa).</td><td>Llig, actualitza l'array, redibuixa amb <code>createElement</code> i <code>textContent</code>.</td><td>Tots els errors en la pàgina, formulari buidat, classe <code>wrong</code> que desapareix en corregir i cursor en el primer camp erroni.</td></tr>
             </tbody>
         </table>
     </div>
@@ -151,17 +151,16 @@
     <h2>Bloc 1 pendent</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P1.1. Projecte</td><td>Enllaç</td><td>No enllaçat.</td><td>Enllaçat.</td><td>Noms exactes.</td><td>Al final del <code>body</code>, cap sobrant.</td></tr>
-                <tr><td>P1.2. Entorn</td><td>Live Server, consola</td><td>No s'executa.</td><td>S'executa.</td><td>Usa la consola.</td><td>Sagnat, cap error.</td></tr>
-                <tr><td>P1.3. Blocs</td><td>DATA, INPUT, PROCESS, OUTPUT</td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
-                <tr><td>P1.4. Comentaris</td><td>Capçalera, blocs, errors</td><td>Falten.</td><td>Els demanats.</td><td>Capçalera completa.</td><td>Expliquen el perquè.</td></tr>
-                <tr><td>P1.5. Tipus</td><td>Preu i unitats números, codi text</td><td>Preus o unitats guardats com a text.</td><td>Algun sense efecte.</td><td>Tots correctes.</td><td>A més, valida amb <code>isNaN</code> abans de guardar.</td></tr>
-                <tr><td>P1.6. Variables</td><td>Tot</td><td>Més de 2 repeticions (30 escrit a mà…).</td><td>1-2.</td><td>Cap.</td><td>camelCase.</td></tr>
-                <tr><td>P1.7. Constants</td><td>Tot</td><td>2 o més errors.</td><td>Un.</td><td>Correctes.</td><td>Plantilles.</td></tr>
-                <tr><td>P1.8. Operadors</td><td>Validacions, valor de l'estoc</td><td>Menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
-                <tr><td>P1.9. Conversions</td><td>Preu i unitats</td><td>Calcula amb text.</td><td>Una convertida.</td><td>Totes dues.</td><td>A més, comentari que l'explica.</td></tr>
+                <tr><td>P1.1. Variables</td><td>Tot el codi</td><td>Cap resultat en variable.</td><td>Menys de la meitat dels resultats en variables.</td><td>Almenys la meitat.</td><td>Tots, amb nom descriptiu i sense càlculs repetits.</td></tr>
+                <tr><td>P1.2. Constants i literals</td><td>Tot el codi</td><td>Cap valor fix en constant.</td><td>Alguna constant, però la majoria de valors fixos escrits a mà.</td><td>La majoria en constants (pot quedar algun literal repetit).</td><td><code>const</code> per a tot el que no canvia, cap literal repetit.</td></tr>
+                <tr><td>P1.3. Tipus de dades</td><td>Preu i unitats números, codi text</td><td>Les dades numèriques es guarden com a text.</td><td>Algun valor com a text que fa fallar un càlcul.</td><td>Tots correctes, encara que algun quede com a text sense efecte.</td><td>Tots correctes, i comprova el tipus abans de calcular (<code>isNaN</code>).</td></tr>
+                <tr><td>P1.4. Entrada i conversions</td><td>Preu i unitats</td><td>Calcula amb text.</td><td>Alguna convertida, però menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes convertides.</td></tr>
+                <tr><td>P1.5. Càlculs</td><td>Apartats de càlcul: valor de l'estoc</td><td>Menys del 15&nbsp;%.</td><td>15-39&nbsp;%.</td><td>40-89&nbsp;%.</td><td>90&nbsp;% o més.</td></tr>
+                <tr><td>P1.6. Comparacions i operadors lògics</td><td>Apartats de comparació: validacions</td><td>Menys del 15&nbsp;%.</td><td>15-39&nbsp;%.</td><td>40-89&nbsp;%.</td><td>90&nbsp;% o més.</td></tr>
+                <tr><td>P1.7. Segon exercici</td><td>Apartats de l'ex. 2 que usen el bloc 1</td><td>Menys del 15&nbsp;%.</td><td>15-39&nbsp;%.</td><td>40-89&nbsp;%.</td><td>90&nbsp;% o més.</td></tr>
+                <tr><td>P1.8. Eixida en la pàgina</td><td>Resultats que mostra la pàgina</td><td>Menys d'un quart.</td><td>Entre un quart i la meitat.</td><td>Almenys la meitat.</td><td>Tots (en pot faltar un).</td></tr>
             </tbody>
         </table>
     </div>
@@ -169,17 +168,17 @@
     <h2>Bloc 2 pendent</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P3.1. Selecció</td><td>5 casos: nom, codi, preu, unitats, codi repetit</td><td>0-2.</td><td>3.</td><td>4.</td><td>Els 5.</td></tr>
-                <tr><td>P3.2. Repetició</td><td><code>draw</code>, errors, prestatgeries</td><td>Algun bucle falla.</td><td>Algun resultat erroni.</td><td>Correctes.</td><td>Sense números fixos.</td></tr>
-                <tr><td>P3.3. Salt</td><td><code>return</code> amb errors</td><td>S'afig igualment.</td><td>Executa codi que no tocava.</td><td>Ix en el moment just.</td><td>A més, comentari.</td></tr>
-                <tr><td>P3.4. Programa</td><td>Ex. 1</td><td>No guarda.</td><td>Falla alguna prova.</td><td>Totes.</td><td>Funcions separades (desar, dibuixar).</td></tr>
-                <tr><td>P3.5. Depuració</td><td>2 errors d'<code>unitsText</code></td><td>Cap.</td><td>Un.</td><td>Tots dos.</td><td>Amb línia i causa.</td></tr>
+                <tr><td>P3.1. Selecció</td><td>5 casos: nom, codi, preu, unitats, codi repetit</td><td>0-1.</td><td>2.</td><td>3-4.</td><td>Els 5.</td></tr>
+                <tr><td>P3.2. Repetició</td><td><code>draw</code>, errors, prestatgeries</td><td>Cap bucle funciona.</td><td>Algun bucle falla.</td><td>Funcionen, encara que algun resultat siga erroni.</td><td>Correctes, sense números fixos.</td></tr>
+                <tr><td>P3.3. Salt</td><td><code>return</code> amb errors</td><td>S'afig igualment.</td><td>Ix, però en un moment equivocat.</td><td>Ix, encara que executa codi que no tocava.</td><td>Ix en el moment just, amb comentari.</td></tr>
+                <tr><td>P3.4. Programa</td><td>Ex. 1</td><td>No guarda.</td><td>Guarda, però falla la majoria de proves.</td><td>Funciona, encara que falle alguna prova.</td><td>Totes, amb funcions separades (desar, dibuixar).</td></tr>
+                <tr><td>P3.5. Depuració</td><td>2 errors d'<code>unitsText</code></td><td>Cap.</td><td>Un, sense entendre la causa.</td><td>Un.</td><td>Tots dos, amb línia i causa.</td></tr>
                 <tr><td>P3.6. Excepcions pròpies</td><td>—</td><td colspan="4">No hi ha evidència en esta prova: es manté la nota anterior de l'indicador.</td></tr>
-                <tr><td>P3.7. Control d'excepcions</td><td>Càrrega de <code>products</code> i <code>shelves</code></td><td>Sense <code>try/catch</code>.</td><td>En una càrrega.</td><td>En totes dues.</td><td>A més, amb dades trencades la pàgina comença buida i tot funciona.</td></tr>
-                <tr><td>P3.8. Assercions</td><td><code>unitsText</code></td><td>Menys de 3.</td><td>3.</td><td>Li han servit per a corregir.</td><td>Cas límit (1) i estrany (0).</td></tr>
-                <tr><td>P3.9. Documentació</td><td>JSDoc d'<code>unitsText</code></td><td>Cap.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code>.</td><td>Amb tipus.</td></tr>
+                <tr><td>P3.7. Control d'excepcions</td><td>Càrrega de <code>products</code> i <code>shelves</code></td><td>Sense <code>try/catch</code>.</td><td><code>try/catch</code>, però encara es trenca.</td><td>En una càrrega.</td><td>En totes dues, i amb dades trencades la pàgina comença buida i tot funciona.</td></tr>
+                <tr><td>P3.8. Assercions</td><td><code>unitsText</code></td><td>Cap.</td><td>1-2.</td><td>3.</td><td>Li han servit per a corregir, amb cas límit (1) i estrany (0).</td></tr>
+                <tr><td>P3.9. Documentació</td><td>JSDoc d'<code>unitsText</code></td><td>Cap.</td><td>Comentari que no diu què fa.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code> i tipus.</td></tr>
             </tbody>
         </table>
     </div>
@@ -187,17 +186,17 @@
     <h2>Bloc 3 pendent</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P6.1. Matriu</td><td>Ex. 2</td><td>No accedix amb <code>[f][c]</code>.</td><td>Taula amb bucles niats.</td><td>A més, el clic modifica la cel·la i el resum és correcte.</td><td>A més, <code>START_SHELVES</code> no canvia (còpia fila a fila).</td></tr>
-                <tr><td>P6.2. Classes</td><td>Array de productes, RegExp, String (<code>toUpperCase</code>, <code>replace</code>)</td><td>Menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
-                <tr><td>P6.3. Llistes</td><td>Ex. 1</td><td>No afig ni elimina.</td><td>Afig i elimina.</td><td>Codi repetit suma unitats.</td><td>Amb <code>find</code>, sense duplicar.</td></tr>
-                <tr><td>P6.4. Iteradors</td><td><code>draw</code>, errors</td><td>Cap correcte.</td><td><code>for...of</code>.</td><td><code>forEach</code> amb índex.</td><td>— (no hi ha Set/Map: el màxim és Notable; si ja tenia més, es manté).</td></tr>
+                <tr><td>P6.1. Matriu</td><td>Ex. 2</td><td>No accedix amb <code>[f][c]</code>.</td><td>Accedix a alguna cel·la, però no dibuixa la taula sencera.</td><td>Taula amb bucles niats.</td><td>El clic modifica la cel·la i el resum és correcte, i <code>START_SHELVES</code> no canvia (còpia fila a fila).</td></tr>
+                <tr><td>P6.2. Classes</td><td>Array de productes, RegExp, String (<code>toUpperCase</code>, <code>replace</code>)</td><td>Cap.</td><td>Alguna, però menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes.</td></tr>
+                <tr><td>P6.3. Llistes</td><td>Ex. 1</td><td>No afig ni elimina.</td><td>Afig o elimina (una de les dues).</td><td>Afig i elimina.</td><td>El codi repetit suma unitats, amb <code>find</code>, sense duplicar.</td></tr>
+                <tr><td>P6.4. Iteradors</td><td><code>draw</code>, errors</td><td>Cap recorregut.</td><td>Algun recorregut amb errors.</td><td><code>for...of</code>.</td><td><code>forEach</code> amb índex (no hi ha Set/Map: si ja tenia Alt, es manté).</td></tr>
                 <tr><td>P6.5. Tria de col·lecció</td><td>—</td><td colspan="4">No hi ha evidència en esta prova: es manté la nota anterior.</td></tr>
-                <tr><td>P6.6. Regex</td><td>Codi (<code>MOU-001</code> sí; <code>MOU001</code>, <code>MO-001</code>, <code>MOUS-001</code> no) i coma del preu</td><td>Cap patró.</td><td>3 de 4 casos.</td><td>Els 4.</td><td>A més, <code>replace(/,/g, ".")</code>.</td></tr>
-                <tr><td>P6.7. Formats</td><td><code>JSON.stringify</code> i <code>JSON.parse</code></td><td>Cap.</td><td>Un.</td><td>Tots dos.</td><td>Comentari que diu el format.</td></tr>
-                <tr><td>P6.8. JSON</td><td>Desar i carregar</td><td>Desa sense JSON.</td><td>Un sentit.</td><td>Sobreviu a F5.</td><td>A més, <code>try/catch</code>.</td></tr>
-                <tr><td>P6.9. Agregades</td><td><code>filter</code>, <code>reduce</code>, <code>find</code>, <code>forEach</code></td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
+                <tr><td>P6.6. Regex</td><td>Codi (<code>MOU-001</code> sí; <code>MOU001</code>, <code>MO-001</code>, <code>MOUS-001</code> no) i coma del preu</td><td>Cap patró.</td><td>1-2 de 4 casos.</td><td>3 de 4 casos.</td><td>Els 4, i <code>replace(/,/g, ".")</code>.</td></tr>
+                <tr><td>P6.7. Formats</td><td><code>JSON.stringify</code> i <code>JSON.parse</code></td><td>Cap.</td><td>Un, mal usat.</td><td>Un.</td><td>Tots dos, amb comentari que diu el format.</td></tr>
+                <tr><td>P6.8. JSON</td><td>Desar i carregar</td><td>No desa.</td><td>Desa sense JSON.</td><td>Un sentit.</td><td>Sobreviu a F5, amb <code>try/catch</code>.</td></tr>
+                <tr><td>P6.9. Agregades</td><td><code>filter</code>, <code>reduce</code>, <code>find</code>, <code>forEach</code></td><td>Cap.</td><td>1.</td><td>2-3.</td><td>Les 4.</td></tr>
             </tbody>
         </table>
     </div>

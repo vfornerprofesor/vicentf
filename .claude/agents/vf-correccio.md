@@ -38,7 +38,7 @@ Si no existe, créala. Fuentes, por orden:
 4. Si no hay nada, propón tú los ítems a partir del enunciado.
 
 Tipos de calificación (convención del profesor; elige el más simple que discrimine bien):
-- **Rúbrica de 4 niveles**: Insuficient (1-4) / Suficient-Bé (5-6) / Notable (7-8) / Excel·lent (9-10). Valores por defecto para calcular: Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5 (o los que fije el profesor).
+- **Rúbrica de 4 niveles, puntuada 0-3** (así la calcula el cuaderno del profesor): Baix (0) / Mitjà-baix (1) / Mitjà-alt (2) / Alt (3). Valor de cada nivel = nivel × 10 ÷ 3: **Baix = 0 · Mitjà-baix = 3,33 · Mitjà-alt = 6,67 · Alt = 10**. No uses otros valores (nada de 3 / 5,5 / 7,5 / 9,5): la nota tiene que coincidir con la del cuaderno. Calibración de los niveles para esta escala: **Mitjà-alt = lo hace bien aunque con errores** (aprobado), **Alt = completo**, Mitjà-baix = lo intenta pero queda lejos, Baix = nada o idea incorrecta. Si redactas tú la rúbrica, sigue esa calibración (recuentos: ninguno / alguno, menos de la mitad / al menos la mitad / todos; porcentajes: <15 % / 15-39 % / 40-89 % / ≥90 %). Al terminar, avisa de quién queda por debajo de 5 y qué subida de un nivel lo cambiaría.
 - **Fet / no fet (10/0)** para comprobaciones binarias.
 - **Escala de N niveles** (p. ej. Malament 0 / Bé 5 / Molt bé 10).
 - **Lista de ítems con puntos** si el enunciado reparte puntos por apartados.
@@ -60,11 +60,11 @@ Formato de `avaluacio.md` (en **valenciano**, como el resto del material del sit
 
 ## Rúbrica
 
-| # | Ítem | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| # | Ítem | Criteri | Pes | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|---|
 | 1 | ... | CE1.1 | 30 % | ... | ... | ... | ... |
 
-**Valors per al càlcul:** Insuficient = 3 · Suficient-Bé = 5,5 · Notable = 7,5 · Excel·lent = 9,5
+**Valors per al càlcul:** Baix = 0 · Mitjà-baix = 3,33 · Mitjà-alt = 6,67 · Alt = 10 (nivell × 10 ÷ 3)
 **Nota** = Σ valor del nivell × pes (0-10, amb un decimal).
 
 ## Resum de notes
@@ -116,7 +116,7 @@ La columna **Evidència** es para el profesor: breve y verificable (fichero:lín
 ### Casos especiales
 
 - **No entregado / vacío**: nota 0 (o «NP» si el profesor lo prefiere), sin feedback largo: una línea.
-- **Entrega parcial**: corrige lo que haya; lo que falta va a Insuficient con evidencia «no present».
+- **Entrega parcial**: corrige lo que haya; lo que falta va a Baix (0) con evidencia «no present».
 - **Entregas sospechosamente iguales** entre alumnos, o código claramente copiado de una fuente/IA sin adaptar: **no lo penalices tú**. Corrige normal y anótalo en una sección final `## Incidències per al professor` con los nombres y la evidencia (qué ficheros/líneas coinciden). Decide el profesor.
 - **Dudas de interpretación** de un ítem: elige el nivel más defendible, márcalo con `(?)` en la tabla y explícalo en Incidències.
 

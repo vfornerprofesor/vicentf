@@ -137,17 +137,17 @@
     <h2>Rúbrica del bloc 3 en este examen</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P6.1. Matriu (CA6.1)</td><td>Ex. 2</td><td>No accedix amb <code>[fila][columna]</code>.</td><td>Taula amb bucles niats.</td><td>A més, <code>isRowFull</code>, <code>countFree</code> i la reserva funcionen.</td><td>A més, sense números fixos (usa <code>length</code>) i controla seients fora de rang.</td></tr>
-                <tr><td>P6.2. Classes de tipus avançats (CA6.2)</td><td>4 necessitats: llista (Array), autors diferents (Set), recompte per gènere (Map), any (RegExp)</td><td>0-1 amb la classe adequada.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
-                <tr><td>P6.3. Llistes (CA6.3)</td><td>Afegir, eliminar, marcar</td><td>Cap funciona.</td><td>Afig i elimina.</td><td>A més, marca com a llegit buscant pel títol.</td><td>A més, títols inexistents controlats en eliminar i en marcar.</td></tr>
-                <tr><td>P6.4. Iteradors (CA6.4)</td><td>Llista, <code>Map</code></td><td>Cap recorregut correcte.</td><td>Un <code>for...of</code> correcte.</td><td>A més, <code>forEach</code> amb l'índex en la llista.</td><td>A més, el <code>Map</code> amb <code>for...of</code> i <code>entries()</code>.</td></tr>
-                <tr><td>P6.5. Tria de col·lecció (CA6.5)</td><td><code>Set</code> d'autors i <code>Map</code> de gèneres</td><td>Cap de les dues ben triada (p. ex. un array amb repetits).</td><td>Una.</td><td>Totes dues.</td><td>A més, un comentari justifica cada tria.</td></tr>
-                <tr><td>P6.6. Expressions regulars (CA6.7)</td><td>Any: <code>1973</code> sí; <code>73</code>, <code>19733</code>, <code>19a3</code> no</td><td>Cap patró o accepta qualsevol text.</td><td>3 dels 4 casos.</td><td>Els 4 (amb <code>^</code> i <code>$</code>).</td><td>A més, usa el patró en una constant i el número es guarda convertit.</td></tr>
-                <tr><td>P6.7. Formats d'intercanvi (CA6.8)</td><td><code>JSON.parse</code> i <code>JSON.stringify</code></td><td>Cap dels dos.</td><td>Un.</td><td>Tots dos.</td><td>A més, un comentari diu que el text és JSON (o la diferència amb XML).</td></tr>
-                <tr><td>P6.8. JSON (CA6.9)</td><td>Inici i <em>Export</em></td><td>No obté l'array.</td><td>Obté l'array i el mostra.</td><td>A més, l'exporta amb els canvis.</td><td>A més, <code>try/catch</code> en l'inici i JSON sagnat.</td></tr>
-                <tr><td>P6.9. Operacions agregades (CA6.10)</td><td><code>filter</code>, <code>map</code>, <code>reduce</code>, <code>sort</code></td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4, sense <code>for</code>, i el <code>sort</code> sobre una còpia.</td></tr>
+                <tr><td>P6.1. Matriu (CA6.1)</td><td>Ex. 2</td><td>No accedix amb <code>[fila][columna]</code>.</td><td>Accedix a alguna cel·la, però no dibuixa la taula sencera.</td><td>Taula amb bucles niats.</td><td><code>isRowFull</code>, <code>countFree</code> i la reserva funcionen, sense números fixos (usa <code>length</code>) i controla seients fora de rang.</td></tr>
+                <tr><td>P6.2. Classes de tipus avançats (CA6.2)</td><td>4 necessitats: llista (Array), autors diferents (Set), recompte per gènere (Map), any (RegExp)</td><td>Cap amb la classe adequada.</td><td>1.</td><td>2-3.</td><td>Les 4.</td></tr>
+                <tr><td>P6.3. Llistes (CA6.3)</td><td>Afegir, eliminar, marcar</td><td>Cap funciona.</td><td>Afig o elimina (una de les dues).</td><td>Afig i elimina.</td><td>Marca com a llegit buscant pel títol, i controla els títols inexistents en eliminar i en marcar.</td></tr>
+                <tr><td>P6.4. Iteradors (CA6.4)</td><td>Llista, <code>Map</code></td><td>Cap recorregut.</td><td>Algun recorregut, però amb errors.</td><td>Un <code>for...of</code> correcte.</td><td><code>forEach</code> amb l'índex en la llista, i el <code>Map</code> amb <code>for...of</code> i <code>entries()</code>.</td></tr>
+                <tr><td>P6.5. Tria de col·lecció (CA6.5)</td><td><code>Set</code> d'autors i <code>Map</code> de gèneres</td><td>Cap de les dues ben triada (p. ex. un array amb repetits).</td><td>Una ben triada, però l'altra no funciona.</td><td>Una ben triada i l'altra acceptable.</td><td>Totes dues, i un comentari justifica cada tria.</td></tr>
+                <tr><td>P6.6. Expressions regulars (CA6.7)</td><td>Any: <code>1973</code> sí; <code>73</code>, <code>19733</code>, <code>19a3</code> no</td><td>Cap patró, o accepta qualsevol text.</td><td>1-2 dels 4 casos.</td><td>3 dels 4 casos.</td><td>Els 4 (amb <code>^</code> i <code>$</code>), el patró en una constant i el número es guarda convertit.</td></tr>
+                <tr><td>P6.7. Formats d'intercanvi (CA6.8)</td><td><code>JSON.parse</code> i <code>JSON.stringify</code></td><td>Cap dels dos.</td><td>Un, però mal usat (el resultat no es pot usar).</td><td>Un.</td><td>Tots dos, i un comentari diu que el text és JSON (o la diferència amb XML).</td></tr>
+                <tr><td>P6.8. JSON (CA6.9)</td><td>Inici i <em>Export</em></td><td>No convertix el text.</td><td>Ho intenta, però no obté l'array.</td><td>Obté l'array i el mostra.</td><td>L'exporta amb els canvis, amb <code>try/catch</code> en l'inici i JSON sagnat.</td></tr>
+                <tr><td>P6.9. Operacions agregades (CA6.10)</td><td><code>filter</code>, <code>map</code>, <code>reduce</code>, <code>sort</code></td><td>Cap.</td><td>1.</td><td>2-3.</td><td>Les 4, sense <code>for</code>, i el <code>sort</code> sobre una còpia.</td></tr>
             </tbody>
         </table>
     </div>
@@ -155,17 +155,16 @@
     <h2>Bloc 1 pendent</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P1.1. Projecte</td><td>Enllaç de l'script</td><td>No enllaçat.</td><td>Enllaçat.</td><td>A més, noms exactes.</td><td>A més, al final del <code>body</code>, cap sobrant.</td></tr>
-                <tr><td>P1.2. Entorn</td><td>Live Server, assercions</td><td>No s'executa.</td><td>S'executa.</td><td>A més, assercions en la consola.</td><td>A més, sagnat i cap error.</td></tr>
-                <tr><td>P1.3. Blocs</td><td>DATA i INPUT/PROCESS/OUTPUT d'Afegir: 4</td><td>0-1.</td><td>2.</td><td>3.</td><td>Les 4.</td></tr>
-                <tr><td>P1.4. Comentaris</td><td>Capçalera, blocs, errors, Set/Map</td><td>Falten.</td><td>Els demanats.</td><td>A més, capçalera.</td><td>A més, expliquen el perquè.</td></tr>
-                <tr><td>P1.5. Tipus</td><td>Llibre nou: any i pàgines números, <code>read</code> booleà, textos</td><td>Menys de la meitat bé.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
-                <tr><td>P1.6. Variables</td><td>Tot</td><td>Més de 2 repeticions.</td><td>1-2.</td><td>Cap.</td><td>A més, camelCase.</td></tr>
-                <tr><td>P1.7. Constants</td><td>Tot</td><td>2 o més errors.</td><td>Un.</td><td>Correctes.</td><td>A més, plantilles.</td></tr>
-                <tr><td>P1.8. Operadors</td><td>Condicions de validació, comparacions, seients</td><td>Menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes menys una.</td><td>Totes.</td></tr>
-                <tr><td>P1.9. Conversions</td><td>Any, pàgines, fila i seient</td><td>Calcula amb text.</td><td>Almenys 2 de 4.</td><td>3-4.</td><td>Les 4 i un comentari les explica.</td></tr>
+                <tr><td>P1.1. Variables</td><td>Tot el codi</td><td>Cap resultat en variable.</td><td>Menys de la meitat dels resultats en variables.</td><td>Almenys la meitat.</td><td>Tots, amb nom descriptiu i sense càlculs repetits.</td></tr>
+                <tr><td>P1.2. Constants i literals</td><td>Tot el codi</td><td>Cap valor fix en constant.</td><td>Alguna constant, però la majoria de valors fixos escrits a mà.</td><td>La majoria en constants (pot quedar algun literal repetit).</td><td><code>const</code> per a tot el que no canvia, cap literal repetit.</td></tr>
+                <tr><td>P1.3. Tipus de dades</td><td>Llibre nou: any i pàgines números, <code>read</code> booleà, textos</td><td>Les dades numèriques es guarden com a text.</td><td>Algun valor com a text que fa fallar un càlcul.</td><td>Tots correctes, encara que algun quede com a text sense efecte.</td><td>Tots correctes, i comprova el tipus abans de calcular (<code>isNaN</code>).</td></tr>
+                <tr><td>P1.4. Entrada i conversions</td><td>Any, pàgines, fila i seient</td><td>Calcula amb text.</td><td>Alguna convertida, però menys de la meitat.</td><td>Almenys la meitat.</td><td>Totes convertides.</td></tr>
+                <tr><td>P1.5. Càlculs</td><td>Apartats de càlcul: seients lliures i càlculs de la taula</td><td>Menys del 15&nbsp;%.</td><td>15-39&nbsp;%.</td><td>40-89&nbsp;%.</td><td>90&nbsp;% o més.</td></tr>
+                <tr><td>P1.6. Comparacions i operadors lògics</td><td>Apartats de comparació: condicions de validació i comparacions</td><td>Menys del 15&nbsp;%.</td><td>15-39&nbsp;%.</td><td>40-89&nbsp;%.</td><td>90&nbsp;% o més.</td></tr>
+                <tr><td>P1.7. Segon exercici</td><td>Apartats de l'ex. 2 que usen el bloc 1</td><td>Menys del 15&nbsp;%.</td><td>15-39&nbsp;%.</td><td>40-89&nbsp;%.</td><td>90&nbsp;% o més.</td></tr>
+                <tr><td>P1.8. Eixida en la pàgina</td><td>Resultats que mostra la pàgina</td><td>Menys d'un quart.</td><td>Entre un quart i la meitat.</td><td>Almenys la meitat.</td><td>Tots (en pot faltar un).</td></tr>
             </tbody>
         </table>
     </div>
@@ -173,17 +172,17 @@
     <h2>Bloc 2 pendent</h2>
     <div class="scroll">
         <table>
-            <thead><tr><th>Indicador</th><th>On es veu</th><th>Insuficient</th><th>Suficient-Bé</th><th>Notable</th><th>Excel·lent</th></tr></thead>
+            <thead><tr><th>Indicador</th><th>On es veu</th><th>Baix</th><th>Mitjà-baix</th><th>Mitjà-alt</th><th>Alt</th></tr></thead>
             <tbody>
-                <tr><td>P3.1. Selecció</td><td>6 casos: títol buit, any, pàgines, vàlid, seient ocupat, seient inexistent</td><td>0-2.</td><td>3-4.</td><td>5.</td><td>Els 6.</td></tr>
-                <tr><td>P3.2. Repetició</td><td><code>indexOfTitle</code>, <code>countFree</code>, taula</td><td>Algun bucle no acaba o deixa elements.</td><td>Funcionen amb algun resultat erroni.</td><td>Tots correctes.</td><td>A més, sense números fixos.</td></tr>
-                <tr><td>P3.3. Salt</td><td><code>isRowFull</code>, <code>indexOfTitle</code>, validacions</td><td>No ix quan cal.</td><td>Ix, però recorre de més amb una bandera.</td><td>Ix amb <code>return</code> en el moment just.</td><td>A més, un comentari ho explica.</td></tr>
-                <tr><td>P3.4. Programa</td><td>Ex. 2 complet</td><td>No dibuixa.</td><td>Falla alguna prova.</td><td>Totes correctes.</td><td>A més, funcions separades.</td></tr>
-                <tr><td>P3.5. Depuració</td><td>2 errors d'<code>averagePages</code></td><td>Cap.</td><td>Un.</td><td>Tots dos.</td><td>Tots dos, amb línia i causa.</td></tr>
-                <tr><td>P3.6. Excepcions pròpies</td><td><code>removeBook</code></td><td>No llança.</td><td>Llança <code>Error</code>.</td><td>Amb el missatge del títol.</td><td>A més, <code>NotFoundError</code>.</td></tr>
-                <tr><td>P3.7. Control d'excepcions</td><td>Botó Remove i inici</td><td>Es trenca.</td><td><code>try/catch</code> en un lloc.</td><td>A més, missatge en la pàgina.</td><td>Tots dos llocs, i el missatge passa a verd en una acció correcta.</td></tr>
-                <tr><td>P3.8. Assercions</td><td><code>averagePages</code></td><td>Menys de 3.</td><td>3 correctes.</td><td>A més, li han servit per a trobar els errors.</td><td>A més, cas límit i cas estrany.</td></tr>
-                <tr><td>P3.9. Documentació</td><td>JSDoc de <code>removeBook</code></td><td>Cap.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code>.</td><td>A més, <code>@throws</code>.</td></tr>
+                <tr><td>P3.1. Selecció</td><td>6 casos: títol buit, any, pàgines, vàlid, seient ocupat, seient inexistent</td><td>0-1.</td><td>2.</td><td>3-5.</td><td>Els 6.</td></tr>
+                <tr><td>P3.2. Repetició</td><td><code>indexOfTitle</code>, <code>countFree</code>, taula</td><td>Cap bucle funciona.</td><td>Algun bucle no acaba o deixa elements.</td><td>Funcionen, encara que algun resultat siga erroni.</td><td>Tots correctes, sense números fixos.</td></tr>
+                <tr><td>P3.3. Salt</td><td><code>isRowFull</code>, <code>indexOfTitle</code>, validacions</td><td>No ix quan cal.</td><td>Ix, però en un moment equivocat.</td><td>Ix, encara que recorre de més amb una bandera.</td><td>Ix amb <code>return</code> en el moment just, i un comentari ho explica.</td></tr>
+                <tr><td>P3.4. Programa</td><td>Ex. 2 complet</td><td>No dibuixa.</td><td>Dibuixa, però falla la majoria de proves.</td><td>Funciona, encara que falle alguna prova.</td><td>Totes correctes, amb funcions separades.</td></tr>
+                <tr><td>P3.5. Depuració</td><td>2 errors d'<code>averagePages</code></td><td>Cap.</td><td>Un, sense entendre la causa (canvi a l'atzar).</td><td>Un.</td><td>Tots dos, amb línia i causa.</td></tr>
+                <tr><td>P3.6. Excepcions pròpies</td><td><code>removeBook</code></td><td>No llança.</td><td>Llança, però sense missatge.</td><td>Llança <code>Error</code>.</td><td>Amb el missatge del títol, i <code>NotFoundError</code>.</td></tr>
+                <tr><td>P3.7. Control d'excepcions</td><td>Botó Remove i inici</td><td>Cap <code>try/catch</code>: es trenca.</td><td><code>try/catch</code>, però encara es trenca en algun cas.</td><td><code>try/catch</code> en un lloc.</td><td>Tots dos llocs, missatge en la pàgina, i passa a verd en una acció correcta.</td></tr>
+                <tr><td>P3.8. Assercions</td><td><code>averagePages</code></td><td>Cap asserció.</td><td>1-2.</td><td>3 correctes.</td><td>Li han servit per a trobar els errors, amb cas límit i cas estrany.</td></tr>
+                <tr><td>P3.9. Documentació</td><td>JSDoc de <code>removeBook</code></td><td>Cap.</td><td>Comentari que no diu què fa.</td><td>Diu què fa.</td><td><code>@param</code>, <code>@returns</code> i <code>@throws</code>.</td></tr>
             </tbody>
         </table>
     </div>
