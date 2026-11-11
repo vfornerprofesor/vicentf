@@ -124,17 +124,17 @@ En totes les sessions de pràctica: 5 min d'arrancada (encendre l'equip, iniciar
 
 #### Sessió 9 — Interfície i edició bàsica (55 min)
 - 15 min: interfície (transport, eines, dispositius, mesuradors, pistes i línia de temps); prova de gravació amb el nivell entre -12 dB i -6 dB; importació d'àudio des del mòbil.
-- 35 min: activitat 1 (seleccionar, tallar, copiar, desfer): exercicis 1 i 3 de la web.
+- 35 min: seleccionar, dividir, moure, tallar i enganxar: missions 1 i 3 de l'Agència Orella.
 - 5 min: exportar i pujar.
 
 #### Sessió 10 — Netejar una gravació (55 min)
 - 10 min: demostració de reducció de soroll (perfil de soroll), tall de silencis, normalitzar (-1 dB) i amplificar.
-- 40 min: activitat 2: exercici 2 de la web, i normalització del resultat.
+- 40 min: missió 2 (reducció de soroll i normalització).
 - 5 min: exportar i pujar.
 
 #### Sessió 11 — Pistes, esvaïments i efectes (55 min)
 - 10 min: demostració de diverses pistes, so de fons a -18/-20 dB, esvaïments, efectes i exportació a MP3; projecte `.aup3`.
-- 40 min: activitat 3: exercicis 4, 5 i 6 de la web.
+- 40 min: missions 4, 5 i 6.
 - 5 min: exportar i pujar.
 
 ### T5 — Gravem els àudios de les vinyetes (sessions 12-13) · CE5.3, CE5.5
@@ -232,10 +232,10 @@ Les instruccions completes per a l'alumnat són a la web de la matèria (Project
 - **Ampliació**: plans diferents i cartutxos narratius.
 
 ### T4 — Activitats d'Audacity
-**Enunciat**: fes els sis exercicis de la pàgina Audacity (1 unir àudios, 2 llevar el soroll, 3 llevar la tos i completar la frase, 4 jugar amb la veu, 5 efectes de so, 6 efecte ràdio amb música de fons), exporta cada resultat a MP3 i puja'l a Aules.
-- **Bàsic**: guia visual de la interfície; exercicis 1, 2 i 5 amb menys passos.
-- **Estàndard**: els sis exercicis.
-- **Ampliació**: exercici 6 amb envolupant de volum ajustat amb precisió i equalització.
+**Enunciat**: fes les sis missions de l'Agència Orella de la pàgina Audacity (1 missatges tallats: dividir i unir; 2 trucada des de la fàbrica: reducció de soroll; 3 el locutor desastre: esborrar errades i inserir; 4 el laboratori de veus: invertir, velocitat i to; 5 terror en 30 segons: efectes de so; 6 falca de ràdio: filtre telèfon i envolupant de la música), exporta cada resultat a MP3 i puja'l a Aules amb la paraula clau de les missions 1 a 4.
+- **Bàsic**: guia visual de la interfície; missions 1 (només la conversa), 2 i 3.
+- **Estàndard**: les sis missions.
+- **Ampliació**: repte extra de la missió 5 (un efecte gravat amb el mòbil, foley) i envolupant ajustat amb precisió en la missió 6.
 
 ### T5-T6 — Àudios de les vinyetes
 **Enunciat**: per a cada vinyeta grava la veu, lleva el soroll, talla silencis, normalitza a -1 dB, afig so de fons (-18/-20 dB, fade in i fade out) i efectes lliures de drets, exporta a MP3 (128-192 kbps) com a `VinyetaN.mp3` a la carpeta `audios`, guarda el `.aup3` i lliura `audios.zip`.
@@ -303,14 +303,14 @@ Quan s'aplica una mesura que redueix requisits (p. ex. 10 vinyetes, sense transi
 | Llista de control del guió (formativa) | Sessió 4 | Co (parelles) | T2 | Fet/no fet, sense qualificació: serveix per a corregir abans del lliurament |
 | R1 Rúbrica del guió multimèdia | Lliurament T2 | Hetero | T1, T2 | Rúbrica de 4 nivells |
 | R2 Rúbrica de les vinyetes | Lliurament T3 | Hetero | T3 | Rúbrica de 4 nivells |
-| E1 Escala de les activitats d'Audacity | Lliurament de cada exercici (sessions 9-11) | Hetero | T4 | Escala de 3 nivells |
+| E1 Rúbrica de les missions d'Audacity | Lliurament de cada missió (sessions 9-11) | Hetero | T4 | Rúbrica de 4 nivells |
 | R3 Rúbrica dels àudios de les vinyetes | Lliurament T6 | Hetero | T5, T6 | Rúbrica de 4 nivells |
 | R4 Rúbrica del vídeo del còmic | Lliurament T8 | Hetero | T7, T8 | Rúbrica de 4 nivells |
 | R5 Rúbrica del vídeo de la cançó | Lliurament T9 | Hetero | T9 | Rúbrica de 4 nivells |
 | R6 Rúbrica de coavaluació de l'estrena | Sessió 22 | Co (tot el grup puntua cada còmic; es fa la mitjana) | T10 | Rúbrica de 4 nivells |
 | R7 Rúbrica d'autoavaluació i millora | Sessió 22 | Auto (l'alumnat omple la fitxa) + hetero (el professor qualifica la fitxa) | T10 | Rúbrica de 4 nivells |
 
-Rúbriques: el professor posa una nota dins de la franja del nivell (Insuficient 1-4 · Suficient-Bé 5-6 · Notable 7-8 · Excel·lent 9-10). Un lliurament inexistent és un 0 en tots els seus indicadors. Entre parèntesis, el pes de l'indicador en CE5.
+Totes les rúbriques són de 4 nivells i cada fila es puntua de 0 a 3, com el quadern del professor: **Baix = 0 · Mitjà-baix = 3,33 · Mitjà-alt = 6,67 · Alt = 10** (nivell × 10 ÷ 3). Cada fila rep el nivell més alt del qual es complixen totes les condicions. **Mitjà-alt** vol dir que ho fa bé, encara que siga amb errors (és el nivell de l'aprovat), i **Alt**, que ho fa complet; Mitjà-baix és que ho intenta però queda lluny, i Baix, que no hi ha res o la idea no és correcta. La columna «Pes en el criteri» diu quant compta l'indicador en la nota del seu criteri: **1 = bàsic**, **2 = intermedi**, **3 = avançat**. Un lliurament inexistent és un 0 en tots els seus indicadors. Les faltes d'ortografia quasi no compten: només en GM5, per a l'Alt, i es comenten en el retorn.
 
 ## Indicadors d'èxit
 
@@ -318,20 +318,20 @@ Rúbriques: el professor posa una nota dins de la franja del nivell (Insuficient
 
 Rúbrica de 4 nivells. S'aplica al document «Guió multimèdia». El guió és un esborrany de treball: es valora que la història s'entenga i que cada vinyeta tinga la informació necessària per a fer-la, no el detall.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| GM1. ODS i justificació (punt 1) | CE5.1 | 15 % (2,25 %) | No hi ha cap ODS: ni es nomena ni es pot saber pel que s'escriu. | L'ODS només s'endevina (pel títol o el tema) i no hi ha ni explicació ni motiu. | Nomena l'ODS (o el seu tema de manera inequívoca: fam, salut, aigua, vida submarina…) i dona una raó breu de la tria **o** explica breument de què tracta. | Nomena l'ODS, explica breument de què tracta **i** dona una raó de la tria (encara que siga senzilla). |
-| GM2. Resum de la història (punt 2, esborrany) | CE5.1 | 25 % (3,75 %) | No hi ha resum, o no s'entén de què va la història, o no té relació amb l'ODS, o conté faltes de respecte. | S'entén de què va, però falta el problema o com acaba. | En poques frases s'entén el problema i com acaba la història, relacionada amb l'ODS. | A més, apareixen els personatges principals o el lloc, i s'explica com s'arriba a la solució. |
-| GM3. Taula de cada vinyeta (punt 3) | CE5.1 | 30 % (4,5 %) | No hi ha taules, o la meitat de les vinyetes o menys compleixen els 4 camps. | Més de la meitat de les vinyetes compleixen els 4 camps. | Almenys 3 de cada 4 vinyetes (75 %) compleixen els 4 camps. | Totes les vinyetes compleixen els 4 camps. |
-| GM4. Nombre de vinyetes i cobertura de la història | CE5.1 | 20 % (3 %) | Menys de 10 vinyetes en equip (menys de 7 si és individual), o les vinyetes no corresponen a la història. | Entre 10 i 14 vinyetes en equip (entre 7 i 9 si és individual). | El mínim o més (15 en equip, 10 individual), però alguna part de la història (inici, desenvolupament o final) queda sense vinyeta. | El mínim o més (15 en equip, 10 individual) i cobreixen tota la història: inici, desenvolupament i final. |
-| GM5. Presentació del document | CE5.1 | 10 % (1,5 %) | Falten el títol i algun dels punts, o més de 15 faltes fora dels diàlegs, o el document no es pot llegir. | Falta el títol o un dels punts, o no és PDF, o entre 9 i 15 faltes fora dels diàlegs. | Títol, tres punts i vinyetes numerades en ordre; entre 4 i 8 faltes fora dels diàlegs. | Tot l'anterior amb 0-3 faltes fora dels diàlegs i format uniforme. |
-| GM6. Seqüència narrativa del guió | CE5.2 | 10 % (2 %) | Hi ha salts que impedeixen entendre la història o vinyetes desordenades. | La història s'entén però hi ha algun salt sense explicar o vinyetes repetides sense acció nova. | Cada vinyeta fa avançar la història i l'ordre és lògic. | A més, preveu canvis de pla o cartutxos narratius per als salts de temps o de lloc. |
+| GM1. ODS i justificació (punt 1) | CE5.1 | 2 · intermedi | No hi ha cap ODS: ni es nomena ni es pot saber pel que s'escriu. | L'ODS només s'endevina (pel títol o el tema) i no hi ha ni explicació ni motiu. | Nomena l'ODS (o el seu tema de manera inequívoca: fam, salut, aigua, vida submarina…) i dona una raó breu de la tria **o** explica breument de què tracta. | Nomena l'ODS, explica breument de què tracta **i** dona una raó de la tria (encara que siga senzilla). |
+| GM2. Resum de la història (punt 2, esborrany) | CE5.1 | 3 · avançat | No hi ha resum, o no s'entén de què va la història, o no té relació amb l'ODS, o conté faltes de respecte. | S'entén de què va, però falta el problema o com acaba. | En poques frases s'entén el problema i com acaba la història, relacionada amb l'ODS. | A més, apareixen els personatges principals o el lloc, i s'explica com s'arriba a la solució. |
+| GM3. Taula de cada vinyeta (punt 3) | CE5.1 | 3 · avançat | No hi ha taules, o cap vinyeta compleix els 4 camps. | Alguna vinyeta compleix els 4 camps, però menys de la meitat. | Almenys la meitat de les vinyetes compleixen els 4 camps. | Totes les vinyetes compleixen els 4 camps (en pot fallar una). |
+| GM4. Nombre de vinyetes i cobertura de la història | CE5.1 | 2 · intermedi | Menys de la meitat del mínim (menys de 8 vinyetes en equip, menys de 5 individual), o les vinyetes no corresponen a la història. | Per davall del mínim: entre 8 i 14 vinyetes en equip (entre 5 i 9 individual). | El mínim o més (15 en equip, 10 individual), però alguna part de la història (inici, desenvolupament o final) queda sense vinyeta. | El mínim o més i cobreixen tota la història: inici, desenvolupament i final. |
+| GM5. Presentació del document | CE5.1 | 1 · bàsic | No es pot llegir, o només hi ha les taules: ni títol ni cap dels tres punts. | Falta el títol o algun dels tres punts, o les vinyetes no estan numerades. | Títol, tres punts i vinyetes numerades en ordre (siguen quantes siguen les faltes i siga quin siga el format del fitxer). | A més, format uniforme i sense moltes faltes fora dels diàlegs (15 com a màxim). |
+| GM6. Seqüència narrativa del guió | CE5.2 | 1 · bàsic | Les vinyetes no conten una història: desordenades o sense relació entre elles. | Hi ha salts que fan difícil entendre la història. | La història s'entén en ordre, encara que hi haja algun salt sense explicar o vinyetes sense acció nova. | Cada vinyeta fa avançar la història, l'ordre és lògic i els salts de temps o de lloc s'expliquen (canvis de pla, cartutxos o la mateixa acció). |
 
 **Els 4 camps de GM3**, en cada vinyeta: **Escena**, el lloc on passa la vinyeta (basta el lloc); **So**, sempre hi ha d'haver alguna cosa; **Diàlegs o veu en off**, sempre hi ha d'haver alguna cosa («X», «No hay», «Ninguno» o la casella buida compten com a buit); **Personatges**, basten els noms. **Altres elements** pot quedar buit i no penalitza.
 
 **GM4:** la taula de la vinyeta (sobretot la fila Escena) compta com a resum; només es mira el nombre de vinyetes i que cobrisquen inici, desenvolupament i final.
 
-**GM5:** no es compten les faltes dels diàlegs (és llenguatge oral dels personatges); cada paraula errònia es compta una vegada encara que es repetisca.
+**GM5:** les faltes quasi no compten: només separen Mitjà-alt d'Alt. No es compten les dels diàlegs (és llenguatge oral dels personatges) i cada paraula errònia es compta una vegada encara que es repetisca. Tampoc es penalitza que el document no siga PDF.
 
 Amb la mesura de mínim reduït, el mínim de GM4 és de 10 vinyetes també en equip.
 
@@ -339,96 +339,96 @@ Amb la mesura de mínim reduït, el mínim de GM4 és de 10 vinyetes també en e
 
 Rúbrica de 4 nivells. S'aplica a `vinyetes.zip`, amb el guió al costat.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| VN1. Totes les vinyetes, fidels al guió | CE5.2 | 30 % (6 %) | Falten més d'un quart de les vinyetes del guió, o la majoria no representen el que diu el guió. | Falten algunes vinyetes (fins a un quart) o diverses no coincideixen amb l'escena o els personatges del guió. | Estan totes les vinyetes del guió i representen l'escena, els personatges i el diàleg previstos. | Totes coincideixen amb el guió, inclosos els detalls d'«Altres elements»; els canvis respecte al guió milloren la història. |
-| VN2. Elements del llenguatge del còmic | CE5.2 | 35 % (7 %) | Vinyetes amb escena o personatges però sense bafarades ni textos, o text il·legible. | Escena, personatges i bafarades, però el text no s'entén bé (tapa personatges, bafarada que no assenyala qui parla) o sempre el mateix pla. | Escena, personatges i bafarades ben col·locades i llegibles en totes les vinyetes; personatges amb postura o expressió adequada a l'acció. | A més, usa almenys dos plans diferents i cartutxos narratius o onomatopeies on la història ho demana. |
-| VN3. Seqüència i respecte | CE5.2 | 25 % (5 %) | Mirades en ordre, les vinyetes no conten una història comprensible, o hi ha alguna falta de respecte. | La història s'entén amb ajuda del guió; algun salt sense explicar. | La història s'entén mirant només les vinyetes en ordre; cap falta de respecte. | A més, el missatge sobre l'ODS queda clar en la conclusió i es manté la coherència visual (mateix aspecte dels personatges i ambients). |
-| VN4. Captures, noms i lliurament | CE5.5 | 30 % (3 %) | No hi ha ZIP, o les imatges no estan dins, o no tenen el nom VinyetaN. | ZIP amb totes les imatges però alguna amb nom incorrecte o captura amb trossos de la interfície. | ZIP amb Vinyeta1…VinyetaN correctes; captures retallades només a la vinyeta. | A més, totes les captures tenen la mateixa mida i les vinyetes també són a la carpeta Vinyetes del núvol. |
+| VN1. Totes les vinyetes, fidels al guió | CE5.2 | 3 · avançat | Falten la majoria de vinyetes del guió, o no representen el que diu el guió. | Falten més d'un quart de les vinyetes, o diverses no coincideixen amb l'escena o els personatges del guió. | Hi ha almenys tres quarts de les vinyetes del guió i representen l'escena, els personatges i el diàleg previstos, encara que alguna no coincidisca del tot. | Totes les vinyetes del guió, fidels a l'escena, els personatges i el diàleg; els canvis respecte al guió milloren la història. |
+| VN2. Elements del llenguatge del còmic | CE5.2 | 3 · avançat | Vinyetes sense bafarades ni textos, o amb el text il·legible. | Bafarades només en algunes vinyetes, o el text no s'entén bé (tapa personatges, la bafarada no assenyala qui parla). | Escena, personatges i bafarades llegibles en la majoria de vinyetes; pot repetir sempre el mateix pla o tindre alguna bafarada mal col·locada. | Escena, personatges amb postura o expressió adequada i bafarades ben col·locades en totes; almenys dos plans diferents i cartutxos o onomatopeies on la història ho demana. |
+| VN3. Seqüència i respecte | CE5.2 | 3 · avançat | Mirades en ordre, les vinyetes no conten una història comprensible, o hi ha alguna falta de respecte. | La història només s'entén amb ajuda del guió. | La història s'entén mirant només les vinyetes en ordre, encara que hi haja algun salt; cap falta de respecte. | A més, el missatge sobre l'ODS queda clar en la conclusió i els personatges i ambients mantenen el mateix aspecte. |
+| VN4. Captures, noms i lliurament | CE5.5 | 3 · avançat | No hi ha ZIP, o no hi ha imatges dins. | ZIP amb imatges, però la majoria sense el nom VinyetaN o amb trossos de la interfície. | ZIP amb totes les vinyetes, la majoria amb el nom VinyetaN i retallades; pot haver-hi algun nom o retall incorrecte. | ZIP amb Vinyeta1…VinyetaN correctes, captures retallades només a la vinyeta i de la mateixa mida, i les vinyetes també a la carpeta Vinyetes del núvol. |
 
-### E1 Escala de les activitats d'Audacity
+### E1 Rúbrica de les missions d'Audacity
 
-Escala de 3 nivells: **Malament = 0 · Bé = 5 · Molt bé = 10**. S'aplica a cada MP3 lliurat.
+Rúbrica de 4 nivells, una fila per missió de l'Agència Orella (pàgina Audacity). S'aplica als MP3 de cada missió i, en les missions 1 a 4, a la paraula clau o la informació secreta que s'entrega amb l'àudio.
 
-| Indicador | Criteri | Pes | Malament (0) | Bé (5) | Molt bé (10) |
-|---|---|---|---|---|---|
-| AD1. Ex. 1 Unir àudios | CE5.3 | 5 % (1 %) | No lliurat o els àudios no estan units. | Units en l'ordre de la cançó però amb silencis massa llargs o talls. | Diàleg alternat, sense talls i amb ritme natural. |
-| AD2. Ex. 2 Llevar el soroll | CE5.3 | 5 % (1 %) | No lliurat o el soroll continua igual. | Soroll reduït però la veu sona metàl·lica o queda soroll audible. | Soroll eliminat i veu natural. |
-| AD3. Ex. 3 Llevar la tos i completar la frase | CE5.3 | 5 % (1 %) | No lliurat, la tos continua o falta el tros 03_SEGUNDO. | Tos eliminada i frase completa, però el punt d'unió se sent (bot o silenci). | Tos eliminada i frase sencera sense que es note la unió. |
-| AD4. Ex. 4 Jugar amb la veu | CE5.3 | 5 % (1 %) | No lliurat o menys de dos dels quatre efectes fets. | Dos o tres efectes correctes. | Els quatre (to greu, inversió, to agut, velocitat) correctes. |
-| AD5. Ex. 5 Efectes de so | CE5.3 | 5 % (1 %) | No lliurat o sense llamp ni pluja. | Llamp i pluja afegits però tapen la veu o estan fora de lloc. | Llamp i pluja en el moment adequat, amb volum que deixa entendre la frase. |
-| AD6. Ex. 6 Efecte ràdio amb música de fons | CE5.3 | 5 % (1 %) | No lliurat o sense efecte ràdio ni música. | Efecte ràdio o música de fons, però la música no baixa mentre es parla. | Veu tipus ràdio i música que baixa amb l'envolupant mentre es parla i torna a pujar. |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
+|---|---|---|---|---|---|---|
+| AD1. Missió 1: missatges tallats | CE5.3 | 1 · bàsic | No lliurat, o els àudios no s'han unit. | Només una de les dues parts, o frases unides en un ordre que no té sentit. | Conversa i frase de la cançó muntades en ordre, encara que amb silencis massa llargs o algun tall, o sense la contrasenya o la cançó identificada. | Conversa alternada amb ritme natural i pausa abans de la contrasenya, frase de la cançó en ordre, i contrasenya, títol i grup correctes. |
+| AD2. Missió 2: trucada des de la fàbrica | CE5.3 | 1 · bàsic | No lliurat, o el soroll continua igual. | Soroll una mica reduït, però el missatge encara no s'entén. | Soroll reduït i el missatge s'entén, encara que la veu sone metàl·lica o quede soroll de fons; pot fallar l'hora, el lloc o la contrasenya. | Soroll eliminat, veu natural i normalitzada, i hora, lloc i contrasenya correctes. |
+| AD3. Missió 3: el locutor desastre | CE5.3 | 1 · bàsic | No lliurat, o les errades continuen. | Alguna errada esborrada, però en queden la majoria, o falta la paraula del buit. | Errades esborrades i buit omplit amb l'opció que té sentit, encara que es note algun tall (bot o silenci) o quede alguna errada. | Totes les errades fora, l'opció correcta inserida i cap tall que es note. |
+| AD4. Missió 4: el laboratori de veus | CE5.3 | 1 · bàsic | No lliurat, o cap missatge desfet. | Un dels tres missatges desfet, o només els personatges. | Almenys dos missatges desfets i un personatge, o els tres missatges sense personatges. | Els tres missatges desfets (amb el missatge 1 escrit) i els dos personatges: malvat (to greu i eco) i robot o follet (to agut). |
+| AD5. Missió 5: terror en 30 segons | CE5.3 | 1 · bàsic | No lliurat, o sense cap efecte. | Un efecte, o efectes que tapen la veu. | Almenys dos dels quatre efectes en el seu silenci; pot haver-n'hi de fora de lloc, massa forts o sense fades. | Els quatre efectes en el seu silenci, amb fade in i fade out, i la pluja de fons sense tapar la veu. |
+| AD6. Missió 6: falca de ràdio | CE5.3 | 1 · bàsic | No lliurat, o una sola veu sense música. | Veus i música, però desordenades o la música tapa les veus, sense efecte telèfon ni envolupant. | Veus en ordre amb música de fons, i efecte telèfon o envolupant (un dels dos), encara que siga imprecís. | Veus en ordre, client amb efecte telèfon, música que baixa quan es parla i puja al principi i al final, i fade out final. |
 
 ### R3 Rúbrica dels àudios de les vinyetes
 
 Rúbrica de 4 nivells. S'aplica a `audios.zip`.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| AV1. Veu de cada vinyeta | CE5.3 | 10 % (2 %) | Falten àudios de més d'un quart de les vinyetes o la veu no segueix el guió. | Hi ha àudio de quasi totes les vinyetes; la veu segueix el guió però es llig de manera plana o amb errades. | Un àudio per vinyeta, amb el text del guió i una lectura clara. | A més, entonació i ritme adequats a cada personatge i situació (veus diferenciades). |
-| AV2. Neteja de la gravació | CE5.3 | 20 % (4 %) | Soroll de fons evident o distorsió (nivells en roig) en la majoria d'àudios. | Soroll o distorsió en alguns àudios, o silencis llargs al principi o al final. | Sense soroll audible ni distorsió; silencis inicials i finals tallats. | A més, la veu sona natural en tots (sense efecte metàl·lic) i sense errades ni tos. |
-| AV3. Volum homogeni | CE5.3 | 10 % (2 %) | Diferències de volum molt grans entre vinyetes (cal tocar el volum per a sentir-les). | Diferències apreciables en algunes vinyetes. | Totes les vinyetes sonen a un volum semblant (normalitzades). | Volum homogeni i cap vinyeta satura en els punts forts. |
-| AV4. So de fons | CE5.3 | 15 % (3 %) | Sense so de fons, o el fons tapa la veu. | So de fons en algunes vinyetes, o sense fade in/fade out, o massa fort en algun moment. | So de fons en totes les vinyetes, per davall de la veu (aprox. -18/-20 dB), amb fade in i fade out. | A més, el fons s'adapta a l'ambient de cada escena (no sempre la mateixa música). |
-| AV5. Efectes de so | CE5.3 | 15 % (3 %) | Sense efectes, o efectes que no tenen relació amb l'acció. | Algun efecte coherent però fora de temps o massa fort. | Efectes coherents amb l'acció, col·locats en el moment exacte, sense tapar la veu. | A més, efectes en totes les vinyetes on el guió els preveu, amb entrada i eixida suaus. |
-| AV6. Exportació i organització | CE5.5 | 30 % (3 %) | No hi ha ZIP o els fitxers no són MP3. | ZIP amb MP3 però algun nom incorrecte o desordenat. | Carpeta `audios` amb Vinyeta1.mp3…VinyetaN.mp3 correctes, a 128-192 kbps. | A més, conserva el projecte `.aup3` de cada vinyeta (es comprova a l'aula). |
+| AV1. Veu de cada vinyeta | CE5.3 | 2 · intermedi | Falten la majoria d'àudios, o la veu no segueix el guió. | Falten àudios de més d'un quart de les vinyetes, o la lectura costa d'entendre. | Àudio de quasi totes les vinyetes amb el text del guió i lectura clara, encara que plana o amb alguna errada. | Un àudio per vinyeta, amb entonació i ritme adequats a cada personatge i situació (veus diferenciades). |
+| AV2. Neteja de la gravació | CE5.3 | 3 · avançat | Soroll de fons fort o distorsió (nivells en roig) en la majoria d'àudios. | Soroll o distorsió en diversos àudios, o silencis llargs al principi i al final. | Sense soroll que moleste ni distorsió en la majoria; pot quedar algun silenci llarg o soroll lleu. | Sense soroll ni distorsió en cap, silencis tallats, veu natural (sense efecte metàl·lic) i sense errades ni tos. |
+| AV3. Volum homogeni | CE5.3 | 2 · intermedi | Diferències de volum molt grans entre vinyetes (cal tocar el volum per a sentir-les). | Diferències apreciables en diverses vinyetes. | Volum semblant en quasi totes (normalitzades); alguna sona una mica més fluixa o més forta. | Volum homogeni en totes i cap satura en els punts forts. |
+| AV4. So de fons | CE5.3 | 3 · avançat | Sense so de fons, o el fons tapa la veu. | So de fons només en algunes vinyetes, o massa fort en diversos moments. | So de fons en quasi totes, per davall de la veu; pot faltar algun fade o ser massa fort en algun moment. | So de fons en totes, per davall de la veu (aprox. -18/-20 dB), amb fade in i fade out, i adaptat a l'ambient de cada escena. |
+| AV5. Efectes de so | CE5.3 | 3 · avançat | Sense efectes, o efectes que no tenen relació amb l'acció. | Algun efecte coherent, però fora de temps o massa fort. | Efectes coherents amb l'acció, en el moment adequat i sense tapar la veu, encara que en falte en alguna vinyeta que el preveu. | Efectes en totes les vinyetes on el guió els preveu, en el moment exacte i amb entrada i eixida suaus. |
+| AV6. Exportació i organització | CE5.5 | 3 · avançat | No hi ha ZIP, o els fitxers no són MP3. | ZIP amb MP3, però la majoria amb nom incorrecte o desordenats. | Carpeta `audios` amb VinyetaN.mp3 a 128-192 kbps; pot haver-hi algun nom incorrecte. | Tots els noms correctes i conserva el projecte `.aup3` de cada vinyeta (es comprova a l'aula). |
 
 ### R4 Rúbrica del vídeo del còmic
 
 Rúbrica de 4 nivells. S'aplica a `comic_Nom_Cognom.mp4`.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| VC1. Introducció i vinyetes en ordre | CE5.4 | 15 % (3,75 %) | Falta la introducció o falten vinyetes. | Introducció incompleta (falta títol, nom o curs) o d'una durada inadequada, o alguna vinyeta desordenada. | Introducció de 3-5 s amb títol, nom i curs, i totes les vinyetes en ordre. | A més, la música de la introducció acaba amb fade out abans de la Vinyeta 1. |
-| VC2. Sincronització imatge-so | CE5.4 | 20 % (5 %) | Moltes imatges no coincideixen amb el seu àudio (es veu una vinyeta i se sent una altra). | Sincronitzat en general, però algunes imatges duren més o menys que el seu àudio o hi ha buits negres. | Cada imatge dura el mateix que el seu àudio, en ordre i sense buits. | Sincronització exacta en tot el vídeo, inclosos els efectes amb l'acció de la vinyeta. |
-| VC3. Transicions | CE5.4 | 5 % (1,25 %) | Sense transicions i amb talls bruscs. | Alguna transició, o transicions que tallen l'àudio. | Transició curta entre la introducció, les vinyetes i el final. | Transicions coherents i uniformes en tot el vídeo, sense afectar el so. |
-| VC4. So del vídeo | CE5.4 | 10 % (2,5 %) | La veu no s'entén per damunt de la música o hi ha silencis inesperats. | La veu s'entén quasi sempre; algun salt de volum entre vinyetes. | La veu se sent per damunt de la música en totes les vinyetes; sense silencis inesperats. | A més, música general a -22 dB o fades que fan el so continu de principi a fi. |
-| VC5. Exportació | CE5.4 | 5 % (1,25 %) | No és un MP4 o no es reprodueix. | MP4 però amb resolució o fps diferents dels demanats, o imatge deformada. | MP4 1920 x 1080 a 25 fps. | MP4 correcte i vinyetes sense deformar ni retallar (respecten la proporció). |
-| VC7. Final i crèdits | CE5.4 | 10 % (2,5 %) | Sense final ni crèdits. | Final present però incomplet (falta l'ODS o alguna dada dels crèdits) o d'una durada inadequada. | Final de 3-5 s amb l'ODS treballat i crèdits amb nom, grup, IES Betxí i curs. | A més, una frase de conclusió i la música que torna a pujar i acaba amb fade out. |
-| VC6. Nom i lliurament | CE5.5 | 20 % (2 %) | No lliurat, o enllaç sense permís de lectura. | Lliurat amb nom incorrecte. | `comic_Nom_Cognom.mp4` lliurat a Aules o per enllaç amb permís de lectura. | A més, el projecte de Kdenlive és amb les carpetes Vinyetes i audios (es comprova a l'aula). |
+| VC1. Introducció i vinyetes en ordre | CE5.4 | 3 · avançat | Sense introducció i falten vinyetes. | Falta la introducció, o falten vinyetes, o diverses estan desordenades. | Introducció (pot faltar alguna dada o no durar 3-5 s) i totes les vinyetes en ordre. | Introducció de 3-5 s amb títol, nom i curs, música que acaba amb fade out abans de la Vinyeta 1, i totes les vinyetes en ordre. |
+| VC2. Sincronització imatge-so | CE5.4 | 3 · avançat | La majoria d'imatges no coincideixen amb el seu àudio (es veu una vinyeta i se sent una altra). | Diverses imatges duren més o menys que el seu àudio, o hi ha buits negres. | Cada imatge amb el seu àudio i en ordre; pot haver-hi algun desfasament o buit curt. | Sincronització exacta en tot el vídeo, sense buits, inclosos els efectes amb l'acció de la vinyeta. |
+| VC3. Transicions | CE5.4 | 1 · bàsic | Sense transicions: tot són talls bruscs. | Alguna transició aïllada, o transicions que tallen l'àudio. | Transició curta entre la introducció, les vinyetes i el final; alguna pot ser irregular. | Transicions coherents i uniformes en tot el vídeo, sense afectar el so. |
+| VC4. So del vídeo | CE5.4 | 2 · intermedi | La veu no s'entén per damunt de la música. | La veu costa d'entendre en diverses vinyetes, o hi ha silencis inesperats. | La veu s'entén en totes les vinyetes; pot haver-hi algun salt de volum. | La veu sempre per damunt de la música, sense silencis ni salts, i so continu de principi a fi (música general a -22 dB o fades). |
+| VC5. Exportació | CE5.4 | 1 · bàsic | No és un MP4 o no es reprodueix. | MP4 amb la imatge deformada o retallada. | MP4 que es reprodueix bé, encara que la resolució o els fps no siguen els demanats. | MP4 1920 x 1080 a 25 fps i vinyetes sense deformar ni retallar. |
+| VC7. Final i crèdits | CE5.4 | 2 · intermedi | Sense final ni crèdits. | Final o crèdits, però falten l'ODS i la majoria de dades. | Final amb l'ODS i crèdits; pot faltar alguna dada o no durar 3-5 s. | Final de 3-5 s amb l'ODS i una frase de conclusió, crèdits complets (nom, grup, IES Betxí, curs) i música que acaba amb fade out. |
+| VC6. Nom i lliurament | CE5.5 | 2 · intermedi | No lliurat, o enllaç sense permís de lectura. | Lliurat amb un nom que no permet saber de qui és ni què és (p. ex. `video.mp4`). | Lliurat a Aules o per enllaç amb permís de lectura; el nom pot no seguir del tot `comic_Nom_Cognom.mp4`. | `comic_Nom_Cognom.mp4` correcte i projecte de Kdenlive amb les carpetes Vinyetes i audios (es comprova a l'aula). |
 
 ### R5 Rúbrica del vídeo de la cançó
 
 Rúbrica de 4 nivells. S'aplica a `pelicules_Nom_Cognom.mp4` i a la taula de muntatge.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| CN1. Taula de muntatge | CE5.4 | 5 % (1,25 %) | Sense taula, o menys de la meitat de frases amb pel·lícula. | Taula amb la majoria de frases i pel·lícules, però sense temps o amb errors. | Taula temps · frase · pel·lícula completa i correcta. | A més, temps precisos al segon que coincideixen amb els canvis del vídeo. |
-| CN2. Imatges per frase | CE5.4 | 10 % (2,5 %) | Menys de la meitat de les frases tenen imatge, o imatges desordenades. | La majoria de frases tenen imatge en ordre; algunes pixelades o de pel·lícula equivocada. | Una imatge (o clip) per frase, de la pel·lícula correcta, en l'ordre de la cançó i ben visible. | A més, combina imatges i clips de vídeo, o imatges PNG sense fons que s'integren al fons. |
-| CN3. Sincronització amb la lletra | CE5.4 | 10 % (2,5 %) | Les imatges no canvien amb la lletra. | Canvien amb la lletra en general, amb diversos desfasaments clarament visibles. | Cada imatge apareix quan comença la seua frase i dura fins a la següent. | Sincronització exacta en tot el vídeo, inclosa la tornada repetida. |
-| CN4. Acabat, portada i crèdits | CE5.4 | 5 % (1,25 %) | Sense portada ni crèdits, o talls bruscs constants. | Portada o crèdits incomplets; fons canviant o transicions irregulars. | Portada (títol, imatges) i crèdits (nom, grup, IES Betxí, curs) de 3-5 s; fons uniforme; transicions curtes. | A més, títols amb el nom de la pel·lícula ben llegibles. |
-| CN5. Exportació | CE5.4 | 5 % (1,25 %) | No és un MP4 o no es reprodueix. | MP4 amb resolució o fps diferents dels demanats. | MP4 1920 x 1080 a 25 fps. | MP4 correcte i so de la cançó sense talls de principi a fi. |
-| CN6. Carpeta i nom | CE5.5 | 20 % (2 %) | No lliurat, o imatges sense organitzar. | Lliurat amb nom incorrecte o imatges sense numerar. | Carpeta `pelicules` amb noms ordenats (`01_…`, `02_…`) i `pelicules_Nom_Cognom.mp4`. | A més, clips de vídeo retallats només als segons necessaris (5-10 s). |
+| CN1. Taula de muntatge | CE5.4 | 1 · bàsic | Sense taula. | Taula amb menys de la meitat de frases amb la seua pel·lícula. | Taula amb almenys la meitat de frases i pel·lícules; pot faltar algun temps o tindre errors. | Taula temps · frase · pel·lícula completa, amb temps precisos que coincideixen amb els canvis del vídeo. |
+| CN2. Imatges per frase | CE5.4 | 2 · intermedi | Cap imatge correspon a les frases. | Menys de la meitat de les frases tenen imatge, o les imatges estan desordenades. | Almenys la meitat de les frases tenen la seua imatge en ordre; algunes poden estar pixelades o ser d'una pel·lícula equivocada. | Una imatge (o clip) per frase, de la pel·lícula correcta, en l'ordre de la cançó i ben visible. |
+| CN3. Sincronització amb la lletra | CE5.4 | 2 · intermedi | Les imatges no canvien amb la lletra. | Canvien amb la lletra en general, però amb molts desfasaments clarament visibles. | Cada imatge apareix amb la seua frase; pot haver-hi algun desfasament visible. | Sincronització exacta en tot el vídeo, inclosa la tornada repetida. |
+| CN4. Acabat, portada i crèdits | CE5.4 | 1 · bàsic | Sense portada ni crèdits. | Només portada o només crèdits, o talls bruscs constants. | Portada i crèdits (pot faltar alguna dada), fons uniforme i transicions curtes. | Portada (títol, imatges) i crèdits complets (nom, grup, IES Betxí, curs) de 3-5 s, fons uniforme, transicions curtes i títols ben llegibles. |
+| CN5. Exportació | CE5.4 | 1 · bàsic | No és un MP4 o no es reprodueix. | MP4 amb la cançó tallada o la imatge deformada. | MP4 que es reprodueix bé, encara que la resolució o els fps no siguen els demanats. | MP4 1920 x 1080 a 25 fps i so de la cançó sense talls de principi a fi. |
+| CN6. Carpeta i nom | CE5.5 | 2 · intermedi | No lliurat. | Lliurat, però les imatges sense organitzar ni numerar. | Carpeta `pelicules` amb la majoria d'imatges numerades (`01_…`) i vídeo lliurat; el nom pot no ser exacte. | Totes les imatges numerades en ordre, `pelicules_Nom_Cognom.mp4` i clips retallats als segons necessaris (5-10 s). |
 
 ### R6 Rúbrica de coavaluació de l'estrena
 
 Rúbrica de 4 nivells, simplificada per a l'alumnat. Cada alumne/a puntua els còmics dels companys i escriu un punt fort i una millora; la nota de cada indicador és la mitjana del grup. La mateixa fitxa recull els comentaris que l'autor/a usarà en R7.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| CO1. Presentació del còmic | CE5.6 | 30 % (3 %) | No presenta el còmic o només en diu el títol. | Diu el títol i l'ODS però no explica el missatge. | Explica títol, ODS i missatge en un minut, amb veu clara. | A més, connecta el còmic amb una situació real que el grup coneix. |
-| CO2. El missatge arriba | CE5.6 | 20 % (2 %) | Després de veure'l no se sap de quin problema parla. | S'entén el problema però no la solució. | S'entenen el problema i la solució relacionats amb l'ODS. | A més, el còmic fa pensar o emociona (el grup ho diu en els comentaris). |
+| CO1. Presentació del còmic | CE5.6 | 3 · avançat | No presenta el còmic. | Només en diu el títol, o el títol i l'ODS sense explicar el missatge. | Explica títol, ODS i missatge, encara que siga llegint o amb dubtes. | Explica títol, ODS i missatge en un minut, amb veu clara, i ho connecta amb una situació real que el grup coneix. |
+| CO2. El missatge arriba | CE5.6 | 2 · intermedi | Després de veure'l no se sap de quin problema parla. | S'entén el problema però no la solució. | S'entenen el problema i la solució relacionats amb l'ODS. | A més, el còmic fa pensar o emociona (el grup ho diu en els comentaris). |
 
 ### R7 Rúbrica d'autoavaluació i millora
 
 Rúbrica de 4 nivells. L'alumnat omple la fitxa d'autoavaluació (escala visual sobre guió, vinyetes, àudio, vídeo i organització, i tres propostes de millora); el professor qualifica la fitxa.
 
-| Indicador | Criteri | Pes | Insuficient (1-4) | Suficient-Bé (5-6) | Notable (7-8) | Excel·lent (9-10) |
+| Indicador | Criteri | Pes en el criteri | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|
-| AT1. Valoració del resultat i del procés | CE5.6 | 25 % (2,5 %) | Fitxa sense omplir o només amb notes sense cap explicació. | Valora cada apartat, però amb explicacions genèriques («està bé»). | Valora cada apartat amb un motiu concret (p. ex. «la vinyeta 7 té la bafarada damunt de la cara»). | A més, la valoració és coherent amb les rúbriques rebudes i identifica què li va costar més del procés. |
-| AT2. Propostes de millora | CE5.6 | 25 % (2,5 %) | Cap proposta, o propostes que no es poden fer («fer-ho millor»). | Una o dues propostes concretes. | Tres propostes concretes, almenys una a partir dels comentaris de la coavaluació. | A més, n'aplica una abans de tancar el lliurament o explica com l'aplicaria en el pròxim projecte. |
+| AT1. Valoració del resultat i del procés | CE5.6 | 3 · avançat | Fitxa sense omplir. | Només notes, o explicacions genèriques («està bé») en la majoria d'apartats. | Valora cada apartat, la majoria amb un motiu concret (p. ex. «la vinyeta 7 té la bafarada damunt de la cara»). | Tots els apartats amb un motiu concret, coherents amb les rúbriques rebudes, i diu què li va costar més del procés. |
+| AT2. Propostes de millora | CE5.6 | 3 · avançat | Cap proposta, o propostes que no es poden fer («fer-ho millor»). | Una proposta concreta. | Dues o tres propostes concretes. | Tres propostes concretes, almenys una a partir de la coavaluació, i n'aplica una abans de tancar el lliurament o explica com l'aplicaria en el pròxim projecte. |
 
 ## Taula de traçabilitat i qualificació
 
-| Criteri | Pes en CE5 | Activitat(s) | Instrument(s) i indicadors | Pes de cada indicador dins del criteri |
+| Criteri | Pes en CE5 | Activitat(s) | Instrument(s) i indicadors | Pes (1-3) i % dins del criteri |
 |---|---|---|---|---|
-| CE5.1 | 15 % | T1, T2 | R1: GM1, GM2, GM3, GM4, GM5 | GM1 15 % · GM2 25 % · GM3 30 % · GM4 20 % · GM5 10 % |
-| CE5.2 | 20 % | T2, T3 | R1: GM6 · R2: VN1, VN2, VN3 | GM6 10 % · VN1 30 % · VN2 35 % · VN3 25 % |
-| CE5.3 | 20 % | T4, T5, T6 | E1: AD1-AD6 · R3: AV1-AV5 | AD1-AD6 5 % cadascun (30 %) · AV1 10 % · AV2 20 % · AV3 10 % · AV4 15 % · AV5 15 % |
-| CE5.4 | 25 % | T7, T8, T9 | R4: VC1-VC5, VC7 · R5: CN1-CN5 | VC1 15 % · VC2 20 % · VC3 5 % · VC4 10 % · VC5 5 % · VC7 10 % · CN1 5 % · CN2 10 % · CN3 10 % · CN4 5 % · CN5 5 % |
-| CE5.5 | 10 % | T3, T5, T6, T8, T9 | R2: VN4 · R3: AV6 · R4: VC6 · R5: CN6 | VN4 30 % · AV6 30 % · VC6 20 % · CN6 20 % |
-| CE5.6 | 10 % | T10 | R6: CO1, CO2 · R7: AT1, AT2 | CO1 30 % · CO2 20 % · AT1 25 % · AT2 25 % |
+| CE5.1 | 15 % | T1, T2 | R1: GM1, GM2, GM3, GM4, GM5 | GM1: pes 2, 18 % · GM2: pes 3, 27 % · GM3: pes 3, 27 % · GM4: pes 2, 18 % · GM5: pes 1, 9 % |
+| CE5.2 | 20 % | T2, T3 | R1: GM6 · R2: VN1, VN2, VN3 | GM6: pes 1, 10 % · VN1: pes 3, 30 % · VN2: pes 3, 30 % · VN3: pes 3, 30 % |
+| CE5.3 | 20 % | T4, T5, T6 | E1: AD1-AD6 · R3: AV1-AV5 | AD1: pes 1, 5 % · AD2: pes 1, 5 % · AD3: pes 1, 5 % · AD4: pes 1, 5 % · AD5: pes 1, 5 % · AD6: pes 1, 5 % · AV1: pes 2, 11 % · AV2: pes 3, 16 % · AV3: pes 2, 11 % · AV4: pes 3, 16 % · AV5: pes 3, 16 % |
+| CE5.4 | 25 % | T7, T8, T9 | R4: VC1-VC5, VC7 · R5: CN1-CN5 | VC1: pes 3, 16 % · VC2: pes 3, 16 % · VC3: pes 1, 5 % · VC4: pes 2, 11 % · VC5: pes 1, 5 % · VC7: pes 2, 11 % · CN1: pes 1, 5 % · CN2: pes 2, 11 % · CN3: pes 2, 11 % · CN4: pes 1, 5 % · CN5: pes 1, 5 % |
+| CE5.5 | 10 % | T3, T5, T6, T8, T9 | R2: VN4 · R3: AV6 · R4: VC6 · R5: CN6 | VN4: pes 3, 30 % · AV6: pes 3, 30 % · VC6: pes 2, 20 % · CN6: pes 2, 20 % |
+| CE5.6 | 10 % | T10 | R6: CO1, CO2 · R7: AT1, AT2 | CO1: pes 3, 27 % · CO2: pes 2, 18 % · AT1: pes 3, 27 % · AT2: pes 3, 27 % |
 
-- Nota del criteri = Σ (nota de l'indicador × pes de l'indicador dins del criteri).
+- Nota del criteri = Σ (nota de l'indicador × pes) ÷ Σ pesos dels seus indicadors. Per exemple, CE5.2 = (1·GM6 + 3·VN1 + 3·VN2 + 3·VN3) ÷ 10. Mentre un indicador encara no s'ha avaluat, la nota provisional del criteri és la mitjana ponderada dels que ja s'han avaluat. La nota informativa d'un lliurament (per exemple, el guió) és la mitjana de les seues files ponderada pel mateix pes.
 - Nota de CE5 = CE5.1 × 15 % + CE5.2 × 20 % + CE5.3 × 20 % + CE5.4 × 25 % + CE5.5 × 10 % + CE5.6 × 10 %.
 - CE5 pesa un 25 % en la nota final de l'assignatura.
 
@@ -438,7 +438,7 @@ Rúbrica de 4 nivells. L'alumnat omple la fitxa d'autoavaluació (escala visual 
 - Web dels ODS de Nacions Unides.
 - Compte educatiu: Document de Google, carpeta Informàtica - 3 ESO al núvol, Aules per als lliuraments.
 - Storyboard That; Shutter o captura de regió rectangular.
-- Audacity (LliureX); auriculars amb micròfon o mòbil; arxius d'àudio de pràctica dels exercicis 1-6; espai de gravació silenciós.
+- Audacity (LliureX); auriculars amb micròfon o mòbil; recursos de les sis missions de l'Agència Orella (pàgina Audacity); espai de gravació silenciós.
 - Bancs de sons i música lliures: Pixabay, Freesound.
 - Kdenlive (LliureX); targeta de dreceres.
 - Pista de la cançó proporcionada pel professor.
