@@ -1,5 +1,4 @@
 .claude/eines/.venv/
-correcciones/**
-!correcciones/**/
-!correcciones/**/avaluacio.md
+# Correccions: tenen noms i notes de l'alumnat. Mai a git (es revisen al panell admin, en local).
+correcciones/
 .claude/eines/audacity-missions/brut/
