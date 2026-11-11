@@ -1,3 +1,5 @@
 .claude/eines/.venv/
-correcciones
+correcciones/**
+!correcciones/**/
+!correcciones/**/avaluacio.md
 .claude/eines/audacity-missions/brut/
