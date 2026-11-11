@@ -47,7 +47,7 @@ Requisitos de la rúbrica:
 - Descriptores **observables y medibles** («usa almenys 3 etiquetes semàntiques: header, main, footer»), nunca vagos («ho fa bé»).
 - Cada ítem con **peso %** (suman 100 %) y, si viene de una SA, su **criterio** (`CE1.2`, `CA5.3`…).
 - Fórmula de la nota escrita: nota = Σ valor del nivel × peso.
-- **Si la actividad sale de una SA con evaluación competencial** (indicadores con «Pes en el criteri» 1 · bàsic / 2 · intermedi / 3 · avançat): copia ese peso 1-3 en la columna Pes, y en lugar de una nota de la actividad da la **nota de cada criterio** que toque: media ponderada (Σ valor × pes ÷ Σ pesos) de sus indicadores evaluados en esta entrega. Si el criterio también tiene indicadores en otras actividades ya corregidas, dilo y, si dispones de esas notas, calcula la nota del criterio con todos. Una nota global de la actividad solo si el profesor la pide.
+- **Si la actividad sale de una SA con evaluación competencial** (indicadores con «Pes en el criteri» 1 · bàsic / 2 · intermedi / 3 · avançat): copia ese peso 1-3 en la columna Pes, y en lugar de una nota de la actividad da la **nota de cada criterio** que toque: media ponderada (Σ valor × pes ÷ Σ pesos) de sus indicadores evaluados en esta entrega. Si el criterio también tiene indicadores en otras actividades ya corregidas, dilo y, si dispones de esas notas, calcula la nota del criterio con todos. Además, da siempre una **nota de la prova/activitat informativa calculada como el cuaderno del profesor**: media de todas las filas **ponderada por su pes 1-3** (Σ valor × pes ÷ Σ pesos, con Mitjà-alt = 6,67), **nunca la media simple** de las filas. Ejemplo (prueba de HTML, PH1-PH3 pes 2 y PH4 pes 1): (2·PH1 + 2·PH2 + 2·PH3 + 1·PH4) ÷ 7; con niveles 2-2-2-0 da 5,72 (la media simple daría 5,00 y no coincide con el cuaderno). Añade también la tabla «Notes per criteri (per al quadern)» y, si ayuda, la nota provisional del RA (Σ nota del criteri × pes del CA en el RA). Si el profesor dice que el cuaderno le da otra nota, lo primero que hay que comprobar es esta ponderación.
 
 Formato de `avaluacio.md` (en **valenciano**, como el resto del material del sitio):
 
@@ -62,10 +62,10 @@ Formato de `avaluacio.md` (en **valenciano**, como el resto del material del sit
 
 | # | Ítem | Criteri | Pes | Baix (0) | Mitjà-baix (1) | Mitjà-alt (2) | Alt (3) |
 |---|---|---|---|---|---|---|---|
-| 1 | ... | CE1.1 | 30 % | ... | ... | ... | ... |
+| 1 | ... | CE1.1 | 2 | ... | ... | ... | ... |
 
 **Valors per al càlcul:** Baix = 0 · Mitjà-baix = 3,33 · Mitjà-alt = 6,67 · Alt = 10 (nivell × 10 ÷ 3)
-**Nota** = Σ valor del nivell × pes (0-10, amb un decimal).
+**Nota** = Σ valor del nivell × pes ÷ Σ pesos (pes 1-3 si ve d'una SA; si són %, Σ valor × pes). 0-10, amb **dos decimals**, com el quadern.
 
 ## Resum de notes
 
@@ -82,7 +82,7 @@ Si el usuario pidió **solo la rúbrica**, o si has tenido que inventar todos lo
 ## 3. Fase 2 — Corregir a cada alumno
 
 1. Antes de puntuar a nadie, **ojea todas las entregas** para calibrar el nivel del grupo y detectar entregas casi idénticas.
-2. Corrige alumno por alumno, **ítem por ítem contra el descriptor**, no por impresión general. Aplica el mismo criterio a todos: si en un alumno decides que algo cuenta como Notable, lo mismo cuenta como Notable en los demás.
+2. Corrige alumno por alumno, **ítem por ítem contra el descriptor**, no por impresión general. Aplica el mismo criterio a todos: si en un alumno decides que algo cuenta como Mitjà-alt, lo mismo cuenta como Mitjà-alt en los demás.
 3. Añade cada corrección al final de `avaluacio.md` (orden alfabético por apellido o por nombre de carpeta) y actualiza la fila en **Resum de notes**.
 
 Formato de cada corrección:
@@ -92,9 +92,9 @@ Formato de cada corrección:
 
 | # | Ítem | Nivell | Valor | Evidència |
 |---|---|---|---|---|
-| 1 | ... | Notable | 7,5 | `index.html:12` usa header/main/footer, falta nav |
+| 1 | ... | Mitjà-alt | 6,67 | `index.html:12` usa header/main/footer, falta nav |
 
-**Nota: 6,8**
+**Nota: 6,19**
 
 **Feedback:**
 
@@ -119,6 +119,14 @@ La columna **Evidència** es para el profesor: breve y verificable (fichero:lín
 - **Entrega parcial**: corrige lo que haya; lo que falta va a Baix (0) con evidencia «no present».
 - **Entregas sospechosamente iguales** entre alumnos, o código claramente copiado de una fuente/IA sin adaptar: **no lo penalices tú**. Corrige normal y anótalo en una sección final `## Incidències per al professor` con los nombres y la evidencia (qué ficheros/líneas coinciden). Decide el profesor.
 - **Dudas de interpretación** de un ítem: elige el nivel más defendible, márcalo con `(?)` en la tabla y explícalo en Incidències.
+
+### Criterios del profesor (aplícalos siempre)
+
+- **Primera prueba de un bloque: criterio benévolo.** No penalices nombre del zip o de la carpeta, organización en ficheros, `<br>` de más, no usar un `<p>` por campo, escribir en castellano en vez de en inglés ni otras trivialidades de formato. Valora lo que demuestra que ha entendido.
+- **Fallos de toda la clase:** antes de puntuar, lista lo que falla la mayoría y **pregunta al profesor** (AskUserQuestion no está disponible para ti: devuélvelo como pregunta en tu respuesta y no cierres la nota) si se penaliza. Decide él caso por caso (p. ej. en el examen de HTML perdonó `mailto:` y `&amp;`, mantuvo `<title>` y `target="_blank"`, y relajó `required`). Apunta cada decisión, numerada, en `### Decisions del professor` al principio de `avaluacio.md`.
+- **Un mismo error no se penaliza dos veces** en dos filas (p. ej. un error del validador que viene de una lista mal anidada ya restada en otra fila).
+- **Aprobado:** fíjate en quién queda por debajo de 5 o justo en 5. En Incidències, en «Casos límit», da para cada alumno dudoso la nota que tendría con un nivel más (o menos) en la fila discutible, calculada con la misma ponderación. Si una regla hunde a varios alumnos flojos, avísalo.
+- **Recorrección tras un cambio de rúbrica o de escala:** guarda una copia del `avaluacio.md` anterior fuera de `correcciones/` (scratchpad), mantén los recuentos ya hechos (elementos, partes, campos, errores…) y solo reasigna el nivel que les toca; vuelve al código solo en las filas donde cambia el umbral. Anota la revisión con fecha en la cabecera y pon la nota anterior entre paréntesis en «Resum de notes».
 
 ## 4. Al terminar
 
