@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA 2.0 (2026) · Sessió 1 · La IA i els prompts</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+    
+<div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1" subtitle="Intel·ligència artificial 2.0 (2026) · Sessió 1">La IA i els prompts</vf-title>
+
+        <div id="vf-index" levels="2"></div>
+
+        <div class="center">
+            <vf-badge>15 min</vf-badge>
+            <vf-badge>Infantil/Primària</vf-badge>
+            <vf-badge>Secundària</vf-badge>
+        </div>
+
+        <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio1.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Tornar a la sessió 1</vf-btn>
+
+        <vf-content>
+            <vf-text>Ja heu usat xats d'IA, així que ací no hi ha tecnicismes: només alineem uns quants conceptes perquè tots parlem del mateix abans d'entrar a Codocente.</vf-text>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Què és (i què no és) la IA generativa · 4 min</vf-title>
+        <vf-content>
+            <vf-list>
+                <li>És un <strong>predictor de text o d'imatge</strong> entrenat amb moltíssims exemples: a partir del que li demanes, calcula què és el més probable que vinga després.</li>
+                <li><strong>No «sap»</strong> les coses com una persona: no consulta una enciclopèdia ni entén el que escriu, sinó que genera el més probable.</li>
+                <li>Per això pot <strong>errar i inventar</strong> dades, fonts o exemples amb molta seguretat (les anomenades <strong>al·lucinacions</strong>).</li>
+                <li>Conclusió: el que ens done és un <strong>primer esborrany</strong>. Sempre cal revisar-lo abans d'usar-lo amb l'alumnat.</li>
+            </vf-list>
+
+            <vf-callout type="atencio">
+                <strong>Protecció de dades</strong>: no pugeu mai dades personals de l'alumnat (noms, fotos, informes, NEE amb nom i cognoms).
+            </vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Prompts: l'anatomia d'un bon prompt · 5 min</vf-title>
+        <vf-content>
+            <vf-text>Un prompt és la instrucció que li donem a la IA. Com més context li donem, millor és el resultat. Un bon prompt té cinc parts:</vf-text>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Part</th>
+                            <th>Què hi posem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Rol</strong></td>
+                            <td>Qui ha de ser la IA: «Eres una mestra de primària…»</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Context</strong></td>
+                            <td>Nivell, àrea, grup i necessitats educatives (NEE)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tasca</strong></td>
+                            <td>Què volem exactament que faça</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Format de sortida</strong></td>
+                            <td>Fitxa, taula, llista, quantitat d'exercicis…</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Restriccions</strong></td>
+                            <td>Durada, llengua, to</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-callout type="consell">
+                <strong>Iterar</strong>: el primer resultat rarament és el definitiu. Continua la conversa i demana canvis («fes-ho més curt», «afegeix un exemple», «baixa el nivell de lectura»).
+            </vf-callout>
+
+            <vf-title level="3">Exemple 1 · Infantil/Primària</vf-title>
+            <vf-text><strong>Prompt dolent</strong></vf-text>
+            <vf-quote>Fes-me una fitxa de fraccions.</vf-quote>
+            <vf-text><strong>Bon prompt</strong></vf-text>
+            <vf-quote>Eres una mestra de primària (rol). Treballe amb un grup de 4t de primària, àrea de Matemàtiques, i hi ha un alumne amb dislèxia (context). Crea una fitxa per a treballar la representació de fraccions senzilles (tasca). Format: 6 exercicis amb dibuixos per a acolorir i un espai per a la resposta; tipografia clara i frases curtes (format). Escriu-ho tot en valencià, amb to proper i que la fitxa es puga fer en 20 minuts (restriccions). Afig al final una versió adaptada per a l'alumne amb dislèxia: menys text i enunciats amb una sola instrucció.</vf-quote>
+
+            <vf-title level="3">Exemple 2 · Secundària</vf-title>
+            <vf-text><strong>Prompt dolent</strong></vf-text>
+            <vf-quote>Fes-me un exercici sobre l'ecosistema.</vf-quote>
+            <vf-text><strong>Bon prompt</strong></vf-text>
+            <vf-quote>Eres un professor de Biologia i Geologia (rol). El meu grup és de 1r d'ESO, 25 alumnes, amb un nivell heterogeni i dos alumnes amb necessitat de reforç lector (context). Dissenya una activitat sobre cadenes tròfiques d'un ecosistema mediterrani (tasca). Format: taula amb 8 preguntes de dificultat creixent i un solucionari separat per al professorat (format). Escriu-ho en valencià, amb un to motivador, i que es puga resoldre en una sessió de 50 minuts (restriccions).</vf-quote>
+
+            <vf-title level="3">Plantilla reutilitzable</vf-title>
+            <vf-callout type="recorda">
+                Eres <strong>[rol]</strong>. El meu grup és de <strong>[curs i àrea]</strong>, amb <strong>[nombre d'alumnes i necessitats]</strong>. Vull <strong>[tasca]</strong>. Format: <strong>[fitxa, taula, llista… i quantitat]</strong>. Restriccions: <strong>[durada, llengua, to]</strong>.
+            </vf-callout>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">El problema dels prompts immensos · 2 min</vf-title>
+        <vf-content>
+            <vf-text>Per a una situació d'aprenentatge completa el prompt es dispara: curs, sabers bàsics, criteris d'avaluació, sessions, atenció a la diversitat, format… fàcilment <strong>15-20 línies</strong>.</vf-text>
+            <vf-list>
+                <li>Cal escriure'l, copiar-lo, ajustar-lo i <strong>repetir-lo cada vegada</strong>.</li>
+                <li>El resultat és <strong>text pla</strong>: després cal passar-lo a format d'aula (document, fitxa, activitat).</li>
+                <li>I encara falta <strong>guardar-lo i organitzar-lo</strong> en algun lloc.</li>
+            </vf-list>
+        </vf-content>
+
+        <!-- ============================================================ -->
+        <vf-title level="2">Pont a Codocente · 4 min</vf-title>
+        <vf-content>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Xat genèric</th>
+                            <th>Codocente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Escriure un prompt enorme</td>
+                            <td>Un assistent de pocs passos: Següent → Següent → Finalitzar</td>
+                        </tr>
+                        <tr>
+                            <td>Revisar el text i corregir-lo</td>
+                            <td>Triar etapa i curs, àrea, unitat…</td>
+                        </tr>
+                        <tr>
+                            <td>Copiar-lo a un document</td>
+                            <td>El recurs ja es crea en format d'aula</td>
+                        </tr>
+                        <tr>
+                            <td>Donar-li format</td>
+                            <td>Ja ve amb el format d'una fitxa o d'una situació d'aprenentatge</td>
+                        </tr>
+                        <tr>
+                            <td>Guardar-lo i organitzar-lo</td>
+                            <td>Queda guardat al teu grup</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <vf-img src="assets/formaciodocent/ia2/sessio1/s1-codocente-generador-sa.png" alt="Primer pas del generador de situacions d'aprenentatge de Codocente: etapa i curs"></vf-img>
+            <!-- PENDENT VICENT: si vols una captura de comparació (el mateix recurs en un xat genèric i en Codocente), cal fer-la tu. -->
+
+            <vf-callout type="consell">
+                <strong>Idea clau</strong>: el prompt bo continua existint, però Codocente el construeix per tu a partir dels camps del formulari.
+            </vf-callout>
+
+            <vf-callout type="exercici">
+                <strong>Pràctica opcional · 2 min, en parelles</strong>: escriu un prompt amb l'esquema (rol, context, tasca, format, restriccions) per a una activitat de la setmana vinent i compara'l amb el de la persona del costat.
+            </vf-callout>
+
+            <vf-callout type="recorda">
+                <strong>Què m'emporte</strong>: un bon prompt té rol, context, tasca, format i restriccions; sempre es revisa el resultat; i Codocente m'estalvia escriure'l sencer cada vegada.
+            </vf-callout>
+
+            <vf-btn link="formaciodocent/ia2/sessio1.html">Continuar amb Codocente <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </vf-content>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/index.html"><i class="fas fa-home" aria-hidden="true"></i> Índex del curs</vf-btn>
+            <vf-btn classes="btn-short" link="formaciodocent/ia2/sessio1.html">Codocente <i class="fas fa-arrow-right" aria-hidden="true"></i></vf-btn>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+
+</body>
+
+</html>
