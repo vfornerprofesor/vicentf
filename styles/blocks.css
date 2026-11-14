@@ -7,9 +7,10 @@
 /* BLOCKS */
 
 .block {
-    padding: 2rem 3.5rem;
-    margin-bottom: 1rem;
-    border-radius: 12px;
+    padding: 2rem 3rem;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-soft);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
@@ -20,14 +21,24 @@
 
   .block {
     background-color: var(--white-color);
-    box-shadow: 0 2px 8px var(--shadow-soft);
+    box-shadow: var(--elev-1);
   }
 
   /* Sense translateY: un bloc de contingut no es clicable, i que tota la
      seccio es moga en passar-hi el ratoli distreia de la lectura. El
      moviment queda per al que si es clica (targetes, botons). */
   .block:hover {
-    box-shadow: 0 4px 12px var(--shadow-soft);
+    box-shadow: var(--elev-2);
+  }
+
+  /* Un titol que obri un bloc (o una columna) no necessita el marge
+     superior gran que el separa de la seccio anterior: deixava mig bloc
+     en blanc abans del primer titol. */
+  .block > vf-title:first-child .block_h2,
+  .block > vf-title:first-child .block_h3,
+  .block vf-col > vf-title:first-child .block_h2,
+  .block vf-col > vf-title:first-child .block_h3 {
+    margin-top: var(--space-2);
   }
 
   .block_h1 {
@@ -57,6 +68,8 @@
     border-radius: 0;
     border-bottom: 3px solid var(--main-color-light);
     font-size: var(--fs-h2);
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   /* h3 - vf-title level 3. Abans un rectangle en degradat quasi negre
@@ -74,6 +87,7 @@
     border-radius: 0;
     border-left: 4px solid var(--main-color);
     font-size: var(--fs-h3);
+    font-weight: 600;
   }
 
   /* h3 centrat: la vora esquerra quedava penjada a l'altra punta de la
@@ -90,8 +104,19 @@
     color: var(--grey-color);
   }
 
+  /* Titol de pagina: abans en pes 300 (prim, de Bootstrap display-4), que
+     sobre el violeta es llegia fluix. */
   .display-4 {
     font-size: var(--fs-h1);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+  }
+
+  .jumbotron .lead {
+    margin: var(--space-2) 0 0;
+    opacity: .9;
+    font-weight: 400;
   }
 
   .block_color {
@@ -103,15 +128,20 @@
   }
 
   .jumbotron {
-    background: var(--gradient-primary);
+    /* Degradat amb mes recorregut i dues taques de llum: la capçalera era
+       un rectangle pla del mateix violeta que el menu que te just damunt. */
+    background:
+      radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .22), transparent 42%),
+      radial-gradient(circle at 92% 110%, rgba(196, 186, 235, .35), transparent 45%),
+      linear-gradient(135deg, var(--main-color-dark) 0%, var(--main-color) 55%, #8577cf 100%);
     color: var(--white-color);
-    padding: 3rem;
+    padding: 2.5rem 2rem;
     /* Sense marge superior: #content ja reserva l'espai davall del menu. */
     margin-top: 0;
+    margin-bottom: var(--space-4);
     text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px var(--shadow-color);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 24px var(--shadow-color);
   }
 
 
