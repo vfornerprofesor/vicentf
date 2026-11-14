@@ -8,10 +8,10 @@ class VFCard extends VFElement {
         // HTML interior com a vf-text.
         const title = this.textContent.trim();
 
-        if (!link) {
-            console.warn('vf-card: falta el atributo "link"');
-            return;
-        }
+        // Sense link (o amb el link="None" que deixava el generador quan la
+        // unitat encara no existix) la targeta no es un enllaç trencat cap a
+        // /None: es mostra apagada, amb l'etiqueta "Pròximament".
+        const hasLink = !!link && link !== 'None' && link !== '#';
         if (!img) {
             console.warn('vf-card: falta el atributo "img"');
             return;
@@ -19,9 +19,19 @@ class VFCard extends VFElement {
 
         this.classList.add('col');
 
-        const a = document.createElement('a');
-        a.href = link;
+        const a = document.createElement(hasLink ? 'a' : 'div');
         a.classList.add('vf-card-link');
+        if (hasLink) {
+            a.href = link;
+            // Com vf-btn: `newtab` obri en pestanya nova. Els enllaços a un
+            // altre lloc (ferramentes externes) s'hi obrin sempre.
+            if (this.hasAttribute('newtab') || isExternalUrl(link)) {
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+            }
+        } else {
+            a.classList.add('vf-card-disabled');
+        }
 
         const image = document.createElement('img');
         image.src = img;
@@ -32,13 +42,31 @@ class VFCard extends VFElement {
         image.loading = 'lazy';
         image.decoding = 'async';
         image.classList.add('vf-card-img');
+        // Logotips i captures amb fons blanc: `contain` els mostra sencers
+        // en lloc de retallar-los com una foto.
+        if (this.hasAttribute('contain')) {
+            image.classList.add('vf-card-img-contain');
+        }
 
         const titleEl = document.createElement('span');
         titleEl.classList.add('vf-card-title');
         titleEl.textContent = title;
 
-        a.appendChild(image);
+        // La imatge va dins d'un marc de proporcio fixa (16:10): amb
+        // l'aspect-ratio directament a l'<img>, les imatges verticals
+        // (logotips) feien la targeta mes alta que les seues veines.
+        const media = document.createElement('span');
+        media.classList.add('vf-card-media');
+        media.appendChild(image);
+
+        a.appendChild(media);
         a.appendChild(titleEl);
+        if (!hasLink) {
+            const soon = document.createElement('span');
+            soon.classList.add('vf-badge', 'vf-card-soon');
+            soon.textContent = 'Pròximament';
+            a.appendChild(soon);
+        }
 
         processClasses(this, this.getAttribute('classes'));
         processStyles(this, this.getAttribute('styles'));

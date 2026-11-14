@@ -23,9 +23,11 @@
     box-shadow: 0 2px 8px var(--shadow-soft);
   }
 
+  /* Sense translateY: un bloc de contingut no es clicable, i que tota la
+     seccio es moga en passar-hi el ratoli distreia de la lectura. El
+     moviment queda per al que si es clica (targetes, botons). */
   .block:hover {
-    box-shadow: 0 4px 12px var(--shadow-color);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-soft);
   }
 
   .block_h1 {
@@ -74,6 +76,14 @@
     font-size: var(--fs-h3);
   }
 
+  /* h3 centrat: la vora esquerra quedava penjada a l'altra punta de la
+     linia, lluny del text. Centrat no en porta. */
+  .block_black.block_h3.center {
+    border-left: none;
+    padding: 0 1.75rem;
+    color: var(--main-color-dark);
+  }
+
   h4 {
     font-size: var(--fs-h4);
     font-weight: 600;
@@ -96,17 +106,15 @@
     background: var(--gradient-primary);
     color: var(--white-color);
     padding: 3rem;
-    margin-top: 2rem;
+    /* Sense marge superior: #content ja reserva l'espai davall del menu. */
+    margin-top: 0;
     text-align: center;
     border-radius: 15px;
     box-shadow: 0 6px 20px var(--shadow-color);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
-  .jumbotron:hover {
-    box-shadow: 0 8px 25px var(--shadow-hover-color);
-    transform: translateY(-3px);
-  }
+
 
   .pre_code {
     margin-bottom: 20px;
@@ -195,4 +203,26 @@
 
 .block .table td {
     vertical-align: top;
+}
+
+/* MOBIL: el .block conservava 3.5rem de padding lateral; en un mobil de
+   390px el text es quedava amb poc mes de la meitat de l'ample. (Ací i no
+   a general.css: aquest fitxer carrega despres i guanyaria.) */
+@media (max-width: 767.98px) {
+  .block {
+    padding: 1.25rem 1rem;
+  }
+
+  .jumbotron {
+    padding: 1.75rem 1rem;
+  }
+
+  .block_colored.block_h2 {
+    padding-inline: .5rem;
+    margin-top: var(--space-5);
+  }
+
+  .block_black.block_h3 {
+    padding-left: 1rem;
+  }
 }

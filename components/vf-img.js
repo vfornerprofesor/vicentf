@@ -41,12 +41,32 @@ class VFImage extends VFElement {
             }
         }
 
+        // Node que es substituix si la imatge falla: la imatge o el seu <a>.
+        let holder = img;
+
+        // Imatge que no existix (captura encara pendent, ruta mal escrita):
+        // en lloc de la icona d'imatge trencada del navegador, un requadre
+        // discret amb el text alternatiu.
+        img.addEventListener('error', () => {
+            const ph = document.createElement('div');
+            ph.classList.add('vf-img-missing');
+            const icon = document.createElement('i');
+            icon.classList.add('far', 'fa-image');
+            icon.setAttribute('aria-hidden', 'true');
+            const txt = document.createElement('span');
+            txt.textContent = alt || 'Imatge no disponible';
+            ph.append(icon, txt);
+            holder.replaceWith(ph);
+            console.warn('vf-img: no s\'ha pogut carregar ' + src);
+        }, { once: true });
+
         if (link && link !== "") {
             const a = document.createElement('a');
             a.href = link;
             a.target = "_blank";
             a.rel = "noopener noreferrer";
             a.appendChild(img);
+            holder = a;
             this.appendChild(a);
         } else {
             this.appendChild(img);

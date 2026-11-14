@@ -90,6 +90,19 @@ body {
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.65;
+  /* Peu sempre a baix: en pagines curtes (ferramentes, contacte) el peu
+     quedava a mitja pantalla amb un buit davall. */
+  display: flex;
+  flex-direction: column;
+}
+
+#content {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+#footer {
+  flex-shrink: 0;
 }
 
 h1, h2, h3, h4 {
@@ -139,10 +152,17 @@ a:hover {
    d'eixamplar la pàgina. */
 #content p,
 #content li,
-#content td,
-#content th,
 #content .vf-callout {
   overflow-wrap: anywhere;
+}
+
+/* A les taules NO: `anywhere` deixa que la columna s'encongisca fins a
+   partir paraules normals per la meitat ("transparen-cy"). Ací la taula
+   manté l'ample que necessita i fa scroll dins de .table-responsive
+   (vf-content l'afig sol si falta). */
+#content td,
+#content th {
+  overflow-wrap: break-word;
 }
 
 /* Classe d'escapament per si mai cal un element a tot l'ample de la
@@ -237,6 +257,28 @@ a:hover {
   margin-right: auto;
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.vf-img-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: min(420px, 100%);
+  min-height: 120px;
+  margin: var(--space-3) auto;
+  padding: var(--space-3);
+  border: 2px dashed var(--main-color-light);
+  border-radius: var(--radius-md);
+  background-color: var(--light-grey);
+  color: var(--grey-color);
+  font-size: .9rem;
+  text-align: center;
+}
+
+.vf-img-missing i {
+  font-size: 1.5rem;
+  color: var(--main-color-light);
 }
 
 .vf-img-col {
@@ -456,6 +498,21 @@ vf-code {
   border: 1px solid var(--main-color-light);
   position: relative;
   transition: box-shadow 0.3s ease;
+  margin-bottom: var(--space-4);
+  background-color: var(--code-bg);
+  overflow: hidden;
+}
+
+/* El marge inferior del <pre> quedava DINS de la vora de vf-code, com una
+   franja buida davall del codi: el marge passa a vf-code. */
+vf-code .pre_code {
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+/* Lloc per al boto de copiar: no tapa el final de la primera linia. */
+vf-code .code_block {
+  padding-right: 2.5rem !important;
 }
 
 vf-code:hover {
@@ -498,8 +555,23 @@ vf-code .vf-icon {
   border: 1px solid var(--main-color-light);
   border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-3);
   margin-bottom: var(--space-4);
   box-shadow: var(--elev-1);
+  /* Dues columnes quan hi caben: amb una sola, un index de 6 entrades
+     deixava tres quarts del bloc buits. */
+  columns: 2 300px;
+  column-gap: var(--space-5);
+}
+
+#vf-index vf-title {
+  display: block;
+  column-span: all;
+}
+
+#vf-index .block_h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
 }
 
 .vf-index-1,
@@ -726,6 +798,12 @@ vf-card {
   display: flex;
 }
 
+/* .row-center centra verticalment: les targetes d'una fila amb titols
+   d'una i de dues linies quedaven amb alçades diferents. */
+.row-center:has(> vf-card) {
+  align-items: stretch;
+}
+
 /* vf-card.js li afegeix la classe `col` de Bootstrap per l'espaiat, pero
    `.col` (sense numero) porta `flex:1 0 0%`: en una fila incompleta (1 o 2
    targetes soles) Bootstrap les estirava per omplir l'ample sencer, i cada
@@ -740,6 +818,7 @@ vf-card.col {
 }
 
 .vf-card-link {
+  border: 1px solid rgba(109, 95, 179, .14);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -760,14 +839,64 @@ vf-card.col {
   box-shadow: var(--elev-3);
 }
 
-.vf-card-img {
+.vf-card-media {
+  display: block;
+  flex: none;
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.vf-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
+.vf-card-img-contain {
+  object-fit: contain;
+  padding: var(--space-3);
+  background-color: var(--white-color);
+}
+
+.vf-card-disabled {
+  position: relative;
+  cursor: default;
+}
+
+.vf-card-disabled:hover {
+  transform: none;
+  box-shadow: var(--elev-1);
+}
+
+.vf-card-disabled .vf-card-img {
+  filter: grayscale(1);
+  opacity: .55;
+}
+
+.vf-card-disabled .vf-card-title {
+  color: var(--grey-color);
+}
+
+.vf-card-soon {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background-color: var(--white-color);
+  box-shadow: var(--elev-1);
+}
+
 .vf-card-title {
+  /* Titols d'una i de dues linies: centrats en l'espai que sobra, aixi
+     les targetes d'una mateixa fila fan la mateixa alçada. */
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.85rem 1rem;
   text-align: center;
   font-weight: 600;
@@ -1033,6 +1162,20 @@ vf-badge {
 
   .col {
     padding: 8px;
+  }
+
+  /* Columnes de vf-row: per davall de 260px cadascuna baixen a la linia
+     seguent en lloc de quedar text i imatge en dues columnes de 150px. */
+  vf-row > vf-col.col {
+    flex-basis: 260px;
+  }
+
+  vf-card.col {
+    width: calc(50% - 4px);
+  }
+
+  #vf-index {
+    padding: var(--space-3);
   }
 
   .col-unit {

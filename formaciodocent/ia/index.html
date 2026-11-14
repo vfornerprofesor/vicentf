@@ -71,27 +71,10 @@
 
         <vf-content>
             <vf-row centered>
-                <vf-col>
-                    <vf-img styles="max-height:200px"
-    
-                        src="assets/formaciodocent/ia/sa.png"></vf-img>
-                    <vf-btn classes="btn-short" link="formaciodocent/ia/sa.html">
-                        Situacions d'aprenentatge
-                    </vf-btn>
-                </vf-col>
-
-                <vf-col>
-                    <vf-img styles="max-height:200px"
-    
-                        src="assets/formaciodocent/ia/imatges.png"></vf-img>
-                    <vf-btn classes="btn-short" link="formaciodocent/ia/imatges.html">
-                        Imatges
-                    </vf-btn>
-                </vf-col>
-
-             
+                <vf-card link="formaciodocent/ia/sa.html" img="assets/formaciodocent/ia/sa.png">Situacions d'aprenentatge</vf-card>
+                <!-- Sense link: la pagina imatges.html encara no existix (abans era un enllaç trencat). -->
+                <vf-card img="assets/formaciodocent/ia/imatges.png">Imatges</vf-card>
             </vf-row>
-         
 
         </vf-content>
 
@@ -102,7 +85,7 @@
 
     </div>
     <div id="footer"></div>
-    <script>$('#footer').load('footer.html');</script></div>
+    <script>$('#footer').load('footer.html');</script>
 
     
 </body>
