@@ -252,8 +252,19 @@
             <vf-callout type="exercici">
                 *Exercise 5.1. Traffic light.* Three buttons: Stop, Wait, Go. Each one
                 paints the circle in the page with the right colour and writes the message
-                under it.
+                under it. Do it first with `if` / `else if` / `else`. When it works, make a
+                second version with `switch`.
             </vf-callout>
+            <vf-callout type="consell">
+                *Hint for the `if` version.* Write one function, `clickTrafficLight`, that
+                receives the id of the button and decides the colour and the message. Each
+                button calls it with its own id:
+            </vf-callout>
+            <vf-code language="javascript">
+                STOPBTN.addEventListener('click', function() {
+                    clickTrafficLight('stopButton')
+                });
+            </vf-code>
             <vf-text>
                 Download the starter file [here|download](unitats/programacio/web/javascript/exercises/05-conditions/ex1.html)
             </vf-text>
