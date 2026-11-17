@@ -290,7 +290,15 @@
             <vf-list ordered>
                 <li><vf-text>Selecciona els primers segons, on només se sent el soroll.</vf-text></li>
                 <li><vf-text>*Efecte &gt; Reducció de soroll &gt; Obtén el perfil de soroll*.</vf-text></li>
-                <li><vf-text>Selecciona tota la pista (*Ctrl+A*), torna a *Reducció de soroll* i prem *D'acord*. Prova diferents valors: la veu ha de quedar neta, però no robòtica.</vf-text></li>
+                <li>
+                    <vf-text>Selecciona tota la pista (*Ctrl+A*), torna a *Reducció de soroll*, prova amb *Vista prèvia* i prem *D'acord*. Mou-te entre estos valors:</vf-text>
+                    <vf-list>
+                        <li><vf-text>*Reducció de soroll (dB)*: entre *6* (lleva poc) i *24* (lleva molt). Comença per 12.</vf-text></li>
+                        <li><vf-text>*Sensibilitat*: entre *3* i *12*. Comença per 6.</vf-text></li>
+                        <li><vf-text>*Suavització de freqüència (bandes)*: entre *0* i *6*. Comença per 3.</vf-text></li>
+                    </vf-list>
+                    <vf-text>La veu ha de quedar neta, però no robòtica. Si sona metàl·lica o amb bambolles, baixa la *reducció* o la *sensibilitat*; si encara se senten les màquines, puja-les un poc.</vf-text>
+                </li>
                 <li><vf-text>Si la veu ha quedat fluixa, aplica *Normalitza*.</vf-text></li>
             </vf-list>
             <vf-text>*Entrega*: el MP3 net + l'*hora*, el *lloc* i la *contrasenya*.</vf-text>
@@ -332,7 +340,7 @@
             <vf-text>
                 L'enemic ha camuflat tres missatges. Cada un s'ha amagat amb un efecte diferent: descobreix quin
                 i desfés-lo perquè s'entenga el missatge. Els efectes que pots necessitar estan al menú *Efecte*:
-                *Inverteix*, *Canvia la velocitat*, *Canvia el to*.
+                *Capgira*, *Canvia la velocitat*, *Canvia l'altura*.
             </vf-text>
             <vf-details summary="Pistes (només si et quedes encallat)">
                 <vf-list>
@@ -342,9 +350,27 @@
                 </vf-list>
             </vf-details>
             <vf-text>
-                Després, amb *m4_villano* crea *dos personatges* nous: un *malvat* (to més greu i *Efecte &gt; Eco*)
-                i un *robot o follet* (to més agut). Pots provar més efectes per fer-los més ridículs.
+                Després, amb *m4_villano* crea *dos personatges* nous. Prova valors dins d'estos marges i queda't
+                amb el que més t'agrade:
             </vf-text>
+            <vf-list>
+                <li>
+                    <vf-text>*Malvat*: primer to més greu i després eco.</vf-text>
+                    <vf-list>
+                        <li><vf-text>*Efecte &gt; Canvia l'altura*, *semitons*: entre *-3* (un poc més greu) i *-8* (monstre). Comença per -5.</vf-text></li>
+                        <li><vf-text>*Efecte &gt; Eco*, *Temps de retard (segons)*: entre *0,1* (sala menuda) i *0,6* (cova enorme). Comença per 0,3.</vf-text></li>
+                        <li><vf-text>*Eco*, *Factor de decaïment*: entre *0,2* (eco suau) i *0,6* (eco que es repeteix molt). Comença per 0,4. No passes de 0,7: es fa un embolic i no s'entén res.</vf-text></li>
+                    </vf-list>
+                </li>
+                <li>
+                    <vf-text>*Robot o follet*: to més agut.</vf-text>
+                    <vf-list>
+                        <li><vf-text>*Efecte &gt; Canvia l'altura*, *semitons*: entre *+4* (follet) i *+10* (esquirol). Comença per +6.</vf-text></li>
+                        <li><vf-text>Per a fer-lo robot, afig-li un eco molt curt: *Temps de retard* entre *0,01* i *0,05* i *Factor de decaïment* *0,5*.</vf-text></li>
+                    </vf-list>
+                </li>
+            </vf-list>
+            <vf-text>Pots provar més efectes (*Phaser*, *Wah-wah*, *Distorsió*...) per fer-los més ridículs.</vf-text>
             <vf-text>*Entrega*: els tres missatges arreglats + els dos personatges en MP3, i el que diu el *missatge 1*.</vf-text>
         </vf-content>
 
