@@ -387,7 +387,18 @@
             </vf-text>
             <vf-list ordered>
                 <li><vf-text>Posa cada veu en la seua pista i en ordre, i la música en una altra pista davall.</vf-text></li>
-                <li><vf-text>El client parla *per telèfon*: selecciona el seu clip i aplica-li *Efecte &gt; Filter Curve*. Fes clic damunt de la línia verda per a crear punts i arrossega'ls: un a *300 Hz* i un altre a *3000 Hz* que es queden en 0 dB, i els extrems (per davall de 200 Hz i per damunt de 4000 Hz) baixats del tot a -30 dB. Així lleves greus i aguts i només queda el centre. Escolta-ho amb *Vista prèvia* fins que sone com un telèfon.</vf-text></li>
+                <li>
+                    <vf-text>El client parla *per telèfon*: selecciona el seu clip i aplica-li *Efecte &gt; Filter Curve*. La línia verda és el volum de cada freqüència: a *0 dB* el so queda igual i a *-30 dB* la freqüència quasi desapareix.</vf-text>
+                    <vf-list ordered>
+                        <li><vf-text>Fes clic damunt de la línia per a crear punts i arrossega'ls.</vf-text></li>
+                        <li><vf-text>Deixa en 0 dB el tram entre *300 Hz* i *3000 Hz*: és la zona de la veu del telèfon.</vf-text></li>
+                        <li><vf-text>Baixa a *-30 dB* un punt a uns 200 Hz i el de l'extrem esquerre, per a llevar els greus.</vf-text></li>
+                        <li><vf-text>Baixa també a -30 dB un punt a uns 4000 Hz i el de l'extrem dret, per a llevar els aguts.</vf-text></li>
+                        <li><vf-text>La corba ha de quedar com un pont: avall, amunt i pla al centre, i avall altra vegada.</vf-text></li>
+                        <li><vf-text>Escolta-ho amb *Vista prèvia* i, quan sone bé, prem *D'acord*.</vf-text></li>
+                    </vf-list>
+                    <vf-text>Si un punt no et convé, arrossega'l fora de la gràfica i s'esborra. *Aplana-ho* torna a deixar la línia plana. Si en *Gestiona* trobes una corba predefinida «Telephone», també la pots usar.</vf-text>
+                </li>
                 <li><vf-text>Amb l'*eina d'envolupant*, fes que la música sone forta al principi, *baixe* quan algú parla i *torne a pujar* al final.</vf-text></li>
                 <li><vf-text>Acaba amb un *fade out* de la música.</vf-text></li>
             </vf-list>
