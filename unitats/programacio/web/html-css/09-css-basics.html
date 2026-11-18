@@ -307,16 +307,305 @@
             </vf-row>
         </vf-content>
 
+        <vf-title level="2">All the selectors on a real page</vf-title>
+        <vf-content>
+            <vf-text>
+                Download [The Pixel Times|download](unitats/programacio/web/html-css/exercises/09-css-basics/selectors.html):
+                a school magazine with a header, a menu, cards, lists, a table, a form and a footer, and no CSS at all.
+                Create <code>css/style.css</code> next to it (the HTML already links it) and add the rules below
+                *one by one*. Save and reload after each one to see what changes.
+            </vf-text>
+            <vf-callout type="consell">
+                Some rules use properties from the next units (<code>padding</code>, <code>border-radius</code>,
+                <code>border</code>...). Copy them as they are: they are there so the page looks nice. Today
+                we look at the *selectors*.
+            </vf-callout>
+
+            <vf-title level="3">Tags, groups and id</vf-title>
+            <vf-text>*1.* *Universal selector* <code>&#42;</code>: it selects every element of the page.</vf-text>
+            <vf-code language="css">
+                * {
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+            </vf-code>
+            <vf-text>*2.* *Tag selectors*: all the elements of that tag.</vf-text>
+            <vf-code language="css">
+                body {
+                    background-color: #f4f1fb;
+                    color: #333333;
+                    margin: 0;
+                }
+
+                p {
+                    line-height: 1.6;
+                }
+            </vf-code>
+            <vf-text>*3.* *Group* several selectors with commas: one rule for four tags.</vf-text>
+            <vf-code language="css">
+                h1, h2, h3, h4 {
+                    color: #4b3f8f;
+                }
+            </vf-code>
+            <vf-text>*4.* *id selector* <code>#</code>: only one element in the page has this id.</vf-text>
+            <vf-code language="css">
+                #main-title {
+                    color: white;
+                    font-size: 48px;
+                    margin: 0;
+                }
+            </vf-code>
+
+            <vf-title level="3">Descendants and classes</vf-title>
+            <vf-text>*5.* *Descendant selector* (a space): <code>header p</code> means the paragraphs that are inside the header. The other paragraphs do not change.</vf-text>
+            <vf-code language="css">
+                header {
+                    background-color: #6d5fb3;
+                    padding: 30px;
+                    text-align: center;
+                }
+
+                header p {
+                    color: #e4defa;
+                }
+            </vf-code>
+            <vf-text>*6.* The *same tag in different places*: the links of the menu and the links of the footer look different.</vf-text>
+            <vf-code language="css">
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    margin: 0 12px;
+                }
+
+                footer a {
+                    color: #ffd166;
+                }
+            </vf-code>
+            <vf-text>*7.* *Class selectors* <code>.</code>: all the elements with that class. Look at <code>.date</code>: it is also a <code>p</code>, but the class wins because it is more specific.</vf-text>
+            <vf-code language="css">
+                .card {
+                    background-color: white;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    border-radius: 10px;
+                }
+
+                .date {
+                    color: #888888;
+                    font-size: 14px;
+                }
+
+                .warning {
+                    color: #c0392b;
+                    font-weight: bold;
+                }
+
+                .note {
+                    background-color: #fff6d6;
+                    padding: 8px;
+                }
+            </vf-code>
+            <vf-text>*8.* *Two classes together*, with no space: only the elements that have both classes (<code>class="card featured"</code>). With a space, <code>.card .featured</code>, it would look for a <code>.featured</code> inside a <code>.card</code>, and there is none.</vf-text>
+            <vf-code language="css">
+                .card.featured {
+                    border-left: 6px solid #ffd166;
+                }
+            </vf-code>
+            <vf-text>*9.* *Class + descendant*: only the <code>h3</code> inside the review cards.</vf-text>
+            <vf-code language="css">
+                .review h3 {
+                    color: #e07a5f;
+                }
+            </vf-code>
+            <vf-text>*10.* Two lists with the *same tags but different classes*.</vf-text>
+            <vf-code language="css">
+                .pros li {
+                    color: #2e7d32;
+                }
+
+                .cons li {
+                    color: #c0392b;
+                }
+
+                .score {
+                    font-size: 22px;
+                    font-weight: bold;
+                    text-align: right;
+                }
+            </vf-code>
+
+            <vf-title level="3">Family: children and siblings</vf-title>
+            <vf-text>*11.* *Child selector* <code>&gt;</code>: only the direct children. <code>main &gt; section</code> selects the sections that are right inside <code>main</code>, not deeper.</vf-text>
+            <vf-code language="css">
+                main > section {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+            </vf-code>
+            <vf-text>*12.* *Adjacent sibling* <code>+</code>: the element that comes *right after* another one, at the same level. Here, the first paragraph after each date.</vf-text>
+            <vf-code language="css">
+                .date + p {
+                    font-size: 18px;
+                }
+            </vf-code>
+            <vf-text>*13.* *General sibling* <code>~</code>: *all* the elements after another one, at the same level. Here, every paragraph after the warning.</vf-text>
+            <vf-code language="css">
+                .warning ~ p {
+                    font-style: italic;
+                }
+
+                blockquote {
+                    font-style: italic;
+                    color: #6d5fb3;
+                    border-left: 4px solid #6d5fb3;
+                    padding-left: 12px;
+                }
+            </vf-code>
+
+            <vf-title level="3">Pseudo-classes: state and position</vf-title>
+            <vf-text>*14.* <code>:hover</code>: when the mouse is over the element. Move the mouse over the menu, the cards and the button.</vf-text>
+            <vf-code language="css">
+                nav a:hover {
+                    color: #ffd166;
+                }
+
+                .card:hover {
+                    background-color: #fbfaff;
+                }
+
+                button:hover {
+                    background-color: #4b3f8f;
+                }
+            </vf-code>
+            <vf-text>*15.* <code>:first-child</code>, <code>:last-child</code> and <code>:nth-child()</code>: the position among its siblings. <code>even</code> means 2, 4, 6...; <code>odd</code> means 1, 3, 5...</vf-text>
+            <vf-code language="css">
+                .steps li:first-child {
+                    font-weight: bold;
+                }
+
+                .steps li:last-child {
+                    color: #6d5fb3;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    background-color: white;
+                }
+
+                th {
+                    background-color: #6d5fb3;
+                    color: white;
+                }
+
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                }
+
+                tbody tr:nth-child(even) {
+                    background-color: #f4f1fb;
+                }
+
+                tbody tr:first-child {
+                    font-weight: bold;
+                    color: #b8860b;
+                }
+            </vf-code>
+
+            <vf-title level="3">Attributes</vf-title>
+            <vf-text>*16.* *Attribute selectors* <code>[ ]</code>: elements with an attribute or a value. <code>[href^="https"]</code> means the <code>href</code> *starts with* <code>https</code>: only the external links of the footer change, not <em>Back to top</em>.</vf-text>
+            <vf-code language="css">
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    display: block;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 8px;
+                    margin: 4px 0 14px;
+                    border: 1px solid #c9c1ec;
+                    border-radius: 6px;
+                }
+
+                a[href^="https"] {
+                    font-style: italic;
+                }
+
+                label {
+                    font-weight: bold;
+                }
+
+                button {
+                    background-color: #6d5fb3;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+            </vf-code>
+            <vf-text>*17.* <code>:focus</code>: the field where you are writing right now. Click on a field of the form.</vf-text>
+            <vf-code language="css">
+                input:focus,
+                textarea:focus {
+                    border-color: #6d5fb3;
+                    background-color: #fbfaff;
+                }
+            </vf-code>
+
+            <vf-title level="3">:not() and pseudo-elements</vf-title>
+            <vf-text>*18.* <code>:not()</code>: everything *except* what is inside the brackets. All the cards except the featured one.</vf-text>
+            <vf-code language="css">
+                .card:not(.featured) {
+                    border-left: 6px solid #c9c1ec;
+                }
+            </vf-code>
+            <vf-text>*19.* *Pseudo-element* <code>::first-letter</code> (two colons): a part of the element, here only its first letter. Like in old books.</vf-text>
+            <vf-code language="css">
+                .featured .date + p::first-letter {
+                    font-size: 32px;
+                    color: #6d5fb3;
+                }
+
+                footer {
+                    background-color: #333333;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                }
+            </vf-code>
+
+            <vf-title level="3">The cascade, live</vf-title>
+            <vf-text>*20.* Write the same rule twice with different colours. Same specificity: the *last one wins*. Then give a class to one of the footer paragraphs and style the class *before* these rules: it still wins, because a class beats a tag.</vf-text>
+            <vf-code language="css">
+                footer p {
+                    color: yellow;
+                }
+
+                footer p {
+                    color: #cccccc;    /* this one wins: it comes later */
+                }
+            </vf-code>
+            <vf-callout type="consell">
+                Open DevTools (F12), click on any element and look at the *Styles* panel: you see every rule
+                that applies to it, and the ones that lose appear crossed out.
+            </vf-callout>
+            <vf-details summary="See the finished page">
+                <vf-text>
+                    [The Pixel Times with all the rules](unitats/programacio/web/html-css/exercises/09-css-basics/selectors_solved.html)
+                    (the CSS is inside the HTML, in a <code>&lt;style&gt;</code>, so the file works on its own).
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
                 *Exercise 9.1.* Create <code>css/style.css</code>, link it from your page, and make all the paragraphs
                 dark grey.
             </vf-callout>
-            <vf-text>
-                Download the practice page [here|download](unitats/programacio/web/html-css/exercises/09-css-basics/selectors.html)
-                and use it for all the exercises of this unit.
-            </vf-text>
             <vf-callout type="exercici">
                 *Exercise 9.2.* Give the class <code>highlight</code> to two paragraphs, and make that class yellow
                 background and bold text.
