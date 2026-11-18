@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pixel Times</title>
+    <!-- Solution: in class this goes in css/style.css. Here it is inline
+         so the file works on its own. -->
+    <style>
+        /* 1. Universal selector: the same font for everything */
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* 2. Tag selectors */
+        body {
+            background-color: #f4f1fb;
+            color: #333333;
+            margin: 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* 3. Grouping: several selectors, one rule */
+        h1, h2, h3, h4 {
+            color: #4b3f8f;
+        }
+
+        /* 4. id selector: the only main title */
+        #main-title {
+            color: white;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        /* 5. Descendant selector: things inside the header */
+        header {
+            background-color: #6d5fb3;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header p {
+            color: #e4defa;
+        }
+
+        /* 6. Same tag, different place: nav links vs footer links */
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        footer a {
+            color: #ffd166;
+        }
+
+        /* 7. Class selectors */
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .date {
+            color: #888888;
+            font-size: 14px;
+        }
+
+        .warning {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .note {
+            background-color: #fff6d6;
+            padding: 8px;
+        }
+
+        /* 8. Two classes at once: only the card that is also featured */
+        .card.featured {
+            border-left: 6px solid #ffd166;
+        }
+
+        /* 9. Tag + class: only the h3 inside a review card */
+        .review h3 {
+            color: #e07a5f;
+        }
+
+        /* 10. Lists with different classes */
+        .pros li {
+            color: #2e7d32;
+        }
+
+        .cons li {
+            color: #c0392b;
+        }
+
+        .score {
+            font-size: 22px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* 11. Child selector: only the direct children */
+        main > section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 12. Adjacent sibling: the paragraph right after a date */
+        .date + p {
+            font-size: 18px;
+        }
+
+        /* 13. General sibling: every paragraph after a warning, in the same card */
+        .warning ~ p {
+            font-style: italic;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: #6d5fb3;
+            border-left: 4px solid #6d5fb3;
+            padding-left: 12px;
+        }
+
+        /* 14. Pseudo-class :hover */
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .card:hover {
+            background-color: #fbfaff;
+        }
+
+        button:hover {
+            background-color: #4b3f8f;
+        }
+
+        /* 15. Structural pseudo-classes: first, last, nth */
+        .steps li:first-child {
+            font-weight: bold;
+        }
+
+        .steps li:last-child {
+            color: #6d5fb3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th {
+            background-color: #6d5fb3;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f4f1fb;
+        }
+
+        tbody tr:first-child {
+            font-weight: bold;
+            color: #b8860b;
+        }
+
+        /* 16. Attribute selectors */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+            margin: 4px 0 14px;
+            border: 1px solid #c9c1ec;
+            border-radius: 6px;
+        }
+
+        a[href^="https"] {
+            font-style: italic;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #6d5fb3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* 17. :focus: the input where you are writing */
+        input:focus,
+        textarea:focus {
+            border-color: #6d5fb3;
+            background-color: #fbfaff;
+        }
+
+        /* 18. :not(): every card except the featured one */
+        .card:not(.featured) {
+            border-left: 6px solid #c9c1ec;
+        }
+
+        /* 19. Pseudo-element ::first-letter */
+        .featured .date + p::first-letter {
+            font-size: 32px;
+            color: #6d5fb3;
+        }
+
+        footer {
+            background-color: #333333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 20. The cascade: same specificity, the last one wins */
+        footer p {
+            color: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="main-title">The Pixel Times</h1>
+        <p class="tagline">The school magazine about technology, games and the internet</p>
+        <nav>
+            <a href="#news">News</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#ranking">Ranking</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="news">
+            <h2>Latest news</h2>
+
+            <article class="card featured">
+                <h3>Our school builds its own robot</h3>
+                <p class="date">12 November</p>
+                <p>The students of 4th ESO have built a robot that follows a black line on the floor. It took them
+                    three weeks, two broken motors and a lot of patience.</p>
+                <p>Next month they will take it to a regional competition. <strong>Wish them luck!</strong></p>
+            </article>
+
+            <article class="card">
+                <h3>How strong is your password?</h3>
+                <p class="date">5 November</p>
+                <p>A good password is long, has numbers, capital letters and symbols, and is not your pet's name.</p>
+                <p class="warning">Never use the same password for everything.</p>
+                <p class="note">Tip: a password manager remembers them for you.</p>
+            </article>
+
+            <article class="card">
+                <h3>The first web page is older than your parents' car</h3>
+                <p class="date">28 October</p>
+                <p>Tim Berners-Lee published the first web page in 1991. It only had text and links, and you can
+                    still visit it today.</p>
+                <blockquote>"The Web is for everyone." — Tim Berners-Lee</blockquote>
+            </article>
+        </section>
+
+        <section id="reviews">
+            <h2>Reviews</h2>
+
+            <article class="card review">
+                <h3>Game of the month: Pixel Farm</h3>
+                <p>You plant, you water, you sell. It sounds boring, but you will play it for hours.</p>
+                <h4>What we liked</h4>
+                <ul class="pros">
+                    <li>Easy to learn</li>
+                    <li>Beautiful music</li>
+                    <li>You can play with friends</li>
+                </ul>
+                <h4>What we did not like</h4>
+                <ul class="cons">
+                    <li>Too many adverts</li>
+                    <li>The tutorial is very long</li>
+                </ul>
+                <p class="score">Score: 8/10</p>
+            </article>
+
+            <article class="card review">
+                <h3>App of the month: Notes+</h3>
+                <p>A simple app to take notes in class. It works without internet.</p>
+                <h4>How to start</h4>
+                <ol class="steps">
+                    <li>Download the app</li>
+                    <li>Create a notebook for each subject</li>
+                    <li>Write your first note</li>
+                    <li>Share it with your class</li>
+                </ol>
+                <p class="score">Score: 7/10</p>
+            </article>
+        </section>
+
+        <section id="ranking">
+            <h2>Most played games in our school</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Game</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Block World</td>
+                        <td>124</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kart Racers</td>
+                        <td>98</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Pixel Farm</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Space Chess</td>
+                        <td>41</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Word Hunter</td>
+                        <td>23</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact">
+            <h2>Write to us</h2>
+            <p>Do you have a story for the magazine? Send it to us.</p>
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="you@example.com">
+
+                <label for="story">Your story</label>
+                <textarea id="story" rows="4"></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>The Pixel Times · Made by the students of IES de Betxí</p>
+        <p>
+            <a href="https://www.w3.org/">W3C</a> ·
+            <a href="https://developer.mozilla.org/">MDN</a> ·
+            <a href="#main-title">Back to top</a>
+        </p>
+    </footer>
+</body>
+
+</html>
