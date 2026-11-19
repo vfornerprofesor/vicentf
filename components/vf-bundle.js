@@ -2273,7 +2273,10 @@ customElements.define('vf-preview', VFPreview);
 //
 // Atributs de vf-prompt: title (obligatori), desc (admet el mini-llenguatge
 // de processTextBoldAndLinks), label (text del botó, per defecte «Veure el
-// prompt»), styles, classes.
+// prompt»), link (URL externa: afig un segon botó davall del de veure el
+// prompt, que s'obri en pestanya nova), link-label (text d'eixe botó, per
+// defecte «Prova l'activitat»), sticker (text curt, p. ex. «*», que es
+// mostra com una xapa a dalt a la dreta de la targeta), styles, classes.
 
 class VFPrompts extends VFElement {
     render() {
@@ -2356,6 +2359,27 @@ class VFPrompt extends VFElement {
             }
         });
         card.appendChild(open);
+
+        const link = this.getAttribute('link');
+        if (link) {
+            const a = document.createElement('a');
+            a.href = link;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.classList.add('btn', 'btn-primary', 'btn-primary-inverse', 'btn-short', 'vf-prompt-link');
+            a.innerHTML = '<i class="fas fa-external-link-alt" aria-hidden="true"></i> ';
+            a.appendChild(document.createTextNode(this.getAttribute('link-label') || 'Prova l\'activitat'));
+            card.appendChild(a);
+        }
+
+        const sticker = this.getAttribute('sticker');
+        if (sticker) {
+            const st = document.createElement('span');
+            st.classList.add('vf-prompt-sticker');
+            st.textContent = sticker;
+            st.setAttribute('aria-hidden', 'true');
+            card.appendChild(st);
+        }
 
         processClasses(card, this.getAttribute('classes'));
         processStyles(card, this.getAttribute('styles'));

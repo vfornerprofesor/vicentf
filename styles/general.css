@@ -1017,6 +1017,7 @@ vf-prompt {
 }
 
 .vf-prompt-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1050,6 +1051,33 @@ vf-prompt {
 .vf-prompt-open {
   align-self: flex-start;
   margin-top: auto;
+}
+
+.vf-prompt-link {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+}
+
+/* Xapa a dalt a la dreta de la targeta (atribut sticker) */
+.vf-prompt-sticker {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  border-radius: 50%;
+  background-color: #ffd166;
+  color: #5a3d00;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: var(--elev-2);
+  transform: rotate(12deg);
+  pointer-events: none;
 }
 
 .vf-prompt-dialog {
