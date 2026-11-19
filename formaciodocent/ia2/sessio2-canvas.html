@@ -96,7 +96,14 @@
                 </vf-step>
             </vf-steps>
 
-            <vf-text><strong>Prova l'exemple</strong>: [Joc de parelles de la tardor](https://share.gemini.google/4Py0n65hCYne), creat amb el primer prompt d'exemple d'avall.</vf-text>
+            <vf-text><strong>Prova els exemples</strong>: activitats ja creades amb Canvas a partir dels prompts de l'apartat «Exemples» d'avall.</vf-text>
+            <vf-list>
+                <li>[Joc de parelles de la tardor](https://share.gemini.google/4Py0n65hCYne)</li>
+                <li>[Ruleta de preguntes](https://share.gemini.google/UhD2OJAxJEsR)</li>
+                <li>[Joc de càlcul mental](https://share.gemini.google/3r9S0cPsSGpr)</li>
+                <li>[Quiz d'autoavaluació](https://share.gemini.google/Kmik2aGHtW13) (fet amb apunts d'adverbis, preposicions i conjuncions)</li>
+                <li>[Escape room digital](https://share.gemini.google/vGIyc3VSIMYA) (les respostes, al final de l'apartat d'exemples)</li>
+            </vf-list>
 
             <vf-callout type="atencio">
                 <strong>Important de l'enllaç</strong>: és una «foto» del moment en què es crea; si després canvies l'activitat, cal <strong>tornar a compartir</strong> i usar l'enllaç nou. Qualsevol persona amb l'enllaç la pot obrir sense compte. Amb comptes de centre (Workspace) l'opció pot estar desactivada: per això usem el compte personal.
@@ -141,7 +148,7 @@
                         Requisits: tot en valencià, cartes molt grans per a tauleta, com a màxim 6 parelles, so i animació d'alegria quan encerten, sense instruccions escrites llargues (només icones) i un botó gran per tornar a jugar.
                     </vf-code>
                 </vf-prompt>
-                <vf-prompt title="Ruleta de preguntes" desc="De la unitat de ciències per a 3r de primària.">
+                <vf-prompt title="Ruleta de preguntes" desc="De la unitat de ciències per a 3r de primària. [Prova-la](https://share.gemini.google/UhD2OJAxJEsR).">
                     <vf-code language="plaintext">
                         Crea una ruleta de preguntes per a alumnat de 3r de primària sobre la unitat de ciències [els animals vertebrats i invertebrats].
                         La ruleta té 8 sectors de colors; en girar-la, mostra una pregunta d'opció múltiple (3 opcions) del sector que ha eixit.
@@ -149,7 +156,7 @@
                         Usa aquestes preguntes: [enganxa les preguntes o el text de la unitat].
                     </vf-code>
                 </vf-prompt>
-                <vf-prompt title="Joc de càlcul mental" desc="Amb temporitzador i nivells (2n cicle).">
+                <vf-prompt title="Joc de càlcul mental" desc="Amb temporitzador i nivells (2n cicle). [Prova-la](https://share.gemini.google/3r9S0cPsSGpr).">
                     <vf-code language="plaintext">
                         Crea un joc de càlcul mental per a alumnat de 2n cicle de primària ([3r-4t]).
                         Té 3 nivells: nivell 1, [sumes i restes fins a 100]; nivell 2, [taules de multiplicar]; nivell 3, [operacions combinades senzilles].
@@ -160,7 +167,7 @@
             </vf-prompts>
             <vf-badge>Secundària</vf-badge>
             <vf-prompts>
-                <vf-prompt title="Quiz d'autoavaluació" desc="A partir dels apunts de la unitat (enganxar el text).">
+                <vf-prompt title="Quiz d'autoavaluació" desc="A partir dels apunts de la unitat (enganxar el text). [Prova-la](https://share.gemini.google/Kmik2aGHtW13), feta amb apunts de gramàtica.">
                     <vf-code language="plaintext">
                         Crea un quiz d'autoavaluació per a alumnat de [3r d'ESO] a partir dels apunts que t'enganxe al final.
                         15 preguntes barrejades: opció múltiple, vertader/fals i completar buits, en ordre aleatori.
@@ -181,7 +188,7 @@
             </vf-prompts>
             <vf-text>Altres idees per als claudàtors: <strong>tir parabòlic</strong> (angle i velocitat inicial → trajectòria, altura màxima i abast), <strong>oferta i demanda</strong> (preu i factors externs → corbes i punt d'equilibri), <strong>línia del temps de la Guerra Civil</strong> (clicar cada fet → explicació breu, data i conseqüències).</vf-text>
             <vf-prompts>
-                <vf-prompt title="Escape room digital" desc="De 4 proves amb codi final.">
+                <vf-prompt title="Escape room digital" desc="De 4 proves amb codi final. [Prova-la](https://share.gemini.google/vGIyc3VSIMYA).">
                     <vf-code language="plaintext">
                         Crea un escape room digital per a alumnat de [2n d'ESO] sobre [la unitat de l'energia], amb una història d'ambientació breu ([sou un equip d'investigadors tancat al laboratori]).
                         Té 4 proves seguides, cadascuna d'un tipus diferent (endevinalla, ordenar elements, missatge xifrat senzill i pregunta d'aplicació); en resoldre cada prova s'obté un dígit, i els 4 dígits formen el codi final que obri el cadenat.
@@ -190,6 +197,15 @@
                     </vf-code>
                 </vf-prompt>
             </vf-prompts>
+            <vf-details summary="Respostes de l'escape room d'exemple (per a provar-lo)">
+                <vf-list ordered>
+                    <li>Prova 1: <strong>Energia potencial</strong></li>
+                    <li>Prova 2 (ordenar de més a menys sostenible): <strong>Eòlica &gt; Solar fotovoltaica &gt; Gas natural &gt; Carbó</strong></li>
+                    <li>Prova 3: <strong>ENERGIA</strong> i <strong>2</strong></li>
+                    <li>Prova 4: <strong>9</strong></li>
+                </vf-list>
+                <vf-text>Codi final del cadenat: <strong>4729</strong></vf-text>
+            </vf-details>
 
             <vf-callout type="consell">
                 Comença senzill i ves afegint coses; si es trenca alguna cosa, demana «torna a la versió anterior»; comprova el contingut (la IA s'equivoca en respostes).
