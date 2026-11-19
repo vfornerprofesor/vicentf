@@ -2,7 +2,7 @@
 # Regenera components/vf-bundle.js si algun component ha canviat i
 # l'afegeix al commit, perque la web publicada mai quede amb un bundle vell.
 set -e
-if git diff --cached --name-only | grep -qE '^(components/vf-.*\.js|scripts/utils\.js|scripts/highlight/highlight\.min\.js)$'; then
+if git diff --cached --name-only | grep -qE '^(components/vf-.*\.js|scripts/utils\.js|scripts/highlight/highlight\.min\.js|styles/(general|menu|blocks|buttons)\.css)$'; then
     bash scripts/build-bundle.sh
-    git add components/vf-bundle.js
+    git add components/vf-bundle.js header.html
 fi

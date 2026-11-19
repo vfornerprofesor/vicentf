@@ -45,3 +45,12 @@ if ! cmp -s "$tmp" "$out" 2>/dev/null; then
 else
     rm "$tmp"
 fi
+
+# Versió (?v=hash) en header.html per al bundle i els CSS propis: el
+# navegador (i la caché de GitHub Pages) guarda components/vf-bundle.js i
+# styles/*.css; sense canviar la URL, després d'un canvi es seguia veient
+# la versió vella fins a forçar la recàrrega.
+for f in components/vf-bundle.js styles/general.css styles/menu.css styles/blocks.css styles/buttons.css; do
+    h=$(sha1sum "$f" | cut -c1-8)
+    sed -i -E "s#(\"$f)(\?v=[0-9a-f]*)?\"#\1?v=$h\"#" header.html
+done
