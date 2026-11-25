@@ -157,7 +157,7 @@
 <body>
     <h1>Solucions · The box model</h1>
     <p class="box">
-        <strong>Només per al professor.</strong> Lliçó: <a href="../11-box-model.html">11-box-model.html</a>. 
+        <strong>Només per al professor.</strong> Lliçó: <a href="../11-box-model.html">11-box-model.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
     </p>
     <ul class="indice">
         <li><a href="#e1">Exercici 11.1</a></li>
@@ -165,40 +165,62 @@
         <li><a href="#e3">Exercici 11.3</a></li>
         <li><a href="#e4">Exercici 11.4</a></li>
         <li><a href="#e5">Exercici 11.5</a></li>
-        <li><a href="#e6">Exercici 11.4</a></li>
-        <li><a href="#e7">Exercici 11.5</a></li>
-        <li><a href="#e8">Mini-projecte 2</a></li>
+        <li><a href="#e6">Exercici 11.6</a></li>
     </ul>
 
     <section class="ex" id="e1">
         <h2>Exercici 11.1</h2>
-        <div class="enunciat"><strong>Exercise 11.1.</strong> Create a <code>div</code> with the class <code>card</code>, with 20px padding, a 1px grey border, 20px margin and a width of 300px. Put a heading and a paragraph inside.</div>
+        <div class="enunciat"><strong>Exercise 11.1. A profile card.</strong> Create <code>profile.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="card"</code>;</li><li>inside: an <code>&lt;img&gt;</code> (your avatar or any photo), an <code>&lt;h2&gt;</code> with a name, a <code>&lt;p&gt;</code> with a short description and an <code>&lt;a&gt;</code> with <code>class="button"</code> and the text “Follow”.</li></ul><p><strong>CSS.</strong></p><ul><li><code>* { box-sizing: border-box; }</code> at the top of the file;</li><li><code>body</code>: background colour <code>#eeeeee</code>;</li><li><code>.card</code>: width <code>300px</code>, <code>padding: 20px</code>, <code>border: 1px solid #dddddd</code>, background colour <code>white</code> and <code>margin: 40px auto</code> (it is centred);</li><li><code>.card img</code>: width <code>100%</code>;</li><li><code>.button</code>: <code>display: inline-block</code>, <code>padding: 10px 20px</code>, background colour <code>#6d5fb3</code>, colour <code>white</code>, no underline and <code>border-radius: 6px</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">profile.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Card&lt;/title&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
     &lt;div class="card"&gt;
-        &lt;h1&gt;Interstellar&lt;/h1&gt;
-        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+        &lt;img src="images/avatar.jpg" alt="My avatar"&gt;
+        &lt;h2&gt;Laura Gil&lt;/h2&gt;
+        &lt;p&gt;I like drawing, video games and my cat Pixel.&lt;/p&gt;
+        &lt;a class="button" href="#"&gt;Follow&lt;/a&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>.card {
+        <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.card {
     width: 300px;
     padding: 20px;
-    margin: 20px;
-    border: 1px solid #999999;
+    border: 1px solid #dddddd;
+    background-color: white;
+    margin: 40px auto;
+}
+
+.card img {
+    width: 100%;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6d5fb3;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
 }</code></pre>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.1" srcdoc="&lt;!DOCTYPE html&gt;
@@ -207,19 +229,45 @@
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Card&lt;/title&gt;
-    &lt;style&gt;.card {
-    width: 300px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #999999;
-}&lt;/style&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #eeeeee;
+        }
+
+        .card {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            background-color: white;
+            margin: 40px auto;
+        }
+
+        .card img {
+            width: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6d5fb3;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
     &lt;div class=&quot;card&quot;&gt;
-        &lt;h1&gt;Interstellar&lt;/h1&gt;
-        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/avatar/800/500&quot; alt=&quot;My avatar&quot;&gt;
+        &lt;h2&gt;Laura Gil&lt;/h2&gt;
+        &lt;p&gt;I like drawing, video games and my cat Pixel.&lt;/p&gt;
+        &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Follow&lt;/a&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 
@@ -228,39 +276,41 @@
 
     <section class="ex" id="e2">
         <h2>Exercici 11.2</h2>
-        <div class="enunciat"><strong>Exercise 11.2.</strong> Add <code>* { box-sizing: border-box; }</code> to your CSS and measure the card in DevTools before and after. Write down the two widths.</div>
+        <div class="enunciat"><strong>Exercise 11.2. Measure two boxes.</strong> Create <code>boxes.html</code>. <strong>Do not</strong> put the universal <code>box-sizing</code> rule in this file.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="box-a"</code> and a <code>&lt;div&gt;</code> with <code>class="box-b"</code>; each one with a <code>&lt;p&gt;</code> inside.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.box-a, .box-b</code>: width <code>200px</code>, <code>padding: 20px</code>, <code>border: 5px solid #6d5fb3</code> and <code>margin-bottom: 20px</code>;</li><li><code>.box-b</code>: <code>box-sizing: border-box</code>.</li></ul><p>Measure both boxes in DevTools and write the real width inside each <code>&lt;p&gt;</code> (for example “I am 250px wide”). Explain in one more <code>&lt;p&gt;</code> why they are different.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">boxes.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Card&lt;/title&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="card"&gt;
-        &lt;h1&gt;Interstellar&lt;/h1&gt;
-        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;div class="box-a"&gt;
+        &lt;p&gt;I am 250px wide: 200 + 20 + 20 (padding) + 5 + 5 (border).&lt;/p&gt;
     &lt;/div&gt;
+    &lt;div class="box-b"&gt;
+        &lt;p&gt;I am 200px wide: with border-box, the padding and the border go inside.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;They are different because box-a uses content-box (the default): the width is only the content, and the padding and the border are added outside. box-b uses border-box: the width includes the padding and the border.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
+        <pre><code>.box-a, .box-b {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid #6d5fb3;
+    margin-bottom: 20px;
 }
 
-.card {
-    width: 300px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #999999;
+.box-b {
+    box-sizing: border-box;
 }</code></pre>
-        <div class="note"><strong>Resposta:</strong> sense <code>border-box</code> la targeta mesura 300 + 20 + 20 + 1 + 1 = <strong>342 px</strong>; amb <code>box-sizing: border-box</code> mesura <strong>300 px</strong> (el padding i la vora ja van dins de l'amplària).</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.2" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -268,24 +318,29 @@
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Card&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;The box model&lt;/title&gt;
+    &lt;style&gt;
+        .box-a, .box-b {
+            width: 200px;
+            padding: 20px;
+            border: 5px solid #6d5fb3;
+            margin-bottom: 20px;
+        }
 
-.card {
-    width: 300px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #999999;
-}&lt;/style&gt;
+        .box-b {
+            box-sizing: border-box;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;card&quot;&gt;
-        &lt;h1&gt;Interstellar&lt;/h1&gt;
-        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
+    &lt;div class=&quot;box-a&quot;&gt;
+        &lt;p&gt;I am 250px wide: 200 + 20 + 20 (padding) + 5 + 5 (border).&lt;/p&gt;
     &lt;/div&gt;
+    &lt;div class=&quot;box-b&quot;&gt;
+        &lt;p&gt;I am 200px wide: with border-box, the padding and the border go inside.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;They are different because box-a uses content-box (the default): the width is only the content, and the padding and the border are added outside. box-b uses border-box: the width includes the padding and the border.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -293,44 +348,59 @@
 
     <section class="ex" id="e3">
         <h2>Exercici 11.3</h2>
-        <div class="enunciat"><strong>Exercise 11.3.</strong> Give the card rounded corners and a soft shadow. Make the shadow bigger on <code>:hover</code>.</div>
+        <div class="enunciat"><strong>Exercise 11.3. Products with rounded corners and shadows.</strong> Create <code>shop.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;section&gt;</code> with three <code>&lt;div&gt;</code> with <code>class="product"</code>;</li><li>each product has an <code>&lt;h3&gt;</code>, a <code>&lt;p&gt;</code> with the description and a <code>&lt;span&gt;</code> with <code>class="price"</code> (for example “12 €”).</li></ul><p><strong>CSS.</strong></p><ul><li><code>.product</code>: <code>padding: 16px</code>, <code>margin-bottom: 20px</code>, background colour <code>white</code>, <code>border-radius: 12px</code> and <code>box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12)</code>;</li><li><code>.product:hover</code>: <code>box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25)</code>;</li><li><code>.price</code>: <code>display: inline-block</code>, <code>padding: 4px 10px</code>, background colour <code>#ffd166</code>, <code>border-radius: 20px</code> and bold.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">shop.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Card&lt;/title&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="card"&gt;
-        &lt;h1&gt;Interstellar&lt;/h1&gt;
-        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
-    &lt;/div&gt;
+    &lt;section&gt;
+        &lt;div class="product"&gt;
+            &lt;h3&gt;Wireless mouse&lt;/h3&gt;
+            &lt;p&gt;Small, silent and with a battery that lasts a year.&lt;/p&gt;
+            &lt;span class="price"&gt;12 €&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="product"&gt;
+            &lt;h3&gt;Keyboard&lt;/h3&gt;
+            &lt;p&gt;Mechanical keyboard with lights.&lt;/p&gt;
+            &lt;span class="price"&gt;45 €&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="product"&gt;
+            &lt;h3&gt;Headphones&lt;/h3&gt;
+            &lt;p&gt;Comfortable headphones with a microphone.&lt;/p&gt;
+            &lt;span class="price"&gt;25 €&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
-}
-
-.card {
-    width: 300px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #dddddd;
+        <pre><code>.product {
+    padding: 16px;
+    margin-bottom: 20px;
+    background-color: white;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    transition: box-shadow 0.3s ease;
 }
 
-.card:hover {
+.product:hover {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.price {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: #ffd166;
+    border-radius: 20px;
+    font-weight: bold;
 }</code></pre>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.3" srcdoc="&lt;!DOCTYPE html&gt;
@@ -339,31 +409,48 @@
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Card&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;The box model&lt;/title&gt;
+    &lt;style&gt;
+        .product {
+            padding: 16px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
 
-.card {
-    width: 300px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #dddddd;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    transition: box-shadow 0.3s ease;
-}
+        .product:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
 
-.card:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}&lt;/style&gt;
+        .price {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #ffd166;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;card&quot;&gt;
-        &lt;h1&gt;Interstellar&lt;/h1&gt;
-        &lt;p&gt;A group of astronauts travels through a wormhole to find a new home for humanity.&lt;/p&gt;
-    &lt;/div&gt;
+    &lt;section&gt;
+        &lt;div class=&quot;product&quot;&gt;
+            &lt;h3&gt;Wireless mouse&lt;/h3&gt;
+            &lt;p&gt;Small, silent and with a battery that lasts a year.&lt;/p&gt;
+            &lt;span class=&quot;price&quot;&gt;12 €&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;product&quot;&gt;
+            &lt;h3&gt;Keyboard&lt;/h3&gt;
+            &lt;p&gt;Mechanical keyboard with lights.&lt;/p&gt;
+            &lt;span class=&quot;price&quot;&gt;45 €&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;product&quot;&gt;
+            &lt;h3&gt;Headphones&lt;/h3&gt;
+            &lt;p&gt;Comfortable headphones with a microphone.&lt;/p&gt;
+            &lt;span class=&quot;price&quot;&gt;25 €&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -371,53 +458,79 @@
 
     <section class="ex" id="e4">
         <h2>Exercici 11.4</h2>
-        <div class="enunciat"><strong>Exercise 11.4.</strong> Turn the links of your nav into buttons: <code>inline-block</code>, padding, background colour, rounded corners, no underline.</div>
+        <div class="enunciat"><strong>Exercise 11.4. A centred page with button links.</strong> Create <code>centred.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="container"</code> that contains all the page;</li><li>inside: a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code> and a <code>&lt;nav&gt;</code> with four <code>&lt;a&gt;</code>; a <code>&lt;main&gt;</code> with two <code>&lt;section&gt;</code> (each one with an <code>&lt;h2&gt;</code> and a <code>&lt;p&gt;</code>); a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.container</code>: <code>max-width: 1000px</code>, <code>margin: 0 auto</code> and <code>padding: 0 20px</code>;</li><li><code>nav a</code>: <code>display: inline-block</code>, <code>padding: 10px 18px</code>, <code>margin: 4px</code>, background colour <code>#3d405b</code>, colour <code>white</code>, no underline and <code>border-radius: 8px</code>;</li><li><code>nav a:hover</code>: background colour <code>#e07a5f</code>;</li><li><code>section</code>: <code>padding: 20px</code>, <code>margin-bottom: 30px</code> and <code>border-left: 5px solid #e07a5f</code>;</li><li><code>footer</code>: <code>border-top: 1px solid #cccccc</code>, <code>padding-top: 20px</code> and <code>margin-top: 40px</code>.</li></ul><p>Make the window wider and narrower: the content never gets wider than 1000px and it is always in the middle.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">centred.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Box model&lt;/title&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;div class="container"&gt;
+        &lt;header&gt;
+            &lt;h1&gt;My blog&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;a href="#"&gt;Home&lt;/a&gt;
+                &lt;a href="#"&gt;Posts&lt;/a&gt;
+                &lt;a href="#"&gt;About&lt;/a&gt;
+                &lt;a href="#"&gt;Contact&lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;main&gt;
+            &lt;section&gt;
+                &lt;h2&gt;My first post&lt;/h2&gt;
+                &lt;p&gt;Today I started learning CSS and it is great.&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;section&gt;
+                &lt;h2&gt;The box model&lt;/h2&gt;
+                &lt;p&gt;Every element is a box with padding, border and margin.&lt;/p&gt;
+            &lt;/section&gt;
+        &lt;/main&gt;
+        &lt;footer&gt;
+            &lt;p&gt;© 2026 My blog&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
+        <pre><code>.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 nav a {
     display: inline-block;
     padding: 10px 18px;
-    background-color: #1f3c5a;
+    margin: 4px;
+    background-color: #3d405b;
     color: white;
-    border-radius: 6px;
     text-decoration: none;
+    border-radius: 8px;
 }
 
 nav a:hover {
-    background-color: #2d5a85;
+    background-color: #e07a5f;
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 30px;
+    border-left: 5px solid #e07a5f;
+}
+
+footer {
+    border-top: 1px solid #cccccc;
+    padding-top: 20px;
+    margin-top: 40px;
 }</code></pre>
-        <div class="note"><code>inline-block</code> permet que els enllaços (en línia) accepten <code>padding</code> vertical i continuen en la mateixa línia.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.4" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -425,38 +538,67 @@ nav a:hover {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Box model&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;The box model&lt;/title&gt;
+    &lt;style&gt;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-nav a {
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: #1f3c5a;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-}
+        nav a {
+            display: inline-block;
+            padding: 10px 18px;
+            margin: 4px;
+            background-color: #3d405b;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
 
-nav a:hover {
-    background-color: #2d5a85;
-}&lt;/style&gt;
+        nav a:hover {
+            background-color: #e07a5f;
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e07a5f;
+        }
+
+        footer {
+            border-top: 1px solid #cccccc;
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;My blog&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;Posts&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;main&gt;
+            &lt;section&gt;
+                &lt;h2&gt;My first post&lt;/h2&gt;
+                &lt;p&gt;Today I started learning CSS and it is great.&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;section&gt;
+                &lt;h2&gt;The box model&lt;/h2&gt;
+                &lt;p&gt;Every element is a box with padding, border and margin.&lt;/p&gt;
+            &lt;/section&gt;
+        &lt;/main&gt;
+        &lt;footer&gt;
+            &lt;p&gt;© 2026 My blog&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -464,61 +606,66 @@ nav a:hover {
 
     <section class="ex" id="e5">
         <h2>Exercici 11.5</h2>
-        <div class="enunciat"><strong>Exercise 11.5.</strong> Centre the whole content of your page in a container of maximum 1000px.</div>
+        <div class="enunciat"><strong>Exercise 11.5. Film card.</strong> Create <code>film-card.html</code>. The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/11-box-model/ex1.png" alt="A film information card with padding, a border and a soft shadow"><p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="film"</code>;</li><li>inside: an <code>&lt;h1&gt;</code> with the title, an <code>&lt;img&gt;</code> with <code>class="poster"</code>, a <code>&lt;p&gt;</code> “Release year” with the year inside a <code>&lt;strong&gt;</code>, a <code>&lt;p&gt;</code> with <code>class="actors-title"</code> and a <code>&lt;ul&gt;</code> with <code>class="actors"</code> and five <code>&lt;li&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.film</code>: centred text, background colour <code>bisque</code>, width <code>50%</code>, <code>margin: 0 auto</code>, <code>border: 2px solid coral</code>, <code>border-radius: 15px</code>, <code>box-shadow: 0 0 20px coral</code> and <code>padding-bottom: 30px</code>;</li><li><code>.poster</code>: width <code>200px</code>;</li><li><code>h1, p</code>: colour <code>coral</code>;</li><li><code>.actors-title</code>: bold;</li><li><code>.actors</code>: <code>list-style: none</code>, <code>width: fit-content</code>, <code>margin: 0 auto</code> and <code>padding: 0</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">film-card.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Box model&lt;/title&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;div class="film"&gt;
+        &lt;h1&gt;The Lord of the Rings&lt;/h1&gt;
+        &lt;img class="poster" src="images/poster.jpg" alt="Poster of the film"&gt;
+        &lt;p&gt;Release year &lt;strong&gt;2001&lt;/strong&gt;&lt;/p&gt;
+        &lt;p class="actors-title"&gt;Main actors and actresses:&lt;/p&gt;
+        &lt;ul class="actors"&gt;
+            &lt;li&gt;Elijah Wood&lt;/li&gt;
+            &lt;li&gt;Ian McKellen&lt;/li&gt;
+            &lt;li&gt;Viggo Mortensen&lt;/li&gt;
+            &lt;li&gt;Orlando Bloom&lt;/li&gt;
+            &lt;li&gt;Liv Tyler&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-header,
-main {
-    max-width: 1000px;
+        <pre><code>.film {
+    text-align: center;
+    background-color: bisque;
+    width: 50%;
     margin: 0 auto;
-    padding: 20px;
+    border: 2px solid coral;
+    border-radius: 15px;
+    box-shadow: 0 0 20px coral;
+    padding-bottom: 30px;
 }
 
-nav a {
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: #1f3c5a;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
+.poster {
+    width: 200px;
+}
+
+h1, p {
+    color: coral;
+}
+
+.actors-title {
+    font-weight: bold;
+}
+
+.actors {
+    list-style: none;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0;
 }</code></pre>
-        <div class="note"><code>max-width: 1000px</code> amb <code>margin: 0 auto</code> centra el contingut i, en pantalles més xicotetes, el deixa ocupar tot l'ample.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.5" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -526,334 +673,166 @@ nav a {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Box model&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;The box model&lt;/title&gt;
+    &lt;style&gt;
+        .film {
+            text-align: center;
+            background-color: bisque;
+            width: 50%;
+            margin: 0 auto;
+            border: 2px solid coral;
+            border-radius: 15px;
+            box-shadow: 0 0 20px coral;
+            padding-bottom: 30px;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        .poster {
+            width: 200px;
+        }
 
-header,
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        h1, p {
+            color: coral;
+        }
 
-nav a {
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: #1f3c5a;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-}&lt;/style&gt;
+        .actors-title {
+            font-weight: bold;
+        }
+
+        .actors {
+            list-style: none;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 0;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-        &lt;p&gt;My favourite film is Interstellar. I have seen it four times.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;div class=&quot;film&quot;&gt;
+        &lt;h1&gt;The Lord of the Rings&lt;/h1&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;https://picsum.photos/seed/poster/800/500&quot; alt=&quot;Poster of the film&quot;&gt;
+        &lt;p&gt;Release year &lt;strong&gt;2001&lt;/strong&gt;&lt;/p&gt;
+        &lt;p class=&quot;actors-title&quot;&gt;Main actors and actresses:&lt;/p&gt;
+        &lt;ul class=&quot;actors&quot;&gt;
+            &lt;li&gt;Elijah Wood&lt;/li&gt;
+            &lt;li&gt;Ian McKellen&lt;/li&gt;
+            &lt;li&gt;Viggo Mortensen&lt;/li&gt;
+            &lt;li&gt;Orlando Bloom&lt;/li&gt;
+            &lt;li&gt;Liv Tyler&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
     </section>
 
     <section class="ex" id="e6">
-        <h2>Exercici 11.4</h2>
-        <div class="enunciat"><strong>Exercise 11.4. Film card.</strong> Reproduce the card in the picture. Watch the padding, the border and the shadow.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/11-box-model/ex1.png" alt="A film information card with padding, a border and a soft shadow"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/11-box-model/ex1.html">ex1.html</a></p></div>
+        <h2>Exercici 11.6</h2>
+        <div class="enunciat"><strong>Exercise 11.6. Birthday card.</strong> Create <code>birthday.html</code>. The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/11-box-model/ex2.png" alt="A birthday invitation card styled with the box model"><p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="birthday-card"</code>;</li><li>inside, a <code>&lt;div&gt;</code> with <code>class="message"</code> (an <code>&lt;h1&gt;</code> “Happy birthday!” and a <code>&lt;p&gt;</code>) and a <code>&lt;div&gt;</code> with <code>class="picture"</code> (an <code>&lt;img&gt;</code> of a cake).</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: font <code>Arial, sans-serif</code> and background colour <code>#f0f0f0</code>;</li><li><code>.birthday-card</code>: width <code>550px</code>, <code>margin: 90px auto</code>, <code>padding: 20px</code>, background colour <code>white</code>, <code>border-radius: 10px</code>, <code>box-shadow: 0 0 10px grey</code> and centred text;</li><li><code>.message h1</code>: colour <code>#ff5733</code> and size <code>24px</code>;</li><li><code>.message p</code>: size <code>18px</code>;</li><li><code>.picture img</code>: <code>max-width: 50%</code> and <code>margin-top: 20px</code>.</li></ul></div>
         <h3>Solució</h3>
-        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/11-box-model/ex1_solved.html">exercises/11-box-model/ex1_solved.html</a></p>
-    </section>
-
-    <section class="ex" id="e7">
-        <h2>Exercici 11.5</h2>
-        <div class="enunciat"><strong>Exercise 11.5. Birthday invitation.</strong> Reproduce the invitation in the picture.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/11-box-model/ex2.png" alt="A birthday invitation card styled with the box model"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/11-box-model/ex2.html">ex2.html</a></p></div>
-        <h3>Solució</h3>
-        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/11-box-model/ex2_solved.html">exercises/11-box-model/ex2_solved.html</a></p>
-    </section>
-
-    <section class="ex" id="e8">
-        <h2>Mini-projecte 2</h2>
-        <div class="enunciat"><strong>Mini-project 2: Styled band page</strong><p>Take your page from mini-project 1 and give it a design with an <strong>external</strong> CSS file.</p>
-            <p>It must have:</p>
-            <ul>
-                <li><code>css/style.css</code> linked from the HTML, and no <code>style=</code> attributes in the HTML;</li>
-                <li><code>* { box-sizing: border-box; }</code>;</li>
-                <li>a Google Font;</li>
-                <li>a colour scheme of 3 or 4 colours, used consistently;</li>
-                <li>a centred container with a maximum width;</li>
-                <li>the nav links styled as buttons, with a <code>:hover</code> effect;</li>
-                <li>at least one block with <code>border-radius</code> and <code>box-shadow</code>;</li>
-                <li>readable text: <code>line-height</code> of at least 1.5 and good contrast.</li>
-            </ul></div>
-        <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">birthday.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Muse&lt;/title&gt;
-    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;title&gt;The box model&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Muse&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href="#band"&gt;The band&lt;/a&gt;
-            &lt;a href="#albums"&gt;Albums&lt;/a&gt;
-            &lt;a href="#club"&gt;Fan club&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-
-    &lt;main class="container"&gt;
-        &lt;section id="band" class="block"&gt;
-            &lt;h2&gt;The band&lt;/h2&gt;
-            &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
-            &lt;p&gt;Their music mixes rock, electronic sounds and classical piano.&lt;/p&gt;
-            &lt;img src="images/band.jpg" alt="The three members of Muse on a stage with blue lights" width="400"&gt;
-        &lt;/section&gt;
-
-        &lt;section id="albums" class="block"&gt;
-            &lt;h2&gt;Albums&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Origin of Symmetry (2001)&lt;/li&gt;
-                &lt;li&gt;Absolution (2003)&lt;/li&gt;
-                &lt;li&gt;The Resistance (2009)&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/section&gt;
-
-        &lt;section id="club" class="block"&gt;
-            &lt;h2&gt;Join the fan club&lt;/h2&gt;
-            &lt;p&gt;Write to us and we will send you the news about the next concert.&lt;/p&gt;
-        &lt;/section&gt;
-    &lt;/main&gt;
-
-    &lt;footer&gt;
-        &lt;p&gt;&amp;copy; 2026 Marc Ferrer. A fan page, not official.&lt;/p&gt;
-    &lt;/footer&gt;
+    &lt;div class="birthday-card"&gt;
+        &lt;div class="message"&gt;
+            &lt;h1&gt;Happy birthday!&lt;/h1&gt;
+            &lt;p&gt;Have a day full of joy and happiness.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="picture"&gt;
+            &lt;img src="images/cake.png" alt="A birthday cake"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>/* ---------- Reset ---------- */
-* {
-    box-sizing: border-box;
+        <pre><code>body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-/* ---------- Base ---------- */
-body {
-    margin: 0;
-    font-family: 'Nunito', Arial, sans-serif;
-    line-height: 1.6;
-    color: #23272f;
-    background-color: #f6f5f0;
-}
-
-h1,
-h2 {
-    color: #1f3c5a;
-}
-
-/* ---------- Layout ---------- */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header {
-    padding: 20px;
-    background-color: #1f3c5a;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0 0 12px;
-    color: white;
-}
-
-footer {
-    padding: 20px;
-    background-color: #1f3c5a;
-    color: white;
-    text-align: center;
-}
-
-/* ---------- Menu ---------- */
-nav a {
-    display: inline-block;
-    margin: 4px;
-    padding: 8px 16px;
-    background-color: #f2a541;
-    color: #1f3c5a;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.25s ease;
-}
-
-nav a:hover {
-    background-color: #ffffff;
-}
-
-/* ---------- Blocks ---------- */
-.block {
-    margin-bottom: 20px;
+.birthday-card {
+    width: 550px;
+    margin: 90px auto;
     padding: 20px;
     background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 0 10px grey;
+    text-align: center;
 }
 
-.block img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+.message h1 {
+    color: #ff5733;
+    font-size: 24px;
+}
+
+.message p {
+    font-size: 18px;
+}
+
+.picture img {
+    max-width: 50%;
+    margin-top: 20px;
 }</code></pre>
-        <div class="note">Esquema de 3 colors (blau, taronja i blanc) usat sempre igual; fitxer extern sense cap atribut <code>style</code>; <code>box-sizing: border-box</code>; Google Font Nunito; contenidor centrat amb <code>max-width</code>; menú com a botons amb <code>:hover</code>; blocs amb <code>border-radius</code> i <code>box-shadow</code>; <code>line-height</code> 1.6.</div>
         <h3>Resultat</h3>
-        <iframe sandbox="allow-scripts" title="Resultat de Mini-projecte 2" srcdoc="&lt;!DOCTYPE html&gt;
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 11.6" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Muse&lt;/title&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;style&gt;/* ---------- Reset ---------- */
-* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;The box model&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
 
-/* ---------- Base ---------- */
-body {
-    margin: 0;
-    font-family: &#x27;Nunito&#x27;, Arial, sans-serif;
-    line-height: 1.6;
-    color: #23272f;
-    background-color: #f6f5f0;
-}
+        .birthday-card {
+            width: 550px;
+            margin: 90px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px grey;
+            text-align: center;
+        }
 
-h1,
-h2 {
-    color: #1f3c5a;
-}
+        .message h1 {
+            color: #ff5733;
+            font-size: 24px;
+        }
 
-/* ---------- Layout ---------- */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        .message p {
+            font-size: 18px;
+        }
 
-header {
-    padding: 20px;
-    background-color: #1f3c5a;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0 0 12px;
-    color: white;
-}
-
-footer {
-    padding: 20px;
-    background-color: #1f3c5a;
-    color: white;
-    text-align: center;
-}
-
-/* ---------- Menu ---------- */
-nav a {
-    display: inline-block;
-    margin: 4px;
-    padding: 8px 16px;
-    background-color: #f2a541;
-    color: #1f3c5a;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.25s ease;
-}
-
-nav a:hover {
-    background-color: #ffffff;
-}
-
-/* ---------- Blocks ---------- */
-.block {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
-}
-
-.block img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}&lt;/style&gt;
+        .picture img {
+            max-width: 50%;
+            margin-top: 20px;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Muse&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href=&quot;#band&quot;&gt;The band&lt;/a&gt;
-            &lt;a href=&quot;#albums&quot;&gt;Albums&lt;/a&gt;
-            &lt;a href=&quot;#club&quot;&gt;Fan club&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-
-    &lt;main class=&quot;container&quot;&gt;
-        &lt;section id=&quot;band&quot; class=&quot;block&quot;&gt;
-            &lt;h2&gt;The band&lt;/h2&gt;
-            &lt;p&gt;Muse is a rock band from Teignmouth, in England. They started in 1994.&lt;/p&gt;
-            &lt;p&gt;Their music mixes rock, electronic sounds and classical piano.&lt;/p&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;The three members of Muse on a stage with blue lights&quot; width=&quot;400&quot;&gt;
-        &lt;/section&gt;
-
-        &lt;section id=&quot;albums&quot; class=&quot;block&quot;&gt;
-            &lt;h2&gt;Albums&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Origin of Symmetry (2001)&lt;/li&gt;
-                &lt;li&gt;Absolution (2003)&lt;/li&gt;
-                &lt;li&gt;The Resistance (2009)&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/section&gt;
-
-        &lt;section id=&quot;club&quot; class=&quot;block&quot;&gt;
-            &lt;h2&gt;Join the fan club&lt;/h2&gt;
-            &lt;p&gt;Write to us and we will send you the news about the next concert.&lt;/p&gt;
-        &lt;/section&gt;
-    &lt;/main&gt;
-
-    &lt;footer&gt;
-        &lt;p&gt;&amp;copy; 2026 Marc Ferrer. A fan page, not official.&lt;/p&gt;
-    &lt;/footer&gt;
+    &lt;div class=&quot;birthday-card&quot;&gt;
+        &lt;div class=&quot;message&quot;&gt;
+            &lt;h1&gt;Happy birthday!&lt;/h1&gt;
+            &lt;p&gt;Have a day full of joy and happiness.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;picture&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/cake/800/500&quot; alt=&quot;A birthday cake&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>

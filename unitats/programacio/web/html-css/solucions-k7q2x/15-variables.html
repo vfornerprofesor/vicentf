@@ -157,7 +157,7 @@
 <body>
     <h1>Solucions · CSS variables and good practice</h1>
     <p class="box">
-        <strong>Només per al professor.</strong> Lliçó: <a href="../15-variables.html">15-variables.html</a>. 
+        <strong>Només per al professor.</strong> Lliçó: <a href="../15-variables.html">15-variables.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
     </p>
     <ul class="indice">
         <li><a href="#e1">Exercici 15.1</a></li>
@@ -168,85 +168,79 @@
 
     <section class="ex" id="e1">
         <h2>Exercici 15.1</h2>
-        <div class="enunciat"><strong>Exercise 15.1.</strong> Take your CSS file and move every colour to a <code>:root</code> block of variables. Then change your main colour and check that the whole page follows.</div>
+        <div class="enunciat"><strong>Exercise 15.1. A page with variables.</strong> Create <code>variables.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code>;</li><li>a <code>&lt;main&gt;</code> with three <code>&lt;div&gt;</code> with <code>class="card"</code>, each one with an <code>&lt;img&gt;</code>, an <code>&lt;h2&gt;</code>, a <code>&lt;p&gt;</code> and an <code>&lt;a&gt;</code> with <code>class="btn"</code>.</li></ul><p><strong>CSS.</strong></p><ul><li>a <code>:root</code> block with four variables: <code>--main-color: #6d5fb3</code>, <code>--main-color-dark: #4b3f8f</code>, <code>--light-grey: #f4f1fb</code> and <code>--text-color: #333333</code>;</li><li><code>body</code>: colour <code>var(--text-color)</code> and background colour <code>var(--light-grey)</code>;</li><li><code>header</code>: background colour <code>var(--main-color)</code>, colour <code>white</code> and <code>padding: 20px</code>;</li><li><code>h2</code>: colour <code>var(--main-color)</code>;</li><li><code>.btn</code>: background colour <code>var(--main-color)</code>, colour <code>white</code>, no underline and <code>padding: 8px 16px</code>;</li><li><code>.btn:hover</code>: background colour <code>var(--main-color-dark)</code>.</li></ul><p>Change only <code>--main-color</code> to <code>#e07a5f</code>: the header, the titles and the buttons change at the same time.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">variables.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class="site-header"&gt;
-        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
     &lt;/header&gt;
-    &lt;main class="container"&gt;
-        &lt;article class="card"&gt;
-            &lt;h2&gt;Project one&lt;/h2&gt;
-            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
-            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;h2&gt;Project two&lt;/h2&gt;
-            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
-            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
+    &lt;main&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card1.jpg" alt="Photo 1"&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card2.jpg" alt="Photo 2"&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card3.jpg" alt="Photo 3"&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>:root {
-    --color-primary: #1f3c5a;
-    --color-accent: #f2a541;
-    --color-bg: #f6f5f0;
-    --color-text: #23272f;
-    --color-surface: #ffffff;
+    --main-color: #6d5fb3;
+    --main-color-dark: #4b3f8f;
+    --light-grey: #f4f1fb;
+    --text-color: #333333;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-bg);
+    color: var(--text-color);
+    background-color: var(--light-grey);
 }
 
-.site-header {
-    padding: 16px 24px;
-    background-color: var(--color-primary);
-}
-
-.site-header h1 {
-    margin: 0;
-    color: var(--color-accent);
-}
-
-.card {
-    margin-bottom: 16px;
+header {
+    background-color: var(--main-color);
+    color: white;
     padding: 20px;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-primary);
 }
 
-.button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
+h2 {
+    color: var(--main-color);
+}
+
+.btn {
+    background-color: var(--main-color);
+    color: white;
     text-decoration: none;
+    padding: 8px 16px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+.btn:hover {
+    background-color: var(--main-color-dark);
 }</code></pre>
-        <div class="note">Per a comprovar que tot segueix el canvi, es modifica només <code>--color-primary</code> i es veu que la capçalera, la vora de les targetes i el color del botó canvien alhora.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.1" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -254,69 +248,66 @@ body {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Variables&lt;/title&gt;
-    &lt;style&gt;:root {
-    --color-primary: #1f3c5a;
-    --color-accent: #f2a541;
-    --color-bg: #f6f5f0;
-    --color-text: #23272f;
-    --color-surface: #ffffff;
-}
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --main-color: #6d5fb3;
+            --main-color-dark: #4b3f8f;
+            --light-grey: #f4f1fb;
+            --text-color: #333333;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-bg);
-}
+        body {
+            color: var(--text-color);
+            background-color: var(--light-grey);
+        }
 
-.site-header {
-    padding: 16px 24px;
-    background-color: var(--color-primary);
-}
+        header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 20px;
+        }
 
-.site-header h1 {
-    margin: 0;
-    color: var(--color-accent);
-}
+        h2 {
+            color: var(--main-color);
+        }
 
-.card {
-    margin-bottom: 16px;
-    padding: 20px;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-primary);
-}
+        .btn {
+            background-color: var(--main-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
 
-.button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-decoration: none;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}&lt;/style&gt;
+        .btn:hover {
+            background-color: var(--main-color-dark);
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class=&quot;site-header&quot;&gt;
-        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
     &lt;/header&gt;
-    &lt;main class=&quot;container&quot;&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;h2&gt;Project one&lt;/h2&gt;
-            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;h2&gt;Project two&lt;/h2&gt;
-            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
+    &lt;main&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card1/800/500&quot; alt=&quot;Photo 1&quot;&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card2/800/500&quot; alt=&quot;Photo 2&quot;&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card3/800/500&quot; alt=&quot;Photo 3&quot;&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
@@ -325,91 +316,94 @@ body {
 
     <section class="ex" id="e2">
         <h2>Exercici 15.2</h2>
-        <div class="enunciat"><strong>Exercise 15.2.</strong> Add <code>--radius</code> and <code>--shadow</code> variables and use them in at least three places.</div>
+        <div class="enunciat"><strong>Exercise 15.2. Radius and shadow.</strong> Continue with <code>variables.html</code>.<p><strong>HTML.</strong></p><ul><li>the same HTML as exercise 15.1.</li></ul><p><strong>CSS.</strong></p><ul><li>add to <code>:root</code>: <code>--radius: 12px</code> and <code>--shadow: 0 2px 8px rgba(0, 0, 0, 0.12)</code>;</li><li><code>.card</code>: background colour <code>white</code>, <code>padding: 20px</code>, <code>border-radius: var(--radius)</code> and <code>box-shadow: var(--shadow)</code>;</li><li><code>.card img</code>: width <code>100%</code> and <code>border-radius: var(--radius)</code>;</li><li><code>.btn</code>: <code>border-radius: var(--radius)</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">variables.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class="site-header"&gt;
-        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
     &lt;/header&gt;
-    &lt;main class="container"&gt;
-        &lt;article class="card"&gt;
-            &lt;h2&gt;Project one&lt;/h2&gt;
-            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
-            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;h2&gt;Project two&lt;/h2&gt;
-            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
-            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
+    &lt;main&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card1.jpg" alt="Photo 1"&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card2.jpg" alt="Photo 2"&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card3.jpg" alt="Photo 3"&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>:root {
-    --color-primary: #1f3c5a;
-    --color-accent: #f2a541;
-    --color-bg: #f6f5f0;
-    --color-text: #23272f;
-    --color-surface: #ffffff;
-
+    --main-color: #6d5fb3;
+    --main-color-dark: #4b3f8f;
+    --light-grey: #f4f1fb;
+    --text-color: #333333;
     --radius: 12px;
-    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-bg);
+    color: var(--text-color);
+    background-color: var(--light-grey);
 }
 
-.site-header {
-    padding: 16px 24px;
-    background-color: var(--color-primary);
-}
-
-.site-header h1 {
-    margin: 0;
-    color: var(--color-accent);
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+header {
+    background-color: var(--main-color);
+    color: white;
     padding: 20px;
+}
+
+h2 {
+    color: var(--main-color);
 }
 
 .card {
-    margin-bottom: 16px;
+    background-color: white;
     padding: 20px;
-    background-color: var(--color-surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
-.button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-decoration: none;
+.card img {
+    width: 100%;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+}
+
+.btn {
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+}
+
+.btn:hover {
+    background-color: var(--main-color-dark);
 }</code></pre>
-        <div class="note"><code>--radius</code> i <code>--shadow</code> s'usen en tres llocs (targetes i botons).</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.2" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -417,75 +411,81 @@ body {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Variables&lt;/title&gt;
-    &lt;style&gt;:root {
-    --color-primary: #1f3c5a;
-    --color-accent: #f2a541;
-    --color-bg: #f6f5f0;
-    --color-text: #23272f;
-    --color-surface: #ffffff;
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --main-color: #6d5fb3;
+            --main-color-dark: #4b3f8f;
+            --light-grey: #f4f1fb;
+            --text-color: #333333;
+            --radius: 12px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
 
-    --radius: 12px;
-    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
-}
+        body {
+            color: var(--text-color);
+            background-color: var(--light-grey);
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-bg);
-}
+        header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 20px;
+        }
 
-.site-header {
-    padding: 16px 24px;
-    background-color: var(--color-primary);
-}
+        h2 {
+            color: var(--main-color);
+        }
 
-.site-header h1 {
-    margin: 0;
-    color: var(--color-accent);
-}
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        .card img {
+            width: 100%;
+            border-radius: var(--radius);
+        }
 
-.card {
-    margin-bottom: 16px;
-    padding: 20px;
-    background-color: var(--color-surface);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
+        .btn {
+            background-color: var(--main-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--radius);
+        }
 
-.button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-decoration: none;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}&lt;/style&gt;
+        .btn:hover {
+            background-color: var(--main-color-dark);
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class=&quot;site-header&quot;&gt;
-        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
     &lt;/header&gt;
-    &lt;main class=&quot;container&quot;&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;h2&gt;Project one&lt;/h2&gt;
-            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;h2&gt;Project two&lt;/h2&gt;
-            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
+    &lt;main&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card1/800/500&quot; alt=&quot;Photo 1&quot;&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card2/800/500&quot; alt=&quot;Photo 2&quot;&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card3/800/500&quot; alt=&quot;Photo 3&quot;&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
@@ -494,97 +494,101 @@ body {
 
     <section class="ex" id="e3">
         <h2>Exercici 15.3</h2>
-        <div class="enunciat"><strong>Exercise 15.3.</strong> Add the section comments to your CSS file and reorder your rules.</div>
+        <div class="enunciat"><strong>Exercise 15.3. Smooth transitions.</strong> Continue with <code>variables.html</code>.<p><strong>HTML.</strong></p><ul><li>the same HTML as exercise 15.1.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.card</code>: <code>transition: transform 0.3s ease</code>;</li><li><code>.card:hover</code>: <code>transform: translateY(-5px)</code>;</li><li><code>.btn</code>: <code>transition: background-color 0.3s ease</code> and <code>cursor: pointer</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">variables.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Variables&lt;/title&gt;
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class="site-header"&gt;
-        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
     &lt;/header&gt;
-    &lt;main class="container"&gt;
-        &lt;article class="card"&gt;
-            &lt;h2&gt;Project one&lt;/h2&gt;
-            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
-            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;h2&gt;Project two&lt;/h2&gt;
-            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
-            &lt;a class="button" href="#"&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
+    &lt;main&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card1.jpg" alt="Photo 1"&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card2.jpg" alt="Photo 2"&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card3.jpg" alt="Photo 3"&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>/* =========================================================
-   My website - styles
-   ========================================================= */
-
-/* ---------- 1. Variables ---------- */
-:root {
-    --color-primary: #1f3c5a;
-    --color-accent: #f2a541;
-    --color-bg: #f6f5f0;
-    --color-text: #23272f;
-    --color-surface: #ffffff;
+        <pre><code>:root {
+    --main-color: #6d5fb3;
+    --main-color-dark: #4b3f8f;
+    --light-grey: #f4f1fb;
+    --text-color: #333333;
     --radius: 12px;
-    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-/* ---------- 2. Base ---------- */
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-bg);
+    color: var(--text-color);
+    background-color: var(--light-grey);
 }
 
-/* ---------- 3. Layout ---------- */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+header {
+    background-color: var(--main-color);
+    color: white;
     padding: 20px;
 }
 
-.site-header {
-    padding: 16px 24px;
-    background-color: var(--color-primary);
+h2 {
+    color: var(--main-color);
 }
 
-.site-header h1 {
-    margin: 0;
-    color: var(--color-accent);
-}
-
-/* ---------- 4. Components ---------- */
 .card {
-    margin-bottom: 16px;
+    background-color: white;
     padding: 20px;
-    background-color: var(--color-surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
 }
 
-.button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-decoration: none;
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
     border-radius: var(--radius);
+}
+
+.btn {
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--main-color-dark);
 }</code></pre>
-        <div class="note">El fitxer queda dividit en seccions comentades i les regles s'ordenen de general a específic: variables, base, layout i components.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.3" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -592,81 +596,88 @@ body {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Variables&lt;/title&gt;
-    &lt;style&gt;/* =========================================================
-   My website - styles
-   ========================================================= */
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --main-color: #6d5fb3;
+            --main-color-dark: #4b3f8f;
+            --light-grey: #f4f1fb;
+            --text-color: #333333;
+            --radius: 12px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
 
-/* ---------- 1. Variables ---------- */
-:root {
-    --color-primary: #1f3c5a;
-    --color-accent: #f2a541;
-    --color-bg: #f6f5f0;
-    --color-text: #23272f;
-    --color-surface: #ffffff;
-    --radius: 12px;
-    --shadow: 0 4px 14px rgba(31, 60, 90, 0.15);
-}
+        body {
+            color: var(--text-color);
+            background-color: var(--light-grey);
+        }
 
-/* ---------- 2. Base ---------- */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-bg);
-}
+        header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 20px;
+        }
 
-/* ---------- 3. Layout ---------- */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        h2 {
+            color: var(--main-color);
+        }
 
-.site-header {
-    padding: 16px 24px;
-    background-color: var(--color-primary);
-}
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
 
-.site-header h1 {
-    margin: 0;
-    color: var(--color-accent);
-}
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-/* ---------- 4. Components ---------- */
-.card {
-    margin-bottom: 16px;
-    padding: 20px;
-    background-color: var(--color-surface);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
+        .card img {
+            width: 100%;
+            border-radius: var(--radius);
+        }
 
-.button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-decoration: none;
-    border-radius: var(--radius);
-}&lt;/style&gt;
+        .btn {
+            background-color: var(--main-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--main-color-dark);
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class=&quot;site-header&quot;&gt;
-        &lt;h1&gt;Marc.dev&lt;/h1&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
     &lt;/header&gt;
-    &lt;main class=&quot;container&quot;&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;h2&gt;Project one&lt;/h2&gt;
-            &lt;p&gt;A small website about my favourite band.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;h2&gt;Project two&lt;/h2&gt;
-            &lt;p&gt;A responsive menu with flexbox.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;See more&lt;/a&gt;
-        &lt;/article&gt;
+    &lt;main&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card1/800/500&quot; alt=&quot;Photo 1&quot;&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card2/800/500&quot; alt=&quot;Photo 2&quot;&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card3/800/500&quot; alt=&quot;Photo 3&quot;&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
@@ -675,9 +686,247 @@ body {
 
     <section class="ex" id="e4">
         <h2>Exercici 15.4</h2>
-        <div class="enunciat"><strong>Exercise 15.4.</strong> Go through the checklist and fix everything that fails.</div>
+        <div class="enunciat"><strong>Exercise 15.4. Put your CSS in order.</strong> Take the CSS of <code>variables.html</code> and organise it.<p><strong>HTML.</strong></p><ul><li>no changes in the HTML, except the class names that you rename in the CSS.</li></ul><p><strong>CSS.</strong></p><ul><li>five section comments, in this order: <code>/* ============ 1. Variables ============ */</code>, <code>2. Reset and base</code>, <code>3. Layout</code>, <code>4. Components</code> and <code>5. Media queries</code>;</li><li>move every rule to its section;</li><li>add a <code>@media (min-width: 900px)</code> in the last section that puts the three cards in a row with <code>display: grid</code> and <code>grid-template-columns: repeat(3, 1fr)</code> on <code>main</code>;</li><li>if a class has a name that says how it looks (<code>.red</code>, <code>.big</code>, <code>.box1</code>), rename it to what it is (<code>.warning</code>, <code>.title</code>, <code>.card</code>), in the HTML and in the CSS.</li></ul><p>Go through the checklist of this page and fix everything that fails.</p></div>
         <h3>Solució</h3>
-        <div class="note"><strong>Resposta:</strong> revisa la llista de comprovació de la lliçó (esquelet, <code>title</code>, <code>alt</code>, un sol full d'estils, <code>box-sizing</code>, variables, <code>:hover</code> amb <code>transition</code>, viewport i <code>media query</code>, 375 px sense scroll horitzontal i validador) i corregix cada punt que falle. La solució és el propi projecte final; es pot comprovar amb la rúbrica de <a href="../16-project.html">16-project.html</a>.</div>
+        <span class="fname">variables.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card1.jpg" alt="Photo 1"&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card2.jpg" alt="Photo 2"&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="card"&gt;
+            &lt;img src="images/card3.jpg" alt="Photo 3"&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>/* ============ 1. Variables ============ */
+:root {
+    --main-color: #6d5fb3;
+    --main-color-dark: #4b3f8f;
+    --light-grey: #f4f1fb;
+    --text-color: #333333;
+    --radius: 12px;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ============ 2. Reset and base ============ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--text-color);
+    background-color: var(--light-grey);
+}
+
+h2 {
+    color: var(--main-color);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ============ 3. Layout ============ */
+header {
+    background-color: var(--main-color);
+    color: white;
+    padding: 20px;
+}
+
+main {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ============ 4. Components ============ */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.btn {
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--main-color-dark);
+}
+
+/* ============ 5. Media queries ============ */
+@media (min-width: 900px) {
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}</code></pre>
+        <p class="note">Al model les classes ja tenen noms de funció (<code>.card</code>, <code>.btn</code>), així que no cal canviar-ne cap. Si l'alumne té <code>.red</code>, <code>.box1</code>... es valora que les haja canviades.</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 15.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS variables and good practice&lt;/title&gt;
+    &lt;style&gt;
+        /* ============ 1. Variables ============ */
+        :root {
+            --main-color: #6d5fb3;
+            --main-color-dark: #4b3f8f;
+            --light-grey: #f4f1fb;
+            --text-color: #333333;
+            --radius: 12px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ============ 2. Reset and base ============ */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text-color);
+            background-color: var(--light-grey);
+        }
+
+        h2 {
+            color: var(--main-color);
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* ============ 3. Layout ============ */
+        header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 20px;
+        }
+
+        main {
+            display: grid;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* ============ 4. Components ============ */
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: var(--radius);
+        }
+
+        .btn {
+            background-color: var(--main-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--main-color-dark);
+        }
+
+        /* ============ 5. Media queries ============ */
+        @media (min-width: 900px) {
+            main {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My design system&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card1/800/500&quot; alt=&quot;Photo 1&quot;&gt;
+            &lt;h2&gt;Card 1&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card2/800/500&quot; alt=&quot;Photo 2&quot;&gt;
+            &lt;h2&gt;Card 2&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card3/800/500&quot; alt=&quot;Photo 3&quot;&gt;
+            &lt;h2&gt;Card 3&lt;/h2&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+            &lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;Read more&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
     </section>
 
 </body>

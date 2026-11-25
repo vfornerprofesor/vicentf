@@ -157,113 +157,159 @@
 <body>
     <h1>Solucions · Responsive design</h1>
     <p class="box">
-        <strong>Només per al professor.</strong> Lliçó: <a href="../14-responsive.html">14-responsive.html</a>. 
+        <strong>Només per al professor.</strong> Lliçó: <a href="../14-responsive.html">14-responsive.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
     </p>
     <ul class="indice">
         <li><a href="#e1">Exercici 14.1</a></li>
         <li><a href="#e2">Exercici 14.2</a></li>
         <li><a href="#e3">Exercici 14.3</a></li>
         <li><a href="#e4">Exercici 14.4</a></li>
-        <li><a href="#e5">Exercici 14.4</a></li>
+        <li><a href="#e5">Exercici 14.5</a></li>
     </ul>
 
     <section class="ex" id="e1">
         <h2>Exercici 14.1</h2>
-        <div class="enunciat"><strong>Exercise 14.1.</strong> Add the viewport tag and <code>img { max-width: 100%; }</code> to all your pages. Compare the result on a narrow window before and after.</div>
+        <div class="enunciat"><strong>Exercise 14.1. A page that fits on a phone.</strong> Create <code>phone.html</code>. Put the viewport tag in the <code>&lt;head&gt;</code>: <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>.<p><strong>HTML.</strong></p><ul><li>an <code>&lt;h1&gt;</code>;</li><li>an <code>&lt;img&gt;</code> with <code>class="hero-img"</code> and a big photo (more than 1500px wide);</li><li>two <code>&lt;p&gt;</code> with text.</li></ul><p><strong>CSS.</strong></p><ul><li><code>img</code>: <code>max-width: 100%</code> and <code>height: auto</code>;</li><li><code>body</code>: <code>padding: 10px</code> and <code>margin: 0</code>;</li><li><code>.hero-img</code>: <code>border-radius: 10px</code>.</li></ul><p>Open DevTools, choose a phone in device mode and check that you never have to scroll to the side. Then remove the <code>img</code> rule and see what happens.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">phone.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;title&gt;Responsive design&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="cards"&gt;
-        &lt;div class="card"&gt;Card 1&lt;/div&gt;
-        &lt;div class="card"&gt;Card 2&lt;/div&gt;
-        &lt;div class="card"&gt;Card 3&lt;/div&gt;
-        &lt;div class="card"&gt;Card 4&lt;/div&gt;
-        &lt;div class="card"&gt;Card 5&lt;/div&gt;
-        &lt;div class="card"&gt;Card 6&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;h1&gt;My trip to the mountains&lt;/h1&gt;
+    &lt;img class="hero-img" src="images/mountains.jpg" alt="Mountains at sunset"&gt;
+    &lt;p&gt;Last summer we went to the Pyrenees for a week.&lt;/p&gt;
+    &lt;p&gt;The photo above is 2000px wide, but it never gets wider than the screen.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>img {
     max-width: 100%;
+    height: auto;
+}
+
+body {
+    padding: 10px;
+    margin: 0;
+}
+
+.hero-img {
+    border-radius: 10px;
 }</code></pre>
-        <div class="note"><strong>Resposta:</strong> sense el <code>viewport</code> el mòbil dibuixa la pàgina com si la pantalla fóra de ~980 px i la redueix (tot es veu xicotet); sense <code>max-width: 100%</code> les imatges grans surten de la pantalla i apareix scroll horitzontal. Amb les dues coses la pàgina s'adapta a l'ample.</div>
-        <div class="note">En cada pàgina cal posar <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> en el <code>head</code> i la regla <code>img { max-width: 100%; }</code> en el CSS.</div>
+        <p class="note">Sense la regla <code>img</code>, la foto fa 2000px i apareix la barra de desplaçament horitzontal.</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Responsive design&lt;/title&gt;
+    &lt;style&gt;
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body {
+            padding: 10px;
+            margin: 0;
+        }
+
+        .hero-img {
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;My trip to the mountains&lt;/h1&gt;
+    &lt;img class=&quot;hero-img&quot; src=&quot;https://picsum.photos/seed/mountains/800/500&quot; alt=&quot;Mountains at sunset&quot;&gt;
+    &lt;p&gt;Last summer we went to the Pyrenees for a week.&lt;/p&gt;
+    &lt;p&gt;The photo above is 2000px wide, but it never gets wider than the screen.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
     </section>
 
     <section class="ex" id="e2">
         <h2>Exercici 14.2</h2>
-        <div class="enunciat"><strong>Exercise 14.2.</strong> Make your row of cards show 3 per line on a desktop, 2 on a tablet and 1 on a phone. Use mobile first.</div>
+        <div class="enunciat"><strong>Exercise 14.2. Cards: one, two, three columns.</strong> Create <code>responsive-cards.html</code>. Work <strong>mobile first</strong>: first the rules for the phone, then the media queries with <code>min-width</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;section&gt;</code> with <code>class="cards"</code>;</li><li>inside, six <code>&lt;article&gt;</code> with <code>class="card"</code>, each one with an <code>&lt;h3&gt;</code> and a <code>&lt;p&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.cards</code>: <code>display: grid</code>, <code>grid-template-columns: 1fr</code> and <code>gap: 20px</code>;</li><li><code>.card</code>: <code>padding: 20px</code>, background colour <code>white</code> and <code>border-radius: 10px</code>;</li><li><code>@media (min-width: 600px)</code>: <code>.cards</code> with <code>grid-template-columns: repeat(2, 1fr)</code>;</li><li><code>@media (min-width: 900px)</code>: <code>.cards</code> with <code>grid-template-columns: repeat(3, 1fr)</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">responsive-cards.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;title&gt;Responsive design&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="cards"&gt;
-        &lt;div class="card"&gt;Card 1&lt;/div&gt;
-        &lt;div class="card"&gt;Card 2&lt;/div&gt;
-        &lt;div class="card"&gt;Card 3&lt;/div&gt;
-        &lt;div class="card"&gt;Card 4&lt;/div&gt;
-        &lt;div class="card"&gt;Card 5&lt;/div&gt;
-        &lt;div class="card"&gt;Card 6&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;section class="cards"&gt;
+        &lt;article class="card"&gt;
+            &lt;h3&gt;Card 1&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h3&gt;Card 2&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h3&gt;Card 3&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h3&gt;Card 4&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h3&gt;Card 5&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;h3&gt;Card 6&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
-}
-
-/* Mobile first: 1 per línia */
-.cards {
+        <pre><code>.cards {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 16px;
+    gap: 20px;
 }
 
 .card {
-    padding: 40px 16px;
-    background-color: #2d5a85;
-    color: white;
-    text-align: center;
-    border-radius: 8px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
 }
 
-/* Tablet: 2 per línia */
 @media (min-width: 600px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Escriptori: 3 per línia */
 @media (min-width: 900px) {
     .cards {
         grid-template-columns: repeat(3, 1fr);
     }
 }</code></pre>
-        <div class="note">Mobile first: l'estil base és el del mòbil (1 columna) i els <code>@media (min-width)</code> van afegint columnes quan la pantalla creix.</div>
+        <p class="note">Les targetes són blanques: per a veure-les bé, posa un fons gris a <code>body</code> o redimensiona la previsualització (es pot estirar per la cantonada).</p>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.2" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -271,51 +317,61 @@
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Cards&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;Responsive design&lt;/title&gt;
+    &lt;style&gt;
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
 
-/* Mobile first: 1 per línia */
-.cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 16px;
-}
+        .card {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
 
-.card {
-    padding: 40px 16px;
-    background-color: #2d5a85;
-    color: white;
-    text-align: center;
-    border-radius: 8px;
-}
+        @media (min-width: 600px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-/* Tablet: 2 per línia */
-@media (min-width: 600px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Escriptori: 3 per línia */
-@media (min-width: 900px) {
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}&lt;/style&gt;
+        @media (min-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;cards&quot;&gt;
-        &lt;div class=&quot;card&quot;&gt;Card 1&lt;/div&gt;
-        &lt;div class=&quot;card&quot;&gt;Card 2&lt;/div&gt;
-        &lt;div class=&quot;card&quot;&gt;Card 3&lt;/div&gt;
-        &lt;div class=&quot;card&quot;&gt;Card 4&lt;/div&gt;
-        &lt;div class=&quot;card&quot;&gt;Card 5&lt;/div&gt;
-        &lt;div class=&quot;card&quot;&gt;Card 6&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;section class=&quot;cards&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h3&gt;Card 1&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h3&gt;Card 2&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h3&gt;Card 3&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h3&gt;Card 4&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h3&gt;Card 5&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;h3&gt;Card 6&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -323,64 +379,64 @@
 
     <section class="ex" id="e3">
         <h2>Exercici 14.3</h2>
-        <div class="enunciat"><strong>Exercise 14.3.</strong> Make your nav bar become a vertical column below 600px.</div>
+        <div class="enunciat"><strong>Exercise 14.3. A nav bar that turns into a column.</strong> Copy the nav bar of exercise 12.3 into <code>responsive-nav.html</code>, with the same HTML and CSS.<p><strong>HTML.</strong></p><ul><li>the same <code>&lt;header&gt;</code> with <code>class="site-header"</code>, the <code>&lt;div&gt;</code> with <code>class="logo"</code> and the <code>&lt;ul&gt;</code> with <code>class="menu"</code> of exercise 12.3.</li></ul><p><strong>CSS.</strong></p><ul><li>at the end of the file, <code>@media (max-width: 600px)</code>:</li><li>inside it, <code>.site-header</code>: <code>flex-direction: column</code>, <code>gap: 12px</code> and centred text;</li><li>inside it, <code>.menu</code>: <code>flex-direction: column</code> and <code>gap: 8px</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">responsive-nav.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Nav&lt;/title&gt;
+    &lt;title&gt;Responsive design&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
     &lt;header class="site-header"&gt;
-        &lt;a class="logo" href="index.html"&gt;Marc.dev&lt;/a&gt;
-        &lt;nav class="menu"&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;div class="logo"&gt;Marc Ferrer&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;ul class="menu"&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
         &lt;/nav&gt;
     &lt;/header&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.site-header {
+        <pre><code>.site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
-    background-color: #1f3c5a;
+    padding: 15px 30px;
+    background-color: #2b2b40;
 }
 
 .logo {
-    color: #f2a541;
+    color: white;
     font-weight: bold;
-    text-decoration: none;
+    font-size: 1.5rem;
 }
 
 .menu {
     display: flex;
-    gap: 8px;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .menu a {
-    padding: 8px 14px;
     color: white;
     text-decoration: none;
+}
+
+.menu a:hover {
+    color: #ffd166;
 }
 
 @media (max-width: 600px) {
@@ -402,62 +458,64 @@ body {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Nav&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;Responsive design&lt;/title&gt;
+    &lt;style&gt;
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #2b2b40;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    background-color: #1f3c5a;
-}
+        .menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-.logo {
-    color: #f2a541;
-    font-weight: bold;
-    text-decoration: none;
-}
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
 
-.menu {
-    display: flex;
-    gap: 8px;
-}
+        .menu a:hover {
+            color: #ffd166;
+        }
 
-.menu a {
-    padding: 8px 14px;
-    color: white;
-    text-decoration: none;
-}
+        @media (max-width: 600px) {
+            .site-header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
 
-@media (max-width: 600px) {
-    .site-header {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-
-    .menu {
-        flex-direction: column;
-        gap: 8px;
-    }
-}&lt;/style&gt;
+            .menu {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
     &lt;header class=&quot;site-header&quot;&gt;
-        &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Marc.dev&lt;/a&gt;
-        &lt;nav class=&quot;menu&quot;&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;div class=&quot;logo&quot;&gt;Marc Ferrer&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;ul class=&quot;menu&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
         &lt;/nav&gt;
     &lt;/header&gt;
 &lt;/body&gt;
@@ -467,55 +525,63 @@ body {
 
     <section class="ex" id="e4">
         <h2>Exercici 14.4</h2>
-        <div class="enunciat"><strong>Exercise 14.4.</strong> Hide the sidebar (<code>aside</code>) on screens under 768px using <code>display: none</code>. Then think: is it a good idea to hide content on mobile? Write two lines with your opinion.</div>
+        <div class="enunciat"><strong>Exercise 14.4. A sidebar only for big screens.</strong> Create <code>sidebar.html</code>, mobile first.<p><strong>HTML.</strong></p><ul><li>an <code>&lt;h1&gt;</code>;</li><li>a <code>&lt;div&gt;</code> with <code>class="layout"</code>, with a <code>&lt;main&gt;</code> (two <code>&lt;p&gt;</code>) and an <code>&lt;aside&gt;</code> (an <code>&lt;h3&gt;</code> and a <code>&lt;ul&gt;</code> of links).</li></ul><p><strong>CSS.</strong></p><ul><li><code>h1</code>: size <code>1.8rem</code>;</li><li><code>aside</code>: <code>display: none</code> (on a phone it is hidden);</li><li><code>@media (min-width: 768px)</code>: <code>h1</code> with size <code>3rem</code>; <code>.layout</code> with <code>display: grid</code>, <code>grid-template-columns: 2fr 1fr</code> and <code>gap: 20px</code>; <code>aside</code> with <code>display: block</code>.</li></ul><p>Add a <code>&lt;p&gt;</code> at the end of the page with your opinion, in two lines: is it a good idea to hide content on mobile?</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">sidebar.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Sidebar&lt;/title&gt;
+    &lt;title&gt;Responsive design&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
+    &lt;h1&gt;Healthy recipes&lt;/h1&gt;
     &lt;div class="layout"&gt;
         &lt;main&gt;
-            &lt;h1&gt;Content&lt;/h1&gt;
-            &lt;p&gt;The content is always visible.&lt;/p&gt;
+            &lt;p&gt;Eating well does not have to be difficult or expensive.&lt;/p&gt;
+            &lt;p&gt;Here you will find quick recipes with fresh ingredients.&lt;/p&gt;
         &lt;/main&gt;
         &lt;aside&gt;
-            &lt;h2&gt;Sidebar&lt;/h2&gt;
-            &lt;p&gt;Related links.&lt;/p&gt;
+            &lt;h3&gt;Categories&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Breakfast&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Lunch&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Dinner&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
         &lt;/aside&gt;
     &lt;/div&gt;
+    &lt;p&gt;In my opinion it is not a good idea to hide important content on mobile, because many people only use the phone. It is fine to hide decorative things or move them to the end of the page.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>.layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 20px;
+        <pre><code>h1 {
+    font-size: 1.8rem;
 }
 
 aside {
-    padding: 16px;
-    background-color: #eeeeee;
+    display: none;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
     .layout {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
     }
 
     aside {
-        display: none;
+        display: block;
     }
 }</code></pre>
-        <div class="note"><strong>Resposta:</strong> opinió (exemple): no és bona idea amagar contingut important en el mòbil, perquè una persona que entra des del telèfon també el necessita. Millor reordenar-lo o col·locar-lo davall del contingut principal; amagar només el que és decoratiu o repetit.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.4" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -523,182 +589,375 @@ aside {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Sidebar&lt;/title&gt;
-    &lt;style&gt;.layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 20px;
-}
+    &lt;title&gt;Responsive design&lt;/title&gt;
+    &lt;style&gt;
+        h1 {
+            font-size: 1.8rem;
+        }
 
-aside {
-    padding: 16px;
-    background-color: #eeeeee;
-}
+        aside {
+            display: none;
+        }
 
-@media (max-width: 767px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
 
-    aside {
-        display: none;
-    }
-}&lt;/style&gt;
+            .layout {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 20px;
+            }
+
+            aside {
+                display: block;
+            }
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
+    &lt;h1&gt;Healthy recipes&lt;/h1&gt;
     &lt;div class=&quot;layout&quot;&gt;
         &lt;main&gt;
-            &lt;h1&gt;Content&lt;/h1&gt;
-            &lt;p&gt;The content is always visible.&lt;/p&gt;
+            &lt;p&gt;Eating well does not have to be difficult or expensive.&lt;/p&gt;
+            &lt;p&gt;Here you will find quick recipes with fresh ingredients.&lt;/p&gt;
         &lt;/main&gt;
         &lt;aside&gt;
-            &lt;h2&gt;Sidebar&lt;/h2&gt;
-            &lt;p&gt;Related links.&lt;/p&gt;
+            &lt;h3&gt;Categories&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Breakfast&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Lunch&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Dinner&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
         &lt;/aside&gt;
     &lt;/div&gt;
+    &lt;p&gt;In my opinion it is not a good idea to hide important content on mobile, because many people only use the phone. It is fine to hide decorative things or move them to the end of the page.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
     </section>
 
     <section class="ex" id="e5">
-        <h2>Exercici 14.4</h2>
-        <div class="enunciat"><strong>Exercise 14.4.</strong> Take the band page of exercise 12.6 and make it work on a phone: one column under 600 px, two between 600 and 900, three above.</div>
+        <h2>Exercici 14.5</h2>
+        <div class="enunciat"><strong>Exercise 14.5. Responsive band page.</strong> Take the band page of exercise 12.7 and make it work on a phone.<p><strong>HTML.</strong></p><ul><li>the same HTML of exercise 12.7, with the viewport tag in the <code>&lt;head&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>img, iframe</code>: <code>max-width: 100%</code>;</li><li><code>.gallery</code>: change it to <code>display: grid</code>, <code>grid-template-columns: 1fr</code> and <code>gap: 20px</code> (one column on a phone);</li><li><code>@media (min-width: 600px)</code>: <code>.gallery</code> with <code>grid-template-columns: repeat(2, 1fr)</code>;</li><li><code>@media (min-width: 900px)</code>: <code>.gallery</code> with <code>grid-template-columns: repeat(3, 1fr)</code>;</li><li><code>.songs</code>: <code>flex-direction: column</code> on a phone, and <code>flex-direction: row</code> from <code>900px</code>;</li><li><code>.main-photo</code>: width <code>100%</code> on a phone and <code>50%</code> from <code>900px</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">band.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Buhos&lt;/title&gt;
+    &lt;title&gt;Responsive design&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1&gt;Buhos&lt;/h1&gt;
-    &lt;h2&gt;Gallery&lt;/h2&gt;
-    &lt;div id="galeria"&gt;
-        &lt;img src="images/buhos1.png" alt="Photo 1 of the band" class="img_galeria"&gt;
-        &lt;img src="images/buhos2.png" alt="Photo 2 of the band" class="img_galeria"&gt;
-        &lt;img src="images/buhos3.png" alt="Photo 3 of the band" class="img_galeria"&gt;
-        &lt;img src="images/buhos4.png" alt="Photo 4 of the band" class="img_galeria"&gt;
-        &lt;img src="images/buhos5.png" alt="Photo 5 of the band" class="img_galeria"&gt;
-        &lt;img src="images/buhos6.png" alt="Photo 6 of the band" class="img_galeria"&gt;
-        &lt;img src="images/buhos7.png" alt="Photo 7 of the band" class="img_galeria"&gt;
+    &lt;header class="band-header"&gt;
+        &lt;img src="images/logo.png" alt="Logo of Buhos"&gt;
+        &lt;h1&gt;Buhos&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav class="menu"&gt;
+        &lt;a class="menu-button" href="#gallery"&gt;Gallery&lt;/a&gt;
+        &lt;a class="menu-button" href="#songs"&gt;Best songs&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;hr&gt;
+    &lt;img class="main-photo" src="images/band.jpg" alt="The band"&gt;
+    &lt;hr&gt;
+
+    &lt;h2 id="gallery"&gt;Gallery&lt;/h2&gt;
+    &lt;div class="gallery"&gt;
+            &lt;img src="images/band1.jpg" alt="Photo 1 of the band"&gt;
+            &lt;img src="images/band2.jpg" alt="Photo 2 of the band"&gt;
+            &lt;img src="images/band3.jpg" alt="Photo 3 of the band"&gt;
+            &lt;img src="images/band4.jpg" alt="Photo 4 of the band"&gt;
+            &lt;img src="images/band5.jpg" alt="Photo 5 of the band"&gt;
+            &lt;img src="images/band6.jpg" alt="Photo 6 of the band"&gt;
+            &lt;img src="images/band7.jpg" alt="Photo 7 of the band"&gt;
+    &lt;/div&gt;
+
+    &lt;hr&gt;
+
+    &lt;h2 id="songs"&gt;Best songs&lt;/h2&gt;
+    &lt;div class="songs"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Volcans&lt;/h3&gt;
+            &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/uKQlPO3wY0E" title="Volcans"&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Sense regles que ens prohibeixin ser qui som
+    Com si a la nit d'avui se'ns acabés el món
+            &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;T'he trobat a faltar&lt;/h3&gt;
+            &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/uKQlPO3wY0E" title="T'he trobat a faltar"&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Vull quedar i explicar-nos la vida
+    I tenir temps per riure i temps per plorar
+            &lt;/pre&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 16px;
+        <pre><code>body {
     background-color: #2a2a2a;
     color: white;
     font-family: sans-serif;
 }
 
-h1,
-h2 {
+.band-header, h2 {
     text-align: center;
 }
 
-/* Mobile first: una columna */
-#galeria {
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.menu-button {
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.menu-button:hover {
+    background-color: white;
+    color: #2a2a2a;
+}
+
+.main-photo {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gallery img {
+    max-width: 400px;
+    margin: 20px;
+}
+
+.songs {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+/* ============ Responsive (mobile first) ============ */
+img, iframe {
+    max-width: 100%;
+}
+
+.gallery {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
 }
 
-.img_galeria {
+.gallery img {
+    max-width: 100%;
+    margin: 0;
+}
+
+.songs {
+    flex-direction: column;
+}
+
+.main-photo {
     width: 100%;
-    height: auto;
 }
 
-/* Entre 600 i 899 px: dues columnes */
 @media (min-width: 600px) {
-    #galeria {
+    .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* A partir de 900 px: tres columnes */
 @media (min-width: 900px) {
-    #galeria {
+    .gallery {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .songs {
+        flex-direction: row;
+    }
+
+    .main-photo {
+        width: 50%;
+    }
 }</code></pre>
-        <div class="note">Només es mostra la galeria; la resta de la pàgina de l'exercici 12.6 (menú, vídeos i lletres) segueix el mateix patró. Si hi ha més blocs en columnes (per exemple <code>#millors_cancons</code>), s'usa la mateixa tècnica: 1 columna per defecte i <code>repeat(2, 1fr)</code> a partir de 900 px.</div>
+        <p class="note">Les regles noves van al final perquè guanyen a les de la 12.7 (mateixa especificitat, l'última guanya). També cal treure el <code>max-width: 400px</code> i el <code>margin</code> de les imatges de la galeria dins de la graella.</p>
         <h3>Resultat</h3>
-        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.4" srcdoc="&lt;!DOCTYPE html&gt;
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14.5" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Buhos&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;Responsive design&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #2a2a2a;
+            color: white;
+            font-family: sans-serif;
+        }
 
-body {
-    margin: 0;
-    padding: 16px;
-    background-color: #2a2a2a;
-    color: white;
-    font-family: sans-serif;
-}
+        .band-header, h2 {
+            text-align: center;
+        }
 
-h1,
-h2 {
-    text-align: center;
-}
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
 
-/* Mobile first: una columna */
-#galeria {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-}
+        .menu-button {
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-.img_galeria {
-    width: 100%;
-    height: auto;
-}
+        .menu-button:hover {
+            background-color: white;
+            color: #2a2a2a;
+        }
 
-/* Entre 600 i 899 px: dues columnes */
-@media (min-width: 600px) {
-    #galeria {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+        .main-photo {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
 
-/* A partir de 900 px: tres columnes */
-@media (min-width: 900px) {
-    #galeria {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}&lt;/style&gt;
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .gallery img {
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .songs {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        /* ============ Responsive (mobile first) ============ */
+        img, iframe {
+            max-width: 100%;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .songs {
+            flex-direction: column;
+        }
+
+        .main-photo {
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .songs {
+                flex-direction: row;
+            }
+
+            .main-photo {
+                width: 50%;
+            }
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1&gt;Buhos&lt;/h1&gt;
-    &lt;h2&gt;Gallery&lt;/h2&gt;
-    &lt;div id=&quot;galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 1 of the band&quot; class=&quot;img_galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 2 of the band&quot; class=&quot;img_galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 3 of the band&quot; class=&quot;img_galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 4 of the band&quot; class=&quot;img_galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 5 of the band&quot; class=&quot;img_galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 6 of the band&quot; class=&quot;img_galeria&quot;&gt;
-        &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Photo 7 of the band&quot; class=&quot;img_galeria&quot;&gt;
+    &lt;header class=&quot;band-header&quot;&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/logo/800/500&quot; alt=&quot;Logo of Buhos&quot;&gt;
+        &lt;h1&gt;Buhos&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav class=&quot;menu&quot;&gt;
+        &lt;a class=&quot;menu-button&quot; href=&quot;#gallery&quot;&gt;Gallery&lt;/a&gt;
+        &lt;a class=&quot;menu-button&quot; href=&quot;#songs&quot;&gt;Best songs&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;hr&gt;
+    &lt;img class=&quot;main-photo&quot; src=&quot;https://picsum.photos/seed/band/800/500&quot; alt=&quot;The band&quot;&gt;
+    &lt;hr&gt;
+
+    &lt;h2 id=&quot;gallery&quot;&gt;Gallery&lt;/h2&gt;
+    &lt;div class=&quot;gallery&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band1/800/500&quot; alt=&quot;Photo 1 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band2/800/500&quot; alt=&quot;Photo 2 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band3/800/500&quot; alt=&quot;Photo 3 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band4/800/500&quot; alt=&quot;Photo 4 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band5/800/500&quot; alt=&quot;Photo 5 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band6/800/500&quot; alt=&quot;Photo 6 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band7/800/500&quot; alt=&quot;Photo 7 of the band&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;hr&gt;
+
+    &lt;h2 id=&quot;songs&quot;&gt;Best songs&lt;/h2&gt;
+    &lt;div class=&quot;songs&quot;&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Volcans&lt;/h3&gt;
+            &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/uKQlPO3wY0E&quot; title=&quot;Volcans&quot;&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Sense regles que ens prohibeixin ser qui som
+    Com si a la nit d&#x27;avui se&#x27;ns acabés el món
+            &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;T&#x27;he trobat a faltar&lt;/h3&gt;
+            &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/uKQlPO3wY0E&quot; title=&quot;T&#x27;he trobat a faltar&quot;&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Vull quedar i explicar-nos la vida
+    I tenir temps per riure i temps per plorar
+            &lt;/pre&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 

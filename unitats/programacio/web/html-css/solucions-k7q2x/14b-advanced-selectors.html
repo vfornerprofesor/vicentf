@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Solucions · Advanced selectors</title>
+    <style>
+        :root {
+            --primary: #1f3c5a;
+            --accent: #f2a541;
+            --soft: #f4f3fa;
+            --line: #d8d6e3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            font-family: system-ui, Arial, sans-serif;
+            line-height: 1.55;
+            color: #23272f;
+        }
+
+        h1 {
+            padding-bottom: .3rem;
+            border-bottom: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h2 {
+            margin: 0 0 .5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            margin: 1rem 0 .4rem;
+            font-size: 1rem;
+            color: #61607a;
+        }
+
+        a {
+            color: #2d5a85;
+        }
+
+        .box {
+            padding: .6rem .9rem;
+            background: #fff8ec;
+            border-left: 4px solid var(--accent);
+        }
+
+        .indice {
+            columns: 3 140px;
+            padding: .6rem 1rem;
+            background: var(--soft);
+            border-radius: 8px;
+            list-style: none;
+        }
+
+        .ex {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .enunciat {
+            padding: .5rem .8rem;
+            background: var(--soft);
+            border-radius: 8px;
+        }
+
+        .enunciat pre {
+            margin: .5rem 0;
+            border-radius: 8px;
+        }
+
+        .shot {
+            display: block;
+            max-width: 100%;
+            margin-top: .5rem;
+            border: 1px solid var(--line);
+        }
+
+        .fname {
+            display: inline-block;
+            margin-top: .6rem;
+            padding: .1rem .6rem;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 6px 6px 0 0;
+            font: .8rem ui-monospace, Consolas, monospace;
+        }
+
+        pre {
+            margin: 0 0 .4rem;
+            padding: .7rem;
+            overflow-x: auto;
+            background: #f6f6f6;
+            border: 1px solid var(--line);
+            border-radius: 0 8px 8px 8px;
+            font-size: .85rem;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        p code,
+        li code,
+        .note code {
+            padding: 0 .25rem;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 340px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            resize: vertical;
+        }
+
+        .note table {
+            border-collapse: collapse;
+            margin: .4rem 0;
+        }
+
+        .note th,
+        .note td {
+            padding: .2rem .6rem;
+            border: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .note ul {
+            margin: .3rem 0;
+        }
+
+        .note {
+            margin: .5rem 0 0;
+            font-size: .93rem;
+            color: #3a3f4b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Solucions · Advanced selectors</h1>
+    <p class="box">
+        <strong>Només per al professor.</strong> Lliçó: <a href="../14b-advanced-selectors.html">14b-advanced-selectors.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
+    </p>
+    <ul class="indice">
+        <li><a href="#e1">Exercici 14b.1</a></li>
+        <li><a href="#e2">Exercici 14b.2</a></li>
+        <li><a href="#e3">Exercici 14b.3</a></li>
+        <li><a href="#e4">Exercici 14b.4</a></li>
+    </ul>
+
+    <section class="ex" id="e1">
+        <h2>Exercici 14b.1</h2>
+        <div class="enunciat"><strong>Exercise 14b.1. Children and siblings.</strong> Create <code>family.html</code>. You cannot add classes to the <code>&lt;p&gt;</code>: the selectors do all the work.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="article"</code>;</li><li>inside, in this order: an <code>&lt;h2&gt;</code>, three <code>&lt;p&gt;</code>, and a <code>&lt;div&gt;</code> with <code>class="box"</code> that has two more <code>&lt;p&gt;</code> inside.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.article &gt; p</code>: <code>line-height: 1.6</code> (only the three paragraphs that are direct children);</li><li><code>h2 + p</code>: size <code>1.2rem</code> and bold (only the first paragraph after the title);</li><li><code>h2 ~ p</code>: colour <code>#333333</code>;</li><li><code>.box</code>: background colour <code>#f4f1fb</code> and <code>padding: 15px</code>;</li><li><code>.box p</code>: colour <code>#888888</code> and italic.</li></ul><p>Check in DevTools which rules apply to the paragraphs of the box and which do not.</p></div>
+        <h3>Solució</h3>
+        <span class="fname">family.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="article"&gt;
+        &lt;h2&gt;Why we sleep&lt;/h2&gt;
+        &lt;p&gt;Sleeping is as important as eating well and doing sport.&lt;/p&gt;
+        &lt;p&gt;Teenagers need between 8 and 10 hours of sleep every night.&lt;/p&gt;
+        &lt;p&gt;Screens before bed make it harder to fall asleep.&lt;/p&gt;
+        &lt;div class="box"&gt;
+            &lt;p&gt;Tip: leave your phone outside the bedroom.&lt;/p&gt;
+            &lt;p&gt;Tip: go to bed at the same time every day.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.article &gt; p {
+    line-height: 1.6;
+}
+
+h2 + p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+h2 ~ p {
+    color: #333333;
+}
+
+.box {
+    background-color: #f4f1fb;
+    padding: 15px;
+}
+
+.box p {
+    color: #888888;
+    font-style: italic;
+}</code></pre>
+        <p class="note">Els paràgrafs de <code>.box</code> no són fills directes de <code>.article</code> ni germans de l'<code>h2</code>: no reben ni el <code>line-height</code> ni el color <code>#333333</code>.</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14b.1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;style&gt;
+        .article &gt; p {
+            line-height: 1.6;
+        }
+
+        h2 + p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        h2 ~ p {
+            color: #333333;
+        }
+
+        .box {
+            background-color: #f4f1fb;
+            padding: 15px;
+        }
+
+        .box p {
+            color: #888888;
+            font-style: italic;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;article&quot;&gt;
+        &lt;h2&gt;Why we sleep&lt;/h2&gt;
+        &lt;p&gt;Sleeping is as important as eating well and doing sport.&lt;/p&gt;
+        &lt;p&gt;Teenagers need between 8 and 10 hours of sleep every night.&lt;/p&gt;
+        &lt;p&gt;Screens before bed make it harder to fall asleep.&lt;/p&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;p&gt;Tip: leave your phone outside the bedroom.&lt;/p&gt;
+            &lt;p&gt;Tip: go to bed at the same time every day.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e2">
+        <h2>Exercici 14b.2</h2>
+        <div class="enunciat"><strong>Exercise 14b.2. A league table.</strong> Create <code>league.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;table&gt;</code> with <code>class="league"</code>, with a <code>&lt;thead&gt;</code> (one <code>&lt;tr&gt;</code> with three <code>&lt;th&gt;</code>: Position, Team, Points) and a <code>&lt;tbody&gt;</code> with six <code>&lt;tr&gt;</code>;</li><li>a <code>&lt;ul&gt;</code> with <code>class="podium"</code> and three <code>&lt;li&gt;</code> (the first three teams).</li></ul><p><strong>CSS.</strong></p><ul><li><code>.league</code>: width <code>100%</code> and <code>border-collapse: collapse</code>;</li><li><code>.league th</code>: background colour <code>#6d5fb3</code>, colour <code>white</code> and <code>padding: 10px</code>;</li><li><code>.league td</code>: <code>padding: 10px</code>;</li><li><code>tbody tr:nth-child(even)</code>: background colour <code>#f4f1fb</code>;</li><li><code>tbody tr:first-child</code>: colour <code>#b8860b</code> and bold;</li><li><code>tbody tr:last-child</code>: colour <code>#c0392b</code>;</li><li><code>.podium li:first-child</code>: size <code>1.5rem</code>.</li></ul></div>
+        <h3>Solució</h3>
+        <span class="fname">league.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;table class="league"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Position&lt;/th&gt;
+                &lt;th&gt;Team&lt;/th&gt;
+                &lt;th&gt;Points&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;Villarreal&lt;/td&gt;
+                &lt;td&gt;30&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;Valencia&lt;/td&gt;
+                &lt;td&gt;27&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;Castellón&lt;/td&gt;
+                &lt;td&gt;24&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;Levante&lt;/td&gt;
+                &lt;td&gt;20&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td&gt;Elche&lt;/td&gt;
+                &lt;td&gt;18&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;6&lt;/td&gt;
+                &lt;td&gt;Hércules&lt;/td&gt;
+                &lt;td&gt;12&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;ul class="podium"&gt;
+        &lt;li&gt;Villarreal&lt;/li&gt;
+        &lt;li&gt;Valencia&lt;/li&gt;
+        &lt;li&gt;Castellón&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.league {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.league th {
+    background-color: #6d5fb3;
+    color: white;
+    padding: 10px;
+}
+
+.league td {
+    padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f4f1fb;
+}
+
+tbody tr:first-child {
+    color: #b8860b;
+    font-weight: bold;
+}
+
+tbody tr:last-child {
+    color: #c0392b;
+}
+
+.podium li:first-child {
+    font-size: 1.5rem;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14b.2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;style&gt;
+        .league {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .league th {
+            background-color: #6d5fb3;
+            color: white;
+            padding: 10px;
+        }
+
+        .league td {
+            padding: 10px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f4f1fb;
+        }
+
+        tbody tr:first-child {
+            color: #b8860b;
+            font-weight: bold;
+        }
+
+        tbody tr:last-child {
+            color: #c0392b;
+        }
+
+        .podium li:first-child {
+            font-size: 1.5rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;table class=&quot;league&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Position&lt;/th&gt;
+                &lt;th&gt;Team&lt;/th&gt;
+                &lt;th&gt;Points&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;Villarreal&lt;/td&gt;
+                &lt;td&gt;30&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;Valencia&lt;/td&gt;
+                &lt;td&gt;27&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;Castellón&lt;/td&gt;
+                &lt;td&gt;24&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;Levante&lt;/td&gt;
+                &lt;td&gt;20&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td&gt;Elche&lt;/td&gt;
+                &lt;td&gt;18&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;6&lt;/td&gt;
+                &lt;td&gt;Hércules&lt;/td&gt;
+                &lt;td&gt;12&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;ul class=&quot;podium&quot;&gt;
+        &lt;li&gt;Villarreal&lt;/li&gt;
+        &lt;li&gt;Valencia&lt;/li&gt;
+        &lt;li&gt;Castellón&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e3">
+        <h2>Exercici 14b.3</h2>
+        <div class="enunciat"><strong>Exercise 14b.3. A form with attribute selectors.</strong> Create <code>contact.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;form&gt;</code> with: an <code>&lt;input&gt;</code> <code>type="text"</code>, an <code>&lt;input&gt;</code> <code>type="email"</code>, an <code>&lt;input&gt;</code> <code>type="password"</code>, a <code>&lt;textarea&gt;</code>, an <code>&lt;input&gt;</code> <code>type="checkbox"</code> and a <code>&lt;button&gt;</code> <code>type="submit"</code>; every field with its <code>&lt;label&gt;</code>;</li><li>under the form, a <code>&lt;p&gt;</code> with two links: one to <code>https://developer.mozilla.org/</code> and one to <code>#top</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>input[type="text"], input[type="email"], input[type="password"], textarea</code>: <code>display: block</code>, width <code>100%</code>, <code>padding: 8px</code>, <code>margin-bottom: 14px</code>, <code>border: 1px solid #cccccc</code> and <code>border-radius: 6px</code>;</li><li><code>input:focus, textarea:focus</code>: <code>border-color: #6d5fb3</code> and background colour <code>#fbfaff</code>;</li><li><code>input[type="checkbox"]</code>: width <code>20px</code> and height <code>20px</code>;</li><li><code>button[type="submit"]</code>: background colour <code>#6d5fb3</code>, colour <code>white</code>, <code>border: none</code>, <code>padding: 10px 20px</code> and <code>border-radius: 6px</code>;</li><li><code>a[href^="https"]</code>: colour <code>#e07a5f</code> (only the external link changes).</li></ul></div>
+        <h3>Solució</h3>
+        <span class="fname">contact.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form action="#" method="post"&gt;
+        &lt;label for="name"&gt;Name&lt;/label&gt;
+        &lt;input type="text" id="name" name="name"&gt;
+
+        &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;input type="email" id="email" name="email"&gt;
+
+        &lt;label for="password"&gt;Password&lt;/label&gt;
+        &lt;input type="password" id="password" name="password"&gt;
+
+        &lt;label for="message"&gt;Message&lt;/label&gt;
+        &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
+
+        &lt;input type="checkbox" id="accept" name="accept"&gt;
+        &lt;label for="accept"&gt;I accept the rules&lt;/label&gt;
+
+        &lt;p&gt;&lt;button type="submit"&gt;Send&lt;/button&gt;&lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;p&gt;
+        &lt;a href="https://developer.mozilla.org/"&gt;MDN Web Docs&lt;/a&gt; ·
+        &lt;a href="#top"&gt;Back to top&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #6d5fb3;
+    background-color: #fbfaff;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+button[type="submit"] {
+    background-color: #6d5fb3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+a[href^="https"] {
+    color: #e07a5f;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14b.3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;style&gt;
+        input[type=&quot;text&quot;],
+        input[type=&quot;email&quot;],
+        input[type=&quot;password&quot;],
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 14px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #6d5fb3;
+            background-color: #fbfaff;
+        }
+
+        input[type=&quot;checkbox&quot;] {
+            width: 20px;
+            height: 20px;
+        }
+
+        button[type=&quot;submit&quot;] {
+            background-color: #6d5fb3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        a[href^=&quot;https&quot;] {
+            color: #e07a5f;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot;&gt;
+
+        &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+
+        &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+        &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot;&gt;
+
+        &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+        &lt;textarea id=&quot;message&quot; name=&quot;message&quot;&gt;&lt;/textarea&gt;
+
+        &lt;input type=&quot;checkbox&quot; id=&quot;accept&quot; name=&quot;accept&quot;&gt;
+        &lt;label for=&quot;accept&quot;&gt;I accept the rules&lt;/label&gt;
+
+        &lt;p&gt;&lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;&lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;p&gt;
+        &lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;MDN Web Docs&lt;/a&gt; ·
+        &lt;a href=&quot;#top&quot;&gt;Back to top&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e4">
+        <h2>Exercici 14b.4</h2>
+        <div class="enunciat"><strong>Exercise 14b.4. :not(), ::first-letter and the cascade.</strong> Create <code>magazine.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;nav&gt;</code> with five <code>&lt;a&gt;</code>; the second one has <code>class="active"</code>;</li><li>an <code>&lt;article&gt;</code> with a <code>&lt;p&gt;</code> with <code>class="intro"</code> and two more <code>&lt;p&gt;</code>;</li><li>an <code>&lt;h2&gt;</code> with <code>id="main-title"</code> <strong>and</strong> <code>class="title"</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>nav a:not(.active)</code>: colour <code>#888888</code>;</li><li><code>nav a.active</code>: colour <code>#6d5fb3</code> and bold;</li><li><code>.intro::first-letter</code>: size <code>3rem</code> and colour <code>#6d5fb3</code>;</li><li>in this order: <code>#main-title</code> in <code>red</code>, <code>.title</code> in <code>green</code> and <code>h2</code> in <code>blue</code>.</li></ul><p>Before you reload, write in an HTML comment which colour the <code>&lt;h2&gt;</code> will have. Then move the rules around: does the order change anything? Why?</p></div>
+        <h3>Solució</h3>
+        <span class="fname">magazine.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#" class="active"&gt;Reviews&lt;/a&gt;
+        &lt;a href="#"&gt;Games&lt;/a&gt;
+        &lt;a href="#"&gt;Music&lt;/a&gt;
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;article&gt;
+        &lt;p class="intro"&gt;Once upon a time, a group of students decided to make their own magazine.&lt;/p&gt;
+        &lt;p&gt;They wrote about games, music and films.&lt;/p&gt;
+        &lt;p&gt;Every month they published a new issue.&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;!-- Prediction: red. The id is the most specific selector,
+         so it wins wherever it is written. Changing the order
+         does not change anything: order only matters when the
+         selectors have the same specificity. --&gt;
+    &lt;h2 id="main-title" class="title"&gt;Issue 1&lt;/h2&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>nav a:not(.active) {
+    color: #888888;
+}
+
+nav a.active {
+    color: #6d5fb3;
+    font-weight: bold;
+}
+
+.intro::first-letter {
+    font-size: 3rem;
+    color: #6d5fb3;
+}
+
+#main-title {
+    color: red;
+}
+
+.title {
+    color: green;
+}
+
+h2 {
+    color: blue;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 14b.4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Advanced selectors&lt;/title&gt;
+    &lt;style&gt;
+        nav a:not(.active) {
+            color: #888888;
+        }
+
+        nav a.active {
+            color: #6d5fb3;
+            font-weight: bold;
+        }
+
+        .intro::first-letter {
+            font-size: 3rem;
+            color: #6d5fb3;
+        }
+
+        #main-title {
+            color: red;
+        }
+
+        .title {
+            color: green;
+        }
+
+        h2 {
+            color: blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;active&quot;&gt;Reviews&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Games&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Music&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;article&gt;
+        &lt;p class=&quot;intro&quot;&gt;Once upon a time, a group of students decided to make their own magazine.&lt;/p&gt;
+        &lt;p&gt;They wrote about games, music and films.&lt;/p&gt;
+        &lt;p&gt;Every month they published a new issue.&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;!-- Prediction: red. The id is the most specific selector,
+         so it wins wherever it is written. Changing the order
+         does not change anything: order only matters when the
+         selectors have the same specificity. --&gt;
+    &lt;h2 id=&quot;main-title&quot; class=&quot;title&quot;&gt;Issue 1&lt;/h2&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+</body>
+
+</html>

@@ -157,7 +157,7 @@
 <body>
     <h1>Solucions · Flexbox</h1>
     <p class="box">
-        <strong>Només per al professor.</strong> Lliçó: <a href="../12-flexbox.html">12-flexbox.html</a>. 
+        <strong>Només per al professor.</strong> Lliçó: <a href="../12-flexbox.html">12-flexbox.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
     </p>
     <ul class="indice">
         <li><a href="#e1">Exercici 12.1</a></li>
@@ -165,16 +165,15 @@
         <li><a href="#e3">Exercici 12.3</a></li>
         <li><a href="#e4">Exercici 12.4</a></li>
         <li><a href="#e5">Exercici 12.5</a></li>
-        <li><a href="#e6">Exercici 12.4</a></li>
-        <li><a href="#e7">Exercici 12.5</a></li>
-        <li><a href="#e8">Exercici 12.6</a></li>
+        <li><a href="#e6">Exercici 12.6</a></li>
+        <li><a href="#e7">Exercici 12.7</a></li>
     </ul>
 
     <section class="ex" id="e1">
         <h2>Exercici 12.1</h2>
-        <div class="enunciat"><strong>Exercise 12.1.</strong> Put three coloured boxes in a row, centred, with a 20px gap.</div>
+        <div class="enunciat"><strong>Exercise 12.1. Three ways to put boxes in a row.</strong> Create <code>rows.html</code>.<p><strong>HTML.</strong></p><ul><li>three <code>&lt;div&gt;</code> one after the other, with the classes <code>row</code>, <code>row between</code> and <code>row column</code>;</li><li>inside each one, three <code>&lt;div&gt;</code> with <code>class="box"</code> and the texts One, Two, Three.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.row</code>: <code>display: flex</code>, <code>justify-content: center</code>, <code>gap: 20px</code>, <code>padding: 20px</code>, <code>margin-bottom: 20px</code> and background colour <code>#eeeeee</code>;</li><li><code>.box</code>: width <code>100px</code>, height <code>100px</code>, background colour <code>#c4baeb</code> and <code>border-radius: 8px</code>;</li><li><code>.row.between</code>: <code>justify-content: space-between</code>;</li><li><code>.row.column</code>: <code>flex-direction: column</code> and <code>align-items: center</code>.</li></ul><p>Write a <code>&lt;p&gt;</code> under each row explaining what changes.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">rows.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
@@ -186,29 +185,53 @@
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="container"&gt;
-        &lt;div class="box"&gt;1&lt;/div&gt;
-        &lt;div class="box"&gt;2&lt;/div&gt;
-        &lt;div class="box"&gt;3&lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="box"&gt;One&lt;/div&gt;
+        &lt;div class="box"&gt;Two&lt;/div&gt;
+        &lt;div class="box"&gt;Three&lt;/div&gt;
     &lt;/div&gt;
+    &lt;p&gt;justify-content: center puts the three boxes together in the middle, with 20px between them.&lt;/p&gt;
+
+    &lt;div class="row between"&gt;
+        &lt;div class="box"&gt;One&lt;/div&gt;
+        &lt;div class="box"&gt;Two&lt;/div&gt;
+        &lt;div class="box"&gt;Three&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;space-between puts the first box on the left, the last one on the right, and the free space between them.&lt;/p&gt;
+
+    &lt;div class="row column"&gt;
+        &lt;div class="box"&gt;One&lt;/div&gt;
+        &lt;div class="box"&gt;Two&lt;/div&gt;
+        &lt;div class="box"&gt;Three&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;flex-direction: column puts the boxes one under the other; align-items: center centres them horizontally.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>.container {
+        <pre><code>.row {
     display: flex;
     justify-content: center;
     gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #eeeeee;
 }
 
 .box {
     width: 100px;
     height: 100px;
-    background-color: #2d5a85;
-    color: white;
-    font-size: 2rem;
-    text-align: center;
-    line-height: 100px;
+    background-color: #c4baeb;
+    border-radius: 8px;
+}
+
+.row.between {
+    justify-content: space-between;
+}
+
+.row.column {
+    flex-direction: column;
+    align-items: center;
 }</code></pre>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.1" srcdoc="&lt;!DOCTYPE html&gt;
@@ -218,29 +241,55 @@
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
     &lt;title&gt;Flexbox&lt;/title&gt;
-    &lt;style&gt;.container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
+    &lt;style&gt;
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #eeeeee;
+        }
 
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #2d5a85;
-    color: white;
-    font-size: 2rem;
-    text-align: center;
-    line-height: 100px;
-}&lt;/style&gt;
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #c4baeb;
+            border-radius: 8px;
+        }
+
+        .row.between {
+            justify-content: space-between;
+        }
+
+        .row.column {
+            flex-direction: column;
+            align-items: center;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
-        &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;
-        &lt;div class=&quot;box&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;One&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;Two&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;Three&lt;/div&gt;
     &lt;/div&gt;
+    &lt;p&gt;justify-content: center puts the three boxes together in the middle, with 20px between them.&lt;/p&gt;
+
+    &lt;div class=&quot;row between&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;One&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;Two&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;Three&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;space-between puts the first box on the left, the last one on the right, and the free space between them.&lt;/p&gt;
+
+    &lt;div class=&quot;row column&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;One&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;Two&lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;Three&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;flex-direction: column puts the boxes one under the other; align-items: center centres them horizontally.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -248,9 +297,9 @@
 
     <section class="ex" id="e2">
         <h2>Exercici 12.2</h2>
-        <div class="enunciat"><strong>Exercise 12.2.</strong> Repeat with <code>space-between</code>, then with <code>column</code>. Write down the difference.</div>
+        <div class="enunciat"><strong>Exercise 12.2. A box in the middle.</strong> Create <code>centre.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="screen"</code>;</li><li>inside, a <code>&lt;div&gt;</code> with <code>class="message"</code> with an <code>&lt;h2&gt;</code> (“Welcome!”) and a <code>&lt;p&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.screen</code>: height <code>400px</code>, <code>display: flex</code>, <code>justify-content: center</code>, <code>align-items: center</code> and background colour <code>#2b2b40</code>;</li><li><code>.message</code>: background colour <code>white</code>, <code>padding: 30px</code>, <code>border-radius: 12px</code> and centred text.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">centre.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
@@ -262,38 +311,30 @@
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="container"&gt;
-        &lt;div class="box"&gt;1&lt;/div&gt;
-        &lt;div class="box"&gt;2&lt;/div&gt;
-        &lt;div class="box"&gt;3&lt;/div&gt;
+    &lt;div class="screen"&gt;
+        &lt;div class="message"&gt;
+            &lt;h2&gt;Welcome!&lt;/h2&gt;
+            &lt;p&gt;This box is in the middle of the screen.&lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>/* a) space-between */
-.container {
+        <pre><code>.screen {
+    height: 400px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b2b40;
 }
 
-/* b) column: canvia "justify-content: space-between" per aquestes dues línies
-.container {
-    display: flex;
-    flex-direction: column;
-}
-*/
-
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #2d5a85;
-    color: white;
-    font-size: 2rem;
+.message {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
     text-align: center;
-    line-height: 100px;
 }</code></pre>
-        <div class="note"><strong>Resposta:</strong> amb <code>space-between</code> la primera caixa va a l'extrem esquerre, l'última a l'extrem dret i l'espai que sobra es reparteix entre elles. Amb <code>flex-direction: column</code> l'eix principal passa a ser vertical: les caixes s'apilen una damunt de l'altra (i <code>justify-content</code> passa a actuar en vertical).</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.2" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -302,35 +343,30 @@
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
     &lt;title&gt;Flexbox&lt;/title&gt;
-    &lt;style&gt;/* a) space-between */
-.container {
-    display: flex;
-    justify-content: space-between;
-}
+    &lt;style&gt;
+        .screen {
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2b2b40;
+        }
 
-/* b) column: canvia &quot;justify-content: space-between&quot; per aquestes dues línies
-.container {
-    display: flex;
-    flex-direction: column;
-}
-*/
-
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #2d5a85;
-    color: white;
-    font-size: 2rem;
-    text-align: center;
-    line-height: 100px;
-}&lt;/style&gt;
+        .message {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;box&quot;&gt;1&lt;/div&gt;
-        &lt;div class=&quot;box&quot;&gt;2&lt;/div&gt;
-        &lt;div class=&quot;box&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;screen&quot;&gt;
+        &lt;div class=&quot;message&quot;&gt;
+            &lt;h2&gt;Welcome!&lt;/h2&gt;
+            &lt;p&gt;This box is in the middle of the screen.&lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 
@@ -339,45 +375,65 @@
 
     <section class="ex" id="e3">
         <h2>Exercici 12.3</h2>
-        <div class="enunciat"><strong>Exercise 12.3.</strong> Centre a single box in the middle of a 400px tall container, both horizontally and vertically.</div>
+        <div class="enunciat"><strong>Exercise 12.3. A navigation bar.</strong> Create <code>navbar.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with <code>class="site-header"</code>;</li><li>inside: a <code>&lt;div&gt;</code> with <code>class="logo"</code> and your name, and a <code>&lt;nav&gt;</code> with a <code>&lt;ul&gt;</code> with <code>class="menu"</code>;</li><li>the <code>&lt;ul&gt;</code> has four <code>&lt;li&gt;</code>, each one with an <code>&lt;a&gt;</code>: Home, Projects, About, Contact.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.site-header</code>: <code>display: flex</code>, <code>justify-content: space-between</code>, <code>align-items: center</code>, <code>padding: 15px 30px</code> and background colour <code>#2b2b40</code>;</li><li><code>.logo</code>: colour <code>white</code>, bold and size <code>1.5rem</code>;</li><li><code>.menu</code>: <code>display: flex</code>, <code>gap: 20px</code>, <code>list-style: none</code>, <code>margin: 0</code> and <code>padding: 0</code>;</li><li><code>.menu a</code>: colour <code>white</code> and no underline;</li><li><code>.menu a:hover</code>: colour <code>#ffd166</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">navbar.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Centre&lt;/title&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="container"&gt;
-        &lt;div class="box"&gt;Centre&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;header class="site-header"&gt;
+        &lt;div class="logo"&gt;Marc Ferrer&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;ul class="menu"&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>.container {
+        <pre><code>.site-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 400px;
-    background-color: #eeeeee;
+    padding: 15px 30px;
+    background-color: #2b2b40;
 }
 
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #2d5a85;
+.logo {
     color: white;
-    font-size: 2rem;
-    text-align: center;
-    line-height: 100px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #ffd166;
 }</code></pre>
-        <div class="note"><code>justify-content</code> centra en l'eix principal (horitzontal) i <code>align-items</code> en l'eix transversal (vertical).</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.3" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -385,30 +441,53 @@
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Centre&lt;/title&gt;
-    &lt;style&gt;.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    background-color: #eeeeee;
-}
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #2b2b40;
+        }
 
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #2d5a85;
-    color: white;
-    font-size: 2rem;
-    text-align: center;
-    line-height: 100px;
-}&lt;/style&gt;
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            color: #ffd166;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;box&quot;&gt;Centre&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;div class=&quot;logo&quot;&gt;Marc Ferrer&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;ul class=&quot;menu&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -416,73 +495,77 @@
 
     <section class="ex" id="e4">
         <h2>Exercici 12.4</h2>
-        <div class="enunciat"><strong>Exercise 12.4.</strong> Build the nav bar of the example with your own colours.</div>
+        <div class="enunciat"><strong>Exercise 12.4. A row of cards that wraps.</strong> Create <code>cards.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;section&gt;</code> with <code>class="cards"</code>;</li><li>inside, six <code>&lt;article&gt;</code> with <code>class="card"</code>; each one with an <code>&lt;img&gt;</code>, an <code>&lt;h3&gt;</code> and a <code>&lt;p&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.cards</code>: <code>display: flex</code>, <code>flex-wrap: wrap</code> and <code>gap: 20px</code>;</li><li><code>.card</code>: <code>flex: 1 1 250px</code>, background colour <code>white</code>, <code>padding: 15px</code>, <code>border-radius: 10px</code> and <code>box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12)</code>;</li><li><code>.card img</code>: width <code>100%</code> and <code>border-radius: 8px</code>;</li><li><code>body</code>: background colour <code>#f4f1fb</code>.</li></ul><p>Make the window narrower: the cards go down to a second (and a third) line by themselves.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">cards.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Nav&lt;/title&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class="site-header"&gt;
-        &lt;a class="logo" href="index.html"&gt;Marc.dev&lt;/a&gt;
-        &lt;nav class="menu"&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
-            &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
+    &lt;section class="cards"&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/card1.jpg" alt="Photo 1"&gt;
+            &lt;h3&gt;Card 1&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/card2.jpg" alt="Photo 2"&gt;
+            &lt;h3&gt;Card 2&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/card3.jpg" alt="Photo 3"&gt;
+            &lt;h3&gt;Card 3&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/card4.jpg" alt="Photo 4"&gt;
+            &lt;h3&gt;Card 4&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/card5.jpg" alt="Photo 5"&gt;
+            &lt;h3&gt;Card 5&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card"&gt;
+            &lt;img src="images/card6.jpg" alt="Photo 6"&gt;
+            &lt;h3&gt;Card 6&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
+        <pre><code>body {
+    background-color: #f4f1fb;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.site-header {
+.cards {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    background-color: #1f3c5a;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.logo {
-    color: #f2a541;
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-decoration: none;
+.card {
+    flex: 1 1 250px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-.menu {
-    display: flex;
-    gap: 8px;
-}
-
-.menu a {
-    padding: 8px 14px;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.25s ease;
-}
-
-.menu a:hover {
-    background-color: #f2a541;
-    color: #1f3c5a;
+.card img {
+    width: 100%;
+    border-radius: 8px;
 }</code></pre>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.4" srcdoc="&lt;!DOCTYPE html&gt;
@@ -491,60 +574,66 @@ body {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Nav&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #f4f1fb;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    background-color: #1f3c5a;
-}
+        .card {
+            flex: 1 1 250px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
 
-.logo {
-    color: #f2a541;
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.menu {
-    display: flex;
-    gap: 8px;
-}
-
-.menu a {
-    padding: 8px 14px;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.25s ease;
-}
-
-.menu a:hover {
-    background-color: #f2a541;
-    color: #1f3c5a;
-}&lt;/style&gt;
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header class=&quot;site-header&quot;&gt;
-        &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Marc.dev&lt;/a&gt;
-        &lt;nav class=&quot;menu&quot;&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-            &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
+    &lt;section class=&quot;cards&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card1/800/500&quot; alt=&quot;Photo 1&quot;&gt;
+            &lt;h3&gt;Card 1&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card2/800/500&quot; alt=&quot;Photo 2&quot;&gt;
+            &lt;h3&gt;Card 2&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card3/800/500&quot; alt=&quot;Photo 3&quot;&gt;
+            &lt;h3&gt;Card 3&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card4/800/500&quot; alt=&quot;Photo 4&quot;&gt;
+            &lt;h3&gt;Card 4&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card5/800/500&quot; alt=&quot;Photo 5&quot;&gt;
+            &lt;h3&gt;Card 5&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/card6/800/500&quot; alt=&quot;Photo 6&quot;&gt;
+            &lt;h3&gt;Card 6&lt;/h3&gt;
+            &lt;p&gt;A short text about this card.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -552,89 +641,142 @@ body {
 
     <section class="ex" id="e5">
         <h2>Exercici 12.5</h2>
-        <div class="enunciat"><strong>Exercise 12.5.</strong> Build a row of 6 cards (image + title + text) that wraps to a second line when the window is narrow.</div>
+        <div class="enunciat"><strong>Exercise 12.5. A bar menu.</strong> Create <code>bar-menu.html</code>. The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A bar menu with three columns laid out with flexbox"><p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code> (the name of the bar);</li><li>a <code>&lt;section&gt;</code> with <code>class="menu"</code> and three <code>&lt;div&gt;</code> with <code>class="category"</code> (Starters, Main courses, Desserts), each one with an <code>&lt;h2&gt;</code> and a <code>&lt;ul&gt;</code>;</li><li>every <code>&lt;li&gt;</code> has two <code>&lt;span&gt;</code>: one with <code>class="dish"</code> and one with <code>class="price"</code>;</li><li>a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: font <code>Arial, sans-serif</code>, <code>margin: 0</code> and background colour <code>#f5f5f5</code>;</li><li><code>header</code>: background colour <code>#333333</code>, colour <code>white</code>, centred text and <code>padding: 20px</code>;</li><li><code>.menu</code>: <code>display: flex</code>, <code>max-width: 800px</code>, <code>margin: 20px auto</code>, <code>padding: 20px</code>, background colour <code>white</code> and <code>box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)</code>;</li><li><code>.category</code>: <code>flex: 1</code> and <code>padding: 20px</code>;</li><li><code>.category h2</code>: centred text and colour <code>#333333</code>;</li><li><code>.category ul</code>: <code>list-style: none</code> and <code>padding: 0</code>;</li><li><code>.category li</code>: <code>display: flex</code>, <code>justify-content: space-between</code> and <code>margin-bottom: 5px</code>;</li><li><code>.dish</code>: bold; <code>.price</code>: colour <code>#666666</code>;</li><li><code>footer</code>: centred text.</li></ul><p>Extra: put a <code>border-right: 1px solid lightgrey</code> only on the first two categories (give them one more class).</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">bar-menu.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Cards&lt;/title&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1&gt;Places&lt;/h1&gt;
-    &lt;div class="cards"&gt;
-        &lt;article class="card"&gt;
-            &lt;img src="images/c1.jpg" alt="Mountain at sunrise"&gt;
-            &lt;h2&gt;Mountain&lt;/h2&gt;
-            &lt;p&gt;Snow and silence at 2,000 metres.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;img src="images/c2.jpg" alt="Empty beach"&gt;
-            &lt;h2&gt;Beach&lt;/h2&gt;
-            &lt;p&gt;Turquoise water and no people.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;img src="images/c3.jpg" alt="City at night"&gt;
-            &lt;h2&gt;City&lt;/h2&gt;
-            &lt;p&gt;Lights, noise and good food.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;img src="images/c4.jpg" alt="Forest path"&gt;
-            &lt;h2&gt;Forest&lt;/h2&gt;
-            &lt;p&gt;A path under very tall trees.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;img src="images/c5.jpg" alt="Desert dunes"&gt;
-            &lt;h2&gt;Desert&lt;/h2&gt;
-            &lt;p&gt;Dunes as far as you can see.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class="card"&gt;
-            &lt;img src="images/c6.jpg" alt="Lake with mountains"&gt;
-            &lt;h2&gt;Lake&lt;/h2&gt;
-            &lt;p&gt;A mirror between two mountains.&lt;/p&gt;
-        &lt;/article&gt;
-    &lt;/div&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Menu of “Your Favourite Bar”&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;section class="menu"&gt;
+        &lt;div class="category with-line"&gt;
+            &lt;h2&gt;Starters&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Bruschetta&lt;/span&gt;
+                    &lt;span class="price"&gt;5.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Fried squid&lt;/span&gt;
+                    &lt;span class="price"&gt;7.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Caesar salad&lt;/span&gt;
+                    &lt;span class="price"&gt;4.99 €&lt;/span&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class="category with-line"&gt;
+            &lt;h2&gt;Main courses&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Grilled steak&lt;/span&gt;
+                    &lt;span class="price"&gt;12.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Pasta Alfredo&lt;/span&gt;
+                    &lt;span class="price"&gt;9.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Pizza Margherita&lt;/span&gt;
+                    &lt;span class="price"&gt;8.99 €&lt;/span&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class="category"&gt;
+            &lt;h2&gt;Desserts&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Tiramisu&lt;/span&gt;
+                    &lt;span class="price"&gt;6.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Crème caramel&lt;/span&gt;
+                    &lt;span class="price"&gt;4.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class="dish"&gt;Vanilla ice cream&lt;/span&gt;
+                    &lt;span class="price"&gt;3.99 €&lt;/span&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Your Favourite Bar&lt;/p&gt;
+    &lt;/footer&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>* {
-    box-sizing: border-box;
-}
-
-body {
+        <pre><code>body {
+    font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #333333;
+    color: white;
+    text-align: center;
     padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-.cards {
+.menu {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.card {
-    flex: 1 1 250px;
-    max-width: 320px;
-    padding: 12px;
-    border: 1px solid #dddddd;
-    border-radius: 12px;
+.category {
+    flex: 1;
+    padding: 20px;
 }
 
-.card img {
-    display: block;
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 8px;
+.category h2 {
+    text-align: center;
+    color: #333333;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.dish {
+    font-weight: bold;
+}
+
+.price {
+    color: #666666;
+}
+
+footer {
+    text-align: center;
+}
+
+/* Extra */
+.with-line {
+    border-right: 1px solid lightgrey;
 }</code></pre>
-        <div class="note"><code>flex-wrap: wrap</code> passa les targetes a la línia següent quan no caben; <code>flex: 1 1 250px</code> les fa créixer i encongir-se a partir d'una base de 250 px.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.5" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -642,98 +784,568 @@ body {
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Cards&lt;/title&gt;
-    &lt;style&gt;* {
-    box-sizing: border-box;
-}
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
 
-body {
-    margin: 0;
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        header {
+            background-color: #333333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+        .menu {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
 
-.card {
-    flex: 1 1 250px;
-    max-width: 320px;
-    padding: 12px;
-    border: 1px solid #dddddd;
-    border-radius: 12px;
-}
+        .category {
+            flex: 1;
+            padding: 20px;
+        }
 
-.card img {
-    display: block;
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 8px;
-}&lt;/style&gt;
+        .category h2 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .dish {
+            font-weight: bold;
+        }
+
+        .price {
+            color: #666666;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        /* Extra */
+        .with-line {
+            border-right: 1px solid lightgrey;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1&gt;Places&lt;/h1&gt;
-    &lt;div class=&quot;cards&quot;&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Mountain at sunrise&quot;&gt;
-            &lt;h2&gt;Mountain&lt;/h2&gt;
-            &lt;p&gt;Snow and silence at 2,000 metres.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Empty beach&quot;&gt;
-            &lt;h2&gt;Beach&lt;/h2&gt;
-            &lt;p&gt;Turquoise water and no people.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;City at night&quot;&gt;
-            &lt;h2&gt;City&lt;/h2&gt;
-            &lt;p&gt;Lights, noise and good food.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Forest path&quot;&gt;
-            &lt;h2&gt;Forest&lt;/h2&gt;
-            &lt;p&gt;A path under very tall trees.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Desert dunes&quot;&gt;
-            &lt;h2&gt;Desert&lt;/h2&gt;
-            &lt;p&gt;Dunes as far as you can see.&lt;/p&gt;
-        &lt;/article&gt;
-        &lt;article class=&quot;card&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Lake with mountains&quot;&gt;
-            &lt;h2&gt;Lake&lt;/h2&gt;
-            &lt;p&gt;A mirror between two mountains.&lt;/p&gt;
-        &lt;/article&gt;
-    &lt;/div&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Menu of “Your Favourite Bar”&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;section class=&quot;menu&quot;&gt;
+        &lt;div class=&quot;category with-line&quot;&gt;
+            &lt;h2&gt;Starters&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Bruschetta&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;5.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Fried squid&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;7.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Caesar salad&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;4.99 €&lt;/span&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;category with-line&quot;&gt;
+            &lt;h2&gt;Main courses&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Grilled steak&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;12.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Pasta Alfredo&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;9.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Pizza Margherita&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;8.99 €&lt;/span&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;category&quot;&gt;
+            &lt;h2&gt;Desserts&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Tiramisu&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;6.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Crème caramel&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;4.99 €&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;span class=&quot;dish&quot;&gt;Vanilla ice cream&lt;/span&gt;
+                    &lt;span class=&quot;price&quot;&gt;3.99 €&lt;/span&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Your Favourite Bar&lt;/p&gt;
+    &lt;/footer&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
     </section>
 
     <section class="ex" id="e6">
-        <h2>Exercici 12.4</h2>
-        <div class="enunciat"><strong>Exercise 12.4. Navigation menu.</strong> Reproduce the horizontal menu in the picture, with the hover effect.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A horizontal navigation menu with a hover effect on the links"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/12-flexbox/ex1.html">ex1.html</a></p></div>
+        <h2>Exercici 12.6</h2>
+        <div class="enunciat"><strong>Exercise 12.6. Countries I want to visit.</strong> Create <code>countries.html</code>. The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex2.png" alt="A row of country cards that wraps to more than one line"><p><strong>HTML.</strong></p><ul><li>an <code>&lt;h1&gt;</code> “Countries I want to visit”;</li><li>a <code>&lt;div&gt;</code> with <code>class="countries"</code> and three <code>&lt;div&gt;</code> with <code>class="country"</code>;</li><li>each country has: an <code>&lt;h2&gt;</code> with an id (<code>id="peru"</code>, <code>id="south-africa"</code>, <code>id="japan"</code>), an <code>&lt;img&gt;</code> with <code>class="photo"</code>, an <code>&lt;img&gt;</code> with <code>class="flag"</code> and an <code>&lt;a&gt;</code> with <code>class="button"</code> (“Visit”) to its Wikipedia page.</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: font <code>Arial, sans-serif</code> and background colour <code>bisque</code>;</li><li><code>h1</code>: centred, colour <code>coral</code> and <code>text-shadow: 0 0 3px black</code>;</li><li><code>#peru</code>: colour <code>#d20f22</code>; <code>#south-africa</code>: colour <code>#009947</code>; <code>#japan</code>: colour <code>#bc002d</code>;</li><li><code>.countries</code>: <code>display: flex</code>, <code>flex-wrap: wrap</code> and <code>gap: 20px</code>;</li><li><code>.country</code>: <code>flex: 1 1 300px</code> and centred text;</li><li><code>.photo</code>: width <code>100%</code>; <code>.flag</code>: width <code>60px</code> and <code>display: block</code> with <code>margin: 10px auto</code>;</li><li><code>.button</code>: <code>display: inline-block</code>, width <code>50%</code>, <code>padding: 10px</code>, background colour <code>coral</code>, colour <code>bisque</code>, bold, no underline and <code>border-radius: 20px</code>;</li><li><code>.button:hover</code>: background colour <code>bisque</code> and colour <code>coral</code>.</li></ul></div>
         <h3>Solució</h3>
-        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/12-flexbox/ex1_solved.html">exercises/12-flexbox/ex1_solved.html</a></p>
+        <span class="fname">countries.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Countries I want to visit&lt;/h1&gt;
+    &lt;div class="countries"&gt;
+        &lt;div class="country"&gt;
+            &lt;h2 id="peru"&gt;Peru&lt;/h2&gt;
+            &lt;img class="photo" src="images/peru.jpg" alt="Peru"&gt;
+            &lt;img class="flag" src="images/flag-peru.png" alt="Flag of Peru"&gt;
+            &lt;a class="button" href="https://en.wikipedia.org/wiki/Peru"&gt;Visit&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="country"&gt;
+            &lt;h2 id="south-africa"&gt;South Africa&lt;/h2&gt;
+            &lt;img class="photo" src="images/south-africa.jpg" alt="South Africa"&gt;
+            &lt;img class="flag" src="images/flag-south-africa.png" alt="Flag of South Africa"&gt;
+            &lt;a class="button" href="https://en.wikipedia.org/wiki/South_Africa"&gt;Visit&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="country"&gt;
+            &lt;h2 id="japan"&gt;Japan&lt;/h2&gt;
+            &lt;img class="photo" src="images/japan.jpg" alt="Japan"&gt;
+            &lt;img class="flag" src="images/flag-japan.png" alt="Flag of Japan"&gt;
+            &lt;a class="button" href="https://en.wikipedia.org/wiki/Japan"&gt;Visit&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>body {
+    font-family: Arial, sans-serif;
+    background-color: bisque;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+    text-shadow: 0 0 3px black;
+}
+
+#peru {
+    color: #d20f22;
+}
+
+#south-africa {
+    color: #009947;
+}
+
+#japan {
+    color: #bc002d;
+}
+
+.countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.country {
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.photo {
+    width: 100%;
+}
+
+.flag {
+    width: 60px;
+    display: block;
+    margin: 10px auto;
+}
+
+.button {
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+    background-color: coral;
+    color: bisque;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.button:hover {
+    background-color: bisque;
+    color: coral;
+}</code></pre>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: bisque;
+        }
+
+        h1 {
+            text-align: center;
+            color: coral;
+            text-shadow: 0 0 3px black;
+        }
+
+        #peru {
+            color: #d20f22;
+        }
+
+        #south-africa {
+            color: #009947;
+        }
+
+        #japan {
+            color: #bc002d;
+        }
+
+        .countries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .country {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .photo {
+            width: 100%;
+        }
+
+        .flag {
+            width: 60px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .button {
+            display: inline-block;
+            width: 50%;
+            padding: 10px;
+            background-color: coral;
+            color: bisque;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+
+        .button:hover {
+            background-color: bisque;
+            color: coral;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Countries I want to visit&lt;/h1&gt;
+    &lt;div class=&quot;countries&quot;&gt;
+        &lt;div class=&quot;country&quot;&gt;
+            &lt;h2 id=&quot;peru&quot;&gt;Peru&lt;/h2&gt;
+            &lt;img class=&quot;photo&quot; src=&quot;https://picsum.photos/seed/peru/800/500&quot; alt=&quot;Peru&quot;&gt;
+            &lt;img class=&quot;flag&quot; src=&quot;https://picsum.photos/seed/flag-peru/800/500&quot; alt=&quot;Flag of Peru&quot;&gt;
+            &lt;a class=&quot;button&quot; href=&quot;https://en.wikipedia.org/wiki/Peru&quot;&gt;Visit&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;country&quot;&gt;
+            &lt;h2 id=&quot;south-africa&quot;&gt;South Africa&lt;/h2&gt;
+            &lt;img class=&quot;photo&quot; src=&quot;https://picsum.photos/seed/south-africa/800/500&quot; alt=&quot;South Africa&quot;&gt;
+            &lt;img class=&quot;flag&quot; src=&quot;https://picsum.photos/seed/flag-south-africa/800/500&quot; alt=&quot;Flag of South Africa&quot;&gt;
+            &lt;a class=&quot;button&quot; href=&quot;https://en.wikipedia.org/wiki/South_Africa&quot;&gt;Visit&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;country&quot;&gt;
+            &lt;h2 id=&quot;japan&quot;&gt;Japan&lt;/h2&gt;
+            &lt;img class=&quot;photo&quot; src=&quot;https://picsum.photos/seed/japan/800/500&quot; alt=&quot;Japan&quot;&gt;
+            &lt;img class=&quot;flag&quot; src=&quot;https://picsum.photos/seed/flag-japan/800/500&quot; alt=&quot;Flag of Japan&quot;&gt;
+            &lt;a class=&quot;button&quot; href=&quot;https://en.wikipedia.org/wiki/Japan&quot;&gt;Visit&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
     </section>
 
     <section class="ex" id="e7">
-        <h2>Exercici 12.5</h2>
-        <div class="enunciat"><strong>Exercise 12.5. Countries.</strong> Reproduce the grid of country cards. They must wrap when the window gets narrow.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex2.png" alt="A grid of country cards that wraps to more than one line"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/12-flexbox/ex2.html">ex2.html</a></p></div>
+        <h2>Exercici 12.7</h2>
+        <div class="enunciat"><strong>Exercise 12.7. Band page.</strong> Create <code>band.html</code> about your favourite band. The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex3.png" alt="A music band page laid out with flexbox"><p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with <code>class="band-header"</code>: an <code>&lt;img&gt;</code> (the logo) and an <code>&lt;h1&gt;</code> with the name of the band;</li><li>a <code>&lt;nav&gt;</code> with <code>class="menu"</code> and two <code>&lt;a&gt;</code> with <code>class="menu-button"</code> that go to <code>#gallery</code> and <code>#songs</code>;</li><li>an <code>&lt;img&gt;</code> with <code>class="main-photo"</code>;</li><li>an <code>&lt;h2&gt;</code> with <code>id="gallery"</code> and a <code>&lt;div&gt;</code> with <code>class="gallery"</code> with seven <code>&lt;img&gt;</code>;</li><li>an <code>&lt;h2&gt;</code> with <code>id="songs"</code> and a <code>&lt;div&gt;</code> with <code>class="songs"</code> with two <code>&lt;div&gt;</code>; each one with an <code>&lt;h3&gt;</code>, an <code>&lt;iframe&gt;</code> of YouTube and a <code>&lt;pre&gt;</code> with the lyrics;</li><li>an <code>&lt;hr&gt;</code> between the sections.</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: background colour <code>#2a2a2a</code>, colour <code>white</code> and font <code>sans-serif</code>;</li><li><code>.band-header, h2</code>: centred text;</li><li><code>.menu</code>: <code>display: flex</code>, <code>justify-content: center</code> and <code>gap: 40px</code>;</li><li><code>.menu-button</code>: <code>padding: 10px</code>, <code>border: 1px solid white</code>, <code>border-radius: 5px</code>, colour <code>white</code>, no underline, bold and in capitals;</li><li><code>.menu-button:hover</code>: background colour <code>white</code> and colour <code>#2a2a2a</code>;</li><li><code>.main-photo</code>: width <code>50%</code>, <code>display: block</code> and <code>margin: 0 auto</code>;</li><li><code>.gallery</code>: <code>display: flex</code>, <code>flex-wrap: wrap</code> and <code>justify-content: space-around</code>;</li><li><code>.gallery img</code>: <code>max-width: 400px</code> and <code>margin: 20px</code>;</li><li><code>.songs</code>: <code>display: flex</code>, <code>justify-content: space-around</code> and centred text.</li></ul></div>
         <h3>Solució</h3>
-        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/12-flexbox/ex2_solved.html">exercises/12-flexbox/ex2_solved.html</a></p>
-    </section>
+        <span class="fname">band.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
 
-    <section class="ex" id="e8">
-        <h2>Exercici 12.6</h2>
-        <div class="enunciat"><strong>Exercise 12.6. Band page.</strong> Reproduce the page of the music group.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/12-flexbox/ex3.png" alt="A music band page laid out with flexbox"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/12-flexbox/ex3.html">ex3.html</a></p></div>
-        <h3>Solució</h3>
-        <p class="note">Solució ja feta en un fitxer: <a href="../exercises/12-flexbox/ex3_solved.html">exercises/12-flexbox/ex3_solved.html</a></p>
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class="band-header"&gt;
+        &lt;img src="images/logo.png" alt="Logo of Buhos"&gt;
+        &lt;h1&gt;Buhos&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav class="menu"&gt;
+        &lt;a class="menu-button" href="#gallery"&gt;Gallery&lt;/a&gt;
+        &lt;a class="menu-button" href="#songs"&gt;Best songs&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;hr&gt;
+    &lt;img class="main-photo" src="images/band.jpg" alt="The band"&gt;
+    &lt;hr&gt;
+
+    &lt;h2 id="gallery"&gt;Gallery&lt;/h2&gt;
+    &lt;div class="gallery"&gt;
+            &lt;img src="images/band1.jpg" alt="Photo 1 of the band"&gt;
+            &lt;img src="images/band2.jpg" alt="Photo 2 of the band"&gt;
+            &lt;img src="images/band3.jpg" alt="Photo 3 of the band"&gt;
+            &lt;img src="images/band4.jpg" alt="Photo 4 of the band"&gt;
+            &lt;img src="images/band5.jpg" alt="Photo 5 of the band"&gt;
+            &lt;img src="images/band6.jpg" alt="Photo 6 of the band"&gt;
+            &lt;img src="images/band7.jpg" alt="Photo 7 of the band"&gt;
+    &lt;/div&gt;
+
+    &lt;hr&gt;
+
+    &lt;h2 id="songs"&gt;Best songs&lt;/h2&gt;
+    &lt;div class="songs"&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Volcans&lt;/h3&gt;
+            &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/uKQlPO3wY0E" title="Volcans"&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Sense regles que ens prohibeixin ser qui som
+    Com si a la nit d'avui se'ns acabés el món
+            &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;T'he trobat a faltar&lt;/h3&gt;
+            &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/uKQlPO3wY0E" title="T'he trobat a faltar"&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Vull quedar i explicar-nos la vida
+    I tenir temps per riure i temps per plorar
+            &lt;/pre&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>body {
+    background-color: #2a2a2a;
+    color: white;
+    font-family: sans-serif;
+}
+
+.band-header, h2 {
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.menu-button {
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.menu-button:hover {
+    background-color: white;
+    color: #2a2a2a;
+}
+
+.main-photo {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gallery img {
+    max-width: 400px;
+    margin: 20px;
+}
+
+.songs {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}</code></pre>
+        <p class="note">Els vídeos de YouTube poden no carregar dins de la previsualització; en un fitxer obert al navegador sí.</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 12.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Flexbox&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #2a2a2a;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        .band-header, h2 {
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .menu-button {
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .menu-button:hover {
+            background-color: white;
+            color: #2a2a2a;
+        }
+
+        .main-photo {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .gallery img {
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .songs {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header class=&quot;band-header&quot;&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/logo/800/500&quot; alt=&quot;Logo of Buhos&quot;&gt;
+        &lt;h1&gt;Buhos&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav class=&quot;menu&quot;&gt;
+        &lt;a class=&quot;menu-button&quot; href=&quot;#gallery&quot;&gt;Gallery&lt;/a&gt;
+        &lt;a class=&quot;menu-button&quot; href=&quot;#songs&quot;&gt;Best songs&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;hr&gt;
+    &lt;img class=&quot;main-photo&quot; src=&quot;https://picsum.photos/seed/band/800/500&quot; alt=&quot;The band&quot;&gt;
+    &lt;hr&gt;
+
+    &lt;h2 id=&quot;gallery&quot;&gt;Gallery&lt;/h2&gt;
+    &lt;div class=&quot;gallery&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band1/800/500&quot; alt=&quot;Photo 1 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band2/800/500&quot; alt=&quot;Photo 2 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band3/800/500&quot; alt=&quot;Photo 3 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band4/800/500&quot; alt=&quot;Photo 4 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band5/800/500&quot; alt=&quot;Photo 5 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band6/800/500&quot; alt=&quot;Photo 6 of the band&quot;&gt;
+            &lt;img src=&quot;https://picsum.photos/seed/band7/800/500&quot; alt=&quot;Photo 7 of the band&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;hr&gt;
+
+    &lt;h2 id=&quot;songs&quot;&gt;Best songs&lt;/h2&gt;
+    &lt;div class=&quot;songs&quot;&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Volcans&lt;/h3&gt;
+            &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/uKQlPO3wY0E&quot; title=&quot;Volcans&quot;&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Sense regles que ens prohibeixin ser qui som
+    Com si a la nit d&#x27;avui se&#x27;ns acabés el món
+            &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;T&#x27;he trobat a faltar&lt;/h3&gt;
+            &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/uKQlPO3wY0E&quot; title=&quot;T&#x27;he trobat a faltar&quot;&gt;&lt;/iframe&gt;
+            &lt;pre&gt;
+    Vull quedar i explicar-nos la vida
+    I tenir temps per riure i temps per plorar
+            &lt;/pre&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
     </section>
 
 </body>

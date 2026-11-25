@@ -157,7 +157,7 @@
 <body>
     <h1>Solucions · Text, fonts and colours</h1>
     <p class="box">
-        <strong>Només per al professor.</strong> Lliçó: <a href="../10-text-colors.html">10-text-colors.html</a>. 
+        <strong>Només per al professor.</strong> Lliçó: <a href="../10-text-colors.html">10-text-colors.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
     </p>
     <ul class="indice">
         <li><a href="#e1">Exercici 10.1</a></li>
@@ -170,82 +170,117 @@
 
     <section class="ex" id="e1">
         <h2>Exercici 10.1</h2>
-        <div class="enunciat"><strong>Exercise 10.1.</strong> Choose a Google Font for your headings and a different one for the body text. Apply them.</div>
+        <div class="enunciat"><strong>Exercise 10.1. A poem with Google Fonts.</strong> Create <code>poem.html</code> and choose two fonts in Google Fonts: <strong>Pacifico</strong> for the title and <strong>Lora</strong> for the text. Copy their <code>&lt;link&gt;</code> into the <code>&lt;head&gt;</code>, before your <code>style.css</code>.<p><strong>HTML.</strong></p><ul><li>an <code>&lt;h1&gt;</code> with the title of the poem;</li><li>a <code>&lt;p&gt;</code> with <code>class="author"</code> with the name of the poet;</li><li>three <code>&lt;p&gt;</code> with <code>class="verse"</code>, one per stanza (use <code>&lt;br&gt;</code> to break the lines).</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: font <code>"Lora", serif</code>;</li><li><code>h1</code>: font <code>"Pacifico", cursive</code>, size <code>3rem</code>, centred (<code>text-align: center</code>) and colour <code>#6d5fb3</code>;</li><li><code>.author</code>: italic (<code>font-style: italic</code>), aligned to the right and colour <code>#888888</code>;</li><li><code>.verse</code>: size <code>1.1rem</code> and <code>line-height: 1.8</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">poem.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
     &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lora&amp;amp;family=Pacifico&amp;amp;display=swap" rel="stylesheet"&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;h1&gt;The Road Not Taken&lt;/h1&gt;
+    &lt;p class="author"&gt;Robert Frost&lt;/p&gt;
+    &lt;p class="verse"&gt;
+        Two roads diverged in a yellow wood,&lt;br&gt;
+        And sorry I could not travel both&lt;br&gt;
+        And be one traveler, long I stood
+    &lt;/p&gt;
+    &lt;p class="verse"&gt;
+        Then took the other, as just as fair,&lt;br&gt;
+        And having perhaps the better claim,&lt;br&gt;
+        Because it was grassy and wanted wear
+    &lt;/p&gt;
+    &lt;p class="verse"&gt;
+        I shall be telling this with a sigh&lt;br&gt;
+        Somewhere ages and ages hence:&lt;br&gt;
+        I took the one less traveled by
+    &lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>body {
-    font-family: 'Lato', Arial, sans-serif;
+    font-family: "Lora", serif;
 }
 
-h1,
-h2 {
-    font-family: 'Poppins', Arial, sans-serif;
+h1 {
+    font-family: "Pacifico", cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #6d5fb3;
+}
+
+.author {
+    font-style: italic;
+    text-align: right;
+    color: #888888;
+}
+
+.verse {
+    font-size: 1.1rem;
+    line-height: 1.8;
 }</code></pre>
-        <div class="note">Una font per als títols (Poppins) i una altra per al text (Lato). Totes dues porten una font genèrica de reserva (<code>sans-serif</code>).</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.1" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
     &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;style&gt;body {
-    font-family: &#x27;Lato&#x27;, Arial, sans-serif;
-}
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lora&amp;amp;family=Pacifico&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        body {
+            font-family: &quot;Lora&quot;, serif;
+        }
 
-h1,
-h2 {
-    font-family: &#x27;Poppins&#x27;, Arial, sans-serif;
-}&lt;/style&gt;
+        h1 {
+            font-family: &quot;Pacifico&quot;, cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #6d5fb3;
+        }
+
+        .author {
+            font-style: italic;
+            text-align: right;
+            color: #888888;
+        }
+
+        .verse {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;h1&gt;The Road Not Taken&lt;/h1&gt;
+    &lt;p class=&quot;author&quot;&gt;Robert Frost&lt;/p&gt;
+    &lt;p class=&quot;verse&quot;&gt;
+        Two roads diverged in a yellow wood,&lt;br&gt;
+        And sorry I could not travel both&lt;br&gt;
+        And be one traveler, long I stood
+    &lt;/p&gt;
+    &lt;p class=&quot;verse&quot;&gt;
+        Then took the other, as just as fair,&lt;br&gt;
+        And having perhaps the better claim,&lt;br&gt;
+        Because it was grassy and wanted wear
+    &lt;/p&gt;
+    &lt;p class=&quot;verse&quot;&gt;
+        I shall be telling this with a sigh&lt;br&gt;
+        Somewhere ages and ages hence:&lt;br&gt;
+        I took the one less traveled by
+    &lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -253,86 +288,104 @@ h2 {
 
     <section class="ex" id="e2">
         <h2>Exercici 10.2</h2>
-        <div class="enunciat"><strong>Exercise 10.2.</strong> Set the body font size to <code>1rem</code> and <code>line-height: 1.6</code>. Compare before and after.</div>
+        <div class="enunciat"><strong>Exercise 10.2. A newspaper article.</strong> Create <code>news.html</code>.<p><strong>HTML.</strong></p><ul><li>an <code>&lt;article&gt;</code> with an <code>&lt;h1&gt;</code> (the headline);</li><li>a <code>&lt;p&gt;</code> with <code>class="subtitle"</code>;</li><li>a <code>&lt;p&gt;</code> with <code>class="date"</code> (for example “25 November 2026”);</li><li>three <code>&lt;p&gt;</code> with the text of the news.</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: size <code>1rem</code> and <code>line-height: 1.6</code>;</li><li><code>h1</code>: size <code>2.5rem</code> and <code>font-weight: 800</code>;</li><li><code>.subtitle</code>: size <code>1.25rem</code> and <code>font-weight: 300</code>;</li><li><code>.date</code>: in capitals (<code>text-transform: uppercase</code>), <code>letter-spacing: 2px</code>, size <code>0.8rem</code> and colour <code>#888888</code>;</li><li><code>article p</code>: justified (<code>text-align: justify</code>).</li></ul><p>Change the <code>font-size</code> of <code>body</code> to <code>1.25rem</code>: everything with <code>rem</code> grows at the same time.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">news.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Students build their own websites&lt;/h1&gt;
+        &lt;p class="subtitle"&gt;The first-year class publishes twenty personal pages&lt;/p&gt;
+        &lt;p class="date"&gt;25 November 2026&lt;/p&gt;
+        &lt;p&gt;After eight weeks of HTML and CSS, the students of the first year have published their own websites. Every page has a menu, a gallery and a contact form.&lt;/p&gt;
+        &lt;p&gt;The teacher says that the most difficult part was choosing the colours. Some students changed their colour scheme five times before they were happy.&lt;/p&gt;
+        &lt;p&gt;Next term they will add JavaScript to make the pages interactive.&lt;/p&gt;
+    &lt;/article&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>body {
-    font-family: 'Lato', Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
 }
 
-h1,
-h2 {
-    font-family: 'Poppins', Arial, sans-serif;
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.date {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: #888888;
+}
+
+article p {
+    text-align: justify;
 }</code></pre>
-        <div class="note"><strong>Resposta:</strong> amb <code>line-height: 1.6</code> les línies tenen més aire entre elles i es llig millor; abans estaven més juntes.</div>
+        <p class="note">El subtítol i la data també són <code>p</code> dins d'<code>article</code>: reben el justificat, però conserven la seua mida i color perquè ningú més els canvia.</p>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.2" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;style&gt;body {
-    font-family: &#x27;Lato&#x27;, Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
-h1,
-h2 {
-    font-family: &#x27;Poppins&#x27;, Arial, sans-serif;
-}&lt;/style&gt;
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .date {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: #888888;
+        }
+
+        article p {
+            text-align: justify;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Students build their own websites&lt;/h1&gt;
+        &lt;p class=&quot;subtitle&quot;&gt;The first-year class publishes twenty personal pages&lt;/p&gt;
+        &lt;p class=&quot;date&quot;&gt;25 November 2026&lt;/p&gt;
+        &lt;p&gt;After eight weeks of HTML and CSS, the students of the first year have published their own websites. Every page has a menu, a gallery and a contact form.&lt;/p&gt;
+        &lt;p&gt;The teacher says that the most difficult part was choosing the colours. Some students changed their colour scheme five times before they were happy.&lt;/p&gt;
+        &lt;p&gt;Next term they will add JavaScript to make the pages interactive.&lt;/p&gt;
+    &lt;/article&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -340,34 +393,30 @@ h2 {
 
     <section class="ex" id="e3">
         <h2>Exercici 10.3</h2>
-        <div class="enunciat"><strong>Exercise 10.3.</strong> Make the links of your <code>nav</code> white, with no underline, and underlined on hover.</div>
+        <div class="enunciat"><strong>Exercise 10.3. Navigation links.</strong> Create <code>links.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with a <code>&lt;nav&gt;</code> inside and four <code>&lt;a&gt;</code>: Home, Gallery, Blog, Contact;</li><li>a <code>&lt;main&gt;</code> with a <code>&lt;p&gt;</code> that contains a normal link <code>&lt;a&gt;</code> to any website.</li></ul><p><strong>CSS.</strong></p><ul><li><code>header</code>: background colour <code>#222222</code> and <code>padding: 20px</code>;</li><li><code>nav a</code>: colour <code>white</code>, <strong>no underline</strong>, in capitals and <code>margin-right: 20px</code>;</li><li><code>nav a:hover</code>: <strong>underlined</strong> (<code>text-decoration: underline</code>) and colour <code>#ffd166</code>;</li><li><code>main a</code>: colour <code>#6d5fb3</code>, bold.</li></ul><p>Check that the link of the <code>&lt;main&gt;</code> is still underlined: only the links of the <code>&lt;nav&gt;</code> lose the underline.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">links.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
     &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
         &lt;nav&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
+            &lt;a href="#"&gt;Home&lt;/a&gt;
+            &lt;a href="#"&gt;Gallery&lt;/a&gt;
+            &lt;a href="#"&gt;Blog&lt;/a&gt;
+            &lt;a href="#"&gt;Contact&lt;/a&gt;
         &lt;/nav&gt;
     &lt;/header&gt;
     &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
+        &lt;p&gt;Learn more about CSS on &lt;a href="https://developer.mozilla.org/"&gt;MDN Web Docs&lt;/a&gt;.&lt;/p&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
@@ -378,61 +427,66 @@ h2 {
     padding: 20px;
 }
 
-h1 {
-    color: white;
-}
-
 nav a {
     color: white;
     text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 20px;
 }
 
 nav a:hover {
     text-decoration: underline;
+    color: #ffd166;
+}
+
+main a {
+    color: #6d5fb3;
+    font-weight: bold;
 }</code></pre>
-        <div class="note"><code>text-decoration: none</code> lleva el subratllat normal i <code>:hover</code> el torna a posar quan el ratolí està damunt.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.3" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;style&gt;header {
-    background-color: #222222;
-    padding: 20px;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
+    &lt;style&gt;
+        header {
+            background-color: #222222;
+            padding: 20px;
+        }
 
-h1 {
-    color: white;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-right: 20px;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-}
+        nav a:hover {
+            text-decoration: underline;
+            color: #ffd166;
+        }
 
-nav a:hover {
-    text-decoration: underline;
-}&lt;/style&gt;
+        main a {
+            color: #6d5fb3;
+            font-weight: bold;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
     &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
         &lt;nav&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Gallery&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
         &lt;/nav&gt;
     &lt;/header&gt;
     &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
+        &lt;p&gt;Learn more about CSS on &lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;MDN Web Docs&lt;/a&gt;.&lt;/p&gt;
     &lt;/main&gt;
 &lt;/body&gt;
 
@@ -441,92 +495,91 @@ nav a:hover {
 
     <section class="ex" id="e4">
         <h2>Exercici 10.4</h2>
-        <div class="enunciat"><strong>Exercise 10.4.</strong> Put a background image in your <code>header</code>, with <code>cover</code>, and white text on top. Make sure you can still read the text.</div>
+        <div class="enunciat"><strong>Exercise 10.4. A header with a background image.</strong> Create <code>hero.html</code> and put a photo called <code>hero.jpg</code> in a folder <code>images</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with <code>class="hero"</code>, with an <code>&lt;h1&gt;</code> and a <code>&lt;p&gt;</code> inside;</li><li>a <code>&lt;section&gt;</code> with <code>class="highlight"</code> and a <code>&lt;p&gt;</code> inside.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.hero</code>: background image <code>url("../images/hero.jpg")</code>, <code>background-size: cover</code>, <code>background-position: center</code>, <code>padding: 80px 20px</code>, centred text and colour <code>white</code>;</li><li><code>.hero h1, .hero p</code>: <code>text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7)</code>, so you can read the text on any photo;</li><li><code>body</code>: background colour <code>#fafafa</code>;</li><li><code>.highlight</code>: background colour <code>rgba(109, 95, 179, 0.15)</code>.</li></ul><p>The path has <code>../</code> because the CSS file is inside the <code>css</code> folder: first it goes up one folder and then it goes into <code>images</code>.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">hero.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap" rel="stylesheet"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href="index.html"&gt;Home&lt;/a&gt;
-            &lt;a href="music.html"&gt;Music&lt;/a&gt;
-            &lt;a href="films.html"&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
+    &lt;header class="hero"&gt;
+        &lt;h1&gt;Welcome to Betxí&lt;/h1&gt;
+        &lt;p&gt;A small town with a big castle&lt;/p&gt;
     &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;section class="highlight"&gt;
+        &lt;p&gt;The Palace of Betxí is a Renaissance castle from the 16th century.&lt;/p&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>header {
+        <pre><code>body {
+    background-color: #fafafa;
+}
+
+.hero {
     background-image: url("../images/hero.jpg");
     background-size: cover;
     background-position: center;
-    color: white;
+    padding: 80px 20px;
     text-align: center;
-    padding: 60px 20px;
+    color: white;
+}
+
+.hero h1, .hero p {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-nav a {
-    color: white;
+.highlight {
+    background-color: rgba(109, 95, 179, 0.15);
 }</code></pre>
-        <div class="note">La imatge <code>images/hero.jpg</code> ha d'existir. L'ombra del text (<code>text-shadow</code>) és el truc perquè el text blanc es lligca sobre qualsevol foto.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.4" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
-    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato&amp;amp;family=Poppins:wght@600&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;style&gt;header {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=);
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #fafafa;
+        }
 
-nav a {
-    color: white;
-}&lt;/style&gt;
+        .hero {
+            background-image: url(&quot;https://picsum.photos/seed/hero/800/500&quot;);
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1, .hero p {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .highlight {
+            background-color: rgba(109, 95, 179, 0.15);
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Marc Ferrer&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-            &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-            &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-        &lt;/nav&gt;
+    &lt;header class=&quot;hero&quot;&gt;
+        &lt;h1&gt;Welcome to Betxí&lt;/h1&gt;
+        &lt;p&gt;A small town with a big castle&lt;/p&gt;
     &lt;/header&gt;
-    &lt;main&gt;
-        &lt;h2&gt;About me&lt;/h2&gt;
-        &lt;p&gt;I like rock music, above all bands with two guitars. My favourite film is Interstellar.
-            I have seen it four times and I always see something new.&lt;/p&gt;
-    &lt;/main&gt;
+    &lt;section class=&quot;highlight&quot;&gt;
+        &lt;p&gt;The Palace of Betxí is a Renaissance castle from the 16th century.&lt;/p&gt;
+    &lt;/section&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -534,45 +587,42 @@ nav a {
 
     <section class="ex" id="e5">
         <h2>Exercici 10.5</h2>
-        <div class="enunciat"><strong>Exercise 10.5. Personal page.</strong> Reproduce the page in the picture: fonts, sizes, colours and text alignment. The HTML is given.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/10-text-colors/ex1.png" alt="A personal page styled with a chosen font, colours and text alignment"><p class="starter">Fitxer de partida: <a href="../../../../../unitats/programacio/web/html-css/exercises/10-text-colors/ex1.html">ex1.html</a></p></div>
+        <div class="enunciat"><strong>Exercise 10.5. Personal page.</strong> Create <code>personal.html</code>. The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/10-text-colors/ex1.png" alt="A personal page styled with a chosen font, colours and text alignment"><p><strong>HTML.</strong></p><ul><li>a <code>&lt;div&gt;</code> with <code>class="profile"</code> that contains everything;</li><li>inside, an <code>&lt;img&gt;</code> with <code>class="photo"</code> (a photo of your hobby) and a <code>&lt;div&gt;</code> with <code>class="info"</code>;</li><li>inside <code>.info</code>: an <code>&lt;h1&gt;</code> with your name, a <code>&lt;p&gt;</code> with your birthday and age, an <code>&lt;h2&gt;</code> “Interests”, a <code>&lt;table&gt;</code> with three <code>&lt;tr&gt;</code> and two <code>&lt;td&gt;</code> in each row (six interests), and two <code>&lt;a&gt;</code> with <code>class="button"</code> (Instagram and Twitter).</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: font <code>Arial, sans-serif</code> and background colour <code>#f0f0f0</code>;</li><li><code>.profile</code>: background colour <code>#ef6b5c</code>, <code>padding: 20px</code>, <code>margin: 50px auto</code>, width <code>860px</code> and <code>border-radius: 6px</code>;</li><li><code>.photo</code>: width <code>400px</code>;</li><li><code>.info</code>: centred text;</li><li><code>h1</code>: size <code>2rem</code>; <code>h2</code>: size <code>1.5rem</code>;</li><li><code>table</code>: width <code>100%</code>;</li><li><code>.button</code>: background colour <code>#f6f1bd</code>, colour <code>black</code>, <strong>no underline</strong>, in capitals and <code>padding: 18px 20px</code>;</li><li><code>.button:hover</code>: background colour <code>white</code>.</li></ul><p>The photo and the information are not side by side yet: you will put them in a row with flexbox in lesson 12. For now, one under the other is fine.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">personal.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ca"&gt;
+&lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;Pàgina personal&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class="card"&gt;
-        &lt;div class="photo"&gt;
-            &lt;img src="images/bike.jpg" alt="Un ciclista amb una bicicleta de muntanya entre arbres" width="400"&gt;
-        &lt;/div&gt;
+    &lt;div class="profile"&gt;
+        &lt;img class="photo" src="images/bike.jpg" alt="Riding a bike in the forest"&gt;
         &lt;div class="info"&gt;
             &lt;h1&gt;Pere Franch&lt;/h1&gt;
-            &lt;p&gt;Vaig nàixer el 3 de Setembre de 2006 i tinc 17 anys&lt;/p&gt;
-            &lt;h2&gt;Interessos&lt;/h2&gt;
+            &lt;p&gt;I was born on 3 September 2006 and I am 17 years old&lt;/p&gt;
+            &lt;h2&gt;Interests&lt;/h2&gt;
             &lt;table&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;Bicicleta&lt;/td&gt;
-                    &lt;td&gt;Motos&lt;/td&gt;
+                    &lt;td&gt;Cycling&lt;/td&gt;
+                    &lt;td&gt;Motorbikes&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;Llegir&lt;/td&gt;
-                    &lt;td&gt;Videojocs&lt;/td&gt;
+                    &lt;td&gt;Reading&lt;/td&gt;
+                    &lt;td&gt;Video games&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;Eixir amb els amics&lt;/td&gt;
-                    &lt;td&gt;Música&lt;/td&gt;
+                    &lt;td&gt;Going out with friends&lt;/td&gt;
+                    &lt;td&gt;Music&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/table&gt;
-            &lt;p&gt;
-                &lt;a class="button" href="#"&gt;INSTAGRAM&lt;/a&gt;
-                &lt;a class="button" href="#"&gt;TWITTER&lt;/a&gt;
-            &lt;/p&gt;
+            &lt;a class="button" href="https://www.instagram.com/"&gt;Instagram&lt;/a&gt;
+            &lt;a class="button" href="https://twitter.com/"&gt;Twitter&lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
@@ -580,146 +630,128 @@ nav a {
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>body {
-    margin: 0;
-    padding: 40px 0;
-    background-color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-.card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    width: 860px;
-    max-width: 90%;
-    margin: 0 auto;
+.profile {
+    background-color: #ef6b5c;
     padding: 20px;
-    background-color: #ed695b;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    margin: 50px auto;
+    width: 860px;
+    border-radius: 6px;
 }
 
-.photo img {
-    display: block;
+.photo {
     width: 400px;
-    max-width: 100%;
 }
 
 .info {
-    flex: 1;
     text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
 }
 
 table {
     width: 100%;
-    margin-bottom: 20px;
-}
-
-td {
-    padding: 4px;
 }
 
 .button {
-    display: inline-block;
-    padding: 14px 20px;
-    background-color: #f5f0be;
-    color: #111111;
+    background-color: #f6f1bd;
+    color: black;
     text-decoration: none;
-    border-radius: 4px;
+    text-transform: uppercase;
+    padding: 18px 20px;
 }
 
 .button:hover {
-    background-color: #ffffff;
+    background-color: white;
 }</code></pre>
-        <div class="note">Estructura: un <code>div.card</code> principal (amplària i marges) amb dos fills: la foto a l'esquerra i la informació a la dreta, col·locats amb flexbox. La taula ocupa tota l'amplada (<code>width: 100%</code>) i els botons canvien de color amb <code>:hover</code>.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.5" srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;ca&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;Pàgina personal&lt;/title&gt;
-    &lt;style&gt;body {
-    margin: 0;
-    padding: 40px 0;
-    background-color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
 
-.card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    width: 860px;
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ed695b;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
+        .profile {
+            background-color: #ef6b5c;
+            padding: 20px;
+            margin: 50px auto;
+            width: 860px;
+            border-radius: 6px;
+        }
 
-.photo img {
-    display: block;
-    width: 400px;
-    max-width: 100%;
-}
+        .photo {
+            width: 400px;
+        }
 
-.info {
-    flex: 1;
-    text-align: center;
-}
+        .info {
+            text-align: center;
+        }
 
-table {
-    width: 100%;
-    margin-bottom: 20px;
-}
+        h1 {
+            font-size: 2rem;
+        }
 
-td {
-    padding: 4px;
-}
+        h2 {
+            font-size: 1.5rem;
+        }
 
-.button {
-    display: inline-block;
-    padding: 14px 20px;
-    background-color: #f5f0be;
-    color: #111111;
-    text-decoration: none;
-    border-radius: 4px;
-}
+        table {
+            width: 100%;
+        }
 
-.button:hover {
-    background-color: #ffffff;
-}&lt;/style&gt;
+        .button {
+            background-color: #f6f1bd;
+            color: black;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 18px 20px;
+        }
+
+        .button:hover {
+            background-color: white;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;card&quot;&gt;
-        &lt;div class=&quot;photo&quot;&gt;
-            &lt;img src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjYwIiB2aWV3Qm94PSIwIDAgNDAwIDI2MCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNjZmQ4ZTMiLz48cGF0aCBkPSJNMCAyMDAgTDExMCAxMTAgTDE5MCAxODAgTDI3MCAxMDAgTDQwMCAyMTAgVjI2MCBIMFoiIGZpbGw9IiM4ZmEzYjgiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmMmMzNmIiLz48L3N2Zz4=&quot; alt=&quot;Un ciclista amb una bicicleta de muntanya entre arbres&quot; width=&quot;400&quot;&gt;
-        &lt;/div&gt;
+    &lt;div class=&quot;profile&quot;&gt;
+        &lt;img class=&quot;photo&quot; src=&quot;https://picsum.photos/seed/bike/800/500&quot; alt=&quot;Riding a bike in the forest&quot;&gt;
         &lt;div class=&quot;info&quot;&gt;
             &lt;h1&gt;Pere Franch&lt;/h1&gt;
-            &lt;p&gt;Vaig nàixer el 3 de Setembre de 2006 i tinc 17 anys&lt;/p&gt;
-            &lt;h2&gt;Interessos&lt;/h2&gt;
+            &lt;p&gt;I was born on 3 September 2006 and I am 17 years old&lt;/p&gt;
+            &lt;h2&gt;Interests&lt;/h2&gt;
             &lt;table&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;Bicicleta&lt;/td&gt;
-                    &lt;td&gt;Motos&lt;/td&gt;
+                    &lt;td&gt;Cycling&lt;/td&gt;
+                    &lt;td&gt;Motorbikes&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;Llegir&lt;/td&gt;
-                    &lt;td&gt;Videojocs&lt;/td&gt;
+                    &lt;td&gt;Reading&lt;/td&gt;
+                    &lt;td&gt;Video games&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;Eixir amb els amics&lt;/td&gt;
-                    &lt;td&gt;Música&lt;/td&gt;
+                    &lt;td&gt;Going out with friends&lt;/td&gt;
+                    &lt;td&gt;Music&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/table&gt;
-            &lt;p&gt;
-                &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;INSTAGRAM&lt;/a&gt;
-                &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;TWITTER&lt;/a&gt;
-            &lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;https://www.instagram.com/&quot;&gt;Instagram&lt;/a&gt;
+            &lt;a class=&quot;button&quot; href=&quot;https://twitter.com/&quot;&gt;Twitter&lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/body&gt;
@@ -729,160 +761,212 @@ td {
 
     <section class="ex" id="e6">
         <h2>Exercici 10.6</h2>
-        <div class="enunciat"><strong>Exercise 10.6. Sign-up form.</strong> Style the form you built in lesson 7: fields, labels, button, focus state.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/10-text-colors/ex2.png" alt="A sign-up form styled with colours, spacing and a focus state"></div>
+        <div class="enunciat"><strong>Exercise 10.6. Sign-up form.</strong> Style the sign-up form of exercise 7.4 (<code>signup.html</code>). The picture is the model.<img class="shot" src="../../../../../assets/unitats/programacio/web/html-css/10-text-colors/ex2.png" alt="A sign-up form styled with colours, spacing and a focus state"><p><strong>HTML.</strong></p><ul><li>the form of exercise 7.4, inside a <code>&lt;div&gt;</code> with <code>class="box"</code>;</li><li>an <code>&lt;h1&gt;</code> “Computerize” and an <code>&lt;h2&gt;</code> “Sign up” at the top of the box;</li><li>every <code>&lt;label&gt;</code> with its <code>for</code> and every <code>&lt;input&gt;</code> with its <code>id</code> and its <code>type</code> (<code>text</code>, <code>date</code>, <code>email</code>, <code>password</code>, <code>number</code>, <code>radio</code>, <code>checkbox</code>) and a <code>&lt;button&gt;</code> <code>type="submit"</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>body</code>: background colour <code>#ff7f50</code> and font <code>"Noto Sans", sans-serif</code> (Google Fonts);</li><li><code>.box</code>: background colour <code>white</code>, width <code>500px</code>, <code>margin: 40px auto</code>, <code>padding: 20px</code>, <code>border-radius: 6px</code> and centred text;</li><li><code>h1, h2, label</code>: colour <code>#ff7f50</code>; <code>h1, h2</code>: in capitals;</li><li><code>label</code>: <code>display: block</code>;</li><li><code>input[type="text"], input[type="date"], input[type="email"], input[type="password"], input[type="number"]</code>: width <code>300px</code>, <code>border: 1px solid #ff7f50</code> and <code>border-radius: 3px</code>;</li><li><code>input:focus</code>: <code>outline: 2px solid #ff7f50</code>;</li><li><code>button</code>: width <code>300px</code>, background colour <code>#ff7f50</code>, colour <code>white</code>, <code>border: none</code>, size <code>1.2rem</code> and in capitals.</li></ul><p>The attribute selectors (<code>input[type="text"]</code>) are explained in Advanced selectors; for now, copy them as they are.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">signup.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;Sign up&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans&amp;amp;display=swap" rel="stylesheet"&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;form action="#" method="post"&gt;
-        &lt;h1&gt;Sign up&lt;/h1&gt;
-        &lt;p&gt;
-            &lt;label for="name"&gt;Name&lt;/label&gt;
-            &lt;input type="text" id="name" name="name" required&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;label for="mail"&gt;Email&lt;/label&gt;
-            &lt;input type="email" id="mail" name="mail" required&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;label for="pass"&gt;Password&lt;/label&gt;
-            &lt;input type="password" id="pass" name="pass" required minlength="8"&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;button type="submit"&gt;Send&lt;/button&gt;
-        &lt;/p&gt;
-    &lt;/form&gt;
+    &lt;div class="box"&gt;
+        &lt;h1&gt;Computerize&lt;/h1&gt;
+        &lt;h2&gt;Sign up&lt;/h2&gt;
+        &lt;form action="#" method="post"&gt;
+            &lt;label for="name"&gt;Name:&lt;/label&gt;
+            &lt;input type="text" id="name" name="name"&gt;
+
+            &lt;label for="surname"&gt;Surname:&lt;/label&gt;
+            &lt;input type="text" id="surname" name="surname"&gt;
+
+            &lt;label for="birthday"&gt;Birthday:&lt;/label&gt;
+            &lt;input type="date" id="birthday" name="birthday"&gt;
+
+            &lt;label for="email"&gt;Email:&lt;/label&gt;
+            &lt;input type="email" id="email" name="email"&gt;
+
+            &lt;label for="password"&gt;Password:&lt;/label&gt;
+            &lt;input type="password" id="password" name="password"&gt;
+
+            &lt;label for="devices"&gt;Number of computing devices:&lt;/label&gt;
+            &lt;input type="number" id="devices" name="devices" min="0"&gt;
+
+            &lt;p&gt;
+                &lt;label&gt;Gender:&lt;/label&gt;
+                Male: &lt;input type="radio" name="gender" value="male"&gt;
+                Female: &lt;input type="radio" name="gender" value="female"&gt;
+                Other: &lt;input type="radio" name="gender" value="other"&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Do you want to receive the newsletter?
+                &lt;input type="checkbox" id="newsletter" name="newsletter"&gt;
+            &lt;/p&gt;
+
+            &lt;button type="submit"&gt;Sign up&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
         <pre><code>body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f8;
+    background-color: #ff7f50;
+    font-family: "Noto Sans", sans-serif;
 }
 
-form {
-    max-width: 360px;
-    margin: 40px auto;
-    padding: 24px;
+.box {
     background-color: white;
-    border-radius: 8px;
+    width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+h1, h2, label {
+    color: #ff7f50;
+}
+
+h1, h2 {
+    text-transform: uppercase;
 }
 
 label {
     display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #bbbbbb;
-    border-radius: 4px;
-    font-size: 1rem;
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 300px;
+    border: 1px solid #ff7f50;
+    border-radius: 3px;
 }
 
 input:focus {
-    border-color: #6d5fb3;
-    outline: 2px solid #6d5fb3;
+    outline: 2px solid #ff7f50;
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #6d5fb3;
+    width: 300px;
+    background-color: #ff7f50;
     color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #53469a;
+    border: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }</code></pre>
-        <div class="note">L'estat <code>:focus</code> marca el camp actiu amb un color diferent i una línia al voltant.</div>
+        <p class="note">Els textos “Male”, “Female”, “Other” i el del butlletí es queden en negre perquè no són <code>label</code>. Si es volen en taronja, també poden ser <code>label</code> amb <code>for</code> (aleshores es posarien en bloc: caldria una classe per a evitar-ho).</p>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 10.6" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;Sign up&lt;/title&gt;
-    &lt;style&gt;body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f8;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Text, fonts and colours&lt;/title&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        body {
+            background-color: #ff7f50;
+            font-family: &quot;Noto Sans&quot;, sans-serif;
+        }
 
-form {
-    max-width: 360px;
-    margin: 40px auto;
-    padding: 24px;
-    background-color: white;
-    border-radius: 8px;
-}
+        .box {
+            background-color: white;
+            width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
 
-label {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
-}
+        h1, h2, label {
+            color: #ff7f50;
+        }
 
-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #bbbbbb;
-    border-radius: 4px;
-    font-size: 1rem;
-}
+        h1, h2 {
+            text-transform: uppercase;
+        }
 
-input:focus {
-    border-color: #6d5fb3;
-    outline: 2px solid #6d5fb3;
-}
+        label {
+            display: block;
+        }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #6d5fb3;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
+        input[type=&quot;text&quot;],
+        input[type=&quot;date&quot;],
+        input[type=&quot;email&quot;],
+        input[type=&quot;password&quot;],
+        input[type=&quot;number&quot;] {
+            width: 300px;
+            border: 1px solid #ff7f50;
+            border-radius: 3px;
+        }
 
-button:hover {
-    background-color: #53469a;
-}&lt;/style&gt;
+        input:focus {
+            outline: 2px solid #ff7f50;
+        }
+
+        button {
+            width: 300px;
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
-        &lt;h1&gt;Sign up&lt;/h1&gt;
-        &lt;p&gt;
-            &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
-            &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;label for=&quot;mail&quot;&gt;Email&lt;/label&gt;
-            &lt;input type=&quot;email&quot; id=&quot;mail&quot; name=&quot;mail&quot; required&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;label for=&quot;pass&quot;&gt;Password&lt;/label&gt;
-            &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; required minlength=&quot;8&quot;&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
-        &lt;/p&gt;
-    &lt;/form&gt;
+    &lt;div class=&quot;box&quot;&gt;
+        &lt;h1&gt;Computerize&lt;/h1&gt;
+        &lt;h2&gt;Sign up&lt;/h2&gt;
+        &lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+            &lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot;&gt;
+
+            &lt;label for=&quot;surname&quot;&gt;Surname:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;surname&quot; name=&quot;surname&quot;&gt;
+
+            &lt;label for=&quot;birthday&quot;&gt;Birthday:&lt;/label&gt;
+            &lt;input type=&quot;date&quot; id=&quot;birthday&quot; name=&quot;birthday&quot;&gt;
+
+            &lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+
+            &lt;label for=&quot;password&quot;&gt;Password:&lt;/label&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot;&gt;
+
+            &lt;label for=&quot;devices&quot;&gt;Number of computing devices:&lt;/label&gt;
+            &lt;input type=&quot;number&quot; id=&quot;devices&quot; name=&quot;devices&quot; min=&quot;0&quot;&gt;
+
+            &lt;p&gt;
+                &lt;label&gt;Gender:&lt;/label&gt;
+                Male: &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt;
+                Female: &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt;
+                Other: &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;other&quot;&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Do you want to receive the newsletter?
+                &lt;input type=&quot;checkbox&quot; id=&quot;newsletter&quot; name=&quot;newsletter&quot;&gt;
+            &lt;/p&gt;
+
+            &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>

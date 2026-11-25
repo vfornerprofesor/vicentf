@@ -157,73 +157,107 @@
 <body>
     <h1>Solucions · CSS basics</h1>
     <p class="box">
-        <strong>Només per al professor.</strong> Lliçó: <a href="../09-css-basics.html">09-css-basics.html</a>. 
+        <strong>Només per al professor.</strong> Lliçó: <a href="../09-css-basics.html">09-css-basics.html</a>. Les imatges de la previsualització són fotos d'exemple (picsum.photos); en el codi es veu la ruta <code>images/...</code> que faria servir l'alumnat.
     </p>
     <ul class="indice">
         <li><a href="#e1">Exercici 9.1</a></li>
         <li><a href="#e2">Exercici 9.2</a></li>
         <li><a href="#e3">Exercici 9.3</a></li>
         <li><a href="#e4">Exercici 9.4</a></li>
+        <li><a href="#e5">Exercici 9.5</a></li>
     </ul>
 
     <section class="ex" id="e1">
         <h2>Exercici 9.1</h2>
-        <div class="enunciat"><strong>Exercise 9.1.</strong> Create <code>css/style.css</code>, link it from your page, and make all the paragraphs dark grey.</div>
+        <div class="enunciat"><strong>Exercise 9.1. My favourite film.</strong> Create <code>film.html</code> and <code>css/style.css</code>, and link the CSS from the <code>&lt;head&gt;</code>.<p><strong>HTML.</strong></p><ul><li>an <code>&lt;h1&gt;</code> with the title of the film;</li><li>three <code>&lt;p&gt;</code> that explain what the film is about;</li><li>an <code>&lt;h2&gt;</code> with the text “Main actors” and a <code>&lt;ul&gt;</code> with four <code>&lt;li&gt;</code>, one actor each.</li></ul><p><strong>CSS.</strong></p><ul><li>a comment at the top of the file with your name: <code>/* Made by ... */</code>;</li><li><code>body</code>: background colour <code>#f5f5f5</code> and text colour <code>#333333</code>;</li><li><code>h1</code>: colour <code>darkred</code>;</li><li><code>h2</code>: colour <code>#4b3f8f</code>;</li><li><code>li</code>: colour <code>#555555</code>.</li></ul><p>Check in the HTML that there is no <code>style=</code> attribute: all the design is in the CSS file.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">film.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href="index.html"&gt;Home&lt;/a&gt;
-        &lt;a href="music.html"&gt;Music&lt;/a&gt;
-        &lt;a href="films.html"&gt;Films&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+    &lt;h1&gt;Spirited Away&lt;/h1&gt;
+    &lt;p&gt;Chihiro is a ten-year-old girl who is moving to a new town with her parents.&lt;/p&gt;
+    &lt;p&gt;On the way they find an abandoned theme park, and her parents turn into pigs.&lt;/p&gt;
+    &lt;p&gt;Chihiro has to work in a bathhouse for spirits to save them and go back home.&lt;/p&gt;
+    &lt;h2&gt;Main actors&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Rumi Hiiragi&lt;/li&gt;
+        &lt;li&gt;Miyu Irino&lt;/li&gt;
+        &lt;li&gt;Mari Natsuki&lt;/li&gt;
+        &lt;li&gt;Takashi Naito&lt;/li&gt;
+    &lt;/ul&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>p {
+        <pre><code>/* Made by Vicent Forner */
+
+body {
+    background-color: #f5f5f5;
     color: #333333;
+}
+
+h1 {
+    color: darkred;
+}
+
+h2 {
+    color: #4b3f8f;
+}
+
+li {
+    color: #555555;
 }</code></pre>
-        <div class="note">El fitxer es guarda com <code>css/style.css</code> i s'enllaça des del <code>head</code> amb <code>&lt;link rel="stylesheet" href="css/style.css"&gt;</code>.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.1" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;style&gt;p {
-    color: #333333;
-}&lt;/style&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
+    &lt;style&gt;
+        /* Made by Vicent Forner */
+
+        body {
+            background-color: #f5f5f5;
+            color: #333333;
+        }
+
+        h1 {
+            color: darkred;
+        }
+
+        h2 {
+            color: #4b3f8f;
+        }
+
+        li {
+            color: #555555;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+    &lt;h1&gt;Spirited Away&lt;/h1&gt;
+    &lt;p&gt;Chihiro is a ten-year-old girl who is moving to a new town with her parents.&lt;/p&gt;
+    &lt;p&gt;On the way they find an abandoned theme park, and her parents turn into pigs.&lt;/p&gt;
+    &lt;p&gt;Chihiro has to work in a bathhouse for spirits to save them and go back home.&lt;/p&gt;
+    &lt;h2&gt;Main actors&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Rumi Hiiragi&lt;/li&gt;
+        &lt;li&gt;Miyu Irino&lt;/li&gt;
+        &lt;li&gt;Mari Natsuki&lt;/li&gt;
+        &lt;li&gt;Takashi Naito&lt;/li&gt;
+    &lt;/ul&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -231,40 +265,69 @@
 
     <section class="ex" id="e2">
         <h2>Exercici 9.2</h2>
-        <div class="enunciat"><strong>Exercise 9.2.</strong> Give the class <code>highlight</code> to two paragraphs, and make that class yellow background and bold text.</div>
+        <div class="enunciat"><strong>Exercise 9.2. A recipe with classes and an id.</strong> Create <code>recipe.html</code>, linked to the same <code>css/style.css</code>.<p><strong>HTML.</strong></p><ul><li>an <code>&lt;h1&gt;</code> with <code>id="recipe-title"</code> and the name of the recipe;</li><li>an <code>&lt;h2&gt;</code> “Ingredients” followed by a <code>&lt;ul&gt;</code> with <code>class="ingredients"</code> and five <code>&lt;li&gt;</code>;</li><li>an <code>&lt;h2&gt;</code> “Steps” followed by an <code>&lt;ol&gt;</code> with <code>class="steps"</code> and four <code>&lt;li&gt;</code>;</li><li>one <code>&lt;p&gt;</code> with <code>class="tip"</code> with a cooking tip;</li><li>two <code>&lt;p&gt;</code> with <code>class="warning"</code> (for example: “Careful, the oven is hot!”).</li></ul><p><strong>CSS.</strong></p><ul><li><code>h1, h2</code> in one single rule (a group): font <code>Arial, sans-serif</code>;</li><li><code>#recipe-title</code>: colour <code>#e07a5f</code> and size <code>40px</code>;</li><li><code>.ingredients</code>: colour <code>#2e7d32</code>;</li><li><code>.steps</code>: colour <code>#3d405b</code>;</li><li><code>.tip</code>: background colour <code>#fff3b0</code>;</li><li><code>.warning</code>: colour <code>#c0392b</code> and bold text (<code>font-weight: bold</code>).</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">recipe.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href="index.html"&gt;Home&lt;/a&gt;
-        &lt;a href="music.html"&gt;Music&lt;/a&gt;
-        &lt;a href="films.html"&gt;Films&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p class="highlight"&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p class="highlight"&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+    &lt;h1 id="recipe-title"&gt;Potato omelette&lt;/h1&gt;
+
+    &lt;h2&gt;Ingredients&lt;/h2&gt;
+    &lt;ul class="ingredients"&gt;
+        &lt;li&gt;4 potatoes&lt;/li&gt;
+        &lt;li&gt;5 eggs&lt;/li&gt;
+        &lt;li&gt;1 onion&lt;/li&gt;
+        &lt;li&gt;Olive oil&lt;/li&gt;
+        &lt;li&gt;Salt&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;Steps&lt;/h2&gt;
+    &lt;ol class="steps"&gt;
+        &lt;li&gt;Peel and cut the potatoes and the onion.&lt;/li&gt;
+        &lt;li&gt;Fry them slowly in olive oil.&lt;/li&gt;
+        &lt;li&gt;Beat the eggs and mix everything.&lt;/li&gt;
+        &lt;li&gt;Cook the omelette on both sides.&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p class="tip"&gt;Tip: let the mix rest for five minutes before cooking it.&lt;/p&gt;
+    &lt;p class="warning"&gt;Careful, the oil is very hot!&lt;/p&gt;
+    &lt;p class="warning"&gt;Use a big plate to turn the omelette.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>p {
-    color: #333333;
+        <pre><code>h1, h2 {
+    font-family: Arial, sans-serif;
 }
 
-.highlight {
-    background-color: yellow;
+#recipe-title {
+    color: #e07a5f;
+    font-size: 40px;
+}
+
+.ingredients {
+    color: #2e7d32;
+}
+
+.steps {
+    color: #3d405b;
+}
+
+.tip {
+    background-color: #fff3b0;
+}
+
+.warning {
+    color: #c0392b;
     font-weight: bold;
 }</code></pre>
         <h3>Resultat</h3>
@@ -273,29 +336,60 @@
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;style&gt;p {
-    color: #333333;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
+    &lt;style&gt;
+        h1, h2 {
+            font-family: Arial, sans-serif;
+        }
 
-.highlight {
-    background-color: yellow;
-    font-weight: bold;
-}&lt;/style&gt;
+        #recipe-title {
+            color: #e07a5f;
+            font-size: 40px;
+        }
+
+        .ingredients {
+            color: #2e7d32;
+        }
+
+        .steps {
+            color: #3d405b;
+        }
+
+        .tip {
+            background-color: #fff3b0;
+        }
+
+        .warning {
+            color: #c0392b;
+            font-weight: bold;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p class=&quot;highlight&quot;&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p class=&quot;highlight&quot;&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+    &lt;h1 id=&quot;recipe-title&quot;&gt;Potato omelette&lt;/h1&gt;
+
+    &lt;h2&gt;Ingredients&lt;/h2&gt;
+    &lt;ul class=&quot;ingredients&quot;&gt;
+        &lt;li&gt;4 potatoes&lt;/li&gt;
+        &lt;li&gt;5 eggs&lt;/li&gt;
+        &lt;li&gt;1 onion&lt;/li&gt;
+        &lt;li&gt;Olive oil&lt;/li&gt;
+        &lt;li&gt;Salt&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;Steps&lt;/h2&gt;
+    &lt;ol class=&quot;steps&quot;&gt;
+        &lt;li&gt;Peel and cut the potatoes and the onion.&lt;/li&gt;
+        &lt;li&gt;Fry them slowly in olive oil.&lt;/li&gt;
+        &lt;li&gt;Beat the eggs and mix everything.&lt;/li&gt;
+        &lt;li&gt;Cook the omelette on both sides.&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p class=&quot;tip&quot;&gt;Tip: let the mix rest for five minutes before cooking it.&lt;/p&gt;
+    &lt;p class=&quot;warning&quot;&gt;Careful, the oil is very hot!&lt;/p&gt;
+    &lt;p class=&quot;warning&quot;&gt;Use a big plate to turn the omelette.&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -303,80 +397,117 @@
 
     <section class="ex" id="e3">
         <h2>Exercici 9.3</h2>
-        <div class="enunciat"><strong>Exercise 9.3.</strong> Give an <code>id</code> to your main title and make it a different colour from the other headings.</div>
+        <div class="enunciat"><strong>Exercise 9.3. A school page with descendants.</strong> Create <code>school.html</code>. In this exercise <strong>you cannot use classes or ids</strong>: only tag selectors and descendant selectors (with a space).<p><strong>HTML.</strong></p><ul><li>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code> (the name of your school) and a <code>&lt;p&gt;</code> (the town);</li><li>a <code>&lt;main&gt;</code> with two <code>&lt;article&gt;</code>; each article has an <code>&lt;h2&gt;</code> and two <code>&lt;p&gt;</code>;</li><li>a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code> and two <code>&lt;a&gt;</code> (to the website of the school and to your town hall).</li></ul><p><strong>CSS.</strong></p><ul><li><code>header p</code>: colour <code>#777777</code>;</li><li><code>article p</code>: <code>line-height: 1.6</code>;</li><li><code>article h2</code>: colour <code>#6d5fb3</code>;</li><li><code>footer p</code>: size <code>14px</code>;</li><li><code>footer a</code>: colour <code>green</code>.</li></ul><p>Check that the paragraph of the header and the paragraphs of the articles look different, even if they are all <code>&lt;p&gt;</code>.</p></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">school.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href="index.html"&gt;Home&lt;/a&gt;
-        &lt;a href="music.html"&gt;Music&lt;/a&gt;
-        &lt;a href="films.html"&gt;Films&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p class="highlight"&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p class="highlight"&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+    &lt;header&gt;
+        &lt;h1&gt;IES Betxí&lt;/h1&gt;
+        &lt;p&gt;Betxí, Castelló&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Computer science&lt;/h2&gt;
+            &lt;p&gt;This year we are learning HTML and CSS.&lt;/p&gt;
+            &lt;p&gt;At the end of the term we will build our own website.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Sports day&lt;/h2&gt;
+            &lt;p&gt;Next Friday there is a sports day for all the school.&lt;/p&gt;
+            &lt;p&gt;Bring water and comfortable clothes.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Contact us:&lt;/p&gt;
+        &lt;a href="https://portal.edu.gva.es/iesbetxi/"&gt;School website&lt;/a&gt;
+        &lt;a href="https://www.betxi.es/"&gt;Betxí town hall&lt;/a&gt;
+    &lt;/footer&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>p {
-    color: #333333;
+        <pre><code>header p {
+    color: #777777;
 }
 
-.highlight {
-    background-color: yellow;
-    font-weight: bold;
+article p {
+    line-height: 1.6;
 }
 
-#title {
-    color: crimson;
+article h2 {
+    color: #6d5fb3;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+footer a {
+    color: green;
 }</code></pre>
-        <div class="note">Un <code>id</code> només es pot usar una vegada per pàgina. El selector d'<code>id</code> porta <code>#</code>; el de classe, <code>.</code>.</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.3" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;style&gt;p {
-    color: #333333;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
+    &lt;style&gt;
+        header p {
+            color: #777777;
+        }
 
-.highlight {
-    background-color: yellow;
-    font-weight: bold;
-}
+        article p {
+            line-height: 1.6;
+        }
 
-#title {
-    color: crimson;
-}&lt;/style&gt;
+        article h2 {
+            color: #6d5fb3;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        footer a {
+            color: green;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p class=&quot;highlight&quot;&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p class=&quot;highlight&quot;&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+    &lt;header&gt;
+        &lt;h1&gt;IES Betxí&lt;/h1&gt;
+        &lt;p&gt;Betxí, Castelló&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Computer science&lt;/h2&gt;
+            &lt;p&gt;This year we are learning HTML and CSS.&lt;/p&gt;
+            &lt;p&gt;At the end of the term we will build our own website.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Sports day&lt;/h2&gt;
+            &lt;p&gt;Next Friday there is a sports day for all the school.&lt;/p&gt;
+            &lt;p&gt;Bring water and comfortable clothes.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Contact us:&lt;/p&gt;
+        &lt;a href=&quot;https://portal.edu.gva.es/iesbetxi/&quot;&gt;School website&lt;/a&gt;
+        &lt;a href=&quot;https://www.betxi.es/&quot;&gt;Betxí town hall&lt;/a&gt;
+    &lt;/footer&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
@@ -384,74 +515,254 @@
 
     <section class="ex" id="e4">
         <h2>Exercici 9.4</h2>
-        <div class="enunciat"><strong>Exercise 9.4.</strong> Write a rule that only affects the links that are inside the <code>nav</code>.</div>
+        <div class="enunciat"><strong>Exercise 9.4. A menu with hover and featured cards.</strong> Create <code>cards.html</code>.<p><strong>HTML.</strong></p><ul><li>a <code>&lt;nav&gt;</code> with four <code>&lt;a&gt;</code> (Home, News, Games, Contact); the first one has <code>class="active"</code>;</li><li>three <code>&lt;div&gt;</code> with <code>class="card"</code>, each one with an <code>&lt;h3&gt;</code> and a <code>&lt;p&gt;</code>;</li><li>the second card has <strong>two classes</strong>: <code>class="card featured"</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>nav a</code>: colour <code>#6d5fb3</code>, <strong>no underline</strong> (<code>text-decoration: none</code>) and bold;</li><li><code>nav a:hover</code>: colour <code>#e07a5f</code>;</li><li><code>nav a.active</code>: colour <code>black</code>;</li><li><code>.card</code>: background colour <code>white</code>, <code>padding: 20px</code> and <code>margin-bottom: 20px</code>;</li><li><code>.card.featured</code>: <code>border-left: 6px solid #ffd166</code>;</li><li><code>.card:hover</code>: background colour <code>#f4f1fb</code>;</li><li><code>body</code>: background colour <code>#eeeeee</code>.</li></ul></div>
         <h3>Solució</h3>
-        <span class="fname">index.html</span>
+        <span class="fname">cards.html</span>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;My page&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
     &lt;link rel="stylesheet" href="css/style.css"&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id="title"&gt;Marc Ferrer&lt;/h1&gt;
     &lt;nav&gt;
-        &lt;a href="index.html"&gt;Home&lt;/a&gt;
-        &lt;a href="music.html"&gt;Music&lt;/a&gt;
-        &lt;a href="films.html"&gt;Films&lt;/a&gt;
+        &lt;a href="#" class="active"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;News&lt;/a&gt;
+        &lt;a href="#"&gt;Games&lt;/a&gt;
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
     &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p class="highlight"&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p class="highlight"&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+
+    &lt;div class="card"&gt;
+        &lt;h3&gt;New computers&lt;/h3&gt;
+        &lt;p&gt;The computer room has 30 new computers.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card featured"&gt;
+        &lt;h3&gt;Coding club&lt;/h3&gt;
+        &lt;p&gt;Every Tuesday at break time.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;h3&gt;Game jam&lt;/h3&gt;
+        &lt;p&gt;Make a game in one weekend.&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;</code></pre>
         <span class="fname">css/style.css</span>
-        <pre><code>nav {
-    background-color: #222222;
-    padding: 10px;
+        <pre><code>body {
+    background-color: #eeeeee;
 }
 
 nav a {
-    color: white;
+    color: #6d5fb3;
     text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e07a5f;
+}
+
+nav a.active {
+    color: black;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card.featured {
+    border-left: 6px solid #ffd166;
+}
+
+.card:hover {
+    background-color: #f4f1fb;
 }</code></pre>
-        <div class="note">El selector descendent <code>nav a</code> només afecta els enllaços que estan dins de <code>nav</code>. (El fons fosc i el padding no formen part de l'exercici: només es veu bé l'enllaç blanc.)</div>
         <h3>Resultat</h3>
         <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.4" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My page&lt;/title&gt;
-    &lt;style&gt;nav {
-    background-color: #222222;
-    padding: 10px;
-}
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #eeeeee;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-}&lt;/style&gt;
+        nav a {
+            color: #6d5fb3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #e07a5f;
+        }
+
+        nav a.active {
+            color: black;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card.featured {
+            border-left: 6px solid #ffd166;
+        }
+
+        .card:hover {
+            background-color: #f4f1fb;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;h1 id=&quot;title&quot;&gt;Marc Ferrer&lt;/h1&gt;
     &lt;nav&gt;
-        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
-        &lt;a href=&quot;music.html&quot;&gt;Music&lt;/a&gt;
-        &lt;a href=&quot;films.html&quot;&gt;Films&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;News&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Games&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
     &lt;/nav&gt;
-    &lt;h2&gt;About me&lt;/h2&gt;
-    &lt;p&gt;I like rock music, above all bands with two guitars.&lt;/p&gt;
-    &lt;p class=&quot;highlight&quot;&gt;My favourite film is Interstellar.&lt;/p&gt;
-    &lt;p class=&quot;highlight&quot;&gt;I have seen it four times.&lt;/p&gt;
-    &lt;p&gt;I study at a school in Valencia.&lt;/p&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h3&gt;New computers&lt;/h3&gt;
+        &lt;p&gt;The computer room has 30 new computers.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card featured&quot;&gt;
+        &lt;h3&gt;Coding club&lt;/h3&gt;
+        &lt;p&gt;Every Tuesday at break time.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;h3&gt;Game jam&lt;/h3&gt;
+        &lt;p&gt;Make a game in one weekend.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="ex" id="e5">
+        <h2>Exercici 9.5</h2>
+        <div class="enunciat"><strong>Exercise 9.5. Colours and the cascade.</strong> Create <code>colours.html</code>.<p><strong>HTML.</strong></p><ul><li>four <code>&lt;p&gt;</code> with the classes <code>name</code>, <code>hex</code>, <code>rgb</code> and <code>rgba</code>, with the texts “Red as a name”, “Red in hexadecimal”, “Red in rgb” and “Red half transparent”;</li><li>two more <code>&lt;p&gt;</code> without class, and a third one with <code>class="note"</code>.</li></ul><p><strong>CSS.</strong></p><ul><li><code>.name</code>: colour <code>red</code>; <code>.hex</code>: colour <code>#ff0000</code>; <code>.rgb</code>: colour <code>rgb(255, 0, 0)</code>; <code>.rgba</code>: colour <code>rgba(255, 0, 0, 0.5)</code>;</li><li>then, in this order: <code>.note</code> in <code>purple</code>, <code>p</code> in <code>blue</code> and <code>p</code> in <code>green</code>.</li></ul><p>Before you reload, write in an HTML comment (<code>&lt;!-- --&gt;</code>) which colour you think each paragraph will have, and why. Then check it in the browser and in DevTools (the rules that lose appear crossed out).</p></div>
+        <h3>Solució</h3>
+        <span class="fname">colours.html</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p class="name"&gt;Red as a name&lt;/p&gt;
+    &lt;p class="hex"&gt;Red in hexadecimal&lt;/p&gt;
+    &lt;p class="rgb"&gt;Red in rgb&lt;/p&gt;
+    &lt;p class="rgba"&gt;Red half transparent&lt;/p&gt;
+
+    &lt;!-- Prediction:
+         - the two paragraphs without class: green (two rules "p", the last one wins)
+         - the paragraph with class="note": purple (a class beats a tag,
+           even if .note is written before the p rules) --&gt;
+    &lt;p&gt;Paragraph without class&lt;/p&gt;
+    &lt;p&gt;Another paragraph without class&lt;/p&gt;
+    &lt;p class="note"&gt;Paragraph with class="note"&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <span class="fname">css/style.css</span>
+        <pre><code>.name {
+    color: red;
+}
+
+.hex {
+    color: #ff0000;
+}
+
+.rgb {
+    color: rgb(255, 0, 0);
+}
+
+.rgba {
+    color: rgba(255, 0, 0, 0.5);
+}
+
+.note {
+    color: purple;
+}
+
+p {
+    color: blue;
+}
+
+p {
+    color: green;
+}</code></pre>
+        <p class="note">Compte: les quatre primeres també són <code>p</code>, però tenen classe, així que es queden roges (la classe guanya a les dues regles <code>p</code>).</p>
+        <h3>Resultat</h3>
+        <iframe sandbox="allow-scripts" title="Resultat de Exercici 9.5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS basics&lt;/title&gt;
+    &lt;style&gt;
+        .name {
+            color: red;
+        }
+
+        .hex {
+            color: #ff0000;
+        }
+
+        .rgb {
+            color: rgb(255, 0, 0);
+        }
+
+        .rgba {
+            color: rgba(255, 0, 0, 0.5);
+        }
+
+        .note {
+            color: purple;
+        }
+
+        p {
+            color: blue;
+        }
+
+        p {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p class=&quot;name&quot;&gt;Red as a name&lt;/p&gt;
+    &lt;p class=&quot;hex&quot;&gt;Red in hexadecimal&lt;/p&gt;
+    &lt;p class=&quot;rgb&quot;&gt;Red in rgb&lt;/p&gt;
+    &lt;p class=&quot;rgba&quot;&gt;Red half transparent&lt;/p&gt;
+
+    &lt;!-- Prediction:
+         - the two paragraphs without class: green (two rules &quot;p&quot;, the last one wins)
+         - the paragraph with class=&quot;note&quot;: purple (a class beats a tag,
+           even if .note is written before the p rules) --&gt;
+    &lt;p&gt;Paragraph without class&lt;/p&gt;
+    &lt;p&gt;Another paragraph without class&lt;/p&gt;
+    &lt;p class=&quot;note&quot;&gt;Paragraph with class=&quot;note&quot;&lt;/p&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
