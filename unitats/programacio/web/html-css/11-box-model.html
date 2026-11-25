@@ -307,72 +307,70 @@
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 11.1.* Create a <code>div</code> with the class <code>card</code>, with 20px padding, a 1px grey border,
-                20px margin and a width of 300px. Put a heading and a paragraph inside.
+                *Exercise 11.1. A profile card.* Create <code>profile.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="card"</code>;</vf-text></li>
+                <li><vf-text>inside: an <code>&lt;img&gt;</code> (your avatar or any photo), an <code>&lt;h2&gt;</code> with a name, a <code>&lt;p&gt;</code> with a short description and an <code>&lt;a&gt;</code> with <code>class="button"</code> and the text “Follow”.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>* { box-sizing: border-box; }</code> at the top of the file;</vf-text></li>
+                <li><vf-text><code>body</code>: background colour <code>#eeeeee</code>;</vf-text></li>
+                <li><vf-text><code>.card</code>: width <code>300px</code>, <code>padding: 20px</code>, <code>border: 1px solid #dddddd</code>, background colour <code>white</code> and <code>margin: 40px auto</code> (it is centred);</vf-text></li>
+                <li><vf-text><code>.card img</code>: width <code>100%</code>;</vf-text></li>
+                <li><vf-text><code>.button</code>: <code>display: inline-block</code>, <code>padding: 10px 20px</code>, background colour <code>#6d5fb3</code>, colour <code>white</code>, no underline and <code>border-radius: 6px</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 11.2.* Add <code>* { box-sizing: border-box; }</code> to your CSS and measure the card in
-                DevTools before and after. Write down the two widths.
+                *Exercise 11.2. Measure two boxes.* Create <code>boxes.html</code>. *Do not* put the universal <code>box-sizing</code> rule in this file.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="box-a"</code> and a <code>&lt;div&gt;</code> with <code>class="box-b"</code>; each one with a <code>&lt;p&gt;</code> inside.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.box-a, .box-b</code>: width <code>200px</code>, <code>padding: 20px</code>, <code>border: 5px solid #6d5fb3</code> and <code>margin-bottom: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.box-b</code>: <code>box-sizing: border-box</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Measure both boxes in DevTools and write the real width inside each <code>&lt;p&gt;</code> (for example “I am 250px wide”). Explain in one more <code>&lt;p&gt;</code> why they are different.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 11.3.* Give the card rounded corners and a soft shadow. Make the shadow bigger on
-                <code>:hover</code>.
+                *Exercise 11.3. Products with rounded corners and shadows.* Create <code>shop.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;section&gt;</code> with three <code>&lt;div&gt;</code> with <code>class="product"</code>;</vf-text></li>
+                <li><vf-text>each product has an <code>&lt;h3&gt;</code>, a <code>&lt;p&gt;</code> with the description and a <code>&lt;span&gt;</code> with <code>class="price"</code> (for example “12 €”).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.product</code>: <code>padding: 16px</code>, <code>margin-bottom: 20px</code>, background colour <code>white</code>, <code>border-radius: 12px</code> and <code>box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12)</code>;</vf-text></li>
+                <li><vf-text><code>.product:hover</code>: <code>box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25)</code>;</vf-text></li>
+                <li><vf-text><code>.price</code>: <code>display: inline-block</code>, <code>padding: 4px 10px</code>, background colour <code>#ffd166</code>, <code>border-radius: 20px</code> and bold.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 11.4.* Turn the links of your nav into buttons: <code>inline-block</code>, padding, background
-                colour, rounded corners, no underline.
+                *Exercise 11.4. A centred page with button links.* Create <code>centred.html</code>.
             </vf-callout>
-            <vf-callout type="exercici">
-                *Exercise 11.5.* Centre the whole content of your page in a container of maximum 1000px.
-            </vf-callout>
-            <vf-details summary="Show the solution (Exercise 11.3)">
-                <vf-row>
-                    <vf-col classes="col-md-6">
-                        <vf-code language="css">
-                            .card {
-                                width: 300px;
-                                padding: 20px;
-                                margin: 20px;
-                                border: 1px solid #dddddd;
-                                border-radius: 12px;
-                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-                                transition: all 0.3s ease;
-                            }
-
-                            .card:hover {
-                                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-                                transform: translateY(-3px);
-                            }
-                        </vf-code>
-                    </vf-col>
-                    <vf-col classes="col-md-6">
-                        <vf-preview label="Result (try hovering the card)">
-                            &lt;style&gt;
-                                .card {
-                                    width: 220px;
-                                    padding: 20px;
-                                    margin: 20px;
-                                    border: 1px solid #dddddd;
-                                    border-radius: 12px;
-                                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-                                    transition: all 0.3s ease;
-                                }
-
-                                .card:hover {
-                                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-                                    transform: translateY(-3px);
-                                }
-                            &lt;/style&gt;
-                            &lt;div class="card"&gt;Hover over me!&lt;/div&gt;
-                        </vf-preview>
-                    </vf-col>
-                </vf-row>
-                <vf-text>
-                    <code>transition</code> makes the change smooth instead of instant. <code>transform: translateY(-3px)</code>
-                    lifts the card 3 pixels.
-                </vf-text>
-            </vf-details>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="container"</code> that contains all the page;</vf-text></li>
+                <li><vf-text>inside: a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code> and a <code>&lt;nav&gt;</code> with four <code>&lt;a&gt;</code>; a <code>&lt;main&gt;</code> with two <code>&lt;section&gt;</code> (each one with an <code>&lt;h2&gt;</code> and a <code>&lt;p&gt;</code>); a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.container</code>: <code>max-width: 1000px</code>, <code>margin: 0 auto</code> and <code>padding: 0 20px</code>;</vf-text></li>
+                <li><vf-text><code>nav a</code>: <code>display: inline-block</code>, <code>padding: 10px 18px</code>, <code>margin: 4px</code>, background colour <code>#3d405b</code>, colour <code>white</code>, no underline and <code>border-radius: 8px</code>;</vf-text></li>
+                <li><vf-text><code>nav a:hover</code>: background colour <code>#e07a5f</code>;</vf-text></li>
+                <li><vf-text><code>section</code>: <code>padding: 20px</code>, <code>margin-bottom: 30px</code> and <code>border-left: 5px solid #e07a5f</code>;</vf-text></li>
+                <li><vf-text><code>footer</code>: <code>border-top: 1px solid #cccccc</code>, <code>padding-top: 20px</code> and <code>margin-top: 40px</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Make the window wider and narrower: the content never gets wider than 1000px and it is always in the middle.</vf-text>
         </vf-content>
 
         <vf-title level="2">Mini-project 2: Styled band page</vf-title>
@@ -394,20 +392,39 @@
         <vf-title level="2">More exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 11.4. Film card.* Reproduce the card in the picture. Watch the padding, the border
-                and the shadow.
+                *Exercise 11.5. Film card.* Create <code>film-card.html</code>. The picture is the model.
             </vf-callout>
             <vf-img src="assets/unitats/programacio/web/html-css/11-box-model/ex1.png" alt="A film information card with padding, a border and a soft shadow"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/11-box-model/ex1.html)
-            </vf-text>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="film"</code>;</vf-text></li>
+                <li><vf-text>inside: an <code>&lt;h1&gt;</code> with the title, an <code>&lt;img&gt;</code> with <code>class="poster"</code>, a <code>&lt;p&gt;</code> “Release year” with the year inside a <code>&lt;strong&gt;</code>, a <code>&lt;p&gt;</code> with <code>class="actors-title"</code> and a <code>&lt;ul&gt;</code> with <code>class="actors"</code> and five <code>&lt;li&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.film</code>: centred text, background colour <code>bisque</code>, width <code>50%</code>, <code>margin: 0 auto</code>, <code>border: 2px solid coral</code>, <code>border-radius: 15px</code>, <code>box-shadow: 0 0 20px coral</code> and <code>padding-bottom: 30px</code>;</vf-text></li>
+                <li><vf-text><code>.poster</code>: width <code>200px</code>;</vf-text></li>
+                <li><vf-text><code>h1, p</code>: colour <code>coral</code>;</vf-text></li>
+                <li><vf-text><code>.actors-title</code>: bold;</vf-text></li>
+                <li><vf-text><code>.actors</code>: <code>list-style: none</code>, <code>width: fit-content</code>, <code>margin: 0 auto</code> and <code>padding: 0</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 11.5. Birthday invitation.* Reproduce the invitation in the picture.
+                *Exercise 11.6. Birthday card.* Create <code>birthday.html</code>. The picture is the model.
             </vf-callout>
             <vf-img src="assets/unitats/programacio/web/html-css/11-box-model/ex2.png" alt="A birthday invitation card styled with the box model"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/11-box-model/ex2.html)
-            </vf-text>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="birthday-card"</code>;</vf-text></li>
+                <li><vf-text>inside, a <code>&lt;div&gt;</code> with <code>class="message"</code> (an <code>&lt;h1&gt;</code> “Happy birthday!” and a <code>&lt;p&gt;</code>) and a <code>&lt;div&gt;</code> with <code>class="picture"</code> (an <code>&lt;img&gt;</code> of a cake).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: font <code>Arial, sans-serif</code> and background colour <code>#f0f0f0</code>;</vf-text></li>
+                <li><vf-text><code>.birthday-card</code>: width <code>550px</code>, <code>margin: 90px auto</code>, <code>padding: 20px</code>, background colour <code>white</code>, <code>border-radius: 10px</code>, <code>box-shadow: 0 0 10px grey</code> and centred text;</vf-text></li>
+                <li><vf-text><code>.message h1</code>: colour <code>#ff5733</code> and size <code>24px</code>;</vf-text></li>
+                <li><vf-text><code>.message p</code>: size <code>18px</code>;</vf-text></li>
+                <li><vf-text><code>.picture img</code>: <code>max-width: 50%</code> and <code>margin-top: 20px</code>.</vf-text></li>
+            </vf-list>
         </vf-content>
 
         <vf-hr></vf-hr>

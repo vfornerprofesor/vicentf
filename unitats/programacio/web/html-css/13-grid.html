@@ -299,21 +299,57 @@
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 13.1.* Build a grid of 9 coloured squares, 3 columns, with a 10px gap.
+                *Exercise 13.1. Nine squares.* Create <code>squares.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="grid"</code>;</vf-text></li>
+                <li><vf-text>inside, nine <code>&lt;div&gt;</code> with <code>class="square"</code> and the numbers 1 to 9;</vf-text></li>
+                <li><vf-text>the fifth one has two classes: <code>class="square special"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.grid</code>: <code>display: grid</code>, <code>grid-template-columns: repeat(3, 1fr)</code>, <code>gap: 10px</code> and <code>max-width: 400px</code>;</vf-text></li>
+                <li><vf-text><code>.square</code>: height <code>100px</code>, background colour <code>#6d5fb3</code>, colour <code>white</code>, <code>border-radius: 8px</code>, and the number in the middle with <code>display: flex</code>, <code>justify-content: center</code> and <code>align-items: center</code>;</vf-text></li>
+                <li><vf-text><code>.square.special</code>: background colour <code>#ffd166</code> and colour <code>#333333</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 13.2.* Turn it into <code>repeat(auto-fit, minmax(150px, 1fr))</code> and resize
-                the window. Describe what happens.
+                *Exercise 13.2. A photo gallery.* Create <code>gallery.html</code> and put eight photos in the folder <code>images</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="gallery"</code>;</vf-text></li>
+                <li><vf-text>inside, eight <code>&lt;img&gt;</code>, each one with its <code>alt</code>;</vf-text></li>
+                <li><vf-text>under the gallery, a <code>&lt;p&gt;</code> with <code>class="notes"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.gallery</code>: <code>display: grid</code>, <code>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))</code> and <code>gap: 10px</code>;</vf-text></li>
+                <li><vf-text><code>.gallery img</code>: width <code>100%</code>, height <code>150px</code>, <code>object-fit: cover</code> and <code>border-radius: 6px</code>;</vf-text></li>
+                <li><vf-text><code>.notes</code>: colour <code>#888888</code> and italic.</vf-text></li>
+            </vf-list>
+            <vf-text>Resize the window and write in <code>.notes</code> how many columns you see with a wide, a medium and a narrow window.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 13.3.* Build an image gallery of 8 photos, all the same height, with
-                <code>object-fit: cover</code>.
+                *Exercise 13.3. A page with a sidebar.* Create <code>blog.html</code>.
             </vf-callout>
-            <vf-callout type="exercici">
-                *Exercise 13.4.* Build a two-column layout: content on the left, sidebar of 280px on the
-                right.
-            </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="layout"</code>; inside, a <code>&lt;main&gt;</code> with two <code>&lt;article&gt;</code> (each with an <code>&lt;h2&gt;</code> and a <code>&lt;p&gt;</code>), and an <code>&lt;aside&gt;</code> with an <code>&lt;h3&gt;</code> and a <code>&lt;ul&gt;</code> of links;</vf-text></li>
+                <li><vf-text>a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.layout</code>: <code>display: grid</code>, <code>grid-template-columns: 1fr 280px</code> and <code>gap: 20px</code>;</vf-text></li>
+                <li><vf-text><code>main</code>: <code>padding: 20px</code> and background colour <code>white</code>;</vf-text></li>
+                <li><vf-text><code>aside</code>: <code>padding: 20px</code>, background colour <code>#f4f1fb</code> and <code>border-radius: 8px</code>;</vf-text></li>
+                <li><vf-text><code>header, footer</code>: background colour <code>#2b2b40</code>, colour <code>white</code>, <code>padding: 20px</code> and centred text.</vf-text></li>
+            </vf-list>
         </vf-content>
 
         <vf-title level="2">Test 2</vf-title>
@@ -329,13 +365,25 @@
         <vf-title level="2">More exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 13.3. Chessboard.* Draw an 8 × 8 chessboard with CSS Grid. All 64 squares are in
-                the HTML; you write the CSS.
+                *Exercise 13.4. Chessboard.* Create <code>chess.html</code>. The picture is the model.
             </vf-callout>
             <vf-img src="assets/unitats/programacio/web/html-css/13-grid/ex1.png" alt="An 8 by 8 chessboard laid out with CSS Grid"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/13-grid/ex1.html)
-            </vf-text>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="board"</code>;</vf-text></li>
+                <li><vf-text>inside, 100 <code>&lt;div&gt;</code> in order, row by row (10 rows of 10): the first row, the last row, and the first and last cell of every row have <code>class="edge"</code> and a letter (A–H) or a number (1–8); the 64 squares in the middle have <code>class="light"</code> or <code>class="dark"</code>, alternating;</vf-text></li>
+                <li><vf-text>the labels of the right column and the bottom row also have the class <code>flip</code> (for example <code>class="edge flip"</code>);</vf-text></li>
+                <li><vf-text>optional: an <code>&lt;img&gt;</code> of a piece inside the squares of the first two and the last two rows.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.board</code>: <code>display: grid</code>, <code>grid-template-columns: repeat(10, 50px)</code>, <code>grid-template-rows: repeat(10, 50px)</code>, width <code>500px</code> and <code>margin: 40px auto</code>;</vf-text></li>
+                <li><vf-text><code>.edge</code>: background colour <code>#c35e2e</code>;</vf-text></li>
+                <li><vf-text><code>.light</code>: background colour <code>#d1beb1</code>;</vf-text></li>
+                <li><vf-text><code>.dark</code>: background colour <code>#473d36</code>;</vf-text></li>
+                <li><vf-text><code>.edge, .light, .dark</code>: <code>display: flex</code>, <code>justify-content: center</code> and <code>align-items: center</code> (the content in the middle);</vf-text></li>
+                <li><vf-text><code>.flip</code>: <code>transform: rotate(180deg)</code>.</vf-text></li>
+            </vf-list>
         </vf-content>
 
         <vf-hr></vf-hr>

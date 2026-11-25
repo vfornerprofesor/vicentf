@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        /* Pantalla de carrega: evita el flaix de contingut sense estils
+           mentre header.html (que porta tot el CSS/JS propi) encara no ha
+           arribat. Colors en literal, no variables de general.css: eixe
+           fitxer encara no ha carregat en este punt. */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6d5fb3;
+            transition: opacity .3s ease;
+        }
+        #loading.vf-loading-hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #loading .vf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: vf-spin .8s linear infinite;
+        }
+
+        @keyframes vf-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <base href="../../../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced selectors</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div id="header"></div>
+    <script>$('#header').load('header.html');</script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="vf-spinner"></div>
+    </div>
+    <script>
+        // Xarxa de seguretat independent de header.html: si per qualsevol
+        // motiu no arriba a carregar (CDN caiguda, error de xarxa...), no
+        // ens quedem amb l'espera infinita.
+        setTimeout(function () {
+            var l = document.getElementById('loading');
+            if (l) { l.style.display = 'none'; }
+        }, 5000);
+    </script>
+
+    <div id="menu"></div>
+    <script>$('#menu').load('menu.html');</script>
+    <div id="content">
+        <vf-title level="1">
+            Advanced selectors
+        </vf-title>
+
+        <div id="vf-index" levels="2,3"></div>
+
+        <vf-title level="2">Back to The Pixel Times</vf-title>
+        <vf-content>
+            <vf-text>
+                In [CSS basics](unitats/programacio/web/html-css/09-css-basics.html) you styled The Pixel Times
+                with tags, groups, ids, descendants, classes and <code>:hover</code>. Now you know the box model,
+                flexbox, grid and media queries, so it is time to finish the page with *more precise selectors*.
+            </vf-text>
+            <vf-text>
+                Open your Pixel Times folder (if you lost it, download
+                [The Pixel Times|download](unitats/programacio/web/html-css/exercises/09-css-basics/selectors.html) again)
+                and keep adding rules *at the end* of your <code>css/style.css</code>, *one by one*. Save and reload
+                after each one to see what changes.
+            </vf-text>
+        </vf-content>
+
+        <vf-title level="2">More selectors on a real page</vf-title>
+        <vf-content>
+            <vf-title level="3">Family: children and siblings</vf-title>
+            <vf-text>*1.* *Child selector* <code>&gt;</code>: only the direct children. <code>main &gt; section</code> selects the sections that are right inside <code>main</code>, not deeper.</vf-text>
+            <vf-code language="css">
+                main > section {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+            </vf-code>
+            <vf-text>*2.* *Adjacent sibling* <code>+</code>: the element that comes *right after* another one, at the same level. Here, the first paragraph after each date.</vf-text>
+            <vf-code language="css">
+                .date + p {
+                    font-size: 18px;
+                }
+            </vf-code>
+            <vf-text>*3.* *General sibling* <code>~</code>: *all* the elements after another one, at the same level. Here, every paragraph after the warning.</vf-text>
+            <vf-code language="css">
+                .warning ~ p {
+                    font-style: italic;
+                }
+
+                blockquote {
+                    font-style: italic;
+                    color: #6d5fb3;
+                    border-left: 4px solid #6d5fb3;
+                    padding-left: 12px;
+                }
+            </vf-code>
+
+
+            <vf-title level="3">Pseudo-classes: position</vf-title>
+            <vf-text>*4.* <code>:first-child</code>, <code>:last-child</code> and <code>:nth-child()</code>: the position among its siblings. <code>even</code> means 2, 4, 6...; <code>odd</code> means 1, 3, 5...</vf-text>
+            <vf-code language="css">
+                .steps li:first-child {
+                    font-weight: bold;
+                }
+
+                .steps li:last-child {
+                    color: #6d5fb3;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    background-color: white;
+                }
+
+                th {
+                    background-color: #6d5fb3;
+                    color: white;
+                }
+
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                }
+
+                tbody tr:nth-child(even) {
+                    background-color: #f4f1fb;
+                }
+
+                tbody tr:first-child {
+                    font-weight: bold;
+                    color: #b8860b;
+                }
+            </vf-code>
+
+            <vf-title level="3">Attributes</vf-title>
+            <vf-text>*5.* *Attribute selectors* <code>[ ]</code>: elements with an attribute or a value. <code>[href^="https"]</code> means the <code>href</code> *starts with* <code>https</code>: only the external links of the footer change, not <em>Back to top</em>.</vf-text>
+            <vf-code language="css">
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    display: block;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 8px;
+                    margin: 4px 0 14px;
+                    border: 1px solid #c9c1ec;
+                    border-radius: 6px;
+                }
+
+                a[href^="https"] {
+                    font-style: italic;
+                }
+
+                label {
+                    font-weight: bold;
+                }
+
+                button {
+                    background-color: #6d5fb3;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+            </vf-code>
+            <vf-text>*6.* <code>:focus</code>: the field where you are writing right now. Click on a field of the form.</vf-text>
+            <vf-code language="css">
+                input:focus,
+                textarea:focus {
+                    border-color: #6d5fb3;
+                    background-color: #fbfaff;
+                }
+            </vf-code>
+
+            <vf-title level="3">:not() and pseudo-elements</vf-title>
+            <vf-text>*7.* <code>:not()</code>: everything *except* what is inside the brackets. All the cards except the featured one.</vf-text>
+            <vf-code language="css">
+                .card:not(.featured) {
+                    border-left: 6px solid #c9c1ec;
+                }
+            </vf-code>
+            <vf-text>*8.* *Pseudo-element* <code>::first-letter</code> (two colons): a part of the element, here only its first letter. Like in old books.</vf-text>
+            <vf-code language="css">
+                .featured .date + p::first-letter {
+                    font-size: 32px;
+                    color: #6d5fb3;
+                }
+
+                footer {
+                    background-color: #333333;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                }
+            </vf-code>
+
+            <vf-title level="3">The cascade, live</vf-title>
+            <vf-text>*9.* Write the same rule twice with different colours. Same specificity: the *last one wins*. Then give a class to one of the footer paragraphs and style the class *before* these rules: it still wins, because a class beats a tag.</vf-text>
+            <vf-code language="css">
+                footer p {
+                    color: yellow;
+                }
+
+                footer p {
+                    color: #cccccc;    /* this one wins: it comes later */
+                }
+            </vf-code>
+            <vf-callout type="consell">
+                Open DevTools (F12), click on any element and look at the *Styles* panel: you see every rule
+                that applies to it, and the ones that lose appear crossed out.
+            </vf-callout>
+            <vf-details summary="See the finished page">
+                <vf-text>
+                    [The Pixel Times with all the rules](unitats/programacio/web/html-css/exercises/09-css-basics/selectors_solved.html)
+                    (the CSS is inside the HTML, in a <code>&lt;style&gt;</code>, so the file works on its own).
+                </vf-text>
+            </vf-details>
+        </vf-content>
+
+        <vf-title level="2">Exercises</vf-title>
+        <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
+            <vf-callout type="exercici">
+                *Exercise 14b.1. Children and siblings.* Create <code>family.html</code>. You cannot add classes to the <code>&lt;p&gt;</code>: the selectors do all the work.
+            </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="article"</code>;</vf-text></li>
+                <li><vf-text>inside, in this order: an <code>&lt;h2&gt;</code>, three <code>&lt;p&gt;</code>, and a <code>&lt;div&gt;</code> with <code>class="box"</code> that has two more <code>&lt;p&gt;</code> inside.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.article &gt; p</code>: <code>line-height: 1.6</code> (only the three paragraphs that are direct children);</vf-text></li>
+                <li><vf-text><code>h2 + p</code>: size <code>1.2rem</code> and bold (only the first paragraph after the title);</vf-text></li>
+                <li><vf-text><code>h2 ~ p</code>: colour <code>#333333</code>;</vf-text></li>
+                <li><vf-text><code>.box</code>: background colour <code>#f4f1fb</code> and <code>padding: 15px</code>;</vf-text></li>
+                <li><vf-text><code>.box p</code>: colour <code>#888888</code> and italic.</vf-text></li>
+            </vf-list>
+            <vf-text>Check in DevTools which rules apply to the paragraphs of the box and which do not.</vf-text>
+            <vf-callout type="exercici">
+                *Exercise 14b.2. A league table.* Create <code>league.html</code>.
+            </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;table&gt;</code> with <code>class="league"</code>, with a <code>&lt;thead&gt;</code> (one <code>&lt;tr&gt;</code> with three <code>&lt;th&gt;</code>: Position, Team, Points) and a <code>&lt;tbody&gt;</code> with six <code>&lt;tr&gt;</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;ul&gt;</code> with <code>class="podium"</code> and three <code>&lt;li&gt;</code> (the first three teams).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.league</code>: width <code>100%</code> and <code>border-collapse: collapse</code>;</vf-text></li>
+                <li><vf-text><code>.league th</code>: background colour <code>#6d5fb3</code>, colour <code>white</code> and <code>padding: 10px</code>;</vf-text></li>
+                <li><vf-text><code>.league td</code>: <code>padding: 10px</code>;</vf-text></li>
+                <li><vf-text><code>tbody tr:nth-child(even)</code>: background colour <code>#f4f1fb</code>;</vf-text></li>
+                <li><vf-text><code>tbody tr:first-child</code>: colour <code>#b8860b</code> and bold;</vf-text></li>
+                <li><vf-text><code>tbody tr:last-child</code>: colour <code>#c0392b</code>;</vf-text></li>
+                <li><vf-text><code>.podium li:first-child</code>: size <code>1.5rem</code>.</vf-text></li>
+            </vf-list>
+            <vf-callout type="exercici">
+                *Exercise 14b.3. A form with attribute selectors.* Create <code>contact.html</code>.
+            </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;form&gt;</code> with: an <code>&lt;input&gt;</code> <code>type="text"</code>, an <code>&lt;input&gt;</code> <code>type="email"</code>, an <code>&lt;input&gt;</code> <code>type="password"</code>, a <code>&lt;textarea&gt;</code>, an <code>&lt;input&gt;</code> <code>type="checkbox"</code> and a <code>&lt;button&gt;</code> <code>type="submit"</code>; every field with its <code>&lt;label&gt;</code>;</vf-text></li>
+                <li><vf-text>under the form, a <code>&lt;p&gt;</code> with two links: one to <code>https://developer.mozilla.org/</code> and one to <code>#top</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>input[type="text"], input[type="email"], input[type="password"], textarea</code>: <code>display: block</code>, width <code>100%</code>, <code>padding: 8px</code>, <code>margin-bottom: 14px</code>, <code>border: 1px solid #cccccc</code> and <code>border-radius: 6px</code>;</vf-text></li>
+                <li><vf-text><code>input:focus, textarea:focus</code>: <code>border-color: #6d5fb3</code> and background colour <code>#fbfaff</code>;</vf-text></li>
+                <li><vf-text><code>input[type="checkbox"]</code>: width <code>20px</code> and height <code>20px</code>;</vf-text></li>
+                <li><vf-text><code>button[type="submit"]</code>: background colour <code>#6d5fb3</code>, colour <code>white</code>, <code>border: none</code>, <code>padding: 10px 20px</code> and <code>border-radius: 6px</code>;</vf-text></li>
+                <li><vf-text><code>a[href^="https"]</code>: colour <code>#e07a5f</code> (only the external link changes).</vf-text></li>
+            </vf-list>
+            <vf-callout type="exercici">
+                *Exercise 14b.4. :not(), ::first-letter and the cascade.* Create <code>magazine.html</code>.
+            </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;nav&gt;</code> with five <code>&lt;a&gt;</code>; the second one has <code>class="active"</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;article&gt;</code> with a <code>&lt;p&gt;</code> with <code>class="intro"</code> and two more <code>&lt;p&gt;</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;h2&gt;</code> with <code>id="main-title"</code> *and* <code>class="title"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>nav a:not(.active)</code>: colour <code>#888888</code>;</vf-text></li>
+                <li><vf-text><code>nav a.active</code>: colour <code>#6d5fb3</code> and bold;</vf-text></li>
+                <li><vf-text><code>.intro::first-letter</code>: size <code>3rem</code> and colour <code>#6d5fb3</code>;</vf-text></li>
+                <li><vf-text>in this order: <code>#main-title</code> in <code>red</code>, <code>.title</code> in <code>green</code> and <code>h2</code> in <code>blue</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Before you reload, write in an HTML comment which colour the <code>&lt;h2&gt;</code> will have. Then move the rules around: does the order change anything? Why?</vf-text>
+        </vf-content>
+
+        <vf-hr></vf-hr>
+        <vf-row centered>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/14-responsive.html">
+                    &larr; Previous: Responsive design
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" inverse link="unitats/programacio/web/html-css">
+                    Unit index
+                </vf-btn>
+            </vf-col>
+            <vf-col classes="col-md-4">
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/15-variables.html">
+                    Next: CSS variables and good practice &rarr;
+                </vf-btn>
+            </vf-col>
+        </vf-row>
+
+    </div>
+    <div id="footer"></div>
+    <script>$('#footer').load('footer.html');</script>
+</body>
+
+</html>

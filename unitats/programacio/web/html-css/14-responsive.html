@@ -425,22 +425,69 @@
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 14.1.* Add the viewport tag and <code>img { max-width: 100%; }</code> to all your
-                pages. Compare the result on a narrow window before and after.
+                *Exercise 14.1. A page that fits on a phone.* Create <code>phone.html</code>. Put the viewport tag in the <code>&lt;head&gt;</code>: <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;h1&gt;</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;img&gt;</code> with <code>class="hero-img"</code> and a big photo (more than 1500px wide);</vf-text></li>
+                <li><vf-text>two <code>&lt;p&gt;</code> with text.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>img</code>: <code>max-width: 100%</code> and <code>height: auto</code>;</vf-text></li>
+                <li><vf-text><code>body</code>: <code>padding: 10px</code> and <code>margin: 0</code>;</vf-text></li>
+                <li><vf-text><code>.hero-img</code>: <code>border-radius: 10px</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Open DevTools, choose a phone in device mode and check that you never have to scroll to the side. Then remove the <code>img</code> rule and see what happens.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 14.2.* Make your row of cards show 3 per line on a desktop, 2 on a tablet and 1 on
-                a phone. Use mobile first.
+                *Exercise 14.2. Cards: one, two, three columns.* Create <code>responsive-cards.html</code>. Work *mobile first*: first the rules for the phone, then the media queries with <code>min-width</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;section&gt;</code> with <code>class="cards"</code>;</vf-text></li>
+                <li><vf-text>inside, six <code>&lt;article&gt;</code> with <code>class="card"</code>, each one with an <code>&lt;h3&gt;</code> and a <code>&lt;p&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.cards</code>: <code>display: grid</code>, <code>grid-template-columns: 1fr</code> and <code>gap: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.card</code>: <code>padding: 20px</code>, background colour <code>white</code> and <code>border-radius: 10px</code>;</vf-text></li>
+                <li><vf-text><code>@media (min-width: 600px)</code>: <code>.cards</code> with <code>grid-template-columns: repeat(2, 1fr)</code>;</vf-text></li>
+                <li><vf-text><code>@media (min-width: 900px)</code>: <code>.cards</code> with <code>grid-template-columns: repeat(3, 1fr)</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 14.3.* Make your nav bar become a vertical column below 600px.
+                *Exercise 14.3. A nav bar that turns into a column.* Copy the nav bar of exercise 12.3 into <code>responsive-nav.html</code>, with the same HTML and CSS.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>the same <code>&lt;header&gt;</code> with <code>class="site-header"</code>, the <code>&lt;div&gt;</code> with <code>class="logo"</code> and the <code>&lt;ul&gt;</code> with <code>class="menu"</code> of exercise 12.3.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text>at the end of the file, <code>@media (max-width: 600px)</code>:</vf-text></li>
+                <li><vf-text>inside it, <code>.site-header</code>: <code>flex-direction: column</code>, <code>gap: 12px</code> and centred text;</vf-text></li>
+                <li><vf-text>inside it, <code>.menu</code>: <code>flex-direction: column</code> and <code>gap: 8px</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 14.4.* Hide the sidebar (<code>aside</code>) on screens under 768px using
-                <code>display: none</code>. Then think: is it a good idea to hide content on mobile? Write
-                two lines with your opinion.
+                *Exercise 14.4. A sidebar only for big screens.* Create <code>sidebar.html</code>, mobile first.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;h1&gt;</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="layout"</code>, with a <code>&lt;main&gt;</code> (two <code>&lt;p&gt;</code>) and an <code>&lt;aside&gt;</code> (an <code>&lt;h3&gt;</code> and a <code>&lt;ul&gt;</code> of links).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>h1</code>: size <code>1.8rem</code>;</vf-text></li>
+                <li><vf-text><code>aside</code>: <code>display: none</code> (on a phone it is hidden);</vf-text></li>
+                <li><vf-text><code>@media (min-width: 768px)</code>: <code>h1</code> with size <code>3rem</code>; <code>.layout</code> with <code>display: grid</code>, <code>grid-template-columns: 2fr 1fr</code> and <code>gap: 20px</code>; <code>aside</code> with <code>display: block</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Add a <code>&lt;p&gt;</code> at the end of the page with your opinion, in two lines: is it a good idea to hide content on mobile?</vf-text>
             <vf-details summary="Show the solution (Exercise 14.3)">
                 <vf-code language="css">
                     @media (max-width: 600px) {
@@ -515,9 +562,21 @@
         <vf-title level="2">More exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 14.4.* Take the band page of exercise 12.6 and make it work on a phone: one
-                column under 600 px, two between 600 and 900, three above.
+                *Exercise 14.5. Responsive band page.* Take the band page of exercise 12.7 and make it work on a phone.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>the same HTML of exercise 12.7, with the viewport tag in the <code>&lt;head&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>img, iframe</code>: <code>max-width: 100%</code>;</vf-text></li>
+                <li><vf-text><code>.gallery</code>: change it to <code>display: grid</code>, <code>grid-template-columns: 1fr</code> and <code>gap: 20px</code> (one column on a phone);</vf-text></li>
+                <li><vf-text><code>@media (min-width: 600px)</code>: <code>.gallery</code> with <code>grid-template-columns: repeat(2, 1fr)</code>;</vf-text></li>
+                <li><vf-text><code>@media (min-width: 900px)</code>: <code>.gallery</code> with <code>grid-template-columns: repeat(3, 1fr)</code>;</vf-text></li>
+                <li><vf-text><code>.songs</code>: <code>flex-direction: column</code> on a phone, and <code>flex-direction: row</code> from <code>900px</code>;</vf-text></li>
+                <li><vf-text><code>.main-photo</code>: width <code>100%</code> on a phone and <code>50%</code> from <code>900px</code>.</vf-text></li>
+            </vf-list>
         </vf-content>
 
         <vf-hr></vf-hr>
@@ -533,8 +592,8 @@
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/15-variables.html">
-                    Next: CSS variables and good practice &rarr;
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/14b-advanced-selectors.html">
+                    Next: Advanced selectors &rarr;
                 </vf-btn>
             </vf-col>
         </vf-row>

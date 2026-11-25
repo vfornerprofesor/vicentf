@@ -251,27 +251,77 @@
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 15.1.* Take your CSS file and move every colour to a <code>:root</code> block of
-                variables. Then change your main colour and check that the whole page follows.
+                *Exercise 15.1. A page with variables.* Create <code>variables.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;main&gt;</code> with three <code>&lt;div&gt;</code> with <code>class="card"</code>, each one with an <code>&lt;img&gt;</code>, an <code>&lt;h2&gt;</code>, a <code>&lt;p&gt;</code> and an <code>&lt;a&gt;</code> with <code>class="btn"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>:root</code> block with four variables: <code>--main-color: #6d5fb3</code>, <code>--main-color-dark: #4b3f8f</code>, <code>--light-grey: #f4f1fb</code> and <code>--text-color: #333333</code>;</vf-text></li>
+                <li><vf-text><code>body</code>: colour <code>var(--text-color)</code> and background colour <code>var(--light-grey)</code>;</vf-text></li>
+                <li><vf-text><code>header</code>: background colour <code>var(--main-color)</code>, colour <code>white</code> and <code>padding: 20px</code>;</vf-text></li>
+                <li><vf-text><code>h2</code>: colour <code>var(--main-color)</code>;</vf-text></li>
+                <li><vf-text><code>.btn</code>: background colour <code>var(--main-color)</code>, colour <code>white</code>, no underline and <code>padding: 8px 16px</code>;</vf-text></li>
+                <li><vf-text><code>.btn:hover</code>: background colour <code>var(--main-color-dark)</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Change only <code>--main-color</code> to <code>#e07a5f</code>: the header, the titles and the buttons change at the same time.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 15.2.* Add <code>--radius</code> and <code>--shadow</code> variables and use them
-                in at least three places.
+                *Exercise 15.2. Radius and shadow.* Continue with <code>variables.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>the same HTML as exercise 15.1.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text>add to <code>:root</code>: <code>--radius: 12px</code> and <code>--shadow: 0 2px 8px rgba(0, 0, 0, 0.12)</code>;</vf-text></li>
+                <li><vf-text><code>.card</code>: background colour <code>white</code>, <code>padding: 20px</code>, <code>border-radius: var(--radius)</code> and <code>box-shadow: var(--shadow)</code>;</vf-text></li>
+                <li><vf-text><code>.card img</code>: width <code>100%</code> and <code>border-radius: var(--radius)</code>;</vf-text></li>
+                <li><vf-text><code>.btn</code>: <code>border-radius: var(--radius)</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 15.3.* Add the section comments to your CSS file and reorder your rules.
+                *Exercise 15.3. Smooth transitions.* Continue with <code>variables.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>the same HTML as exercise 15.1.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.card</code>: <code>transition: transform 0.3s ease</code>;</vf-text></li>
+                <li><vf-text><code>.card:hover</code>: <code>transform: translateY(-5px)</code>;</vf-text></li>
+                <li><vf-text><code>.btn</code>: <code>transition: background-color 0.3s ease</code> and <code>cursor: pointer</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 15.4.* Go through the checklist and fix everything that fails.
+                *Exercise 15.4. Put your CSS in order.* Take the CSS of <code>variables.html</code> and organise it.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>no changes in the HTML, except the class names that you rename in the CSS.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text>five section comments, in this order: <code>/* ============ 1. Variables ============ */</code>, <code>2. Reset and base</code>, <code>3. Layout</code>, <code>4. Components</code> and <code>5. Media queries</code>;</vf-text></li>
+                <li><vf-text>move every rule to its section;</vf-text></li>
+                <li><vf-text>add a <code>@media (min-width: 900px)</code> in the last section that puts the three cards in a row with <code>display: grid</code> and <code>grid-template-columns: repeat(3, 1fr)</code> on <code>main</code>;</vf-text></li>
+                <li><vf-text>if a class has a name that says how it looks (<code>.red</code>, <code>.big</code>, <code>.box1</code>), rename it to what it is (<code>.warning</code>, <code>.title</code>, <code>.card</code>), in the HTML and in the CSS.</vf-text></li>
+            </vf-list>
+            <vf-text>Go through the checklist of this page and fix everything that fails.</vf-text>
         </vf-content>
 
         <vf-hr></vf-hr>
         <vf-row centered>
             <vf-col classes="col-md-4">
-                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/14-responsive.html">
-                    &larr; Previous: Responsive design
+                <vf-btn classes="btn-short" link="unitats/programacio/web/html-css/14b-advanced-selectors.html">
+                    &larr; Previous: Advanced selectors
                 </vf-btn>
             </vf-col>
             <vf-col classes="col-md-4">

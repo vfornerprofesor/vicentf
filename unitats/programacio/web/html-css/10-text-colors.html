@@ -346,55 +346,124 @@
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 10.1.* Choose a Google Font for your headings and a different one for the body
-                text. Apply them.
+                *Exercise 10.1. A poem with Google Fonts.* Create <code>poem.html</code> and choose two fonts in Google Fonts: *Pacifico* for the title and *Lora* for the text. Copy their <code>&lt;link&gt;</code> into the <code>&lt;head&gt;</code>, before your <code>style.css</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;h1&gt;</code> with the title of the poem;</vf-text></li>
+                <li><vf-text>a <code>&lt;p&gt;</code> with <code>class="author"</code> with the name of the poet;</vf-text></li>
+                <li><vf-text>three <code>&lt;p&gt;</code> with <code>class="verse"</code>, one per stanza (use <code>&lt;br&gt;</code> to break the lines).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: font <code>"Lora", serif</code>;</vf-text></li>
+                <li><vf-text><code>h1</code>: font <code>"Pacifico", cursive</code>, size <code>3rem</code>, centred (<code>text-align: center</code>) and colour <code>#6d5fb3</code>;</vf-text></li>
+                <li><vf-text><code>.author</code>: italic (<code>font-style: italic</code>), aligned to the right and colour <code>#888888</code>;</vf-text></li>
+                <li><vf-text><code>.verse</code>: size <code>1.1rem</code> and <code>line-height: 1.8</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 10.2.* Set the body font size to <code>1rem</code> and <code>line-height: 1.6</code>. Compare before and
-                after.
+                *Exercise 10.2. A newspaper article.* Create <code>news.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;article&gt;</code> with an <code>&lt;h1&gt;</code> (the headline);</vf-text></li>
+                <li><vf-text>a <code>&lt;p&gt;</code> with <code>class="subtitle"</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;p&gt;</code> with <code>class="date"</code> (for example “25 November 2026”);</vf-text></li>
+                <li><vf-text>three <code>&lt;p&gt;</code> with the text of the news.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: size <code>1rem</code> and <code>line-height: 1.6</code>;</vf-text></li>
+                <li><vf-text><code>h1</code>: size <code>2.5rem</code> and <code>font-weight: 800</code>;</vf-text></li>
+                <li><vf-text><code>.subtitle</code>: size <code>1.25rem</code> and <code>font-weight: 300</code>;</vf-text></li>
+                <li><vf-text><code>.date</code>: in capitals (<code>text-transform: uppercase</code>), <code>letter-spacing: 2px</code>, size <code>0.8rem</code> and colour <code>#888888</code>;</vf-text></li>
+                <li><vf-text><code>article p</code>: justified (<code>text-align: justify</code>).</vf-text></li>
+            </vf-list>
+            <vf-text>Change the <code>font-size</code> of <code>body</code> to <code>1.25rem</code>: everything with <code>rem</code> grows at the same time.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 10.3.* Make the links of your <code>nav</code> white, with no underline, and underlined on
-                hover.
+                *Exercise 10.3. Navigation links.* Create <code>links.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with a <code>&lt;nav&gt;</code> inside and four <code>&lt;a&gt;</code>: Home, Gallery, Blog, Contact;</vf-text></li>
+                <li><vf-text>a <code>&lt;main&gt;</code> with a <code>&lt;p&gt;</code> that contains a normal link <code>&lt;a&gt;</code> to any website.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>header</code>: background colour <code>#222222</code> and <code>padding: 20px</code>;</vf-text></li>
+                <li><vf-text><code>nav a</code>: colour <code>white</code>, *no underline*, in capitals and <code>margin-right: 20px</code>;</vf-text></li>
+                <li><vf-text><code>nav a:hover</code>: *underlined* (<code>text-decoration: underline</code>) and colour <code>#ffd166</code>;</vf-text></li>
+                <li><vf-text><code>main a</code>: colour <code>#6d5fb3</code>, bold.</vf-text></li>
+            </vf-list>
+            <vf-text>Check that the link of the <code>&lt;main&gt;</code> is still underlined: only the links of the <code>&lt;nav&gt;</code> lose the underline.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 10.4.* Put a background image in your <code>header</code>, with <code>cover</code>, and white text on
-                top. Make sure you can still read the text.
+                *Exercise 10.4. A header with a background image.* Create <code>hero.html</code> and put a photo called <code>hero.jpg</code> in a folder <code>images</code>.
             </vf-callout>
-            <vf-details summary="Show the solution (Exercise 10.4)">
-                <vf-code language="css">
-                    header {
-                        background-image: url("../images/hero.jpg");
-                        background-size: cover;
-                        background-position: center;
-                        color: white;
-                        text-align: center;
-                        padding: 60px 20px;
-                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-                    }
-                </vf-code>
-                <vf-text>
-                    The <code>text-shadow</code> is the trick to keep white text readable on any photo.
-                </vf-text>
-            </vf-details>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with <code>class="hero"</code>, with an <code>&lt;h1&gt;</code> and a <code>&lt;p&gt;</code> inside;</vf-text></li>
+                <li><vf-text>a <code>&lt;section&gt;</code> with <code>class="highlight"</code> and a <code>&lt;p&gt;</code> inside.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.hero</code>: background image <code>url("../images/hero.jpg")</code>, <code>background-size: cover</code>, <code>background-position: center</code>, <code>padding: 80px 20px</code>, centred text and colour <code>white</code>;</vf-text></li>
+                <li><vf-text><code>.hero h1, .hero p</code>: <code>text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7)</code>, so you can read the text on any photo;</vf-text></li>
+                <li><vf-text><code>body</code>: background colour <code>#fafafa</code>;</vf-text></li>
+                <li><vf-text><code>.highlight</code>: background colour <code>rgba(109, 95, 179, 0.15)</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>The path has <code>../</code> because the CSS file is inside the <code>css</code> folder: first it goes up one folder and then it goes into <code>images</code>.</vf-text>
         </vf-content>
 
         <vf-title level="2">More exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 10.5. Personal page.* Reproduce the page in the picture: fonts, sizes, colours and
-                text alignment. The HTML is given.
+                *Exercise 10.5. Personal page.* Create <code>personal.html</code>. The picture is the model.
             </vf-callout>
             <vf-img src="assets/unitats/programacio/web/html-css/10-text-colors/ex1.png" alt="A personal page styled with a chosen font, colours and text alignment"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/10-text-colors/ex1.html)
-            </vf-text>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="profile"</code> that contains everything;</vf-text></li>
+                <li><vf-text>inside, an <code>&lt;img&gt;</code> with <code>class="photo"</code> (a photo of your hobby) and a <code>&lt;div&gt;</code> with <code>class="info"</code>;</vf-text></li>
+                <li><vf-text>inside <code>.info</code>: an <code>&lt;h1&gt;</code> with your name, a <code>&lt;p&gt;</code> with your birthday and age, an <code>&lt;h2&gt;</code> “Interests”, a <code>&lt;table&gt;</code> with three <code>&lt;tr&gt;</code> and two <code>&lt;td&gt;</code> in each row (six interests), and two <code>&lt;a&gt;</code> with <code>class="button"</code> (Instagram and Twitter).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: font <code>Arial, sans-serif</code> and background colour <code>#f0f0f0</code>;</vf-text></li>
+                <li><vf-text><code>.profile</code>: background colour <code>#ef6b5c</code>, <code>padding: 20px</code>, <code>margin: 50px auto</code>, width <code>860px</code> and <code>border-radius: 6px</code>;</vf-text></li>
+                <li><vf-text><code>.photo</code>: width <code>400px</code>;</vf-text></li>
+                <li><vf-text><code>.info</code>: centred text;</vf-text></li>
+                <li><vf-text><code>h1</code>: size <code>2rem</code>; <code>h2</code>: size <code>1.5rem</code>;</vf-text></li>
+                <li><vf-text><code>table</code>: width <code>100%</code>;</vf-text></li>
+                <li><vf-text><code>.button</code>: background colour <code>#f6f1bd</code>, colour <code>black</code>, *no underline*, in capitals and <code>padding: 18px 20px</code>;</vf-text></li>
+                <li><vf-text><code>.button:hover</code>: background colour <code>white</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>The photo and the information are not side by side yet: you will put them in a row with flexbox in lesson 12. For now, one under the other is fine.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 10.6. Sign-up form.* Style the form you built in lesson 7: fields, labels, button,
-                focus state.
+                *Exercise 10.6. Sign-up form.* Style the sign-up form of exercise 7.4 (<code>signup.html</code>). The picture is the model.
             </vf-callout>
             <vf-img src="assets/unitats/programacio/web/html-css/10-text-colors/ex2.png" alt="A sign-up form styled with colours, spacing and a focus state"></vf-img>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>the form of exercise 7.4, inside a <code>&lt;div&gt;</code> with <code>class="box"</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;h1&gt;</code> “Computerize” and an <code>&lt;h2&gt;</code> “Sign up” at the top of the box;</vf-text></li>
+                <li><vf-text>every <code>&lt;label&gt;</code> with its <code>for</code> and every <code>&lt;input&gt;</code> with its <code>id</code> and its <code>type</code> (<code>text</code>, <code>date</code>, <code>email</code>, <code>password</code>, <code>number</code>, <code>radio</code>, <code>checkbox</code>) and a <code>&lt;button&gt;</code> <code>type="submit"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: background colour <code>#ff7f50</code> and font <code>"Noto Sans", sans-serif</code> (Google Fonts);</vf-text></li>
+                <li><vf-text><code>.box</code>: background colour <code>white</code>, width <code>500px</code>, <code>margin: 40px auto</code>, <code>padding: 20px</code>, <code>border-radius: 6px</code> and centred text;</vf-text></li>
+                <li><vf-text><code>h1, h2, label</code>: colour <code>#ff7f50</code>; <code>h1, h2</code>: in capitals;</vf-text></li>
+                <li><vf-text><code>label</code>: <code>display: block</code>;</vf-text></li>
+                <li><vf-text><code>input[type="text"], input[type="date"], input[type="email"], input[type="password"], input[type="number"]</code>: width <code>300px</code>, <code>border: 1px solid #ff7f50</code> and <code>border-radius: 3px</code>;</vf-text></li>
+                <li><vf-text><code>input:focus</code>: <code>outline: 2px solid #ff7f50</code>;</vf-text></li>
+                <li><vf-text><code>button</code>: width <code>300px</code>, background colour <code>#ff7f50</code>, colour <code>white</code>, <code>border: none</code>, size <code>1.2rem</code> and in capitals.</vf-text></li>
+            </vf-list>
+            <vf-text>The attribute selectors (<code>input[type="text"]</code>) are explained in Advanced selectors; for now, copy them as they are.</vf-text>
         </vf-content>
 
         <vf-hr></vf-hr>

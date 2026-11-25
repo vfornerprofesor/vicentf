@@ -516,91 +516,146 @@
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 12.1.* Put three coloured boxes in a row, centred, with a 20px gap.
+                *Exercise 12.1. Three ways to put boxes in a row.* Create <code>rows.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>three <code>&lt;div&gt;</code> one after the other, with the classes <code>row</code>, <code>row between</code> and <code>row column</code>;</vf-text></li>
+                <li><vf-text>inside each one, three <code>&lt;div&gt;</code> with <code>class="box"</code> and the texts One, Two, Three.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.row</code>: <code>display: flex</code>, <code>justify-content: center</code>, <code>gap: 20px</code>, <code>padding: 20px</code>, <code>margin-bottom: 20px</code> and background colour <code>#eeeeee</code>;</vf-text></li>
+                <li><vf-text><code>.box</code>: width <code>100px</code>, height <code>100px</code>, background colour <code>#c4baeb</code> and <code>border-radius: 8px</code>;</vf-text></li>
+                <li><vf-text><code>.row.between</code>: <code>justify-content: space-between</code>;</vf-text></li>
+                <li><vf-text><code>.row.column</code>: <code>flex-direction: column</code> and <code>align-items: center</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Write a <code>&lt;p&gt;</code> under each row explaining what changes.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 12.2.* Repeat with <code>space-between</code>, then with <code>column</code>. Write down the difference.
+                *Exercise 12.2. A box in the middle.* Create <code>centre.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="screen"</code>;</vf-text></li>
+                <li><vf-text>inside, a <code>&lt;div&gt;</code> with <code>class="message"</code> with an <code>&lt;h2&gt;</code> (“Welcome!”) and a <code>&lt;p&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.screen</code>: height <code>400px</code>, <code>display: flex</code>, <code>justify-content: center</code>, <code>align-items: center</code> and background colour <code>#2b2b40</code>;</vf-text></li>
+                <li><vf-text><code>.message</code>: background colour <code>white</code>, <code>padding: 30px</code>, <code>border-radius: 12px</code> and centred text.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 12.3.* Centre a single box in the middle of a 400px tall container, both
-                horizontally and vertically.
+                *Exercise 12.3. A navigation bar.* Create <code>navbar.html</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with <code>class="site-header"</code>;</vf-text></li>
+                <li><vf-text>inside: a <code>&lt;div&gt;</code> with <code>class="logo"</code> and your name, and a <code>&lt;nav&gt;</code> with a <code>&lt;ul&gt;</code> with <code>class="menu"</code>;</vf-text></li>
+                <li><vf-text>the <code>&lt;ul&gt;</code> has four <code>&lt;li&gt;</code>, each one with an <code>&lt;a&gt;</code>: Home, Projects, About, Contact.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.site-header</code>: <code>display: flex</code>, <code>justify-content: space-between</code>, <code>align-items: center</code>, <code>padding: 15px 30px</code> and background colour <code>#2b2b40</code>;</vf-text></li>
+                <li><vf-text><code>.logo</code>: colour <code>white</code>, bold and size <code>1.5rem</code>;</vf-text></li>
+                <li><vf-text><code>.menu</code>: <code>display: flex</code>, <code>gap: 20px</code>, <code>list-style: none</code>, <code>margin: 0</code> and <code>padding: 0</code>;</vf-text></li>
+                <li><vf-text><code>.menu a</code>: colour <code>white</code> and no underline;</vf-text></li>
+                <li><vf-text><code>.menu a:hover</code>: colour <code>#ffd166</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 12.4.* Build the nav bar of the example with your own colours.
+                *Exercise 12.4. A row of cards that wraps.* Create <code>cards.html</code>.
             </vf-callout>
-            <vf-callout type="exercici">
-                *Exercise 12.5.* Build a row of 6 cards (image + title + text) that wraps to a second line
-                when the window is narrow.
-            </vf-callout>
-            <vf-details summary="Show the solution (Exercise 12.3)">
-                <vf-row>
-                    <vf-col classes="col-md-6">
-                        <vf-code language="css">
-                            .container {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 400px;
-                                background-color: #eeeeee;
-                            }
-                        </vf-code>
-                    </vf-col>
-                    <vf-col classes="col-md-6">
-                        <vf-preview>
-                            &lt;style&gt;
-                                .container {
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    height: 400px;
-                                    background-color: #eeeeee;
-                                }
-
-                                .box {
-                                    padding: 16px 24px;
-                                    background: #c4baeb;
-                                    border-radius: 8px;
-                                }
-                            &lt;/style&gt;
-                            &lt;div class="container"&gt;
-                                &lt;div class="box"&gt;Centred box&lt;/div&gt;
-                            &lt;/div&gt;
-                        </vf-preview>
-                    </vf-col>
-                </vf-row>
-                <vf-text>
-                    Three lines to centre something in both directions. Before flexbox this was famously
-                    hard.
-                </vf-text>
-            </vf-details>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;section&gt;</code> with <code>class="cards"</code>;</vf-text></li>
+                <li><vf-text>inside, six <code>&lt;article&gt;</code> with <code>class="card"</code>; each one with an <code>&lt;img&gt;</code>, an <code>&lt;h3&gt;</code> and a <code>&lt;p&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.cards</code>: <code>display: flex</code>, <code>flex-wrap: wrap</code> and <code>gap: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.card</code>: <code>flex: 1 1 250px</code>, background colour <code>white</code>, <code>padding: 15px</code>, <code>border-radius: 10px</code> and <code>box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12)</code>;</vf-text></li>
+                <li><vf-text><code>.card img</code>: width <code>100%</code> and <code>border-radius: 8px</code>;</vf-text></li>
+                <li><vf-text><code>body</code>: background colour <code>#f4f1fb</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Make the window narrower: the cards go down to a second (and a third) line by themselves.</vf-text>
         </vf-content>
 
         <vf-title level="2">More exercises</vf-title>
         <vf-content>
             <vf-callout type="exercici">
-                *Exercise 12.4. Navigation menu.* Reproduce the horizontal menu in the picture, with the
-                hover effect.
+                *Exercise 12.5. A bar menu.* Create <code>bar-menu.html</code>. The picture is the model.
             </vf-callout>
-            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A horizontal navigation menu with a hover effect on the links"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/12-flexbox/ex1.html)
-            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex1.png" alt="A bar menu with three columns laid out with flexbox"></vf-img>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code> (the name of the bar);</vf-text></li>
+                <li><vf-text>a <code>&lt;section&gt;</code> with <code>class="menu"</code> and three <code>&lt;div&gt;</code> with <code>class="category"</code> (Starters, Main courses, Desserts), each one with an <code>&lt;h2&gt;</code> and a <code>&lt;ul&gt;</code>;</vf-text></li>
+                <li><vf-text>every <code>&lt;li&gt;</code> has two <code>&lt;span&gt;</code>: one with <code>class="dish"</code> and one with <code>class="price"</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: font <code>Arial, sans-serif</code>, <code>margin: 0</code> and background colour <code>#f5f5f5</code>;</vf-text></li>
+                <li><vf-text><code>header</code>: background colour <code>#333333</code>, colour <code>white</code>, centred text and <code>padding: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.menu</code>: <code>display: flex</code>, <code>max-width: 800px</code>, <code>margin: 20px auto</code>, <code>padding: 20px</code>, background colour <code>white</code> and <code>box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)</code>;</vf-text></li>
+                <li><vf-text><code>.category</code>: <code>flex: 1</code> and <code>padding: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.category h2</code>: centred text and colour <code>#333333</code>;</vf-text></li>
+                <li><vf-text><code>.category ul</code>: <code>list-style: none</code> and <code>padding: 0</code>;</vf-text></li>
+                <li><vf-text><code>.category li</code>: <code>display: flex</code>, <code>justify-content: space-between</code> and <code>margin-bottom: 5px</code>;</vf-text></li>
+                <li><vf-text><code>.dish</code>: bold; <code>.price</code>: colour <code>#666666</code>;</vf-text></li>
+                <li><vf-text><code>footer</code>: centred text.</vf-text></li>
+            </vf-list>
+            <vf-text>Extra: put a <code>border-right: 1px solid lightgrey</code> only on the first two categories (give them one more class).</vf-text>
             <vf-callout type="exercici">
-                *Exercise 12.5. Countries.* Reproduce the grid of country cards. They must wrap when the
-                window gets narrow.
+                *Exercise 12.6. Countries I want to visit.* Create <code>countries.html</code>. The picture is the model.
             </vf-callout>
-            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex2.png" alt="A grid of country cards that wraps to more than one line"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/12-flexbox/ex2.html)
-            </vf-text>
+            <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex2.png" alt="A row of country cards that wraps to more than one line"></vf-img>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;h1&gt;</code> “Countries I want to visit”;</vf-text></li>
+                <li><vf-text>a <code>&lt;div&gt;</code> with <code>class="countries"</code> and three <code>&lt;div&gt;</code> with <code>class="country"</code>;</vf-text></li>
+                <li><vf-text>each country has: an <code>&lt;h2&gt;</code> with an id (<code>id="peru"</code>, <code>id="south-africa"</code>, <code>id="japan"</code>), an <code>&lt;img&gt;</code> with <code>class="photo"</code>, an <code>&lt;img&gt;</code> with <code>class="flag"</code> and an <code>&lt;a&gt;</code> with <code>class="button"</code> (“Visit”) to its Wikipedia page.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: font <code>Arial, sans-serif</code> and background colour <code>bisque</code>;</vf-text></li>
+                <li><vf-text><code>h1</code>: centred, colour <code>coral</code> and <code>text-shadow: 0 0 3px black</code>;</vf-text></li>
+                <li><vf-text><code>#peru</code>: colour <code>#d20f22</code>; <code>#south-africa</code>: colour <code>#009947</code>; <code>#japan</code>: colour <code>#bc002d</code>;</vf-text></li>
+                <li><vf-text><code>.countries</code>: <code>display: flex</code>, <code>flex-wrap: wrap</code> and <code>gap: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.country</code>: <code>flex: 1 1 300px</code> and centred text;</vf-text></li>
+                <li><vf-text><code>.photo</code>: width <code>100%</code>; <code>.flag</code>: width <code>60px</code> and <code>display: block</code> with <code>margin: 10px auto</code>;</vf-text></li>
+                <li><vf-text><code>.button</code>: <code>display: inline-block</code>, width <code>50%</code>, <code>padding: 10px</code>, background colour <code>coral</code>, colour <code>bisque</code>, bold, no underline and <code>border-radius: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.button:hover</code>: background colour <code>bisque</code> and colour <code>coral</code>.</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 12.6. Band page.* Reproduce the page of the music group.
+                *Exercise 12.7. Band page.* Create <code>band.html</code> about your favourite band. The picture is the model.
             </vf-callout>
             <vf-img src="assets/unitats/programacio/web/html-css/12-flexbox/ex3.png" alt="A music band page laid out with flexbox"></vf-img>
-            <vf-text>
-                Download the starter file [here|download](unitats/programacio/web/html-css/exercises/12-flexbox/ex3.html)
-            </vf-text>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with <code>class="band-header"</code>: an <code>&lt;img&gt;</code> (the logo) and an <code>&lt;h1&gt;</code> with the name of the band;</vf-text></li>
+                <li><vf-text>a <code>&lt;nav&gt;</code> with <code>class="menu"</code> and two <code>&lt;a&gt;</code> with <code>class="menu-button"</code> that go to <code>#gallery</code> and <code>#songs</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;img&gt;</code> with <code>class="main-photo"</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;h2&gt;</code> with <code>id="gallery"</code> and a <code>&lt;div&gt;</code> with <code>class="gallery"</code> with seven <code>&lt;img&gt;</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;h2&gt;</code> with <code>id="songs"</code> and a <code>&lt;div&gt;</code> with <code>class="songs"</code> with two <code>&lt;div&gt;</code>; each one with an <code>&lt;h3&gt;</code>, an <code>&lt;iframe&gt;</code> of YouTube and a <code>&lt;pre&gt;</code> with the lyrics;</vf-text></li>
+                <li><vf-text>an <code>&lt;hr&gt;</code> between the sections.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>body</code>: background colour <code>#2a2a2a</code>, colour <code>white</code> and font <code>sans-serif</code>;</vf-text></li>
+                <li><vf-text><code>.band-header, h2</code>: centred text;</vf-text></li>
+                <li><vf-text><code>.menu</code>: <code>display: flex</code>, <code>justify-content: center</code> and <code>gap: 40px</code>;</vf-text></li>
+                <li><vf-text><code>.menu-button</code>: <code>padding: 10px</code>, <code>border: 1px solid white</code>, <code>border-radius: 5px</code>, colour <code>white</code>, no underline, bold and in capitals;</vf-text></li>
+                <li><vf-text><code>.menu-button:hover</code>: background colour <code>white</code> and colour <code>#2a2a2a</code>;</vf-text></li>
+                <li><vf-text><code>.main-photo</code>: width <code>50%</code>, <code>display: block</code> and <code>margin: 0 auto</code>;</vf-text></li>
+                <li><vf-text><code>.gallery</code>: <code>display: flex</code>, <code>flex-wrap: wrap</code> and <code>justify-content: space-around</code>;</vf-text></li>
+                <li><vf-text><code>.gallery img</code>: <code>max-width: 400px</code> and <code>margin: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.songs</code>: <code>display: flex</code>, <code>justify-content: space-around</code> and centred text.</vf-text></li>
+            </vf-list>
         </vf-content>
 
         <vf-hr></vf-hr>

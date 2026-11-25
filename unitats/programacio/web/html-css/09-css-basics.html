@@ -434,37 +434,8 @@
                 }
             </vf-code>
 
-            <vf-title level="3">Family: children and siblings</vf-title>
-            <vf-text>*11.* *Child selector* <code>&gt;</code>: only the direct children. <code>main &gt; section</code> selects the sections that are right inside <code>main</code>, not deeper.</vf-text>
-            <vf-code language="css">
-                main > section {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                }
-            </vf-code>
-            <vf-text>*12.* *Adjacent sibling* <code>+</code>: the element that comes *right after* another one, at the same level. Here, the first paragraph after each date.</vf-text>
-            <vf-code language="css">
-                .date + p {
-                    font-size: 18px;
-                }
-            </vf-code>
-            <vf-text>*13.* *General sibling* <code>~</code>: *all* the elements after another one, at the same level. Here, every paragraph after the warning.</vf-text>
-            <vf-code language="css">
-                .warning ~ p {
-                    font-style: italic;
-                }
-
-                blockquote {
-                    font-style: italic;
-                    color: #6d5fb3;
-                    border-left: 4px solid #6d5fb3;
-                    padding-left: 12px;
-                }
-            </vf-code>
-
-            <vf-title level="3">Pseudo-classes: state and position</vf-title>
-            <vf-text>*14.* <code>:hover</code>: when the mouse is over the element. Move the mouse over the menu, the cards and the button.</vf-text>
+            <vf-title level="3">Pseudo-classes: :hover</vf-title>
+            <vf-text>*11.* <code>:hover</code>: when the mouse is over the element. Move the mouse over the menu, the cards and the button.</vf-text>
             <vf-code language="css">
                 nav a:hover {
                     color: #ffd166;
@@ -478,182 +449,107 @@
                     background-color: #4b3f8f;
                 }
             </vf-code>
-            <vf-text>*15.* <code>:first-child</code>, <code>:last-child</code> and <code>:nth-child()</code>: the position among its siblings. <code>even</code> means 2, 4, 6...; <code>odd</code> means 1, 3, 5...</vf-text>
-            <vf-code language="css">
-                .steps li:first-child {
-                    font-weight: bold;
-                }
-
-                .steps li:last-child {
-                    color: #6d5fb3;
-                }
-
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    background-color: white;
-                }
-
-                th {
-                    background-color: #6d5fb3;
-                    color: white;
-                }
-
-                th, td {
-                    padding: 10px;
-                    text-align: left;
-                }
-
-                tbody tr:nth-child(even) {
-                    background-color: #f4f1fb;
-                }
-
-                tbody tr:first-child {
-                    font-weight: bold;
-                    color: #b8860b;
-                }
-            </vf-code>
-
-            <vf-title level="3">Attributes</vf-title>
-            <vf-text>*16.* *Attribute selectors* <code>[ ]</code>: elements with an attribute or a value. <code>[href^="https"]</code> means the <code>href</code> *starts with* <code>https</code>: only the external links of the footer change, not <em>Back to top</em>.</vf-text>
-            <vf-code language="css">
-                input[type="text"],
-                input[type="email"],
-                textarea {
-                    display: block;
-                    width: 100%;
-                    box-sizing: border-box;
-                    padding: 8px;
-                    margin: 4px 0 14px;
-                    border: 1px solid #c9c1ec;
-                    border-radius: 6px;
-                }
-
-                a[href^="https"] {
-                    font-style: italic;
-                }
-
-                label {
-                    font-weight: bold;
-                }
-
-                button {
-                    background-color: #6d5fb3;
-                    color: white;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                }
-            </vf-code>
-            <vf-text>*17.* <code>:focus</code>: the field where you are writing right now. Click on a field of the form.</vf-text>
-            <vf-code language="css">
-                input:focus,
-                textarea:focus {
-                    border-color: #6d5fb3;
-                    background-color: #fbfaff;
-                }
-            </vf-code>
-
-            <vf-title level="3">:not() and pseudo-elements</vf-title>
-            <vf-text>*18.* <code>:not()</code>: everything *except* what is inside the brackets. All the cards except the featured one.</vf-text>
-            <vf-code language="css">
-                .card:not(.featured) {
-                    border-left: 6px solid #c9c1ec;
-                }
-            </vf-code>
-            <vf-text>*19.* *Pseudo-element* <code>::first-letter</code> (two colons): a part of the element, here only its first letter. Like in old books.</vf-text>
-            <vf-code language="css">
-                .featured .date + p::first-letter {
-                    font-size: 32px;
-                    color: #6d5fb3;
-                }
-
-                footer {
-                    background-color: #333333;
-                    color: white;
-                    text-align: center;
-                    padding: 20px;
-                }
-            </vf-code>
-
-            <vf-title level="3">The cascade, live</vf-title>
-            <vf-text>*20.* Write the same rule twice with different colours. Same specificity: the *last one wins*. Then give a class to one of the footer paragraphs and style the class *before* these rules: it still wins, because a class beats a tag.</vf-text>
-            <vf-code language="css">
-                footer p {
-                    color: yellow;
-                }
-
-                footer p {
-                    color: #cccccc;    /* this one wins: it comes later */
-                }
-            </vf-code>
-            <vf-callout type="consell">
-                Open DevTools (F12), click on any element and look at the *Styles* panel: you see every rule
-                that applies to it, and the ones that lose appear crossed out.
+            <vf-callout type="recorda">
+                There are more selectors: children, siblings, positions, attributes... We will finish The Pixel Times
+                with them later, in [Advanced selectors](unitats/programacio/web/html-css/14b-advanced-selectors.html).
             </vf-callout>
-            <vf-details summary="See the finished page">
-                <vf-text>
-                    [The Pixel Times with all the rules](unitats/programacio/web/html-css/exercises/09-css-basics/selectors_solved.html)
-                    (the CSS is inside the HTML, in a <code>&lt;style&gt;</code>, so the file works on its own).
-                </vf-text>
-            </vf-details>
         </vf-content>
 
         <vf-title level="2">Exercises</vf-title>
         <vf-content>
+            <vf-text>
+                Every exercise is a small page: you write the HTML exactly as it is described (tags, ids, classes,
+                types...) and then the CSS rules in <code>css/style.css</code>. Do not change the HTML to make the CSS easier.
+            </vf-text>
             <vf-callout type="exercici">
-                *Exercise 9.1.* Create <code>css/style.css</code>, link it from your page, and make all the paragraphs
-                dark grey.
+                *Exercise 9.1. My favourite film.* Create <code>film.html</code> and <code>css/style.css</code>, and link the CSS from the <code>&lt;head&gt;</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;h1&gt;</code> with the title of the film;</vf-text></li>
+                <li><vf-text>three <code>&lt;p&gt;</code> that explain what the film is about;</vf-text></li>
+                <li><vf-text>an <code>&lt;h2&gt;</code> with the text “Main actors” and a <code>&lt;ul&gt;</code> with four <code>&lt;li&gt;</code>, one actor each.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text>a comment at the top of the file with your name: <code>/* Made by ... */</code>;</vf-text></li>
+                <li><vf-text><code>body</code>: background colour <code>#f5f5f5</code> and text colour <code>#333333</code>;</vf-text></li>
+                <li><vf-text><code>h1</code>: colour <code>darkred</code>;</vf-text></li>
+                <li><vf-text><code>h2</code>: colour <code>#4b3f8f</code>;</vf-text></li>
+                <li><vf-text><code>li</code>: colour <code>#555555</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Check in the HTML that there is no <code>style=</code> attribute: all the design is in the CSS file.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 9.2.* Give the class <code>highlight</code> to two paragraphs, and make that class yellow
-                background and bold text.
+                *Exercise 9.2. A recipe with classes and an id.* Create <code>recipe.html</code>, linked to the same <code>css/style.css</code>.
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>an <code>&lt;h1&gt;</code> with <code>id="recipe-title"</code> and the name of the recipe;</vf-text></li>
+                <li><vf-text>an <code>&lt;h2&gt;</code> “Ingredients” followed by a <code>&lt;ul&gt;</code> with <code>class="ingredients"</code> and five <code>&lt;li&gt;</code>;</vf-text></li>
+                <li><vf-text>an <code>&lt;h2&gt;</code> “Steps” followed by an <code>&lt;ol&gt;</code> with <code>class="steps"</code> and four <code>&lt;li&gt;</code>;</vf-text></li>
+                <li><vf-text>one <code>&lt;p&gt;</code> with <code>class="tip"</code> with a cooking tip;</vf-text></li>
+                <li><vf-text>two <code>&lt;p&gt;</code> with <code>class="warning"</code> (for example: “Careful, the oven is hot!”).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>h1, h2</code> in one single rule (a group): font <code>Arial, sans-serif</code>;</vf-text></li>
+                <li><vf-text><code>#recipe-title</code>: colour <code>#e07a5f</code> and size <code>40px</code>;</vf-text></li>
+                <li><vf-text><code>.ingredients</code>: colour <code>#2e7d32</code>;</vf-text></li>
+                <li><vf-text><code>.steps</code>: colour <code>#3d405b</code>;</vf-text></li>
+                <li><vf-text><code>.tip</code>: background colour <code>#fff3b0</code>;</vf-text></li>
+                <li><vf-text><code>.warning</code>: colour <code>#c0392b</code> and bold text (<code>font-weight: bold</code>).</vf-text></li>
+            </vf-list>
             <vf-callout type="exercici">
-                *Exercise 9.3.* Give an <code>id</code> to your main title and make it a different colour from the
-                other headings.
+                *Exercise 9.3. A school page with descendants.* Create <code>school.html</code>. In this exercise *you cannot use classes or ids*: only tag selectors and descendant selectors (with a space).
             </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;header&gt;</code> with an <code>&lt;h1&gt;</code> (the name of your school) and a <code>&lt;p&gt;</code> (the town);</vf-text></li>
+                <li><vf-text>a <code>&lt;main&gt;</code> with two <code>&lt;article&gt;</code>; each article has an <code>&lt;h2&gt;</code> and two <code>&lt;p&gt;</code>;</vf-text></li>
+                <li><vf-text>a <code>&lt;footer&gt;</code> with a <code>&lt;p&gt;</code> and two <code>&lt;a&gt;</code> (to the website of the school and to your town hall).</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>header p</code>: colour <code>#777777</code>;</vf-text></li>
+                <li><vf-text><code>article p</code>: <code>line-height: 1.6</code>;</vf-text></li>
+                <li><vf-text><code>article h2</code>: colour <code>#6d5fb3</code>;</vf-text></li>
+                <li><vf-text><code>footer p</code>: size <code>14px</code>;</vf-text></li>
+                <li><vf-text><code>footer a</code>: colour <code>green</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Check that the paragraph of the header and the paragraphs of the articles look different, even if they are all <code>&lt;p&gt;</code>.</vf-text>
             <vf-callout type="exercici">
-                *Exercise 9.4.* Write a rule that only affects the links that are inside the <code>nav</code>.
+                *Exercise 9.4. A menu with hover and featured cards.* Create <code>cards.html</code>.
             </vf-callout>
-            <vf-details summary="Show the solution (Exercise 9.4)">
-                <vf-row>
-                    <vf-col classes="col-md-6">
-                        <vf-code language="css">
-                            nav a {
-                                color: white;
-                                text-decoration: none;
-                            }
-                        </vf-code>
-                    </vf-col>
-                    <vf-col classes="col-md-6">
-                        <vf-preview>
-                            &lt;style&gt;
-                                nav {
-                                    background-color: #333333;
-                                    padding: 12px;
-                                }
-
-                                nav a {
-                                    color: white;
-                                    text-decoration: none;
-                                    margin-right: 16px;
-                                }
-                            &lt;/style&gt;
-                            &lt;nav&gt;
-                                &lt;a href="#"&gt;Home&lt;/a&gt;
-                                &lt;a href="#"&gt;About&lt;/a&gt;
-                                &lt;a href="#"&gt;Contact&lt;/a&gt;
-                            &lt;/nav&gt;
-                        </vf-preview>
-                    </vf-col>
-                </vf-row>
-                <vf-text>
-                    (The preview also gives the <code>nav</code> a dark background and some padding, just so the
-                    white links are visible — that part is not in the exercise.)
-                </vf-text>
-            </vf-details>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>a <code>&lt;nav&gt;</code> with four <code>&lt;a&gt;</code> (Home, News, Games, Contact); the first one has <code>class="active"</code>;</vf-text></li>
+                <li><vf-text>three <code>&lt;div&gt;</code> with <code>class="card"</code>, each one with an <code>&lt;h3&gt;</code> and a <code>&lt;p&gt;</code>;</vf-text></li>
+                <li><vf-text>the second card has *two classes*: <code>class="card featured"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>nav a</code>: colour <code>#6d5fb3</code>, *no underline* (<code>text-decoration: none</code>) and bold;</vf-text></li>
+                <li><vf-text><code>nav a:hover</code>: colour <code>#e07a5f</code>;</vf-text></li>
+                <li><vf-text><code>nav a.active</code>: colour <code>black</code>;</vf-text></li>
+                <li><vf-text><code>.card</code>: background colour <code>white</code>, <code>padding: 20px</code> and <code>margin-bottom: 20px</code>;</vf-text></li>
+                <li><vf-text><code>.card.featured</code>: <code>border-left: 6px solid #ffd166</code>;</vf-text></li>
+                <li><vf-text><code>.card:hover</code>: background colour <code>#f4f1fb</code>;</vf-text></li>
+                <li><vf-text><code>body</code>: background colour <code>#eeeeee</code>.</vf-text></li>
+            </vf-list>
+            <vf-callout type="exercici">
+                *Exercise 9.5. Colours and the cascade.* Create <code>colours.html</code>.
+            </vf-callout>
+            <vf-text>*HTML.* Create these elements:</vf-text>
+            <vf-list>
+                <li><vf-text>four <code>&lt;p&gt;</code> with the classes <code>name</code>, <code>hex</code>, <code>rgb</code> and <code>rgba</code>, with the texts “Red as a name”, “Red in hexadecimal”, “Red in rgb” and “Red half transparent”;</vf-text></li>
+                <li><vf-text>two more <code>&lt;p&gt;</code> without class, and a third one with <code>class="note"</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>*CSS.* Write these rules:</vf-text>
+            <vf-list>
+                <li><vf-text><code>.name</code>: colour <code>red</code>; <code>.hex</code>: colour <code>#ff0000</code>; <code>.rgb</code>: colour <code>rgb(255, 0, 0)</code>; <code>.rgba</code>: colour <code>rgba(255, 0, 0, 0.5)</code>;</vf-text></li>
+                <li><vf-text>then, in this order: <code>.note</code> in <code>purple</code>, <code>p</code> in <code>blue</code> and <code>p</code> in <code>green</code>.</vf-text></li>
+            </vf-list>
+            <vf-text>Before you reload, write in an HTML comment (<code>&lt;!-- --&gt;</code>) which colour you think each paragraph will have, and why. Then check it in the browser and in DevTools (the rules that lose appear crossed out).</vf-text>
         </vf-content>
 
         <vf-hr></vf-hr>
